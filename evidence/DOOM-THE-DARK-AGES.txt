@@ -1,0 +1,26 @@
+DOOM: The Dark Ages — sanitized evidence summary
+Test date: 2026-09-02
+Result: partial / neural rendering failed
+
+Process isolation:
+- The custom gate skipped companions in idTechLauncher.exe.
+- It loaded both companions successfully in DOOMTheDarkAges.exe.
+
+Vulkan/ReShade/Feeder:
+- ReShade loaded as a Vulkan layer.
+- External-memory and semaphore extensions were present.
+- The one missing dedicated-allocation extension was appended.
+- Lumenite Kernel, color input, motion vectors, depth, and reversed depth were found.
+- NVSDK_NGX_D3D12_Init returned Success.
+
+Failure:
+- Feeder could not find the exact adjacent filename renodx-dlss5.addon64 because
+  the gate loaded renamed companions from a subfolder.
+- NGX reported SuperSampling.Available=0.
+- Feeder stopped before feature creation or frame delivery.
+
+Conclusion:
+The Vulkan transport prerequisites and process filter worked. The test did not
+reach a usable NGX DLAA contract, so DLSS neural rendering was not active. The
+evidence does not prove whether filename discovery or private-device NGX
+availability was the sole root cause.

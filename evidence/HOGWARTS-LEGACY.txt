@@ -1,0 +1,26 @@
+Hogwarts Legacy — sanitized evidence summary
+Test date: 2026-09-01
+Result: working baseline
+
+OptiScaler v10.0.0-dev loaded.
+Upscalers.Dx12Upscaler: dlss
+FrameGen.Enabled: false
+FrameGen.FGInput: nofg
+FrameGen.FGOutput: nofg
+DlssNr.Enabled: true
+Hotfix.DisableOverlays: true
+
+The log detected:
+- Game: Hogwarts Legacy
+- Engine: Unreal
+- Proxy mode: dxgi.dll
+- Native nvngx_dlss.dll, nvngx_dlssd.dll, and nvngx_dlssg.dll
+- NVIDIA GeForce RTX 5070 Ti
+- Successful OptiPatcher game patch
+
+The Streamline log advanced beyond frame 10058 and cleaned up resources during
+normal shutdown. This proves sustained game/Streamline operation, but it does
+not by itself quantify neural-rendering image quality.
+
+User settings at the time selected DLSS Balanced, Reflex with Boost, and native
+DLSSG X3. OptiScaler's own frame-generation path remained disabled.

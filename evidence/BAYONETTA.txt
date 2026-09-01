@@ -1,0 +1,30 @@
+Bayonetta — sanitized evidence summary
+Test date: 2026-09-01 to 2026-09-02
+Result: working
+
+Game process:
+- ReShade 6.8.0 x86 loaded into Bayonetta.exe.
+- dgVoodoo2 produced a D3D11 device at 3840x2160.
+- DLSS5_Feed.fx and Lumenite Kernel compiled successfully.
+- Lumenite Kernel, DLSS5_MV, and DLSS5_Depth were found.
+
+32-bit Feeder:
+- 64-bit host connected through protocol v2.
+- Shared set ready at 3840x2160 (100%).
+- Frames 1, 2, 3, 1800, and 3600 delivered.
+- Shutdown completed cleanly.
+
+64-bit host:
+- NVSDK_NGX_D3D12_Init returned Success.
+- SuperSampling.Available=1.
+- Feature ready: 3840x2160 DLAA.
+- Frames 1, 2, 3, 1800, and 3600 evaluated.
+
+RenoDX host ReShade log:
+- Signed DLSSNR runtime reference matched.
+- NGX evaluate was intercepted.
+- Feature 18 was created after DLSS/DLAA.
+- Inline feature 18 evaluation succeeded repeatedly.
+
+These messages prove the full x86 game → x64 host → neural evaluate → delivered
+frame chain, not merely overlay injection.

@@ -1,0 +1,32 @@
+# This working folder also contains several GB of private experiment backups,
+# downloaded tools, drivers, game files and logs. Publish only the curated
+# source/documentation paths explicitly allowed below.
+*
+
+!.gitignore
+!.gitattributes
+!README.md
+!CONTRIBUTING.md
+
+!docs/
+!docs/**
+!games/
+!games/**
+!examples/
+!examples/**
+!scripts/
+!scripts/**
+!templates/
+!templates/**
+!evidence/
+!evidence/**
+
+# Never publish generated or third-party binaries, even if placed in an
+# allowed directory by mistake.
+*.7z
+*.dll
+*.exe
+*.pdb
+*.zip
+*.bak
+*.dmp
