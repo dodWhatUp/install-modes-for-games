@@ -16,6 +16,7 @@ Always use the current instructions from the original project. The tested versio
 - [dgVoodoo2 repository](https://github.com/dege-diosg/dgVoodoo2)
 - [dgVoodoo2 official site](https://dege.freeweb.hu/)
 - [Hogwarts Legacy Ultra Plus](https://www.nexusmods.com/hogwartslegacy/mods/660)
+- [DOOM: The Dark Ages PC system requirements](https://help.bethesda.net/app/answers/detail/a_id/68551/)
 
 ## NVIDIA information
 

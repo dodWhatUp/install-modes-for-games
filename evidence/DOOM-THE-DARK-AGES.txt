@@ -1,26 +1,57 @@
 DOOM: The Dark Ages — sanitized evidence summary
 Test date: 2026-09-02
-Result: partial / neural rendering failed
+Result: working technical neural-rendering path at 2560x1440
+
+Environment:
+- RTX 5070 Ti, 16 GB VRAM, NVIDIA driver 616.56
+- 64-bit Vulkan game with separate idTechLauncher.exe
+- ReShade 6.8 full add-on Vulkan layer
+- RenoDX DLSS5 v4.55
+- DLSS5-Feeder 0.8.0-beta.4
+- Signed NVIDIA DLSS SR/NR 310.8 runtimes
+- Lumenite Kernel motion-vector provider
 
 Process isolation:
-- The custom gate skipped companions in idTechLauncher.exe.
-- It loaded both companions successfully in DOOMTheDarkAges.exe.
+- Launcher gate: skipped RenoDX and Feeder.
+- Game gate: loaded exact renodx-dlss5.addon64 and dlss5-feed.addon64 names.
+- The launcher-layer warning was suppressed without disabling ReShade in Doom.
 
-Vulkan/ReShade/Feeder:
-- ReShade loaded as a Vulkan layer.
-- External-memory and semaphore extensions were present.
-- The one missing dedicated-allocation extension was appended.
-- Lumenite Kernel, color input, motion vectors, depth, and reversed depth were found.
-- NVSDK_NGX_D3D12_Init returned Success.
+Successful 1440p run:
+- Feeder built a 2560x1440 Vulkan transport with reversed depth.
+- Feature became ready at 2560x1440 using the private DLAA contract.
+- Frames 1, 2, 3 and checkpoints through at least frame 16,200 were delivered.
+- RenoDX initialized the signed DLSSNR 310.8.0 D3D12 runtime.
+- RenoDX created feature 18 for 2560x1440 input/output.
+- Inline feature-18 evaluations succeeded at counts 1 and 60.
+- No final timeout, device loss, or feature-creation exception occurred.
+- Doom remained responsive.
+- No OptiScaler payload remained in the Doom directory.
 
-Failure:
-- Feeder could not find the exact adjacent filename renodx-dlss5.addon64 because
-  the gate loaded renamed companions from a subfolder.
-- NGX reported SuperSampling.Available=0.
-- Feeder stopped before feature creation or frame delivery.
+Important caveat:
+- The final long run was mainly a static/menu scene. Its center motion-vector probe
+  was almost zero. This does not negate feature creation/evaluation/delivery, but
+  moving-gameplay motion-vector quality and temporal stability still need visual
+  validation.
 
-Conclusion:
-The Vulkan transport prerequisites and process filter worked. The test did not
-reach a usable NGX DLAA contract, so DLSS neural rendering was not active. The
-evidence does not prove whether filename discovery or private-device NGX
-availability was the sole root cause.
+Earlier failed layout:
+- A custom gate loaded renamed companions from a subfolder.
+- Feeder could not find exact adjacent renodx-dlss5.addon64.
+- NGX reported SuperSampling.Available=0 and no neural frames were delivered.
+- Keeping exact filenames and using the signed 310.8 runtime fixed this path.
+
+4K failure lesson:
+- A first 3840x2160 session created the feature and delivered frames.
+- After Doom's normal runtime recreation, another 4K feature creation raised
+  caught exception 0xC0000005; Doom continued, but the neural pass stopped.
+- Observed VRAM was about 15.4/16.3 GB, leaving too little headroom.
+- Borderless mode retained a near-4K/4K desktop backbuffer.
+- Exclusive 2560x1440 supplied enough headroom for the stable run.
+
+Other lessons:
+- A Vulkan disable environment variable can disable the layer merely by being
+  present, even when its value is 0.
+- The launcher popup was Vulkan-layer validation, not an NVIDIA driver failure.
+- Early RenoDX hook-probe errors were followed by signed runtime initialization,
+  feature creation, and evaluation, so they were not the terminal result.
+- ReShade.log represented the launcher; the game used ReShade.log1 in the shared
+  directory.

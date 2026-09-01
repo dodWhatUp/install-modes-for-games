@@ -10,7 +10,7 @@ This repository records both the method and the outcome. A feature is not marked
 |---|---|---|---|
 | Hogwarts Legacy | 64-bit DX12, native DLSS/Streamline, OptiScaler at the shipping executable | Working baseline; native DLSSG kept separate from OptiScaler's neural-rendering experiment | [Hogwarts Legacy](games/HOGWARTS-LEGACY.md) |
 | Bayonetta | 32-bit DX9 → dgVoodoo2 DX11 → ReShade/Feeder → 64-bit RenoDX host | Working; logs prove thousands of delivered and evaluated 4K frames | [Bayonetta](games/BAYONETTA.md) |
-| DOOM: The Dark Ages | 64-bit Vulkan → ReShade/Feeder → private D3D12 NGX path | Partial only; process isolation worked, but NGX reported Super Resolution unavailable | [DOOM: The Dark Ages](games/DOOM-THE-DARK-AGES.md) |
+| DOOM: The Dark Ages | 64-bit Vulkan → ReShade/Feeder → private D3D12 NGX path | Working technical integration at 2560×1440; feature 18 evaluated and 16,200+ frames delivered | [DOOM: The Dark Ages](games/DOOM-THE-DARK-AGES.md) |
 | Other UE4/UE5 games | Depends on API, bitness, native temporal-upscaler support, launcher, and anti-cheat | Reusable install/diagnostic method, not a universal drop-in | [Generic Unreal guide](games/GENERIC-UNREAL-ENGINE.md) |
 
 ## Read this first

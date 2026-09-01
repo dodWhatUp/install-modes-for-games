@@ -71,7 +71,18 @@ NGX initialized, but DLSS Super Resolution was unavailable to the device/session
 - The helper/private D3D12 device is using the NVIDIA adapter.
 - The process is not also running OptiScaler or NVIDIA Smooth Motion.
 
-This was the final blocker in the recorded DOOM: The Dark Ages Vulkan test. Vulkan external-memory/semaphore requirements were present, so changing unrelated Vulkan extensions would not address the observed failure.
+This appeared in the first DOOM: The Dark Ages Vulkan test after the process gate renamed and relocated the add-ons. A later clean test kept the exact `.addon64` filenames, placed the signed 310.8 SR/NR runtimes beside them, and reached feature creation and delivery. Therefore `Available=0` was a session/layout/runtime problem in that test, not proof that the RTX GPU lacked DLSS support. Vulkan external-memory/semaphore requirements were already present, so changing unrelated Vulkan extensions would not address it.
+
+## Feature works once, then fails after Alt-Tab or runtime recreation
+
+Treat the second feature creation as a fresh memory allocation. In the DOOM 4K test, the first neural session worked, but VRAM reached about 15.4/16.3 GB and a later recreation raised a caught access violation. The game survived while the neural pass stopped.
+
+- Lower the real output/backbuffer resolution; changing only an internal work percentage may not help.
+- Verify the effective size in the Feeder log. Borderless mode can match the desktop and ignore a requested smaller size.
+- Leave memory headroom for runtime recreation instead of tuning only for the first successful feature creation.
+- A longer create delay changes timing, not available VRAM.
+
+The stable DOOM test used exclusive 2560×1440 instead of a 4K borderless/desktop-sized backbuffer.
 
 ## Feeder works but motion looks smeared
 
