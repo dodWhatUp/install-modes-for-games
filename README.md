@@ -4,6 +4,10 @@ A practical, evidence-based knowledge base for game modding: graphics injection 
 
 This repository records both the method and the outcome. A feature is not marked working because an overlay appeared; it is marked working only when the relevant log proves that frames were created, evaluated, and delivered without breaking the game.
 
+## Canonical GitHub repository
+
+The permanent GitHub destination for this project is [`dodWhatUp/install-modes-for-games`](https://github.com/dodWhatUp/install-modes-for-games). When game-modding history is connected, uploaded, or updated through GitHub, use this repository rather than creating a duplicate or publishing through another account. Follow [GitHub Connection and Publishing](docs/GITHUB-PUBLISHING.md) before changing a remote or pushing.
+
 ## Tested games
 
 See the [game index](games/README.md) for detailed history, catalogs, and recommendations.
@@ -36,6 +40,7 @@ The fastest route is [Start Here](docs/START-HERE.md), followed by [Components a
 - [Catalogs and Recommendations](docs/CATALOGS-AND-RECOMMENDATIONS.md) defines the requested mod categories, ratings, combinations, and playthrough stages.
 - [Performance and VRAM](docs/PERFORMANCE-AND-VRAM.md) defines the default performance review and memory-headroom checks.
 - [Cross-Thread Lessons](docs/CROSS-THREAD-LESSONS.md) consolidates the relevant earlier conversations into durable, corrected conclusions.
+- [GitHub Connection and Publishing](docs/GITHUB-PUBLISHING.md) fixes this project's canonical account, repository, remote checks, and safe push procedure.
 
 The current DOOM experiment is explicitly paused. This repository stores a resume boundary but does not schedule reminders or restart it automatically.
 

@@ -34,6 +34,7 @@ An explicit emergency rollback may skip the option menu, but it must still prese
 - Update the game history with what was attempted, what happened, why that conclusion is justified, the exact rollback, and a resumable next boundary.
 - Promote a lesson to general documentation only when it is reusable. Keep game-specific exceptions in that game's folder.
 - When asked to update or upload this repository, search the relevant game history and include newly discovered conflicts, failures, solutions, and preference changes automatically.
+- For GitHub publishing in this game-modding context, use only the canonical repository `https://github.com/dodWhatUp/install-modes-for-games.git` and follow `docs/GITHUB-PUBLISHING.md`. Verify that the authenticated account is `dodWhatUp`. Do not create a duplicate repository, publish through another connected account, replace a different existing remote silently, or force-push.
 - Keep catalogs separate from recommendations. Recommendations must be grouped for first playthrough, later play, and post-game/experimental use.
 - Never commit proprietary game files, third-party binaries, archives, saves, private paths, credentials, full raw logs, or personal identifiers.
 - Do not schedule reminders or resume a paused experiment unless the user explicitly asks.

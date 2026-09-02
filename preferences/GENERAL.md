@@ -6,6 +6,7 @@ These are defaults, not permission to ignore a game-specific conflict or a newer
 
 ## Decision and safety preferences
 
+- For this game-modding knowledge base, the default GitHub destination is `dodWhatUp/install-modes-for-games`. Confirm the authenticated GitHub identity before writing; never substitute another account or create a second similarly named repository.
 - Show numbered options before a new modding path so the user can answer with the desired number. Include a warning beside any option likely to conflict, corrupt visuals, destabilize the game, or complicate rollback.
 - Preserve a known-working state and take a just-in-time snapshot of files/settings likely to change.
 - Prefer quick, reversible profile switching over reinstalling, where the files and tools permit it safely.
