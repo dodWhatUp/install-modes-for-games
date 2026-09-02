@@ -1,6 +1,16 @@
 # DOOM: The Dark Ages
 
-Status: **working technical RenoDX/DLSS neural-rendering integration at 2560×1440**.
+Status: **experiment paused after a later 4K crash; game currently not installed by user choice**.
+
+The earlier 2560×1440 run remains a valid technical success, but it is not the current installed state and it does not establish 4K stability. The exact crashed state was privately snapshotted before rollback. A clean Steam reinstall was started during recovery and then canceled immediately when the user said not to install DOOM. Do not install, launch, remind, or resume this experiment until the user explicitly asks.
+
+Read the durable records before any future change:
+
+- [Chronological history and crash evidence](doom-the-dark-ages/HISTORY.md)
+- [Game-specific preferences](doom-the-dark-ages/PREFERENCES.md)
+- [Mod catalog](doom-the-dark-ages/MOD-CATALOG.md)
+- [Curated recommendations](doom-the-dark-ages/RECOMMENDATIONS.md)
+- [Numbered resume options](doom-the-dark-ages/NEXT-OPTIONS.md)
 
 The final test proved that the Vulkan bridge created NVIDIA neural-rendering feature 18, evaluated it repeatedly, and delivered more than 16,200 frames without a timeout, device loss, or feature-creation crash. The last long run was mostly a static/menu scene, so gameplay motion-vector quality still needs a moving-scene visual check before treating this as fully tuned.
 
@@ -79,7 +89,7 @@ The tested files are in [examples/doom-the-dark-ages](../examples/doom-the-dark-
 - Set `DLSS5_MV_PROVIDER=3` for Lumenite Kernel.
 - Use reversed depth: `RESHADE_DEPTH_INPUT_IS_REVERSED=1`.
 - Use `EnableHooks=2` so RenoDX hooks NGX only.
-- Enable neural uplift with `NeuralUplift=1`.
+- Do not copy `NeuralUplift` as a universal numeric toggle. The paused v4.55 snapshot stored `NeuralUplift=0` while feature-18 evaluations were observed; confirm the current add-on's UI/setting mapping instead of assuming that `1` means enabled for every version.
 - Keep RenoDX's separate upscaling off with `NREnableUpscaling=0`; DOOM retains its native DLSS path.
 - The stable test used neural preset/style `0`.
 

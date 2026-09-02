@@ -17,6 +17,8 @@ Always use the current instructions from the original project. The tested versio
 - [dgVoodoo2 official site](https://dege.freeweb.hu/)
 - [Hogwarts Legacy Ultra Plus](https://www.nexusmods.com/hogwartslegacy/mods/660)
 - [DOOM: The Dark Ages PC system requirements](https://help.bethesda.net/app/answers/detail/a_id/68551/)
+- [NVIDIA Streamline DLSS Frame Generation programming guide](https://github.com/NVIDIA-RTX/Streamline/blob/main/docs/ProgrammingGuideDLSS_G.md)
+- [NVIDIA Streamline DLSS Ray Reconstruction programming guide](https://github.com/NVIDIA-RTX/Streamline/blob/main/docs/ProgrammingGuideDLSS_RR.md)
 
 ## NVIDIA information
 
@@ -31,3 +33,11 @@ Always use the current instructions from the original project. The tested versio
 - Preserve upstream license and attribution files.
 - Do not redistribute ReShade or NVIDIA binaries from this repository.
 - Treat a modified or `HashMismatch` NVIDIA DLL as untrusted. The DOOM experiment recorded such a file and did not publish it.
+
+## Mod catalogs
+
+Each game catalog links directly to the original mod-author page and records its own review date:
+
+- [DOOM: The Dark Ages catalog](../games/doom-the-dark-ages/MOD-CATALOG.md)
+- [Hogwarts Legacy catalog](../games/hogwarts-legacy/MOD-CATALOG.md)
+- [Bayonetta catalog](../games/bayonetta/MOD-CATALOG.md)

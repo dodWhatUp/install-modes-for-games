@@ -15,7 +15,7 @@ There is no universal “copy these DLLs into every game” install. First ident
 | D3D11/D3D12 game without native DLSS | ReShade full add-on build + motion-vector provider + DLSS5-Feeder + RenoDX DLSS5 | Running OptiScaler, Feeder, and Smooth Motion together |
 | 32-bit D3D11 game | 32-bit ReShade/Feeder in the game + 64-bit Feeder host containing RenoDX/NGX | Putting 64-bit add-ons directly into the 32-bit process |
 | D3D9 game | dgVoodoo2 to D3D11, then the 32-bit path above | Expecting modern ReShade effects or NGX to run directly on D3D9 |
-| Vulkan game | ReShade Vulkan layer + Feeder Vulkan transport, treated as experimental | Assuming a DXGI proxy such as `dxgi.dll` controls Vulkan |
+| Vulkan game | Native/game-specific path first; ReShade Vulkan only for a documented add-on path | Assuming a DXGI proxy controls Vulkan or that current upstream Feeder supports Vulkan |
 | Unreal Engine game | Install beside `ProjectName-Win64-Shipping.exe` or the actual executable under `Binaries\Win64` | Installing only beside the small launcher executable in the game root |
 
 ## Identify the real executable
@@ -31,6 +31,8 @@ Hogwarts Legacy is unusual in that the observed running executable was `Phoenix\
 For games with a launcher, inspect logs carefully. An overlay loading into the launcher proves only that the launcher was injected. DOOM: The Dark Ages needed process isolation because the system-wide Vulkan ReShade layer saw both `idTechLauncher.exe` and `DOOMTheDarkAges.exe`.
 
 ## Build the stack gradually
+
+Before building it, search the game's history and present the user with numbered alternatives using [the option template](../templates/OPTION-MENU.md). Include stock/no-change when the experimental path has meaningful risk.
 
 Use this order and launch after each step:
 
@@ -53,3 +55,5 @@ If step 4 fails, remove it before trying a different step 4. Keeping abandoned p
 - D3D9 translation: the temporary dgVoodoo watermark appears, then the game continues correctly after the watermark is disabled.
 
 An FPS counter, overlay, DLL load, or changed color alone does not prove that the intended neural feature is active.
+
+After the run, update both the game-specific history and any reusable general lesson. See the [Operating Standard](OPERATING-STANDARD.md).

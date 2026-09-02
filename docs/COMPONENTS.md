@@ -41,7 +41,7 @@ That distinction explains why DLSS5-Feeder exists.
 
 Feeder builds a DLAA-like NGX contract from a ReShade color frame, depth, and estimated motion vectors. RenoDX can hook that evaluate and insert the neural pass.
 
-Use Feeder only when the game does not already provide a suitable DLSS path, or when the upstream project explicitly documents the scenario. The current upstream warning says it is not compatible with NVIDIA Smooth Motion or OptiScaler.
+Use Feeder only when the game does not already provide a suitable DLSS path, or when the upstream project explicitly documents the scenario. The current upstream warning says it is not compatible with NVIDIA Smooth Motion or OptiScaler. Its current main documentation lists D3D11/D3D12 and wrapped D3D9 paths, not Vulkan. The locally preserved DOOM Vulkan build/path is therefore historical experimental evidence, not a generic supported install recipe.
 
 ## Motion vectors and depth
 
@@ -58,6 +58,8 @@ motion-vector provider → DLSS5_Feed → later post-processing → present
 ```
 
 Wrong sign, scale, reversed depth, or a HUD mixed into scene inputs causes smearing, halos, flicker, or black output even when feature creation succeeds.
+
+Enable one provider technique, not every effect distributed with that provider. Unless a game-specific adapter captures engine buffers, these shared motion vectors are estimated and are not equivalent to dense engine motion vectors for camera plus dynamic objects.
 
 ## dgVoodoo2
 

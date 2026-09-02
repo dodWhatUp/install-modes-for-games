@@ -1,6 +1,6 @@
 DOOM: The Dark Ages — sanitized evidence summary
 Test date: 2026-09-02
-Result: working technical neural-rendering path at 2560x1440
+Result: partial — working technical path at 2560x1440; later 4K run crashed; experiment paused
 
 Environment:
 - RTX 5070 Ti, 16 GB VRAM, NVIDIA driver 616.56
@@ -46,6 +46,28 @@ Earlier failed layout:
 - Observed VRAM was about 15.4/16.3 GB, leaving too little headroom.
 - Borderless mode retained a near-4K/4K desktop backbuffer.
 - Exclusive 2560x1440 supplied enough headroom for the stable run.
+
+Final user-reported crash session:
+- The session began at 2560x1440 with ReShade identifying Vulkan HDR10/ST2084.
+- The swapchain recreated at 3840x2160 and Feeder created a 4K DLAA feature.
+- Frame delivery reached checkpoint 3,000.
+- The frame-3,000 probe showed meaningful estimated motion: about 1.558 px mean,
+  1.78 px maximum, and 98% non-zero values.
+- The log then stopped abruptly and the user reported a game crash.
+- No matching DOOM Application Error was found in the inspected Windows event
+  interval. VRAM pressure is strongly correlated but is not proven as the only cause.
+- Feeder auto HDR classified the 10-bit surface as SDR despite ReShade logging an
+  HDR10/ST2084 color space. The warning was not evidence of incapable hardware.
+
+Paused-state and cleanup evidence:
+- A private snapshot preserved 35 relevant state files plus inventory and notes
+  before rollback (37 files total, approximately 227.7 MB).
+- Game-root OptiScaler, ReShade, Feeder, RenoDX, gate, shader, and config payloads
+  were removed with exact-path guards; external experiment settings were restored.
+- Steam unexpectedly removed the base game after marking files missing. A clean
+  download was started, then stopped immediately when the user said not to install.
+- Steam now has no DOOM app manifest or partial download and no DOOM game files.
+  No cleanup verification launch was performed, by user request.
 
 Other lessons:
 - A Vulkan disable environment variable can disable the layer merely by being

@@ -2,6 +2,13 @@
 
 Status: **working baseline**, with aggressive forced-MFG settings recorded as unstable experiments.
 
+Supporting records:
+
+- [History](hogwarts-legacy/HISTORY.md)
+- [Preferences](hogwarts-legacy/PREFERENCES.md)
+- [Mod catalog](hogwarts-legacy/MOD-CATALOG.md)
+- [Curated recommendations](hogwarts-legacy/RECOMMENDATIONS.md)
+
 ## Tested environment
 
 - Windows 11

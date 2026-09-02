@@ -2,6 +2,13 @@
 
 Status: **working**.
 
+Supporting records:
+
+- [History](bayonetta/HISTORY.md)
+- [Preferences](bayonetta/PREFERENCES.md)
+- [Mod catalog](bayonetta/MOD-CATALOG.md)
+- [Curated recommendations](bayonetta/RECOMMENDATIONS.md)
+
 Bayonetta is a 32-bit Direct3D 9 game. NVIDIA NGX and the RenoDX DLSS5 add-on are 64-bit, so they cannot run directly inside the game. The successful design translated D3D9 to D3D11 and moved NGX work to a separate 64-bit helper.
 
 ## Tested environment

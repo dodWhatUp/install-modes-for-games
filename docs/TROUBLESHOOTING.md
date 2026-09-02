@@ -107,3 +107,11 @@ Trust the narrowest evidence:
 7. Shutdown completed without a hang.
 
 Do not treat impossible counters such as `9999 FPS` as performance results. They indicate an overlay/present-hook measurement problem.
+
+## Add-on says HDR is unsupported, but native HDR works
+
+Separate the game's output from the add-on's private feature path. A 10-bit backbuffer can be SDR or HDR, and a format-only heuristic may miss Vulkan HDR10/ST2084 color-space metadata. Confirm Windows, game, swapchain color space, ReShade log, and add-on HDR state independently. Do not force HDR until the expected transfer function is known; see [HDR and Color-Space Verification](HDR-AND-COLOR.md).
+
+## Crash after thousands of successful frames
+
+Successful creation is not stability proof. Correlate the final log timestamp with VRAM/RAM, swapchain or resolution recreation, alt-tab, scene transition, and Event Viewer/WER. Preserve the exact state before rollback. If VRAM is near capacity, lower the actual backbuffer—not only an internal scale—and leave headroom for a second allocation during recreation.

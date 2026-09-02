@@ -9,7 +9,9 @@
 - Disable automatic cloud restoration while testing settings-file changes if it keeps overwriting the local baseline.
 - Do not test in multiplayer or an anti-cheat-protected executable.
 
-## Snapshot the baseline
+## Snapshot the baseline and current state
+
+Preserve a known-good baseline early, then make a second just-in-time current-state snapshot immediately before mutation. This retains late configuration changes and the exact failed state without confusing it with the clean baseline.
 
 At minimum, record hashes and versions for these names when present:
 
@@ -29,6 +31,8 @@ sl.dlss_g.dll
 ```
 
 Use [Get-ModFileReport.ps1](../scripts/Get-ModFileReport.ps1) to create a CSV without copying proprietary files.
+
+Include launch options, environment variables, ReShade/Vulkan registration, driver profile overrides, user settings, mod-loader manifests, and saves when the selected mod can affect them.
 
 ## One-variable test loop
 
@@ -65,3 +69,5 @@ Search the executable directory for abandoned proxies after every uninstall. A r
 6. Launch stock once and inspect the directory again for leftover proxy DLLs or Vulkan-layer configuration.
 
 Avoid blanket deletion scripts. A safe rollback script must validate the exact game path and exact filenames before removal.
+
+For repeat use, follow [Quick-Switch Profiles](QUICK-SWITCH-PROFILES.md). A switch profile must own exact files and settings; it must not merely rename unknown DLLs and hope they stay unloaded.

@@ -7,6 +7,7 @@
 !.gitattributes
 !README.md
 !CONTRIBUTING.md
+!AGENTS.md
 
 !docs/
 !docs/**
@@ -20,6 +21,8 @@
 !templates/**
 !evidence/
 !evidence/**
+!preferences/
+!preferences/**
 
 # Never publish generated or third-party binaries, even if placed in an
 # allowed directory by mistake.
