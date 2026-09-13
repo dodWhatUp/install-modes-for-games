@@ -1,0 +1,164 @@
+--- a/OptiScaler/Config.cpp
++++ b/OptiScaler/Config.cpp
+@@ -9,6 +9,7 @@
+ #include <misc/IdentifyGpu.h>
+ 
+ #include <SimpleIni.h>
++#include <dlssnr/PersonalProfiles.h>
+ 
+ static CSimpleIniA ini;
+ 
+@@ -1847,7 +1848,8 @@
+ 
+     LOG_INFO("Trying to save ini to: {0}", wstring_to_string(pathWStr));
+ 
+-    return ini.SaveFile(absoluteFileName.wstring().c_str()) >= 0;
++    if (ini.SaveFile(absoluteFileName.wstring().c_str()) < 0) return false;
++    return DlssNr::PersonalProfiles::Save(this);
+ }
+ 
+ bool Config::SaveXeFG()
+--- a/OptiScaler/menu/menu_common.cpp
++++ b/OptiScaler/menu/menu_common.cpp
+@@ -8,6 +8,7 @@
+ #include <cfloat>
+ 
+ #include <dlssnr/DlssNr.h>
++#include <dlssnr/PersonalProfiles.h>
+ 
+ #include "input/input_system.h"
+ 
+@@ -1348,14 +1349,23 @@
+         if (inputDlssNrPresetCycle)
+         {
+             inputDlssNrPresetCycle = false;
+-            const uint32_t preset = (config->DlssNrPreset.value_or_default() + 1u) % 4u;
+-            config->DlssNrPreset = preset;
+-            LOG_INFO("Neural Rendering preset cycle key pressed, setting DlssNrPreset to {}", preset);
+-
+-            ImGuiToast toast { ImGuiToastType::Info, 2000 };
+-            toast.setTitle("DLSS Neural Rendering");
+-            toast.setContent("Model preset %u", preset);
+-            ImGui::InsertNotification(toast);
++            const uint64_t now = GetTickCount64();
++            if (lastNrLayoutShortcutTick == 0 || now - lastNrLayoutShortcutTick >= 1000)
++            {
++                DlssNr::PersonalProfiles::Ensure(config);
++                const auto next = (DlssNr::PersonalProfiles::Active() + 1) % 4;
++                const bool changed = DlssNr::PersonalProfiles::Select(config, next);
++                ImGuiToast toast { changed ? ImGuiToastType::Info : ImGuiToastType::Warning, 3000 };
++                toast.setTitle("Neural Rendering settings slot");
++                if (changed) toast.setContent("Slot %d | model %u | NR %.0f%% | intensity %.2f",
++                    next, config->DlssNrPreset.value_or_default(),
++                    config->DlssNrWorkingScale.value_or_default() * 100.0f,
++                    config->DlssNrIntensity.value_or_default());
++                else toast.setContent("%s", DlssNr::PersonalProfiles::Error().c_str());
++                ImGui::InsertNotification(toast);
++                lastNrLayoutShortcutTick = now;
++                LOG_INFO("Personal NR slot request {}: {}", next, changed ? "applied" : "refused");
++            }
+         }
+ 
+         if (inputDlssNrScaleCycle || inputDlssNrPlacementToggle)
+@@ -7229,7 +7239,7 @@
+         static auto fpsOverlayCycle = Keybind("FPS Overlay Cycle", 12);
+         static auto fgEnable = Keybind("Frame Generation", 13);
+         static auto dlssNrToggle = Keybind("Neural Rendering", 14);
+-        static auto dlssNrPresetCycle = Keybind("NR Preset Cycle", 15);
++        static auto dlssNrPresetCycle = Keybind("NR Settings Slot", 15);
+         static auto dlssNrCompactMenu = Keybind("NR Compact Menu", 16);
+         static auto dlssNrScaleCycle = Keybind("NR Working Resolution", 17);
+         static auto dlssNrPlacementToggle = Keybind("NR Before / After SR", 18);
+@@ -7446,7 +7456,14 @@
+     ImGui::SameLine(0.0f, 15.0f);
+ 
+     if (ImGui::Button("Save Settings"))
+-        config->SaveIni();
++    {
++        const bool saved = config->SaveIni();
++        ImGuiToast toast { saved ? ImGuiToastType::Success : ImGuiToastType::Warning, 3500 };
++        toast.setTitle("Save Settings");
++        if (saved) toast.setContent("Saved neural settings to slot %d", DlssNr::PersonalProfiles::Active());
++        else toast.setContent("Save failed. %s", DlssNr::PersonalProfiles::Error().c_str());
++        ImGui::InsertNotification(toast);
++    }
+ 
+     ImGui::SameLine(0.0f, 6.0f);
+ 
+@@ -7882,7 +7899,14 @@
+         ImGui::Separator();
+ 
+         if (ImGui::Button("Save Settings"))
+-            config->SaveIni();
++        {
++        const bool saved = config->SaveIni();
++        ImGuiToast toast { saved ? ImGuiToastType::Success : ImGuiToastType::Warning, 3500 };
++        toast.setTitle("Save Settings");
++        if (saved) toast.setContent("Saved neural settings to slot %d", DlssNr::PersonalProfiles::Active());
++        else toast.setContent("Save failed. %s", DlssNr::PersonalProfiles::Error().c_str());
++        ImGui::InsertNotification(toast);
++    }
+         ImGui::SameLine();
+         if (ImGui::Button("Close"))
+             open = false;
+--- a/OptiScaler/dlssnr/DlssNr_Menu.cpp
++++ b/OptiScaler/dlssnr/DlssNr_Menu.cpp
+@@ -11,6 +11,7 @@
+ 
+ #include <imgui/imgui.h>
+ #include "NativeSrControl.h"
++#include "PersonalProfiles.h"
+ 
+ #include <string>
+ #include <unordered_map>
+@@ -121,6 +122,8 @@
+ {
+     ImGui::PushItemWidth(170.0f * menuResScale);
+ 
++    PersonalProfiles::RenderSelector(config);
++
+     bool enabled = config->DlssNrEnabled.value_or_default();
+     if (ImGui::Checkbox("Enabled", &enabled))
+         config->DlssNrEnabled = enabled;
+@@ -130,7 +133,7 @@
+     int preset = std::clamp((int) config->DlssNrPreset.value_or_default(), 0, 3);
+     if (ImGui::Combo("Model preset", &preset, presetNames, IM_ARRAYSIZE(presetNames)))
+         config->DlssNrPreset = (uint32_t) preset;
+-    HelpMarker("The NVIDIA model exposes four numeric presets, but their visual meanings are undocumented. F11 cycles them.");
++    HelpMarker("Model hints are separate from your four saved settings slots. F11 recalls a whole settings slot.");
+ 
+     static const char* styleNames[] = { "Standard", "Natural", "Cinematic" };
+     int style = std::clamp((int) config->DlssNrStyle.value_or_default(), 0, 2);
+@@ -149,15 +152,15 @@
+     if (ImGui::Checkbox("Before Super Resolution", &beforeSr))
+         config->DlssNrRunBeforeSr = beforeSr;
+     ImGui::EndDisabled();
+-    HelpMarker("F8 switches before/after SR (combined RR+SR when active).\nDisable Finished picture and Deferred DLSS first. Recreates the NR model; allow time between changes.");
++    HelpMarker("Changes before/after SR placement (combined RR+SR when active).\nDisable Finished picture and Deferred DLSS first. Recreates the NR model; allow time between changes.");
+ 
+     int passes = std::clamp((int) config->DlssNrPasses.value_or_default(), 1, 3);
+     if (ImGui::SliderInt("Passes", &passes, 1, 3))
+         config->DlssNrPasses = (uint32_t) passes;
+     HelpMarker("More passes add cost. One pass remains the conservative default.");
+ 
+-    ImGui::TextDisabled("F10 toggle  |  F11 preset  |  F12 close");
+-    ImGui::TextDisabled("F7 NR 25% / 100%  |  F8 before/after SR");
++    ImGui::TextDisabled("F10 toggle  |  F11 settings slot  |  F12 close");
++    ImGui::TextDisabled("F7 NR 25% / 100%");
+     RenderNativeSrControl();
+     ImGui::PopItemWidth();
+ }
+@@ -171,6 +174,8 @@
+     {
+         ScopedIndent indent {};
+         ImGui::Spacing();
++
++        PersonalProfiles::RenderSelector(config);
+ 
+         bool enabled = config->DlssNrEnabled.value_or_default();
+         if (ImGui::Checkbox("Enable Neural Rendering", &enabled))
+--- a/OptiScaler/resource_build_commit.h
++++ b/OptiScaler/resource_build_commit.h
+@@ -1 +1 @@
+-#define VER_BUILD_COMMIT "e237f89+f7-25-100"
++#define VER_BUILD_COMMIT "e237f89+personal-slots"

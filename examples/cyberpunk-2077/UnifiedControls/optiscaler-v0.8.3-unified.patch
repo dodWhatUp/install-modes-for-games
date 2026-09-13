@@ -1,0 +1,503 @@
+diff --git a/OptiScaler/Config.cpp b/OptiScaler/Config.cpp
+index a4d7e356..64c38b68 100644
+--- a/OptiScaler/Config.cpp
++++ b/OptiScaler/Config.cpp
+@@ -9,6 +9,7 @@
+ #include <misc/IdentifyGpu.h>
+ 
+ #include <SimpleIni.h>
++#include <dlssnr/PersonalProfiles.h>
+ 
+ static CSimpleIniA ini;
+ 
+@@ -330,6 +331,11 @@ bool Config::Reload(std::filesystem::path iniPath)
+             DlssNrResidualAcrossRr.set_from_config(readBool("DlssNr", "ResidualAcrossRR"));
+             DlssNrResidualAcrossRrBlend.set_from_config(readFloat("DlssNr", "ResidualAcrossRRBlend"));
+             DlssNrToggleKey.set_from_config(readInt("DlssNr", "ToggleKey"));
++            DlssNrPresetCycleKey.set_from_config(readInt("DlssNr", "PresetCycleKey"));
++            DlssNrCompactMenuKey.set_from_config(readInt("DlssNr", "CompactMenuKey"));
++            DlssNrScaleCycleKey.set_from_config(readInt("DlssNr", "ScaleCycleKey"));
++            DlssNrPlacementToggleKey.set_from_config(readInt("DlssNr", "PlacementToggleKey"));
++
+             DlssNrTransferStrength.set_from_config(readFloat("DlssNr", "TransferStrength"));
+             DlssNrColourStrength.set_from_config(readFloat("DlssNr", "ColourStrength"));
+             DlssNrMaxRatio.set_from_config(readFloat("DlssNr", "MaxRatio"));
+@@ -1270,6 +1276,11 @@ bool Config::SaveIni()
+     {
+         auto toggle = Instance()->DlssNrToggleKey.value_for_config();
+         ini.SetValue("DlssNr", "ToggleKey", GetIntValue(toggle, toggle > 0).c_str());
++        ini.SetValue("DlssNr", "PresetCycleKey", GetIntValue(Instance()->DlssNrPresetCycleKey.value_for_config()).c_str());
++        ini.SetValue("DlssNr", "CompactMenuKey", GetIntValue(Instance()->DlssNrCompactMenuKey.value_for_config()).c_str());
++        ini.SetValue("DlssNr", "ScaleCycleKey", GetIntValue(Instance()->DlssNrScaleCycleKey.value_for_config()).c_str());
++        ini.SetValue("DlssNr", "PlacementToggleKey", GetIntValue(Instance()->DlssNrPlacementToggleKey.value_for_config()).c_str());
++
+     }
+     ini.SetValue("DlssNr", "TransferStrength",
+                  GetFloatValue(Instance()->DlssNrTransferStrength.value_for_config()).c_str());
+@@ -1810,7 +1821,8 @@ bool Config::SaveIni()
+ 
+     LOG_INFO("Trying to save ini to: {0}", wstring_to_string(pathWStr));
+ 
+-    return ini.SaveFile(absoluteFileName.wstring().c_str()) >= 0;
++    if (ini.SaveFile(absoluteFileName.wstring().c_str()) < 0) return false;
++    return DlssNr::PersonalProfiles::Save(this);
+ }
+ 
+ bool Config::SaveXeFG()
+diff --git a/OptiScaler/Config.h b/OptiScaler/Config.h
+index 51906c65..efbacb2b 100644
+--- a/OptiScaler/Config.h
++++ b/OptiScaler/Config.h
+@@ -1,4 +1,4 @@
+-﻿#pragma once
++#pragma once
+ 
+ #include "SysUtils.h"
+ #include "State.h"
+@@ -274,7 +274,11 @@ class Config
+     CustomOptional<float> DlssNrResidualAcrossRrBlend { 0.08f };
+     // Toggles the pass in game. Unbound by default -- a key that does something unexpected is worse
+     // than one that does nothing.
+-    CustomOptional<int> DlssNrToggleKey { UnboundKey };
++    CustomOptional<int> DlssNrToggleKey { VK_F10 };
++    CustomOptional<int> DlssNrPresetCycleKey { VK_F11 };
++    CustomOptional<int> DlssNrCompactMenuKey { VK_F12 };
++    CustomOptional<int> DlssNrScaleCycleKey { VK_F7 };
++    CustomOptional<int> DlssNrPlacementToggleKey { UnboundKey };
+     CustomOptional<uint32_t> DlssNrPreset { 0 };
+     CustomOptional<float> DlssNrIntensity { 1.0f };
+     // 0 default (standard), 1 natural, 2 cinematic -- the model's own processing profiles.
+@@ -596,7 +600,7 @@ class Config
+     // Menu
+     CustomOptional<float, NoDefault> MenuScale;
+     CustomOptional<bool> OverlayMenu { true };
+-    CustomOptional<int> ShortcutKey { VK_INSERT };
++    CustomOptional<int> ShortcutKey { VK_DELETE };
+     CustomOptional<bool> ExtendedLimits { false };
+     CustomOptional<bool> ShowFps { false };
+     /// 0 Top Left, 1 Top Right, 2 Bottom Left, 3 Bottom Right
+diff --git a/OptiScaler/dlssnr/DlssNr_Menu.cpp b/OptiScaler/dlssnr/DlssNr_Menu.cpp
+index a5c387c1..95dbeeea 100644
+--- a/OptiScaler/dlssnr/DlssNr_Menu.cpp
++++ b/OptiScaler/dlssnr/DlssNr_Menu.cpp
+@@ -6,6 +6,8 @@
+ #include "DlssNr_MenuSections.h"
+ #include "DlssNr_Placement.h"
+ #include <Config.h>
++#include "PersonalProfiles.h"
++#include "UnifiedControls.h"
+ #include <menu/menu_common.h>
+ #include <algorithm>
+ #include <cmath>
+@@ -20,6 +22,7 @@ void RenderMenu(Config* config, float menuResScale)
+     if (auto header = ScopedCollapsingHeader("DLSS Neural Rendering"); header.IsHeaderOpen())
+     {
+         ScopedIndent indent {};
++        PersonalProfiles::RenderSelector(config);
+         const float toggleGap = ImGui::GetStyle().ItemSpacing.x;
+         const float toggleWidth = (ImGui::GetContentRegionAvail().x - toggleGap) * 0.5f;
+         const float toggleRight = ImGui::GetCursorPosX() + toggleWidth + toggleGap;
+@@ -140,4 +143,8 @@ void RenderMenu(Config* config, float menuResScale)
+     }
+ }
+ 
++void RenderCompactMenu(Config* config, float menuResScale)
++{
++    UnifiedControls::Render(config, menuResScale);
++}
+ } // namespace DlssNr
+diff --git a/OptiScaler/dlssnr/DlssNr_Status.h b/OptiScaler/dlssnr/DlssNr_Status.h
+index 9221d037..9cc5b96e 100644
+--- a/OptiScaler/dlssnr/DlssNr_Status.h
++++ b/OptiScaler/dlssnr/DlssNr_Status.h
+@@ -46,6 +46,7 @@ void ClearStatus(const void* owner);
+ ControlRequests ReadControlRequests();
+ 
+ void RenderMenu(::Config* config, float menuResScale);
++void RenderCompactMenu(::Config* config, float menuResScale);
+ void RetryAfterFailure();
+ bool IsRunning();
+ const char* FailureReason();
+diff --git a/OptiScaler/menu/menu_common.cpp b/OptiScaler/menu/menu_common.cpp
+index 86461ca5..feaaaebe 100644
+--- a/OptiScaler/menu/menu_common.cpp
++++ b/OptiScaler/menu/menu_common.cpp
+@@ -1,4 +1,4 @@
+-﻿#include "pch.h"
++#include "pch.h"
+ #include <dlssnr/DlssNr_MenuOverlay.h>
+ #include "menu_common.h"
+ #if defined(OPTISCALER_RTX40_MFG)
+@@ -10,6 +10,7 @@
+ #include <cfloat>
+ 
+ #include <dlssnr/DlssNr.h>
++#include <dlssnr/PersonalProfiles.h>
+ 
+ 
+ 
+@@ -70,6 +71,11 @@ static bool inputMenu = false;
+ static bool inputFG = false;
+ static bool inputFps = false;
+ static bool inputFpsCycle = false;
++static bool inputDlssNrCompact = false;
++static bool inputDlssNrPresetCycle = false;
++static bool inputDlssNrScaleCycle = false;
++static bool inputDlssNrPlacementToggle = false;
++static uint64_t lastNrLayoutShortcutTick = 0;
+ static uint64_t lastInputTick = 0;
+ constexpr uint64_t debounceThreshold = 1000;
+ 
+@@ -295,6 +301,14 @@ void MenuCommon::UpdateManualInput(HWND targetHwnd)
+                       "Menu key pressed, will be switching FPS mode");
+         CheckShortcut(config->DlssNrToggleKey.value_or_default(), inputDlssNr,
+                       "Neural Rendering key pressed, will be toggling the pass");
++        CheckShortcut(config->DlssNrPresetCycleKey.value_or_default(), inputDlssNrPresetCycle,
++                      "Neural Rendering preset cycle key pressed");
++        CheckShortcut(config->DlssNrCompactMenuKey.value_or_default(), inputDlssNrCompact,
++                      "Neural Rendering compact menu key pressed");
++        CheckShortcut(config->DlssNrScaleCycleKey.value_or_default(), inputDlssNrScaleCycle,
++                      "Neural Rendering working resolution cycle key pressed");
++        CheckShortcut(config->DlssNrPlacementToggleKey.value_or_default(), inputDlssNrPlacementToggle,
++                      "Neural Rendering before/after SR key pressed");
+     }
+     else if (capturingKey)
+     {
+@@ -1432,7 +1446,7 @@ void MenuCommon::UpdateMenuInputMode(RenderMenuContext& ctx)
+     auto& io = ctx.io;
+ 
+     // Moved here to prevent gamepad key replay
+-    if (_isVisible)
++    if (_isVisible || _isCompactDlssNrVisible)
+     {
+         if (hasGamepad)
+             io.BackendFlags |= ImGuiBackendFlags_HasGamepad;
+@@ -1490,6 +1504,95 @@ void MenuCommon::HandleMenuShortcuts(RenderMenuContext& ctx)
+             ImGui::InsertNotification(toast);
+         }
+ 
++        if (inputDlssNrPresetCycle)
++        {
++            inputDlssNrPresetCycle = false;
++            const uint64_t now = GetTickCount64();
++            if (lastNrLayoutShortcutTick == 0 || now - lastNrLayoutShortcutTick >= 1000)
++            {
++                DlssNr::PersonalProfiles::Ensure(config);
++                const auto next = (DlssNr::PersonalProfiles::Active() + 1) % 4;
++                const bool changed = DlssNr::PersonalProfiles::Select(config, next);
++                ImGuiToast toast { changed ? ImGuiToastType::Info : ImGuiToastType::Warning, 3000 };
++                toast.setTitle("Neural Rendering settings slot");
++                if (changed) toast.setContent("Slot %d | model %u | NR %.0f%% | intensity %.2f",
++                    next, config->DlssNrPreset.value_or_default(),
++                    config->DlssNrWorkingScale.value_or_default() * 100.0f,
++                    config->DlssNrIntensity.value_or_default());
++                else toast.setContent("%s", DlssNr::PersonalProfiles::Error().c_str());
++                ImGui::InsertNotification(toast);
++                lastNrLayoutShortcutTick = now;
++                LOG_INFO("Personal NR slot request {}: {}", next, changed ? "applied" : "refused");
++            }
++        }
++
++        if (inputDlssNrScaleCycle || inputDlssNrPlacementToggle)
++        {
++            const uint64_t now = GetTickCount64();
++            if (lastNrLayoutShortcutTick == 0 || now - lastNrLayoutShortcutTick >= 1000)
++            {
++                ImGuiToast toast { ImGuiToastType::Info, 2500 };
++                toast.setTitle("DLSS Neural Rendering");
++                if (inputDlssNrPlacementToggle)
++                {
++                    if (config->DlssNrFinishedPicture.value_or_default() ||
++                        config->DlssNrDeferredDlss.value_or_default())
++                    {
++                        toast.setContent("Disable Finished picture / Deferred DLSS before changing SR placement.");
++                    }
++                    else
++                    {
++                        const bool before = !config->DlssNrRunBeforeSr.value_or_default();
++                        config->DlssNrRunBeforeSr = before;
++                        toast.setContent("Requested: %s SR (combined RR+SR when active)", before ? "before" : "after");
++                        LOG_INFO("NR placement shortcut: RunBeforeSR={}", before);
++                    }
++                }
++                else
++                {
++                    const float current = config->DlssNrWorkingScale.value_or_default();
++                    float next = 1.0f;
++                    for (const float candidate : { 0.25f })
++                    {
++                        if (std::isfinite(current) && current > candidate + 0.001f)
++                        {
++                            next = candidate;
++                            break;
++                        }
++                    }
++                    config->DlssNrWorkingScale = next;
++                    toast.setContent("NR working resolution: %.0f%% of %s-SR image", next * 100.0f,
++                                     config->DlssNrRunBeforeSr.value_or_default() ? "pre" : "post");
++                    LOG_INFO("NR working resolution shortcut: WorkingScale={}", next);
++                }
++                ImGui::InsertNotification(toast);
++                lastNrLayoutShortcutTick = now;
++            }
++            inputDlssNrScaleCycle = false;
++            inputDlssNrPlacementToggle = false;
++        }
++
++        if (inputDlssNrCompact)
++        {
++            inputDlssNrCompact = false;
++            _isCompactDlssNrVisible = !_isCompactDlssNrVisible;
++            if (_isCompactDlssNrVisible)
++            {
++                _isVisible = false;
++                io.ClearEventsQueue();
++                io.ClearInputKeys();
++                io.ClearInputMouse();
++                OptiInput::ResetMenuInputTransientState();
++                ApplyThemeStyle();
++            }
++
++            const bool menuInputVisible = _isVisible || _isCompactDlssNrVisible;
++            io.MouseDrawCursor = menuInputVisible;
++            io.WantCaptureKeyboard = menuInputVisible;
++            io.WantCaptureMouse = menuInputVisible;
++            LOG_DEBUG("DLSS compact menu key pressed, {}", _isCompactDlssNrVisible ? "opening" : "closing");
++        }
++
+         if (inputFpsCycle && config->ShowFps.value_or_default())
+             config->FpsOverlayType = (FpsOverlay) ((config->FpsOverlayType.value_or_default() + 1) % FpsOverlay_COUNT);
+ 
+@@ -1497,6 +1600,8 @@ void MenuCommon::HandleMenuShortcuts(RenderMenuContext& ctx)
+         {
+             inputMenu = false;
+             _isVisible = !_isVisible;
++            if (_isVisible)
++                _isCompactDlssNrVisible = false;
+ 
+             LOG_DEBUG("Menu key pressed, {0}", _isVisible ? "opening ImGui" : "closing ImGui");
+ 
+@@ -1532,9 +1637,10 @@ void MenuCommon::HandleMenuShortcuts(RenderMenuContext& ctx)
+                 _showHudlessWindow = false;
+             }
+ 
+-            io.MouseDrawCursor = _isVisible;
+-            io.WantCaptureKeyboard = _isVisible;
+-            io.WantCaptureMouse = _isVisible;
++            const bool menuInputVisible = _isVisible || _isCompactDlssNrVisible;
++            io.MouseDrawCursor = menuInputVisible;
++            io.WantCaptureKeyboard = menuInputVisible;
++            io.WantCaptureMouse = menuInputVisible;
+         }
+ 
+         inputFpsCycle = false;
+@@ -1637,7 +1743,8 @@ void MenuCommon::BeginMenuFrameIfNeeded(RenderMenuContext& ctx)
+                                DlssNr::ExposureScan::Where() != DlssNr::ExposureScan::Verdict::Off;
+ 
+     if ((!config->DisableSplash.value_or_default() && now > splashStart && now < splashLimit) ||
+-        config->ShowFps.value_or_default() || _isVisible || ImGui::notifications.size() > 0 || scanIndicator ||
++        config->ShowFps.value_or_default() || _isVisible || _isCompactDlssNrVisible ||
++        ImGui::notifications.size() > 0 || scanIndicator ||
+         (config->DlssNrCompare.value_or_default() != 0 && config->DlssNrCompareTags.value_or_default()))
+     {
+         if (!_isUWP)
+@@ -1650,7 +1757,7 @@ void MenuCommon::BeginMenuFrameIfNeeded(RenderMenuContext& ctx)
+             ImGui_ImplUwp_NewFrame(displaySize);
+         }
+ 
+-        OptiInput::FeedImGui(_isVisible);
++        OptiInput::FeedImGui(_isVisible || _isCompactDlssNrVisible);
+ 
+         MenuHdrCheck(io);
+         ImGui::NewFrame();
+@@ -1783,7 +1890,7 @@ void MenuCommon::UpdateFrameTimeAverages(RenderMenuContext& ctx)
+     averageFrameTime = 0.0f;
+     averageUpscalerFT = 0.0f;
+ 
+-    if (config->ShowFps.value_or_default() || _isVisible)
++    if (config->ShowFps.value_or_default() || _isVisible || _isCompactDlssNrVisible)
+     {
+         float frameCnt = 0;
+         frameTime = 0;
+@@ -7122,12 +7229,20 @@ void MenuCommon::RenderKeybindSettings(RenderMenuContext& ctx)
+         static auto fpsOverlayCycle = Keybind("FPS Overlay Cycle", 12);
+         static auto fgEnable = Keybind("Frame Generation", 13);
+         static auto dlssNrToggle = Keybind("Neural Rendering", 14);
++        static auto dlssNrPresetCycle = Keybind("NR Settings Slot", 15);
++        static auto dlssNrCompactMenu = Keybind("NR Compact Menu", 16);
++        static auto dlssNrScaleCycle = Keybind("NR Working Resolution", 17);
++        static auto dlssNrPlacementToggle = Keybind("NR Before / After SR", 18);
+ 
+         menu.Render(config->ShortcutKey);
+         fpsOverlay.Render(config->FpsShortcutKey);
+         fpsOverlayCycle.Render(config->FpsCycleShortcutKey);
+         fgEnable.Render(config->FGShortcutKey);
+         dlssNrToggle.Render(config->DlssNrToggleKey);
++        dlssNrPresetCycle.Render(config->DlssNrPresetCycleKey);
++        dlssNrCompactMenu.Render(config->DlssNrCompactMenuKey);
++        dlssNrScaleCycle.Render(config->DlssNrScaleCycleKey);
++        dlssNrPlacementToggle.Render(config->DlssNrPlacementToggleKey);
+     }
+ }
+ 
+@@ -7331,7 +7446,14 @@ void MenuCommon::RenderMainMenuBottomBar(RenderMenuContext& ctx)
+     ImGui::SameLine(0.0f, 15.0f);
+ 
+     if (ImGui::Button("Save Settings"))
+-        config->SaveIni();
++    {
++        const bool saved = config->SaveIni();
++        ImGuiToast toast { saved ? ImGuiToastType::Success : ImGuiToastType::Warning, 3500 };
++        toast.setTitle("Save Settings");
++        if (saved) toast.setContent("Saved neural settings to slot %d", DlssNr::PersonalProfiles::Active());
++        else toast.setContent("Save failed. %s", DlssNr::PersonalProfiles::Error().c_str());
++        ImGui::InsertNotification(toast);
++    }
+ 
+     ImGui::SameLine(0.0f, 6.0f);
+ 
+@@ -7746,12 +7868,68 @@ void MenuCommon::RenderMainMenuWindow(RenderMenuContext& ctx)
+         ImGui::PopFontSize();
+ }
+ 
++void MenuCommon::RenderCompactDlssNrWindow(RenderMenuContext& ctx)
++{
++    if (!_isCompactDlssNrVisible)
++        return;
++
++    auto config = ctx.config;
++    const float menuResScale = ctx.menuResScale;
++
++    if (config->UseHQFont.value_or_default())
++        ImGui::PushFontSize(std::round(menuResScale * fontSize));
++
++    ImGuiWindowFlags flags = ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoCollapse |
++                             ImGuiWindowFlags_AlwaysAutoResize;
++    bool open = true;
++
++    const auto displaySize = ImGui::GetIO().DisplaySize;
++    ImGui::SetNextWindowSizeConstraints(ImVec2 { 0.0f, 0.0f },
++                                       ImVec2 { displaySize.x * 0.95f, displaySize.y * 0.90f });
++    if (ImGui::Begin("Cyberpunk Graphics Controls", &open, flags))
++    {
++        DlssNr::RenderCompactMenu(config, menuResScale);
++        ImGui::Separator();
++
++        if (ImGui::Button("Save Settings"))
++        {
++        const bool saved = config->SaveIni();
++        ImGuiToast toast { saved ? ImGuiToastType::Success : ImGuiToastType::Warning, 3500 };
++        toast.setTitle("Save Settings");
++        if (saved) toast.setContent("Saved neural settings to slot %d", DlssNr::PersonalProfiles::Active());
++        else toast.setContent("Save failed. %s", DlssNr::PersonalProfiles::Error().c_str());
++        ImGui::InsertNotification(toast);
++    }
++        ImGui::SameLine();
++        if (ImGui::Button("Close"))
++            open = false;
++    }
++    ImGui::End();
++
++    if (config->UseHQFont.value_or_default())
++        ImGui::PopFontSize();
++
++    if (!open)
++    {
++        _isCompactDlssNrVisible = false;
++        auto& io = ctx.io;
++        io.MouseDrawCursor = _isVisible;
++        io.WantCaptureKeyboard = _isVisible;
++        io.WantCaptureMouse = _isVisible;
++    }
++}
++
+ void KeyUp(UINT vKey)
+ {
+     inputMenu = vKey == Config::Instance()->ShortcutKey.value_or_default();
+     inputFps = vKey == Config::Instance()->FpsShortcutKey.value_or_default();
+     inputFG = vKey == Config::Instance()->FGShortcutKey.value_or_default();
+     inputFpsCycle = vKey == Config::Instance()->FpsCycleShortcutKey.value_or_default();
++    inputDlssNr = vKey == Config::Instance()->DlssNrToggleKey.value_or_default();
++    inputDlssNrPresetCycle = vKey == Config::Instance()->DlssNrPresetCycleKey.value_or_default();
++    inputDlssNrCompact = vKey == Config::Instance()->DlssNrCompactMenuKey.value_or_default();
++    inputDlssNrScaleCycle = vKey == Config::Instance()->DlssNrScaleCycleKey.value_or_default();
++    inputDlssNrPlacementToggle = vKey == Config::Instance()->DlssNrPlacementToggleKey.value_or_default();
+ }
+ 
+ bool MenuCommon::RenderMenu()
+@@ -7771,7 +7949,7 @@ bool MenuCommon::RenderMenu()
+     // 2) Prepare one-shot notifications and start a new ImGui frame only when needed.
+     UpdateVersionAndStartupNotifications(ctx);
+     BeginMenuFrameIfNeeded(ctx);
+-    OptiInput::EndFrame(_isVisible);
++    OptiInput::EndFrame(_isVisible || _isCompactDlssNrVisible);
+ 
+     // 3) Draw lightweight overlay windows first, preserving the original order.
+     ctx.menuResScale = MenuResolutionScale(ctx.io);
+@@ -7781,7 +7959,10 @@ bool MenuCommon::RenderMenu()
+     RenderPerformanceOverlay(ctx);
+     DlssNr::RenderExposureScanIndicator(ctx.config->FpsOverlayAlpha.value_or_default());
+ 
+-    // 4) Draw the full settings menu last so popups and child windows keep their existing behavior.
++    // 4) Draw the compact DLSS-only window or the full settings menu.
++    RenderCompactDlssNrWindow(ctx);
++
++    // Draw the full settings menu last so popups and child windows keep their existing behavior.
+     RenderMainMenuWindow(ctx);
+ 
+     if (ctx.newFrame)
+@@ -7806,6 +7987,7 @@ void MenuCommon::Init(HWND InHwnd, bool isUWP)
+ 
+     _handle = InHwnd;
+     _isVisible = false;
++    _isCompactDlssNrVisible = false;
+     _isUWP = isUWP;
+     lastPosition = { -1000.0f, -1000.0f };
+ 
+@@ -7921,14 +8103,16 @@ void MenuCommon::Shutdown()
+     _handle = nullptr;
+     _isInited = false;
+     _isVisible = false;
++    _isCompactDlssNrVisible = false;
+ }
+ 
+ void MenuCommon::HideMenu()
+ {
+-    if (!_isVisible)
++    if (!_isVisible && !_isCompactDlssNrVisible)
+         return;
+ 
+     _isVisible = false;
++    _isCompactDlssNrVisible = false;
+ 
+     ImGuiIO& io = ImGui::GetIO();
+     (void) io;
+diff --git a/OptiScaler/menu/menu_common.h b/OptiScaler/menu/menu_common.h
+index 6b5582d5..43aaf186 100644
+--- a/OptiScaler/menu/menu_common.h
++++ b/OptiScaler/menu/menu_common.h
+@@ -82,6 +82,7 @@ class MenuCommon
+     inline static HWND _handle = nullptr;
+     // inline static WNDPROC _oWndProc = nullptr;
+     inline static bool _isVisible = false;
++    inline static bool _isCompactDlssNrVisible = false;
+     inline static bool _isInited = false;
+     inline static bool _isUWP = false;
+ 
+@@ -154,6 +155,7 @@ class MenuCommon
+ 
+     // Labels for the Neural Rendering comparison views. Drawn every frame, into the frame plane,
+     // so a screenshot keeps them and the wipe reveals and hides them like the images.
++    static void RenderCompactDlssNrWindow(RenderMenuContext& ctx);
+     static void RenderMainMenuWindow(RenderMenuContext& ctx);
+ 
+     // RenderMainMenuWindow section helpers. These keep the main window flow readable
+@@ -189,7 +191,7 @@ class MenuCommon
+     static void Dx12Inited() { _dx12Ready = true; }
+     static void VulkanInited() { _vulkanReady = true; }
+     static bool IsInited() { return _isInited; }
+-    static bool IsVisible() { return _isVisible; }
++    static bool IsVisible() { return _isVisible || _isCompactDlssNrVisible; }
+     static HWND Handle() { return _handle; }
+ 
+     static bool RenderMenu();

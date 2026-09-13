@@ -1,0 +1,67 @@
+A Plague Tale: Requiem — sanitized installation/runtime evidence
+Date: 2026-09-13
+
+Steam build 11415435 / game 1.6.0.0 (20230706_1126)
+APlagueTaleRequiem_x64.exe / native D3D12
+RTX 5070 Ti 16 GB / driver 616.56 / Windows 11 build 26200
+
+Installed custom OptiScaler-DLSSNR v0.7.7:
+  SHA256 4400E00C58451AAC69554600AEFB178089C4D9D67C6BCF9C8BFEA8FE961557BE
+  Base e237f895623742b761f9e5f00067cb3dc62619f4
+  946 export names/ordinals match upstream.
+RTX 50 NR 310.8: NVIDIA Authenticode Valid
+  SHA256 E16BCF15E16E13F527491CDF7845B2FE6521A738D8F7C9C721866A8496E1FC8E
+Forwarder:
+  SHA256 DE80593C5404C0909526B6F3D4C966CCFDF26CAC8286FBE088EA9883EAFCB21D
+Initial configured INI:
+  SHA256 233ED6BFB648252790D593BA6861361C9D5E2863D09861F64ACFC79299271636
+Post-Save Settings INI:
+  SHA256 6DFCCF8D473448EA5D388D2DE8DC5A10E61CC5A31F4F33222C02A7935FB1DF47
+Release ZIP:
+  SHA256 4A315A3B3EE495631BD7CB1F562F609AF577443602E507BFC7A7E6749C296258
+Fresh extraction passed all 63 internal checksums; 65 added files installed.
+All original root files verified unchanged at install.
+
+Observed events (local timestamps, paths removed):
+13:19:36 DLSS feature creation returned success; effective DLSS v310.9 logged.
+13:19:36 NR reached through game's DLSS input.
+13:19:37 Model created, then ready after submitted epoch 833.
+13:19:37 Pre-SR target/model/guides 1920x1080; one effective pass.
+13:19:37 NR composition, linear HDR color, matched residual.
+13:19:45 Timing 4.94 ms total / 4.70 ms model / 0.24 ms surrounding work.
+           Elapsed intervals can include other GPU work; not isolated NR cost.
+13:20:00 F12 compact menu displayed visibly over the animated title scene.
+13:20:13 F9 75%: model 1440x810, ready, composed.
+13:20:31 F9 50%: model 960x540, ready, composed.
+13:20:50 F8 after SR: target 3840x2160/model 1920x1080 at 50%, ready/composed.
+13:21:03 F8 before SR: target 1920x1080/model 960x540, ready/composed.
+13:21:38 F9 25%: model 480x270, ready/composed.
+13:22:34 F9 wrapped to 100%: model 1920x1080, ready/composed.
+13:22:44 F10 Off visible; log: NR did not run because switched off.
+13:23:06 F10 On restored; model timing resumed.
+13:23:13 F11 preset 1 created and ready.
+13:23:26 F11 preset 2 created and ready.
+13:23:36 F11 preset 3 created and ready.
+13:24:02 F11 wrapped to preset 0, created and ready.
+13:24    Delete displayed the full menu; F12 returned to compact only.
+13:26:14 Mouse Save Settings wrote the INI successfully.
+13:26:26 F12 closed the compact menu.
+13:26:37 After Alt+F4, DLSS feature released.
+13:26:38 DLL_PROCESS_DETACH / Unloading OptiScaler; process exited.
+
+Post-exit checks: all 22 original root files and 64 immutable mod files matched.
+Saved state: NR enabled, before SR, 100%, preset 0, style 0, intensity 1, one pass.
+Default-valued settings serialize as auto. Source defaults verified for keys,
+scale/preset and disabled internal FG; explicit DLSS backend and external FG retained.
+
+Global GPU memory samples around 5880–5961 MiB while title scene ran.
+Warnings about absent WndProc subclass/raw input occurred; keyboard shortcuts
+worked through the available input path. Warning text alone is not a failure.
+
+Scope: animated title-scene rendering and controls only. No campaign started.
+Native FG delivery, output HDR, full gameplay, HUD and long-run stability untested.
+Numeric model-hint visual meaning unverified. F7 native SR switch not implemented.
+Raw logs, snapshots and binaries stay in private ignored storage.
+
+2026-09-13 F7 revision: installed, 25%/100% only, ScaleCycleKey=0x76.
+Build/export checks: x64, all 946 names/ordinals retained. Restore dry-runs passed. No game launch.

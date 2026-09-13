@@ -1,0 +1,37 @@
+# Cyberpunk 2077 — Mod Catalog
+
+**2026-09-14 candidate review:** [Unified controls](../../examples/cyberpunk-2077/UnifiedControls/README.md), OptiScaler NR v0.8.3 and NVIDIA Streamline 2.14.1 / DLSS 310.9.1 are prepared and statically checked, **not installed or gameplay-verified**. The game/store closure guard deferred installation. Monthly maintenance is enabled. Native FG remains the only FG implementation; OptiScaler is the requested common control surface. The installed catalog below remains v0.7.7 until successful installation is recorded.
+
+**Current controls revision, 2026-09-13 evening:** [personal NR slots](../../examples/optiscaler-dlssnr/personal-slots/README.md) installed on the existing v0.7.7 consumer. F11 recalls saved NR settings; F7 remains 25%/100%; F8/Page Up/Page Down are unbound. GraphicsHotkeys F6 feedback now renders in onDraw. Older descriptions below retain the preceding package/review. NVIDIA App statistics were re-enabled; no additional graphics consumer was installed.
+
+Last reviewed: 2026-09-13. This was a graphics-install review, not a full gameplay/content-mod survey. Catalog entries are candidates; only the static installation state below was checked locally.
+
+| Mod/tool | Category | Purpose | Requirements | Conflicts/risks | Updated/reviewed | Local state | Confidence |
+|---|---|---|---|---|---|---|---|
+| [Cyberpunk native DLSS 4/MFG support](https://www.nvidia.com/en-us/geforce/news/gfecnt/20251/dlss-4-multi-frame-generation-out-now/) | Graphics/performance | Native DLSS SR, RR, Reflex, FG/MFG, including RTX 50 MFG | RTX GPU and supported driver; game controls | Do not add a second FG owner; base FPS/latency still matter | Reviewed 2026-09-13 | Native 310.1/Streamline 2.7.1 present | High locally for files/settings |
+| [OptiScaler](https://github.com/optiscaler/OptiScaler) | Graphics/upscaling | Intercepts native temporal-upscaler inputs and can route alternative outputs | Install beside `bin\x64\Cyberpunk2077.exe`; current compatibility entry supports Cyberpunk | Proxy ownership; internal FG must not compete with native MFG | Reviewed 2026-09-13 | Fork installed; base compatibility upstream-supported | Medium–High |
+| [OptiScaler-DLSSNR v0.7.7](https://github.com/wilsjo2/OptiScaler-DLSSNR-PreSR-Multipass/releases/tag/v0.7.7) | Experimental graphics/neural | Adds an undocumented NVIDIA Neural Rendering pass around the native upscaler path | Driver 616.56+, complete package, correct 310.8 runtime; one-pass start recommended | Experimental; GPU cost, HUD/color artifacts, FG/RR interaction, device removal reports | 2026-09-11 release | Installed; static integrity passed; runtime pending | Medium for installation, Low for visual result |
+| [Original OptiScaler-DLSSNR v0.2.0](https://github.com/Dagherbou/OptiScaler_DLSSNR/releases/tag/v0.2.0-dlssnr) | Experimental graphics/neural | Earlier direct OptiScaler neural-rendering fork | Same 310.8 runtime boundary | Cyberpunk reports of crash when toggling NR/scale with native FG; alternative profile, not an overlay on v0.7.7 | Reviewed 2026-09-13 | Not installed | Medium upstream |
+| [RenoDX](https://github.com/clshortfuse/renodx) + [DLSS5-Feeder](https://github.com/jlrouzies-fr/DLSS5-Feeder) | Experimental graphics/HDR/neural | Alternative ReShade/NGX neural and shader/HDR path | Full add-on ReShade, correct add-ons, depth/motion provider | Do not combine Feeder or a second neural consumer with OptiScaler; estimated vectors are inferior to Cyberpunk's native contract | Reviewed 2026-09-13 | Not installed | Medium upstream, Low recommendation here |
+| [Cyber Engine Tweaks 1.37.1](https://github.com/maximegmd/CyberEngineTweaks/releases/tag/v1.37.1) | Framework/UI controls | Hosts the narrow F7 native DLSS quality adapter; overlay on Insert | Cyberpunk 2.31, complete CET package, x64 VC++ runtime | `version.dll` loader distinct from OptiScaler `dxgi.dll`; overlay and NR/FG recreation combination untested; optional graphics patches off | Reviewed 2026-09-13 | Installed; package digest and 22-file payload verified; gameplay untested | High for file provenance, Low for combination stability |
+| [GraphicsHotkeys](../../examples/cyberpunk-2077/GraphicsHotkeys/README.md) | Local UI/controls adapter | F7 cycles native DLAA/Quality/Balanced/Performance; no startup graphics mutation | CET 1.37.1 and native DLSS selected | Settings API and resource recreation require live testing; cooldown and rollback reduce repeated calls, not all graphics risks | Authored 2026-09-13 | Installed; Lua mocks passed; engine behavior untested | Medium for logic, Low for runtime |
+| [RED4ext](https://github.com/WopsS/RED4ext) and [redscript](https://github.com/jac3km4/redscript) | Framework | Native and script mod foundations | Version matching game build and dependent mods | A current OptiScaler-DLSSNR report describes `dxgi.dll`/redscript interaction; test loaders one at a time | Reviewed 2026-09-13 | Not installed | Medium upstream |
+| [ReShade](https://reshade.me/) | Graphics/overlay | Post-processing and add-on host | D3D12 install beside executable; correct full add-on build when required | Competes for proxy/overlay order and can complicate redscript/OptiScaler diagnosis | Reviewed 2026-09-13 | Not installed | Medium upstream |
+
+Local customization on 2026-09-13: the installed v0.7.7 proxy now includes the user-requested [extended controls](../../examples/optiscaler-dlssnr/README.md), including F9 NR scale and F8 placement. This is a local source build, not an upstream release. Build/static checks passed; hotkey/UI runtime testing is pending. F7 belongs to the separate native-settings adapter, not OptiScaler.
+
+## Expansion-scale and total-conversion status
+
+Not reviewed in this focused graphics installation. No claim is made that Cyberpunk lacks expansion-scale quests, overhauls, or total conversions.
+
+## Compatibility groups
+
+- Neural consumer: use OptiScaler-DLSSNR **or** RenoDX/DLSS5-Feeder, never both.
+- FG/MFG owner: the current profile uses Cyberpunk native Streamline/DLSSG only.
+- Proxy owner: `dxgi.dll` currently belongs to OptiScaler. Add ReShade or another proxy only through an explicitly documented chain.
+- Loader stack: CET, RED4ext, redscript, ArchiveXL, TweakXL, and Codeware must be version-matched and launch-tested one layer at a time.
+- Native runtime integrity: earlier work retained the game-shipped DLLs. The user now authorizes compatible updates; use coherent verified production sets, current snapshots and integration tests. Steam repair may restore its own versions. Do not replace individual Streamline plugins blindly.
+
+## 2026-09-14 — Library comparison review
+
+Added [categorized comparisons](COMPARISONS.md) covering manager/foundations, performance, graphics/DLSS, QoL/UI, animation, AI, abilities/mechanics and actual content extensions. No game files changed or new gameplay tests were performed by this review. Earlier local evidence remains stronger than generic recommendations; historical control mappings and unresolved validation boundaries are preserved. See the [14-game guide](../../docs/INSTALLED-GAMES-MOD-GUIDE.md) for scope and installed-library checks.

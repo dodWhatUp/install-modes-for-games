@@ -23,3 +23,7 @@ No verified new campaign, total conversion, or expansion-scale quest/content mod
 - The working neural profile already uses D3D9 and DXGI/D3D11 hook layers. Treat ENB, ShaderToggler, and extra ReShade presets as separate profiles until tested.
 - Select one visual color preset and verify effect order/HDR.
 - Back up `system_data` and game files before model, audio, or trainer changes.
+
+## 2026-09-14 — Library comparison review
+
+Added [categorized comparisons](COMPARISONS.md) covering manager/foundations, performance, graphics/DLSS, QoL/UI, animation, AI, abilities/mechanics and actual content extensions. No game files changed or new gameplay tests were performed by this review. Earlier local evidence remains stronger than generic recommendations; historical control mappings and unresolved validation boundaries are preserved. See the [14-game guide](../../docs/INSTALLED-GAMES-MOD-GUIDE.md) for scope and installed-library checks.

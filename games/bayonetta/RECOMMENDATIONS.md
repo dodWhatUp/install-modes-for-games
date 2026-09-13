@@ -24,3 +24,7 @@
 2. **Locally proven research stack:** dgVoodoo2 + x86 ReShade/Feeder + x64 RenoDX helper at 100%/4K. Recommendation **Experimental**, operation confidence **High**, moving-image-quality confidence **Medium–Low**, difficulty **5**.
 3. **Performance upscaling/MFG:** no locally proven path. Feeder is full-resolution and incompatible with OptiScaler/Smooth Motion; research as a separate future profile. Recommendation **Untested**, confidence **Low**.
 4. **ENB/ReShade preset on top of the neural stack:** recommendation **Avoid until isolated** because of proxy and color/effect-order conflicts.
+
+## 2026-09-14 — Library comparison review
+
+Added [categorized comparisons](COMPARISONS.md) covering manager/foundations, performance, graphics/DLSS, QoL/UI, animation, AI, abilities/mechanics and actual content extensions. No game files changed or new gameplay tests were performed by this review. Earlier local evidence remains stronger than generic recommendations; historical control mappings and unresolved validation boundaries are preserved. See the [14-game guide](../../docs/INSTALLED-GAMES-MOD-GUIDE.md) for scope and installed-library checks.

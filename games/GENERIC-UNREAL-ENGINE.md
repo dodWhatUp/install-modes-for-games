@@ -46,12 +46,12 @@ OptiScaler cannot invent all required temporal inputs in every game. For an offl
 
 1. Install ReShade's full add-on build beside the shipping executable.
 2. Confirm ReShade attaches to D3D11 or D3D12 and selects the scene depth buffer.
-3. Install Feeder, its effect, a supported motion-vector provider, RenoDX DLSS5, and trusted NGX runtimes according to upstream.
+3. Install Feeder, its effect, a supported motion-vector provider, exactly one currently supported neural consumer, and trusted NGX runtimes according to upstream.
 4. Enable the motion-vector technique before the Feeder technique.
 5. Keep MSAA/SSAA off and start at 100% work resolution.
-6. Require Feeder `feature ready`/`frame delivered` messages and RenoDX feature-18 evaluation messages.
+6. Require Feeder `feature ready`/`frame delivered` messages and consumer-specific neural evaluation evidence.
 
-Do not run Feeder with OptiScaler or NVIDIA Smooth Motion.
+Ordinary OptiScaler is incompatible with Feeder. As reviewed 2026-09-13, upstream explicitly supports Dagherbou's OptiScaler DLSS-NR as its sole neural consumer; see [component rules](../docs/COMPONENTS.md). Current Smooth Motion compatibility is API/version-specific, with Vulkan still excluded. Do not transfer these newer exceptions to old pinned experiments without a fresh check.
 
 ## UE5-specific considerations
 

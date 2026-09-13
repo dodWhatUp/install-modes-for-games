@@ -1,6 +1,8 @@
 # General User Preferences
 
-Last confirmed: 2026-09-02
+Last confirmed: 2026-09-14
+
+Library catalog request, 2026-09-14: cover all actually installed games and compare manager/foundations, performance, QoL, configuration/UI, graphics/DLSS, animation/movement, enemy behaviour, unique abilities/perks, magic/tools, new mechanics and added playable content. Keep curated first-playthrough, later-play and replay combinations separate from the full catalog. Upload dated information/configuration exports to Google Drive with original download links. Skyrim's basic setup is explicitly authorized for installation; the other games are research-only for this request.
 
 These are defaults, not permission to ignore a game-specific conflict or a newer explicit request. More specific preferences override general ones.
 
@@ -17,11 +19,59 @@ These are defaults, not permission to ignore a game-specific conflict or a newer
 ## Graphics and performance preferences
 
 - Favor the best practical image quality while keeping enough VRAM and performance headroom for stability.
+- User request, 2026-09-14: expose SR resolution, RR, FG/MFG/Dynamic MFG and NR in one OptiScaler or ReShade interface wherever the exact game supports it. Prefer extending the existing host over installing a second consumer. Native engine inputs/presentation can remain underneath that common interface.
+- Use the latest compatible documented NVIDIA models, with SR explicitly pinned to **L rather than M**. Model hints 0–3 in NR are independent parameters, not ranked versions. Preserve the user's personal NR slots.
+- SR render resolution and NR parameters should apply during gameplay without a game restart or save reload. Show actual input/output dimensions and distinguish a requested setting from a verified change. Model/resource recreation may still cause a brief hitch; record any game-specific unsupported control.
+- User requested target-FPS dynamic DLSS SR on 2026-09-14. Use an engine-supported controller and evaluate base rendered FPS separately from MFG output. Cyberpunk's selected starting target is **30 rendered FPS**; expose the target and supported resolution bounds in F12. This is separate from the Dynamic MFG display-FPS target.
+- Check for graphics DLL updates **once a month**, not at every launch. Cyberpunk's monthly maintenance is authorized while the game/store/compilers are closed, with verified provenance, a just-in-time snapshot and rollback. Preserve custom controls during host upgrades and stage incompatible updates rather than overwriting them. This is not permission to replace loaded DLLs or automatically launch games.
 - Investigate missing NVIDIA features—newer DLSS models, Multi Frame Generation, Ray Reconstruction, and neural rendering—whenever a game has only part of the DLSS stack.
 - Prefer the least problematic supported route: native game support or official NVIDIA override first, then a proven game integration, then OptiScaler/another bridge, and only then a synthetic-input experiment.
 - Keep native DLSS components active when an add-on can safely add only the missing feature. Do not duplicate ownership of SR, RR, FG/MFG, or the swapchain.
 - Consider performance/bug-fix mods by default unless they materially block graphics modding, overwrite the same settings, reduce desired quality, or introduce a larger compatibility risk. Explain that tradeoff.
 - Re-research current graphics combinations after a meaningful game/tool update or when the last review is stale.
+
+## DLSS extensions, real inputs, and minimum dependencies
+
+User confirmed on 2026-09-14: when installing or extending DLSS, pursue as many useful, compatible features as the game and hardware can actually support, using real engine inputs and the fewest necessary components. The earlier preference for OptiScaler was motivated by its access to game inputs; it is not a requirement to use that product in every game.
+
+- First establish the minimum working path for DLSS or access to the game's real buffers. Keep native features where they work. If inputs are inaccessible, investigate a supported game/engine integration, including Luma, RenoDX-based adapters, or other mods that actually expose them, before falling back to estimated inputs.
+- Expand from that baseline: check SR/DLAA and newer models, RR, FG/MFG, neural rendering, and supported live/dynamic SR controls. For each feature, state what the previous stage already supplies and add only its missing prerequisites. Do not stop at a loaded interceptor or the first working feature.
+- Prefer an existing component's supported capability over another program doing the same job. Compare OptiScaler forks, DLSS enablers/interceptors, RenoDX-derived consumers and game integrations by their exact capabilities, input provenance, quality, stability, overhead and controls. Product names alone do not establish compatibility.
+- Minimize additional running processes, loaders, bridges, consumers and maintenance burden; count required runtime DLLs and preset files separately from background programs. Keep essential hosts, runtimes and helpers. Do not sacrifice real inputs, requested features or stability merely to reduce the component count.
+- Treat each input independently: engine color, depth, motion vectors, jitter, exposure, UI data and ray data can have different origins. Record captured/converted engine data, reconstructed data, estimated data and unknowns; do not call a mixed or fallback path fully engine-native. A preset or renamed DLL cannot create a missing engine integration.
+- When a feature cannot work, record the missing input/API/hardware requirement or conflict and the smallest plausible addition that could resolve it. Keep unsupported features off. Distinguish DLAA from actual lower-resolution SR, and driver/optical-flow FG from engine-integrated DLSS FG/MFG.
+
+## ReShade and RenoDX as a separate visual stage
+
+- Include ReShade plus a compatible game-specific RenoDX mod/profile in future requested graphics installations, especially when a maintained profile exists for that game. Check its required settings and SDR/HDR support; do not force a generic preset onto an unsupported game.
+- Evaluate this visual stage separately from the DLSS/input stage, then validate both together. Reuse one compatible ReShade host and a documented load chain. Investigate compatible settings/load order instead of assuming RenoDX and a DLSS enabler cannot coexist.
+- Distinguish a RenoDX HDR/color/shader mod from a RenoDX-derived neural consumer. Keep exactly one consumer per neural feature, one FG owner, and coordinated shader/tonemap/swapchain ownership. If Luma or another mod already handles the same visual work, resolve that overlap before combining them.
+- Prefer the combined setup when it works well. If it conflicts, keep the working baseline and explain the exact limitation and closest supported alternative. Do not silently drop the requested visual stage, or claim that fewer components proves better image quality.
+- These are defaults for future requested installations, not a bulk migration of installed games or a restart of paused experiments. Apply existing graphics hotkeys where supported. Use [Feature Decision](../docs/FEATURE-DECISION.md) to present the minimum baseline, useful extensions and separate visual stage without asking the user to repeat these preferences.
+
+## Graphics add-on controls — all implementations
+
+User confirmed on 2026-09-13, after the Batman F9 installation: make these controls the default whenever installing these graphics add-ons, regardless of which implementation is selected. Apply them as part of future requested installations without asking the user to select the same mapping again. Scope includes OptiScaler, RenoDX-derived neural add-ons, ReShade/Feeder chains, and equivalent implementations that expose the corresponding feature.
+
+| Key | Default action |
+|---|---|
+| Delete | Open/close the active graphics add-on's full controls; retain Home for ReShade when it is a separate host |
+| F12 | Open/close unified graphics controls: NR and supported native SR/RR/FG controls |
+| F11 | Recall personal NR settings slots 0 → 1 → 2 → 3; Save Settings stores the selected slot |
+| F10 | Enable/disable neural rendering |
+| F8 | Unbound; user removed the placement shortcut |
+| F7 | Toggle NR working dimensions between 25% and 100% only |
+| F6 | Cycle supported live DLSS SR quality: DLAA → Quality → Balanced → Performance; expose beside NR controls where supported |
+| Page Up | Unbound; user does not want the add-on FPS overlay shortcut |
+| Page Down | Unbound; user does not want the add-on FPS information shortcut |
+
+- Preserve these action meanings across tools. F7 affects only NR model dimensions; F6 changes the selected upscaler's real quality mode. Keep F9 available for game actions, including Cyberpunk Quick Load. Numeric model hints belong inside a personal settings slot and are not the slot itself. Do not invent quality labels for undocumented models.
+- Latest feedback on 2026-09-13: the user confirmed that F11 should save and recall their own settings per number, removed F8/Page Up/Page Down, reaffirmed F7 25%/100% only, and prefers NVIDIA statistics. Implemented in Cyberpunk first; existing Requiem/Batman/Hogwarts installations were not migrated in this Cyberpunk repair.
+- Prefer existing bindings/settings; otherwise use a compatible implementation or a validated adapter for the exact game/build. An INI alone cannot add missing code, engine inputs, a compact menu, or native SR modes. Cyberpunk's CET adapter remains game-specific.
+- Bind one owner per action and resolve key collisions with the game and other overlays. If an action cannot be implemented for that stack, leave it unbound, record why, and report it clearly; do not silently assign a different effect.
+- Prefer a visible value/mode notification, key-release handling, protection against rapid model recreation, and a documented way to save selections in the responsible component's settings/profile. OptiScaler uses **Save Settings**; ReShade preset saving does not automatically persist another add-on's configuration.
+- Apply this default to new installations and requested control updates. Preserve existing game-specific forks, ownership, and known-good profiles; this preference update does not migrate every installed game or make one DLL universal. See [installation procedure](../docs/GRAPHICS-CONTROLS.md).
+- Latest 2026-09-13 request supersedes both earlier F9 cycles (100/75/50/25% and 100/75/67/50%): F7 must toggle only 25% and 100%. This update was installed in Cyberpunk, Requiem and Batman. Older histories/patches keep their original evidence. F6 for separate live SR is the collision-avoiding implementation choice because F9 is Cyberpunk Quick Load; the user explicitly selected F7 for NR, not F6 for SR. See each game's verification boundary.
 
 ## Mod discovery preferences
 

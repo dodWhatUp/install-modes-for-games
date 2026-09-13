@@ -16,6 +16,8 @@ This repository is the durable memory for game-modding work. Apply these rules w
 - Refresh upstream information when the game/tool changed, an experimental-tool review is over 30 days old, a normal mod review is over 90 days old, or the user asks for the latest state.
 - Unless the user already selected one exact action, present a short numbered option list. Each option must name its goal, stack, expected benefit, important conflicts, difficulty, confidence, and rollback. Mark the recommended option; do not silently choose a materially different path.
 - Prefer official in-game or driver overrides when they expose the desired feature. Use a bridge only when the game supplies the required inputs, and use a feeder only when its supported API and input requirements are met.
+- For DLSS installs/extensions, follow the 2026-09-14 defaults in `preferences/GENERAL.md`: establish the minimum path using real engine inputs, research a supported game-specific input adapter if necessary, then add the missing dependencies for each useful compatible feature. Reuse existing capabilities and minimize programs/hooks without discarding essential dependencies or desired features. OptiScaler is a candidate, not a mandatory product.
+- Include ReShade and a compatible game-specific RenoDX visual profile as a separate stage of requested graphics installs, then validate the combined stack. Distinguish HDR/shader profiles from neural consumers, share supported hosts, resolve overlapping hooks/tonemapping, and record any reason the combined stage cannot be used.
 - Make a just-in-time snapshot immediately before mutation. Preserve both the last known-good baseline and the current state if they differ. Record hashes, versions, settings, launch options, and external configuration—not just the game directory.
 
 An explicit emergency rollback may skip the option menu, but it must still preserve a resumable current-state snapshot when safe.
@@ -23,6 +25,7 @@ An explicit emergency rollback may skip the option menu, but it must still prese
 ## During installation and testing
 
 - Change one layer, or one tightly related setting group, at a time.
+- Apply the user-selected graphics hotkeys in `preferences/GENERAL.md` and `docs/GRAPHICS-CONTROLS.md` as part of every requested compatible graphics add-on installation, regardless of tool. Configure supported actions without asking for the same preference again; record unavailable actions and game-specific exceptions.
 - Never allow two components to own the same proxy, swapchain, frame-generation path, or neural consumer unless the upstream projects explicitly support that chain.
 - Prefer reversible profiles and validated switch scripts over repeated installation. Never switch loaded DLLs while the game, launcher, store client, helper, or shader compiler is running.
 - If verification is in scope, test stock first, then each layer, then a repeatable gameplay scene. Check startup, menu transition, motion, UI, HDR, performance, resolution recreation, alt-tab, and clean shutdown in proportion to risk.

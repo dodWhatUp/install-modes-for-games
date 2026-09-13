@@ -1,0 +1,36 @@
+--- a/OptiScaler/Config.h
++++ b/OptiScaler/Config.h
+@@ -260,7 +260,7 @@
+     // Toggles the pass in game. Unbound by default -- a key that does something unexpected is worse
+     // than one that does nothing.
+     CustomOptional<int> DlssNrToggleKey { UnboundKey };
+-    CustomOptional<int> DlssNrScaleCycleKey { VK_F9 };
++    CustomOptional<int> DlssNrScaleCycleKey { VK_F7 };
+     CustomOptional<uint32_t> DlssNrPreset { 0 };
+     CustomOptional<float> DlssNrIntensity { 1.0f };
+     // 0 default (standard), 1 natural, 2 cinematic -- the model's own processing profiles.
+--- a/OptiScaler/dlssnr/DlssNr_ScaleCycle.h
++++ b/OptiScaler/dlssnr/DlssNr_ScaleCycle.h
+@@ -2,14 +2,10 @@
+ 
+ namespace DlssNr
+ {
+-// Select the next smaller model scale, wrapping after 50%. Tolerance prevents
+-// float roundoff from selecting the same step twice after a manual slider edit.
++// Toggle the model's per-dimension scale between 25% and 100% only.
++// A manual intermediate scale selects 25%; invalid/low values recover to 100%.
+ constexpr float NextWorkingScale(float current)
+ {
+-    constexpr float steps[] = { 1.0f, 0.75f, 0.67f, 0.50f };
+-    for (float step : steps)
+-        if (current > step + 0.005f)
+-            return step;
+-    return 1.0f;
++    return current > 0.251f && current <= 2.0f ? 0.25f : 1.0f;
+ }
+ }
+--- a/OptiScaler/resource_build_commit.h
++++ b/OptiScaler/resource_build_commit.h
+@@ -1 +1 @@
+-#define VER_BUILD_COMMIT "9737616+f9-scale"
++#define VER_BUILD_COMMIT "9737616+f7-25-100"

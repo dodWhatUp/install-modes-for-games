@@ -1,0 +1,257 @@
+{
+  "review_date": "2026-09-14",
+  "gpu": "RTX 5070 Ti",
+  "vram_mib": 16303,
+  "driver": "616.56",
+  "criteria": "Nonzero Steam manifest and real executable present; this does not prove launchability",
+  "games": [
+    {
+      "slug": "bayonetta",
+      "name": "Bayonetta",
+      "store": "Steam",
+      "app_id": "460790",
+      "build": "1824749",
+      "size_on_disk": 13841643176,
+      "state_flags": "4",
+      "executables": [
+        {
+          "relative_path": "Bayonetta.exe",
+          "bytes": 12456960,
+          "file_version": null
+        }
+      ],
+      "launch_tested_this_review": false
+    },
+    {
+      "slug": "batman-arkham-knight",
+      "name": "Batman™: Arkham Knight",
+      "store": "Steam",
+      "app_id": "208650",
+      "build": "13250859",
+      "size_on_disk": 57921215224,
+      "state_flags": "4",
+      "executables": [
+        {
+          "relative_path": "Binaries/Win64/BatmanAK.exe",
+          "bytes": 54632960,
+          "file_version": "N/A"
+        }
+      ],
+      "launch_tested_this_review": false
+    },
+    {
+      "slug": "pathfinder-kingmaker",
+      "name": "Pathfinder: Kingmaker",
+      "store": "Steam",
+      "app_id": "640820",
+      "build": "6757524",
+      "size_on_disk": 40290991243,
+      "state_flags": "4",
+      "executables": [
+        {
+          "relative_path": "Kingmaker.exe",
+          "bytes": 650752,
+          "file_version": "2018.4.10.10503941"
+        }
+      ],
+      "launch_tested_this_review": false
+    },
+    {
+      "slug": "skyrim-special-edition",
+      "name": "The Elder Scrolls V: Skyrim Special Edition",
+      "store": "Steam",
+      "app_id": "489830",
+      "build": "24914197",
+      "size_on_disk": 16092533099,
+      "state_flags": "4",
+      "executables": [
+        {
+          "relative_path": "SkyrimSE.exe",
+          "bytes": 37910440,
+          "file_version": "1.7.104.0"
+        }
+      ],
+      "launch_tested_this_review": false
+    },
+    {
+      "slug": "senran-kagura-peach-beach-splash",
+      "name": "SENRAN KAGURA Peach Beach Splash",
+      "store": "Steam",
+      "app_id": "696170",
+      "build": "3139916",
+      "size_on_disk": 23235048058,
+      "state_flags": "4",
+      "executables": [
+        {
+          "relative_path": "SKPeachBeachSplash.exe",
+          "bytes": 9252352,
+          "file_version": null
+        }
+      ],
+      "launch_tested_this_review": false
+    },
+    {
+      "slug": "quake-ii",
+      "name": "Quake II",
+      "store": "Steam",
+      "app_id": "2320",
+      "build": "20742936",
+      "size_on_disk": 5627104463,
+      "state_flags": "4",
+      "executables": [
+        {
+          "relative_path": "quake2.exe",
+          "bytes": 711680,
+          "file_version": null
+        },
+        {
+          "relative_path": "rerelease/quake2ex_steam.exe",
+          "bytes": 7820800,
+          "file_version": "1.0.6002.0"
+        }
+      ],
+      "launch_tested_this_review": false
+    },
+    {
+      "slug": "a-plague-tale-requiem",
+      "name": "A Plague Tale: Requiem",
+      "store": "Steam",
+      "app_id": "1182900",
+      "build": "11415435",
+      "size_on_disk": 53070236837,
+      "state_flags": "4",
+      "executables": [
+        {
+          "relative_path": "APlagueTaleRequiem_x64.exe",
+          "bytes": 39066640,
+          "file_version": "1.0.0.0"
+        }
+      ],
+      "launch_tested_this_review": false
+    },
+    {
+      "slug": "indivisible",
+      "name": "Indivisible",
+      "store": "Steam",
+      "app_id": "421170",
+      "build": "5205809",
+      "size_on_disk": 5537641713,
+      "state_flags": "4",
+      "executables": [
+        {
+          "relative_path": "Indivisible.exe",
+          "bytes": 8326352,
+          "file_version": null
+        }
+      ],
+      "launch_tested_this_review": false
+    },
+    {
+      "slug": "cyberpunk-2077",
+      "name": "Cyberpunk 2077",
+      "store": "Steam",
+      "app_id": "1091500",
+      "build": "20383525",
+      "size_on_disk": 91231172278,
+      "state_flags": "4",
+      "executables": [
+        {
+          "relative_path": "bin/x64/Cyberpunk2077.exe",
+          "bytes": 59945608,
+          "file_version": "3.0.5294808"
+        }
+      ],
+      "launch_tested_this_review": false
+    },
+    {
+      "slug": "quake-ii-rtx",
+      "name": "Quake II RTX",
+      "store": "Steam",
+      "app_id": "1089130",
+      "build": "17873149",
+      "size_on_disk": 1251498163,
+      "state_flags": "4",
+      "executables": [
+        {
+          "relative_path": "q2rtx.exe",
+          "bytes": 10974720,
+          "file_version": "1.8.0"
+        }
+      ],
+      "launch_tested_this_review": false
+    },
+    {
+      "slug": "dead-cells",
+      "name": "Dead Cells",
+      "store": "Steam",
+      "app_id": "588650",
+      "build": "23762174",
+      "size_on_disk": 2145895956,
+      "state_flags": "4",
+      "executables": [
+        {
+          "relative_path": "deadcells_gl.exe",
+          "bytes": 18333192,
+          "file_version": null
+        },
+        {
+          "relative_path": "deadcells.exe",
+          "bytes": 18339336,
+          "file_version": null
+        }
+      ],
+      "launch_tested_this_review": false
+    },
+    {
+      "slug": "nier-automata",
+      "name": "NieR:Automata™",
+      "store": "Steam",
+      "app_id": "524220",
+      "build": "7020666",
+      "size_on_disk": 43897584850,
+      "state_flags": "4",
+      "executables": [
+        {
+          "relative_path": "NieRAutomata.exe",
+          "bytes": 17837952,
+          "file_version": "1.0.0.0"
+        }
+      ],
+      "launch_tested_this_review": false
+    },
+    {
+      "slug": "a-plague-tale-innocence",
+      "name": "A Plague Tale: Innocence",
+      "store": "Steam",
+      "app_id": "752590",
+      "build": "4336652",
+      "size_on_disk": 44611560254,
+      "state_flags": "4",
+      "executables": [
+        {
+          "relative_path": "APlagueTaleInnocence_x64.exe",
+          "bytes": 22582584,
+          "file_version": "1.0.0.0"
+        }
+      ],
+      "launch_tested_this_review": false
+    },
+    {
+      "slug": "jedi-survivor",
+      "name": "STAR WARS Jedi: Survivor™",
+      "store": "Steam",
+      "app_id": "1774580",
+      "build": "15643690",
+      "size_on_disk": 139617738869,
+      "state_flags": "4",
+      "executables": [
+        {
+          "relative_path": "SwGame/Binaries/Win64/JediSurvivor.exe",
+          "bytes": 115516704,
+          "file_version": ""
+        }
+      ],
+      "launch_tested_this_review": false
+    }
+  ]
+}

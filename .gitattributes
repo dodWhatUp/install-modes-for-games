@@ -2,3 +2,5 @@
 *.ps1 text eol=crlf
 *.ini text eol=crlf
 *.cfg text eol=crlf
+# Unified diffs require blank context lines, including at the end of a hunk.
+*.patch whitespace=-blank-at-eol,-blank-at-eof

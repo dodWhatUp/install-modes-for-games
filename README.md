@@ -10,11 +10,13 @@ The permanent GitHub destination for this project is [`dodWhatUp/install-modes-f
 
 ## Tested games
 
+For the current library, start with the [14-game mod guide and comparisons](docs/INSTALLED-GAMES-MOD-GUIDE.md). It includes manager choices, basic fixes, graphics/DLSS, UI, gameplay systems and real content expansions. [Skyrim's installation record](games/skyrim-special-edition/HISTORY.md) distinguishes installed components from pending downloads and compatibility gates.
+
 See the [game index](games/README.md) for detailed history, catalogs, and recommendations.
 
 | Game | Renderer and path | Result | Guide |
 |---|---|---|---|
-| Hogwarts Legacy | 64-bit DX12, native DLSS/Streamline, OptiScaler at the shipping executable | Working baseline; native DLSSG kept separate from OptiScaler's neural-rendering experiment | [Hogwarts Legacy](games/HOGWARTS-LEGACY.md) |
+| Hogwarts Legacy | 64-bit DX12, native DLSS/Streamline, OptiScaler at the shipping executable | Historical working baseline; no game executable found in the 2026-09-14 installed-library review | [Hogwarts Legacy](games/HOGWARTS-LEGACY.md) |
 | Bayonetta | 32-bit DX9 → dgVoodoo2 DX11 → ReShade/Feeder → 64-bit RenoDX host | Working; logs prove thousands of delivered and evaluated 4K frames | [Bayonetta](games/BAYONETTA.md) |
 | DOOM: The Dark Ages | 64-bit Vulkan; native DLSS/RR/FG; experimental ReShade/Feeder private NGX path | Experiment paused after a later 4K crash; game currently not installed by user choice; resumable history preserved | [DOOM: The Dark Ages](games/DOOM-THE-DARK-AGES.md) |
 | Other UE4/UE5 games | Depends on API, bitness, native temporal-upscaler support, launcher, and anti-cheat | Reusable install/diagnostic method, not a universal drop-in | [Generic Unreal guide](games/GENERIC-UNREAL-ENGINE.md) |

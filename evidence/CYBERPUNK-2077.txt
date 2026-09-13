@@ -1,0 +1,126 @@
+Cyberpunk 2077 — sanitized installation evidence
+2026-09-14: Unified controls candidate prepared, NOT installed.
+- Source base 47e134cbcd9d3653d63f58a36d38281e827007ec / NR v0.8.3.
+- NVIDIA SDK 2.14.1 SHA-256 92C4D954631A1710DA86CA3FA8D5034F2B9503838C95FC4AE977AE149319781B; eleven candidate NVIDIA DLL signatures Valid; SR/RR/FG 310.9.1.
+- Build, NR migration/slot tests, Lua native-settings/rollback/protocol tests, proxy contract and static import checks passed; live game compatibility remains untested.
+- Fourteen-file candidate staged. Install guard found active Batman/Steam and stopped before any game or driver mutation. No installation snapshot or new runtime log exists.
+- Current game remains preceding A6B69CCAD9F2176B6255365BDD651395459BEC7BF9F26A066DD82BB0B2A2A270 proxy, DLSS 310.1 / Streamline 2.7.1.
+- Monthly maintenance enabled on the 14th at 12:00 local time; no automatic game launch.
+- Candidate source, limitations and rollback are in examples/cyberpunk-2077/UnifiedControls/README.md and game history.
+
+Latest revision: 2026-09-13 evening, personal NR slots and F6 notification repair.
+- New proxy SHA-256 A6B69CCAD9F2176B6255365BDD651395459BEC7BF9F26A066DD82BB0B2A2A270; all 946 exports retained.
+- Three installed-file hashes verified; 57 other root executable/DLL hashes unchanged; restore dry-run and reverse source-patch check passed.
+- Independent-slot C++ tests and native-setting/onDraw Lua tests passed. New game process started and evaluated NR. Live slot save/recall and F6 render-size checks remain pending desktop availability.
+- NVIDIA App showed overlay disabled; enabling it changed the UI to Alt+Z - Open overlay, enabled-state readback to 1, and started five overlay processes. Its FPS/statistics strip was observed over Cyberpunk startup.
+- Latest prior gameplay log proves F7 25%/100% model recreation. F11 formerly changed only model hints. F6 previously logged invalid ImGui event errors; notifications now queue for onDraw.
+- Snapshot and rollback details are in games/cyberpunk-2077/HISTORY.md. The record below describes the original install and remains historical.
+
+Install date: 2026-09-13
+Result: installed; static integrity passed; runtime/gameplay validation pending
+
+Environment:
+- Cyberpunk 2077 2.31, Steam build 20383525, Phantom Liberty depot present
+- Cyberpunk2077.exe file version 3.0.5294808, valid CD PROJEKT signature
+- NVIDIA GeForce RTX 5070 Ti 16 GB, driver 616.56
+- 3840x2160 borderless, HDR off in UserSettings.json
+- DLSS Transformer/Auto; native DLSS FG x2; Reflex enabled
+- Global ray tracing off in the captured settings
+
+Pre-install inventory:
+- No dxgi/version/winmm/dinput proxy beside the executable
+- No OptiScaler, ReShade, CET, RED4ext, archive mod, or r6 script directory
+- Native DLSS SR/RR/FG DLLs reported version 310.1
+- Native Streamline DLLs reported version 2.7.1
+
+Provenance and integrity:
+- OptiScaler-DLSSNR v0.7.7 release ZIP SHA-256:
+  4A315A3B3EE495631BD7CB1F562F609AF577443602E507BFC7A7E6749C296258
+- All 63 files covered by the release's internal SHA256SUMS.txt matched.
+- Installed dxgi.dll identifies as OptiScaler.dll 0.7.7.0, SHA-256:
+  5D05D560BD27EEE4ABA24F8FAB5D118F916550D8B65A98B60D4A855275223B3C
+- Installed nvngx.dll_dlssnr.dll SHA-256:
+  DE80593C5404C0909526B6F3D4C966CCFDF26CAC8286FBE088EA9883EAFCB21D
+- Installed RTX 50 nvngx_dlssnr.dll is NVIDIA-signed version 310.8, signature Valid,
+  SHA-256 E16BCF15E16E13F527491CDF7845B2FE6521A738D8F7C9C721866A8496E1FC8E.
+- A different local 310.8-labeled copy had an NVIDIA HashMismatch signature and hash
+  4B8D19BC3EFF58A084F5ECA7489C921501C203450169FB82FF4F649A4482BA05;
+  it was rejected and not installed.
+- All captured native executable/DLSS/Streamline/stock dbghelp files matched the
+  just-in-time snapshot after installation.
+- UserSettings.json matched the just-in-time snapshot after installation.
+- 66 mod-owned installed files were recorded in the private rollback manifest.
+
+Configured ownership:
+- Native Cyberpunk SR/RR/FG/MFG retained.
+- OptiScaler frame generation external=true, enabled=false, input/output nofg.
+- DLSS Neural Rendering enabled, FP8 precision, pre-SR, one pass, scale 1.0.
+- Finished-picture, deferred DLSS, residual-across-RR, residual FG, multipass,
+  and automatic capture disabled.
+- Process filter set to Cyberpunk2077.exe.
+
+No OptiScaler.log or gameplay run was produced during this installation. These
+checks prove file provenance, placement, configuration, and non-replacement of
+the native stack. They do not prove proxy load, neural feature creation, repeated
+evaluation, visual quality, performance, frame generation delivery, or stability.
+
+2026-09-13 custom controls update:
+- Original proxy log subsequently discovered: feature created at 11:53:58,
+  ready at 11:53:59, one effective neural pass and composition before RR+SR.
+- Logged model/input/guide dimensions were 1920x1080. At 11:54:15 the timing
+  sample was 4.83 ms total, 4.74 ms model; intervals may include other GPU work.
+- This supplies partial runtime evidence for the original release only.
+- Custom source base: e237f895623742b761f9e5f00067cb3dc62619f4 (v0.7.7).
+- Custom stamp: e237f89+compact; MSVC 14.44.35207 / SDK 10.0.26100.0.
+- Final custom proxy SHA-256:
+  D563566B3B8BCF7CC895C805A64CDEA4F351CE31480ACB2B5A9A58FD0300AB0B
+- Installed INI SHA-256:
+  E653CF1F04CC3611314CBE54CBA0AC6BC1508148A16C8453E1AD81CCCC690AB4
+- All 946 export names and ordinals matched the original proxy.
+- Only four INI values changed: Delete full menu (0x2e), F10 NR toggle (0x79),
+  F11 numeric model preset cycle (0x7a), F12 compact NR window (0x7b).
+- All 14 protected executable/native/runtime files and UserSettings unchanged.
+- NVIDIA runtime signature still Valid. Restore script WhatIf check passed.
+- New hotkeys and compact menu have not been exercised inside Cyberpunk.
+
+2026-09-13 F7-F9 extended-controls update:
+- Source base unchanged; full x64 rebuild after Config layout changes succeeded.
+- Current stamp: e237f89+f7f9 / 20260913_extended_controls.
+- Current dxgi.dll SHA-256:
+  4400E00C58451AAC69554600AEFB178089C4D9D67C6BCF9C8BFEA8FE961557BE
+- Current OptiScaler.ini SHA-256:
+  FEBF38989D8B9EF630596316E8C01443FCCB3A941ECFEC905AB3A04A5F7A369F
+- All 946 export names AND ordinals match the preceding custom proxy.
+- Complete extended source patch passed git apply --reverse --check.
+- Exactly two added INI entries: ScaleCycleKey=0x78 (F9),
+  PlacementToggleKey=0x77 (F8). Existing graphics values and bindings preserved.
+- F9 cycles NR per-dimension working scale 1.0/0.75/0.5/0.25.
+- F8 flips ordinary pre/post-SR placement (RR+SR together if active); it blocks
+  active Finished Picture/Deferred DLSS overrides. Shared one-second debounce.
+- Official CET 1.37.1 release ZIP matched GitHub's published SHA-256:
+  1855017796A27F518199F5B7D7210EF1DB7A5C5F0AF468C68E04E6E666AD248C
+- CET version.dll loader SHA-256:
+  67565DD7F899C0E4EE3903B1CC8078FF20CA80B8100497C6AC813392E431D443
+- CET cyber_engine_tweaks.asi SHA-256:
+  43A7B94698979703F9DFA2B0950607C9A88F53B84BBF09A8E593C7E218D41059
+- Local GraphicsHotkeys/init.lua SHA-256:
+  195CDA968F1E9D3EAC0B217140C01557A1DCE80D17403F523D859EE418F81FE6
+- 22 newly installed CET/config/adapter files matched their staging manifest.
+- CET bindings decoded to F7 (118) for native DLSS quality, Insert (45) for CET.
+- Lua syntax and mocked cycle/cooldown/overlay/player/upscaler guards passed;
+  rejection rollback, ConfirmChanges failure rollback, and recovery passed.
+- No native graphics settings changed at startup in the mocks. No direct
+  UserSettings.json writer or RequestSaveUserSettings call exists in the adapter.
+- All 14 protected executable/native/runtime hashes, current UserSettings, and
+  existing OptiScaler LICENSE unchanged. NVIDIA 310.8 NR signature remained Valid.
+- Current-state snapshot: cyberpunk-before-f7-f9-20260913-131843. Previous clean
+  and compact-only baselines retained. Restore script WhatIf passed before/after.
+- Cyberpunk/RED launcher stopped; Steam configuration read only. A Plague Tale:
+  Requiem and unrelated compiler work remained running and were not interrupted.
+- No Cyberpunk runtime test: CET load, F7 native renderer recreation, F8/F9 model
+  dimensions/placement, visual quality, FG interactions and stability unverified.
+  Settings API readback and mock tests must not be presented as gameplay proof.
+
+2026-09-13 F7 revision: installed, 25%/100% only, ScaleCycleKey=0x76.
+Build/export checks: x64, all 946 names/ordinals retained. Restore dry-runs passed. No game launch.
+Native SR: F6 (117<<48) plus compact-panel button; F9 Quick Load preserved. Lua/protocol guards pass.

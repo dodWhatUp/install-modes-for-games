@@ -13,6 +13,10 @@ The catalog answers “what exists?” The recommendation file answers “what s
 7. Full overhauls, new systems, new quests/campaigns, DLC-sized projects, and total conversions.
 8. Cosmetic, animation, audio/music/voice, character, and other interesting changes.
 
+For the 2026-09-14 library request, make animation/movement, enemy behaviour, unique abilities/perks, magic/tools, added mechanics and authored content individually discoverable. Compare alternatives by purpose, conflicts, dependencies and save impact; do not bury them all in a single gameplay label. Use an explicit dated research gap when no suitable candidate was verified.
+
+The [installed-library guide](INSTALLED-GAMES-MOD-GUIDE.md) and each game's `COMPARISONS.md` provide the comparison view. Managers are game-specific: MO2, Vortex, Unity Mod Manager, Workshop and separate engine profiles solve different deployment problems. Skyrim runtime numbers, SKSE versions and Community Shaders versions are separate version series; never infer compatibility from similar numbers or SE/AE marketing labels.
+
 ## Every entry records
 
 - original author/project URL;

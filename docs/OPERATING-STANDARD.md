@@ -37,15 +37,19 @@ Use current upstream project documentation, release notes, issue trackers, and o
 
 Review high-churn experimental graphics tools after 30 days and ordinary mods after 90 days, or sooner after a game/driver/tool update.
 
+For DLSS work, follow [Feature Decision](FEATURE-DECISION.md): identify the minimum path using real engine inputs, including a supported game-specific input integration when necessary. Compare implementations by input quality, supported features, stability and necessary dependencies; OptiScaler is not mandatory. Review every useful missing feature and the smallest addition needed beyond the previous stage. Separately research the game's ReShade/RenoDX visual profile and its compatibility with the selected DLSS path.
+
 ## 4. Offer numbered paths
 
 Unless an exact path was already selected, provide three to six choices. Use this compact shape:
 
-| # | Goal and stack | Benefit | Main conflict/risk | Difficulty | Confidence |
-|---|---|---|---|---|---|
-| 1 | Recommended conservative path | | | | |
+| # | Goal and stack | Benefit | Main conflict/risk | Difficulty | Confidence | Rollback |
+|---|---|---|---|---|---|---|
+| 1 | Recommended path | | | | | |
 
 Include **stock/no change** when experiments carry meaningful risk. Distinguish a reversible test from a permanent default.
+
+For graphics installs, show the minimum baseline, useful feature extensions with only their additional dependencies, and the separate ReShade/RenoDX visual stage. Explain any tradeoff between fewer components and more supported features. Identify required helper processes separately from in-process add-ons/runtime files. Apply the saved preferences without asking the user to select the same defaults again; numbered choices resolve materially different game-specific paths.
 
 ## 5. Snapshot at the last safe moment
 
@@ -62,17 +66,19 @@ Steam verification is not a complete backup: it does not restore every user sett
 
 ## 6. Install in fault-isolating stages
 
-Typical order:
+Use dependency order, omitting stages the current baseline already supplies:
 
 1. Stock baseline.
 2. Required translation layer or mod loader.
-3. One injection framework.
-4. One feature bridge/add-on.
-5. Input provider such as depth or motion vectors.
-6. FG/MFG or neural processing.
-7. Visual preset, tuning, and optional overlays.
+3. Required host and game-specific input integration, if native inputs are insufficient.
+4. Minimum supported DLSS/input path, with one owner per feature.
+5. Additional useful features, reusing existing capabilities and adding only missing dependencies one at a time.
+6. ReShade plus the compatible game-specific RenoDX visual profile; reuse the supported host and resolve overlapping shader/HDR work.
+7. Combined-stack validation, tuning and optional overlays.
 
 Run a checkpoint after every stage. If a checkpoint fails, roll that stage back before substituting another implementation.
+
+Include the user's [default graphics controls](GRAPHICS-CONTROLS.md) in each requested graphics add-on installation, regardless of the chosen tool. Configure supported actions, record unavailable controls and their reasons, and document how the selected values are saved. The current F7 two-value default is in `preferences/GENERAL.md`; an older example's hard-coded cycle does not override it.
 
 ## 7. Validate the real feature
 
@@ -87,6 +93,8 @@ Static validation checks ownership, versions, hashes, configuration, and duplica
 - resolution or swapchain recreation, alt-tab, loading, and clean shutdown.
 
 For FG/MFG, report base rendered FPS separately from generated display FPS. For a neural pass, prove which buffers it receives and whether those are engine-native or estimated.
+
+Verify each consumer's actual input source and any fallback. Separate captured/converted engine resources from reconstructed/estimated resources. After adding the visual stage, recheck the DLSS features, input color space, UI and presentation. Record each requested feature as verified, configured but untested, failed, or unavailable with its concrete blocker; a shorter installed component list is not sufficient evidence of success.
 
 ## 8. Long-task fault handling
 

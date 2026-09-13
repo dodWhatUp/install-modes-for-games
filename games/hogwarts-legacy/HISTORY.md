@@ -1,5 +1,9 @@
 # Hogwarts Legacy — History
 
+## 2026-09-14 — Current installation status
+
+The library review found a residual folder but no rendering executable. The working results below describe an earlier installation and are retained as historical evidence. No reinstall, experiment or reminder was started. See the [installed-library guide](../../docs/INSTALLED-GAMES-MOD-GUIDE.md).
+
 ## Current documented baseline
 
 - Local build observed: `1.0.1569535`; RTX 5070 Ti, driver 616.56; 3840×2160 borderless.

@@ -1,0 +1,127 @@
+Batman: Arkham Knight — sanitized evidence, 2026-09-13
+
+CURRENT: Luma 649 + ReShade + custom OptiScaler v0.7.7, short gameplay pass.
+Old Feeder/Dagherbou profile below is disabled and historical.
+
+Runtime: Steam app 208650 build 13250859; BatmanAK.exe 1.6.2.0 x64 D3D11.
+RTX 5070 Ti 16 GB, driver 616.56; game 3840x2160 fullscreen.
+Executable SHA256:
+2684B84DEC2C31E5A00BFF070B00AE41D4FED4FC4BADE51E0D5BC64BFE1B83DB
+
+Active binary identities (SHA256):
+OptiScaler dxgi.dll, 0.7.7.0, 26222592 bytes, e237f89+f7-25-100:
+298D93C3D648330E279B614FC4B822FE38D87EC33516EFED90537664E9E9A090
+ReShade64.dll, bundled Luma host 6.8.0.1, 5590528 bytes:
+298A5367C59E0C687BEB6C6F552D3F63165221DAE34BBC5B2F1DB74B7612D6DF
+Luma-Batman Arkham Knight.addon, build 649, 821760 bytes:
+487638833DC98C43AB841D31DFEEE3DD75164D16BA35450E78DD2CA36C1099D7
+nvngx_dlss.dll, signed package SR 310.6, 58830448 bytes:
+099B3E1E3AD3F226DE621FE570B26CC554CC775E2606BE23EB222D6245674070
+nvngx_dlssnr.dll, signed NR 310.8, 165840496 bytes:
+E16BCF15E16E13F527491CDF7845B2FE6521A738D8F7C9C721866A8496E1FC8E
+nvngx.dll_dlssnr.dll, matching v0.7.7 forwarder, 151552 bytes:
+DE80593C5404C0909526B6F3D4C966CCFDF26CAC8286FBE088EA9883EAFCB21D
+Official Luma Batman 649 ZIP:
+4943DED7AD8434A500C98E92D3DBB34F0DC907D8D49837B5F27B121706463E19
+Actual SR runtime also loads NVIDIA NGX cache 160_E658700.bin version 310.9.
+Package DLL version alone does not identify the executing driver-supplied model.
+
+OptiScaler loads ReShade64.dll; host registers Luma. No active Feeder/RenoDX.
+Settings: Dx11Upscaler=dlss_12; LoadReshade=true;
+CreateD3D12DeviceForLuma=true; DontUseNTShared=true; ManualInputPolling=true.
+Spoofing off. FG explicitly disabled, FGInput/FGOutput=nofg.
+Saved NR=true, WorkingScale=0.25, Preset=0, Passes=1, RunBeforeSR=false.
+
+First combined run 20:54:22-21:01:40:
+Native DLSS create success 20:55:21, 3840x2160 render/output, DLAA quality=5.
+Engine color/depth/motion shared and synchronized; motion scale 1920x1080.
+Jitter count 8; auto exposure/HDR/jittered-motion flags enabled.
+Repeated DLSS evaluations and presentations succeeded.
+20:57:11 NR reached through game's DLSS input; model created with real guides.
+After-SR NR target 3840x2160 / model 960x540, preset 0.
+Successful model evaluation and residual composition, linear HDR color transform.
+F7: model 960x540 -> 3840x2160 -> 960x540, actual dispatch sizes verified.
+F8: actual before-SR dispatch, then after-SR dispatch verified.
+F11: complete numeric model cycle 0->1->2->3->0, successful recreation.
+F10: on/off/on; Delete full menu and F12 compact open/close passed.
+20:59:32 Save Settings persisted NR true and 0.25 scale.
+Approximate parked-scene FPS: NR off 54-55; NR25% 45; NR100% 28.
+Approximate VRAM: 25% NR 8.5 GB; 100% NR 9.4 GB. Not benchmark averages.
+Batmobile scene, camera-distance input, pause and UI observed.
+ReShade finished normal shutdown at 21:01:40; Steam exit code 0.
+
+Fresh saved-profile launch 21:04:05:
+DLSS create success 21:05:06; NR after-SR 960x540 dispatch 21:05:07.
+Reached title/save selection without the old startup access violation.
+Loaded the same Batmobile checkpoint at 45-46 FPS; F12 showed enabled,
+preset 0, scale 0.25, one pass after SR. NR timing/evaluation continued.
+Runtime reports swapchain scRGB (linear Rec.709), color-space enum 1.
+Final normal shutdown finished 21:09:27; Steam recorded exit code 0.
+OptiScaler error entries: 0. Final logs, INIs and active hash manifest preserved.
+Game left closed; tested NR-on profile remains active for the next launch.
+
+Limits: Luma Batman WIP. Full traversal/combat, alt-tab and output-resolution
+recreation are unverified. Home configured, automated opening failed.
+Page Up/Down configured; live cycling not verified. F6 panel reports unavailable.
+No native lower-resolution SR adapter or RR ray-tracing signals.
+No DLSS FG/MFG installed: Streamline 2.14.1 section 11 excludes FP16/scRGB.
+MaxFPS remains 90. No FPS-cap edit, global driver change or save deletion.
+
+Private baseline luma-trial-20260913-204147; before-opti-20260913-205405;
+separate first-run logs and final-config snapshot preserved outside published data.
+Guarded Restore-LumaTrial.ps1 ownership/hash dry-run passed; not executed.
+Closes-game/Steam/helper guard; contains target paths, preserves current state,
+restores working disabled-hook baseline. Do not use old Full/F7 rollback layout.
+
+HISTORICAL: earlier Feeder installation and isolated helper evidence follow.
+
+Latest change: local F9 build based on exact Dagherbou v0.2.0 source,
+973761621353b99bee3dc7d4bb27b117fef2644f; stamp 9737616+f9-scale.
+Installed DLL SHA-256:
+F5730AA7BB385F0B3CFD78D056529F8F491A030084872F039F6BA2B97BA10590
+11 scale boundary assertions passed; 946/946 named exports and ordinals preserved.
+Four independent helper tests with the exact installed DLL, 300/300 each, exit 0:
+100% = model 640x360; 75% = 480x270; 67% = 429x241; 50% = 320x180.
+Native DLSS create success and NR feature 18 in each run; no NR evaluate errors.
+Model sizes independently confirmed in DLSS-NR composition log entries.
+Changed winmm.dll and OptiScaler.ini only; 35/35 owned files match updated manifest.
+ScaleCycleKey=0x78; WorkingScale=1.0; F10 unchanged. F8/F7 not implemented.
+Separate current-state snapshot before-f9-20260913-132152 preserved before writes.
+Both pre-F9 and full-stock rollback scripts passed WhatIf; no rollback executed.
+Live hotkeys, notifications and repeated in-process resizing remain untested in game.
+
+Steam app 208650, build 13250859. x64 BatmanAK.exe.
+RTX 5070 Ti, 16303 MiB reported VRAM, NVIDIA 616.56.
+Game not launched during this install.
+
+Release ZIP SHA-256:
+Feeder 1.16.0-beta.1:
+22AE8227B11834529E4980CB66BA4B3F277C399020D116C840481C18B12844D3
+Dagherbou OptiScaler DLSS-NR v0.2.0:
+8EECE7A4D7DE6DE5917F0C99AC60540B2D77022E7699BBA717B0A6D9E1829BCE
+Both matched GitHub release asset digests.
+Installed NVIDIA NR 310.8, valid NVIDIA signature:
+E16BCF15E16E13F527491CDF7845B2FE6521A738D8F7C9C721866A8496E1FC8E
+Installed NVIDIA SR 310.8, valid NVIDIA signature:
+C85F971CE023C9F3492FC7455F0B01A24BA18EA39636407A846902C4360B0B7E
+
+Private helper test, 640x360, 12:47 local time:
+NGX calls are routed through OptiScaler DLSS-NR (WINMM.dll)
+DLSSFeatureDx12::InitDLSS _CreateFeature result: NVSDK_NGX_Result_Success
+DLSS-NR running at 640x360, guides 640x360 (preset 0, intensity 1, style 0)
+--test finished: 300/300 evaluates succeeded
+neural model created (feature 18)
+exit 0
+
+An early requirements-query NotImplemented warning did not prevent later native DLSS creation.
+The helper test does not exercise the game's D3D11 depth/motion selection or frame delivery.
+
+Installation verifier: 19 OK / 0 warnings / 0 failures.
+35 added files matched the manifest. 25 original binary-directory files and 34 original configuration files unchanged.
+Rollback: private guarded Restore-Stock.ps1; file movement is dry-run tested, not executed.
+Remaining: game startup, stock baseline, shader compilation, depth/motion, repeated delivery,
+image quality, hotkeys, performance/VRAM, HDR/output mode and shutdown.
+
+2026-09-13 F7 revision: installed, 25%/100% only, ScaleCycleKey=0x76.
+Build/export checks: x64, all 946 names/ordinals retained. Restore dry-runs passed. No game launch.
+Helper: 100%=640x360 model; 25%=160x90 model; 300/300 evaluations each, exit 0.

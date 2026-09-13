@@ -18,3 +18,7 @@ Windows Smart App Control blocked the locally built/helper workflow with error 4
 ## Feature limitation
 
 This stack proved a full-resolution neural/DLAA pass; it did not add an upscaling performance gain or MFG. Feeder is incompatible with Smooth Motion/OptiScaler, so any FG experiment must be a separate profile.
+
+## 2026-09-14 — Library comparison review
+
+Added [categorized comparisons](COMPARISONS.md) covering manager/foundations, performance, graphics/DLSS, QoL/UI, animation, AI, abilities/mechanics and actual content extensions. No game files changed or new gameplay tests were performed by this review. Earlier local evidence remains stronger than generic recommendations; historical control mappings and unresolved validation boundaries are preserved. See the [14-game guide](../../docs/INSTALLED-GAMES-MOD-GUIDE.md) for scope and installed-library checks.
