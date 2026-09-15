@@ -47,3 +47,5 @@ Use the templates in `templates/` for new games and experiments.
 ## Azeron and controls defaults
 
 For any game-control, keypad-profile, input-mod, keybinding or control-diagram task, read `docs/AZERON-GAME-CONTROLS.md` and use `templates/GAME-KEYBINDS.example.json`. Apply these defaults to every game: one shared layered base setup, archived old game profiles, verified sources and effective game/mod bindings, offline configuration edits where supported, and separate keys/actions/combined diagrams. Preserve recovery exports in Drive and sanitized instructions/history in the canonical GitHub repository. Distinguish configuration verification from observed gameplay prompts and behavior.
+
+For a reinstall or renewed keybinding setup of a previously configured game, recovering and reconciling the game's own saved bindings is a default step. Include its personal Steam Input layout when applicable; do not assume Steam Cloud backs up its keybinding files. Follow the reinstall sequence in `docs/AZERON-GAME-CONTROLS.md`.

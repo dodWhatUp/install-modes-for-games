@@ -5,6 +5,7 @@
   "last_verified": null,
   "azeron": {"model": "", "software_version": "", "firmware_version": "", "base_profile_version": "", "orientation": "", "profile_ids": []},
   "mods": [],
+  "steam_input": {"app_id": null, "applicable": "unknown", "controller_type": null, "layout_name": null, "layout_version": null, "restore_reference": null, "export_reference": null, "steam_cloud_includes_game_keybindings": "unknown"},
   "sources": [],
   "verification": {"configuration": "unverified", "gameplay": "unverified", "gameplay_prompts": "unverified"},
   "bindings": [
@@ -26,6 +27,7 @@
   ],
   "configuration_changes": [],
   "rollback": {"backup_reference": null, "steps": []},
+  "reinstall_restore": {"prior_mapping_reference": null, "game_binding_sources": [], "schema_compatibility": "unchecked", "newer_user_changes": "unchecked", "restore_steps": [], "last_restore_verified": null},
   "diagrams": {"keys": [], "actions": [], "keys_and_actions": []},
   "exceptions_to_shared_base": [],
   "change_log": []

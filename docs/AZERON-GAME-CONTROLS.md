@@ -51,6 +51,23 @@ Keep two separate verification fields:
 
 An offline file check cannot establish how a live prompt renders. Some games or mods have fixed prompts, separate prompt assets, encrypted settings, mixed-input restrictions, or runtime-only remapping. Explain the specific limitation; preserve an honest pending status until observed. Do not claim success based only on changing an Azeron label.
 
+## Steam layouts and reinstalling a previously configured game
+
+User extension confirmed 2026-09-15: restoring the game's own bindings is a default step when configuring or reinstalling any game with an existing saved keybinding setup.
+
+Steam Input layouts and the game's own keybinding settings are separate records. Steam Input can translate supported controller inputs into keyboard, mouse or controller output, or use a game's native Steam Input actions. A saved Steam layout alone does not establish that the game restored its keyboard bindings or prompts. Do not assume every Azeron keyboard key is exposed as a remappable Steam controller input. Check the actual device/input mode and avoid adding a second remapping layer without a purpose. See [Valve's legacy-mode documentation](https://partner.steamgames.com/doc/features/steam_controller/legacy_mode).
+
+Where Steam Input is applicable, save a personal layout, record its exact game/AppID, controller/input type, layout name/version and verified restore reference, and retain an export if available. Do not publish it as a community layout unless asked. Keep the game's own binding files and mod bindings in the recovery archive as well. Steam Cloud synchronizes only files selected by the game/developer; verify whether keybinding files are included rather than treating Cloud as a complete backup. See [Steam Cloud documentation](https://partner.steamgames.com/doc/features/cloud).
+
+Default reinstall/configuration sequence:
+
+1. Identify the exact game, edition, store/AppID and build. Search Drive and the repository for its prior mapping record, configuration backups, Steam layout, mods, diagrams and history.
+2. Inspect the reinstalled game's active binding files or supported settings interface and relevant mod configurations. Compare saved mappings with current defaults, schema changes and any newer user changes. Preserve the current state before writing; do not replace newer changes blindly.
+3. As part of the authorized keybinding setup, restore or adapt both the shared Azeron setup and the game's own bindings so the intended physical-button-to-action mapping agrees. Restore Steam Input only if it is part of that setup. Handle launcher/Cloud rewrites and missing mod actions explicitly.
+4. Prefer supported edits with the game closed. Read back and validate the effective configuration. If a game stores bindings only through its UI, explain that limitation and use the game UI when the requested task permits it. Do not claim visible gameplay prompts are verified without observing them.
+5. Check layer links, modifiers, contextual actions and overlapping mod/overlay hotkeys. Record configuration, gameplay and prompt verification separately. Keep unresolved actions visibly pending.
+6. Regenerate keys, actions and combined diagrams from the reconciled mapping record. Save the final version, recovery export, restore instructions and change history to Drive and sanitized records to GitHub, as appropriate.
+
 ## Three clear diagrams for each game and layer
 
 Produce separate images with the general arrangement of the user's Azeron software layout:
