@@ -92,3 +92,9 @@ Keep the complete catalog separate from curated combinations. Curated recommenda
 - Record failures as carefully as successes so later work does not repeat them.
 - Use exact versions, hashes, effective resolution, process/API, relevant log evidence, performance/VRAM observations, confidence, and remaining unknowns.
 - When a feature appears active, verify the actual input and output path. For temporal features, check motion vectors, depth, color/HDR contract, UI handling, frame evaluation, and recreation—not only the overlay.
+
+## Azeron and per-game keybindings
+
+User confirmed 2026-09-15: apply [Azeron and game controls](../docs/AZERON-GAME-CONTROLS.md) to every game when controls are in scope. Use one shared base setup with multiple layers; create separate game profiles only for exceptional needs. Retain and rename the current starting profiles to GENERAL 1, GENERAL 2, GENERAL 3, and EMPTY. Archive old game profiles in Google Drive before removal, preserving importable data and readable button/key/action references for future suggestions.
+
+Check authoritative game defaults, effective saved bindings, user changes and relevant mod bindings. Prefer reversible edits and configuration checks without entering the game when supported; separately record whether gameplay behavior and visible prompts have actually been verified. Produce three consistent, clear Azeron-layout images per game/layer: keys, actions, and keys plus actions. Maintain a versioned source mapping so diagrams and configuration stay aligned. Store recovery data and images in Drive and reusable instructions/sanitized game records in the canonical GitHub repository. These are defaults for requested work, not a bulk migration of all games.

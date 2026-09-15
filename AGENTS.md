@@ -43,3 +43,7 @@ An explicit emergency rollback may skip the option menu, but it must still prese
 - Do not schedule reminders or resume a paused experiment unless the user explicitly asks.
 
 Use the templates in `templates/` for new games and experiments.
+
+## Azeron and controls defaults
+
+For any game-control, keypad-profile, input-mod, keybinding or control-diagram task, read `docs/AZERON-GAME-CONTROLS.md` and use `templates/GAME-KEYBINDS.example.json`. Apply these defaults to every game: one shared layered base setup, archived old game profiles, verified sources and effective game/mod bindings, offline configuration edits where supported, and separate keys/actions/combined diagrams. Preserve recovery exports in Drive and sanitized instructions/history in the canonical GitHub repository. Distinguish configuration verification from observed gameplay prompts and behavior.

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "game": {"name": "", "edition": "", "build": "", "input_mode": "keyboard_mouse", "keyboard_layout": ""},
+  "mapping_revision": "draft-1",
+  "last_verified": null,
+  "azeron": {"model": "", "software_version": "", "firmware_version": "", "base_profile_version": "", "orientation": "", "profile_ids": []},
+  "mods": [],
+  "sources": [],
+  "verification": {"configuration": "unverified", "gameplay": "unverified", "gameplay_prompts": "unverified"},
+  "bindings": [
+    {
+      "button_id": null,
+      "layer": "base",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {"type": "keyboard", "display": "", "keys": [], "raw_encoding": null, "macro_steps": [], "timing_ms": {}},
+      "action": {"id": "", "name": null, "historical_label": null, "origin": "unknown", "mod_id": null},
+      "game_default": null,
+      "game_effective_binding": null,
+      "gameplay_prompt": {"expected": null, "observed": null, "status": "unverified"},
+      "layer_target": null,
+      "sources": [],
+      "confidence": "unknown",
+      "notes": ""
+    }
+  ],
+  "configuration_changes": [],
+  "rollback": {"backup_reference": null, "steps": []},
+  "diagrams": {"keys": [], "actions": [], "keys_and_actions": []},
+  "exceptions_to_shared_base": [],
+  "change_log": []
+}
