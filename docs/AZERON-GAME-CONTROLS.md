@@ -10,6 +10,16 @@ The current retained software profiles are to be named **GENERAL 1**, **GENERAL 
 
 On Azeron Software 1.x, a logical layered setup can consist of several linked software profiles. The original Cyborg manual documents profile switching, optional return while holding a layer button, and behavior for keys held during a transition. Layers and macros require software mode. Confirm the exact model, board, software and firmware before choosing implementation or migrating versions. See the [official manual, sections 5.2.10 and 5.6](https://site-835705.mozfiles.com/files/835705/Azeron_Cyborg_Manual_V6_5.pdf).
 
+## Preferred layer-button behavior
+
+User clarified 2026-09-15: preserve a normal action on a short tap of the layer button. Enter the secondary layer only after a brief long press, keep it active while the button remains held, and return automatically to the base layer when released. Do not require a second press to return.
+
+The current chosen control is **GENERAL 1 button #6**: tap retains keyboard **V** (historical label: melee), hold for **150 ms** enters **GENERAL 2**, and release returns to **GENERAL 1**. Treat 150 ms as the selected starting threshold; adjust it only in response to the user's testing. Do not replace the normal tap binding with a dedicated immediate layer switch unless the user changes this preference.
+
+In Azeron 1.5.6, assign the target profile under **Long Press → Layering**, enable **Toggle on hold**, and retain the normal action under **Single Press**. Do not use the second-press return option as the return mechanism. Leave Double Press disabled unless separately requested. The installed 1.5.6 software handler distinguishes a short tap from a long hold: with this combination, the tap output occurs on release before the threshold, while a long hold executes the long-press action. Thus an action on initial button-down and an exclusive hold action cannot both be promised without a timing tradeoff. Verify this behavior again after software/firmware changes.
+
+Test quick taps, sustained holds, repeated transitions, and another bound button pressed while the layer is held. Confirm release returns to the originating base profile without a second press, unintended tap action, or stuck output. Check game recognition separately; do not claim the historical V/melee label proves a particular game's effective binding.
+
 ## Archive old profiles before removing them
 
 1. Export the live software collection immediately before cleanup. Preserve a prior known-good export separately. Also preserve onboard profiles, labels, macros, timing, joystick settings and layer dependencies where the software export does not include them.
@@ -83,7 +93,7 @@ Add game/build, layer, base-profile version, mapping revision/date and verificat
 ## Design suggestions to evaluate with the user
 
 - Start with a small number of layers: core gameplay, secondary/menu actions, and optional specialist actions. Keep movement and urgent actions accessible without awkward holds.
-- Prefer a consistent layer button and a predictable route back to the base layer. Choose momentary versus toggle behavior deliberately and test held-key transitions to prevent stuck inputs.
+- Keep the chosen layer button consistent and follow the short-tap/long-hold/automatic-return preference above. Test held-key transitions to prevent stuck inputs.
 - Keep a compact per-game list of deviations from the shared base. A special game profile should document the limitation that required it and its rollback.
 - Use version numbers and a short change log so images, game configuration and Azeron exports can be matched. Re-check affected mappings after an input-changing mod or game update.
 
