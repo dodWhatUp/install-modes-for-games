@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "record_status": "not_enrolled",
+  "device_alias": "",
+  "registry_revision": "draft-1",
+  "last_verified": null,
+  "identity": {
+    "manufacturer": "",
+    "model": "",
+    "vendor_id": null,
+    "product_id": null,
+    "connection_mode": "unknown",
+    "interfaces": [],
+    "firmware_version": null,
+    "private_identity_reference": null,
+    "recognition_confidence": "unknown",
+    "ambiguous_matches": []
+  },
+  "geometry": {
+    "geometry_id": "",
+    "revision": "draft-1",
+    "handedness": "unknown",
+    "orientation": "",
+    "source_references": [],
+    "editable_layout_reference": null,
+    "coordinate_system": "normalized_0_to_1",
+    "verified": false
+  },
+  "baseline": {
+    "version": "",
+    "user_preconfigured": null,
+    "onboard_mode": null,
+    "software_dependencies": [],
+    "native_exports": [],
+    "known_good_reference": null,
+    "sha256": null,
+    "verification": "unverified"
+  },
+  "controls": [
+    {
+      "position_id": "",
+      "physical_description": "",
+      "device_button_id": null,
+      "mapper_control_label": null,
+      "interface_alias": null,
+      "kind": "unknown",
+      "geometry": {"x": null, "y": null, "rotation_degrees": null},
+      "baseline_output": {"type": "unknown", "display": null, "codes": [], "axes": []},
+      "distinct_input_verified": false,
+      "shared_logical_role": null,
+      "verification": {"position": "unverified", "press": "unverified", "release": "unverified", "source": null, "date": null},
+      "notes": ""
+    }
+  ],
+  "adaptations": [
+    {
+      "logical_base_version": "",
+      "mapper": {"name": "", "version": "", "features_available": []},
+      "config_reference": null,
+      "device_group_alias": null,
+      "native_export_reference": null,
+      "layer_preference": {"tap_action_preserved": true, "hold_threshold_ms": 150, "while_held_only": true, "release_returns_to_base": true, "verification": "unverified"},
+      "output_mode": "unknown",
+      "axis_settings_reference": null,
+      "exceptions": []
+    }
+  ],
+  "pending_user_actions": [],
+  "rollback": {"baseline_reference": null, "steps": []},
+  "storage": {"private_archive_reference": null, "sanitized_git_reference": null},
+  "change_log": []
+}

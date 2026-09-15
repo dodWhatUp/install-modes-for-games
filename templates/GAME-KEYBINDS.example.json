@@ -1,8 +1,13 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "game": {"name": "", "edition": "", "build": "", "input_mode": "keyboard_mouse", "keyboard_layout": ""},
   "mapping_revision": "draft-1",
   "last_verified": null,
+  "device": {"alias": "", "registry_reference": null, "registry_revision": "", "geometry_reference": null, "geometry_revision": "", "baseline_version": "", "recognition_status": "unverified"},
+  "shared_logical_base_version": "",
+  "input_path": [],
+  "mapper": {"name": "", "version": "", "config_name": "", "config_revision": "", "native_export_reference": null, "device_group_alias": null, "slot": null, "output_mode": "unknown", "layers": [], "mute_hide_rules": [], "axis_settings_reference": null, "other_active_transformations": []},
+  "application_selection": {"method": "unconfigured", "executable_names": [], "private_path_reference": null, "background_agent_required": null, "focus_behavior": "unknown", "desktop_fallback": "unknown", "verification": "unverified"},
   "azeron": {"model": "", "software_version": "", "firmware_version": "", "base_profile_version": "", "orientation": "", "profile_ids": []},
   "mods": [],
   "steam_input": {"app_id": null, "applicable": "unknown", "controller_type": null, "layout_name": null, "layout_version": null, "restore_reference": null, "export_reference": null, "steam_cloud_includes_game_keybindings": "unknown"},
@@ -11,6 +16,9 @@
   "bindings": [
     {
       "button_id": null,
+      "position_id": "",
+      "device_control_id": null,
+      "baseline_input": {"type": "unknown", "display": null, "codes": [], "interface_alias": null},
       "layer": "base",
       "press_type": "single",
       "context": "gameplay",
@@ -20,6 +28,7 @@
       "game_effective_binding": null,
       "gameplay_prompt": {"expected": null, "observed": null, "status": "unverified"},
       "layer_target": null,
+      "layer_transition": {"activation": null, "threshold_ms": null, "release_behavior": null, "tap_behavior": null, "verification": "unverified"},
       "sources": [],
       "confidence": "unknown",
       "notes": ""
@@ -28,7 +37,9 @@
   "configuration_changes": [],
   "rollback": {"backup_reference": null, "steps": []},
   "reinstall_restore": {"prior_mapping_reference": null, "game_binding_sources": [], "schema_compatibility": "unchecked", "newer_user_changes": "unchecked", "restore_steps": [], "last_restore_verified": null},
-  "diagrams": {"keys": [], "actions": [], "keys_and_actions": []},
+  "device_restore": {"registry_reference": null, "baseline_reference": null, "mapper_export_reference": null, "association_restore_steps": [], "compatibility": "unchecked", "last_verified": null},
+  "diagrams": {"geometry_reference": null, "source_mapping_revision": null, "keys": [], "actions": [], "keys_and_actions": []},
+  "pending_user_actions": [],
   "exceptions_to_shared_base": [],
   "change_log": []
 }
