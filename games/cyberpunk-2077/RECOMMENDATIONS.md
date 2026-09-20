@@ -4,6 +4,13 @@
 
 **Controls update, 2026-09-13 evening:** F11 now recalls personal NR settings slots, F7 remains 25%/100%, and F8/Page Up/Page Down are unbound. Use NVIDIA statistics; for base versus displayed FPS use a tool that measures both, such as NVIDIA FrameView. The observed NVIDIA profile uses Dynamic MFG up to 6x, so a fixed division of displayed FPS is not a reliable base-FPS measurement. The F6 feedback repair and slot implementation pass isolated tests; actual F6 buffer recreation still needs verification. Restore the personal-slots revision before the older F7 rollback chain. Earlier control descriptions below are historical.
 
+
+## 2026-09-20 — RHI + Ultra+ planning default
+
+For future requested Cyberpunk graphics work, use **RHI** as the preferred compatible management/orchestration layer so ReShade/RenoDX/Luma/OptiScaler/DLSS/Streamline versions and updates are managed from one place when supported. Keep the underlying feature owners and input contracts explicit; RHI is not itself the renderer or neural consumer.
+
+Whenever path tracing is in scope, include **Ultra+** as a separate PT/rendering-overhaul option alongside the native renderer. Do not bury it under ordinary presets. Evaluate it as its own rendering branch against the desired native RR/MFG, OptiScaler NR and any ReShade/RenoDX visual stage. RHI can surface the Ultra+ link, but that link is discovery rather than compatibility proof.
+
 ## First playthrough
 
 **Core:** current Cyberpunk build, native DLSS Transformer, native Reflex, and native DLSS FG/MFG on RTX 50 when base rendered FPS and latency are acceptable.
@@ -35,7 +42,8 @@ The requested custom controls are installed: Delete full menu, F12 compact NR wi
 1. **Recommended current experiment:** native Cyberpunk DLSS SR/RR + native x2 FG/MFG + OptiScaler-DLSSNR 0.7.7 one FP8 pass before SR; OptiScaler FG disabled/external. Expected benefit: neural detail/material relighting using native temporal inputs. Main conflict: experimental NR/FG/RR stability and GPU cost. Difficulty **3**; confidence **Medium for installation, Low until gameplay validation**; rollback through the guarded snapshot manifest.
 2. **Recommended stability baseline:** native Cyberpunk DLSS/RR/FG only. Expected benefit: officially integrated feature ownership and easiest support path. Main conflict: no DLSS 5 neural pass. Difficulty **1**; confidence **High**; rollback by disabling/removing the OptiScaler-owned files.
 3. **Later visual experiment:** one finished-picture NR pass. Expected benefit: neural edit after lighting/effects and possible reduction of green noise. Main conflict: HUD/color changes and higher/ambiguous GPU timing. Difficulty **3–4**; confidence **Low**; rollback by setting `FinishedPicture=false` and restarting.
-4. **Avoid:** OptiScaler NR + RenoDX/Feeder or OptiScaler-owned FG + Cyberpunk native FG. Duplicate neural, proxy, or swapchain ownership makes failures ambiguous and can destabilize the game.
+4. **Ultra+ PT overhaul branch:** current Ultra+ 9.3.7 as a separate renderer/PT experiment when PT is desired. Expected benefit: changes to the underlying PT/lighting/denoising/rendering path rather than a post-process preset. Main conflict: settings/loader overlap with the current NR/RR/ReShade stack; validate one layer at a time. Difficulty **3–4**; confidence **High for mod classification, Low until this exact combined profile is tested**; rollback with a clean Ultra+ removal plus the preserved graphics baseline.
+5. **Avoid:** OptiScaler NR + RenoDX/Feeder or OptiScaler-owned FG + Cyberpunk native FG. Duplicate neural, proxy, or swapchain ownership makes failures ambiguous and can destabilize the game.
 
 ## 2026-09-14 — Library comparison review
 

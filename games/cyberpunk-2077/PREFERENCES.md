@@ -2,7 +2,17 @@
 
 **Current mapping, 2026-09-13 evening:** F11 recalls personal NR settings slots 0–3, with Save Settings storing the selected slot. F7 toggles NR 25%/100% only. F8/Page Up/Page Down are unbound; user prefers NVIDIA statistics. F6 controls native DLSS separately; F9 remains Quick Load. Slot numbers are independent of the model hints inside them.
 
-Last confirmed: 2026-09-14
+Last confirmed: 2026-09-20
+
+
+## Latest requested direction — 2026-09-20 (late integration update)
+
+- Use **RHI** as the normal management/orchestration layer whenever a future Cyberpunk graphics installation/update is requested and the exact components are supported. Prefer RHI-managed ReShade/RenoDX/Luma/OptiScaler/DLSS/Streamline deployment/version control over parallel manual copies when equivalent.
+- Treat RHI as the manager, not as a new SR/RR/FG/neural owner. Preserve the existing one-owner and real-engine-input rules and keep exact underlying component versions.
+- Always surface **Ultra+** as a distinct option when Cyberpunk path tracing is being configured or improved. Ultra+ is a game-specific PT/rendering overhaul that changes the underlying PT/lighting/denoising/rendering behavior; do not describe it as a normal graphics preset or generic post-process filter.
+- Current upstream checkpoints recorded for discovery on 2026-09-20: RHI **2.7.4** and Cyberpunk Ultra+ **9.3.7** (released 2026-09-13). Re-check current releases at installation time.
+- RHI's own Ultra+ button/link may be used as the discovery entry point, but Ultra+ remains an independent mod whose CET/RED4ext requirements and overlap with RR/NR/other PT changes must be validated before installation.
+- This update changes future planning defaults only. It does not claim RHI or Ultra+ is installed in the current Cyberpunk profile.
 
 ## Latest requested direction — 2026-09-14
 

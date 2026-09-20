@@ -9,6 +9,15 @@ There is no universal “copy these DLLs into every game” install. First ident
 
 Then check whether a supported game-specific integration can expose any missing engine inputs. Follow [Feature Decision](FEATURE-DECISION.md): minimum working baseline first, compatible feature extensions next, then a separate ReShade/RenoDX visual stage. OptiScaler is a candidate rather than a universal requirement.
 
+
+## Default management layer: RHI
+
+For future requested PC-game graphics/mod installations, after identifying the real executable/API and before manually scattering DLLs, check whether [RHI](https://github.com/RankFTW/RHI) supports the game and desired components. When it does, use RHI as the normal install/update/profile/launch orchestration layer for compatible ReShade/RenoDX/Luma/OptiScaler/DLSS/Streamline components.
+
+This changes **how supported components are managed**, not the feature-selection rules below. Still determine the real input contract, keep one owner per feature/hook, and use game-specific installers or direct upstream methods when RHI cannot represent the required configuration safely.
+
+Also check for a game-specific **renderer/RT/PT overhaul**. If one exists, present it separately from ordinary presets. Cyberpunk 2077 Ultra+ is the reference case: it modifies path-tracing/rendering behavior and should be offered as a distinct PT option rather than grouped with generic graphics presets.
+
 ## Decision table
 
 | Game type | Recommended first path | Avoid |
