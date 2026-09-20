@@ -4,6 +4,16 @@
 
 Last confirmed: 2026-09-14
 
+
+## Latest requested direction — 2026-09-20 (late integration update)
+
+- Use **RHI** as the normal management/orchestration layer whenever a future Cyberpunk graphics installation/update is requested and the exact components are supported. Prefer RHI-managed ReShade/RenoDX/Luma/OptiScaler/DLSS/Streamline deployment/version control over parallel manual copies when equivalent.
+- Treat RHI as the manager, not as a new SR/RR/FG/neural owner. Preserve the existing one-owner and real-engine-input rules and keep exact underlying component versions.
+- Always surface **Ultra+** as a distinct option when Cyberpunk path tracing is being configured or improved. Ultra+ is a game-specific PT/rendering overhaul that changes the underlying PT/lighting/denoising/rendering behavior; do not describe it as a normal graphics preset or generic post-process filter.
+- Current upstream checkpoints recorded for discovery on 2026-09-20: RHI **2.7.4** and Cyberpunk Ultra+ **9.3.7** (released 2026-09-13). Re-check current releases at installation time.
+- RHI's own Ultra+ button/link may be used as the discovery entry point, but Ultra+ remains an independent mod whose CET/RED4ext requirements and overlap with RR/NR/other PT changes must be validated before installation.
+- This update changes future planning defaults only. It does not claim RHI or Ultra+ is installed in the current Cyberpunk profile.
+
 ## Latest requested direction — 2026-09-14
 
 - Add FPS-targeted Dynamic DLSS SR in F12. The user explicitly selected **30 FPS before frame generation**. Keep the target adjustable, start with supported 50–100% render bounds, preserve SR L and existing NR slots, and use the native engine controller through the existing adapter. Do not conflate this with Dynamic MFG.
