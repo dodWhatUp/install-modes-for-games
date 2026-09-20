@@ -30,6 +30,21 @@ These are defaults, not permission to ignore a game-specific conflict or a newer
 - Consider performance/bug-fix mods by default unless they materially block graphics modding, overwrite the same settings, reduce desired quality, or introduce a larger compatibility risk. Explain that tradeoff.
 - Re-research current graphics combinations after a meaningful game/tool update or when the last review is stale.
 
+
+### RHI default management/orchestration layer — confirmed 2026-09-20
+
+- For every future requested PC-game setup or graphics-modding installation, check **RHI** first and normally integrate it as the management/orchestration layer when the exact game/API/tool combination is supported. This is a workflow default, not permission to force an incompatible component.
+- Use RHI, where supported, for game detection and launch plus install/update/uninstall/profile management of compatible graphics tooling: ReShade; RenoDX and Luma; ReShade shader/addon packs including Lilium HDR Shaders; OptiScaler; DLSS/DLSS-D/DLSS-G and Streamline versions/defaults; NVIDIA per-game overrides; and related managed components. Prefer one RHI-managed deployment over parallel manual copies when capability and version requirements are equivalent.
+- RHI is an **orchestrator/manager**, not the renderer, temporal-input source, or neural consumer. Existing one-owner rules for SR/RR/FG/MFG/neural features, proxy/swapchain ownership, real-input verification, rollback, and game-specific compatibility remain authoritative.
+- If RHI can only surface an external mod link (for example Ultra+) rather than install it, use RHI as the discovery/management entry point but treat the external mod as its own component with independent compatibility and rollback evidence.
+- Preserve exact upstream component versions and links so a later RHI update or architecture migration does not blur which underlying implementation was actually selected.
+
+### Special renderer / path-tracing overhaul discovery default — confirmed 2026-09-20
+
+- When a game has a maintained game-specific mod that changes or improves the underlying ray-tracing/path-tracing renderer, sampling, denoising, lighting/radiance cache, or related rendering algorithms—not merely a post-process preset—surface that mod as an explicit graphics option during installation planning.
+- Keep these renderer overhauls separate from ordinary ReShade presets, texture packs and color/HDR profiles. Compare them against stock/native RT/PT and the active DLSS/RR/FG/NR stack, and validate overlap before installation.
+- Cyberpunk 2077's **Ultra+** is the current reference example: classify it as a path-tracing/rendering overhaul, not as an “Ultra preset.”
+
 ## DLSS extensions, real inputs, and minimum dependencies
 
 User confirmed on 2026-09-14: when installing or extending DLSS, pursue as many useful, compatible features as the game and hardware can actually support, using real engine inputs and the fewest necessary components. The earlier preference for OptiScaler was motivated by its access to game inputs; it is not a requirement to use that product in every game.
