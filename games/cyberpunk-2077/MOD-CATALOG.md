@@ -7,7 +7,7 @@
 
 **Current controls revision, 2026-09-13 evening:** [personal NR slots](../../examples/optiscaler-dlssnr/personal-slots/README.md) installed on the existing v0.7.7 consumer. F11 recalls saved NR settings; F7 remains 25%/100%; F8/Page Up/Page Down are unbound. GraphicsHotkeys F6 feedback now renders in onDraw. Older descriptions below retain the preceding package/review. NVIDIA App statistics were re-enabled; no additional graphics consumer was installed.
 
-Last reviewed: 2026-09-13. This was a graphics-install review, not a full gameplay/content-mod survey. Catalog entries are candidates; only the static installation state below was checked locally.
+Last reviewed: 2026-09-20 for the RHI/Ultra+ additions; the broader graphics-install survey remains based on the 2026-09-13 review. This is not a full gameplay/content-mod survey. Catalog entries are candidates; only the static installation state below was checked locally.
 
 | Mod/tool | Category | Purpose | Requirements | Conflicts/risks | Updated/reviewed | Local state | Confidence |
 |---|---|---|---|---|---|---|---|
