@@ -1,5 +1,8 @@
 # Cyberpunk 2077
 
+
+**Late graphics-workflow update, 2026-09-20:** RHI is now the preferred management/orchestration layer for future Cyberpunk graphics installs/updates when the selected components are supported. Ultra+ is recorded separately as a game-specific **path-tracing/rendering overhaul**, not a generic preset; whenever PT work is planned it should be surfaced as an explicit option and compatibility-tested against the selected native DLSS/RR/MFG/NR/ReShade stack. This is a knowledge/preference update only; it does not claim Ultra+ or RHI changed the currently installed game state. See [preferences](cyberpunk-2077/PREFERENCES.md), [catalog](cyberpunk-2077/MOD-CATALOG.md), [recommendations](cyberpunk-2077/RECOMMENDATIONS.md), and [history](cyberpunk-2077/HISTORY.md).
+
 **Prepared update, 2026-09-14:** [Unified OptiScaler controls](../examples/cyberpunk-2077/UnifiedControls/README.md) on NR v0.8.3 with production Streamline 2.14.1 / DLSS 310.9.1, SR L and RR F. Build/isolated checks passed. **Not installed:** Batman/Steam were running; the guarded installer made no game/driver changes. Live scale/MFG/NR verification remains pending. Monthly updates are active on the 14th at noon. The installed state below is the preceding revision.
 
 **Latest change (2026-09-13, evening):** F11 now recalls four personal NR settings slots; Save Settings stores the selected slot. F8/Page Up/Page Down are unbound and the OptiScaler FPS overlay starts off. F7 retains its confirmed 25%/100% toggle. F6 notification calls were moved into CET's drawing event. NVIDIA App's disabled overlay was re-enabled and its FPS statistics appeared at Cyberpunk startup. See [history](cyberpunk-2077/HISTORY.md) for the test boundary.
