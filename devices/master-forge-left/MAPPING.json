@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "mapping_revision": "master-forge-left-v1",
+  "mapping_revision": "master-forge-left-v2",
   "date": "2026-09-20",
   "device": {
     "alias": "master-forge-left",
@@ -1350,13 +1350,13 @@
       "device_control_id": 16,
       "layer": "B2",
       "output": {
-        "display": "F",
-        "raw_encoding": 265,
-        "type": "keyboard"
+        "display": "Profile C",
+        "raw_encoding": 652,
+        "type": "device_action"
       },
       "action": {
-        "name": "Use / interact",
-        "origin": "suggested_common_role"
+        "name": "Enter one-handed desktop profile C",
+        "origin": "configured"
       },
       "game_effective_binding": null,
       "verification": {
@@ -1886,7 +1886,8 @@
     "User selected a dedicated momentary pinky-out layer key with V separate; 150ms tap/hold is not configured.",
     "Game roles are suggestions; no game bindings were edited.",
     "Master Forge downward press actuates four directions; it is not a separately mapped gaming button.",
-    "No new mapper or background helper required."
+    "No new mapper or background helper required.",
+    "B2 index east now enters C, replacing the duplicate F; B1 F is unchanged."
   ],
   "input_path": [
     "Master Forge CCOS 3.0.0 onboard mapping",

@@ -1071,11 +1071,34 @@
         "User explicitly selected dedicated pinky-west hold layer with V on pinky-south.",
         "No independent downward switch input; downward actuates all directions."
       ]
+    },
+    {
+      "logical_base_version": "master-forge-left-v2",
+      "mapper": {
+        "name": "CCOS onboard",
+        "version": "3.0.0"
+      },
+      "config_reference": "MAPPING-C.json",
+      "profile": "C",
+      "output_mode": "keyboard_and_mouse",
+      "native_export_reference": "private profile-C-configured.json",
+      "layer_preference": {
+        "C2": "momentary; release returns C1",
+        "C3": "latched mouse / desktop",
+        "C4": "latched function keys",
+        "mirror": "lower thumb west while held; readback verified, physical check pending"
+      },
+      "exceptions": [
+        "Native macro triggers are identical on Aux2 N/E/W in every C layer and bank.",
+        "Held-layer macro attempt did not emit in the exact-version ZERO simulation; guide only offers direct and latched-layer macro activation.",
+        "Right-side C maps on the left device are virtual mirrored banks; separate right device was not written."
+      ]
     }
   ],
   "pending_user_actions": [
     "Verify entry chord E+O+U, WASD press/release, modifiers, layer return and exit action.",
-    "Verify persistence after reconnect and game-specific actions."
+    "Verify persistence after reconnect and game-specific actions.",
+    "C1 ring north D; mirror held + ring north B; release then D. Check C2/C3/C4 returns, mouse drag/release, three macros and reconnect."
   ],
   "rollback": {
     "baseline_reference": "private profile-B-before.json",
@@ -1092,6 +1115,10 @@
     {
       "date": "2026-09-20",
       "summary": "Created and verified native left-hand gaming profile B; physical tests pending."
+    },
+    {
+      "date": "2026-09-20",
+      "summary": "Added C with all standard keyboard functions, mouse, three fixed native macros and Windows shortcut positions; B2 entry added. All A maps/settings and original 501 chords preserved."
     }
   ]
 }

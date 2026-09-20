@@ -1,0 +1,2745 @@
+{
+  "version": 2,
+  "device": "Master Forge left",
+  "firmware": "3.0.0",
+  "switches": [
+    {
+      "id": "pinky",
+      "name": "Pinky",
+      "he": "זרת",
+      "x": 135,
+      "y": 375,
+      "ids": {
+        "N": 32,
+        "E": 31,
+        "S": 34,
+        "W": 33
+      }
+    },
+    {
+      "id": "ring",
+      "name": "Ring",
+      "he": "קמיצה",
+      "x": 385,
+      "y": 230,
+      "ids": {
+        "N": 27,
+        "E": 26,
+        "S": 29,
+        "W": 28
+      }
+    },
+    {
+      "id": "middle",
+      "name": "Middle",
+      "he": "אמה",
+      "x": 635,
+      "y": 230,
+      "ids": {
+        "N": 22,
+        "E": 21,
+        "S": 24,
+        "W": 23
+      }
+    },
+    {
+      "id": "index",
+      "name": "Index",
+      "he": "אצבע",
+      "x": 885,
+      "y": 375,
+      "ids": {
+        "N": 17,
+        "E": 16,
+        "S": 19,
+        "W": 18
+      }
+    },
+    {
+      "id": "aux1",
+      "name": "Aux 1",
+      "he": "עזר 1 — מתחת לקמיצה",
+      "x": 385,
+      "y": 520,
+      "ids": {
+        "N": 42,
+        "E": 41,
+        "S": 44,
+        "W": 43
+      }
+    },
+    {
+      "id": "aux2",
+      "name": "Aux 2",
+      "he": "עזר 2 — מתחת לאמה",
+      "x": 635,
+      "y": 520,
+      "ids": {
+        "N": 37,
+        "E": 36,
+        "S": 39,
+        "W": 38
+      }
+    },
+    {
+      "id": "thumb1",
+      "name": "Thumb 1",
+      "he": "אגודל עליון",
+      "x": 1025,
+      "y": 670,
+      "ids": {
+        "N": 12,
+        "E": 11,
+        "S": 14,
+        "W": 13
+      }
+    },
+    {
+      "id": "thumb2",
+      "name": "Thumb 2",
+      "he": "אגודל תחתון",
+      "x": 895,
+      "y": 970,
+      "ids": {
+        "N": 7,
+        "E": 6,
+        "S": 9,
+        "W": 8
+      }
+    }
+  ],
+  "bindings": [
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "pinky",
+      "direction": "N",
+      "physical_id": 32,
+      "stored_id": 32,
+      "key": "C3",
+      "code": 552
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "pinky",
+      "direction": "E",
+      "physical_id": 31,
+      "stored_id": 31,
+      "key": "C4",
+      "code": 554
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "pinky",
+      "direction": "S",
+      "physical_id": 34,
+      "stored_id": 34,
+      "key": "Esc",
+      "code": 297
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "pinky",
+      "direction": "W",
+      "physical_id": 33,
+      "stored_id": 33,
+      "key": "C2",
+      "code": 550
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "ring",
+      "direction": "N",
+      "physical_id": 27,
+      "stored_id": 27,
+      "key": "D",
+      "code": 263
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "ring",
+      "direction": "E",
+      "physical_id": 26,
+      "stored_id": 26,
+      "key": "L",
+      "code": 271
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "ring",
+      "direction": "S",
+      "physical_id": 29,
+      "stored_id": 29,
+      "key": "Ctrl",
+      "code": 512
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "ring",
+      "direction": "W",
+      "physical_id": 28,
+      "stored_id": 28,
+      "key": "H",
+      "code": 267
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "middle",
+      "direction": "N",
+      "physical_id": 22,
+      "stored_id": 22,
+      "key": "T",
+      "code": 279
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "middle",
+      "direction": "E",
+      "physical_id": 21,
+      "stored_id": 21,
+      "key": "I",
+      "code": 268
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "middle",
+      "direction": "S",
+      "physical_id": 24,
+      "stored_id": 24,
+      "key": "Shift",
+      "code": 513
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "middle",
+      "direction": "W",
+      "physical_id": 23,
+      "stored_id": 23,
+      "key": "N",
+      "code": 273
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "index",
+      "direction": "N",
+      "physical_id": 17,
+      "stored_id": 17,
+      "key": "R",
+      "code": 277
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "index",
+      "direction": "E",
+      "physical_id": 16,
+      "stored_id": 16,
+      "key": "S",
+      "code": 278
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "index",
+      "direction": "S",
+      "physical_id": 19,
+      "stored_id": 19,
+      "key": "E",
+      "code": 264
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "index",
+      "direction": "W",
+      "physical_id": 18,
+      "stored_id": 18,
+      "key": "A",
+      "code": 260
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "aux1",
+      "direction": "N",
+      "physical_id": 42,
+      "stored_id": 42,
+      "key": "Backspace",
+      "code": 298
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "aux1",
+      "direction": "E",
+      "physical_id": 41,
+      "stored_id": 41,
+      "key": "Enter",
+      "code": 296
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "aux1",
+      "direction": "S",
+      "physical_id": 44,
+      "stored_id": 44,
+      "key": "Alt",
+      "code": 514
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "aux1",
+      "direction": "W",
+      "physical_id": 43,
+      "stored_id": 43,
+      "key": "Tab",
+      "code": 299
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "aux2",
+      "direction": "N",
+      "physical_id": 37,
+      "stored_id": 37,
+      "key": "Copy",
+      "code": 600
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "aux2",
+      "direction": "E",
+      "physical_id": 36,
+      "stored_id": 36,
+      "key": "Paste",
+      "code": 601
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "aux2",
+      "direction": "S",
+      "physical_id": 39,
+      "stored_id": 39,
+      "key": "Win",
+      "code": 515
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "aux2",
+      "direction": "W",
+      "physical_id": 38,
+      "stored_id": 38,
+      "key": "Screenshot",
+      "code": 602
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "thumb1",
+      "direction": "N",
+      "physical_id": 12,
+      "stored_id": 12,
+      "key": "O",
+      "code": 274
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "thumb1",
+      "direction": "E",
+      "physical_id": 11,
+      "stored_id": 11,
+      "key": "U",
+      "code": 280
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "thumb1",
+      "direction": "S",
+      "physical_id": 14,
+      "stored_id": 14,
+      "key": "Space",
+      "code": 300
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "thumb1",
+      "direction": "W",
+      "physical_id": 13,
+      "stored_id": 13,
+      "key": "C",
+      "code": 262
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "thumb2",
+      "direction": "N",
+      "physical_id": 7,
+      "stored_id": 7,
+      "key": "G",
+      "code": 266
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "thumb2",
+      "direction": "E",
+      "physical_id": 6,
+      "stored_id": 6,
+      "key": "M",
+      "code": 272
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "thumb2",
+      "direction": "S",
+      "physical_id": 9,
+      "stored_id": 9,
+      "key": "V",
+      "code": 281
+    },
+    {
+      "layer": "C1",
+      "mirror": false,
+      "switch": "thumb2",
+      "direction": "W",
+      "physical_id": 8,
+      "stored_id": 8,
+      "key": "Mirror",
+      "code": 540
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "pinky",
+      "direction": "N",
+      "physical_id": 32,
+      "stored_id": 77,
+      "key": "C3",
+      "code": 552
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "pinky",
+      "direction": "E",
+      "physical_id": 31,
+      "stored_id": 76,
+      "key": "C4",
+      "code": 554
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "pinky",
+      "direction": "S",
+      "physical_id": 34,
+      "stored_id": 79,
+      "key": "Esc",
+      "code": 297
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "pinky",
+      "direction": "W",
+      "physical_id": 33,
+      "stored_id": 78,
+      "key": "C2",
+      "code": 550
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "ring",
+      "direction": "N",
+      "physical_id": 27,
+      "stored_id": 72,
+      "key": "B",
+      "code": 261
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "ring",
+      "direction": "E",
+      "physical_id": 26,
+      "stored_id": 71,
+      "key": "J",
+      "code": 269
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "ring",
+      "direction": "S",
+      "physical_id": 29,
+      "stored_id": 74,
+      "key": "Ctrl",
+      "code": 512
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "ring",
+      "direction": "W",
+      "physical_id": 28,
+      "stored_id": 73,
+      "key": "K",
+      "code": 270
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "middle",
+      "direction": "N",
+      "physical_id": 22,
+      "stored_id": 67,
+      "key": "P",
+      "code": 275
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "middle",
+      "direction": "E",
+      "physical_id": 21,
+      "stored_id": 66,
+      "key": "Q",
+      "code": 276
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "middle",
+      "direction": "S",
+      "physical_id": 24,
+      "stored_id": 69,
+      "key": "Shift",
+      "code": 513
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "middle",
+      "direction": "W",
+      "physical_id": 23,
+      "stored_id": 68,
+      "key": "W",
+      "code": 282
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "index",
+      "direction": "N",
+      "physical_id": 17,
+      "stored_id": 62,
+      "key": "X",
+      "code": 283
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "index",
+      "direction": "E",
+      "physical_id": 16,
+      "stored_id": 61,
+      "key": "Y",
+      "code": 284
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "index",
+      "direction": "S",
+      "physical_id": 19,
+      "stored_id": 64,
+      "key": "Z",
+      "code": 285
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "index",
+      "direction": "W",
+      "physical_id": 18,
+      "stored_id": 63,
+      "key": "F",
+      "code": 265
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "aux1",
+      "direction": "N",
+      "physical_id": 42,
+      "stored_id": 87,
+      "key": "Backspace",
+      "code": 298
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "aux1",
+      "direction": "E",
+      "physical_id": 41,
+      "stored_id": 86,
+      "key": "Enter",
+      "code": 296
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "aux1",
+      "direction": "S",
+      "physical_id": 44,
+      "stored_id": 89,
+      "key": "Alt",
+      "code": 514
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "aux1",
+      "direction": "W",
+      "physical_id": 43,
+      "stored_id": 88,
+      "key": "Delete",
+      "code": 127
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "aux2",
+      "direction": "N",
+      "physical_id": 37,
+      "stored_id": 82,
+      "key": "Copy",
+      "code": 600
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "aux2",
+      "direction": "E",
+      "physical_id": 36,
+      "stored_id": 81,
+      "key": "Paste",
+      "code": 601
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "aux2",
+      "direction": "S",
+      "physical_id": 39,
+      "stored_id": 84,
+      "key": "Win",
+      "code": 515
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "aux2",
+      "direction": "W",
+      "physical_id": 38,
+      "stored_id": 83,
+      "key": "Screenshot",
+      "code": 602
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "thumb1",
+      "direction": "N",
+      "physical_id": 12,
+      "stored_id": 57,
+      "key": "O",
+      "code": 274
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "thumb1",
+      "direction": "E",
+      "physical_id": 11,
+      "stored_id": 56,
+      "key": "U",
+      "code": 280
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "thumb1",
+      "direction": "S",
+      "physical_id": 14,
+      "stored_id": 59,
+      "key": "Space",
+      "code": 300
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "thumb1",
+      "direction": "W",
+      "physical_id": 13,
+      "stored_id": 58,
+      "key": "C",
+      "code": 262
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "thumb2",
+      "direction": "N",
+      "physical_id": 7,
+      "stored_id": 52,
+      "key": "G",
+      "code": 266
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "thumb2",
+      "direction": "E",
+      "physical_id": 6,
+      "stored_id": 51,
+      "key": "M",
+      "code": 272
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "thumb2",
+      "direction": "S",
+      "physical_id": 9,
+      "stored_id": 54,
+      "key": "V",
+      "code": 281
+    },
+    {
+      "layer": "C1",
+      "mirror": true,
+      "switch": "thumb2",
+      "direction": "W",
+      "physical_id": 8,
+      "stored_id": 53,
+      "key": "Mirror",
+      "code": 540
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "pinky",
+      "direction": "N",
+      "physical_id": 32,
+      "stored_id": 32,
+      "key": "C3",
+      "code": 552
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "pinky",
+      "direction": "E",
+      "physical_id": 31,
+      "stored_id": 31,
+      "key": "C4",
+      "code": 554
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "pinky",
+      "direction": "S",
+      "physical_id": 34,
+      "stored_id": 34,
+      "key": "Esc",
+      "code": 297
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "pinky",
+      "direction": "W",
+      "physical_id": 33,
+      "stored_id": 33,
+      "key": "C2",
+      "code": 550
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "ring",
+      "direction": "N",
+      "physical_id": 27,
+      "stored_id": 27,
+      "key": "1",
+      "code": 286
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "ring",
+      "direction": "E",
+      "physical_id": 26,
+      "stored_id": 26,
+      "key": "2",
+      "code": 287
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "ring",
+      "direction": "S",
+      "physical_id": 29,
+      "stored_id": 29,
+      "key": "Ctrl",
+      "code": 512
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "ring",
+      "direction": "W",
+      "physical_id": 28,
+      "stored_id": 28,
+      "key": "3",
+      "code": 288
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "middle",
+      "direction": "N",
+      "physical_id": 22,
+      "stored_id": 22,
+      "key": "4",
+      "code": 289
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "middle",
+      "direction": "E",
+      "physical_id": 21,
+      "stored_id": 21,
+      "key": "5",
+      "code": 290
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "middle",
+      "direction": "S",
+      "physical_id": 24,
+      "stored_id": 24,
+      "key": "Shift",
+      "code": 513
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "middle",
+      "direction": "W",
+      "physical_id": 23,
+      "stored_id": 23,
+      "key": "6",
+      "code": 291
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "index",
+      "direction": "N",
+      "physical_id": 17,
+      "stored_id": 17,
+      "key": "7",
+      "code": 292
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "index",
+      "direction": "E",
+      "physical_id": 16,
+      "stored_id": 16,
+      "key": "8",
+      "code": 293
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "index",
+      "direction": "S",
+      "physical_id": 19,
+      "stored_id": 19,
+      "key": "9",
+      "code": 294
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "index",
+      "direction": "W",
+      "physical_id": 18,
+      "stored_id": 18,
+      "key": "0",
+      "code": 295
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "aux1",
+      "direction": "N",
+      "physical_id": 42,
+      "stored_id": 42,
+      "key": "Minus",
+      "code": 301
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "aux1",
+      "direction": "E",
+      "physical_id": 41,
+      "stored_id": 41,
+      "key": "Equal",
+      "code": 302
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "aux1",
+      "direction": "S",
+      "physical_id": 44,
+      "stored_id": 44,
+      "key": "Alt",
+      "code": 514
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "aux1",
+      "direction": "W",
+      "physical_id": 43,
+      "stored_id": 43,
+      "key": "Backtick",
+      "code": 309
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "aux2",
+      "direction": "N",
+      "physical_id": 37,
+      "stored_id": 37,
+      "key": "Copy",
+      "code": 600
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "aux2",
+      "direction": "E",
+      "physical_id": 36,
+      "stored_id": 36,
+      "key": "Paste",
+      "code": 601
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "aux2",
+      "direction": "S",
+      "physical_id": 39,
+      "stored_id": 39,
+      "key": "Win",
+      "code": 515
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "aux2",
+      "direction": "W",
+      "physical_id": 38,
+      "stored_id": 38,
+      "key": "Screenshot",
+      "code": 602
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "thumb1",
+      "direction": "N",
+      "physical_id": 12,
+      "stored_id": 12,
+      "key": "Comma",
+      "code": 310
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "thumb1",
+      "direction": "E",
+      "physical_id": 11,
+      "stored_id": 11,
+      "key": "Period",
+      "code": 311
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "thumb1",
+      "direction": "S",
+      "physical_id": 14,
+      "stored_id": 14,
+      "key": "Slash",
+      "code": 312
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "thumb1",
+      "direction": "W",
+      "physical_id": 13,
+      "stored_id": 13,
+      "key": "Quote",
+      "code": 308
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "thumb2",
+      "direction": "N",
+      "physical_id": 7,
+      "stored_id": 7,
+      "key": "Semicolon",
+      "code": 307
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "thumb2",
+      "direction": "E",
+      "physical_id": 6,
+      "stored_id": 6,
+      "key": "Backspace",
+      "code": 298
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "thumb2",
+      "direction": "S",
+      "physical_id": 9,
+      "stored_id": 9,
+      "key": "Enter",
+      "code": 296
+    },
+    {
+      "layer": "C2",
+      "mirror": false,
+      "switch": "thumb2",
+      "direction": "W",
+      "physical_id": 8,
+      "stored_id": 8,
+      "key": "Mirror",
+      "code": 540
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "pinky",
+      "direction": "N",
+      "physical_id": 32,
+      "stored_id": 77,
+      "key": "C3",
+      "code": 552
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "pinky",
+      "direction": "E",
+      "physical_id": 31,
+      "stored_id": 76,
+      "key": "C4",
+      "code": 554
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "pinky",
+      "direction": "S",
+      "physical_id": 34,
+      "stored_id": 79,
+      "key": "Esc",
+      "code": 297
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "pinky",
+      "direction": "W",
+      "physical_id": 33,
+      "stored_id": 78,
+      "key": "C2",
+      "code": 550
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "ring",
+      "direction": "N",
+      "physical_id": 27,
+      "stored_id": 72,
+      "key": "KP_7",
+      "code": 351
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "ring",
+      "direction": "E",
+      "physical_id": 26,
+      "stored_id": 71,
+      "key": "KP_8",
+      "code": 352
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "ring",
+      "direction": "S",
+      "physical_id": 29,
+      "stored_id": 74,
+      "key": "Ctrl",
+      "code": 512
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "ring",
+      "direction": "W",
+      "physical_id": 28,
+      "stored_id": 73,
+      "key": "KP_9",
+      "code": 353
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "middle",
+      "direction": "N",
+      "physical_id": 22,
+      "stored_id": 67,
+      "key": "KP_4",
+      "code": 348
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "middle",
+      "direction": "E",
+      "physical_id": 21,
+      "stored_id": 66,
+      "key": "KP_5",
+      "code": 349
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "middle",
+      "direction": "S",
+      "physical_id": 24,
+      "stored_id": 69,
+      "key": "Shift",
+      "code": 513
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "middle",
+      "direction": "W",
+      "physical_id": 23,
+      "stored_id": 68,
+      "key": "KP_6",
+      "code": 350
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "index",
+      "direction": "N",
+      "physical_id": 17,
+      "stored_id": 62,
+      "key": "KP_1",
+      "code": 345
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "index",
+      "direction": "E",
+      "physical_id": 16,
+      "stored_id": 61,
+      "key": "KP_2",
+      "code": 346
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "index",
+      "direction": "S",
+      "physical_id": 19,
+      "stored_id": 64,
+      "key": "KP_0",
+      "code": 354
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "index",
+      "direction": "W",
+      "physical_id": 18,
+      "stored_id": 63,
+      "key": "KP_3",
+      "code": 347
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "aux1",
+      "direction": "N",
+      "physical_id": 42,
+      "stored_id": 87,
+      "key": "KP_SLASH",
+      "code": 340
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "aux1",
+      "direction": "E",
+      "physical_id": 41,
+      "stored_id": 86,
+      "key": "KP_ASTER",
+      "code": 341
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "aux1",
+      "direction": "S",
+      "physical_id": 44,
+      "stored_id": 89,
+      "key": "Alt",
+      "code": 514
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "aux1",
+      "direction": "W",
+      "physical_id": 43,
+      "stored_id": 88,
+      "key": "KP_ENTER",
+      "code": 344
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "aux2",
+      "direction": "N",
+      "physical_id": 37,
+      "stored_id": 82,
+      "key": "Copy",
+      "code": 600
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "aux2",
+      "direction": "E",
+      "physical_id": 36,
+      "stored_id": 81,
+      "key": "Paste",
+      "code": 601
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "aux2",
+      "direction": "S",
+      "physical_id": 39,
+      "stored_id": 84,
+      "key": "Win",
+      "code": 515
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "aux2",
+      "direction": "W",
+      "physical_id": 38,
+      "stored_id": 83,
+      "key": "Screenshot",
+      "code": 602
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "thumb1",
+      "direction": "N",
+      "physical_id": 12,
+      "stored_id": 57,
+      "key": "O",
+      "code": 274
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "thumb1",
+      "direction": "E",
+      "physical_id": 11,
+      "stored_id": 56,
+      "key": "U",
+      "code": 280
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "thumb1",
+      "direction": "S",
+      "physical_id": 14,
+      "stored_id": 59,
+      "key": "Space",
+      "code": 300
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "thumb1",
+      "direction": "W",
+      "physical_id": 13,
+      "stored_id": 58,
+      "key": "C",
+      "code": 262
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "thumb2",
+      "direction": "N",
+      "physical_id": 7,
+      "stored_id": 52,
+      "key": "G",
+      "code": 266
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "thumb2",
+      "direction": "E",
+      "physical_id": 6,
+      "stored_id": 51,
+      "key": "M",
+      "code": 272
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "thumb2",
+      "direction": "S",
+      "physical_id": 9,
+      "stored_id": 54,
+      "key": "V",
+      "code": 281
+    },
+    {
+      "layer": "C2",
+      "mirror": true,
+      "switch": "thumb2",
+      "direction": "W",
+      "physical_id": 8,
+      "stored_id": 53,
+      "key": "Mirror",
+      "code": 540
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "pinky",
+      "direction": "N",
+      "physical_id": 32,
+      "stored_id": 32,
+      "key": "C1",
+      "code": 548
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "pinky",
+      "direction": "E",
+      "physical_id": 31,
+      "stored_id": 31,
+      "key": "C4",
+      "code": 554
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "pinky",
+      "direction": "S",
+      "physical_id": 34,
+      "stored_id": 34,
+      "key": "Ctrl",
+      "code": 512
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "pinky",
+      "direction": "W",
+      "physical_id": 33,
+      "stored_id": 33,
+      "key": "C2",
+      "code": 550
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "ring",
+      "direction": "N",
+      "physical_id": 27,
+      "stored_id": 27,
+      "key": "MouseBack",
+      "code": 560
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "ring",
+      "direction": "E",
+      "physical_id": 26,
+      "stored_id": 26,
+      "key": "MouseForward",
+      "code": 561
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "ring",
+      "direction": "S",
+      "physical_id": 29,
+      "stored_id": 29,
+      "key": "Ctrl",
+      "code": 512
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "ring",
+      "direction": "W",
+      "physical_id": 28,
+      "stored_id": 28,
+      "key": "ScrollLeft",
+      "code": 570
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "middle",
+      "direction": "N",
+      "physical_id": 22,
+      "stored_id": 22,
+      "key": "ScrollDown",
+      "code": 571
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "middle",
+      "direction": "E",
+      "physical_id": 21,
+      "stored_id": 21,
+      "key": "ScrollRight",
+      "code": 569
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "middle",
+      "direction": "S",
+      "physical_id": 24,
+      "stored_id": 24,
+      "key": "Shift",
+      "code": 513
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "middle",
+      "direction": "W",
+      "physical_id": 23,
+      "stored_id": 23,
+      "key": "ScrollUp",
+      "code": 572
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "index",
+      "direction": "N",
+      "physical_id": 17,
+      "stored_id": 17,
+      "key": "ScrollUp",
+      "code": 572
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "index",
+      "direction": "E",
+      "physical_id": 16,
+      "stored_id": 16,
+      "key": "RightClick",
+      "code": 563
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "index",
+      "direction": "S",
+      "physical_id": 19,
+      "stored_id": 19,
+      "key": "LeftClick",
+      "code": 562
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "index",
+      "direction": "W",
+      "physical_id": 18,
+      "stored_id": 18,
+      "key": "MiddleClick",
+      "code": 564
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "aux1",
+      "direction": "N",
+      "physical_id": 42,
+      "stored_id": 42,
+      "key": "Z",
+      "code": 285
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "aux1",
+      "direction": "E",
+      "physical_id": 41,
+      "stored_id": 41,
+      "key": "Y",
+      "code": 284
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "aux1",
+      "direction": "S",
+      "physical_id": 44,
+      "stored_id": 44,
+      "key": "Alt",
+      "code": 514
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "aux1",
+      "direction": "W",
+      "physical_id": 43,
+      "stored_id": 43,
+      "key": "A",
+      "code": 260
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "aux2",
+      "direction": "N",
+      "physical_id": 37,
+      "stored_id": 37,
+      "key": "Copy",
+      "code": 600
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "aux2",
+      "direction": "E",
+      "physical_id": 36,
+      "stored_id": 36,
+      "key": "Paste",
+      "code": 601
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "aux2",
+      "direction": "S",
+      "physical_id": 39,
+      "stored_id": 39,
+      "key": "Win",
+      "code": 515
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "aux2",
+      "direction": "W",
+      "physical_id": 38,
+      "stored_id": 38,
+      "key": "Screenshot",
+      "code": 602
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "thumb1",
+      "direction": "N",
+      "physical_id": 12,
+      "stored_id": 12,
+      "key": "MouseUp",
+      "code": 568
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "thumb1",
+      "direction": "E",
+      "physical_id": 11,
+      "stored_id": 11,
+      "key": "MouseRight",
+      "code": 565
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "thumb1",
+      "direction": "S",
+      "physical_id": 14,
+      "stored_id": 14,
+      "key": "MouseDown",
+      "code": 567
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "thumb1",
+      "direction": "W",
+      "physical_id": 13,
+      "stored_id": 13,
+      "key": "MouseLeft",
+      "code": 566
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "thumb2",
+      "direction": "N",
+      "physical_id": 7,
+      "stored_id": 7,
+      "key": "E",
+      "code": 264
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "thumb2",
+      "direction": "E",
+      "physical_id": 6,
+      "stored_id": 6,
+      "key": "Tab",
+      "code": 299
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "thumb2",
+      "direction": "S",
+      "physical_id": 9,
+      "stored_id": 9,
+      "key": "Space",
+      "code": 300
+    },
+    {
+      "layer": "C3",
+      "mirror": false,
+      "switch": "thumb2",
+      "direction": "W",
+      "physical_id": 8,
+      "stored_id": 8,
+      "key": "Mirror",
+      "code": 540
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "pinky",
+      "direction": "N",
+      "physical_id": 32,
+      "stored_id": 77,
+      "key": "C1",
+      "code": 548
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "pinky",
+      "direction": "E",
+      "physical_id": 31,
+      "stored_id": 76,
+      "key": "C4",
+      "code": 554
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "pinky",
+      "direction": "S",
+      "physical_id": 34,
+      "stored_id": 79,
+      "key": "Ctrl",
+      "code": 512
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "pinky",
+      "direction": "W",
+      "physical_id": 33,
+      "stored_id": 78,
+      "key": "C2",
+      "code": 550
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "ring",
+      "direction": "N",
+      "physical_id": 27,
+      "stored_id": 72,
+      "key": "ProfileA",
+      "code": 650
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "ring",
+      "direction": "E",
+      "physical_id": 26,
+      "stored_id": 71,
+      "key": "ProfileB",
+      "code": 651
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "ring",
+      "direction": "S",
+      "physical_id": 29,
+      "stored_id": 74,
+      "key": "Ctrl",
+      "code": 512
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "ring",
+      "direction": "W",
+      "physical_id": 28,
+      "stored_id": 73,
+      "key": "AltGr",
+      "code": 518
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "middle",
+      "direction": "N",
+      "physical_id": 22,
+      "stored_id": 67,
+      "key": "Pause",
+      "code": 328
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "middle",
+      "direction": "E",
+      "physical_id": 21,
+      "stored_id": 66,
+      "key": "Menu",
+      "code": 357
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "middle",
+      "direction": "S",
+      "physical_id": 24,
+      "stored_id": 69,
+      "key": "Shift",
+      "code": 513
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "middle",
+      "direction": "W",
+      "physical_id": 23,
+      "stored_id": 68,
+      "key": "ScrollLock",
+      "code": 327
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "index",
+      "direction": "N",
+      "physical_id": 17,
+      "stored_id": 62,
+      "key": "Left",
+      "code": 336
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "index",
+      "direction": "E",
+      "physical_id": 16,
+      "stored_id": 61,
+      "key": "Right",
+      "code": 335
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "index",
+      "direction": "S",
+      "physical_id": 19,
+      "stored_id": 64,
+      "key": "Up",
+      "code": 338
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "index",
+      "direction": "W",
+      "physical_id": 18,
+      "stored_id": 63,
+      "key": "Down",
+      "code": 337
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "aux1",
+      "direction": "N",
+      "physical_id": 42,
+      "stored_id": 87,
+      "key": "S",
+      "code": 278
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "aux1",
+      "direction": "E",
+      "physical_id": 41,
+      "stored_id": 86,
+      "key": "F",
+      "code": 265
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "aux1",
+      "direction": "S",
+      "physical_id": 44,
+      "stored_id": 89,
+      "key": "Alt",
+      "code": 514
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "aux1",
+      "direction": "W",
+      "physical_id": 43,
+      "stored_id": 88,
+      "key": "X",
+      "code": 283
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "aux2",
+      "direction": "N",
+      "physical_id": 37,
+      "stored_id": 82,
+      "key": "Copy",
+      "code": 600
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "aux2",
+      "direction": "E",
+      "physical_id": 36,
+      "stored_id": 81,
+      "key": "Paste",
+      "code": 601
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "aux2",
+      "direction": "S",
+      "physical_id": 39,
+      "stored_id": 84,
+      "key": "Win",
+      "code": 515
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "aux2",
+      "direction": "W",
+      "physical_id": 38,
+      "stored_id": 83,
+      "key": "Screenshot",
+      "code": 602
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "thumb1",
+      "direction": "N",
+      "physical_id": 12,
+      "stored_id": 57,
+      "key": "MouseUp",
+      "code": 568
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "thumb1",
+      "direction": "E",
+      "physical_id": 11,
+      "stored_id": 56,
+      "key": "MouseRight",
+      "code": 565
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "thumb1",
+      "direction": "S",
+      "physical_id": 14,
+      "stored_id": 59,
+      "key": "MouseDown",
+      "code": 567
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "thumb1",
+      "direction": "W",
+      "physical_id": 13,
+      "stored_id": 58,
+      "key": "MouseLeft",
+      "code": 566
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "thumb2",
+      "direction": "N",
+      "physical_id": 7,
+      "stored_id": 52,
+      "key": "E",
+      "code": 264
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "thumb2",
+      "direction": "E",
+      "physical_id": 6,
+      "stored_id": 51,
+      "key": "Tab",
+      "code": 299
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "thumb2",
+      "direction": "S",
+      "physical_id": 9,
+      "stored_id": 54,
+      "key": "Space",
+      "code": 300
+    },
+    {
+      "layer": "C3",
+      "mirror": true,
+      "switch": "thumb2",
+      "direction": "W",
+      "physical_id": 8,
+      "stored_id": 53,
+      "key": "Mirror",
+      "code": 540
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "pinky",
+      "direction": "N",
+      "physical_id": 32,
+      "stored_id": 32,
+      "key": "C3",
+      "code": 552
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "pinky",
+      "direction": "E",
+      "physical_id": 31,
+      "stored_id": 31,
+      "key": "C1",
+      "code": 548
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "pinky",
+      "direction": "S",
+      "physical_id": 34,
+      "stored_id": 34,
+      "key": "CapsLock",
+      "code": 313
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "pinky",
+      "direction": "W",
+      "physical_id": 33,
+      "stored_id": 33,
+      "key": "C2",
+      "code": 550
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "ring",
+      "direction": "N",
+      "physical_id": 27,
+      "stored_id": 27,
+      "key": "F1",
+      "code": 314
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "ring",
+      "direction": "E",
+      "physical_id": 26,
+      "stored_id": 26,
+      "key": "F2",
+      "code": 315
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "ring",
+      "direction": "S",
+      "physical_id": 29,
+      "stored_id": 29,
+      "key": "Ctrl",
+      "code": 512
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "ring",
+      "direction": "W",
+      "physical_id": 28,
+      "stored_id": 28,
+      "key": "F3",
+      "code": 316
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "middle",
+      "direction": "N",
+      "physical_id": 22,
+      "stored_id": 22,
+      "key": "F4",
+      "code": 317
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "middle",
+      "direction": "E",
+      "physical_id": 21,
+      "stored_id": 21,
+      "key": "F5",
+      "code": 318
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "middle",
+      "direction": "S",
+      "physical_id": 24,
+      "stored_id": 24,
+      "key": "Shift",
+      "code": 513
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "middle",
+      "direction": "W",
+      "physical_id": 23,
+      "stored_id": 23,
+      "key": "F6",
+      "code": 319
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "index",
+      "direction": "N",
+      "physical_id": 17,
+      "stored_id": 17,
+      "key": "F7",
+      "code": 320
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "index",
+      "direction": "E",
+      "physical_id": 16,
+      "stored_id": 16,
+      "key": "F8",
+      "code": 321
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "index",
+      "direction": "S",
+      "physical_id": 19,
+      "stored_id": 19,
+      "key": "F9",
+      "code": 322
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "index",
+      "direction": "W",
+      "physical_id": 18,
+      "stored_id": 18,
+      "key": "F10",
+      "code": 323
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "aux1",
+      "direction": "N",
+      "physical_id": 42,
+      "stored_id": 42,
+      "key": "F11",
+      "code": 324
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "aux1",
+      "direction": "E",
+      "physical_id": 41,
+      "stored_id": 41,
+      "key": "F12",
+      "code": 325
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "aux1",
+      "direction": "S",
+      "physical_id": 44,
+      "stored_id": 44,
+      "key": "Alt",
+      "code": 514
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "aux1",
+      "direction": "W",
+      "physical_id": 43,
+      "stored_id": 43,
+      "key": "PrintScreen",
+      "code": 326
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "aux2",
+      "direction": "N",
+      "physical_id": 37,
+      "stored_id": 37,
+      "key": "Copy",
+      "code": 600
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "aux2",
+      "direction": "E",
+      "physical_id": 36,
+      "stored_id": 36,
+      "key": "Paste",
+      "code": 601
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "aux2",
+      "direction": "S",
+      "physical_id": 39,
+      "stored_id": 39,
+      "key": "Win",
+      "code": 515
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "aux2",
+      "direction": "W",
+      "physical_id": 38,
+      "stored_id": 38,
+      "key": "Screenshot",
+      "code": 602
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "thumb1",
+      "direction": "N",
+      "physical_id": 12,
+      "stored_id": 12,
+      "key": "Home",
+      "code": 330
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "thumb1",
+      "direction": "E",
+      "physical_id": 11,
+      "stored_id": 11,
+      "key": "End",
+      "code": 333
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "thumb1",
+      "direction": "S",
+      "physical_id": 14,
+      "stored_id": 14,
+      "key": "PgDn",
+      "code": 334
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "thumb1",
+      "direction": "W",
+      "physical_id": 13,
+      "stored_id": 13,
+      "key": "PgUp",
+      "code": 331
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "thumb2",
+      "direction": "N",
+      "physical_id": 7,
+      "stored_id": 7,
+      "key": "Insert",
+      "code": 329
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "thumb2",
+      "direction": "E",
+      "physical_id": 6,
+      "stored_id": 6,
+      "key": "Delete",
+      "code": 127
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "thumb2",
+      "direction": "S",
+      "physical_id": 9,
+      "stored_id": 9,
+      "key": "NumLock",
+      "code": 339
+    },
+    {
+      "layer": "C4",
+      "mirror": false,
+      "switch": "thumb2",
+      "direction": "W",
+      "physical_id": 8,
+      "stored_id": 8,
+      "key": "Mirror",
+      "code": 540
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "pinky",
+      "direction": "N",
+      "physical_id": 32,
+      "stored_id": 77,
+      "key": "C3",
+      "code": 552
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "pinky",
+      "direction": "E",
+      "physical_id": 31,
+      "stored_id": 76,
+      "key": "C1",
+      "code": 548
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "pinky",
+      "direction": "S",
+      "physical_id": 34,
+      "stored_id": 79,
+      "key": "KP_DOT",
+      "code": 355
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "pinky",
+      "direction": "W",
+      "physical_id": 33,
+      "stored_id": 78,
+      "key": "C2",
+      "code": 550
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "ring",
+      "direction": "N",
+      "physical_id": 27,
+      "stored_id": 72,
+      "key": "RShift",
+      "code": 517
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "ring",
+      "direction": "E",
+      "physical_id": 26,
+      "stored_id": 71,
+      "key": "RCtrl",
+      "code": 516
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "ring",
+      "direction": "S",
+      "physical_id": 29,
+      "stored_id": 74,
+      "key": "Ctrl",
+      "code": 512
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "ring",
+      "direction": "W",
+      "physical_id": 28,
+      "stored_id": 73,
+      "key": "AltGr",
+      "code": 518
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "middle",
+      "direction": "N",
+      "physical_id": 22,
+      "stored_id": 67,
+      "key": "RWin",
+      "code": 519
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "middle",
+      "direction": "E",
+      "physical_id": 21,
+      "stored_id": 66,
+      "key": "Backslash",
+      "code": 305
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "middle",
+      "direction": "S",
+      "physical_id": 24,
+      "stored_id": 69,
+      "key": "Shift",
+      "code": 513
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "middle",
+      "direction": "W",
+      "physical_id": 23,
+      "stored_id": 68,
+      "key": "KP_MINUS",
+      "code": 342
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "index",
+      "direction": "N",
+      "physical_id": 17,
+      "stored_id": 62,
+      "key": "Up",
+      "code": 338
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "index",
+      "direction": "E",
+      "physical_id": 16,
+      "stored_id": 61,
+      "key": "Right",
+      "code": 335
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "index",
+      "direction": "S",
+      "physical_id": 19,
+      "stored_id": 64,
+      "key": "Down",
+      "code": 337
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "index",
+      "direction": "W",
+      "physical_id": 18,
+      "stored_id": 63,
+      "key": "Left",
+      "code": 336
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "aux1",
+      "direction": "N",
+      "physical_id": 42,
+      "stored_id": 87,
+      "key": "LBracket",
+      "code": 303
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "aux1",
+      "direction": "E",
+      "physical_id": 41,
+      "stored_id": 86,
+      "key": "RBracket",
+      "code": 304
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "aux1",
+      "direction": "S",
+      "physical_id": 44,
+      "stored_id": 89,
+      "key": "Alt",
+      "code": 514
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "aux1",
+      "direction": "W",
+      "physical_id": 43,
+      "stored_id": 88,
+      "key": "KP_PLUS",
+      "code": 343
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "aux2",
+      "direction": "N",
+      "physical_id": 37,
+      "stored_id": 82,
+      "key": "Copy",
+      "code": 600
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "aux2",
+      "direction": "E",
+      "physical_id": 36,
+      "stored_id": 81,
+      "key": "Paste",
+      "code": 601
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "aux2",
+      "direction": "S",
+      "physical_id": 39,
+      "stored_id": 84,
+      "key": "Win",
+      "code": 515
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "aux2",
+      "direction": "W",
+      "physical_id": 38,
+      "stored_id": 83,
+      "key": "Screenshot",
+      "code": 602
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "thumb1",
+      "direction": "N",
+      "physical_id": 12,
+      "stored_id": 57,
+      "key": "Home",
+      "code": 330
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "thumb1",
+      "direction": "E",
+      "physical_id": 11,
+      "stored_id": 56,
+      "key": "End",
+      "code": 333
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "thumb1",
+      "direction": "S",
+      "physical_id": 14,
+      "stored_id": 59,
+      "key": "PgDn",
+      "code": 334
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "thumb1",
+      "direction": "W",
+      "physical_id": 13,
+      "stored_id": 58,
+      "key": "PgUp",
+      "code": 331
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "thumb2",
+      "direction": "N",
+      "physical_id": 7,
+      "stored_id": 52,
+      "key": "Insert",
+      "code": 329
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "thumb2",
+      "direction": "E",
+      "physical_id": 6,
+      "stored_id": 51,
+      "key": "Delete",
+      "code": 127
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "thumb2",
+      "direction": "S",
+      "physical_id": 9,
+      "stored_id": 54,
+      "key": "NumLock",
+      "code": 339
+    },
+    {
+      "layer": "C4",
+      "mirror": true,
+      "switch": "thumb2",
+      "direction": "W",
+      "physical_id": 8,
+      "stored_id": 53,
+      "key": "Mirror",
+      "code": 540
+    }
+  ],
+  "macros": [
+    {
+      "name": "Copy",
+      "id": 600,
+      "modifiers": [
+        512
+      ],
+      "key": "C",
+      "output": [
+        523,
+        512,
+        262,
+        524,
+        512,
+        256
+      ],
+      "input_hex": "00960000000000000000000000000000",
+      "output_hex": "020B02000106020C02000100"
+    },
+    {
+      "name": "Paste",
+      "id": 601,
+      "modifiers": [
+        512
+      ],
+      "key": "V",
+      "output": [
+        523,
+        512,
+        281,
+        524,
+        512,
+        256
+      ],
+      "input_hex": "00964000000000000000000000000000",
+      "output_hex": "020B02000119020C02000100"
+    },
+    {
+      "name": "Screenshot",
+      "id": 602,
+      "modifiers": [
+        515,
+        513
+      ],
+      "key": "S",
+      "output": [
+        523,
+        515,
+        523,
+        513,
+        278,
+        524,
+        513,
+        524,
+        515,
+        256
+      ],
+      "input_hex": "00968000000000000000000000000000",
+      "output_hex": "020B0203020B02010116020C0201020C02030100"
+    }
+  ],
+  "coverage": {
+    "all_standard_104_keyboard_functions": true,
+    "reachable_unique_codes": 127,
+    "word_chord_collisions": 0
+  },
+  "verification": {
+    "configuration": "readback_verified",
+    "physical": "pending",
+    "gameplay": "pending",
+    "mirror_geometry": "official matching IDs +45; physical test pending"
+  }
+}

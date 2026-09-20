@@ -32,3 +32,15 @@ Use the prepared local tester to check E+O+U entry, WASD press/release, Space/Sh
 - [Device Manager](https://github.com/CharaChorder/DeviceManager), inspected source commit `33ce9b1ba725e44d0a878037ba397ad176e6a1d3`
 - [Official M4G geometry](https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml)
 - [CCOS 3.0.0 metadata](https://charachorder.io/firmware/m4g_s3/3.0.0/meta.json), actions and settings linked by that metadata; reviewed 2026-09-20
+
+## 2026-09-20 — Full keyboard and desktop expansion v2
+
+- User requested full one-handed keyboard, pointer control, Windows shortcuts and layer/profile/macro instruction. Reused the known left-device identity and snapshot; A/B/C contents matched the prior verified state.
+- Final: 256 C assignments (four layers, both logical banks), B2 index-east Profile C entry, three C setting changes (autocorrect 0, minimum chord keys 1, arpeggiates 0), three pseudo macros Copy/Paste/Screenshot. Other settings, A, remaining B controls and all original 501 library entries were preserved. Final library count 504.
+- The first candidate used 18 layer-specific pseudo macros. Exact-version vendor ZERO tests exposed primary-map chord lookup, so it was fully rolled back and replaced with three invariant macro positions plus regular modifier shortcuts. No unused trial macros remain.
+- Rollback initially timed out because firmware's CML C4 reply concatenated deleted-count 1 to the input hexadecimal token. Readback confirmed deletion had occurred. The response parser was corrected and the rollback resumed from snapshots. Chords were verified by exact-key CML C2 lookups with a total-count cross-check, avoiding assumptions about enumeration after deletes.
+- Final commit followed by a separately reopened serial connection verified every one of 1080 assignments, all profile settings and all 504 exact chord outputs. Same-commit vendor simulation passed direct macro output/release, momentary/toggle layers and all three macros in a latched layer. Held-layer macro did not emit; guide excludes that behavior.
+- Coverage audit found all standard keyboard functions present and zero existing word-chord input collisions. This is configuration coverage; physical mirrored directions, simultaneous ergonomics, mouse actions, reconnect and actual gameplay remain unobserved.
+- Generated Hebrew HTML guide with search/local opt-in tester and 24 separate keys/actions/combined diagrams for four layers and two banks. Verified rendered diagram, eight-row table, image loading and Backslash search in Chrome.
+- Recovery: private before/configured exports for A/B/C, immediate snapshots, exact manifest, serial rollback script, simulator evidence, guide and diagrams. Rollback restores the prior unused C and the B2 F, removes only three added pseudo chords and checks the prior library. The original A browser draft remains archived separately.
+- Next boundary: user D/B/D mirror test, layer return, native macros, mouse drag/release, reconnect, then game-specific action validation. No background monitoring or reminders.
