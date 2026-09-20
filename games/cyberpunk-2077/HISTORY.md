@@ -1,5 +1,15 @@
 # Cyberpunk 2077 — History
 
+
+## 2026-09-20 — RHI default + Ultra+ PT classification recorded
+
+- User established **RHI** as the normal management/orchestration layer for future compatible PC-game graphics installations, including Cyberpunk: use it where supported to install/update/manage/launch underlying ReShade/RenoDX/Luma/OptiScaler and DLSS/Streamline-related components rather than maintaining parallel manual deployments.
+- RHI remains a control/management layer, not a new renderer or feature owner. Existing one-owner, proxy/swapchain, real-input, rollback and component-version rules remain in force.
+- User clarified **Ultra+** should be understood and presented as a special Cyberpunk path-tracing/rendering overhaul—not a normal graphics preset. When PT work is planned, Ultra+ must be offered as an explicit branch and compared with native PT plus the intended RR/MFG/NR/ReShade stack.
+- Current public checkpoints reviewed for this knowledge update: RHI 2.7.4 and Ultra+ 9.3.7 (Ultra+ file dated 2026-09-13). Re-check upstream at actual installation time.
+- RHI's documented Ultra+ integration is a link/discovery feature; it does not make Ultra+ an RHI-owned renderer or prove combination compatibility.
+- **No Cyberpunk game files were changed by this record.** This is a durable workflow/catalog/recommendation update for later installation and architecture migration.
+
 ## 2026-09-14 — Unified control package prepared; monthly updates enabled
 
 - User selected one common OptiScaler/ReShade control surface for SR, RR, FG/MFG and NR, live SR/NR adjustments, latest compatible runtimes/models with SR **L** rather than M, and automatic maintenance **once a month**. Kept the existing OptiScaler consumer and CET adapter; no ReShade or second FG implementation was added. This explicit direction supersedes the earlier preference to leave native DLLs untouched and put FG controls outside OptiScaler.
