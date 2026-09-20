@@ -2,6 +2,17 @@
 
 Apply the [minimum-dependency and real-input workflow](FEATURE-DECISION.md) before selecting products. An integration supplies inputs, a consumer processes them, and a visual profile changes presentation; one component may fill several roles. Reuse those capabilities and add only missing prerequisites. Count running helper programs separately from required DLLs, add-ons and presets.
 
+
+## RHI — default orchestration layer
+
+**User workflow default confirmed 2026-09-20.** RHI is the preferred first management/orchestration layer for future requested PC-game graphics installations when it supports the exact game and component combination. It should reduce manual deployment/version drift without replacing the compatibility decision.
+
+Current upstream reference reviewed 2026-09-20: [RHI 2.7.4](https://github.com/RankFTW/RHI/releases/tag/RHI-2.7.4) and the [Detailed Guide](https://github.com/RankFTW/RHI/blob/main/docs/DETAILED_GUIDE.md). RHI currently exposes management for ReShade, RenoDX, Luma, OptiScaler, ReShade shader packs (including Lilium HDR Shaders), ReShade addons, DLSS/Streamline versions/defaults, NVIDIA profile overrides, game launch, per-game overrides, and update workflows.
+
+Treat RHI as **control plane/orchestrator**, not as proof that the underlying mod is compatible or active. Keep the same ownership map for SR/RR/FG/MFG/neural rendering, proxy/swapchain hooks, HDR/tonemap, and engine-input adapters. A component installed through RHI still needs its own version, input, runtime and rollback evidence.
+
+RHI's Ultra+ integration is a discovery link when a supported game has an Ultra+ entry. It does not turn Ultra+ into an RHI renderer or establish compatibility with every active PT/DLSS/ReShade stack. Evaluate Ultra+ as the independent game-specific renderer overhaul described by its own upstream project.
+
 ## The feature layers
 
 | Component | Job | Needs game-provided temporal inputs? | Typical injection |
