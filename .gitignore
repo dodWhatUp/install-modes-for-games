@@ -24,6 +24,12 @@
 !preferences/
 !preferences/**
 
+# Sanitized input-device records only; private exports remain outside Git.
+!devices/
+!devices/master-forge-left/
+!devices/master-forge-left/*.md
+!devices/master-forge-left/*.json
+
 # Never publish generated or third-party binaries, even if placed in an
 # allowed directory by mistake.
 *.7z

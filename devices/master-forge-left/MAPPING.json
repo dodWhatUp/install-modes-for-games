@@ -1,0 +1,1902 @@
+{
+  "schema_version": 2,
+  "mapping_revision": "master-forge-left-v1",
+  "date": "2026-09-20",
+  "device": {
+    "alias": "master-forge-left",
+    "manufacturer": "CharaChorder / FORGE",
+    "model": "Master Forge left (M4G S3)",
+    "registry_revision": "1",
+    "geometry_revision": "official-manager-v1",
+    "recognition_status": "device API verified; physical position testing pending"
+  },
+  "firmware": "3.0.0",
+  "manager": "2.8.0",
+  "profile": "B (profile 2)",
+  "sources": [
+    "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+    "https://charachorder.io/firmware/m4g_s3/3.0.0/actions.json"
+  ],
+  "layers": [
+    "B1",
+    "B2"
+  ],
+  "switches": [
+    {
+      "id": "pinky",
+      "name": "Pinky",
+      "he": "זרת",
+      "x": 135,
+      "y": 375,
+      "ids": {
+        "N": 32,
+        "E": 31,
+        "S": 34,
+        "W": 33
+      }
+    },
+    {
+      "id": "ring",
+      "name": "Ring",
+      "he": "קמיצה",
+      "x": 385,
+      "y": 230,
+      "ids": {
+        "N": 27,
+        "E": 26,
+        "S": 29,
+        "W": 28
+      }
+    },
+    {
+      "id": "middle",
+      "name": "Middle",
+      "he": "אמה",
+      "x": 635,
+      "y": 230,
+      "ids": {
+        "N": 22,
+        "E": 21,
+        "S": 24,
+        "W": 23
+      }
+    },
+    {
+      "id": "index",
+      "name": "Index",
+      "he": "אצבע",
+      "x": 885,
+      "y": 375,
+      "ids": {
+        "N": 17,
+        "E": 16,
+        "S": 19,
+        "W": 18
+      }
+    },
+    {
+      "id": "aux1",
+      "name": "Aux 1",
+      "he": "עזר 1 — מתחת לקמיצה",
+      "x": 385,
+      "y": 520,
+      "ids": {
+        "N": 42,
+        "E": 41,
+        "S": 44,
+        "W": 43
+      }
+    },
+    {
+      "id": "aux2",
+      "name": "Aux 2",
+      "he": "עזר 2 — מתחת לאמה",
+      "x": 635,
+      "y": 520,
+      "ids": {
+        "N": 37,
+        "E": 36,
+        "S": 39,
+        "W": 38
+      }
+    },
+    {
+      "id": "thumb1",
+      "name": "Thumb 1",
+      "he": "אגודל עליון",
+      "x": 1025,
+      "y": 670,
+      "ids": {
+        "N": 12,
+        "E": 11,
+        "S": 14,
+        "W": 13
+      }
+    },
+    {
+      "id": "thumb2",
+      "name": "Thumb 2",
+      "he": "אגודל תחתון",
+      "x": 895,
+      "y": 970,
+      "ids": {
+        "N": 7,
+        "E": 6,
+        "S": 9,
+        "W": 8
+      }
+    }
+  ],
+  "bindings": [
+    {
+      "position_id": "left-pinky-n",
+      "switch": "pinky",
+      "physical_description": "Pinky N",
+      "device_control_id": 32,
+      "layer": "B1",
+      "output": {
+        "display": "Tab",
+        "raw_encoding": 299,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Inventory / score",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 135,
+        "y": 375,
+        "direction": "N"
+      }
+    },
+    {
+      "position_id": "left-pinky-e",
+      "switch": "pinky",
+      "physical_description": "Pinky E",
+      "device_control_id": 31,
+      "layer": "B1",
+      "output": {
+        "display": "Alt",
+        "raw_encoding": 514,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Alt modifier",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 135,
+        "y": 375,
+        "direction": "E"
+      }
+    },
+    {
+      "position_id": "left-pinky-s",
+      "switch": "pinky",
+      "physical_description": "Pinky S",
+      "device_control_id": 34,
+      "layer": "B1",
+      "output": {
+        "display": "V",
+        "raw_encoding": 281,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Melee",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 135,
+        "y": 375,
+        "direction": "S"
+      }
+    },
+    {
+      "position_id": "left-pinky-w",
+      "switch": "pinky",
+      "physical_description": "Pinky W",
+      "device_control_id": 33,
+      "layer": "B1",
+      "output": {
+        "display": "B2",
+        "raw_encoding": 550,
+        "type": "device_action"
+      },
+      "action": {
+        "name": "Hold layer 2",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 135,
+        "y": 375,
+        "direction": "W"
+      }
+    },
+    {
+      "position_id": "left-ring-n",
+      "switch": "ring",
+      "physical_description": "Ring N",
+      "device_control_id": 27,
+      "layer": "B1",
+      "output": {
+        "display": "3",
+        "raw_encoding": 288,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Slot 3",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 385,
+        "y": 230,
+        "direction": "N"
+      }
+    },
+    {
+      "position_id": "left-ring-e",
+      "switch": "ring",
+      "physical_description": "Ring E",
+      "device_control_id": 26,
+      "layer": "B1",
+      "output": {
+        "display": "4",
+        "raw_encoding": 289,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Slot 4",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 385,
+        "y": 230,
+        "direction": "E"
+      }
+    },
+    {
+      "position_id": "left-ring-s",
+      "switch": "ring",
+      "physical_description": "Ring S",
+      "device_control_id": 29,
+      "layer": "B1",
+      "output": {
+        "display": "Ctrl",
+        "raw_encoding": 512,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Crouch",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 385,
+        "y": 230,
+        "direction": "S"
+      }
+    },
+    {
+      "position_id": "left-ring-w",
+      "switch": "ring",
+      "physical_description": "Ring W",
+      "device_control_id": 28,
+      "layer": "B1",
+      "output": {
+        "display": "G",
+        "raw_encoding": 266,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Grenade / tool",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 385,
+        "y": 230,
+        "direction": "W"
+      }
+    },
+    {
+      "position_id": "left-middle-n",
+      "switch": "middle",
+      "physical_description": "Middle N",
+      "device_control_id": 22,
+      "layer": "B1",
+      "output": {
+        "display": "1",
+        "raw_encoding": 286,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Slot 1",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 635,
+        "y": 230,
+        "direction": "N"
+      }
+    },
+    {
+      "position_id": "left-middle-e",
+      "switch": "middle",
+      "physical_description": "Middle E",
+      "device_control_id": 21,
+      "layer": "B1",
+      "output": {
+        "display": "2",
+        "raw_encoding": 287,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Slot 2",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 635,
+        "y": 230,
+        "direction": "E"
+      }
+    },
+    {
+      "position_id": "left-middle-s",
+      "switch": "middle",
+      "physical_description": "Middle S",
+      "device_control_id": 24,
+      "layer": "B1",
+      "output": {
+        "display": "Shift",
+        "raw_encoding": 513,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Sprint",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 635,
+        "y": 230,
+        "direction": "S"
+      }
+    },
+    {
+      "position_id": "left-middle-w",
+      "switch": "middle",
+      "physical_description": "Middle W",
+      "device_control_id": 23,
+      "layer": "B1",
+      "output": {
+        "display": "Q",
+        "raw_encoding": 276,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Ability / lean",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 635,
+        "y": 230,
+        "direction": "W"
+      }
+    },
+    {
+      "position_id": "left-index-n",
+      "switch": "index",
+      "physical_description": "Index N",
+      "device_control_id": 17,
+      "layer": "B1",
+      "output": {
+        "display": "E",
+        "raw_encoding": 264,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Interact",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 885,
+        "y": 375,
+        "direction": "N"
+      }
+    },
+    {
+      "position_id": "left-index-e",
+      "switch": "index",
+      "physical_description": "Index E",
+      "device_control_id": 16,
+      "layer": "B1",
+      "output": {
+        "display": "R",
+        "raw_encoding": 277,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Reload",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 885,
+        "y": 375,
+        "direction": "E"
+      }
+    },
+    {
+      "position_id": "left-index-s",
+      "switch": "index",
+      "physical_description": "Index S",
+      "device_control_id": 19,
+      "layer": "B1",
+      "output": {
+        "display": "Space",
+        "raw_encoding": 32,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Jump",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 885,
+        "y": 375,
+        "direction": "S"
+      }
+    },
+    {
+      "position_id": "left-index-w",
+      "switch": "index",
+      "physical_description": "Index W",
+      "device_control_id": 18,
+      "layer": "B1",
+      "output": {
+        "display": "F",
+        "raw_encoding": 265,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Use / interact",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 885,
+        "y": 375,
+        "direction": "W"
+      }
+    },
+    {
+      "position_id": "left-aux1-n",
+      "switch": "aux1",
+      "physical_description": "Aux 1 N",
+      "device_control_id": 42,
+      "layer": "B1",
+      "output": {
+        "display": "Esc",
+        "raw_encoding": 297,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Pause / back",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 385,
+        "y": 520,
+        "direction": "N"
+      }
+    },
+    {
+      "position_id": "left-aux1-e",
+      "switch": "aux1",
+      "physical_description": "Aux 1 E",
+      "device_control_id": 41,
+      "layer": "B1",
+      "output": {
+        "display": "I",
+        "raw_encoding": 268,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Inventory",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 385,
+        "y": 520,
+        "direction": "E"
+      }
+    },
+    {
+      "position_id": "left-aux1-s",
+      "switch": "aux1",
+      "physical_description": "Aux 1 S",
+      "device_control_id": 44,
+      "layer": "B1",
+      "output": {
+        "display": "Enter",
+        "raw_encoding": 296,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Confirm",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 385,
+        "y": 520,
+        "direction": "S"
+      }
+    },
+    {
+      "position_id": "left-aux1-w",
+      "switch": "aux1",
+      "physical_description": "Aux 1 W",
+      "device_control_id": 43,
+      "layer": "B1",
+      "output": {
+        "display": "M",
+        "raw_encoding": 272,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Map",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 385,
+        "y": 520,
+        "direction": "W"
+      }
+    },
+    {
+      "position_id": "left-aux2-n",
+      "switch": "aux2",
+      "physical_description": "Aux 2 N",
+      "device_control_id": 37,
+      "layer": "B1",
+      "output": {
+        "display": "5",
+        "raw_encoding": 290,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Slot 5",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 635,
+        "y": 520,
+        "direction": "N"
+      }
+    },
+    {
+      "position_id": "left-aux2-e",
+      "switch": "aux2",
+      "physical_description": "Aux 2 E",
+      "device_control_id": 36,
+      "layer": "B1",
+      "output": {
+        "display": "6",
+        "raw_encoding": 291,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Slot 6",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 635,
+        "y": 520,
+        "direction": "E"
+      }
+    },
+    {
+      "position_id": "left-aux2-s",
+      "switch": "aux2",
+      "physical_description": "Aux 2 S",
+      "device_control_id": 39,
+      "layer": "B1",
+      "output": {
+        "display": "X",
+        "raw_encoding": 283,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Secondary action",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 635,
+        "y": 520,
+        "direction": "S"
+      }
+    },
+    {
+      "position_id": "left-aux2-w",
+      "switch": "aux2",
+      "physical_description": "Aux 2 W",
+      "device_control_id": 38,
+      "layer": "B1",
+      "output": {
+        "display": "C",
+        "raw_encoding": 262,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Crouch toggle",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 635,
+        "y": 520,
+        "direction": "W"
+      }
+    },
+    {
+      "position_id": "left-thumb1-n",
+      "switch": "thumb1",
+      "physical_description": "Thumb 1 N",
+      "device_control_id": 12,
+      "layer": "B1",
+      "output": {
+        "display": "W",
+        "raw_encoding": 282,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Forward",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 1025,
+        "y": 670,
+        "direction": "N"
+      }
+    },
+    {
+      "position_id": "left-thumb1-e",
+      "switch": "thumb1",
+      "physical_description": "Thumb 1 E",
+      "device_control_id": 11,
+      "layer": "B1",
+      "output": {
+        "display": "D",
+        "raw_encoding": 263,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Strafe right",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 1025,
+        "y": 670,
+        "direction": "E"
+      }
+    },
+    {
+      "position_id": "left-thumb1-s",
+      "switch": "thumb1",
+      "physical_description": "Thumb 1 S",
+      "device_control_id": 14,
+      "layer": "B1",
+      "output": {
+        "display": "S",
+        "raw_encoding": 278,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Backward",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 1025,
+        "y": 670,
+        "direction": "S"
+      }
+    },
+    {
+      "position_id": "left-thumb1-w",
+      "switch": "thumb1",
+      "physical_description": "Thumb 1 W",
+      "device_control_id": 13,
+      "layer": "B1",
+      "output": {
+        "display": "A",
+        "raw_encoding": 260,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Strafe left",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 1025,
+        "y": 670,
+        "direction": "W"
+      }
+    },
+    {
+      "position_id": "left-thumb2-n",
+      "switch": "thumb2",
+      "physical_description": "Thumb 2 N",
+      "device_control_id": 7,
+      "layer": "B1",
+      "output": {
+        "display": "T",
+        "raw_encoding": 279,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Chat / action",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 895,
+        "y": 970,
+        "direction": "N"
+      }
+    },
+    {
+      "position_id": "left-thumb2-e",
+      "switch": "thumb2",
+      "physical_description": "Thumb 2 E",
+      "device_control_id": 6,
+      "layer": "B1",
+      "output": {
+        "display": "B",
+        "raw_encoding": 261,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Build / action",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 895,
+        "y": 970,
+        "direction": "E"
+      }
+    },
+    {
+      "position_id": "left-thumb2-s",
+      "switch": "thumb2",
+      "physical_description": "Thumb 2 S",
+      "device_control_id": 9,
+      "layer": "B1",
+      "output": {
+        "display": "H",
+        "raw_encoding": 267,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Heal / action",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 895,
+        "y": 970,
+        "direction": "S"
+      }
+    },
+    {
+      "position_id": "left-thumb2-w",
+      "switch": "thumb2",
+      "physical_description": "Thumb 2 W",
+      "device_control_id": 8,
+      "layer": "B1",
+      "output": {
+        "display": "Z",
+        "raw_encoding": 285,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Prone / action",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 895,
+        "y": 970,
+        "direction": "W"
+      }
+    },
+    {
+      "position_id": "left-pinky-n",
+      "switch": "pinky",
+      "physical_description": "Pinky N",
+      "device_control_id": 32,
+      "layer": "B2",
+      "output": {
+        "display": "Tab",
+        "raw_encoding": 299,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Inventory / score",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 135,
+        "y": 375,
+        "direction": "N"
+      }
+    },
+    {
+      "position_id": "left-pinky-e",
+      "switch": "pinky",
+      "physical_description": "Pinky E",
+      "device_control_id": 31,
+      "layer": "B2",
+      "output": {
+        "display": "Alt",
+        "raw_encoding": 514,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Alt modifier",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 135,
+        "y": 375,
+        "direction": "E"
+      }
+    },
+    {
+      "position_id": "left-pinky-s",
+      "switch": "pinky",
+      "physical_description": "Pinky S",
+      "device_control_id": 34,
+      "layer": "B2",
+      "output": {
+        "display": "V",
+        "raw_encoding": 281,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Melee",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 135,
+        "y": 375,
+        "direction": "S"
+      }
+    },
+    {
+      "position_id": "left-pinky-w",
+      "switch": "pinky",
+      "physical_description": "Pinky W",
+      "device_control_id": 33,
+      "layer": "B2",
+      "output": {
+        "display": "B2",
+        "raw_encoding": 550,
+        "type": "device_action"
+      },
+      "action": {
+        "name": "Hold layer 2",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 135,
+        "y": 375,
+        "direction": "W"
+      }
+    },
+    {
+      "position_id": "left-ring-n",
+      "switch": "ring",
+      "physical_description": "Ring N",
+      "device_control_id": 27,
+      "layer": "B2",
+      "output": {
+        "display": "7",
+        "raw_encoding": 292,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Slot 7",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 385,
+        "y": 230,
+        "direction": "N"
+      }
+    },
+    {
+      "position_id": "left-ring-e",
+      "switch": "ring",
+      "physical_description": "Ring E",
+      "device_control_id": 26,
+      "layer": "B2",
+      "output": {
+        "display": "8",
+        "raw_encoding": 293,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Slot 8",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 385,
+        "y": 230,
+        "direction": "E"
+      }
+    },
+    {
+      "position_id": "left-ring-s",
+      "switch": "ring",
+      "physical_description": "Ring S",
+      "device_control_id": 29,
+      "layer": "B2",
+      "output": {
+        "display": "Ctrl",
+        "raw_encoding": 512,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Crouch",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 385,
+        "y": 230,
+        "direction": "S"
+      }
+    },
+    {
+      "position_id": "left-ring-w",
+      "switch": "ring",
+      "physical_description": "Ring W",
+      "device_control_id": 28,
+      "layer": "B2",
+      "output": {
+        "display": "9",
+        "raw_encoding": 294,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Slot 9",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 385,
+        "y": 230,
+        "direction": "W"
+      }
+    },
+    {
+      "position_id": "left-middle-n",
+      "switch": "middle",
+      "physical_description": "Middle N",
+      "device_control_id": 22,
+      "layer": "B2",
+      "output": {
+        "display": "5",
+        "raw_encoding": 290,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Slot 5",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 635,
+        "y": 230,
+        "direction": "N"
+      }
+    },
+    {
+      "position_id": "left-middle-e",
+      "switch": "middle",
+      "physical_description": "Middle E",
+      "device_control_id": 21,
+      "layer": "B2",
+      "output": {
+        "display": "6",
+        "raw_encoding": 291,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Slot 6",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 635,
+        "y": 230,
+        "direction": "E"
+      }
+    },
+    {
+      "position_id": "left-middle-s",
+      "switch": "middle",
+      "physical_description": "Middle S",
+      "device_control_id": 24,
+      "layer": "B2",
+      "output": {
+        "display": "Shift",
+        "raw_encoding": 513,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Sprint",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 635,
+        "y": 230,
+        "direction": "S"
+      }
+    },
+    {
+      "position_id": "left-middle-w",
+      "switch": "middle",
+      "physical_description": "Middle W",
+      "device_control_id": 23,
+      "layer": "B2",
+      "output": {
+        "display": "0",
+        "raw_encoding": 295,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Slot 0",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 635,
+        "y": 230,
+        "direction": "W"
+      }
+    },
+    {
+      "position_id": "left-index-n",
+      "switch": "index",
+      "physical_description": "Index N",
+      "device_control_id": 17,
+      "layer": "B2",
+      "output": {
+        "display": "I",
+        "raw_encoding": 268,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Inventory",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 885,
+        "y": 375,
+        "direction": "N"
+      }
+    },
+    {
+      "position_id": "left-index-e",
+      "switch": "index",
+      "physical_description": "Index E",
+      "device_control_id": 16,
+      "layer": "B2",
+      "output": {
+        "display": "F",
+        "raw_encoding": 265,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Use / interact",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 885,
+        "y": 375,
+        "direction": "E"
+      }
+    },
+    {
+      "position_id": "left-index-s",
+      "switch": "index",
+      "physical_description": "Index S",
+      "device_control_id": 19,
+      "layer": "B2",
+      "output": {
+        "display": "Space",
+        "raw_encoding": 32,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Jump",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 885,
+        "y": 375,
+        "direction": "S"
+      }
+    },
+    {
+      "position_id": "left-index-w",
+      "switch": "index",
+      "physical_description": "Index W",
+      "device_control_id": 18,
+      "layer": "B2",
+      "output": {
+        "display": "M",
+        "raw_encoding": 272,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Map",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 885,
+        "y": 375,
+        "direction": "W"
+      }
+    },
+    {
+      "position_id": "left-aux1-n",
+      "switch": "aux1",
+      "physical_description": "Aux 1 N",
+      "device_control_id": 42,
+      "layer": "B2",
+      "output": {
+        "display": "Esc",
+        "raw_encoding": 297,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Pause / back",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 385,
+        "y": 520,
+        "direction": "N"
+      }
+    },
+    {
+      "position_id": "left-aux1-e",
+      "switch": "aux1",
+      "physical_description": "Aux 1 E",
+      "device_control_id": 41,
+      "layer": "B2",
+      "output": {
+        "display": "ProfileA",
+        "raw_encoding": 650,
+        "type": "device_action"
+      },
+      "action": {
+        "name": "Return to typing",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 385,
+        "y": 520,
+        "direction": "E"
+      }
+    },
+    {
+      "position_id": "left-aux1-s",
+      "switch": "aux1",
+      "physical_description": "Aux 1 S",
+      "device_control_id": 44,
+      "layer": "B2",
+      "output": {
+        "display": "Enter",
+        "raw_encoding": 296,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Confirm",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 385,
+        "y": 520,
+        "direction": "S"
+      }
+    },
+    {
+      "position_id": "left-aux1-w",
+      "switch": "aux1",
+      "physical_description": "Aux 1 W",
+      "device_control_id": 43,
+      "layer": "B2",
+      "output": {
+        "display": "Home",
+        "raw_encoding": 330,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "ReShade menu",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 385,
+        "y": 520,
+        "direction": "W"
+      }
+    },
+    {
+      "position_id": "left-aux2-n",
+      "switch": "aux2",
+      "physical_description": "Aux 2 N",
+      "device_control_id": 37,
+      "layer": "B2",
+      "output": {
+        "display": "F9",
+        "raw_encoding": 322,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Game-specific*",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 635,
+        "y": 520,
+        "direction": "N"
+      }
+    },
+    {
+      "position_id": "left-aux2-e",
+      "switch": "aux2",
+      "physical_description": "Aux 2 E",
+      "device_control_id": 36,
+      "layer": "B2",
+      "output": {
+        "display": "F10",
+        "raw_encoding": 323,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Neural rendering*",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 635,
+        "y": 520,
+        "direction": "E"
+      }
+    },
+    {
+      "position_id": "left-aux2-s",
+      "switch": "aux2",
+      "physical_description": "Aux 2 S",
+      "device_control_id": 39,
+      "layer": "B2",
+      "output": {
+        "display": "F12",
+        "raw_encoding": 325,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Graphics controls*",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 635,
+        "y": 520,
+        "direction": "S"
+      }
+    },
+    {
+      "position_id": "left-aux2-w",
+      "switch": "aux2",
+      "physical_description": "Aux 2 W",
+      "device_control_id": 38,
+      "layer": "B2",
+      "output": {
+        "display": "F11",
+        "raw_encoding": 324,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Personal NR slot*",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 635,
+        "y": 520,
+        "direction": "W"
+      }
+    },
+    {
+      "position_id": "left-thumb1-n",
+      "switch": "thumb1",
+      "physical_description": "Thumb 1 N",
+      "device_control_id": 12,
+      "layer": "B2",
+      "output": {
+        "display": "W",
+        "raw_encoding": 282,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Forward",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 1025,
+        "y": 670,
+        "direction": "N"
+      }
+    },
+    {
+      "position_id": "left-thumb1-e",
+      "switch": "thumb1",
+      "physical_description": "Thumb 1 E",
+      "device_control_id": 11,
+      "layer": "B2",
+      "output": {
+        "display": "D",
+        "raw_encoding": 263,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Strafe right",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 1025,
+        "y": 670,
+        "direction": "E"
+      }
+    },
+    {
+      "position_id": "left-thumb1-s",
+      "switch": "thumb1",
+      "physical_description": "Thumb 1 S",
+      "device_control_id": 14,
+      "layer": "B2",
+      "output": {
+        "display": "S",
+        "raw_encoding": 278,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Backward",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 1025,
+        "y": 670,
+        "direction": "S"
+      }
+    },
+    {
+      "position_id": "left-thumb1-w",
+      "switch": "thumb1",
+      "physical_description": "Thumb 1 W",
+      "device_control_id": 13,
+      "layer": "B2",
+      "output": {
+        "display": "A",
+        "raw_encoding": 260,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Strafe left",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 1025,
+        "y": 670,
+        "direction": "W"
+      }
+    },
+    {
+      "position_id": "left-thumb2-n",
+      "switch": "thumb2",
+      "physical_description": "Thumb 2 N",
+      "device_control_id": 7,
+      "layer": "B2",
+      "output": {
+        "display": "F5",
+        "raw_encoding": 318,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Game quick save",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 895,
+        "y": 970,
+        "direction": "N"
+      }
+    },
+    {
+      "position_id": "left-thumb2-e",
+      "switch": "thumb2",
+      "physical_description": "Thumb 2 E",
+      "device_control_id": 6,
+      "layer": "B2",
+      "output": {
+        "display": "F6",
+        "raw_encoding": 319,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Game / DLSS SR*",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 895,
+        "y": 970,
+        "direction": "E"
+      }
+    },
+    {
+      "position_id": "left-thumb2-s",
+      "switch": "thumb2",
+      "physical_description": "Thumb 2 S",
+      "device_control_id": 9,
+      "layer": "B2",
+      "output": {
+        "display": "Backspace",
+        "raw_encoding": 298,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "Back / erase",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 895,
+        "y": 970,
+        "direction": "S"
+      }
+    },
+    {
+      "position_id": "left-thumb2-w",
+      "switch": "thumb2",
+      "physical_description": "Thumb 2 W",
+      "device_control_id": 8,
+      "layer": "B2",
+      "output": {
+        "display": "F7",
+        "raw_encoding": 320,
+        "type": "keyboard"
+      },
+      "action": {
+        "name": "NR dimensions*",
+        "origin": "suggested_common_role"
+      },
+      "game_effective_binding": null,
+      "verification": {
+        "configuration": "device_readback_verified",
+        "physical": "pending",
+        "gameplay": "not_tested"
+      },
+      "geometry": {
+        "x": 895,
+        "y": 970,
+        "direction": "W"
+      }
+    }
+  ],
+  "entry": {
+    "from": "A",
+    "chord": [
+      "E",
+      "O",
+      "U"
+    ],
+    "physical": "Left index, middle and ring fingers SOUTH together, then release together",
+    "output": [
+      651,
+      256
+    ]
+  },
+  "exit": {
+    "from": "B2",
+    "control": "Left Aux 1 EAST",
+    "output": 650
+  },
+  "verification": {
+    "configuration": "verified by complete device readback after commit and serial reopen",
+    "physical": "pending",
+    "gameplay": "not_tested",
+    "power_cycle": "pending",
+    "gameplay_prompts": "not_tested"
+  },
+  "exceptions": [
+    "User selected a dedicated momentary pinky-out layer key with V separate; 150ms tap/hold is not configured.",
+    "Game roles are suggestions; no game bindings were edited.",
+    "Master Forge downward press actuates four directions; it is not a separately mapped gaming button.",
+    "No new mapper or background helper required."
+  ],
+  "input_path": [
+    "Master Forge CCOS 3.0.0 onboard mapping",
+    "USB keyboard HID",
+    "game keyboard input"
+  ],
+  "mapper": {
+    "name": "CCOS onboard",
+    "version": "3.0.0",
+    "slot": "B",
+    "background_agent_required": false
+  }
+}

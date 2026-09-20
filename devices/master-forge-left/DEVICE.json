@@ -1,0 +1,1097 @@
+{
+  "schema_version": 1,
+  "record_status": "configuration_verified_physical_validation_pending",
+  "device_alias": "master-forge-left",
+  "registry_revision": "1",
+  "last_verified": "2026-09-20",
+  "identity": {
+    "manufacturer": "CharaChorder / FORGE",
+    "model": "Master Forge left (M4G S3)",
+    "vendor_id": "303A",
+    "product_id": "829A",
+    "connection_mode": "USB wired",
+    "interfaces": [
+      "native serial configuration",
+      "USB keyboard/mouse composite"
+    ],
+    "firmware_version": "3.0.0",
+    "private_identity_reference": "private recovery archive",
+    "recognition_confidence": "API-reported model and firmware; matching left/right roles distinguished",
+    "ambiguous_matches": []
+  },
+  "geometry": {
+    "geometry_id": "m4g-left-top-view",
+    "revision": "official-manager-v1",
+    "handedness": "left",
+    "orientation": "Top view; north away from body, east right, south toward body, west left",
+    "source_references": [
+      "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+      "https://charachorder.io/firmware/m4g_s3/3.0.0/actions.json"
+    ],
+    "editable_layout_reference": "MAPPING.json#switches",
+    "coordinate_system": "diagram_pixels",
+    "verified": false,
+    "notes": "Physical topology and IDs sourced from official layout; individual user presses pending"
+  },
+  "baseline": {
+    "version": "2026-09-20-before",
+    "user_preconfigured": true,
+    "onboard_mode": "A typing; B blank",
+    "software_dependencies": [],
+    "native_exports": [
+      "private profile-A-before.json",
+      "private profile-B-before.json",
+      "private direct-before.json",
+      "private profile-A-browser-draft.json"
+    ],
+    "known_good_reference": null,
+    "sha256": null,
+    "verification": "readback_verified; previous gameplay quality unknown"
+  },
+  "controls": [
+    {
+      "position_id": "left-pinky-n",
+      "physical_description": "Pinky N",
+      "device_button_id": 32,
+      "mapper_control_label": "Tab",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 135,
+        "y": 375,
+        "direction": "N"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Inventory / score",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-pinky-e",
+      "physical_description": "Pinky E",
+      "device_button_id": 31,
+      "mapper_control_label": "Alt",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 135,
+        "y": 375,
+        "direction": "E"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Alt modifier",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-pinky-s",
+      "physical_description": "Pinky S",
+      "device_button_id": 34,
+      "mapper_control_label": "V",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 135,
+        "y": 375,
+        "direction": "S"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Melee",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-pinky-w",
+      "physical_description": "Pinky W",
+      "device_button_id": 33,
+      "mapper_control_label": "B2",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 135,
+        "y": 375,
+        "direction": "W"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Hold layer 2",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-ring-n",
+      "physical_description": "Ring N",
+      "device_button_id": 27,
+      "mapper_control_label": "3",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 385,
+        "y": 230,
+        "direction": "N"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Slot 3",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-ring-e",
+      "physical_description": "Ring E",
+      "device_button_id": 26,
+      "mapper_control_label": "4",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 385,
+        "y": 230,
+        "direction": "E"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Slot 4",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-ring-s",
+      "physical_description": "Ring S",
+      "device_button_id": 29,
+      "mapper_control_label": "Ctrl",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 385,
+        "y": 230,
+        "direction": "S"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Crouch",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-ring-w",
+      "physical_description": "Ring W",
+      "device_button_id": 28,
+      "mapper_control_label": "G",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 385,
+        "y": 230,
+        "direction": "W"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Grenade / tool",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-middle-n",
+      "physical_description": "Middle N",
+      "device_button_id": 22,
+      "mapper_control_label": "1",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 635,
+        "y": 230,
+        "direction": "N"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Slot 1",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-middle-e",
+      "physical_description": "Middle E",
+      "device_button_id": 21,
+      "mapper_control_label": "2",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 635,
+        "y": 230,
+        "direction": "E"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Slot 2",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-middle-s",
+      "physical_description": "Middle S",
+      "device_button_id": 24,
+      "mapper_control_label": "Shift",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 635,
+        "y": 230,
+        "direction": "S"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Sprint",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-middle-w",
+      "physical_description": "Middle W",
+      "device_button_id": 23,
+      "mapper_control_label": "Q",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 635,
+        "y": 230,
+        "direction": "W"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Ability / lean",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-index-n",
+      "physical_description": "Index N",
+      "device_button_id": 17,
+      "mapper_control_label": "E",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 885,
+        "y": 375,
+        "direction": "N"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Interact",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-index-e",
+      "physical_description": "Index E",
+      "device_button_id": 16,
+      "mapper_control_label": "R",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 885,
+        "y": 375,
+        "direction": "E"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Reload",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-index-s",
+      "physical_description": "Index S",
+      "device_button_id": 19,
+      "mapper_control_label": "Space",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 885,
+        "y": 375,
+        "direction": "S"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Jump",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-index-w",
+      "physical_description": "Index W",
+      "device_button_id": 18,
+      "mapper_control_label": "F",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 885,
+        "y": 375,
+        "direction": "W"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Use / interact",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-aux1-n",
+      "physical_description": "Aux 1 N",
+      "device_button_id": 42,
+      "mapper_control_label": "Esc",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 385,
+        "y": 520,
+        "direction": "N"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Pause / back",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-aux1-e",
+      "physical_description": "Aux 1 E",
+      "device_button_id": 41,
+      "mapper_control_label": "I",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 385,
+        "y": 520,
+        "direction": "E"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Inventory",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-aux1-s",
+      "physical_description": "Aux 1 S",
+      "device_button_id": 44,
+      "mapper_control_label": "Enter",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 385,
+        "y": 520,
+        "direction": "S"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Confirm",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-aux1-w",
+      "physical_description": "Aux 1 W",
+      "device_button_id": 43,
+      "mapper_control_label": "M",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 385,
+        "y": 520,
+        "direction": "W"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Map",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-aux2-n",
+      "physical_description": "Aux 2 N",
+      "device_button_id": 37,
+      "mapper_control_label": "5",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 635,
+        "y": 520,
+        "direction": "N"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Slot 5",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-aux2-e",
+      "physical_description": "Aux 2 E",
+      "device_button_id": 36,
+      "mapper_control_label": "6",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 635,
+        "y": 520,
+        "direction": "E"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Slot 6",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-aux2-s",
+      "physical_description": "Aux 2 S",
+      "device_button_id": 39,
+      "mapper_control_label": "X",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 635,
+        "y": 520,
+        "direction": "S"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Secondary action",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-aux2-w",
+      "physical_description": "Aux 2 W",
+      "device_button_id": 38,
+      "mapper_control_label": "C",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 635,
+        "y": 520,
+        "direction": "W"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Crouch toggle",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-thumb1-n",
+      "physical_description": "Thumb 1 N",
+      "device_button_id": 12,
+      "mapper_control_label": "W",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 1025,
+        "y": 670,
+        "direction": "N"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Forward",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-thumb1-e",
+      "physical_description": "Thumb 1 E",
+      "device_button_id": 11,
+      "mapper_control_label": "D",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 1025,
+        "y": 670,
+        "direction": "E"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Strafe right",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-thumb1-s",
+      "physical_description": "Thumb 1 S",
+      "device_button_id": 14,
+      "mapper_control_label": "S",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 1025,
+        "y": 670,
+        "direction": "S"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Backward",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-thumb1-w",
+      "physical_description": "Thumb 1 W",
+      "device_button_id": 13,
+      "mapper_control_label": "A",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 1025,
+        "y": 670,
+        "direction": "W"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Strafe left",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-thumb2-n",
+      "physical_description": "Thumb 2 N",
+      "device_button_id": 7,
+      "mapper_control_label": "T",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 895,
+        "y": 970,
+        "direction": "N"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Chat / action",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-thumb2-e",
+      "physical_description": "Thumb 2 E",
+      "device_button_id": 6,
+      "mapper_control_label": "B",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 895,
+        "y": 970,
+        "direction": "E"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Build / action",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-thumb2-s",
+      "physical_description": "Thumb 2 S",
+      "device_button_id": 9,
+      "mapper_control_label": "H",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 895,
+        "y": 970,
+        "direction": "S"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Heal / action",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    },
+    {
+      "position_id": "left-thumb2-w",
+      "physical_description": "Thumb 2 W",
+      "device_button_id": 8,
+      "mapper_control_label": "Z",
+      "interface_alias": "master-forge-left-keyboard",
+      "kind": "digital_direction",
+      "geometry": {
+        "x": 895,
+        "y": 970,
+        "direction": "W"
+      },
+      "baseline_output": {
+        "type": "device_action",
+        "display": "ACTION_MAX",
+        "codes": [
+          1023
+        ],
+        "axes": []
+      },
+      "distinct_input_verified": false,
+      "shared_logical_role": "Prone / action",
+      "verification": {
+        "position": "upstream_geometry",
+        "press": "pending",
+        "release": "pending",
+        "source": "https://github.com/CharaChorder/DeviceManager/blob/master/src/lib/assets/layouts/m4g.layout.yml",
+        "date": "2026-09-20"
+      },
+      "notes": "Output assignment is verified, physical source-event mapping is not yet tested"
+    }
+  ],
+  "adaptations": [
+    {
+      "logical_base_version": "master-forge-left-v1",
+      "mapper": {
+        "name": "CCOS onboard",
+        "version": "3.0.0",
+        "features_available": [
+          "3 profiles",
+          "4 layers",
+          "momentary layer key",
+          "native scancodes"
+        ]
+      },
+      "config_reference": "MAPPING.json",
+      "device_group_alias": "master-forge-left",
+      "native_export_reference": "private gaming-B-complete-recovery.json",
+      "layer_preference": {
+        "tap_action_preserved": false,
+        "hold_threshold_ms": 0,
+        "while_held_only": true,
+        "release_returns_to_base": true,
+        "verification": "configuration_verified; physical test pending"
+      },
+      "output_mode": "keyboard",
+      "axis_settings_reference": null,
+      "exceptions": [
+        "User explicitly selected dedicated pinky-west hold layer with V on pinky-south.",
+        "No independent downward switch input; downward actuates all directions."
+      ]
+    }
+  ],
+  "pending_user_actions": [
+    "Verify entry chord E+O+U, WASD press/release, modifiers, layer return and exit action.",
+    "Verify persistence after reconnect and game-specific actions."
+  ],
+  "rollback": {
+    "baseline_reference": "private profile-B-before.json",
+    "steps": [
+      "Select B; restore pre-change full profile; Apply.",
+      "Remove only the added E+O+U entry chord if reverting entry behavior."
+    ]
+  },
+  "storage": {
+    "private_archive_reference": "Master Forge private recovery archive and Drive folder, 2026-09-20",
+    "sanitized_git_reference": "devices/master-forge-left"
+  },
+  "change_log": [
+    {
+      "date": "2026-09-20",
+      "summary": "Created and verified native left-hand gaming profile B; physical tests pending."
+    }
+  ]
+}
