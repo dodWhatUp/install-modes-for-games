@@ -2,7 +2,7 @@
 
 **Current mapping, 2026-09-13 evening:** F11 recalls personal NR settings slots 0–3, with Save Settings storing the selected slot. F7 toggles NR 25%/100% only. F8/Page Up/Page Down are unbound; user prefers NVIDIA statistics. F6 controls native DLSS separately; F9 remains Quick Load. Slot numbers are independent of the model hints inside them.
 
-Last confirmed: 2026-09-14
+Last confirmed: 2026-09-20
 
 
 ## Latest requested direction — 2026-09-20 (late integration update)
