@@ -44,3 +44,10 @@ Use the prepared local tester to check E+O+U entry, WASD press/release, Space/Sh
 - Generated Hebrew HTML guide with search/local opt-in tester and 24 separate keys/actions/combined diagrams for four layers and two banks. Verified rendered diagram, eight-row table, image loading and Backslash search in Chrome.
 - Recovery: private before/configured exports for A/B/C, immediate snapshots, exact manifest, serial rollback script, simulator evidence, guide and diagrams. Rollback restores the prior unused C and the B2 F, removes only three added pseudo chords and checks the prior library. The original A browser draft remains archived separately.
 - Next boundary: user D/B/D mirror test, layer return, native macros, mouse drag/release, reconnect, then game-specific action validation. No background monitoring or reminders.
+
+## 2026-09-24 — Usage clarification and intermittent A→B entry observation
+
+- Added a durable Hebrew operating guide for the existing Master Forge left mapping: hand-relative directions, A/B/C profile transitions, B/C layer behavior, Configurator action names, QMK-like capability mapping and the boundary between ordinary multi-key rollover and adjacent directions on one multidirectional switch.
+- User observation: the A→B entry chord (left index + middle + ring down together, E+O+U in A) succeeds only intermittently in physical use. This is USER_OBSERVED, not a diagnosed firmware/mapping fault.
+- No device mapping, profile, chord library, tolerance, firmware or game binding was changed in this chat.
+- Next verification: check E/O/U individually in A; then test chord Press Tolerance / Release Tolerance before considering a simpler Profile B trigger. Separately test the four adjacent-direction combinations on the upper-thumb movement switch. Adjacent-direction test status: NOT_RUN.

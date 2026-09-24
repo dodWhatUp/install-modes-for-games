@@ -1098,7 +1098,9 @@
   "pending_user_actions": [
     "Verify entry chord E+O+U, WASD press/release, modifiers, layer return and exit action.",
     "Verify persistence after reconnect and game-specific actions.",
-    "C1 ring north D; mirror held + ring north B; release then D. Check C2/C3/C4 returns, mouse drag/release, three macros and reconnect."
+    "C1 ring north D; mirror held + ring north B; release then D. Check C2/C3/C4 returns, mouse drag/release, three macros and reconnect.",
+    "Investigate user-reported intermittent A→B E+O+U physical chord: verify E/O/U individually in A and Press/Release Tolerance before any remap.",
+    "Test whether adjacent directions on the upper-thumb movement switch can be held simultaneously and reliably for diagonal movement; current status NOT_RUN."
   ],
   "rollback": {
     "baseline_reference": "private profile-B-before.json",
@@ -1119,6 +1121,10 @@
     {
       "date": "2026-09-20",
       "summary": "Added C with all standard keyboard functions, mouse, three fixed native macros and Windows shortcut positions; B2 entry added. All A maps/settings and original 501 chords preserved."
+    },
+    {
+      "date": "2026-09-24",
+      "summary": "Documented operating model and user-observed intermittent A→B entry chord; no mapping/settings changed; adjacent-direction diagonal test remains NOT_RUN."
     }
   ]
 }

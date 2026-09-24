@@ -1,5 +1,7 @@
 # Master Forge — shared left-hand gaming base
 
+For the current Hebrew operating guide, profile/layer transitions, Configurator action names, QMK-like capability notes and physical-test status, see [USAGE-GUIDE-HE.md](USAGE-GUIDE-HE.md).
+
 Profile 2 is **B** in CharaChorder Device Manager. B1 is primary; B2 is active while the left pinky is held west/outward. V is on pinky south. This exception was explicitly selected for this device on 2026-09-20.
 
 From typing profile A, chord left index, middle and ring **south together**, then release together: E+O+U enters B. Perform the initial check in a harmless text field. To return to A, hold pinky west and press Aux 1 east, then release. Selecting A/B/C at the top of the web manager selects an editor target, not the active physical typing profile.
@@ -37,3 +39,7 @@ C preserves the gaming base B and the original typing profile A. From B hold pin
 The final mapping covers standard 104-key keyboard functions, including both modifier sides, numpad, arrows, navigation, locks and punctuation. Character output follows Windows input language. Coverage is a mapping audit, not a claim of physical/play-tested comfort. See [C mapping](MAPPING-C.json) and [the expansion guide](ONE-HAND-GUIDE.md). The private Hebrew HTML guide provides searchable keys and 24 keys/actions/combined diagrams of the actual left-device geometry.
 
 C uses three fixed native macros and ordinary held-modifier shortcuts. B chording stays disabled. C chording is enabled with minimum keys 1, autocorrect and arpeggiates off. Raw typing scan codes have no collision with the pre-existing 501-entry library.
+
+## Physical-use note — 2026-09-24
+
+The user reported that the A→B three-finger E+O+U entry chord is intermittent in real use. No mapping or setting was changed in response. Treat the cause as unknown until individual E/O/U directions and Chording press/release tolerance are tested. Adjacent-direction diagonal input on one physical switch also remains NOT_RUN; see the Hebrew usage guide.
