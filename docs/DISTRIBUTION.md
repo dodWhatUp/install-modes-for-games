@@ -11,3 +11,5 @@ Run `python scripts/Export-ModGuide.py --output <private-output-folder>` from th
 Configuration/source examples document previous installations and may require private snapshot files or runtime-specific builds. They are not universal installers. In particular, `Restore-UnifiedControls.ps1` requires an explicit `-GameDirectory` pointing at the actual Cyberpunk `bin/x64` folder plus the matching private snapshot; it cannot restore anything from this public repository alone.
 
 Read [Skyrim's history](../games/skyrim-special-edition/HISTORY.md) for installation status. A candidate in a comparison table is not evidence that its archive has been downloaded, installed or tested.
+
+The separate [PureDark private archive index](PUREDARK-ARCHIVE-2026-10-07.md) records the 7 October 2026 paid-release backup. Its linked Drive folder keeps private archives under existing permissions; Git contains only sanitized metadata and hashes.

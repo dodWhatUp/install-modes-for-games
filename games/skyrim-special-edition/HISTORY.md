@@ -2,10 +2,21 @@
 
 ## Current state
 
-- State: **MO2 2.5.2 installed and configured**; basic mods are **not installed yet** because Nexus downloads require sign-in.
+- State: **MO2 2.5.2 installed and configured**. PureDark Skyrim Upscaler AIO Build 19 Hotfix 1 is downloaded, inspected and privately archived, but **not deployed** because official SKSE64 2.3.1 still requires Nexus sign-in.
 - Last known-good: not established in this review; current files are not evidence of launchability.
-- Next boundary: obtain matching foundation packages after Nexus sign-in, refresh the just-in-time snapshot and validate each installed layer.
+- Next boundary: obtain official SKSE64 2.3.1 after Nexus sign-in, refresh the just-in-time snapshot, then deploy SKSE and the PureDark package one layer at a time through the existing MO2 profile.
 - Reminder policy: no reminder or background experiment scheduled.
+
+## 2026-10-07 — PureDark AIO Build 19 Hotfix 1 prepared
+
+- Confirmed the Patreon-linked Discord membership and official `Upscaler User` access. Downloaded `SkyrimUpscalerAIOBuild19-Hotfix1.zip` from PureDark's `skyrim-downloads` forum; 293,378,393 bytes, SHA-256 `A1278908205EC6C6442E204EEB504264AB6D2FEAA95E79026F534511C109FE6C`.
+- The package contains an SKSE plugin plus its `UpscalerBasePlugin` runtime. Its default configuration selects DLSS upscaling, DLSS frame generation, x2 FG, and first-person PD FrameWarp; Dynamic MFG is available but disabled by default. Hotkeys are `End` for the menu, numpad `+` for FrameWarp, numpad `*` for FG, and numpad `-` for DLSS NR.
+- Local target remains Steam build 24914197, `SkyrimSE.exe` 1.7.104.0, RTX 5070 Ti and NVIDIA 616.56. Existing root ReShade 6.8.0 matches Hotfix 1's stated requirement. Current profile settings are borderless; no ENB, Community Shaders, SKSE or competing FG owner was found.
+- Archive inspection found signed NVIDIA/Intel/Streamline components and unsigned mod/AMD components. `nvngx_dlssnr.dll` reported `HashMismatch` through Windows Authenticode; this is recorded as an inspection result, not a malware conclusion. The attempted Defender custom scan returned an error and therefore did not verify the archive.
+- No game or MO2 files were changed. Installation stopped at the prerequisite boundary because the official SKSE64 2.3.1 package for Steam 1.7.104 is Nexus-hosted and the current Nexus session is a guest. No older SKSE, downgrade or unofficial substitute was installed.
+- The private Drive archive and full hash manifest are documented in [the PureDark archive index](../../docs/PUREDARK-ARCHIVE-2026-10-07.md). Paid archives and Discord CDN URLs remain outside Git.
+- Planned first test after SKSE is available: stock launch, SKSE launch, AIO with DLSS SR only, DLSS FG/MFG, then PD FrameWarp. Keep RTSS off for the first pass, NVIDIA Smooth Motion off, ReShade updated at 6.8.0 full add-on support, and only one FG owner active.
+- Rollback: disable the MO2 PureDark mod, remove only manifested SKSE root files if SKSE itself must be reverted, and restore the just-in-time root/profile snapshot. No rollback is needed yet because deployment did not occur.
 
 ## 2026-09-14 — Installed-library review
 
