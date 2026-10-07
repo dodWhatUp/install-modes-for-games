@@ -2,10 +2,21 @@
 
 ## Current state
 
-- State: **MO2 2.5.2 installed and configured**. PureDark Skyrim Upscaler AIO Build 19 Hotfix 1 is downloaded, inspected and privately archived, but **not deployed** because official SKSE64 2.3.1 still requires Nexus sign-in.
-- Last known-good: not established in this review; current files are not evidence of launchability.
-- Next boundary: obtain official SKSE64 2.3.1 after Nexus sign-in, refresh the just-in-time snapshot, then deploy SKSE and the PureDark package one layer at a time through the existing MO2 profile.
+- State: **MO2 2.5.2, SKSE64 2.3.1 and Address Library v13 are installed** for Steam runtime 1.7.104. PureDark Skyrim Upscaler AIO Build 19 Hotfix 1 is installed and configured as an MO2 mod but deliberately **disabled** because the current plugin does not support Skyrim 1.7.x.
+- Last known-good: the pre-change state is preserved in private snapshot `20261007-095312-pre-skse-puredark-b19hf1`. SKSE injection was observed, but a clean SKSE-only main-menu/gameplay result is not yet established.
+- Next boundary: wait for PureDark to publish explicit 1.7.104/1.7.x compatibility, then refresh the snapshot, replace only the PureDark mod, and retest in stages. Do not downgrade Skyrim silently.
 - Reminder policy: no reminder or background experiment scheduled.
+
+## 2026-10-07 — SKSE installed; PureDark blocked by confirmed 1.7.x incompatibility
+
+- Downloaded the official Nexus Steam package `SKSE64 2.3.1` for runtime 1.7.104; archive SHA-256 `7BAD616ED360823A027F8828801D91E3A4AA2EACD952023AF7F3E31ADB2AE250`. Installed `skse64_loader.exe` and `skse64_1_7_104.dll` in the game root, placed the 62 required `.pex` files in the MO2 mod `SKSE64 2.3.1 Scripts`, and added an SKSE launcher entry to MO2.
+- Downloaded Address Library All in One v13 for 1.7.104; archive SHA-256 `BE0C7C07FB63FD1C1403690D4797C7A8FDF8799118ACCEB605F285D7B0EE055F`. The required `versionlib-1-7-104-0.bin` has SHA-256 `8AAB3DD251D135B849BD983F86A4A205C920FA3E81F8E30C0E63CCFEF9423842` and remains enabled through MO2.
+- Installed PureDark Build 19 Hotfix 1 as a separate MO2 mod. Prepared settings select DLSS Quality, NVIDIA DLSS FG, Dynamic MFG targeting the active display refresh, x4 manual fallback, first-person PD FrameWarp, F12 for the unified menu and F10 for DLSS NR. DLSS NR remains off initially. Numpad `+` toggles FrameWarp and numpad `*` toggles FG. F6/F7/F11 and a second Delete menu binding are not available in this binary and were not fabricated.
+- Just-in-time snapshot `20261007-095312-pre-skse-puredark-b19hf1` preserves the root manifest and ReShade configuration, MO2 profile/configuration, user INIs, Steam manifest/local configuration, process state, GPU evidence and archive hashes.
+- Runtime evidence: SKSE 2.3.1 recognized `SkyrimSE.exe` 1.7.104.0, injected its matching DLL and reached `loading plugin "SkyrimUpscaler"`. PureDark then stopped with `[critical] failed to open address library file`. The same handled failure reproduced with Address Library visible through MO2, with the exact library copied physically into `Data/SKSE/Plugins`, and with Skyrim's working directory forced explicitly. The physical duplicate was removed after it proved ineffective.
+- Upstream confirmation: in PureDark's Discord bug thread, a user reported the same failure on Build 19 and PureDark replied on 2026-10-03: `Not compatible with 1.7.xxx yet`. This establishes an upstream runtime-compatibility block, not a missing local Address Library file.
+- Safe final state: PureDark remains installed/configured but disabled; SKSE scripts and Address Library remain enabled; existing ReShade 6.8.0.2155 is unchanged; no Community Shaders, competing FG owner or RTSS process was introduced. Effective HAGS and NVIDIA Smooth Motion state remain unverified.
+- Rollback: disable the two enabled MO2 foundation mods if necessary, delete only `skse64_loader.exe` and `skse64_1_7_104.dll` from the root, remove the MO2 executable entry, and restore the named snapshot. The failed physical Address Library workaround was already removed and is recoverable from the downloaded archive/MO2 mod.
 
 ## 2026-10-07 — PureDark AIO Build 19 Hotfix 1 prepared
 

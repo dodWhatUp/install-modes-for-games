@@ -4,6 +4,8 @@ The private Google Drive archive is stored at `Game Modding/PureDark/2026-10-07 
 
 Source: PureDark's Patreon-linked Discord, official `Downloads` forum channels and legacy `*-beta-access` channels. The archive keeps the newest build or hotfix observed for each current branch. Separate DLSS/FSR branches and optional FP8 add-ons are retained when they are distinct current packages. `ACVUpscalerFSR3Build06-Test.zip` is explicitly experimental.
 
+Skyrim compatibility note: Build 19 Hotfix 1 is archived and installed locally as a disabled MO2 mod, but it is not usable on the installed Steam runtime 1.7.104. The plugin repeatedly stopped at Address Library initialization even with the exact v13 library present. In the official Discord bug thread, PureDark confirmed on 2026-10-03 that the current AIO was not yet compatible with Skyrim 1.7.x. The archive is therefore preservation/staging evidence, not a working recommendation; no downgrade was performed.
+
 ## Archive manifest
 
 | Game / branch | Archived file | SHA-256 |
