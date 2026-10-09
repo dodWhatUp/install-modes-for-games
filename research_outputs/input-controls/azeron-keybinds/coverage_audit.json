@@ -1,0 +1,1391 @@
+{
+  "schema_version": "1.0",
+  "audit_scope": "Bounded local audit of the final consolidated research. No new browsing, no live link-status claims, no original research inputs changed.",
+  "main_totals": {
+    "game_or_scoped_edition_records": 74,
+    "binding_rows": 1747
+  },
+  "source_audit": {
+    "registered_distinct_urls": 78,
+    "distinct_urls_cited_by_binding_rows": 76,
+    "registered_context_urls_without_binding_rows": 2,
+    "context_only_sources": [
+      {
+        "source_id": "src_92cd64479f77",
+        "url": "https://www.cyberpunk.net/en/news/49060/update-2-0",
+        "binding_rows": 0,
+        "referencing_game_titles": [
+          "Cyberpunk 2077 (legacy controls)"
+        ],
+        "role": "Context/caveat source; not cited directly by a binding row."
+      },
+      {
+        "source_id": "src_99e13d6df230",
+        "url": "https://support.riotgames.com/en-us/league-of-legends/performance/hotkeys-keybindings-faq",
+        "binding_rows": 0,
+        "referencing_game_titles": [
+          "League of Legends"
+        ],
+        "role": "Context/caveat source; not cited directly by a binding row."
+      }
+    ],
+    "inaccessible_main_binding_sources_identified": [],
+    "inaccessible_main_binding_source_note": "None newly established in this local audit. Original evidence claims were preserved; this is not a live accessibility test.",
+    "candidate_attempts_reporting_access_or_retrieval_failures": 26
+  },
+  "excluded_attempt_reconciliation": {
+    "raw_attempt_records": 40,
+    "unique_raw_candidate_labels": 38,
+    "duplicate_raw_labels": {
+      "Counter-Strike 2": 2,
+      "Fortnite": 2
+    },
+    "title_keys_after_manual_split_and_aliases": 40,
+    "covered_in_later_main_dataset_title_keys": 4,
+    "legacy_only_current_scope_gaps": 1,
+    "wholly_unrepresented_title_keys": 35,
+    "unresolved_raw_candidate_label_groups": 34,
+    "unresolved_title_or_current_scope_requests": 36,
+    "counting_note": "Forty excluded-attempt rows are not forty wholly uncovered games. Two repeated titles reduce forty rows to thirty-eight labels. Two combined labels each contain two distinct games. Four titles were subsequently covered. Cyberpunk has legacy coverage but lacks verified current 2.x coverage.",
+    "manual_alias_rules": {
+      "ARK: Survival Evolved / Survival Ascended": [
+        "ARK: Survival Evolved",
+        "ARK: Survival Ascended"
+      ],
+      "Planet Coaster / Planet Coaster 2": [
+        "Planet Coaster",
+        "Planet Coaster 2"
+      ],
+      "Cyberpunk 2077 current 2.x": [
+        "Cyberpunk 2077"
+      ],
+      "Path of Exile (original)": [
+        "Path of Exile"
+      ],
+      "Diablo II (original)": [
+        "Diablo II"
+      ],
+      "Diablo (original)": [
+        "Diablo"
+      ],
+      "Crysis (2007)": [
+        "Crysis (2007)"
+      ]
+    },
+    "covered": [
+      {
+        "title_key": "DOOM Eternal",
+        "attempt_ids": [
+          "action_games.json:6"
+        ],
+        "status": "covered_by_later_main_record",
+        "main_title": "DOOM Eternal",
+        "qualification": "Coverage remains the main record's documented subset/version, not necessarily all current defaults."
+      },
+      {
+        "title_key": "Destiny 2",
+        "attempt_ids": [
+          "action_games.json:5"
+        ],
+        "status": "covered_by_later_main_record",
+        "main_title": "Destiny 2",
+        "qualification": "Coverage remains the main record's documented subset/version, not necessarily all current defaults."
+      },
+      {
+        "title_key": "Overwatch 2",
+        "attempt_ids": [
+          "action_games.json:3"
+        ],
+        "status": "covered_by_later_main_record",
+        "main_title": "Overwatch 2",
+        "qualification": "Coverage remains the main record's documented subset/version, not necessarily all current defaults."
+      },
+      {
+        "title_key": "VALORANT",
+        "attempt_ids": [
+          "action_games.json:2"
+        ],
+        "status": "covered_by_later_main_record",
+        "main_title": "VALORANT",
+        "qualification": "Coverage remains the main record's documented subset/version, not necessarily all current defaults."
+      }
+    ],
+    "partial_coverage": [
+      {
+        "title_key": "Cyberpunk 2077",
+        "attempt_ids": [
+          "action_modern_additions.json:1"
+        ],
+        "status": "legacy_coverage_only_current_2x_gap",
+        "main_title": "Cyberpunk 2077 (legacy controls)",
+        "qualification": "Current 2.x preset gap remains unresolved; do not mark whole title wholly absent."
+      }
+    ],
+    "unresolved_titles": [
+      {
+        "title_key": "0 A.D.",
+        "attempt_ids": [
+          "strategy_sim_games.json:12"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "ARK: Survival Ascended",
+        "attempt_ids": [
+          "rpg_survival_games.json:3"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "ARK: Survival Evolved",
+        "attempt_ids": [
+          "rpg_survival_games.json:3"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Battle for Wesnoth",
+        "attempt_ids": [
+          "strategy_sim_games.json:13"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Celeste",
+        "attempt_ids": [
+          "strategy_sim_games.json:11"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Civilization VI",
+        "attempt_ids": [
+          "strategy_sim_games.json:0"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Control",
+        "attempt_ids": [
+          "action_modern_additions.json:0"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Counter-Strike 2",
+        "attempt_ids": [
+          "action_games.json:0",
+          "action_modern_additions.json:2"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Crusader Kings III",
+        "attempt_ids": [
+          "strategy_sim_games.json:2"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Crysis (2007)",
+        "attempt_ids": [
+          "action_games.json:7"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Diablo",
+        "attempt_ids": [
+          "rpg_survival_games.json:7"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Diablo II",
+        "attempt_ids": [
+          "rpg_survival_games.json:6"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Diablo III",
+        "attempt_ids": [
+          "rpg_survival_games.json:8"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Divinity: Original Sin 2",
+        "attempt_ids": [
+          "rpg_survival_games.json:1"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Dota 2",
+        "attempt_ids": [
+          "strategy_sim_games.json:15"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Elite Dangerous",
+        "attempt_ids": [
+          "strategy_sim_games.json:7"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Far Cry 5",
+        "attempt_ids": [
+          "action_games.json:8"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Fortnite",
+        "attempt_ids": [
+          "action_games.json:1",
+          "action_modern_additions.json:3"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Forza Horizon 5",
+        "attempt_ids": [
+          "strategy_sim_games.json:9"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Grand Theft Auto V",
+        "attempt_ids": [
+          "action_games.json:9"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Hades",
+        "attempt_ids": [
+          "strategy_sim_games.json:14"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Kerbal Space Program",
+        "attempt_ids": [
+          "strategy_sim_games.json:6"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Metal Gear Solid V: The Phantom Pain",
+        "attempt_ids": [
+          "action_games.json:4"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Microsoft Flight Simulator",
+        "attempt_ids": [
+          "strategy_sim_games.json:8"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Path of Exile",
+        "attempt_ids": [
+          "rpg_survival_games.json:0"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Planet Coaster",
+        "attempt_ids": [
+          "strategy_sim_games.json:4"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Planet Coaster 2",
+        "attempt_ids": [
+          "strategy_sim_games.json:4"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "RimWorld",
+        "attempt_ids": [
+          "strategy_sim_games.json:1"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Rocket League",
+        "attempt_ids": [
+          "strategy_sim_games.json:10"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Rust",
+        "attempt_ids": [
+          "rpg_survival_games.json:2"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Satisfactory",
+        "attempt_ids": [
+          "rpg_survival_games.json:5"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Stellaris",
+        "attempt_ids": [
+          "strategy_sim_games.json:3"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Terraria",
+        "attempt_ids": [
+          "rpg_survival_games.json:4"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "The Sims 4",
+        "attempt_ids": [
+          "strategy_sim_games.json:5"
+        ],
+        "status": "no_main_record_for_this_title"
+      },
+      {
+        "title_key": "Titanfall 2",
+        "attempt_ids": [
+          "action_games.json:10"
+        ],
+        "status": "no_main_record_for_this_title"
+      }
+    ],
+    "all_attempts": [
+      {
+        "attempt_id": "action_games.json:0",
+        "input_document": "action_games.json",
+        "raw_game_label": "Counter-Strike 2",
+        "title_keys": [
+          "Counter-Strike 2"
+        ],
+        "reason": "Fandom and Liquipedia opens failed; StrategyWiki access returned 403. No mappings taken from snippets or generalized from older Counter-Strike.",
+        "attempted_source_urls": [
+          "https://counterstrike.fandom.com/wiki/Controls",
+          "https://liquipedia.net/counterstrike/Bindings",
+          "https://strategywiki.org/wiki/Counter-Strike/Controls"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "action_games.json:1",
+        "input_document": "action_games.json",
+        "raw_game_label": "Fortnite",
+        "title_keys": [
+          "Fortnite"
+        ],
+        "reason": "Wiki open failed. Third-party blog opened but preset/default claims not established sufficiently (Z/X/C/V build rows, unfilled harvest binding, mixed old vehicles); not included in evidence-counted mappings.",
+        "attempted_source_urls": [
+          "https://fortnite.fandom.com/wiki/Controls",
+          "https://www.onlinegamecommands.com/default-pc-fortnite-keyboard-keybinds/",
+          "https://www.epicgames.com/help/c-34254770/c-38015632/a10326284"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "action_games.json:2",
+        "input_document": "action_games.json",
+        "raw_game_label": "VALORANT",
+        "title_keys": [
+          "VALORANT"
+        ],
+        "reason": "No adequate primary or opened maintained wiki control table obtained in bounded pass. Third-party search snippets not imported.",
+        "attempted_source_urls": [
+          "https://manuals.plus/keyboards/valorant-keyboard-control-guide",
+          "https://www.magicgameworld.com/valorant-pc-keyboard-controls-guide/"
+        ],
+        "access_or_retrieval_failure_reported": false,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "action_games.json:3",
+        "input_document": "action_games.json",
+        "raw_game_label": "Overwatch 2",
+        "title_keys": [
+          "Overwatch 2"
+        ],
+        "reason": "Search returned old Overwatch archive rather than verified Overwatch 2 controls; not generalized.",
+        "attempted_source_urls": [
+          "https://overwatch-archive.fandom.com/wiki/Game_Options"
+        ],
+        "access_or_retrieval_failure_reported": false,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "action_games.json:4",
+        "input_document": "action_games.json",
+        "raw_game_label": "Metal Gear Solid V: The Phantom Pain",
+        "title_keys": [
+          "Metal Gear Solid V: The Phantom Pain"
+        ],
+        "reason": "Official manual pages opened, but no keyboard mapping extracted; text seen concerned title menu and game screen.",
+        "attempted_source_urls": [
+          "https://www.konami.com/mg/mgs5/tpp/en/manual/",
+          "https://mgstpp-app.konamionline.com/manual/pc/eu/en/pc_01.html",
+          "https://mgstpp-app.konamionline.com/manual/pc/eu/en/pc_02.html"
+        ],
+        "access_or_retrieval_failure_reported": false,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "action_games.json:5",
+        "input_document": "action_games.json",
+        "raw_game_label": "Destiny 2",
+        "title_keys": [
+          "Destiny 2"
+        ],
+        "reason": "Official source discovered for one newer mechanic, not opened into a keyboard-control set; full PC defaults not verified.",
+        "attempted_source_urls": [
+          "https://help.bungie.net/hc/en-us/articles/39425757480212-Matterspark-Guide"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "action_games.json:6",
+        "input_document": "action_games.json",
+        "raw_game_label": "DOOM Eternal",
+        "title_keys": [
+          "DOOM Eternal"
+        ],
+        "reason": "Primary search did not yield a full accessible keyboard table. DOOM 2016 counted separately, never used as Eternal defaults.",
+        "attempted_source_urls": [
+          "https://help.bethesda.net/app/answers/detail/a_id/55254/~/where-do-i-look-up-key-assignments-on-pc-for-keyboard-and-mouse-controls%3F"
+        ],
+        "access_or_retrieval_failure_reported": false,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "action_games.json:7",
+        "input_document": "action_games.json",
+        "raw_game_label": "Crysis (2007)",
+        "title_keys": [
+          "Crysis (2007)"
+        ],
+        "reason": "Original manual discovered through archive, not extracted; Crysis 2 counted separately.",
+        "attempted_source_urls": [
+          "https://archive.org/details/crysis-manual"
+        ],
+        "access_or_retrieval_failure_reported": false,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "action_games.json:8",
+        "input_document": "action_games.json",
+        "raw_game_label": "Far Cry 5",
+        "title_keys": [
+          "Far Cry 5"
+        ],
+        "reason": "Official article discussed four control sections but full default table not extracted. Original Far Cry and Far Cry 3 counted separately.",
+        "attempted_source_urls": [
+          "https://store.steampowered.com/news/posts/?appids=552520&enddate=1525795204&feed=steam_community_announcements"
+        ],
+        "access_or_retrieval_failure_reported": false,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "action_games.json:9",
+        "input_document": "action_games.json",
+        "raw_game_label": "Grand Theft Auto V",
+        "title_keys": [
+          "Grand Theft Auto V"
+        ],
+        "reason": "Official controls tips discovered, full default controls not extracted. No GTA IV substitutions.",
+        "attempted_source_urls": [
+          "https://www.rockstargames.com/newswire/article/51974aa3a724o2/rockstar-game-tips-tailoring-your-settings-and-controls-in",
+          "https://support.rockstargames.com/en-US/articles/4SLMPiZCrVUVcuL71dBD29/changing-camera-perspective-to-1st-person-in-gtav"
+        ],
+        "access_or_retrieval_failure_reported": false,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "action_games.json:10",
+        "input_document": "action_games.json",
+        "raw_game_label": "Titanfall 2",
+        "title_keys": [
+          "Titanfall 2"
+        ],
+        "reason": "English manual open returned internal error; not counted.",
+        "attempted_source_urls": [
+          "https://eaassets-a.akamaihd.net/eahelp/manuals/titanfall-2-pc-en.pdf",
+          "https://eaassets-a.akamaihd.net/eahelp/manuals/titanfall-2-pc-cs.pdf"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "rpg_survival_games.json:0",
+        "input_document": "rpg_survival_games.json",
+        "raw_game_label": "Path of Exile (original)",
+        "title_keys": [
+          "Path of Exile"
+        ],
+        "reason": "Controls wiki and independent full guide were inaccessible. No defaults inferred from sequel or memory.",
+        "attempted_source_urls": [
+          "https://www.poewiki.net/wiki/Options",
+          "https://www.magicgameworld.com/path-of-exile-pc-keyboard-controls-shortcuts/"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "rpg_survival_games.json:1",
+        "input_document": "rpg_survival_games.json",
+        "raw_game_label": "Divinity: Original Sin 2",
+        "title_keys": [
+          "Divinity: Original Sin 2"
+        ],
+        "reason": "Official Steam manual could not be fetched reliably; excluded instead of inferring BG3-like controls.",
+        "attempted_source_urls": [
+          "https://cdn.akamai.steamstatic.com/steam/apps/435150/manuals/DOS2_Game_Manual.pdf",
+          "https://store.steampowered.com/manual/435150"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "rpg_survival_games.json:2",
+        "input_document": "rpg_survival_games.json",
+        "raw_game_label": "Rust",
+        "title_keys": [
+          "Rust"
+        ],
+        "reason": "Facepunch keybind customization documentation opened, but it is not a default-control table. Independent default table inaccessible.",
+        "attempted_source_urls": [
+          "https://wiki.facepunch.com/rust/Keybinds",
+          "https://defkey.com/rust-shortcuts"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "rpg_survival_games.json:3",
+        "input_document": "rpg_survival_games.json",
+        "raw_game_label": "ARK: Survival Evolved / Survival Ascended",
+        "title_keys": [
+          "ARK: Survival Evolved",
+          "ARK: Survival Ascended"
+        ],
+        "reason": "Wiki control table inaccessible; no current edition-specific text table verified.",
+        "attempted_source_urls": [
+          "https://ark.wiki.gg/wiki/Controls"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "rpg_survival_games.json:4",
+        "input_document": "rpg_survival_games.json",
+        "raw_game_label": "Terraria",
+        "title_keys": [
+          "Terraria"
+        ],
+        "reason": "Official community wiki table inaccessible; independent StrategyWiki page not returned. Search snippets not treated as an opened full table.",
+        "attempted_source_urls": [
+          "https://terraria.wiki.gg/wiki/Game_controls",
+          "https://strategywiki.org/wiki/Terraria/Controls"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "rpg_survival_games.json:5",
+        "input_document": "rpg_survival_games.json",
+        "raw_game_label": "Satisfactory",
+        "title_keys": [
+          "Satisfactory"
+        ],
+        "reason": "Official community wiki and Neoseeker control guide inaccessible; another guide did not yield a readable control table.",
+        "attempted_source_urls": [
+          "https://satisfactory.wiki.gg/wiki/Controls",
+          "https://www.neoseeker.com/satisfactory/walkthrough",
+          "https://www.magicgameworld.com/satisfactory-pc-keyboard-controls/"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "rpg_survival_games.json:6",
+        "input_document": "rpg_survival_games.json",
+        "raw_game_label": "Diablo II (original)",
+        "title_keys": [
+          "Diablo II"
+        ],
+        "reason": "Official manual download failed; no defaults inferred from later Diablo games.",
+        "attempted_source_urls": [
+          "https://ftp.blizzard.com/pub/misc/Diablo%20II%20Manual.pdf"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "rpg_survival_games.json:7",
+        "input_document": "rpg_survival_games.json",
+        "raw_game_label": "Diablo (original)",
+        "title_keys": [
+          "Diablo"
+        ],
+        "reason": "Official manual download timed out.",
+        "attempted_source_urls": [
+          "https://ftp.blizzard.com/pub/misc/Diablo.PDF"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "rpg_survival_games.json:8",
+        "input_document": "rpg_survival_games.json",
+        "raw_game_label": "Diablo III",
+        "title_keys": [
+          "Diablo III"
+        ],
+        "reason": "Official fundamentals guide did not open; no controls catalogue record created.",
+        "attempted_source_urls": [
+          "https://us.diablo3.blizzard.com/en-us/game/guide/gameplay/fundamentals/"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "strategy_sim_games.json:0",
+        "input_document": "strategy_sim_games.json",
+        "raw_game_label": "Civilization VI",
+        "title_keys": [
+          "Civilization VI"
+        ],
+        "reason": "Official manual PDF exceeded web tool size limit; no exact current default table opened.",
+        "attempted_source_urls": [
+          "https://downloads.2kgames.com/civilization/vi/manuals/eu/CIV_VI_25TH_ONLINE_MANUAL_ENG.pdf"
+        ],
+        "access_or_retrieval_failure_reported": false,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "strategy_sim_games.json:1",
+        "input_document": "strategy_sim_games.json",
+        "raw_game_label": "RimWorld",
+        "title_keys": [
+          "RimWorld"
+        ],
+        "reason": "Wiki and DefKey could not be fetched. Gamepressure table opened, but keyboard values embedded as unlabeled images were not read; not counted.",
+        "attempted_source_urls": [
+          "https://rimworldwiki.com/wiki/Controls",
+          "https://www.gamepressure.com/rimworld/controls/z5908d"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "strategy_sim_games.json:2",
+        "input_document": "strategy_sim_games.json",
+        "raw_game_label": "Crusader Kings III",
+        "title_keys": [
+          "Crusader Kings III"
+        ],
+        "reason": "Official wiki unavailable; independent table returned 403. Not counted.",
+        "attempted_source_urls": [
+          "https://ck3.paradoxwikis.com/Hotkeys",
+          "https://defkey.com/crusader-kings-3-shortcuts"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "strategy_sim_games.json:3",
+        "input_document": "strategy_sim_games.json",
+        "raw_game_label": "Stellaris",
+        "title_keys": [
+          "Stellaris"
+        ],
+        "reason": "Publisher wiki returned 401 and independent table returned 403. Not counted; no bypass attempted.",
+        "attempted_source_urls": [
+          "https://stellaris.paradoxwikis.com/Hotkeys",
+          "https://defkey.com/stellaris-shortcuts"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "strategy_sim_games.json:4",
+        "input_document": "strategy_sim_games.json",
+        "raw_game_label": "Planet Coaster / Planet Coaster 2",
+        "title_keys": [
+          "Planet Coaster",
+          "Planet Coaster 2"
+        ],
+        "reason": "Official FAQ did not yield readable defaults; wiki unavailable. Not counted.",
+        "attempted_source_urls": [
+          "https://www.planetcoaster.com/en-US/help-center",
+          "https://planetcoaster.fandom.com/wiki/Controls"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "strategy_sim_games.json:5",
+        "input_document": "strategy_sim_games.json",
+        "raw_game_label": "The Sims 4",
+        "title_keys": [
+          "The Sims 4"
+        ],
+        "reason": "Official EA Players Guides failed fetch/timeout, current tips page lacked table. Not counted.",
+        "attempted_source_urls": [
+          "https://cdn-assets-ts4.pulse.ea.com/Guide/TheSims4_PlayersGuide_ENGLISH.pdf",
+          "https://www.ea.com/games/the-sims/tips-and-tricks"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "strategy_sim_games.json:6",
+        "input_document": "strategy_sim_games.json",
+        "raw_game_label": "Kerbal Space Program",
+        "title_keys": [
+          "Kerbal Space Program"
+        ],
+        "reason": "Official wiki blocked by anti-bot page; independent defaults table 403. Not counted.",
+        "attempted_source_urls": [
+          "https://wiki.kerbalspaceprogram.com/wiki/Key_bindings"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "strategy_sim_games.json:7",
+        "input_document": "strategy_sim_games.json",
+        "raw_game_label": "Elite Dangerous",
+        "title_keys": [
+          "Elite Dangerous"
+        ],
+        "reason": "Official manual retrieval failed, independent controls table 403; user profiles rejected as defaults. Not counted.",
+        "attempted_source_urls": [
+          "https://hosting.zaonce.net/elite/website/assets/ELITE-DANGEROUS-GAME-MANUAL.pdf"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "strategy_sim_games.json:8",
+        "input_document": "strategy_sim_games.json",
+        "raw_game_label": "Microsoft Flight Simulator",
+        "title_keys": [
+          "Microsoft Flight Simulator"
+        ],
+        "reason": "Found community reference sheets but did not open a complete exact preset table. X-Plane 12 provides documented civil-flight coverage instead.",
+        "attempted_source_urls": [
+          "https://forums.flightsimulator.com/t/reference-keyboard-shortcuts-guide/167151"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "strategy_sim_games.json:9",
+        "input_document": "strategy_sim_games.json",
+        "raw_game_label": "Forza Horizon 5",
+        "title_keys": [
+          "Forza Horizon 5"
+        ],
+        "reason": "Publisher support confirms navigation/remapping but no full table; independent text table blocked and Gamepressure key icons not transcribed. Not counted.",
+        "attempted_source_urls": [
+          "https://support.forza.net/hc/en-us/articles/46523995129747-Forza-Horizon-5-Accessibility-Support",
+          "https://www.gamepressure.com/forza-horizon-5/controls-keybinds/zcf1b3"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "strategy_sim_games.json:10",
+        "input_document": "strategy_sim_games.json",
+        "raw_game_label": "Rocket League",
+        "title_keys": [
+          "Rocket League"
+        ],
+        "reason": "Opened keymap.io table contains dubious conflicting defaults (boost and powerslide both Shift, rear view LMB). Rejected as evidence; not counted.",
+        "attempted_source_urls": [
+          "https://keymap.io/controls/rocket-league/"
+        ],
+        "access_or_retrieval_failure_reported": false,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "strategy_sim_games.json:11",
+        "input_document": "strategy_sim_games.json",
+        "raw_game_label": "Celeste",
+        "title_keys": [
+          "Celeste"
+        ],
+        "reason": "Found corroborating community statements but no opened full default table; did not substitute Celeste 64 or user custom mappings. Not counted.",
+        "attempted_source_urls": [
+          "https://www.celestegame.com/changelog.html"
+        ],
+        "access_or_retrieval_failure_reported": false,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "strategy_sim_games.json:12",
+        "input_document": "strategy_sim_games.json",
+        "raw_game_label": "0 A.D.",
+        "title_keys": [
+          "0 A.D."
+        ],
+        "reason": "Official basic camera controls readable, but full hotkey page inaccessible; partial camera-only evidence not counted.",
+        "attempted_source_urls": [
+          "https://play0ad.com/2-user-interface-basics/",
+          "https://trac.wildfiregames.com/wiki/HotKeys"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "strategy_sim_games.json:13",
+        "input_document": "strategy_sim_games.json",
+        "raw_game_label": "Battle for Wesnoth",
+        "title_keys": [
+          "Battle for Wesnoth"
+        ],
+        "reason": "Official manual returned anti-bot access denied. Not counted.",
+        "attempted_source_urls": [
+          "https://www.wesnoth.org/manual/stable/manual.en.html"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "strategy_sim_games.json:14",
+        "input_document": "strategy_sim_games.json",
+        "raw_game_label": "Hades",
+        "title_keys": [
+          "Hades"
+        ],
+        "reason": "Original ShortcutPosters self-declared verification was insufficient. Publisher developer comment verifies WASD movement and mouse-based attacking/aiming, but does not supply the remaining exact key table. The Gamepressure original controls table was opened, but keyboard keys were encoded in images without readable key text in this retrieval. No adequate replacement full controls source established in the bounded audit; all original rows excluded from main dataset.",
+        "attempted_source_urls": [
+          "https://shortcutposters.com/games/hades/",
+          "https://steamcommunity.com/app/1145360/discussions/0/3124867070471168275/",
+          "https://www.gamepressure.com/hades/pc-controls/z2d9d1"
+        ],
+        "access_or_retrieval_failure_reported": false,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "strategy_sim_games.json:15",
+        "input_document": "strategy_sim_games.json",
+        "raw_game_label": "Dota 2",
+        "title_keys": [
+          "Dota 2"
+        ],
+        "reason": "Original dota2-tools self-declared verification was insufficient. SteamTracking actual shipped user_keys_default.vcfg was opened but contains only console/tool bindings, not the gameplay defaults needed here. Liquipedia Settings/Courier sources returned 403 and the Fandom hotkeys page could not be fetched. Search results for personal autoexec/config files were rejected as remaps rather than default evidence. No adequate replacement default table established in the bounded audit; all original rows excluded from main dataset.",
+        "attempted_source_urls": [
+          "https://dota2-tools.com/hotkeys/",
+          "https://github.com/SteamTracking/GameTracking-Dota2/blob/master/game/dota/cfg/user_keys_default.vcfg",
+          "https://liquipedia.net/dota2/Settings",
+          "https://liquipedia.net/dota2/Courier",
+          "https://dota2.fandom.com/wiki/Hotkeys"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "action_modern_additions.json:0",
+        "input_document": "action_modern_additions.json",
+        "raw_game_label": "Control",
+        "title_keys": [
+          "Control"
+        ],
+        "reason": "Accessible Gamepressure PC-controls page encodes buttons as images without key names and includes console-worded text; insufficient reliable textual keyboard mapping. Charity gameaccess source describes gamepad controls. Other independent endpoints unavailable. No keys inferred.",
+        "attempted_source_urls": [
+          "https://www.gamepressure.com/control/pc-s/z4c8cf",
+          "https://gameaccess.info/control-controls-walkthrough-video/"
+        ],
+        "access_or_retrieval_failure_reported": true,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "action_modern_additions.json:1",
+        "input_document": "action_modern_additions.json",
+        "raw_game_label": "Cyberpunk 2077 current 2.x",
+        "title_keys": [
+          "Cyberpunk 2077"
+        ],
+        "reason": "Legacy keyboard table available and separately labeled, but complete current PC preset was not verified. Official Update 2.0 notes document major changes and some individual shortcuts only.",
+        "attempted_source_urls": [
+          "https://www.cyberpunk.net/en/news/49060/update-2-0"
+        ],
+        "access_or_retrieval_failure_reported": false,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "action_modern_additions.json:2",
+        "input_document": "action_modern_additions.json",
+        "raw_game_label": "Counter-Strike 2",
+        "title_keys": [
+          "Counter-Strike 2"
+        ],
+        "reason": "No adequate independently opened controls table captured within bounded second pass; no recalled defaults added.",
+        "attempted_source_urls": [],
+        "access_or_retrieval_failure_reported": false,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      },
+      {
+        "attempt_id": "action_modern_additions.json:3",
+        "input_document": "action_modern_additions.json",
+        "raw_game_label": "Fortnite",
+        "title_keys": [
+          "Fortnite"
+        ],
+        "reason": "Did not establish an unambiguous current keyboard building/editing preset. Older inconsistent presets not merged.",
+        "attempted_source_urls": [],
+        "access_or_retrieval_failure_reported": false,
+        "access_status_scope": "Recorded research-attempt reason; not a fresh access check, and not necessarily applicable to every associated URL."
+      }
+    ]
+  },
+  "genre_audit": {
+    "correction_applied": "Minecraft Education was moved from Action & adventure to Survival & sandbox in the reusable normalizer, then consolidated.json and normalization_notes.json were regenerated with root authorization.",
+    "corrected_game_counts": {
+      "Action & adventure": 17,
+      "Building & management": 4,
+      "Driving & flight simulation": 4,
+      "MMORPG": 5,
+      "RPG & action RPG": 15,
+      "Shooter": 14,
+      "Strategy, tactics & MOBA": 9,
+      "Survival & sandbox": 6
+    },
+    "corrected_binding_row_counts": {
+      "Action & adventure": 379,
+      "Building & management": 88,
+      "Driving & flight simulation": 97,
+      "MMORPG": 117,
+      "RPG & action RPG": 362,
+      "Shooter": 388,
+      "Strategy, tactics & MOBA": 202,
+      "Survival & sandbox": 114
+    },
+    "title_checklist_by_family": {
+      "Action & adventure": [
+        "HITMAN (2016)",
+        "Hitman: Absolution",
+        "Alien: Isolation",
+        "Mad Max",
+        "Batman: Arkham Knight",
+        "Middle-earth: Shadow of Mordor GOTY",
+        "Tomb Raider (2013)",
+        "Rise of the Tomb Raider: 20 Year Celebration",
+        "Shadow of the Tomb Raider: Definitive Edition",
+        "Sleeping Dogs: Definitive Edition",
+        "Dishonored (2012)",
+        "Prey (2017)",
+        "Sekiro: Shadows Die Twice",
+        "Hollow Knight",
+        "Hades II",
+        "Death Stranding",
+        "Red Dead Redemption 2"
+      ],
+      "Building & management": [
+        "Factorio",
+        "Cities: Skylines",
+        "Stardew Valley",
+        "OpenTTD"
+      ],
+      "Driving & flight simulation": [
+        "Euro Truck Simulator 2",
+        "BeamNG.drive",
+        "DCS World (Su-25T)",
+        "X-Plane 12"
+      ],
+      "MMORPG": [
+        "Final Fantasy XIV",
+        "Final Fantasy XI",
+        "World of Warcraft (original manual layout)",
+        "The Elder Scrolls Online (2016 staff guide layout)",
+        "Guild Wars 2"
+      ],
+      "RPG & action RPG": [
+        "Deus Ex: Mankind Divided",
+        "Deus Ex: Human Revolution – Director's Cut",
+        "The Elder Scrolls V: Skyrim (original PC)",
+        "Fallout 4",
+        "The Witcher 3: Wild Hunt (GOTY manual layout)",
+        "Baldur's Gate 3",
+        "Elden Ring",
+        "Dark Souls III",
+        "Last Epoch",
+        "Diablo IV (prelaunch documented layout)",
+        "Path of Exile 2",
+        "Monster Hunter: World — Iceborne",
+        "Monster Hunter Rise",
+        "Grim Dawn",
+        "Cyberpunk 2077 (legacy controls)"
+      ],
+      "Shooter": [
+        "Warframe",
+        "DOOM (2016)",
+        "Far Cry 3",
+        "Far Cry (2004)",
+        "Crysis 2",
+        "Apex Legends",
+        "Battlefield 1",
+        "Call of Duty: Black Ops Cold War",
+        "Helldivers 2",
+        "Escape from Tarkov",
+        "DOOM Eternal",
+        "Destiny 2",
+        "Overwatch 2",
+        "VALORANT"
+      ],
+      "Strategy, tactics & MOBA": [
+        "XCOM 2",
+        "Age of Empires IV",
+        "StarCraft II",
+        "Total War: WARHAMMER III",
+        "Total War: WARHAMMER II",
+        "Age of Empires II: Definitive Edition",
+        "Warcraft III",
+        "HUMANKIND",
+        "League of Legends"
+      ],
+      "Survival & sandbox": [
+        "Minecraft Education",
+        "Valheim",
+        "Minecraft Java / Bedrock (shared basic controls)",
+        "No Man's Sky (NEXT layout)",
+        "Subnautica",
+        "Subnautica 2 (May 2026 early-access table)"
+      ]
+    },
+    "remaining_qualification": "Genre families are analyst organization, not mutually exclusive claims about design. Minecraft Education remains a distinct scoped edition record; grouping it with Java/Bedrock is a separate title-count decision."
+  },
+  "parser_audit": {
+    "all_partial_or_unparsed_rows_reviewed": 12,
+    "fully_parsed_compound_samples_reviewed": 5,
+    "false_positive_keyboard_presence_findings": 0,
+    "partial_or_unparsed_reviews": [
+      {
+        "binding_id": "binding_245dfe46f5ab",
+        "game_id": "game_79ccc610b9d8",
+        "game": "The Witcher 3: Wild Hunt (GOTY manual layout)",
+        "raw_expression": "C / ` / é",
+        "issues": [
+          {
+            "expression_part": "é",
+            "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+          }
+        ],
+        "counted_keyboard_keys": [
+          "Backtick",
+          "C"
+        ],
+        "counted_mouse_inputs": [],
+        "audit_result": "No false-positive constituent key found. Unknown components remain omitted; lower-bound presence is valid.",
+        "blocking_aggregate_change_required": false
+      },
+      {
+        "binding_id": "binding_669f75c0d0c5",
+        "game_id": "game_022f71781396",
+        "game": "Final Fantasy XI",
+        "raw_expression": "Ctrl+number / Alt+number",
+        "issues": [
+          {
+            "expression_part": "number",
+            "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+          },
+          {
+            "expression_part": "number",
+            "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+          }
+        ],
+        "counted_keyboard_keys": [
+          "Alt",
+          "Ctrl"
+        ],
+        "counted_mouse_inputs": [],
+        "audit_result": "No false-positive constituent key found. Unknown components remain omitted; lower-bound presence is valid.",
+        "blocking_aggregate_change_required": false
+      },
+      {
+        "binding_id": "binding_abfc5aa97eeb",
+        "game_id": "game_19a9afd33f4e",
+        "game": "Age of Empires IV",
+        "raw_expression": "Ctrl + number",
+        "issues": [
+          {
+            "expression_part": "number",
+            "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+          }
+        ],
+        "counted_keyboard_keys": [
+          "Ctrl"
+        ],
+        "counted_mouse_inputs": [],
+        "audit_result": "No false-positive constituent key found. Unknown components remain omitted; lower-bound presence is valid.",
+        "blocking_aggregate_change_required": false
+      },
+      {
+        "binding_id": "binding_b733f7841654",
+        "game_id": "game_19a9afd33f4e",
+        "game": "Age of Empires IV",
+        "raw_expression": "Shift + command",
+        "issues": [
+          {
+            "expression_part": "command",
+            "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+          }
+        ],
+        "counted_keyboard_keys": [
+          "Shift"
+        ],
+        "counted_mouse_inputs": [],
+        "audit_result": "No false-positive constituent key found. Unknown components remain omitted; lower-bound presence is valid.",
+        "blocking_aggregate_change_required": false
+      },
+      {
+        "binding_id": "binding_f09d670e710b",
+        "game_id": "game_59a0e6521160",
+        "game": "StarCraft II",
+        "raw_expression": "Shift + command",
+        "issues": [
+          {
+            "expression_part": "command",
+            "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+          }
+        ],
+        "counted_keyboard_keys": [
+          "Shift"
+        ],
+        "counted_mouse_inputs": [],
+        "audit_result": "No false-positive constituent key found. Unknown components remain omitted; lower-bound presence is valid.",
+        "blocking_aggregate_change_required": false
+      },
+      {
+        "binding_id": "binding_b6c399d1c246",
+        "game_id": "game_986998e3c4d2",
+        "game": "Total War: WARHAMMER II",
+        "raw_expression": "1–0",
+        "issues": [
+          {
+            "expression_part": "1–0",
+            "reason": "Descending/cross-row range or unclear range type; no keys inferred."
+          }
+        ],
+        "counted_keyboard_keys": [],
+        "counted_mouse_inputs": [],
+        "audit_result": "No false-positive constituent key found. Unknown components remain omitted; lower-bound presence is valid.",
+        "blocking_aggregate_change_required": false
+      },
+      {
+        "binding_id": "binding_ad86f1cb6747",
+        "game_id": "game_0f0755e379c1",
+        "game": "Cities: Skylines",
+        "raw_expression": "MMB + move",
+        "issues": [
+          {
+            "expression_part": "move",
+            "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+          }
+        ],
+        "counted_keyboard_keys": [],
+        "counted_mouse_inputs": [
+          "Mouse Middle"
+        ],
+        "audit_result": "No false-positive constituent key found. Unknown components remain omitted; lower-bound presence is valid.",
+        "blocking_aggregate_change_required": false
+      },
+      {
+        "binding_id": "binding_967389a199fc",
+        "game_id": "game_9428c1cb2279",
+        "game": "BeamNG.drive",
+        "raw_expression": "1–0",
+        "issues": [
+          {
+            "expression_part": "1–0",
+            "reason": "Descending/cross-row range or unclear range type; no keys inferred."
+          }
+        ],
+        "counted_keyboard_keys": [],
+        "counted_mouse_inputs": [],
+        "audit_result": "No false-positive constituent key found. Unknown components remain omitted; lower-bound presence is valid.",
+        "blocking_aggregate_change_required": false
+      },
+      {
+        "binding_id": "binding_dd96c2f6cd45",
+        "game_id": "game_3b4acefbc6bf",
+        "game": "Age of Empires II: Definitive Edition",
+        "raw_expression": "Ctrl + number",
+        "issues": [
+          {
+            "expression_part": "number",
+            "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+          }
+        ],
+        "counted_keyboard_keys": [
+          "Ctrl"
+        ],
+        "counted_mouse_inputs": [],
+        "audit_result": "No false-positive constituent key found. Unknown components remain omitted; lower-bound presence is valid.",
+        "blocking_aggregate_change_required": false
+      },
+      {
+        "binding_id": "binding_370a821bfc9b",
+        "game_id": "game_3b4acefbc6bf",
+        "game": "Age of Empires II: Definitive Edition",
+        "raw_expression": "number",
+        "issues": [
+          {
+            "expression_part": "number",
+            "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+          }
+        ],
+        "counted_keyboard_keys": [],
+        "counted_mouse_inputs": [],
+        "audit_result": "No false-positive constituent key found. Unknown components remain omitted; lower-bound presence is valid.",
+        "blocking_aggregate_change_required": false
+      },
+      {
+        "binding_id": "binding_a32cb990c063",
+        "game_id": "game_4388575b9c74",
+        "game": "Warcraft III",
+        "raw_expression": "Shift + command",
+        "issues": [
+          {
+            "expression_part": "command",
+            "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+          }
+        ],
+        "counted_keyboard_keys": [
+          "Shift"
+        ],
+        "counted_mouse_inputs": [],
+        "audit_result": "No false-positive constituent key found. Unknown components remain omitted; lower-bound presence is valid.",
+        "blocking_aggregate_change_required": false
+      },
+      {
+        "binding_id": "binding_4aed91f3944a",
+        "game_id": "game_0a3dd1245997",
+        "game": "OpenTTD",
+        "raw_expression": "Shift + click",
+        "issues": [
+          {
+            "expression_part": "click",
+            "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+          }
+        ],
+        "counted_keyboard_keys": [
+          "Shift"
+        ],
+        "counted_mouse_inputs": [],
+        "audit_result": "No false-positive constituent key found. Unknown components remain omitted; lower-bound presence is valid.",
+        "blocking_aggregate_change_required": false
+      }
+    ],
+    "compound_samples": [
+      {
+        "binding_id": "binding_6112d3c390ac",
+        "game": "Fallout 4",
+        "action": "Hotkeys",
+        "raw_expression": "1–9, 0, -, =",
+        "keyboard_keys": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "Equals",
+          "Minus"
+        ],
+        "mouse_inputs": [],
+        "audit_result": "Passed constituent-key check; chord/sequence simultaneity is not reconstructed."
+      },
+      {
+        "binding_id": "binding_643bc5bfc641",
+        "game": "Final Fantasy XI",
+        "action": "Movement",
+        "raw_expression": "Numpad 8/2/4/6",
+        "keyboard_keys": [
+          "Numpad 2",
+          "Numpad 4",
+          "Numpad 6",
+          "Numpad 8"
+        ],
+        "mouse_inputs": [],
+        "audit_result": "Passed constituent-key check; chord/sequence simultaneity is not reconstructed."
+      },
+      {
+        "binding_id": "binding_5b3d8edf7c8f",
+        "game": "Escape from Tarkov",
+        "action": "Sidestep right/left",
+        "raw_expression": "Left Alt + E / Left Alt + Q",
+        "keyboard_keys": [
+          "E",
+          "Left Alt",
+          "Q"
+        ],
+        "mouse_inputs": [],
+        "audit_result": "Passed constituent-key check; chord/sequence simultaneity is not reconstructed."
+      },
+      {
+        "binding_id": "binding_ef22915ee598",
+        "game": "StarCraft II",
+        "action": "Ping",
+        "raw_expression": "Alt + G then LMB",
+        "keyboard_keys": [
+          "Alt",
+          "G"
+        ],
+        "mouse_inputs": [
+          "Mouse Left"
+        ],
+        "audit_result": "Passed constituent-key check; chord/sequence simultaneity is not reconstructed."
+      },
+      {
+        "binding_id": "binding_1348cf77a454",
+        "game": "DCS World (Su-25T)",
+        "action": "RWR volume",
+        "raw_expression": "Right Alt + , / .",
+        "keyboard_keys": [
+          "Comma",
+          "Period",
+          "Right Alt"
+        ],
+        "mouse_inputs": [],
+        "audit_result": "Passed constituent-key check; chord/sequence simultaneity is not reconstructed."
+      }
+    ],
+    "conclusion": "No key-presence aggregate correction required from these checks. Preserve ambiguity logs and describe counts as lower-bound presence in documented subsets."
+  },
+  "aggregate_corrections_to_communicate": [
+    "Use 78 registered supporting/context URLs and 76 unique URLs cited directly by the 1747 binding rows; do not call all 78 control-table sources.",
+    "Use 40 excluded research-attempt records, not 40 uncovered games: 4 titles were later covered, 2 titles had repeated attempts, and 2 combined labels name 2 games each. There are 35 wholly unrepresented concrete title keys plus one unresolved current Cyberpunk preset request (36 title/scope requests; 34 unsplit candidate-label groups).",
+    "Final genre counts are Action & adventure 17 (379 rows) and Survival & sandbox 6 (114 rows); all other totals/key presence unchanged."
+  ],
+  "artifact_fingerprints": {
+    "consolidated.json": "50210254b4a756414ad580e811d6248722d51500132ef43fb8132f269da6e820",
+    "normalization_notes.json": "bae0041fca36eded7f5e4262ecd8cfe04a8ce36d1d7437f6c667dfbd284620c2",
+    "normalize_bindings.py": "05b8d802aa3bd7926eb64971bd2cf70613214b4bd39f98b8b7bf28e5f98965df"
+  }
+}

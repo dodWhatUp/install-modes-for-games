@@ -1,0 +1,1398 @@
+{
+  "schema_version": "1.0",
+  "summary": {
+    "main_game_or_scoped_edition_records": 74,
+    "main_binding_rows": 1747,
+    "distinct_source_urls": 78,
+    "excluded_candidate_records": 40,
+    "game_counts_by_genre_family": {
+      "Action & adventure": 17,
+      "Building & management": 4,
+      "Driving & flight simulation": 4,
+      "MMORPG": 5,
+      "RPG & action RPG": 15,
+      "Shooter": 14,
+      "Strategy, tactics & MOBA": 9,
+      "Survival & sandbox": 6
+    },
+    "game_counts_by_evidence_family": {
+      "Community documentation": 10,
+      "Independent observed/reported controls": 16,
+      "Project documentation": 1,
+      "Publisher/developer documentation": 47
+    },
+    "binding_rows_by_genre_family": {
+      "Action & adventure": 379,
+      "Building & management": 88,
+      "Driving & flight simulation": 97,
+      "MMORPG": 117,
+      "RPG & action RPG": 362,
+      "Shooter": 388,
+      "Strategy, tactics & MOBA": 202,
+      "Survival & sandbox": 114
+    },
+    "parser_status_counts": {
+      "fully_parsed": 1735,
+      "partial": 9,
+      "unparsed": 3
+    },
+    "distinct_game_keyboard_key_pairs": 1941,
+    "distinct_game_mouse_input_pairs": 181,
+    "keyboard_keys_exact_count": 103,
+    "keyboard_physical_alias_count": 97,
+    "top_documented_keyboard_presence": [
+      {
+        "key": "A",
+        "game_count": 67
+      },
+      {
+        "key": "D",
+        "game_count": 65
+      },
+      {
+        "key": "E",
+        "game_count": 65
+      },
+      {
+        "key": "S",
+        "game_count": 65
+      },
+      {
+        "key": "Shift",
+        "game_count": 65
+      },
+      {
+        "key": "W",
+        "game_count": 65
+      },
+      {
+        "key": "Q",
+        "game_count": 63
+      },
+      {
+        "key": "Space",
+        "game_count": 63
+      },
+      {
+        "key": "C",
+        "game_count": 58
+      },
+      {
+        "key": "F",
+        "game_count": 56
+      },
+      {
+        "key": "R",
+        "game_count": 55
+      },
+      {
+        "key": "Ctrl",
+        "game_count": 54
+      },
+      {
+        "key": "2",
+        "game_count": 52
+      },
+      {
+        "key": "1",
+        "game_count": 51
+      },
+      {
+        "key": "3",
+        "game_count": 51
+      },
+      {
+        "key": "4",
+        "game_count": 48
+      },
+      {
+        "key": "Tab",
+        "game_count": 48
+      },
+      {
+        "key": "Esc",
+        "game_count": 39
+      },
+      {
+        "key": "V",
+        "game_count": 38
+      },
+      {
+        "key": "Alt",
+        "game_count": 37
+      },
+      {
+        "key": "Z",
+        "game_count": 37
+      },
+      {
+        "key": "5",
+        "game_count": 36
+      },
+      {
+        "key": "T",
+        "game_count": 36
+      },
+      {
+        "key": "G",
+        "game_count": 35
+      },
+      {
+        "key": "X",
+        "game_count": 33
+      },
+      {
+        "key": "6",
+        "game_count": 31
+      },
+      {
+        "key": "7",
+        "game_count": 31
+      },
+      {
+        "key": "M",
+        "game_count": 29
+      },
+      {
+        "key": "8",
+        "game_count": 27
+      },
+      {
+        "key": "F1",
+        "game_count": 24
+      },
+      {
+        "key": "9",
+        "game_count": 22
+      },
+      {
+        "key": "B",
+        "game_count": 22
+      },
+      {
+        "key": "H",
+        "game_count": 22
+      },
+      {
+        "key": "Enter",
+        "game_count": 20
+      },
+      {
+        "key": "Down Arrow",
+        "game_count": 18
+      },
+      {
+        "key": "I",
+        "game_count": 18
+      },
+      {
+        "key": "P",
+        "game_count": 18
+      },
+      {
+        "key": "Up Arrow",
+        "game_count": 18
+      },
+      {
+        "key": "Left Arrow",
+        "game_count": 17
+      },
+      {
+        "key": "N",
+        "game_count": 17
+      },
+      {
+        "key": "Right Arrow",
+        "game_count": 17
+      },
+      {
+        "key": "0",
+        "game_count": 15
+      },
+      {
+        "key": "F2",
+        "game_count": 15
+      },
+      {
+        "key": "L",
+        "game_count": 15
+      },
+      {
+        "key": "F3",
+        "game_count": 14
+      },
+      {
+        "key": "O",
+        "game_count": 13
+      },
+      {
+        "key": "F5",
+        "game_count": 12
+      },
+      {
+        "key": "F8",
+        "game_count": 12
+      },
+      {
+        "key": "F4",
+        "game_count": 11
+      },
+      {
+        "key": "J",
+        "game_count": 11
+      },
+      {
+        "key": "Y",
+        "game_count": 10
+      },
+      {
+        "key": "Caps Lock",
+        "game_count": 9
+      },
+      {
+        "key": "F9",
+        "game_count": 9
+      },
+      {
+        "key": "Period",
+        "game_count": 9
+      },
+      {
+        "key": "K",
+        "game_count": 8
+      },
+      {
+        "key": "Backspace",
+        "game_count": 7
+      },
+      {
+        "key": "Backtick",
+        "game_count": 7
+      },
+      {
+        "key": "Equals",
+        "game_count": 7
+      },
+      {
+        "key": "U",
+        "game_count": 7
+      },
+      {
+        "key": "Comma",
+        "game_count": 6
+      },
+      {
+        "key": "Home",
+        "game_count": 6
+      },
+      {
+        "key": "Minus",
+        "game_count": 6
+      },
+      {
+        "key": "F6",
+        "game_count": 5
+      },
+      {
+        "key": "Left Bracket",
+        "game_count": 5
+      },
+      {
+        "key": "Delete",
+        "game_count": 4
+      },
+      {
+        "key": "Page Down",
+        "game_count": 4
+      },
+      {
+        "key": "Page Up",
+        "game_count": 4
+      },
+      {
+        "key": "Right Bracket",
+        "game_count": 4
+      },
+      {
+        "key": "End",
+        "game_count": 3
+      },
+      {
+        "key": "F11",
+        "game_count": 3
+      },
+      {
+        "key": "F12",
+        "game_count": 3
+      },
+      {
+        "key": "F7",
+        "game_count": 3
+      },
+      {
+        "key": "Insert",
+        "game_count": 3
+      },
+      {
+        "key": "Numpad 1",
+        "game_count": 3
+      },
+      {
+        "key": "Numpad 2",
+        "game_count": 3
+      },
+      {
+        "key": "Numpad 4",
+        "game_count": 3
+      },
+      {
+        "key": "Numpad 5",
+        "game_count": 3
+      },
+      {
+        "key": "Numpad Enter",
+        "game_count": 3
+      },
+      {
+        "key": "Tilde",
+        "game_count": 3
+      },
+      {
+        "key": "F10",
+        "game_count": 2
+      },
+      {
+        "key": "Num Lock",
+        "game_count": 2
+      },
+      {
+        "key": "Numpad +",
+        "game_count": 2
+      },
+      {
+        "key": "Numpad -",
+        "game_count": 2
+      },
+      {
+        "key": "Numpad /",
+        "game_count": 2
+      },
+      {
+        "key": "Numpad 0",
+        "game_count": 2
+      },
+      {
+        "key": "Numpad 7",
+        "game_count": 2
+      },
+      {
+        "key": "Numpad 8",
+        "game_count": 2
+      },
+      {
+        "key": "Pause",
+        "game_count": 2
+      },
+      {
+        "key": "Slash",
+        "game_count": 2
+      },
+      {
+        "key": "Numpad *",
+        "game_count": 1
+      },
+      {
+        "key": "Numpad .",
+        "game_count": 1
+      },
+      {
+        "key": "Numpad 3",
+        "game_count": 1
+      },
+      {
+        "key": "Numpad 6",
+        "game_count": 1
+      },
+      {
+        "key": "Plus",
+        "game_count": 1
+      },
+      {
+        "key": "Question Mark",
+        "game_count": 1
+      },
+      {
+        "key": "Scroll Lock",
+        "game_count": 1
+      },
+      {
+        "key": "Underscore",
+        "game_count": 1
+      }
+    ],
+    "exact_keyboard_presence_counts": [
+      {
+        "key": "A",
+        "game_count": 67
+      },
+      {
+        "key": "D",
+        "game_count": 65
+      },
+      {
+        "key": "E",
+        "game_count": 65
+      },
+      {
+        "key": "S",
+        "game_count": 65
+      },
+      {
+        "key": "W",
+        "game_count": 65
+      },
+      {
+        "key": "Q",
+        "game_count": 63
+      },
+      {
+        "key": "Space",
+        "game_count": 63
+      },
+      {
+        "key": "C",
+        "game_count": 58
+      },
+      {
+        "key": "F",
+        "game_count": 56
+      },
+      {
+        "key": "R",
+        "game_count": 55
+      },
+      {
+        "key": "2",
+        "game_count": 52
+      },
+      {
+        "key": "1",
+        "game_count": 51
+      },
+      {
+        "key": "3",
+        "game_count": 51
+      },
+      {
+        "key": "Shift",
+        "game_count": 49
+      },
+      {
+        "key": "4",
+        "game_count": 48
+      },
+      {
+        "key": "Tab",
+        "game_count": 48
+      },
+      {
+        "key": "Ctrl",
+        "game_count": 40
+      },
+      {
+        "key": "Esc",
+        "game_count": 39
+      },
+      {
+        "key": "V",
+        "game_count": 38
+      },
+      {
+        "key": "Z",
+        "game_count": 37
+      },
+      {
+        "key": "5",
+        "game_count": 36
+      },
+      {
+        "key": "T",
+        "game_count": 36
+      },
+      {
+        "key": "G",
+        "game_count": 35
+      },
+      {
+        "key": "X",
+        "game_count": 33
+      },
+      {
+        "key": "6",
+        "game_count": 31
+      },
+      {
+        "key": "7",
+        "game_count": 31
+      },
+      {
+        "key": "Alt",
+        "game_count": 29
+      },
+      {
+        "key": "M",
+        "game_count": 29
+      },
+      {
+        "key": "8",
+        "game_count": 27
+      },
+      {
+        "key": "F1",
+        "game_count": 24
+      },
+      {
+        "key": "9",
+        "game_count": 22
+      },
+      {
+        "key": "B",
+        "game_count": 22
+      },
+      {
+        "key": "H",
+        "game_count": 22
+      },
+      {
+        "key": "Enter",
+        "game_count": 20
+      },
+      {
+        "key": "Left Shift",
+        "game_count": 20
+      },
+      {
+        "key": "Down Arrow",
+        "game_count": 18
+      },
+      {
+        "key": "I",
+        "game_count": 18
+      },
+      {
+        "key": "P",
+        "game_count": 18
+      },
+      {
+        "key": "Up Arrow",
+        "game_count": 18
+      },
+      {
+        "key": "Left Arrow",
+        "game_count": 17
+      },
+      {
+        "key": "N",
+        "game_count": 17
+      },
+      {
+        "key": "Right Arrow",
+        "game_count": 17
+      },
+      {
+        "key": "0",
+        "game_count": 15
+      },
+      {
+        "key": "F2",
+        "game_count": 15
+      },
+      {
+        "key": "L",
+        "game_count": 15
+      },
+      {
+        "key": "Left Ctrl",
+        "game_count": 15
+      },
+      {
+        "key": "F3",
+        "game_count": 14
+      },
+      {
+        "key": "O",
+        "game_count": 13
+      },
+      {
+        "key": "F5",
+        "game_count": 12
+      },
+      {
+        "key": "F8",
+        "game_count": 12
+      },
+      {
+        "key": "F4",
+        "game_count": 11
+      },
+      {
+        "key": "J",
+        "game_count": 11
+      },
+      {
+        "key": "Y",
+        "game_count": 10
+      },
+      {
+        "key": "Caps Lock",
+        "game_count": 9
+      },
+      {
+        "key": "F9",
+        "game_count": 9
+      },
+      {
+        "key": "Period",
+        "game_count": 9
+      },
+      {
+        "key": "K",
+        "game_count": 8
+      },
+      {
+        "key": "Left Alt",
+        "game_count": 8
+      },
+      {
+        "key": "Backspace",
+        "game_count": 7
+      },
+      {
+        "key": "Backtick",
+        "game_count": 7
+      },
+      {
+        "key": "Equals",
+        "game_count": 7
+      },
+      {
+        "key": "U",
+        "game_count": 7
+      },
+      {
+        "key": "Comma",
+        "game_count": 6
+      },
+      {
+        "key": "Home",
+        "game_count": 6
+      },
+      {
+        "key": "Minus",
+        "game_count": 6
+      },
+      {
+        "key": "F6",
+        "game_count": 5
+      },
+      {
+        "key": "Left Bracket",
+        "game_count": 5
+      },
+      {
+        "key": "Delete",
+        "game_count": 4
+      },
+      {
+        "key": "Page Down",
+        "game_count": 4
+      },
+      {
+        "key": "Page Up",
+        "game_count": 4
+      },
+      {
+        "key": "Right Bracket",
+        "game_count": 4
+      },
+      {
+        "key": "Right Shift",
+        "game_count": 4
+      },
+      {
+        "key": "End",
+        "game_count": 3
+      },
+      {
+        "key": "F11",
+        "game_count": 3
+      },
+      {
+        "key": "F12",
+        "game_count": 3
+      },
+      {
+        "key": "F7",
+        "game_count": 3
+      },
+      {
+        "key": "Insert",
+        "game_count": 3
+      },
+      {
+        "key": "Numpad 1",
+        "game_count": 3
+      },
+      {
+        "key": "Numpad 2",
+        "game_count": 3
+      },
+      {
+        "key": "Numpad 4",
+        "game_count": 3
+      },
+      {
+        "key": "Numpad 5",
+        "game_count": 3
+      },
+      {
+        "key": "Numpad Enter",
+        "game_count": 3
+      },
+      {
+        "key": "Tilde",
+        "game_count": 3
+      },
+      {
+        "key": "F10",
+        "game_count": 2
+      },
+      {
+        "key": "Num Lock",
+        "game_count": 2
+      },
+      {
+        "key": "Numpad +",
+        "game_count": 2
+      },
+      {
+        "key": "Numpad -",
+        "game_count": 2
+      },
+      {
+        "key": "Numpad /",
+        "game_count": 2
+      },
+      {
+        "key": "Numpad 0",
+        "game_count": 2
+      },
+      {
+        "key": "Numpad 7",
+        "game_count": 2
+      },
+      {
+        "key": "Numpad 8",
+        "game_count": 2
+      },
+      {
+        "key": "Pause",
+        "game_count": 2
+      },
+      {
+        "key": "Right Ctrl",
+        "game_count": 2
+      },
+      {
+        "key": "Slash",
+        "game_count": 2
+      },
+      {
+        "key": "Numpad *",
+        "game_count": 1
+      },
+      {
+        "key": "Numpad .",
+        "game_count": 1
+      },
+      {
+        "key": "Numpad 3",
+        "game_count": 1
+      },
+      {
+        "key": "Numpad 6",
+        "game_count": 1
+      },
+      {
+        "key": "Plus",
+        "game_count": 1
+      },
+      {
+        "key": "Question Mark",
+        "game_count": 1
+      },
+      {
+        "key": "Right Alt",
+        "game_count": 1
+      },
+      {
+        "key": "Scroll Lock",
+        "game_count": 1
+      },
+      {
+        "key": "Underscore",
+        "game_count": 1
+      }
+    ]
+  },
+  "methodology": {
+    "count_unit": "Distinct named game/scoped edition record. Historical layouts and variants retain their explicit qualifiers; these are not 74 independently current installations.",
+    "presence_not_frequency": "Presence is the number of sampled game records with a documented key, including modifiers within chords and keys within sequences. It is not press frequency, urgency, market prevalence, or player telemetry.",
+    "parser": "Only explicit constituent keys are aggregated. Ascending numeric/function ranges and explicit arrow/numpad groups may expand. Top-row 1–0 notation expands to ten digits only when the action explicitly identifies numbered ability/toolbar/hotbar/item/weapon slots or assigned/selected/control groups. Other 1–0 notation, unspecified numbers, unknown tokens and incomplete expressions are logged without invented keys.",
+    "physical_aliases": "Left/right Ctrl, Shift and Alt retain exact variants, with a common aggregate alias. Numpad keys remain distinct from top-row digits. Symbol keys are not mapped to assumed US-layout physical keys.",
+    "raw_preservation": "Original document metadata, game metadata and binding rows are preserved. Private timezone/context fields are excluded and logged. Rejected original entries are retained only as excluded candidate audit trails.",
+    "source_deduplication": "Exact URL strings after whitespace trimming; no speculative equivalence across mirrors, query strings or fragments.",
+    "ids": "Stable hash-based game IDs from normalized title; source IDs from exact URL; binding IDs from game ID and observed action/key/context/source content with occurrence suffix for duplicates. Analyst urgency edits do not change binding IDs.",
+    "privacy_scope": "Only the four named public research JSON documents are read. context.json, uploaded images, account data and personal context are not inputs."
+  },
+  "privacy_redactions": [
+    {
+      "path": "action_games.json/timezone",
+      "reason": "Private/context metadata excluded from public consolidation."
+    },
+    {
+      "path": "action_modern_additions.json/timezone",
+      "reason": "Private/context metadata excluded from public consolidation."
+    }
+  ],
+  "ambiguous_or_partial_expressions": [
+    {
+      "binding_id": "binding_245dfe46f5ab",
+      "game_id": "game_79ccc610b9d8",
+      "game": "The Witcher 3: Wild Hunt (GOTY manual layout)",
+      "raw_expression": "C / ` / é",
+      "issues": [
+        {
+          "expression_part": "é",
+          "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+        }
+      ]
+    },
+    {
+      "binding_id": "binding_669f75c0d0c5",
+      "game_id": "game_022f71781396",
+      "game": "Final Fantasy XI",
+      "raw_expression": "Ctrl+number / Alt+number",
+      "issues": [
+        {
+          "expression_part": "number",
+          "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+        },
+        {
+          "expression_part": "number",
+          "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+        }
+      ]
+    },
+    {
+      "binding_id": "binding_abfc5aa97eeb",
+      "game_id": "game_19a9afd33f4e",
+      "game": "Age of Empires IV",
+      "raw_expression": "Ctrl + number",
+      "issues": [
+        {
+          "expression_part": "number",
+          "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+        }
+      ]
+    },
+    {
+      "binding_id": "binding_b733f7841654",
+      "game_id": "game_19a9afd33f4e",
+      "game": "Age of Empires IV",
+      "raw_expression": "Shift + command",
+      "issues": [
+        {
+          "expression_part": "command",
+          "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+        }
+      ]
+    },
+    {
+      "binding_id": "binding_f09d670e710b",
+      "game_id": "game_59a0e6521160",
+      "game": "StarCraft II",
+      "raw_expression": "Shift + command",
+      "issues": [
+        {
+          "expression_part": "command",
+          "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+        }
+      ]
+    },
+    {
+      "binding_id": "binding_b6c399d1c246",
+      "game_id": "game_986998e3c4d2",
+      "game": "Total War: WARHAMMER II",
+      "raw_expression": "1–0",
+      "issues": [
+        {
+          "expression_part": "1–0",
+          "reason": "Descending/cross-row range or unclear range type; no keys inferred."
+        }
+      ]
+    },
+    {
+      "binding_id": "binding_ad86f1cb6747",
+      "game_id": "game_0f0755e379c1",
+      "game": "Cities: Skylines",
+      "raw_expression": "MMB + move",
+      "issues": [
+        {
+          "expression_part": "move",
+          "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+        }
+      ]
+    },
+    {
+      "binding_id": "binding_967389a199fc",
+      "game_id": "game_9428c1cb2279",
+      "game": "BeamNG.drive",
+      "raw_expression": "1–0",
+      "issues": [
+        {
+          "expression_part": "1–0",
+          "reason": "Descending/cross-row range or unclear range type; no keys inferred."
+        }
+      ]
+    },
+    {
+      "binding_id": "binding_dd96c2f6cd45",
+      "game_id": "game_3b4acefbc6bf",
+      "game": "Age of Empires II: Definitive Edition",
+      "raw_expression": "Ctrl + number",
+      "issues": [
+        {
+          "expression_part": "number",
+          "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+        }
+      ]
+    },
+    {
+      "binding_id": "binding_370a821bfc9b",
+      "game_id": "game_3b4acefbc6bf",
+      "game": "Age of Empires II: Definitive Edition",
+      "raw_expression": "number",
+      "issues": [
+        {
+          "expression_part": "number",
+          "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+        }
+      ]
+    },
+    {
+      "binding_id": "binding_a32cb990c063",
+      "game_id": "game_4388575b9c74",
+      "game": "Warcraft III",
+      "raw_expression": "Shift + command",
+      "issues": [
+        {
+          "expression_part": "command",
+          "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+        }
+      ]
+    },
+    {
+      "binding_id": "binding_4aed91f3944a",
+      "game_id": "game_0a3dd1245997",
+      "game": "OpenTTD",
+      "raw_expression": "Shift + click",
+      "issues": [
+        {
+          "expression_part": "click",
+          "reason": "Unspecified input, layout-dependent unknown token, or unsupported syntax; no key inferred."
+        }
+      ]
+    }
+  ],
+  "genre_assignments": [
+    {
+      "game_id": "game_ce9d8a69db25",
+      "title": "Warframe",
+      "genre_family": "Shooter"
+    },
+    {
+      "game_id": "game_135b38b8c9c7",
+      "title": "DOOM (2016)",
+      "genre_family": "Shooter"
+    },
+    {
+      "game_id": "game_6993b3c95f03",
+      "title": "Far Cry 3",
+      "genre_family": "Shooter"
+    },
+    {
+      "game_id": "game_9a6fc5ad5b80",
+      "title": "Far Cry (2004)",
+      "genre_family": "Shooter"
+    },
+    {
+      "game_id": "game_c4a67415c1ed",
+      "title": "Crysis 2",
+      "genre_family": "Shooter"
+    },
+    {
+      "game_id": "game_94041e16a40a",
+      "title": "Apex Legends",
+      "genre_family": "Shooter"
+    },
+    {
+      "game_id": "game_a9cc3a67f0ef",
+      "title": "Battlefield 1",
+      "genre_family": "Shooter"
+    },
+    {
+      "game_id": "game_c6c30f380611",
+      "title": "HITMAN (2016)",
+      "genre_family": "Action & adventure"
+    },
+    {
+      "game_id": "game_108d2578a801",
+      "title": "Deus Ex: Mankind Divided",
+      "genre_family": "RPG & action RPG"
+    },
+    {
+      "game_id": "game_9eaac733b2fd",
+      "title": "Hitman: Absolution",
+      "genre_family": "Action & adventure"
+    },
+    {
+      "game_id": "game_0c63cb84716e",
+      "title": "Call of Duty: Black Ops Cold War",
+      "genre_family": "Shooter"
+    },
+    {
+      "game_id": "game_182148db128b",
+      "title": "Deus Ex: Human Revolution – Director's Cut",
+      "genre_family": "RPG & action RPG"
+    },
+    {
+      "game_id": "game_a314d3067f7b",
+      "title": "Alien: Isolation",
+      "genre_family": "Action & adventure"
+    },
+    {
+      "game_id": "game_fb9844533609",
+      "title": "Mad Max",
+      "genre_family": "Action & adventure"
+    },
+    {
+      "game_id": "game_cdbc5d09eb95",
+      "title": "Batman: Arkham Knight",
+      "genre_family": "Action & adventure"
+    },
+    {
+      "game_id": "game_95e05327fad6",
+      "title": "Middle-earth: Shadow of Mordor GOTY",
+      "genre_family": "Action & adventure"
+    },
+    {
+      "game_id": "game_c73095eef073",
+      "title": "Tomb Raider (2013)",
+      "genre_family": "Action & adventure"
+    },
+    {
+      "game_id": "game_a7c684a81e20",
+      "title": "Rise of the Tomb Raider: 20 Year Celebration",
+      "genre_family": "Action & adventure"
+    },
+    {
+      "game_id": "game_54bfa20dc5b5",
+      "title": "Shadow of the Tomb Raider: Definitive Edition",
+      "genre_family": "Action & adventure"
+    },
+    {
+      "game_id": "game_138c31dd8f92",
+      "title": "Sleeping Dogs: Definitive Edition",
+      "genre_family": "Action & adventure"
+    },
+    {
+      "game_id": "game_5b618626a0d0",
+      "title": "Dishonored (2012)",
+      "genre_family": "Action & adventure"
+    },
+    {
+      "game_id": "game_3c000c264c76",
+      "title": "Prey (2017)",
+      "genre_family": "Action & adventure"
+    },
+    {
+      "game_id": "game_8228a5c90faf",
+      "title": "Helldivers 2",
+      "genre_family": "Shooter"
+    },
+    {
+      "game_id": "game_9ed138de90c6",
+      "title": "Escape from Tarkov",
+      "genre_family": "Shooter"
+    },
+    {
+      "game_id": "game_e060cb31d398",
+      "title": "Final Fantasy XIV",
+      "genre_family": "MMORPG"
+    },
+    {
+      "game_id": "game_b3955bafba26",
+      "title": "The Elder Scrolls V: Skyrim (original PC)",
+      "genre_family": "RPG & action RPG"
+    },
+    {
+      "game_id": "game_30444ad70b28",
+      "title": "Fallout 4",
+      "genre_family": "RPG & action RPG"
+    },
+    {
+      "game_id": "game_79ccc610b9d8",
+      "title": "The Witcher 3: Wild Hunt (GOTY manual layout)",
+      "genre_family": "RPG & action RPG"
+    },
+    {
+      "game_id": "game_022f71781396",
+      "title": "Final Fantasy XI",
+      "genre_family": "MMORPG"
+    },
+    {
+      "game_id": "game_c52d69b58efc",
+      "title": "Baldur's Gate 3",
+      "genre_family": "RPG & action RPG"
+    },
+    {
+      "game_id": "game_7201944bf88b",
+      "title": "Minecraft Education",
+      "genre_family": "Survival & sandbox"
+    },
+    {
+      "game_id": "game_1f6e040e3d46",
+      "title": "World of Warcraft (original manual layout)",
+      "genre_family": "MMORPG"
+    },
+    {
+      "game_id": "game_1e772489c042",
+      "title": "Elden Ring",
+      "genre_family": "RPG & action RPG"
+    },
+    {
+      "game_id": "game_94cca2039fc4",
+      "title": "Dark Souls III",
+      "genre_family": "RPG & action RPG"
+    },
+    {
+      "game_id": "game_2e5496e297fc",
+      "title": "Sekiro: Shadows Die Twice",
+      "genre_family": "Action & adventure"
+    },
+    {
+      "game_id": "game_abc01da90e4d",
+      "title": "Last Epoch",
+      "genre_family": "RPG & action RPG"
+    },
+    {
+      "game_id": "game_6de6d4912e92",
+      "title": "Diablo IV (prelaunch documented layout)",
+      "genre_family": "RPG & action RPG"
+    },
+    {
+      "game_id": "game_2770e09df5b7",
+      "title": "Path of Exile 2",
+      "genre_family": "RPG & action RPG"
+    },
+    {
+      "game_id": "game_6d1cd7b3564f",
+      "title": "Monster Hunter: World — Iceborne",
+      "genre_family": "RPG & action RPG"
+    },
+    {
+      "game_id": "game_cba368b639ae",
+      "title": "Monster Hunter Rise",
+      "genre_family": "RPG & action RPG"
+    },
+    {
+      "game_id": "game_b0f77dbed3fa",
+      "title": "Valheim",
+      "genre_family": "Survival & sandbox"
+    },
+    {
+      "game_id": "game_2272aa0a57f9",
+      "title": "Grim Dawn",
+      "genre_family": "RPG & action RPG"
+    },
+    {
+      "game_id": "game_419ed35ea33c",
+      "title": "The Elder Scrolls Online (2016 staff guide layout)",
+      "genre_family": "MMORPG"
+    },
+    {
+      "game_id": "game_6118726aca9f",
+      "title": "Guild Wars 2",
+      "genre_family": "MMORPG"
+    },
+    {
+      "game_id": "game_57db579adedb",
+      "title": "Minecraft Java / Bedrock (shared basic controls)",
+      "genre_family": "Survival & sandbox"
+    },
+    {
+      "game_id": "game_e599333fd67e",
+      "title": "No Man's Sky (NEXT layout)",
+      "genre_family": "Survival & sandbox"
+    },
+    {
+      "game_id": "game_6566dedb0188",
+      "title": "Subnautica",
+      "genre_family": "Survival & sandbox"
+    },
+    {
+      "game_id": "game_b596f3894191",
+      "title": "Subnautica 2 (May 2026 early-access table)",
+      "genre_family": "Survival & sandbox"
+    },
+    {
+      "game_id": "game_078be25e6991",
+      "title": "XCOM 2",
+      "genre_family": "Strategy, tactics & MOBA"
+    },
+    {
+      "game_id": "game_c908f4c8ec9f",
+      "title": "Factorio",
+      "genre_family": "Building & management"
+    },
+    {
+      "game_id": "game_19a9afd33f4e",
+      "title": "Age of Empires IV",
+      "genre_family": "Strategy, tactics & MOBA"
+    },
+    {
+      "game_id": "game_59a0e6521160",
+      "title": "StarCraft II",
+      "genre_family": "Strategy, tactics & MOBA"
+    },
+    {
+      "game_id": "game_be4bf244849c",
+      "title": "Total War: WARHAMMER III",
+      "genre_family": "Strategy, tactics & MOBA"
+    },
+    {
+      "game_id": "game_986998e3c4d2",
+      "title": "Total War: WARHAMMER II",
+      "genre_family": "Strategy, tactics & MOBA"
+    },
+    {
+      "game_id": "game_0f0755e379c1",
+      "title": "Cities: Skylines",
+      "genre_family": "Building & management"
+    },
+    {
+      "game_id": "game_a3dc59727b4e",
+      "title": "Euro Truck Simulator 2",
+      "genre_family": "Driving & flight simulation"
+    },
+    {
+      "game_id": "game_9428c1cb2279",
+      "title": "BeamNG.drive",
+      "genre_family": "Driving & flight simulation"
+    },
+    {
+      "game_id": "game_6dcef48a6835",
+      "title": "Stardew Valley",
+      "genre_family": "Building & management"
+    },
+    {
+      "game_id": "game_4ebd9ec2cb52",
+      "title": "Hollow Knight",
+      "genre_family": "Action & adventure"
+    },
+    {
+      "game_id": "game_3b4acefbc6bf",
+      "title": "Age of Empires II: Definitive Edition",
+      "genre_family": "Strategy, tactics & MOBA"
+    },
+    {
+      "game_id": "game_4388575b9c74",
+      "title": "Warcraft III",
+      "genre_family": "Strategy, tactics & MOBA"
+    },
+    {
+      "game_id": "game_b3dbefc3b574",
+      "title": "HUMANKIND",
+      "genre_family": "Strategy, tactics & MOBA"
+    },
+    {
+      "game_id": "game_0a3dd1245997",
+      "title": "OpenTTD",
+      "genre_family": "Building & management"
+    },
+    {
+      "game_id": "game_9ea5367e53ce",
+      "title": "League of Legends",
+      "genre_family": "Strategy, tactics & MOBA"
+    },
+    {
+      "game_id": "game_b7e8ca4e5013",
+      "title": "DCS World (Su-25T)",
+      "genre_family": "Driving & flight simulation"
+    },
+    {
+      "game_id": "game_b1339f568ed2",
+      "title": "X-Plane 12",
+      "genre_family": "Driving & flight simulation"
+    },
+    {
+      "game_id": "game_852c03d8302b",
+      "title": "Hades II",
+      "genre_family": "Action & adventure"
+    },
+    {
+      "game_id": "game_e4f38db39e85",
+      "title": "DOOM Eternal",
+      "genre_family": "Shooter"
+    },
+    {
+      "game_id": "game_8d04c4c1b1e3",
+      "title": "Death Stranding",
+      "genre_family": "Action & adventure"
+    },
+    {
+      "game_id": "game_33715c159bcb",
+      "title": "Destiny 2",
+      "genre_family": "Shooter"
+    },
+    {
+      "game_id": "game_8b95238402b5",
+      "title": "Overwatch 2",
+      "genre_family": "Shooter"
+    },
+    {
+      "game_id": "game_6cf28fed21c2",
+      "title": "VALORANT",
+      "genre_family": "Shooter"
+    },
+    {
+      "game_id": "game_a8333309083b",
+      "title": "Cyberpunk 2077 (legacy controls)",
+      "genre_family": "RPG & action RPG"
+    },
+    {
+      "game_id": "game_3f21bb44e84c",
+      "title": "Red Dead Redemption 2",
+      "genre_family": "Action & adventure"
+    }
+  ],
+  "quality_gates": {
+    "expected_game_records": 74,
+    "expected_binding_rows_at_request": 1747,
+    "actual_game_records": 74,
+    "actual_binding_rows": 1747,
+    "main_only": true,
+    "rejected_original_entries_counted": false
+  }
+}

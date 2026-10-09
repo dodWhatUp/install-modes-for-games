@@ -127,3 +127,9 @@ Keep device enrollment records, user baselines and reWASD recovery files in Driv
 For this repository, publish only to the canonical destination in [GitHub publishing](GITHUB-PUBLISHING.md). Verify the connected identity and remote. Keep the workflow discoverable from AGENTS.md and preferences/GENERAL.md so later tasks use it without making the user repeat the instructions.
 
 Apply the workflow when a game is requested, installed or reviewed within the authorized task. This default does not authorize a bulk migration, arbitrary game launches, reminders, or resuming paused experiments. Record limitations and the next verification step rather than presenting planned work as complete.
+
+## 2026-10 research: cross-game keyboard catalogue (Step 1)
+
+The [Step 1 research package](../research_outputs/input-controls/azeron-keybinds/README.md) contains 74 game/edition/layout records and 1,747 documented binding entries, with 76 direct binding-source URLs and two contextual references. `AI_MASTER.json` is the editable research source; the workbook and readable report are derived views.
+
+The provisional architecture is one shared map family with four conceptual layers, plus Hotbar or RTS Grid base variants only when access requirements justify them. Source age, platform, selected preset, urgent numeric/function keys, held combinations and unresolved coverage are explicit. This research does not adopt a native Software v2 profile, overwrite prior exports, or establish runtime tap/hold behavior. The next boundary is the physical button map and installed-preset verification described in the package.
