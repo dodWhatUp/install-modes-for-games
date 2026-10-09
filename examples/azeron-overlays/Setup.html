@@ -1,0 +1,279 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Azeron overlays — setup guide</title><style>
+:root{color-scheme:light;--ink:#17263a;--muted:#586579;--line:#d8e0e8;--accent:#176b86;--paper:#fff;--bg:#f2f5f8}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}main{max-width:1100px;margin:36px auto;padding:0 24px 48px}header{padding:24px 32px;background:#13374a;color:#f7fbff;border-radius:16px;margin-bottom:20px}header h1{margin:0 0 8px;font-size:32px;line-height:1.2}header p{margin:0;color:#d7e8f1}details{background:var(--paper);border:1px solid var(--line);border-radius:12px;margin:14px 0;overflow:hidden}summary{cursor:pointer;padding:18px 24px;font-size:21px;font-weight:700;line-height:1.35}summary:hover{background:#edf6fa}details[open]>summary{border-bottom:1px solid var(--line)}section{padding:8px 26px 24px;overflow-x:auto}h3{font-size:19px;margin:24px 0 8px}p,ul,ol{margin:12px 0}li{margin:6px 0}a{color:var(--accent);text-underline-offset:3px;overflow-wrap:anywhere}header a{color:#bceeff}table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.45;margin:18px 0}th,td{padding:10px 12px;text-align:left;vertical-align:top;border:1px solid var(--line)}th{background:#eaf1f5;font-weight:700}tbody tr:nth-child(even){background:#f8fafc}code{font:0.91em ui-monospace,Consolas,monospace;background:#edf1f5;border-radius:4px;padding:2px 4px;overflow-wrap:anywhere}header code{background:#24516a}footer{color:var(--muted);font-size:13px;padding:10px 4px}strong{font-weight:700}@media(max-width:640px){main{padding:0 12px 28px;margin:18px auto}header{padding:22px}header h1{font-size:27px}summary{padding:16px;font-size:19px}section{padding:4px 16px 20px}table{min-width:600px}}@media print{body{background:white}main{max-width:none;margin:0;padding:0}details{break-inside:auto}summary{font-size:18px}header{background:white;color:black;padding:0;border-radius:0}header p{color:#333}section{display:block!important}details>section{content-visibility:visible}details:not([open])>section{display:block}a{color:inherit}footer{margin-top:12px}}
+</style></head><body><main><header><h1>Azeron picture and keystroke overlays</h1>
+<p>Prepared 10 October 2026 for Azeron Cyborg II with Azeron Software V2 on Windows.</p>
+</header>
+<details open><summary>Use these two tools</summary><section>
+<ol>
+<li><strong>LayerPictures.ahk</strong>, included here, provides a chosen picture for each shortcut with explicitly defined Toggle, Hold, or Timed behavior. It requires <strong>AutoHotkey v2</strong>: <a href="https://www.autohotkey.com/">https://www.autohotkey.com/</a>.</li>
+<li><strong>Keyviz 2.1.1-beta</strong> displays the keys you press, with adjustable appearance, opacity and duration. Download it from the official release: <a href="https://github.com/mulaRahul/keyviz/releases/tag/v2.1.1">https://github.com/mulaRahul/keyviz/releases/tag/v2.1.1</a>.</li>
+</ol>
+<p>These are ordinary desktop overlays. Start with <strong>Borderless / Windowed Fullscreen</strong> in the game. Visibility over an exclusive-fullscreen game is not established. Nothing in this package installs software, changes an Azeron profile, or modifies a game automatically.</p>
+<p>The helper is a newly authored source utility, not an Azeron product or a compiled installer. Its review and remaining Windows checks are recorded in <code>VALIDATION.md</code>. Keyviz and the alternative apps below were researched from primary documentation/source, not executed on your PC.</p>
+</section></details>
+<details open><summary>1. Set up the picture helper</summary><section>
+<ol>
+<li>Extract the package to a folder you can write to. Install AutoHotkey <strong>v2</strong>, then double-click <code>LayerPictures.ahk</code>.</li>
+<li>Open <strong>Settings</strong> from the helper&#39;s tray icon. Choose an image for each slot with <strong>Browse</strong>. A blank image slot is unused. PNG or JPG is a practical starting format.</li>
+<li>Choose the trigger key, display mode, size, opacity, position and duration, then click <strong>Save and close</strong>.</li>
+<li>From the tray, use <strong>Preview saved slot 1</strong> (or 2–4) to check the saved picture for two seconds without generating F14 from a physical keyboard. Assign the matching output to an Azeron button as described below.</li>
+<li>Use the tray menu to hide the picture, disable the helper, reopen Settings, or exit.</li>
+</ol>
+<p>Suggested starting configuration, subject to your currently assigned keys. The supplied defaults have empty picture paths and all four slots set to Toggle; select the modes below if you want this arrangement:</p>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Trigger</th>
+<th>Picture you choose</th>
+<th>Mode</th>
+<th>Opacity</th>
+<th>Width</th>
+<th>Position</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>F14</td>
+<td>Base-layer reference</td>
+<td>Toggle</td>
+<td>75%</td>
+<td>800 px</td>
+<td>TopRight</td>
+<td>2 s, used only in Timed mode</td>
+</tr>
+<tr>
+<td>2</td>
+<td>F15</td>
+<td>Second-layer reference</td>
+<td>Hold</td>
+<td>75%</td>
+<td>800 px</td>
+<td>TopRight</td>
+<td>2 s, used only in Timed mode</td>
+</tr>
+<tr>
+<td>3</td>
+<td>F16</td>
+<td>Third-layer reference</td>
+<td>Hold</td>
+<td>75%</td>
+<td>800 px</td>
+<td>TopRight</td>
+<td>2 s, used only in Timed mode</td>
+</tr>
+<tr>
+<td>4</td>
+<td>F17</td>
+<td>Extra reference</td>
+<td>Timed</td>
+<td>75%</td>
+<td>800 px</td>
+<td>TopRight</td>
+<td>2 s</td>
+</tr>
+</tbody></table>
+<p>F14 is explicitly shown in Azeron&#39;s V2 manual. F15–F17 here are helper defaults: select them in Azeron&#39;s Special Keys list if your installed build exposes them, or choose other unused single keys in both apps. The helper accepts single keyboard-key names, not a shortcut chord such as Ctrl+Alt+K. Avoid repurposing the existing layer button or a game/graphics shortcut.</p>
+<h3>What the modes mean</h3>
+<ul>
+<li><strong>Toggle:</strong> One press shows that picture; the next press of the same key hides it.</li>
+<li><strong>Hold:</strong> The picture appears while its trigger is held and hides when it is released.</li>
+<li><strong>Timed:</strong> Each fresh press shows the picture for the chosen number of seconds.</li>
+</ul>
+<p>Only one picture is shown at a time. A newer picture replaces the previous one. Releasing the previous trigger must not hide the new picture. Releasing a newer Hold trigger does not restore an older picture automatically; press the desired trigger again.</p>
+<p>Opacity is the amount you can see: <strong>75% opacity means 25% transparent</strong>. Start near 75%, then adjust in the game. Width controls scaling; the picture keeps its aspect ratio. The helper targets the primary monitor and offers five fixed placements, rather than arbitrary dragging or multi-monitor routing. It fades the whole rectangular picture. Transparent PNG regions may show its dark canvas; per-pixel transparency is not promised. GIFs are displayed as a static frame.</p>
+<p>Keep <strong>Let the trigger key also continue to the game / active app</strong> off for a dedicated help key. Turn it on only if the same emitted key deliberately also performs an action in the game. The overlay is click-through and is designed to leave the game focused. It observes its registered triggers; it does not record your typing or send data over the network. Bindings are paused while Settings is open; uncheck the tray&#39;s <strong>Overlays enabled</strong> to disable both the overlay and its hotkeys.</p>
+<p>Settings are kept in <code>LayerPictures.ini</code> beside the script. The image paths in that file refer to your own files: if you move an image, choose it again. Keep your images and INI private when sharing this source package.</p>
+</section></details>
+<details open><summary>2. Set up Keyviz</summary><section>
+<p>Install the Windows release, open its tray icon, then <strong>Settings</strong>. These labels were verified against release v2.1.1, commit <code>8225e4157ed170a56d37366be24573f614b9ce06</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Starting value</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>General → Filter</td>
+<td>Off</td>
+<td>Shows ordinary game keys, not just modifier combinations</td>
+</tr>
+<tr>
+<td>General → History</td>
+<td>Off</td>
+<td>Compact display; turn it on with Max Count 3 for a short history</td>
+</tr>
+<tr>
+<td>General → Toggle Shortcut</td>
+<td>Record Ctrl+Alt+K if unused</td>
+<td>Enables/disables the visualization; default is Left Shift+F10</td>
+</tr>
+<tr>
+<td>Keycap → Preset</td>
+<td>Laptop</td>
+<td>Simple readable key boxes</td>
+</tr>
+<tr>
+<td>Keycap → Text → Size</td>
+<td>Adjust to your display</td>
+<td>Controls label size</td>
+</tr>
+<tr>
+<td>Keycap → Text → Text Color</td>
+<td>White, 100% opacity</td>
+<td>Keeps letters readable</td>
+</tr>
+<tr>
+<td>Keycap → Color → Normal</td>
+<td>Dark, 65–75% opacity</td>
+<td>Semi-transparent key background</td>
+</tr>
+<tr>
+<td>Keycap → Color → Highlight Modifier</td>
+<td>On, if wanted</td>
+<td>Reveals the separate modifier-color control</td>
+</tr>
+<tr>
+<td>Keycap → Color → Modifier</td>
+<td>Optional distinct color</td>
+<td>Makes Shift/Ctrl/Alt easier to distinguish</td>
+</tr>
+<tr>
+<td>Appearance → Alignment / Margin</td>
+<td>A free corner, small margin</td>
+<td>Positions the display away from HUD elements</td>
+</tr>
+<tr>
+<td>Appearance → Display</td>
+<td>Your game monitor, if shown</td>
+<td>Selects the output display</td>
+</tr>
+<tr>
+<td>Appearance → Duration</td>
+<td>1.6 seconds</td>
+<td>Sets how long released keys remain visible</td>
+</tr>
+<tr>
+<td>Appearance → Animation</td>
+<td>Fade</td>
+<td>A restrained entry/exit style</td>
+</tr>
+<tr>
+<td>Appearance → Animation Speed</td>
+<td>About 0.2</td>
+<td>Controls transition speed, separately from Duration</td>
+</tr>
+<tr>
+<td>Mouse → Cursor Highlight → Show Clicks</td>
+<td>Off, if distracting</td>
+<td>Removes the ring around mouse clicks</td>
+</tr>
+<tr>
+<td>Mouse → Button Indicator → Show Indicator</td>
+<td>Off, if distracting</td>
+<td>Removes mouse-button icons near the cursor</td>
+</tr>
+</tbody></table>
+<p>The <strong>checkerboard alpha slider / percentage field inside each color picker</strong> sets opacity. It is not a separate global Transparency setting. The free features cover this request; Pro is not required.</p>
+<p><strong>Close Settings before judging disappearance time.</strong> The release source intentionally keeps the preview from expiring while Settings is open. A key that remains held also stays visible: Duration concerns the lingering display after input, not forcibly hiding a key you are still holding. One beta timing detail needs a Windows check: the first key in a group may not refresh its timestamp on release (<code>if (kIndex &amp;&amp; kIndex &gt;= 0)</code> skips index 0). It may therefore disappear immediately after a long hold. This is a code-level inference, not an observed failure on your PC; test a long-held W before relying on an exact post-release delay.</p>
+<p>Use a normal keyboard combination for the Keyviz toggle. <strong>Do not rely on F13–F24 for Keyviz 2.1.1</strong>: those names are commented out in its supported key definitions. This is separate from the picture helper, which can use those keys.</p>
+<p>Keyviz shows Windows keyboard output such as W, Shift or Space. It does not identify an Azeron physical button number, an internal layer change, a game&#39;s action name, or native analog-stick motion. Two buttons sending the same key look the same. Disable the visualization while typing anything you do not want visible on screen.</p>
+</section></details>
+<details><summary>3. Connect the controls in Azeron Software V2</summary><section>
+<h3>A reliable dedicated picture-help button</h3>
+<ol>
+<li>Select your current <strong>software profile</strong> and a spare physical button.</li>
+<li>Set its normal <strong>Keyboard</strong> binding. Open <strong>Special Keys</strong> and select <strong>F14</strong> for the base-picture slot.</li>
+<li>In each additional layer/profile, use the same physical help-button position but assign the key for that layer&#39;s picture, such as F15 or F16 when available.</li>
+<li>Keep Azeron running when using software layers. In the helper, match each trigger to its intended image.</li>
+<li>For a Keyviz on/off button, set a separate Azeron Keyboard combination matching Keyviz&#39;s recorded <strong>Ctrl+Alt+K</strong> (or your chosen unused combination).</li>
+</ol>
+<p>This gives a context-sensitive help button: after entering a layer, pressing that help button shows the corresponding image. It does <strong>not</strong> claim automatic image display from the layer-switch event itself.</p>
+<h3>Native Azeron layers and the same-button limitation</h3>
+<p>V2 still implements layers through linked <strong>software profiles</strong>. Select the switching button, choose <strong>Layering</strong>, and choose the destination profile. <strong>Toggle on hold</strong> makes release return to the previous profile. The option configuring the destination&#39;s same button to return provides a second-press return instead. <strong>Switch held binds on layer change</strong> changes the outputs of other buttons that are already held; leave your existing choice until a deliberate test establishes the desired behavior.</p>
+<p>Your recorded historical preference is to preserve a normal short tap and use a brief long hold for a momentary layer. The older record specifies button 6, tap V, 150 ms hold, and release-to-return. This package does not migrate or overwrite that record, and does not claim its exact V1.5.6 timing was revalidated in V2.</p>
+<p>The current manual does <strong>not establish</strong> that one native Layering activation can also send F14. Separate Single Press and Long Press assignments are separate events, not proof of simultaneous output. Therefore a generic keyboard-overlay app cannot be told to detect a purely internal layer switch with no emitted keyboard event.</p>
+<p>For Azeron&#39;s own current-map display, open the bottom-right <strong>Quick Access Tools → Enable Gaming mode</strong>. It gives a compact view of the active profile. The manual does not establish arbitrary user pictures, transparency, click-through or always-on-top game-overlay behavior for that view.</p>
+</section></details>
+<details><summary>4. Automatic picture display when changing a layer: reWASD alternative</summary><section>
+<p>reWASD documents an additional keyboard mapping on a <strong>Jump to Shift</strong> button. This is the supported alternative if automatic picture display from the same layer-switch activation is essential. It is an optional mapping-owner change, not something installed or activated by this package.</p>
+<p>For a momentary layer:</p>
+<ol>
+<li>Select the intended button/activator and open <strong>Shift mode</strong>.</li>
+<li>Choose <strong>Jump to Shift</strong>, the destination layer, and <strong>Mode → Hold</strong>.</li>
+<li>In the mapping section inside that Shift-mode panel, also assign <strong>F15</strong>, for example.</li>
+<li>In LayerPictures, set F15&#39;s image to <strong>Hold</strong>.</li>
+<li>With a delayed jump, <strong>Postpone the mapping</strong> starts the key mapping together with layer activation.</li>
+</ol>
+<p>To preserve a short-tap action, keep that action on Single Press and put the layer jump plus image trigger on <strong>Long Press</strong>. Use the existing 150 ms starting threshold only if deliberately reproducing the saved behavior; verify taps, holds and return on the actual device. Avoid stacking an Azeron software layer transition and a second reWASD transition on the same button accidentally.</p>
+<p>A toggle layer and a held keyboard output are different states. For toggle layers, use a matching Toggle picture and understand that changing profiles by another route can desynchronize it. A momentary Hold signal is the simpler initial arrangement. <strong>Postpone the mapping</strong> synchronizes activation; key release and return still require the device test below.</p>
+<p>reWASD also has <strong>Preferences → Overlay</strong> for its own Shift indicators/mapping display, with opacity/position/duration controls. That is a useful native status alternative, but arbitrary custom-image support is not established by that documentation. Use its ordinary windowed-overlay path for this proposal.</p>
+</section></details>
+<details><summary>5. Ready-made alternatives</summary><section>
+<h3>Multi Image Canvas 1.0.8 — strongest ready-made picture option</h3>
+<p>Official downloads: <a href="https://github.com/tokonoha00/Multi-image-canvas/releases">https://github.com/tokonoha00/Multi-image-canvas/releases</a>.</p>
+<ol>
+<li>Extract the portable Windows x64 ZIP and run <code>MultiImageCanvas.exe</code>. Its runtime is included.</li>
+<li>Create one canvas tab for each reference image, import the image and adjust its size.</li>
+<li>Right-click a tab → <strong>Set switch key...</strong>. Single F14/F15 keys are accepted. English localization is present in this release.</li>
+<li>Use the gear beside the overlay control to configure opacity and click-through. Start at 75% opacity.</li>
+<li>Enable the overlay. Use the per-canvas keys to select the picture while keeping the game active.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Default shortcut</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl+Alt+H</td>
+<td>Show/hide the overlay</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+T</td>
+<td>Toggle click-through</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+PageUp / PageDown</td>
+<td>Increase/decrease opacity</td>
+</tr>
+<tr>
+<td>A canvas&#39;s assigned switch key</td>
+<td>Select that canvas</td>
+</tr>
+</tbody></table>
+<p><strong>Important verified limitation:</strong> A canvas-switch key does not reveal a hidden overlay; it changes the selected canvas while leaving it hidden. Press Ctrl+Alt+H to show it. Pressing the same canvas key is not a show/hide toggle. This is why the included helper exists. Hold-to-show and timed dismissal were not established for Multi Image Canvas. Exclusive fullscreen is explicitly unsupported.</p>
+<p>The app has saved layouts and more image-arrangement controls than the helper. Use it if that matters more than direct one-key show/hold/timed behavior. Its portable build normally stores settings in <code>%APPDATA%\MultiImageCanvas</code>.</p>
+<h3>Carnac 2.3.13 — simpler keystroke-display fallback</h3>
+<p>Official release: <a href="https://github.com/Code52/carnac/releases/tag/2.3.13">https://github.com/Code52/carnac/releases/tag/2.3.13</a>.</p>
+<p>Open the tray preferences. Under <strong>Appearance</strong>, set <strong>Popup Opacity</strong> to 0.7, <strong>Popup Fade Delay (sec)</strong> to 2, <strong>Font Size</strong> to 32, <strong>Font Colour</strong> to white and <strong>Background Color</strong> to black. Uncheck <strong>Shortcuts Only</strong> and <strong>Only keys with Modifiers</strong> to see ordinary game keys. Enable <strong>Show Space as ␣</strong> so Space has a visible label. Select the monitor/corner in <strong>General</strong>, then Save. <strong>Ctrl+Alt+P</strong> toggles silent mode.</p>
+<p>This is the original Code52 release, last released in 2020. Its labels differ from the separate Carnac w/ Mouse fork. Prefer Keyviz first for a newer customizable display.</p>
+</section></details>
+<details><summary>6. First Windows check and rollback</summary><section>
+<ol>
+<li>Start outside a game. Choose two clearly different pictures. Confirm Preview, each trigger, opacity and size.</li>
+<li>Check Toggle twice; check Hold down/up; check Timed expiry; hold a key long enough to ensure repeat does not rapidly toggle it.</li>
+<li>Show one picture, then another. Confirm an old timer or the old key&#39;s release cannot dismiss the new picture. Hide/disable and verify the tray still works.</li>
+<li>Open a game in Borderless / Windowed Fullscreen. Confirm the picture leaves the game focused and mouse clicks reach the game. Check the overlay does not cover a critical HUD element.</li>
+<li>In Keyviz, close Settings; press and release W, Space and Shift. Also hold W longer than Duration, then release. Confirm the labels, chosen duration and on/off shortcut, including the post-hold timing you want.</li>
+<li>Only if using the reWASD route, verify that the layer and image both activate and both return on release, while a short tap retains its normal action.</li>
+</ol>
+<p>If an application blocks the overlay or its input, keep that application&#39;s restrictions intact; compatibility is not universal. This package does not require game-process injection.</p>
+<p>To stop the helper, use its tray <strong>Exit</strong>. Remove the new helper-key assignments or restore your pre-change Azeron export if you no longer want them. Exit Keyviz/Carnac/Multi Image Canvas through their tray or app controls. No autostart entry is created by the helper.</p>
+</section></details>
+<details><summary>Sources and evidence</summary><section>
+<ul>
+<li>Azeron current Cyborg II manual, V2.0.0: <a href="https://cdn.shopify.com/s/files/1/0930/2386/3123/files/Azeron_Cyborg_II_Manual_V2.0.0_1.pdf?v=1791194501">https://cdn.shopify.com/s/files/1/0930/2386/3123/files/Azeron_Cyborg_II_Manual_V2.0.0_1.pdf?v=1791194501</a>. Pages 18, 22–24, 29–31, 38–40 and 62. Current software page: <a href="https://azeron.com/pages/software">https://azeron.com/pages/software</a>.</li>
+<li>Keyviz product: <a href="https://keyviz.org/">https://keyviz.org/</a>. Exact v2.1.1 settings source: <a href="https://github.com/mulaRahul/keyviz/blob/v2.1.1/src/components/settings/appearance.tsx">https://github.com/mulaRahul/keyviz/blob/v2.1.1/src/components/settings/appearance.tsx</a>, <a href="https://github.com/mulaRahul/keyviz/blob/v2.1.1/src/components/settings/general.tsx">https://github.com/mulaRahul/keyviz/blob/v2.1.1/src/components/settings/general.tsx</a>, <a href="https://github.com/mulaRahul/keyviz/blob/v2.1.1/src/components/settings/keycap.tsx">https://github.com/mulaRahul/keyviz/blob/v2.1.1/src/components/settings/keycap.tsx</a>, <a href="https://github.com/mulaRahul/keyviz/blob/v2.1.1/src/components/ui/color-picker.tsx">https://github.com/mulaRahul/keyviz/blob/v2.1.1/src/components/ui/color-picker.tsx</a>.</li>
+<li>Keyviz supported keys and duration behavior: <a href="https://github.com/mulaRahul/keyviz/blob/v2.1.1/src/types/event.ts">https://github.com/mulaRahul/keyviz/blob/v2.1.1/src/types/event.ts</a>, <a href="https://github.com/mulaRahul/keyviz/blob/v2.1.1/src/stores/key_event.ts">https://github.com/mulaRahul/keyviz/blob/v2.1.1/src/stores/key_event.ts</a>. Overlay properties: <a href="https://github.com/mulaRahul/keyviz/blob/v2.1.1/src-tauri/tauri.conf.json">https://github.com/mulaRahul/keyviz/blob/v2.1.1/src-tauri/tauri.conf.json</a>, <a href="https://github.com/mulaRahul/keyviz/blob/v2.1.1/src-tauri/src/app/window.rs">https://github.com/mulaRahul/keyviz/blob/v2.1.1/src-tauri/src/app/window.rs</a>.</li>
+<li>Multi Image Canvas documentation/releases: <a href="https://github.com/tokonoha00/Multi-image-canvas">https://github.com/tokonoha00/Multi-image-canvas</a>, <a href="https://github.com/tokonoha00/Multi-image-canvas/releases">https://github.com/tokonoha00/Multi-image-canvas/releases</a>. v1.0.8 <code>src/MainForm.cs</code> blob <code>dac773ab35b981bf3a4f0995c1f50e4a169633c0</code> establishes hidden/direct-switch behavior and F1–F24 shortcut acceptance. <code>src/Localization.cs</code> blob <code>2e45c21e3c64ff9b9f611c7544a5ca18c32ee1f1</code> establishes English labels.</li>
+<li>reWASD: <a href="https://help.rewasd.com/basic-functions/shift-mode.html">https://help.rewasd.com/basic-functions/shift-mode.html</a>, <a href="https://help.rewasd.com/basic-functions/activators.html">https://help.rewasd.com/basic-functions/activators.html</a>, <a href="https://help.rewasd.com/preferences/desktop-overlay.html">https://help.rewasd.com/preferences/desktop-overlay.html</a>.</li>
+<li>Carnac: <a href="https://github.com/Code52/carnac">https://github.com/Code52/carnac</a>, <a href="https://github.com/Code52/carnac/blob/2.3.13/src/Carnac/UI/PreferencesView.xaml">https://github.com/Code52/carnac/blob/2.3.13/src/Carnac/UI/PreferencesView.xaml</a>.</li>
+<li>AutoHotkey v2 reference: <a href="https://www.autohotkey.com/docs/v2/">https://www.autohotkey.com/docs/v2/</a>. Windows overlay principles: <a href="https://learn.microsoft.com/en-us/windows/win32/winmsg/extended-window-styles">https://learn.microsoft.com/en-us/windows/win32/winmsg/extended-window-styles</a>, <a href="https://learn.microsoft.com/en-us/windows/win32/winmsg/window-features#layered-windows">https://learn.microsoft.com/en-us/windows/win32/winmsg/window-features#layered-windows</a>.</li>
+</ul>
+<p>Repository home: <code>dodWhatUp/install-modes-for-games</code>, <code>examples/azeron-overlays/</code>. This is a setup proposal and source package; publication does not establish installed settings, a verified native Azeron configuration, or gameplay success. The Drive ZIP is a delivery snapshot of the Git-owned source.</p>
+</section></details><footer>Readable view generated from README.md. Open a heading to expand advanced instructions. Application downloads are official external links; no software runs from this guide.</footer></main></body></html>
