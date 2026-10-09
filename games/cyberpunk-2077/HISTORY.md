@@ -1,5 +1,16 @@
 # Cyberpunk 2077 — History
 
+## 2026-10-10 — DLSS 5, Ultra+, HDR and VRAM decision evidence
+
+- Added [the dated DLSS 5 / Ultra+ / HDR comparison](DLSS5-ULTRAPLUS-HDR-2026-10-10.md), with current primary sources, benchmark conditions, installation tradeoffs and a proposed simple control scheme.
+- Proposed direction for the historically recorded RTX 5070 Ti 16 GB / 4K setup: retain native DLSS and game-specific RenoDX HDR; use restrained Ultra+ when path tracing is desired, with NR as an optional visual mode. Ultra+ and NR can coexist; neither has a proven universal FPS/VRAM advantage, and enabling PT can reverse the cost comparison. This is a recommendation, not a newly accepted installation profile.
+- Ultra+ X RC7 documents a 650 MiB reduction specifically for High/Insane streaming. OptiScaler NR v0.8.4 documents a model-replacement memory-retention fix; its standalone reproduction is not a Cyberpunk VRAM measurement. The recorded custom 0.7.7 installation and prepared-but-not-installed 0.8.3 package predate that fix.
+- Corrected earlier chat estimates for RenoDX (20–200 MB), OptiScaler (10–100 MB) and NR (0.3–0.8 GB): these were unvalidated estimates, not measured local budgets. Historical NR log timings also do not isolate added rendering cost.
+- Keep the native-input custom host and saved controls during any later compatible maintenance; exclude it from generic RHI replacement until the relevant fixes are reviewed or ported. Preserve SR L, the adjustable 30 rendered-FPS target and monthly cadence.
+- NR can improve the apparent lighting/colour of HDR images, but it does not establish correct HDR output. The proposed Cyberpunk HDR layer remains the game-specific RenoDX add-on without an additional cosmetic HDR preset by default.
+- No game files, installed versions, settings, instruction pins or schedules were changed. No gameplay or current-PC benchmark was performed; the earlier monthly automation's current state was not checked.
+
+
 
 ## 2026-09-20 — RHI default + Ultra+ PT classification recorded
 
