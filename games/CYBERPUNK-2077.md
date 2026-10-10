@@ -1,5 +1,7 @@
 # Cyberpunk 2077
 
+**Runtime update, 2026-10-10:** the user-selected clean ReShade 6.8.0 + Cyberpunk RenoDX + Ultra+ X rc7 stack supersedes earlier proposed NR/FrameWarp profiles. PT21/Fast/Vanilla streaming with NRD DLSS and native PT seeded true keeps RR off. The combined built-in scene completed at 148.68 average game-reported FPS; adapter use peaked at 14228 MiB in the captured window. Delete/RenoDX and grave/CET controls were observed, but live F9/save/load and per-frame pacing/latency remain pending. See [current stack](cyberpunk-2077/CLEAN-REBUILD.md), [runtime evidence](cyberpunk-2077/RUNTIME-VALIDATION.md) and [future telemetry task](../docs/GAME-TELEMETRY-TOOL-PLAN.md).
+
 
 **Late graphics-workflow update, 2026-09-20:** RHI is now the preferred management/orchestration layer for future Cyberpunk graphics installs/updates when the selected components are supported. Ultra+ is recorded separately as a game-specific **path-tracing/rendering overhaul**, not a generic preset; whenever PT work is planned it should be surfaced as an explicit option and compatibility-tested against the selected native DLSS/RR/MFG/NR/ReShade stack. This is a knowledge/preference update only; it does not claim Ultra+ or RHI changed the currently installed game state. See [preferences](cyberpunk-2077/PREFERENCES.md), [catalog](cyberpunk-2077/MOD-CATALOG.md), [recommendations](cyberpunk-2077/RECOMMENDATIONS.md), and [history](cyberpunk-2077/HISTORY.md).
 

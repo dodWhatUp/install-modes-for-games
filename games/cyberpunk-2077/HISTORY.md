@@ -1,5 +1,18 @@
 # Cyberpunk 2077 — History
 
+## 2026-10-10 — Authorized runtime tests and durable telemetry
+
+- User explicitly requested launching/testing the installed stack, then clarified that raw resource/frame/latency data should be preserved for future analysis. This supersedes the earlier installation-only boundary. Separate pre-runtime snapshot captured 541 files including all 221 save files.
+- Stock and HDR-only built-in scenes completed at 148.53 and 149.46 average game-reported FPS. Ultra+ PT21 alone completed at 149.60; the full ReShade/RenoDX/Ultra+ stack completed at 148.68, 133.33 minimum, 167.26 maximum over 64.19 s / 9544 frames. Different PT workloads and a single run each prevent a mod speedup claim. FG x2 was selected; measured rendered/generated-frame separation is unavailable.
+- Delete was physically verified by the user. RenoDX's direct tab opened; exposure changed from 1.00 to 0.61 visibly darkened output and reset restored it to 1.00. HDR PQ color-space initialization and author shader injection are logged. Grave/tilde opened and closed CET/Ultra+. Isolated layers exited cleanly; final combined gameplay/exit checks remain pending in the active runtime record.
+- Starting native PT off allowed the Ultra+ PT transition to enable RR and switch to incompatible RR Clean. Immediate console RR-off readback did not persist. A guarded checkpoint and single native PT=true startup seed kept RR=false and NRD DLSS through restart/confirmation/benchmark. Reversing this one settings value reproduces the original pre-runtime settings hash. Preserve that original PT-off recovery point; do not change the author PT21 conventional-RayTracing=false setting.
+- Ninety combined-run resource samples preserved adapter VRAM (peak 14228 MiB), driver reservation (306 MiB), utilization, clocks, temperature, power and limit flags plus process resident/private and system RAM/commit. No sampled process loss/nonresponse or active software power-cap/hardware thermal-slowdown flag. Peak 56°C. GPU/game budgets, exact internal DLSS dimensions, frame lows and latency remain unknown.
+- NVIDIA's installed PresentMon exited silently; a provenance-checked Intel 2.6.0 probe reported ETW access denied. Automated elevation was initially rejected (`blocked by policy`); after renewed explicit user authorization the approval prompt succeeded and the elevated collector launched. No persistent privileges/security settings were changed. The resource collector and offline analyzer scaffold have local probe/synthetic evidence, not a completed per-frame game capture.
+- Added [measurement procedure](../../docs/GAME-PERFORMANCE-MEASUREMENT.md) and [future tool plan](../../docs/GAME-TELEMETRY-TOOL-PLAN.md), tracked in [issue #3](https://github.com/dodWhatUp/install-modes-for-games/issues/3). Include novel-route/first-visit/warm-cache and camera/animation latency tests if the benchmark disagrees with play. No schedule/reminder created. Raw captures/private checkpoints stay outside Git.
+- Resumable boundary and all limits are in [runtime validation](RUNTIME-VALIDATION.md). Exact rollback: stop game/store/helpers, preserve the then-current state, use the guarded layer bank and original pre-runtime UserSettings/save manifest; retain the intentional native PT seed only for the selected PT21 profile. Do not restore test saves while the game is writing them.
+
+
+
 ## 2026-10-10 — DLSS 5, Ultra+, HDR and VRAM decision evidence
 
 - Added [the dated DLSS 5 / Ultra+ / HDR comparison](DLSS5-ULTRAPLUS-HDR-2026-10-10.md), with current primary sources, benchmark conditions, installation tradeoffs and a proposed simple control scheme.

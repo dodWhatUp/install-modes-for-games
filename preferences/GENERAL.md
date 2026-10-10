@@ -1,5 +1,9 @@
 # General User Preferences
 
+Response language, confirmed 2026-10-10: always answer in English, including when the user writes in Hebrew.
+
+Performance evidence, requested 2026-10-10: preserve raw resource/frame data for future analysis, with explicit memory definitions, sample-size limits, latency endpoints and cache state. See [measurement procedure](../docs/GAME-PERFORMANCE-MEASUREMENT.md) and [future tool plan](../docs/GAME-TELEMETRY-TOOL-PLAN.md).
+
 Last confirmed: 2026-09-14
 
 Library catalog request, 2026-09-14: cover all actually installed games and compare manager/foundations, performance, QoL, configuration/UI, graphics/DLSS, animation/movement, enemy behaviour, unique abilities/perks, magic/tools, new mechanics and added playable content. Keep curated first-playthrough, later-play and replay combinations separate from the full catalog. Upload dated information/configuration exports to Google Drive with original download links. Skyrim's basic setup is explicitly authorized for installation; the other games are research-only for this request.
