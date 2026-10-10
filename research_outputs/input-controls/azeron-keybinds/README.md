@@ -1,5 +1,11 @@
 # Azeron Cyborg II keyboard research — Step 1
 
+## Current continuation — 2026-10-10 R2
+
+Read [R2 extension, QA and Stage B draft](extensions/2026-10-10-r2/R2_UPDATE.md) before using the baseline below. R2 adds 20 game/layout records and 448 bindings. The combined derived catalogue has 94 records and 2,195 bindings. A targeted source recheck covers 111 older rows; 1,636 older rows were not re-read online. Four complete visual-position banks and twenty static scenarios are proposals, not an installed or accepted device profile.
+
+`AI_MASTER.json` is unchanged. R2 is an additive extension in this same owner, with its schema and sources in [EXTENSION_MANIFEST_R2.json](extensions/2026-10-10-r2/EXTENSION_MANIFEST_R2.json). Exact original master bytes were not available in the R2 authoring runtime; no reconstruction or silent overwrite was performed. The remaining text records the R1 baseline and its original reproduction instructions.
+
 Status: **ready for layout judgment within the stated research scope**. This package is research, not an accepted device configuration.
 
 ## Start here
