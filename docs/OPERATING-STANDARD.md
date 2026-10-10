@@ -82,6 +82,8 @@ Include the user's [default graphics controls](GRAPHICS-CONTROLS.md) in each req
 
 ## 7. Validate the real feature
 
+For authorized in-game interaction, follow [agent game input](AGENT-GAME-INPUT.md): observe the actual foreground/context, use the guarded AHK adapter when appropriate, then verify the game's response after each action. Preserve existing host/input profiles; READY/Sent or a pure helper test is not live acceptance. Keep text/Enter/holds and integrated-host tests pending until observed. This default does not resume paused gameplay or MFG/FrameWarp work.
+
 Static validation checks ownership, versions, hashes, configuration, and duplicate hooks. Runtime validation should include:
 
 - the correct process and API loaded;

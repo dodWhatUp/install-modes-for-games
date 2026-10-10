@@ -2,6 +2,10 @@
 
 Response language, confirmed 2026-10-10: always answer in English, including when the user writes in Hebrew.
 
+Agent game-testing default, requested 2026-10-10: use the observed supported Windows-control + guarded AHK method for authorized in-game mod/menu/result checks when direct input is unreliable; reuse its optional module as the basis for expansion and integration into the user's larger AHK tool. Read [agent game input](../docs/AGENT-GAME-INPUT.md). Preserve existing host features/profiles, keep clear visible status and stop after the task. The v0.3.1 baseline has partial live key/menu evidence; arbitrary text, Enter/Escape, holds and the new integrated host remain pending. This preference does not enable all-game/unattended control or authorize saves, graphics changes, security bypass, global settings changes or a message to another chat.
+
+Gameplay-control and overlay preference, confirmed 2026-10-10: the user normally prefers Steam's overlay Off, with rare explicit exceptions. Apply within requested setup/tests, not through an unrequested bulk migration. Agent game/PC control is for specifically requested situations, not routine play or unattended monitoring. During the Skyrim input diagnosis the user authorized disabling relevant interfering apps as needed; isolate one layer at a time, preserve unrelated work/recovery and never silently change input profiles or security settings. Only Skyrim's per-game overlay was disabled in the recorded test; the global toggle stayed unchanged.
+
 Performance evidence, requested 2026-10-10: preserve raw resource/frame data for future analysis, with explicit memory definitions, sample-size limits, latency endpoints and cache state. See [measurement procedure](../docs/GAME-PERFORMANCE-MEASUREMENT.md) and [future tool plan](../docs/GAME-TELEMETRY-TOOL-PLAN.md).
 
 Last confirmed: 2026-09-14

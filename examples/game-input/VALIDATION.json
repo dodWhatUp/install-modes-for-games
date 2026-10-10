@@ -1,0 +1,34 @@
+{
+  "recorded_date": "2026-10-10",
+  "module_version": "0.5-preview.1",
+  "interpreter": "AutoHotkey v2.0.30 x64",
+  "syntax": {
+    "Start-GameInput.ahk": "pass_exit_0",
+    "HostIntegration.example.ahk": "pass_exit_0",
+    "Skyrim-F12-Test.ahk_compatibility_launcher": "pass_exit_0"
+  },
+  "pure_tests": {
+    "count": 36,
+    "standalone": "pass_exit_0_with_explicit_stdout",
+    "host_example": "pass_exit_0_with_explicit_stdout",
+    "compatibility_launcher": "pass_exit_0_with_explicit_stdout",
+    "effects": "no_GUI_hooks_running_timers_or_input",
+    "coverage": "configuration, payload bounds, exact targets, dispatch guards, inert construction, explicit extended opt-in and binding-review gate"
+  },
+  "corrected_during_validation": ["compatibility launcher include path"],
+  "historical_baseline": {
+    "version": "0.3.1",
+    "sha256": "EAFD9509DC8B7C579915668648AD20F000D377B5018B5ECE9D4CD9B43F7A46D8",
+    "pure_test_count": 20,
+    "live": "partial agent-operated mod menus, native selection and one-digit/caret/Backspace in Skyrim and Cyberpunk"
+  },
+  "v04_extension": {"pure_test_count": 28, "live_execution": "not_performed"},
+  "preview_runtime": {
+    "host_GUI_lifecycle_cleanup": "pending",
+    "game_receipt": "pending",
+    "arbitrary_text_unicode_enter_escape_holds": "pending",
+    "integration_into_existing_larger_AHK_tool": "not_performed",
+    "MFG_FrameWarp_third_person_performance": "deferred"
+  },
+  "publication_boundary": "authored source and sanitized documentation only; no game binaries, interpreter, profiles, saves, credentials, raw logs or private paths"
+}

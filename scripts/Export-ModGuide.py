@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote, urlsplit, unquote
 
-ALLOWED = {'.md', '.txt', '.json', '.ini', '.toml', '.ps1', '.py', '.lua', '.cpp', '.h', '.hpp', '.patch'}
+ALLOWED = {'.md', '.txt', '.json', '.ini', '.toml', '.ps1', '.py', '.lua', '.cpp', '.h', '.hpp', '.patch', '.ahk'}
 ROOT_FILES = {'README.md', 'AGENTS.md', 'LICENSE', '.gitignore', '.gitattributes'}
 ROOT_DIRS = {'docs', 'games', 'preferences', 'templates', 'examples', 'scripts', 'evidence'}
 REMOTE = 'https://github.com/dodWhatUp/install-modes-for-games/blob/main/'
