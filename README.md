@@ -23,6 +23,8 @@ See the [game index](games/README.md) for detailed history, catalogs, and recomm
 
 ## Read this first
 
+For connected tools, automation, input assistance and resource-overhead research, start with the [game-tools knowledge and recovery index](docs/GAME-TOOLS-KNOWLEDGE-INDEX.md). It links source masters, private recovery receipts, reusable procedures and unfinished acceptance; it is not automatic cross-chat memory or permission to execute a deferred test.
+
 1. Use these methods only in offline or single-player games. ReShade add-ons and proxy DLLs may trigger anti-cheat.
 2. Back up the exact game folder and user configuration before changing anything.
 3. Install one layer at a time and launch-test after every layer.

@@ -2,6 +2,8 @@
 
 Requested 2026-10-10. Status: **backlog / design prepared**. No scheduled execution or reminder. The current Cyberpunk validation is the first evidence set, not completion of this cross-game product.
 
+Updated sequencing, 2026-10-11: the user requested consolidating the Hub, AHK/input, keymap, mod-workflow, crash evidence and synchronized-video plans before further game checks. Use the [shared architecture proposal and build gates](GAME-TOOLS-ARCHITECTURE.md) for that work. This extends the design; it does not activate recording or a benchmark. Highest-level Cyberpunk Ultra+ VRAM testing comes last, after earlier gates and the user-facing continuation proposal. The current Hub's immutable imports are not yet a durable live recording journal.
+
 Goal: a small local tool that captures and compares how an individual mod or compatible stack changes frame pacing, resource pressure, latency and failure behavior, while keeping raw measurements usable for future analysis.
 
 Scope clarified by the user, 2026-10-10: established programs should collect and calculate complex metrics such as 1%/0.1% lows, latency and specialized sensor/trace analysis. Our helper coordinates tests, integrates those programs and organizes their outputs. A custom statistical engine or duplicate complex collector is outside the current scope. Recording is on hold until the user explicitly resumes it; this plan does not start a capture.

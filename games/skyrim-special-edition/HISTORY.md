@@ -1,6 +1,15 @@
 # Skyrim Special Edition History
 
+## 2026-10-11 — Linked knowledge, private recovery and overhead foundation
+
+- Added the [knowledge/source index](../../docs/GAME-TOOLS-KNOWLEDGE-INDEX.md), [reusable automation procedures](../../docs/AUTOMATION-OPERATING-PROCEDURES.md) and [CPU/GPU/RAM/VRAM overhead protocol](../../docs/TOOL-RESOURCE-OVERHEAD.md). Related-chat coverage is bounded; some direct reads were rate-limited and unseen Pro artifacts remain unreconciled. Source masters, derivatives and native recovery packages are linked without replacing them or claiming every chat was reviewed.
+- The read-only catalog/planner describes per-game features and typed host/manager/dependency relationships, preserves required hosts in comparison cells and keeps absent measurements null. Pure catalog and existing Hub tests pass; no game/collector/recorder launch or new performance result occurred. Highest Ultra+ and Skyrim MFG/FrameWarp remain deferred.
+- Created a private installed-source/settings/picture/Hub-registry recovery checkpoint; every copied ZIP entry was hash-verified, and downloaded Drive readback matched. Existing private access was unchanged. [Receipt, exclusions and rollback](../../docs/DISTRIBUTION.md). This is not a complete chat/system/native-profile backup or accepted restore.
+- Next boundary: agree the shared-core stage and accept adapters/UI before game input and later benchmark work; current source/recovery archive receipts are in the distribution record. Rollback this documentation/catalog stage by retaining current records and disabling/ignoring the new optional planner; restore only owned source/settings after preserving newer state. Do not reset games, saves or device profiles.
+
 ## Current state
+
+Latest host boundary, 2026-10-11: GameInputModule is wired into the locally configured Studio2 host, not substituted with Studio3. Source/settings checkpoints and rollback are in the [integration record](../../examples/game-input/OVERLAY-STUDIO-INTEGRATION.md). The original profile-loader and adapter menu defects were repaired; the saved picture preview appeared/hid. A subsequent hidden-indicator Start failure led to preview.3, whose integrated-host syntax and 36+8 pure policy checks passed. Start after that repair, HUD output and full lifecycle/game input acceptance remain pending. All 60 original method names are retained and Studio settings are hash-identical; this is not proof of every preserved feature. No game was launched for these host-only checks. Historical menu-key evidence below remains version-specific.
 
 - State: **MO2 2.5.2, Skyrim 1.6.1170.0, SKSE64 2.2.6, Address Library v13 and PureDark AIO Build 19 Hotfix 1 are installed/enabled.** The user explicitly authorized the downgrade after the confirmed PureDark 1.7.x incompatibility.
 - Graphics controls: the active root ReShade configuration now uses Delete (`KeyOverlay=46,0,0,0`). No active OptiScaler installation was found; Home is reserved for OptiScaler if one is later installed compatibly.

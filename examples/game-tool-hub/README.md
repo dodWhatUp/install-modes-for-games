@@ -50,3 +50,21 @@ The read-only sensor adapter uses the installed author's `SDK/Include/MAHMShared
 The RTSS adapter follows the installed author's `RTSSSharedMemory.h` and `OverlayDataProviderInternal.cpp`: header offsets/strides, Windows packing 8, version/extent gates and documented FPS scaling. It writes no OSD, locks, statistics/capture flags or profiles. Latency instrumentation is endpoint availability only; supported programs must calculate latency. PresentMon definitions follow its [2.6.0 console documentation](https://github.com/GameTechDev/PresentMon/blob/v2.6.0/README-ConsoleApplication.md). Declared provider version remains separate from schema recognition.
 
 Current evidence and next boundaries are in [tool connections](../../docs/GAME-TOOL-CONNECTIONS.md). Rollback: close only Game Tool Hub and remove its optional launcher/source after preserving private reports. No Afterburner/RTSS/game-profile restore is required for this helper alone.
+
+## Optional catalog and overhead-plan foundation
+
+The separate [read-only catalog](../../scripts/Game-Tool-Catalog.py) uses [portable catalog records](catalog.example.json) to describe components, game-specific features, typed relationships and declaration-only capabilities. It supplies structured information to Codex without launching applications or executing recipes. It does not replace the Hub's private executable registry, native device mappings or established measurement providers.
+
+```text
+python scripts/Game-Tool-Catalog.py validate
+python scripts/Game-Tool-Catalog.py list --category graphics
+python scripts/Game-Tool-Catalog.py list --game skyrim-special-edition --installation unknown --sort name
+python scripts/Game-Tool-Catalog.py show rhi
+python scripts/Game-Tool-Catalog.py plan-overhead --scope process-idle --factor rhi
+python scripts/Game-Tool-Catalog.py plan-overhead --scope in-game --game cyberpunk-2077 --factor cp-renodx-hdr --factor cp-ultra-pt21
+python scripts/tests/Test-GameToolCatalog.py
+```
+
+Plans preserve required native/shared hosts and dependencies in every Off/On comparison. They separate an idle manager's process usage from its deployed in-game payload, block unresolved chains and keep unmeasured CPU/GPU/RAM/VRAM fields null. The highest Ultra+ preset and Skyrim MFG/FrameWarp remain gated. This CLI foundation has not been integrated into the dynamic Hub GUI; prepared plans are not authorizations or measurement results. See the [overhead protocol](../../docs/TOOL-RESOURCE-OVERHEAD.md), [architecture](../../docs/GAME-TOOLS-ARCHITECTURE.md) and [knowledge index](../../docs/GAME-TOOLS-KNOWLEDGE-INDEX.md).
+
+Catalog 0.1.1 contains 34 components, two games, seven features, 25 typed relationships and seven declared capabilities. Filters cover kind, category, game, evidence status, recorded installation, relationship and search; sorting supports ID, name, kind and status. Primary-source links include stores/managers and official authoring tools. These records are not a fresh installed/running inventory. Thirty-five pure catalog tests and 22 existing Hub contracts passed on 2026-10-11; this does not establish new dynamic-GUI/adapter acceptance or measured costs.

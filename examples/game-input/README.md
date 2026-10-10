@@ -1,6 +1,6 @@
 # GameInputModule — optional AHK v2 game-control adapter
 
-v0.5-preview.1, 2026-10-10. Authored source only, not an interpreter or input driver. Native AHK 2.0.30 syntax checks and **36 no-input tests pass**. No GUI, lifecycle or game tests were run for this refactor. The [workflow/evidence guide](../../docs/AGENT-GAME-INPUT.md) separates the live-tested v0.3.1 baseline from prepared extensions.
+v0.5-preview.3, 2026-10-11. Authored source only, not an interpreter or input driver. Native AHK 2.0.30 integrated-host syntax and **36 no-input tests pass**, with **8 additional integration policy checks**. The module is wired into the user's existing Overlay Studio 2.0-beta. Correct saved-profile readback and a picture preview were observed after host repairs; module lifecycle and live game acceptance remain pending. See [installed-host failures, integration and rollback](OVERLAY-STUDIO-INTEGRATION.md). The [workflow/evidence guide](../../docs/AGENT-GAME-INPUT.md) separates the live-tested v0.3.1 baseline from prepared extensions. Further tests follow the [consolidation proposal](../../docs/GAME-TOOLS-ARCHITECTURE.md).
 
 ## Files and quick start
 
@@ -9,6 +9,8 @@ v0.5-preview.1, 2026-10-10. Authored source only, not an interpreter or input dr
 - `HostIntegration.example.ahk`: isolated example with a host-owned submenu and manual enable. Not a patch to the user's existing tool; do not run alongside another helper.
 - `baseline/ControlHelper-v031.ahk`: exact historical source, SHA-256 in the main guide. It owns its own tray/exit/global chords and must NOT be included in the larger tool.
 - `OTHER-CHAT-HANDOFF.txt`: ready-to-copy request and integration/acceptance instructions.
+- `OverlayStudioGameInput.ahk`: optional adapter actually wired into the existing Studio host; source-only, no automatic Start or profile writes.
+- `AzeronOverlayStudio.integrated.ahk`: equivalent authored Studio 2 source with the optional fifth tab, tray submenu and lifecycle wiring. Run this OR the local host, not both; they share the same existing settings directory.
 
 AutoHotkey **v2** is required. Open only the desired standalone file normally through the supported UI, after exiting older helper versions. Confirm the visible version. No run-as-admin, UIAccess, startup entry, purchase or association change is needed. The legacy `../skyrim-special-edition/Skyrim-F12-Test.ahk` is now a compatibility launcher.
 
@@ -19,7 +21,7 @@ Developer no-input validation (interpreter path varies; keep the old helper stop
 & 'C:\Program Files\AutoHotkey\v2\AutoHotkey64.exe' /ErrorStdOut .\Start-GameInput.ahk --self-test | Out-String
 ```
 
-Require explicit PASS output and exit 0; an empty run under SingleInstance Ignore is not a pass. Pure tests instantiate inert modules but create no GUI, hooks, running timers or input. They do not prove normal Start/Stop, game reception or crash-safe cleanup.
+Require explicit PASS output and exit 0; an empty run under SingleInstance Ignore is not a pass. Pure tests instantiate inert modules but create no GUI, hooks, running timers or input. They do not prove normal Start/Stop, game reception or crash-safe cleanup. Verify Studio is stopped before its own diagnostic argument checks: the host retains `#SingleInstance Force`, which can replace a live instance before the no-input branch.
 
 ## Public host API
 
@@ -66,4 +68,4 @@ Prepared literal text is 1–4096 printable characters with no embedded control/
 
 Use [OTHER-CHAT-HANDOFF.txt](OTHER-CHAT-HANDOFF.txt) and the guide's acceptance list. Preserve the larger tool's exact source/settings, own hotkeys, input observer, explicit recording privacy, device/layer truth and existing profiles. Synthetic activity must not masquerade as physical device/layer evidence. Keep one helper-family instance; opt in only for the authorized test, stop afterward.
 
-No real games were launched by the integration work. No saves, graphics values, physical profiles, interpreter installs or global Codex settings were changed. Rollback is host Cancel/Stop and removal of only optional wiring while closed. The exact v0.3.1 baseline remains available; do not silently replace the larger host with it.
+No real games were launched by integration preparation or subsequent host-only checks. No saves, graphics values, physical profiles, interpreter installs or global Codex settings were changed. The real Studio 2 host has optional wiring and two host repairs, with its settings hash preserved. See the dated integration record for partial runtime observations and remaining acceptance. Rollback is host Cancel/Stop and restoration of only the original host source while closed; that also restores the original observed loader defect. The exact v0.3.1 baseline remains available; do not silently replace the larger host with it.

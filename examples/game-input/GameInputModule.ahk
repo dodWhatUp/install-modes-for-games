@@ -1,13 +1,13 @@
 #Requires AutoHotkey v2.0
 
-; Include-safe GameInputModule v0.5-preview.1. No auto-start or global hotkeys.
+; Include-safe GameInputModule v0.5-preview.3. No auto-start or global hotkeys.
 ; Host owns tray, shortcuts, privacy policy and shutdown. See README.md.
 ; v0.3.1 baseline has live evidence; this refactor requires runtime revalidation.
 
 GI_BuildSettings()
 {
     return {
-        Version: "0.5-preview.1", ShowIndicator: true, Beep: true,
+        Version: "0.5-preview.3", ShowIndicator: true, Beep: true,
         EnableExtended: false,
         IndicatorX: 16, IndicatorY: 16, IndicatorWidth: 350,
         RefreshMs: 300, CooldownMs: 800
@@ -179,7 +179,15 @@ class GameInputModule
         this.LastLine := this.Panel.AddText(width " r2", this.LastAction)
         this.Panel.SetFont("s8 cA8B3C2")
         this.Panel.AddText(width " r2", "Host controls pause/stop/prepare.`nF3 dispatch requires experimental opt-in.")
-        WinSetTransparent 238, "ahk_id " this.Panel.Hwnd
+        ; This GUI is hidden until ShowIndicator. Scope hidden-window detection
+        ; to our own-window operation, then retain the host's thread policy.
+        detectHiddenBefore := A_DetectHiddenWindows
+        try {
+            DetectHiddenWindows true
+            WinSetTransparent 238, "ahk_id " this.Panel.Hwnd
+        } finally {
+            DetectHiddenWindows detectHiddenBefore
+        }
 
     }
 
@@ -198,7 +206,9 @@ class GameInputModule
                     continue
                 HotIfWinActive target.Window
                 for action in target.Actions {
-                    Hotkey action.Trigger, ObjBindMethod(this, "SendAction", target, action), "T1"
+                    ; Stop leaves disabled variants in this interpreter. Explicit
+                    ; On is required for a later Start to re-enable those keys.
+                    Hotkey action.Trigger, ObjBindMethod(this, "SendAction", target, action), "On T1"
                     this.Bindings.Push({Window: target.Window, Trigger: action.Trigger})
                 }
             }

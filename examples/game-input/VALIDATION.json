@@ -1,21 +1,39 @@
 {
-  "recorded_date": "2026-10-10",
-  "module_version": "0.5-preview.1",
+  "recorded_date": "2026-10-11",
+  "module_version": "0.5-preview.3",
   "interpreter": "AutoHotkey v2.0.30 x64",
   "syntax": {
-    "Start-GameInput.ahk": "pass_exit_0",
-    "HostIntegration.example.ahk": "pass_exit_0",
-    "Skyrim-F12-Test.ahk_compatibility_launcher": "pass_exit_0"
+    "Start-GameInput.ahk": "preview_2_pass_exit_0_not_repeated_after_preview_3",
+    "HostIntegration.example.ahk": "preview_2_pass_exit_0_not_repeated_after_preview_3",
+    "Skyrim-F12-Test.ahk_compatibility_launcher": "preview_2_pass_exit_0_not_repeated_after_preview_3",
+    "existing_OverlayStudio_2_host": "preview_3_pass_exit_0"
   },
   "pure_tests": {
     "count": 36,
-    "standalone": "pass_exit_0_with_explicit_stdout",
-    "host_example": "pass_exit_0_with_explicit_stdout",
-    "compatibility_launcher": "pass_exit_0_with_explicit_stdout",
-    "effects": "no_GUI_hooks_running_timers_or_input",
+    "standalone": "preview_2_pass_exit_0_with_explicit_stdout_not_repeated_after_preview_3",
+    "host_example": "preview_2_pass_exit_0_with_explicit_stdout_not_repeated_after_preview_3",
+    "compatibility_launcher": "preview_2_pass_exit_0_with_explicit_stdout_not_repeated_after_preview_3",
+    "existing_OverlayStudio_2_host": "preview_3_pass_exit_0_with_explicit_stdout",
+    "effects": "no_GUI_hooks_running_timers_or_input_when_test_entry_is_run_with_host_stopped",
     "coverage": "configuration, payload bounds, exact targets, dispatch guards, inert construction, explicit extended opt-in and binding-review gate"
   },
-  "corrected_during_validation": ["compatibility launcher include path"],
+  "host_integration": {
+    "host": "Azeron Overlay Studio 2.0.0-beta",
+    "source_wiring": "installed_in_existing_local_source",
+    "policy_test_count": 8,
+    "policy_tests": "pass_exit_0_with_explicit_stdout",
+    "original_method_count": 60,
+    "method_names_preserved": true,
+    "settings_hash_preserved": true,
+    "configuration_save_writes": "none",
+    "source_equivalence": "installed_host_module_adapter_match_repository",
+    "profile_check_assertions": 13,
+    "profile_check": "pass_exit_0_read_only",
+    "GUI_game_runtime": "correct_profile_UI_and_picture_preview_observed_module_lifecycle_and_game_acceptance_pending"
+  },
+  "corrected_during_validation": ["compatibility launcher include path (historical)", "explicit On T1 for Stop/Start registration", "virtual-key identity instead of localized GetKeyName collision IDs", "self-test catches failures without a modal", "adapter-local menu shadowed Menu constructor; renamed trayMenu", "original nested A_Index loader; captured slotNumber before property loop", "own hidden indicator transparency; scope DetectHiddenWindows and restore prior value"],
+  "diagnostic_guard": "host retains SingleInstance Force; verify stopped or use a separate inert entry point before host diagnostic arguments",
+  "reservation_gaps": ["current Studio audit does not enumerate native mapper outputs; SHARED R5 TOOLS includes overlapping F2 F3 F8", "BindingPlan extended output is prepared rather than full Enter/held-key declaration", "total text dispatch duration budget remains proposed"],
   "historical_baseline": {
     "version": "0.3.1",
     "sha256": "EAFD9509DC8B7C579915668648AD20F000D377B5018B5ECE9D4CD9B43F7A46D8",
@@ -24,11 +42,14 @@
   },
   "v04_extension": {"pure_test_count": 28, "live_execution": "not_performed"},
   "preview_runtime": {
-    "host_GUI_lifecycle_cleanup": "pending",
+    "host_GUI_lifecycle_cleanup": "partial_host_profile_and_picture_acceptance_only; latest_module_Start_Stop_restart_indicator_cleanup_pending",
+    "original_HUD_output": "not_visually_confirmed",
+    "last_observed_module_state": "off",
     "game_receipt": "pending",
     "arbitrary_text_unicode_enter_escape_holds": "pending",
-    "integration_into_existing_larger_AHK_tool": "not_performed",
+    "integration_into_existing_larger_AHK_tool": "source_wiring_installed_static_verified_runtime_pending",
     "MFG_FrameWarp_third_person_performance": "deferred"
   },
+  "current_scope": "shared_toolkit_consolidation_proposal_before_further_game_input_acceptance; highest_UltraPlus_Cyberpunk_VRAM_benchmark_last_after_build_gates_and_continuation_proposal",
   "publication_boundary": "authored source and sanitized documentation only; no game binaries, interpreter, profiles, saves, credentials, raw logs or private paths"
 }

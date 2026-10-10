@@ -1,6 +1,6 @@
 # Agent-operated game input — workflow and integration
 
-Recorded 2026-10-10. This is the default starting method for **user-authorized** in-game mod/menu/result checks in this project, not permission for routine play, unattended control or new tests. The latest request is documentation, packaging and handoff; live games and MFG/FrameWarp tests remain deferred.
+Recorded 2026-10-10; integration boundary updated 2026-10-11. This is the default starting method for **user-authorized** in-game mod/menu/result checks in this project, not permission for routine play, unattended control or new tests. The requested integration and main-menu-only text/Enter/Escape/held-key acceptance in Skyrim and Cyberpunk remain unfinished. The newer request places [shared-toolkit planning](GAME-TOOLS-ARCHITECTURE.md) first, with the highest-level Cyberpunk Ultra+ VRAM benchmark last, after earlier gates and a continuation proposal. Saves, graphics changes during input tests and MFG/FrameWarp remain out of scope. The actual Studio 2 host is wired, with partial host-only observations; see [integration record](../examples/game-input/OVERLAY-STUDIO-INTEGRATION.md).
 
 ## What the method actually is
 
@@ -17,6 +17,8 @@ The agent performed the successful v0.3.1 triggers itself; the user did not have
 | Control Helper v0.3.1 | AHK 2.0.30 syntax validation, 20 pure tests and agent-operated live menu/field probes in both games | Historical tested baseline, preserved byte-for-byte |
 | Standalone v0.4 extension | Syntax validation and 28 pure policy tests | Prepared text/Enter/Escape/hold extension; never live tested |
 | GameInputModule v0.5-preview.1 | Native AHK syntax validation and 36 pure tests through standalone, compatibility and host-example entry points | Include-friendly integration candidate; no GUI/lifecycle/game acceptance yet |
+| GameInputModule v0.5-preview.2 in existing Studio 2 | Native syntax, 36 module + 8 host policy tests; settings hash and 60 original method names preserved | Installed source integration; GUI/lifecycle/game acceptance pending, not Studio 3 integration |
+| GameInputModule v0.5-preview.3 in existing Studio 2 | Integrated-host syntax and 36+8 policy checks after hidden-indicator repair; 13 profile assertions; settings unchanged; correct profile UI and picture preview observed after host repairs | Start/Stop/restart after latest repair, HUD output and game text/Enter/Escape/holds pending; consolidation proposal takes precedence |
 
 Baseline SHA-256: `EAFD9509DC8B7C579915668648AD20F000D377B5018B5ECE9D4CD9B43F7A46D8`. [Exact source](../examples/game-input/baseline/ControlHelper-v031.ahk). The new module reuses the baseline route, but refactoring it does **not** transfer live verification automatically. Extended input is off by default. The immutable baseline is a rollback/reference artifact, not a second script to run alongside the module.
 
