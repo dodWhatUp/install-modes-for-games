@@ -1,5 +1,11 @@
 # Cyberpunk 2077 — Mod Catalog
 
+## Current local evidence — 2026-10-10
+
+The active installation is ReShade 6.8.0 full add-on, Cyberpunk RenoDX nightly-20261009 and Ultra+ X 10.0.0 rc7, with CET 1.37.1, RED4ext 1.30.0, redscript 0.5.31, ArchiveXL 1.27.4 and AudioPoolFix 1.0.2. ReShade owns the sole DXGI proxy; native DLSS/Streamline owns FG. Previous OptiScaler/NR, FrameWarp and QoL packages are absent from the live game. Historical installed-state claims below describe their original dates.
+
+Stock, HDR-only, Ultra+ and combined built-in benchmarks completed; RenoDX exposure delivery and CET/Ultra+ controls were observed. Ultra+ uses a different PT workload, and per-frame/loaded-save/long-session checks remain incomplete. See [deployment and rollback](CLEAN-REBUILD.md) and [exact runtime evidence](RUNTIME-VALIDATION.md); file verification and a short benchmark are separate confidence levels.
+
 
 **2026-09-20 late workflow update:** RHI is now the default management/orchestration candidate for future compatible Cyberpunk graphics installs, and Ultra+ is classified as a PT/rendering overhaul that must be offered separately from ordinary presets. Current discovery checkpoints: RHI 2.7.4; Ultra+ 9.3.7. Neither statement changes the locally installed state recorded below.
 

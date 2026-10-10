@@ -1,5 +1,11 @@
 # Cyberpunk 2077 — History
 
+## 2026-10-10 — Detailed capture activation remains pending
+
+- The user renewed FPS, 1% low and latency testing and provided a foreground test window. The approved Intel PresentMon process remained alive with the correct game PID, but an injected Ctrl+Alt+F8 produced no CSV on readback. Requested one physical keypress before claiming capture success. This is a capture/input boundary; no game crash or new ETW permission failure was established.
+- Preserved the resource/menu probe separately from benchmark data. Physical-input/focus interruptions and unreliable automated menu navigation prevent treating these attempts as clean performance repeats. Prior layer benchmarks remain the measured FPS/VRAM evidence; ReShade alone was not benchmarked and Ultra+ changes the PT workload.
+- Next boundary: verify the first physical-trigger CSV, inspect frame types/latency coverage, then capture a controlled scene with resource/QPC alignment. Loaded-save controls and final restoration remain pending. No binaries, privileges, caches, saves or driver settings were changed by this activation attempt.
+
 ## 2026-10-10 — Authorized runtime tests and durable telemetry
 
 - User explicitly requested launching/testing the installed stack, then clarified that raw resource/frame/latency data should be preserved for future analysis. This supersedes the earlier installation-only boundary. Separate pre-runtime snapshot captured 541 files including all 221 save files.

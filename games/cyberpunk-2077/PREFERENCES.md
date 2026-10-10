@@ -1,5 +1,13 @@
 # Cyberpunk 2077 — Preferences
 
+## Current selected stack and test scope — 2026-10-10
+
+- The user selected a clean ReShade 6.8.0 + game-specific RenoDX HDR + Ultra+ X rc7 installation and subsequently authorized runtime, resource, 1% low and latency tests. This supersedes the historical NR/FrameWarp profiles and installation-only boundary below.
+- Keep native DLSS 310.1/Streamline 2.7.1 and native FG x2 as the sole FG owner. Ultra+ uses PT21/Fast, Vanilla streaming, NRD DLSS, automatic quality off, native PT true and RR false. Preserve the original PT-off settings separately for rollback.
+- Delete opens ReShade/RenoDX; grave/tilde opens CET/Ultra+; F9 is the installed native-DLSS quality cycle; F5/F6 retain Quick Save/Quick Load. Delete and grave were observed. Loaded-save F9/F5/F6 remain pending. Removed NR/OptiScaler controls are unavailable.
+- Preserve raw captures privately and sanitized results in the canonical repository. Report software latency with its actual endpoints and coverage. Keep camera/animation and novel-route/cache testing in the future backlog; no scheduled experiment is implied.
+- Use [runtime validation](RUNTIME-VALIDATION.md) for measurements and remaining limits. One run per layer with different PT workloads does not isolate the cost of Ultra+.
+
 **Current mapping, 2026-09-13 evening:** F11 recalls personal NR settings slots 0–3, with Save Settings storing the selected slot. F7 toggles NR 25%/100% only. F8/Page Up/Page Down are unbound; user prefers NVIDIA statistics. F6 controls native DLSS separately; F9 remains Quick Load. Slot numbers are independent of the model hints inside them.
 
 Last confirmed: 2026-09-20

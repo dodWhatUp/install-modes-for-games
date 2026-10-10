@@ -1,5 +1,15 @@
 # Cyberpunk 2077 — Curated Recommendations
 
+## Selected installation and scoped evidence — 2026-10-10
+
+The user selected and installed the clean native-DLSS + ReShade/RenoDX HDR + restrained Ultra+ PT21 branch after the research review. This supersedes the proposal-only and historical installed-stack statements below. The four layer benchmarks completed, but their differing PT workloads and single runs do not prove an Ultra+ speedup or isolate ReShade's cost. See [runtime evidence](RUNTIME-VALIDATION.md).
+
+- **First playthrough:** preserve story, saves and balance. The selected visual stack has short-session benchmark/control evidence; confidence remains conditional until loaded-save controls and gameplay stability are checked. Keep one FG owner and RR off with this NRD DLSS profile.
+- **Later play:** compare native PT against Ultra+ PT21 with identical SR/FG/settings and repeated scenes before choosing on performance grounds. Preserve the tested branch and snapshots.
+- **Post-game/experimental:** NR/model upgrades, cold/novel-route tests and camera/animation latency instrumentation remain separate future experiments. Do not revive removed hooks automatically.
+
+Delete opens ReShade/RenoDX and grave opens CET/Ultra+. F9 native-DLSS, F5 save and F6 load are configured but loaded-save behavior is pending. Restore through the guarded layer bank with game/store/helpers closed; preserve current settings and saves before rollback.
+
 **2026-10-10 research update:** See [DLSS 5, Ultra+, HDR and VRAM — decision review](DLSS5-ULTRAPLUS-HDR-2026-10-10.md) for current evidence and the proposed direction: native DLSS plus RenoDX HDR, restrained Ultra+ when PT is desired, and optional NR within the measured budget. Preserve the custom native-input host and controls; review a compatible model-memory fix before a generic manager update. No installation or new profile selection was performed. The historical installed/candidate distinctions below remain unchanged.
 
 
