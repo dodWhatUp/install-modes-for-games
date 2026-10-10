@@ -710,5 +710,3 @@ GI_AssertTest(condition, name)
         throw Error("FAIL: " name)
     }
 }
-
-

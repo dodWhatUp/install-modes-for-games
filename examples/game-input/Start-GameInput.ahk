@@ -38,4 +38,3 @@ Hotkey "^!p", ObjBindMethod(giModule, "TogglePause")
 Hotkey "^!Esc", (*) => ExitApp()
 if giSettings.EnableExtended
     Hotkey "^!t", ObjBindMethod(giModule, "OpenEditor")
-

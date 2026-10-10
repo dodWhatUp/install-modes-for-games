@@ -16,7 +16,7 @@ The separate [PureDark private archive index](PUREDARK-ARCHIVE-2026-10-07.md) re
 
 ## 2026-10-10 — Agent game-input module archive
 
-The [GameInputModule source/documentation ZIP](https://drive.google.com/file/d/1xCE9ycIyf0m6IYUfrXng57bSbxq5PQnJ/view) contains 11 authored source/guide/validation/export files plus a SHA-256 manifest. Archive: 32,573 bytes; SHA-256 `808DE5EB018437AC487DAA6BE11CFA55D9AF7EE4132F5053F84DBEABEA271CFC`. Drive download readback matched the local archive byte-for-byte; folder listing confirmed existing private/not-shared access. No permissions were widened.
+The [GameInputModule source/documentation ZIP](https://drive.google.com/file/d/1xCE9ycIyf0m6IYUfrXng57bSbxq5PQnJ/view) contains 11 authored source/guide/validation/export files plus a SHA-256 manifest. Final archive: 32,568 bytes; SHA-256 `5A13FE47492DD3C079BDFF175F0F8B1F77E2146CF70DA775EEE57E02EBB76671`. Final Drive download readback matched the local archive byte-for-byte after formatting-only EOF cleanup and a repeated 36-test pass. Folder listing confirmed existing private/not-shared access; no permissions were widened. The prior package revision remains recoverable through Drive revision history/local checkpoints.
 
 Separate readable files: [workflow/evidence guide](https://drive.google.com/file/d/1jWV9wtKL8hFhuZO2lKxtWgOVEZfQ0o-M/view) and [ready-to-copy message for the larger AHK chat](https://drive.google.com/file/d/1VvBbmVdEZvHEpZGXLFgZYEKb_dyCWZCr/view). The message has not been sent. The larger AHK source remains unchanged; actual host integration is pending.
 
