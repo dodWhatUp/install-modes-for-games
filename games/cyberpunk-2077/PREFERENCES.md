@@ -1,5 +1,7 @@
 # Cyberpunk 2077 — Preferences
 
+Current work scope, confirmed 2026-10-11: prioritize connecting/learning measurement tools and preparing management/import/user controls. Benchmarking, game launches and capture activation remain deferred. Existing programs provide complex metrics. See [tool connections](../../docs/GAME-TOOL-CONNECTIONS.md); no new lows or latency results are claimed.
+
 ## Current selected stack and test scope — 2026-10-10
 
 - The user selected a clean ReShade 6.8.0 + game-specific RenoDX HDR + Ultra+ X rc7 installation and subsequently authorized runtime, resource, 1% low and latency tests. This supersedes the historical NR/FrameWarp profiles and installation-only boundary below.

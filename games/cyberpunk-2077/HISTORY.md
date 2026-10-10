@@ -1,5 +1,12 @@
 # Cyberpunk 2077 — History
 
+## 2026-10-11 — Tool connections prioritized; benchmark execution deferred
+
+- User redirected the current work to connecting/learning existing tools and preparing management, information imports and user controls. Game launches, benchmark execution and capture activation remain deferred; established programs must supply complex lows/latency calculations.
+- Prepared [Game Tool Hub 0.1.0](../../examples/game-tool-hub/README.md) and [connection notes](../../docs/GAME-TOOL-CONNECTIONS.md). A read-only Afterburner SDK adapter returned 20 fresh desktop sources; 1%/0.1% low entries were unavailable and have no game/run association. MSI Afterburner 4.6.7.16935 and RTSS 7.3.5.28314 were running. No new game measurement is claimed.
+- Nine contract tests passed; the Tools page was visibly opened. Afterburner root/profile and RTSS configuration hashes remained unchanged. Other GUI flows and source-only footer adjustment still need live acceptance; user-input guard was respected. No game launch, capture, hardware tuning, input-profile change or new third-party installation occurred. The older collector was not silently terminated or resumed.
+- Rollback: close only the optional hub, preserve private imports/snapshots and remove its authored source/launcher if desired. Next boundary: learn RTSS summary/export semantics and select supported report adapters; resume game tests only after an explicit user request.
+
 ## 2026-10-10 — Shared AHK input integration candidate and durable workflow
 
 - Prepared the optional [GameInputModule](../../examples/game-input/README.md), exact historical v0.3.1 baseline and [other-chat handoff](../../examples/game-input/OTHER-CHAT-HANDOFF.txt). v0.4 extended text/Enter/Escape/hold code passed only syntax/28 pure tests; the v0.5-preview.1 refactor passed native AHK 2.0.30 syntax and 36 no-input tests, not GUI/lifecycle/game acceptance. Extended input is off by default. The message is prepared, not sent, and the larger host is not modified.
