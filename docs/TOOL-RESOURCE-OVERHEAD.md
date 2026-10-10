@@ -37,6 +37,8 @@ Existing programs collect and calculate specialized metrics. Import original rep
 
 ## Experiment protocol
 
+For every in-game one-factor or 2×2 cost plan, pass the [mandatory FG/memory preflight](GAME-PERFORMANCE-MEASUREMENT.md#mandatory-benchmark-preflight--fg-and-memory) before collector activation/runs: Dynamic MFG inactive, effective FG Off or one matched fixed multiplier, matched PT/SR/quality and validated frame/memory scopes. Active/suspected/unverified adaptive FG or unknown mode blocks execution. Pure external closed/idle manager tests without a rendering workload may mark the FG gate not applicable. Stop and retain an interrupted/confounded run on memory warnings; do not change textures/budgets or disable the warning and reuse it as a matched run. Explicit adaptive-FG experience studies remain separate. This is an agent procedure/planner requirement, not implemented automatic Hub detection or permission to resume deferred work.
+
 1. Define the exact question, game/build, scene/phase, feature IDs and allowed mutations. Check dependencies, anti-cheat, hooks/file owners and current deferred scope. Save baseline plus current-state snapshots before any later change.
 2. For external apps, define process/service tree and closed/idle/active workloads. For injected features, hold the shared host and unrelated layers constant. Record requested and observed states separately.
 3. Validate provider coverage, timestamps/clock mapping, metric definitions and sampling phase. Measure the coordinator/provider overhead; optional video needs its own matched overhead comparison.

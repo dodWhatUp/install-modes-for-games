@@ -34,6 +34,7 @@ An explicit emergency rollback may skip the option menu, but it must still prese
 
 ## During installation and testing
 
+- Before rendering-performance or injected-feature cost comparisons, follow the mandatory FG/memory preflight in `docs/GAME-PERFORMANCE-MEASUREMENT.md`. Verify Dynamic MFG is inactive and effective FG is Off or one matched fixed multiplier; active, suspected or unverified adaptive FG/unknown effective mode blocks the comparison. Preserve rendered/displayed metric definitions and distinct memory scopes; suspend on memory warnings. Explicit adaptive-FG experience tests are a separately requested/labeled experiment, not ordinary cost attribution. This instruction does not authorize settings changes or resume deferred tests.
 - Change one layer, or one tightly related setting group, at a time.
 - Apply the user-selected graphics hotkeys in `preferences/GENERAL.md` and `docs/GRAPHICS-CONTROLS.md` as part of every requested compatible graphics add-on installation, regardless of tool. Configure supported actions without asking for the same preference again; record unavailable actions and game-specific exceptions.
 - When the selected installation uses or requires a supported game-specific engine-integrated mod interface/menu, bind that interface to F12. If it hosts Ultra+ (as CET does in Cyberpunk), share the host's single F12 menu/binding rather than adding a second owner. Inspect native and mod conflicts first; record any unsupported binding or game-specific exception.

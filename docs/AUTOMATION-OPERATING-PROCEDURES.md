@@ -28,6 +28,8 @@ Research/report requests authorize inspection, not implementation. Diagnosis ide
 | COMPONENT-OWNER-01 — Need to swap a component | Current file owner/dependents and running processes | Stop relevant loaded owners and follow [snapshot/change/rollback](OPERATING-STANDARD.md) | Two managers can safely deploy the same file |
 | RESTORE-01 — Need to restore input setup | Native export, device identity, effective game/mod bindings and Steam layout where applicable | Follow [native recovery/reinstall](AZERON-GAME-CONTROLS.md); restore only requested owned changes | Hashes, Steam Cloud or a diagram are complete recovery |
 | OVERHEAD-01 — Want costs of multiple tools | Shared hosts, feature state, matched scene and provider definitions | Use [dependency-preserving comparisons](TOOL-RESOURCE-OVERHEAD.md) | A manager's process RAM describes its injected add-on cost |
+| PERF-FG-01 — Similar FPS under different load | Current native and effective global/per-game FG mode, inheritance, fixed multiplier/dynamic target, frame-class coverage | Pass the [mandatory FG preflight](GAME-PERFORMANCE-MEASUREMENT.md#mandatory-benchmark-preflight--fg-and-memory); active/unknown Dynamic MFG blocks an ordinary rendering-cost comparison | Similar total FPS means equal rendered performance; native x2 proves effective x2 |
+| MEMORY-SCOPE-01 — VRAM warning despite physical capacity | Reporter/version, exact text/time, used/available/budget definitions, adapter versus process scope and RAM/commit | Suspend the comparison, preserve evidence and follow the [memory gate](GAME-PERFORMANCE-MEASUREMENT.md#mandatory-benchmark-preflight--fg-and-memory) | Physical capacity minus one counter proves free headroom; the warning alone proves OOM |
 
 ## Lessons from the recorded work
 

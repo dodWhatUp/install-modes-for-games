@@ -20,6 +20,7 @@ Record:
 - 32/64-bit and D3D9/11/12, OpenGL, or Vulkan;
 - GPU, driver, monitor mode, output resolution, HDR state, and VRAM;
 - native SR/DLAA, RR, FG/MFG, Reflex, dynamic resolution, and frame-cap settings;
+- effective global/per-game driver overrides and inheritance, fixed versus Dynamic MFG, target/max multiplier and current readback; a native menu selection alone does not establish effective FG;
 - proxy DLLs, Streamline/NGX files, ReShade layers/add-ons, mod loaders, overlays, launch options, and relevant environment variables;
 - user configuration and save locations affected by the proposed change.
 
@@ -95,6 +96,8 @@ Static validation checks ownership, versions, hashes, configuration, and duplica
 - resolution or swapchain recreation, alt-tab, loading, and clean shutdown.
 
 For FG/MFG, report base rendered FPS separately from generated display FPS. For a neural pass, prove which buffers it receives and whether those are engine-native or estimated.
+
+Before rendering-performance or injected-feature cost comparisons, pass the [mandatory FG/memory preflight](GAME-PERFORMANCE-MEASUREMENT.md#mandatory-benchmark-preflight--fg-and-memory): Dynamic MFG inactive, effective FG Off or a matched known fixed multiplier, matched rendering workload and validated frame/memory scopes. Active/suspected/unverified adaptive FG or unknown effective mode blocks an ordinary comparison. A memory warning interrupts it; preserve evidence rather than changing textures/budgets and treating the run as unchanged. Separately requested adaptive-FG experience tests are labeled, not substitutes for rendering-cost attribution. These checks do not grant permission to change settings or resume deferred work.
 
 Verify each consumer's actual input source and any fallback. Separate captured/converted engine resources from reconstructed/estimated resources. After adding the visual stage, recheck the DLSS features, input color space, UI and presentation. Record each requested feature as verified, configured but untested, failed, or unavailable with its concrete blocker; a shorter installed component list is not sufficient evidence of success.
 
