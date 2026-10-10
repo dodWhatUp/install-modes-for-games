@@ -13,7 +13,8 @@ Reviewed 2026-10-11. Start here for research, game-mod work, PC assistance and a
 | Measure tool or stack overhead | [Overhead protocol](TOOL-RESOURCE-OVERHEAD.md), [measurement procedure](GAME-PERFORMANCE-MEASUREMENT.md), [tool connections](GAME-TOOL-CONNECTIONS.md) | Match workload, preserve metric definitions, separate process and injected-feature costs |
 | Device profiles and game labels | [Azeron controls](AZERON-GAME-CONTROLS.md), [device registry](INPUT-DEVICE-REGISTRY.md), [draft label brief](https://github.com/dodWhatUp/install-modes-for-games/pull/4) | Native mappings own input; label changes must not remap outputs |
 | Crash evidence and video comparisons | [Architecture recovery and video sections](GAME-TOOLS-ARCHITECTURE.md), exact game history | Future optional modes; no guaranteed preservation of the unflushed tail |
-| Backup or publish | [Distribution](DISTRIBUTION.md), [GitHub procedure](GITHUB-PUBLISHING.md) | Source bundles and private recovery backups are different artifacts |
+| Review chats, preserve lessons or connect knowledge | [Knowledge maintenance](KNOWLEDGE-MAINTENANCE.md), [lesson record](../templates/KNOWLEDGE-RECORD.example.json) | Preserve source ownership/revisions and declare review coverage; summaries do not replace masters |
+| Backup or publish | [Distribution](DISTRIBUTION.md), [GitHub procedure](GITHUB-PUBLISHING.md), [maintenance protocol](KNOWLEDGE-MAINTENANCE.md#backup-and-publication-protocol) | Source bundles, visible-message archives and installed recovery are different artifacts |
 
 Search exact game/executable/feature/DLL/error before acting. Prefer current observed evidence over general advice; refresh upstream support when versions or experimental reviews change. Carry only the relevant records into a task, not unrelated account history.
 
@@ -32,16 +33,24 @@ The canonical knowledge repository is [dodWhatUp/install-modes-for-games](https:
 | “Create a shared game menu layer” | [Cyberpunk overview](../games/CYBERPUNK-2077.md), [history](../games/cyberpunk-2077/HISTORY.md), [control procedure](AZERON-GAME-CONTROLS.md) | Game/context-specific observations, not universal bindings; detailed local binding JSON is not published in this pass |
 | “Fix Cyberpunk Ultra+ VRAM crashes” | [latest Cyberpunk history](../games/cyberpunk-2077/HISTORY.md), [runtime validation](../games/cyberpunk-2077/RUNTIME-VALIDATION.md) | Earlier pressure/broken-stack diagnosis is historical; OOM cause was not proven |
 | “בדוק והתקן בנצ׳מרק למעבד” | Related-chat installation summary | Cinebench installation was reported; no benchmark result is adopted here |
+| “עדכן מקשי מודים ו-RenoDX” | [Graphics controls](GRAPHICS-CONTROLS.md), current Cyberpunk history and scoped settings receipt | Active separate owner; saved CET/Ultra+ F12 verified, live shortcut acceptance pending; historical grave-key results are not current |
+| “המשך קליטת הודעות Pro” | Owner-held continuity/handoff records; private source index | Owner reports all planned Pro content received and integrated there; read-only continuity/state review, not an executor/importer/synchronizer; code/revision not independently audited here |
 
-Chat identity/retrieval details belong in the private source index. Coverage is this conversation's recorded work plus bounded relevant turns and saved artifacts in the named related chats, not every account or archived chat. Direct history for “Create Azeron Overlay Apps” and “Game Keybind Analysis” was rate-limited; canonical saved records are the recovery route. No accessible Space was returned by the connected Pages listing. “המשך קליטת הודעות Pro” was identified but not content-reviewed; the separately mentioned Pro artifacts remain unreconciled. No message was sent to another chat.
+Chat identity/retrieval details belong in the private source index. The 2026-10-11 follow-up supersedes the earlier rate-limit gap: five latest turns each were reviewed for “Create Azeron Overlay Apps” and “Game Keybind Analysis”, three available turns for “המשך קליטת הודעות Pro”, and four latest turns each for the benchmark and active hotkey workstreams. Some replies were truncated or reference-only; attachment bytes and whole related-chat histories were not reviewed. Do not request the already-received Pro messages again; retain its separate source owner and reported-versus-audited distinction.
+
+This chat's accessible completed visible-message history was retrieved across four pages: 37 turns, with no older cursor remaining at that read. The private projection excludes tools/outputs, reasoning, attachment bytes and the unfinished current turn; accessible turns are not guaranteed to cover deleted, inaccessible or omitted content. Earlier related-chat reviews remain dated evidence. This is not every account/archived chat or a full-system export. No accessible Space was returned by the earlier connected Pages listing, and no message was sent to another chat.
 
 ## Private recovery references
 
-- [Current authored source/knowledge checkpoint r4](https://drive.google.com/file/d/1TYp7eEQMXugertEkDJ2711dRHHujnJB8/view): 47 curated files and hash manifest for current input integration, Hub, catalog, procedures and templates. Archive entries and downloaded Drive bytes matched. Source-only coverage and pending runtime gates remain explicit; the receipt/final link postdate the immutable package.
+- [Current authored source/knowledge checkpoint r5](https://drive.google.com/file/d/1_lkmwHfcuoMH-vyhHr2_5uqjq2R2Z0XM/view): 49 curated files plus manifest, including the maintenance protocol, lesson template and refreshed source coverage. All entries and downloaded Drive bytes matched; existing private owner-only access stayed unchanged. This final link/receipt postdate the immutable package. See [distribution](DISTRIBUTION.md).
+
+- [Earlier authored source/knowledge checkpoint r4](https://drive.google.com/file/d/1TYp7eEQMXugertEkDJ2711dRHHujnJB8/view): 47 curated files and hash manifest. It predates this follow-up's maintenance protocol, lesson template and refreshed chat coverage. Archive entries and downloaded Drive bytes matched; it remains an immutable source checkpoint, not installed recovery.
+
+- [Private visible-message/source-locator checkpoint](https://drive.google.com/file/d/18YrnoEc5zNsi4sNDTxGNq8Jx7EtDdIr_/view): this chat's accessible 37 completed visible-message turns, refreshed private related-source index and coverage/restore guide, plus manifest. All entries and downloaded Drive bytes matched; owner-only access remained unchanged. It is not a tool-output, attachment or whole-account archive. See [receipt](DISTRIBUTION.md#2026-10-11--visible-message-review-and-private-checkpoint).
 
 - [Current private GameTools recovery checkpoint](https://drive.google.com/file/d/1BNk-LCA2gIaTd-t7D4vIB6QuL13e4hxR/view): installed Studio2 source/settings/picture, original host recovery, Hub registry and bounded source index. Source/copy/archive hashes and Drive byte readback matched; restore remains untested. See [coverage and receipt](DISTRIBUTION.md).
 
-- [Existing game-modding export folder](https://drive.google.com/drive/folders/1uQuBbrDS0bSVibb-1kj2arZfjVfnrFLy): dated source/guidance exports and the new backup receipt in [distribution](DISTRIBUTION.md).
+- [Existing game-modding export folder](https://drive.google.com/drive/folders/1uQuBbrDS0bSVibb-1kj2arZfjVfnrFLy): dated source/guidance exports and the current backup receipts in [distribution](DISTRIBUTION.md).
 - [Azeron recovery start page](https://drive.google.com/file/d/1YazzDmaOkWb_ximHZfe-PfU3J3gTj3G_/view) and [existing private controls folder](https://drive.google.com/drive/folders/1VC1i0sh2GLrCnQpO0pjjbA6dnks6tpEr): profiles, diagrams and historical references.
 - [SHARED R5 native export](https://drive.google.com/file/d/1DbjhZdzBhXJ1FwWKvcY-_h_9-CrTHCwG/view) and [pre-install recovery archive](https://drive.google.com/file/d/1WCXcUaEDYjrJdUruxGRXV36HhpMvwZVD/view): preserve their exact native schema and import requirements; the application's Import dialog remains unaccepted.
 - [Studio 3 exact-source package](https://drive.google.com/file/d/1COZhma8Ur8iFWc1bkuAqOd4lwIudLY5z/view) and [earlier overlay/MIC source archive](https://drive.google.com/file/d/1Cqek3Lk_VjKTPO7g6m2tjySpIcMNGZl3/view): source delivery checkpoints, not personal settings/device recovery or native runtime acceptance. PR2 contains an earlier LayerPictures candidate; exact Studio3 code has not been represented as already committed there.
@@ -49,6 +58,19 @@ Chat identity/retrieval details belong in the private source index. Coverage is 
 - [PureDark archive index](PUREDARK-ARCHIVE-2026-10-07.md): paid-release recovery stays private and separate; no binaries are duplicated into public source bundles.
 
 A source ZIP alone cannot restore pictures, MIC configuration, native mapper/onboard exports, tool settings or game binaries/saves. Follow each package's coverage and restore instructions. Hash inventories establish identity, not that file contents were backed up. Do not restore a whole profile/store to undo one optional module.
+
+### Recovery coverage
+
+| Artifact class | Copied or linked coverage | Remaining boundary |
+|---|---|---|
+| Curated source/knowledge bundle | Authored source, docs, tests and templates; entry/Drive hashes verified | Not installed-state recovery; current receipt may postdate package |
+| Private installed checkpoint | Scoped Studio source/settings/picture, original host and Hub registry | Restore untested; not a whole-system backup |
+| Private visible-message projection | This chat's accessible 37 completed turns; exclusions recorded | Not tool/attachment backup or whole related-chat history |
+| Native R5 exports | Separately linked native-format/pre-import artifacts | Import acceptance pending; bytes not reverified in this follow-up |
+| R6 deliveries and Studio3/MIC packages | Separate owner-held design/source lineage; metadata checked | No new installation or device/settings recovery acceptance |
+| Game files, saves and device onboard state | Not established by the above packages | Require separate scoped recovery evidence |
+
+R6 delivery references: [COMPACT four-profile ZIP](https://drive.google.com/file/d/1oT-pZD1S2KjzrF5_biGs43R7LU097FVy/view), [SPARSE five-profile ZIP](https://drive.google.com/file/d/1YtqNWe5-v-T6phH_d908sNt3SNMKcfon/view), [design report](https://drive.google.com/file/d/1qY9Jv72l3BqmXgzNY4pO-yR43kny7pdo/view), [HTML prototype](https://drive.google.com/file/d/111lzEryrN0Qcbxsxu2EwH1-R88yzk9Bk/view), and [complete delivery](https://drive.google.com/file/d/1MKZI5e2KPdSuEYFdvTZe2qUF-RQcefp0/view). Metadata verified names/types and private owner-only access; these bytes were not re-downloaded/hashed here. Profile delivery ZIPs are not application Restore Backup archives.
 
 R6 is a separately published design/prototype source, not a newly applied profile or replacement master. Reserved button #19 has no emitted overlay trigger. Later labels must preserve the exact chosen variant/layer outputs, omit joystick drawing and retain unknown actions. Installation needs a selected family, current live-state recovery and scoped acceptance; publication is not installation authority.
 

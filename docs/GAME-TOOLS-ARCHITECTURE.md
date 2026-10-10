@@ -17,13 +17,14 @@ The same-day extension makes individual tool/feature resource cost and combinati
 | Component | Observed or recorded capability | Remaining boundary |
 |---|---|---|
 | Game Tool Hub 0.2.0 | Read-only Afterburner/RTSS connections, report imports, interface registry and 22 synthetic contracts with core panel acceptance | Populated game reports, runner, crash recording and comparison player |
+| Game Tool Catalog 0.1.1 | Filterable typed catalog, dependency-preserving overhead plans and 35 pure tests | Read-only planning foundation; no external-tool execution or measured overhead acceptance |
 | Overlay Studio 2 integration | Optional fifth tab and library wiring; 60 original methods retained; settings hash unchanged; saved picture preview observed after loader repair | Module Start/Stop/restart after the latest repair, HUD output and original-feature regression checks |
 | GameInputModule v0.5-preview.3 | Native integrated-host validation, 36 module plus 8 host policy checks; installed and repository source match | Text, Unicode, Enter, Escape, hold/release and cancellation in each game |
 | Historical Control Helper v0.3.1 | Partial agent-operated menus, one digit, caret and Backspace in both games | Does not validate the refactored host or extended actions |
 | Azeron SHARED R5 | Four SOFTWARE profiles loaded; native events support three momentary selectors and release to BASIC outside games | Ordinary outputs, joystick/chords, gameplay prompts and native Import-dialog acceptance |
 | Per-game keymap labels | Request and data-contract proposal in draft PR4 | Label generator implementation and acceptance |
 
-Sources: [Hub evidence](GAME-TOOL-CONNECTIONS.md), [input integration record](../examples/game-input/OVERLAY-STUDIO-INTEGRATION.md), [draft keymap brief/PR4](https://github.com/dodWhatUp/install-modes-for-games/pull/4), and the requested benchmark/keymap chats. Artifacts from the separate Pro workstream can be reconciled when supplied; their unseen code is not part of this acceptance claim.
+Sources: [Hub evidence](GAME-TOOL-CONNECTIONS.md), [input integration record](../examples/game-input/OVERLAY-STUDIO-INTEGRATION.md), [draft keymap brief/PR4](https://github.com/dodWhatUp/install-modes-for-games/pull/4), and the requested benchmark/keymap chats. The follow-up owner report confirms all planned Pro material was already received in its separate workstream. Do not request it again; use that owner's handoff/revision for later scoped reconciliation. Its unseen code is not part of this acceptance claim. Follow [knowledge maintenance](KNOWLEDGE-MAINTENANCE.md) rather than replacing rich masters with summaries.
 
 ## Shared core and ownership
 

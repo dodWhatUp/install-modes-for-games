@@ -5,12 +5,13 @@
   "target": {"tool_id": "replace_with_catalog_id", "game_id": null, "build": null, "identity_verified": false},
   "scope": {"allowed_actions": ["read_status"], "launch": false, "capture": false, "write_settings": false, "load_saves": false, "send_game_input": false},
   "sources": [],
+  "provenance": {"source_revision": null, "source_sha256": null, "adapter_version": null, "read_coverage": "not_reviewed"},
   "preconditions": ["Read current user scope and matching history", "Verify exact target and supported adapter"],
   "operation": {"capability": "read_status", "parameters": {}, "timeout_seconds": 10, "payload_logging": false},
   "expected_observations": [],
   "evidence": {"requested": null, "dispatched": null, "observed": null, "verified": null},
   "cancellation": {"required": true, "release_owned_input": true},
-  "rollback": {"owned_changes": [], "restore_instructions": null},
+  "rollback": {"owned_changes": [], "restore_instructions": null, "recovery_artifact_alias": null, "recovery_coverage": [], "restore_tested": false},
   "privacy": {"export_class": "sanitized", "automatic_upload": false},
   "remaining_unknowns": ["Exact target, current build and adapter capability"]
 }

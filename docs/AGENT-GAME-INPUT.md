@@ -32,6 +32,8 @@ Baseline SHA-256: `EAFD9509DC8B7C579915668648AD20F000D377B5018B5ECE9D4CD9B43F7A4
 | Editable field | One digit, Left/Right caret and Backspace in PureDark search; console digit removed | One digit, Left/Right caret and Backspace in ReShade search |
 | Native submission/back/holds | Not established | Not established |
 
+Current binding drift, 2026-10-11: the separate hotkey workstream verified Cyberpunk's saved CET/Ultra+ binding as F12, retaining F9 DLSS and ReShade Delete. Live F12 acceptance is not established. The table's Cyberpunk F16 → vkC0 result remains historical; do not reuse it as a current menu recipe. At the next authorized input test, re-read current bindings and reconcile the helper's mapping/reservations before dispatch. No helper mapping or installed profile was changed by this knowledge review. Skyrim PureDark F12 is a separate target/context.
+
 Skyrim baseline: Steam 1.6.1170 x64/D3D11, MO2 2.5.2, SKSE64 2.2.6, Address Library v13, PureDark AIO Build 19 Hotfix 1, ReShade 6.8; windowed borderless 2560×1440. User-authorized downgrade followed confirmed 1.7.x incompatibility. Launch through the existing matching MO2/SKSE profile, not Steam Play/Update/Verify. A stock Steam manifest version is not the effective executable version.
 
 Cyberpunk baseline: Steam 2.31 x64/D3D12 with the then-current clean ReShade/RenoDX/CET/RED4ext/Ultra+ X rc7 stack. Native DLSS remained the FG owner; OptiScaler/NR/FrameWarp were not revived. These are dated input observations, not a replacement for the separate [runtime/benchmark workstream](GAME-PERFORMANCE-MEASUREMENT.md) or its newer settings.

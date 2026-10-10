@@ -91,6 +91,8 @@ try {
     $testAllPaths = @(Get-GameSourcePaths -Bundle GameTools)
     Assert-ExportTest ($testInputPaths -contains 'examples/game-input/AzeronOverlayStudio.integrated.ahk' -and $testInputPaths -contains 'examples/game-input/OverlayStudioGameInput.ahk') 'input integration source inventory'
     Assert-ExportTest ($testAllPaths -contains 'templates/AUTOMATION-TASK.example.json' -and $testAllPaths -contains 'scripts/tests/Test-GameToolCatalog.py') 'combined curated inventory'
+    Assert-ExportTest ($testAllPaths -contains 'docs/KNOWLEDGE-MAINTENANCE.md' -and $testAllPaths -contains 'templates/KNOWLEDGE-RECORD.example.json') 'knowledge maintenance and lesson inventory'
+    Assert-ExportTest ($testInputPaths -notcontains 'templates/KNOWLEDGE-RECORD.example.json' -and $testInputPaths -notcontains 'docs/KNOWLEDGE-MAINTENANCE.md') 'knowledge additions do not widen input-only bundle'
     Assert-ExportTest (@($testAllPaths | Sort-Object -Unique).Count -eq $testAllPaths.Count) 'curated inventory has no duplicates'
     "PASS: $testCount source-export contracts; temporary synthetic fixtures only, no app/game/input/capture or upload."
 } finally {

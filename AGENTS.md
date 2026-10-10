@@ -18,6 +18,8 @@ This repository is the durable memory for game-modding work. Apply these rules w
 
 For cross-tool research, game/PC assistance, mod workflows and automation development, start with `docs/GAME-TOOLS-KNOWLEDGE-INDEX.md` and `docs/AUTOMATION-OPERATING-PROCEDURES.md`. For per-tool/per-feature/combination CPU/GPU/RAM/VRAM questions, read `docs/TOOL-RESOURCE-OVERHEAD.md`. Keep masters, private recovery and tested/upstream/inferred/unknown states distinct. Prepared procedures and catalog actions do not authorize new launches, capture, settings changes or deferred experiments.
 
+For chat review, knowledge reuse, backup or cross-repository handoffs, follow `docs/KNOWLEDGE-MAINTENANCE.md` and `templates/KNOWLEDGE-RECORD.example.json`. Preserve source owners and exact revisions, distinguish observation from inference, reconcile concurrent edits, and declare copied/referenced/byte-verified/restore-tested coverage. Do not request already-received material again or treat a summary as current runtime acceptance or automatic global memory.
+
 ## Before changing a game
 
 - Identify the real rendering executable, bitness, API, store build, game build, GPU/driver, display mode, native DLSS/FSR/XeSS/HDR features, anti-cheat, mod loader, and all existing hooks.

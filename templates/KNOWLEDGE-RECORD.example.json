@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "record_id": "replace_with_stable_lesson_id",
+  "record_kind": "lesson",
+  "status": "draft_not_authorization",
+  "owner": {"workstream": null, "master_locator": null},
+  "applicability": {"game_id": null, "tool_id": null, "versions": [], "context": null},
+  "symptom": null,
+  "sources": [{"locator": null, "revision": null, "sha256": null, "reviewed_date": null, "coverage": "not_reviewed", "attachments_reviewed": false}],
+  "observation": {"claim": null, "evidence_state": "unknown", "evidence_locator": null},
+  "inference": {"claim": null, "confidence": null, "alternatives": []},
+  "supported_next_action": {"capability": null, "adapter_version": null, "success_evidence": []},
+  "permission": {"execution_authorized": false, "current_request_reference": null},
+  "stop_conditions": [],
+  "recovery": {"artifact_alias": null, "coverage": [], "restore_tested": false, "rollback_procedure": null},
+  "freshness": {"reviewed_date": null, "change_triggers": ["Target, source revision, binding, provider or preference changes"]},
+  "privacy": {"classification": "sanitized_draft", "payload_logging": false, "automatic_upload": false},
+  "next_boundary": null
+}

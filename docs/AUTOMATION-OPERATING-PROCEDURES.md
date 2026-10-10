@@ -15,19 +15,19 @@ Research/report requests authorize inspection, not implementation. Diagnosis ide
 
 ## Practical decision table
 
-| Situation | Inspect first | Supported next step | Do not infer |
+| ID / situation | Inspect first | Supported next step | Do not infer |
 |---|---|---|---|
-| Game ignores an automated key | Foreground, tool delivery/guard result, current helper state, target identity, modifiers and hook conflicts | Use the authorized guarded AHK route if appropriate, then observe receipt | A failed pre-delivery/focus operation proves the game rejected input |
-| Another chat or window takes focus | Active desktop owner and fresh window state | Suspend input, coordinate a cooperative exclusive interval, reobserve | A lock file can control every unrelated app or override a user-input guard |
-| UI action errors or times out | Fresh observed state, not stale coordinates | Reconcile whether it occurred; retry only within bounded scope | Error means nothing changed |
-| AHK profile UI disagrees with saved settings | Read-only settings/hash and loader path | Fix the scoped loader if requested; verify actual readback | User changed the profile; overwrite the INI |
-| Module Start fails on its own indicator | Exact error and owned GUI visibility | Repair the module's scoped lifecycle, restore temporary thread policy | Change global security/display settings |
-| Tool has no stable API | Official exports/SDK and observed UI | Define a limited adapter/recipe with explicit unsupported actions | Execute arbitrary hidden input commands to bypass the supported route |
-| Mod is visible in a menu | Version, actual feature inputs/outputs and logs | Verify creation/evaluation/presentation and stability in scope | Loaded overlay means MFG/FrameWarp or image quality is correct |
-| Crash or memory spike | Preserve first logs, timestamps, settings, memory scope and last valid phase | Rank hypotheses, propose one-layer comparison, preserve recovery | Correlation proves OOM or one DLL caused it |
-| Need to swap a component | Current file owner/dependents and running processes | Stop relevant loaded owners and use a manifest-based scoped change | Two managers can safely deploy the same file |
-| Need to restore an input setup | Native recovery export, device identity, effective game/mod bindings and Steam layout where applicable | Reconcile versions and restore only requested owned changes | File hashes, Steam Cloud or a rendered diagram are complete recovery |
-| Want costs of multiple tools | Shared hosts, feature state, matched scene and provider definitions | Use dependency-preserving comparisons from the overhead protocol | A manager's process RAM describes its injected add-on cost |
+| INPUT-DELIVERY-01 — Game ignores an automated key | Foreground, tool delivery/guard result, current helper state, target identity, modifiers and hook conflicts | Use the authorized [guarded AHK route](AGENT-GAME-INPUT.md#what-the-method-actually-is) if appropriate, then observe receipt | A failed pre-delivery/focus operation proves the game rejected input |
+| INPUT-FOCUS-01 — Another chat or window takes focus | Active desktop owner and fresh window state | Suspend input, coordinate a cooperative exclusive interval, [reobserve and clean up](AGENT-GAME-INPUT.md#persistence-archive-and-rollback) | A lock file can control every unrelated app or override a user-input guard |
+| UI-TIMEOUT-01 — UI action errors or times out | Fresh observed state, not stale coordinates | [Reconcile](KNOWLEDGE-MAINTENANCE.md#retrieve-a-small-task-packet) whether it occurred; retry only within bounded scope | Error means nothing changed |
+| AHK-LOADER-01 — Profile UI disagrees with saved settings | Read-only settings/hash and loader path | Fix the scoped loader if requested; verify [saved readback](../examples/game-input/OVERLAY-STUDIO-INTEGRATION.md) | User changed the profile; overwrite the INI |
+| AHK-INDICATOR-01 — Module Start fails on its indicator | Exact error and owned GUI visibility | Repair the module's [scoped lifecycle](../examples/game-input/OVERLAY-STUDIO-INTEGRATION.md), restore temporary thread policy | Change global security/display settings |
+| ADAPTER-01 — Tool has no stable API | Official exports/SDK and observed UI | Define a [limited adapter](#building-reusable-adapters) with explicit unsupported actions | Execute arbitrary hidden input commands to bypass the supported route |
+| MOD-EVIDENCE-01 — Mod is visible in a menu | Version, actual feature inputs/outputs and logs | Follow [component verification](OPERATING-STANDARD.md) in scope | Loaded overlay means MFG/FrameWarp or image quality is correct |
+| CRASH-01 — Crash or memory spike | Preserve first logs, timestamps, settings, memory scope and last valid phase | Rank hypotheses, propose one-layer comparison, preserve [game evidence](../games/cyberpunk-2077/HISTORY.md) | Correlation proves OOM or one DLL caused it |
+| COMPONENT-OWNER-01 — Need to swap a component | Current file owner/dependents and running processes | Stop relevant loaded owners and follow [snapshot/change/rollback](OPERATING-STANDARD.md) | Two managers can safely deploy the same file |
+| RESTORE-01 — Need to restore input setup | Native export, device identity, effective game/mod bindings and Steam layout where applicable | Follow [native recovery/reinstall](AZERON-GAME-CONTROLS.md); restore only requested owned changes | Hashes, Steam Cloud or a diagram are complete recovery |
+| OVERHEAD-01 — Want costs of multiple tools | Shared hosts, feature state, matched scene and provider definitions | Use [dependency-preserving comparisons](TOOL-RESOURCE-OVERHEAD.md) | A manager's process RAM describes its injected add-on cost |
 
 ## Lessons from the recorded work
 
@@ -48,6 +48,8 @@ Research/report requests authorize inspection, not implementation. Diagnosis ide
 An adapter declares supported versions, discover/read/import/open/capture/write capabilities, schemas, freshness, side effects and unsupported cases. Validate inputs and source identity; preserve missing values and original metric definitions. No generic shell runner or arbitrary command string is needed for a prepared task.
 
 An action recipe lists prerequisites, exact targets, scope, expected observations, timeout, cancellation, rollback and privacy. A prepared recipe is data, not an executable permission. Fail closed on unknown ownership; do not silently overwrite native mappings or create competing hooks. Keep payloads ephemeral and bound total dispatch duration as well as character count.
+
+Start with [AUTOMATION-TASK.example.json](../templates/AUTOMATION-TASK.example.json), retaining `proposal_not_authorization` and all execution flags Off. For example, a Hub read-status proposal identifies the current adapter/source revision and expected status fields; it does not authorize launching a game or changing settings. Use [knowledge maintenance](KNOWLEDGE-MAINTENANCE.md) and the [lesson template](../templates/KNOWLEDGE-RECORD.example.json) to preserve provenance, uncertainty and recovery coverage without logging typed payloads.
 
 Use versioned interfaces and source revisions, cache slow discovery, batch reads and rebuild only affected records/views. Keep blocking discovery/rendering away from input callbacks. Acceptance covers success, invalid input, cancellation, focus loss, expiry, stale sources, interrupted providers and recovery. Hardware/game tests remain distinct from fixtures.
 
