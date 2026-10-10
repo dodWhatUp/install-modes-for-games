@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-10-10",
+  "status": "TARGETED_PRIMARY_CHECKS_NOT_FULL_CATALOGUE_REVERIFICATION",
+  "checks": [
+    {
+      "id": "yumia-party-modifier",
+      "url": "https://www.gamecity.ne.jp/manual/3Tr5Fw2Y/en/2400.html",
+      "source_type": "publisher_manual",
+      "locator": "Combat controls, Swap Characters row; linked key icons C, 1, 2, 3, 4 were visually read",
+      "row_ids": ["add_yumia_022"],
+      "source_fact": "The manual shows C plus 1, 2, 3 or 4 for swapping characters.",
+      "inference": "C+2 and C+4 use the same hypothesized middle finger in R3 Basic. Additional Ctrl/Shift copies in Numbers do not solve this ordinary-letter modifier requirement.",
+      "limit": "Finger assignment, actual simultaneous switch reach and installed game overrides were not tested. The manual contains icon keys, so a text-only extraction is not sufficient by itself."
+    },
+    {
+      "id": "openttd-fkey-regressions",
+      "url": "https://wiki.openttd.org/en/Manual/Hotkeys",
+      "source_type": "project_documentation",
+      "locator": "Normal ingame shortcuts: Shift+F2, Shift+F8; text lines 88 and 94 in the inspected rendering",
+      "row_ids": ["binding_6a450b3dcee9", "binding_edcc47692d6f"],
+      "source_fact": "Shift+F2 opens the road vehicle list; Shift+F8 opens the road construction toolbar.",
+      "inference": "Two previously disclosed R3 regression patterns occur in documented game controls, not only synthetic tests.",
+      "limit": "The project page qualifies hotkeys by version, open window and keyboard layout. No installed game was checked."
+    },
+    {
+      "id": "openttd-stick-command-role",
+      "url": "https://wiki.openttd.org/en/Manual/Hotkeys",
+      "source_type": "project_documentation",
+      "locator": "A toggles Autorail; landscaping table Q/W/E lower/raise/level; arrows scroll the map",
+      "row_ids": ["binding_5a97c72f2a1c", "binding_6f2cf9cea91a"],
+      "source_fact": "A is an Autorail command; W raises land in landscaping. Arrow keys scroll the map.",
+      "inference": "Having WASD only on the thumbstick is not the same as four independent command buttons. Camera movement and letter commands should be reconciled as distinct roles.",
+      "limit": "It may be sufficient to release or repurpose the stick for deliberate commands. A separate grid base is a conditional option, not a required per-game profile."
+    },
+    {
+      "id": "wolong-modifier-letters",
+      "url": "https://www.koeitecmoeurope.com/manual/wolong/en/2040.html",
+      "source_type": "publisher_manual",
+      "locator": "Keyboard and mouse: Martial Arts / switch martial arts / ranged weapon and item swaps",
+      "row_ids": ["add_wolong_011", "add_wolong_012", "add_wolong_021", "add_wolong_026"],
+      "source_fact": "The manual documents Shift+C, Shift+V and Shift with digits 1 to 4 in the relevant control rows.",
+      "inference": "A number-bank modifier workaround does not remove Basic Shift+C's same-column issue.",
+      "limit": "Extra movement in the audit is an analyst stress test, not a source measurement of required concurrency or latency."
+    },
+    {
+      "id": "fairytail-held-bank",
+      "url": "https://www.koeitecmoamerica.com/manual/fairytail2/en/2400.html",
+      "source_type": "publisher_manual",
+      "locator": "Battle controls: hold Tab, skill keys 2/3/4, Space+1 and Space+2",
+      "row_ids": ["add_fairytail2_021", "add_fairytail2_024", "add_fairytail2_032", "add_fairytail2_033"],
+      "source_fact": "Tab is held to change the skill sheet; the skill keys are 2, 3 and 4. Space+1 uses an item; Space+2 flees.",
+      "inference": "Tab with the skill digits is derived from adjacent definitions, not four separately written simultaneous chords. This dependency is outside a row-isolated parser and was retained in the earlier scenario tests.",
+      "limit": "All-row mechanical processing does not automatically discover dependencies between different rows. Timing and physical transitions remain unknown."
+    },
+    {
+      "id": "gw2-immediate-heal",
+      "url": "https://www.guildwars2.com/en/new-player-guide/",
+      "source_type": "publisher_guide",
+      "locator": "Healing skill sixth slot / press 6; Controls / Control Options",
+      "row_ids": ["binding_4e3f2b9a7763"],
+      "source_fact": "The guide assigns the healing skill to 6 and documents customizing controls through Control Options.",
+      "inference": "R3 has a layered route for 6 but no direct Basic copy. A selected game-side rebind can be evaluated before creating a new entire map family.",
+      "limit": "Urgency depends on play context. No rebinding was performed or recommended as a fixed physical assignment before the native export is reviewed."
+    },
+    {
+      "id": "azeron-export-boundary",
+      "url": "https://azeron.com/pages/software",
+      "source_type": "manufacturer",
+      "locator": "Software 2.0 page / transition FAQ, profile export as JSON",
+      "row_ids": [],
+      "source_fact": "The manufacturer describes profile export to .json for backup and transition.",
+      "inference": "An original current export is the missing input for native-schema and layer-link reconciliation. Website documentation cannot establish this user's installed build or live profile state.",
+      "limit": "No exact v2 menu path, native schema, hardware IDs or tap/hold runtime semantics are inferred from the general page."
+    }
+  ],
+  "inherited_findings_not_freshly_source_verified": [
+    {
+      "id": "eldenring-split-bank",
+      "row_ids": ["binding_e0d80c8114b3"],
+      "url": "https://www.shacknews.com/article/128968/elden-ring-controls-and-pc-keybindings",
+      "source_type": "inherited_independent_control_table",
+      "stored_fact": "The retained row states E + arrow keys for the pouch shortcut.",
+      "inference": "E exists only on Basic; arrow outputs exist only on Letters in R3. No same-bank route exists under the no-carry-over assumption.",
+      "limit": "Not re-opened or promoted to a current verified default in this revision. Requires confirmation against the effective game preset."
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "azeron-corpus-access-audit/1",
+  "revision": "R4",
+  "date": "2026-10-10",
+  "status": "DERIVED_CORPUS_AUDIT_NOT_NATIVE_PROFILE",
+  "layout_revision": "STAGE_B_R3_CONSERVATIVE",
+  "input_fingerprints": {
+    "Azeron_Research_R2_HE.html": {
+      "sha256": "c59d28e737a03f3fd23daeff468e7d81b1435d4686ef3a3484d109176893fe0e",
+      "bytes": 1121291
+    },
+    "layout_candidate.json": {
+      "sha256": "e84d6034855a4b4b1ff6fcea0d9ca7e7a586d3df2c9221cd52405c44406ddba3",
+      "bytes": 9046
+    }
+  },
+  "summary": {
+    "games": 94,
+    "rows": 2195,
+    "syntax_status": {
+      "PARSED": 2167,
+      "MANUAL_REVIEW": 28
+    },
+    "listed_variants": 3106,
+    "variant_routes": {
+      "STICK_DIRECTIONAL_ROUTE": 339,
+      "LAYERED_BUTTON_ROUTE": 717,
+      "DIRECT_BUTTON_ROUTE": 1640,
+      "MOUSE_ONLY": 269,
+      "UNMAPPED_OUTPUT": 37,
+      "SYMBOL_LAYOUT_REVIEW": 13,
+      "STICK_COMMAND_ROUTE": 56,
+      "FINGER_MODEL_CONFLICT": 31,
+      "NO_SINGLE_BANK": 4
+    }
+  },
+  "row_flag_counts": {
+    "single_bank_gaps": {
+      "rows": 1,
+      "games": 1
+    },
+    "finger_conflicts": {
+      "rows": 26,
+      "games": 17
+    },
+    "unmapped_outputs": {
+      "rows": 25,
+      "games": 13
+    },
+    "stick_for_nonmovement": {
+      "rows": 51,
+      "games": 19
+    },
+    "symbols_need_layout_review": {
+      "rows": 12,
+      "games": 9
+    },
+    "needs_syntax_review": {
+      "rows": 28,
+      "games": 14
+    },
+    "side_specific_input": {
+      "rows": 110,
+      "games": 30
+    }
+  },
+  "map_git_blob": "b689507023491d7eafb28dd886a18923dbf2ae08",
+  "canonical_layout_path": "research_outputs/input-controls/azeron-keybinds/stage-b/layout_candidate.json",
+  "model_map_changed": false,
+  "native_export_received": false,
+  "method_file": "build_corpus_audit.py"
+}

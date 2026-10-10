@@ -1,5 +1,15 @@
 # Azeron cross-game controls — current research and design
 
+## Latest audit: R4, map unchanged
+
+Read [R4 corpus audit](stage-b/corpus-audit/README.md) alongside the R3 design.
+All 2,195 inherited R2 binding rows were processed; 2,167 expressions parsed
+and 28 remain for manual review. The audit identifies same-bank gaps,
+ordinary-letter modifiers, stick/command-role conflicts and real instances of
+R3 regressions. It does not add games, change the map or verify all current
+source defaults. Fourteen rows received targeted primary-source rechecks.
+Native implementation still requires the current v2 export described below.
+
 ## Current work: Stage B R3
 
 Read [Stage B R3: candidate maps, audit and implementation boundary](stage-b/README.md)
