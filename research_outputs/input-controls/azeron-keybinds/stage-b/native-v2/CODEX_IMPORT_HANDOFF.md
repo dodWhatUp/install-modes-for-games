@@ -1,32 +1,85 @@
-# Codex execution handoff — Azeron Cyborg II, SHARED R5
-**Scope:** Run a non-destructive import and verification of the already-created four candidate Software v2 profiles, if the *actual Windows gaming computer* and authenticated private Drive access are available. This is an execution handoff, not a request to design another mapping or research more games.
+# Current Codex handoff — R6 Azeron candidates and overlay prototype
 
-## Canonical sources (retrieve yourself; no user file handoff)
-- Repo: `dodWhatUp/install-modes-for-games`. Read `AGENTS.md`, `docs/AZERON-GAME-CONTROLS.md`, `docs/INPUT-DEVICE-REGISTRY.md`, and the [R5 format and validation guide](README.md).
-- **Private Google Drive**, inside folder **Azeron profile backups**. Find exact file **Azeron SHARED R5 - Four native profile candidates.zip** (27,326 bytes). This is the intended delivery package. Extract locally to a task-specific directory; import the **four individual JSON files** from its `profiles/` folder. NEVER restore the delivery ZIP as a backup.
-- Find **Azeron SHARED R5 - Hebrew import guide and numbered maps.html** for the numbered-button diagrams.
-- Find **Azeron SHARED R5 - Native profiles source evidence and recovery.zip** only if source provenance, recovery, or schema audit is necessary; it includes an optional augmented full backup that is **not** an additive merge and may rewind later changes. Do not restore it as a shortcut.
-- No original native backups, profile UUIDs, or private archives belong in public Git. Do not change Drive sharing permissions. Do not ask the user to re-upload files already in Drive. If Codex cannot use the authenticated Drive connector, report the specific connection/access needed; an unshared link alone is not proof that an agent can download it.
+This entry now points to R6. The earlier R5 instructions are preserved in
+[the pre-R6 revision](https://github.com/dodWhatUp/install-modes-for-games/blob/52b844176e0da69f418cb382657c239f31e1febd/research_outputs/input-controls/azeron-keybinds/stage-b/native-v2/CODEX_IMPORT_HANDOFF.md).
+Do not repeat R5 import from that historical handoff blindly.
 
-## Baseline and intent
-The supplied backup reported Azeron Software 2.0.2, Cyborg II model code 8. Confirm installed machine/version afresh before acting. The source ZIP had 18 software profiles. Only profiles tagged `layered 1` / `LAYER 1` or `FOR CHAT` were user-authored. The `FOR CHAT` profile is a feature demonstration, not a gameplay preference. Preserve **all** existing profiles regardless of authorship.
-Four newly generated independent candidate profiles have distinct IDs:
-- `SHARED R5 - BASIC`
-- `SHARED R5 - NUMBERS`
-- `SHARED R5 - LETTERS`
-- `SHARED R5 - TOOLS`
-On BASIC the candidate mapping intends native button **2 → NUMBERS**, **1 → LETTERS**, **36 → TOOLS**, with a held, momentary layer and return on release, using reciprocal same-button links. This is based on **SINGLE → Layering / Toggle on hold** in the newer source, not the historical V-tap / 150-ms v1.5.6 configuration. V remains a regular direct key. The authoring and static readback checks passed; native importer acceptance and physical behavior have **not** been tested. The existing R3/R4 conflicts (e.g. same-finger chords, cross-bank E+arrows, urgent 6) remain known limitations.
+## Read first, retrieve existing files yourself
 
-## Execute only if preconditions are met
-1. Identify the Windows computer running the actual Azeron app and the Cyborg II. Do not assume a Mac connection is sufficient. Confirm permitted text-based/app-native interaction. **No screen captures, video, global keylogging, arbitrary driver injection, or unapproved new software.**
-2. Inspect the active SOFTWARE profile list and check for pre-existing `SHARED R5` imports (match IDs and names). **Never duplicate an earlier successful import**. Create and verify a just-in-time backup of the current live state *before import*, stored privately; ensure rollback is clear.
-3. Verify the downloaded package has four JSONs and matches the expected names/schema; review the original native source and R5 validations if there is any doubt. Do not use the optional full-restore ZIP. Do not overwrite, delete or rename old profiles; do not modify onboard slots, device firmware, games, Steam Input, reWASD or graphics hotkeys.
-4. Import the four candidate JSONs as **additional SOFTWARE profiles**, multi-select only if the installed import dialog explicitly supports it, otherwise individually. If the importer refuses a file, suggests replacing existing work, or effects are uncertain, **stop, inspect the resulting list, report the exact text/state, and do not blindly retry**.
-5. Check profile names/IDs and the target of each of BASIC's native buttons **2, 1, 36**. Check each reciprocal return link in the target. The importer may remap IDs; if so, reconcile links *by verified SHARED R5 profile names*. Only make narrow and reversible necessary corrections, never guess target IDs.
-6. With games closed, select BASIC for testing and have the user physically press/hold/release each selector (or instruct exactly what to press if remote execution cannot manipulate physical switches). Validate: enters correct layer; stays active while held; returns to BASIC on release without second press; no stray tap output; repeated switching; no stuck/held key; joystick mode stays intended. Check raw Ctrl/Shift/Alt and samples of number/F-key chords, recognizing ergonomics still requires the user's feedback. Do not claim physical verification from the presence of JSON fields alone.
-7. When successful, take a new native export (if supported), compare actual resulting profiles and links against the candidate, and store the live export, recovery backup and exact results **privately** in the existing Drive folder. Put a **sanitized concise** results/handoff in the canonical Git repo only when repository permissions and applicable instructions permit. Preserve unrelated open PRs/worktrees. Report completed/failed/pending checks separately.
+Read [R6 README](r6/README.md), [DESIGN](r6/DESIGN_R6.json),
+[QA](r6/QA_R6_PUBLIC.json) and [delivery locators/hashes](r6/PUBLICATION_MANIFEST.json).
+Use the authenticated Google Drive connector to obtain the exact chosen R6
+family from the existing private Azeron archive. No user re-upload is needed.
+The complete package includes research, source recovery, nine candidate native
+files, and a keys-only HTML prototype. Never restore the delivery ZIP as an
+application backup. Never make the private files public for convenience.
 
-## If execution is blocked
-Finish all non-destructive preparation that is independently possible. If the only accessible host is a Mac, or private Drive is unavailable in the Codex context, **do not claim installation**. State one concrete next enabling action (e.g., connect the Windows gaming PC or enable the Google Drive connector for this Codex session), without asking the user to move or upload the same files again. A user may need to perform the physical button presses; provide precise one-step directions at that point.
+## Current facts and limits
 
-**Successful completion requires verified in-app import and 3 held-layer return tests.** Publication of candidate JSON and Git documentation is not that evidence.
+- R6 COMPACT has 4 layers; R6 SPARSE has 5, with nine additional source-derived
+  finger cells disabled. Both retain 78 logical outputs including WASD.
+- Native #19 is reserved and unassigned in every layer. It is omitted from the
+  overlay. No external hotkey or raw-input integration is configured by R6;
+  a disabled key does not itself emit a keyboard trigger.
+- MENUS replaces LETTERS. The joystick still functions but is not drawn.
+  All 29 other digital controls remain in the prototype, including #36/#37.
+- BASIC #2 holds NUMBERS, #1 holds MENUS, #36 holds TOOLS. SPARSE additionally
+  uses thumb #28 to hold NAV, returning on release. No nested held layers.
+- R6 native structure and links were checked offline, but R6 has not been
+  imported or hardware/game-tested. Preserve the known Alt/Space, thumb versus
+  movement, ordinary-letter chord and cross-bank exceptions in the README.
+- Draft PR4 separately reports R5 already loaded into the native software store
+  and #1/#2/#36 transitions observed outside games. Preserve R5 and all later
+  changes. Import profiles chooser acceptance and general gameplay were not
+  verified by that report; do not transfer its results to R6.
+
+## Scope of any later authorized execution
+
+The current chat requested research, downloadable candidate files and an HTML
+prototype, not an automatic live installation or new images. Execute device
+changes only when the user opens/continues the installation task with authority.
+Then use the actual Windows gaming computer, supported native/text routes,
+read the live SOFTWARE list, and take a fresh private backup before mutation.
+Do not touch onboard slots, firmware, games, Steam Input, reWASD, unrelated
+sessions, graphics shortcuts or the external overlay application.
+
+Choose one family for the first test. If no family was selected, read the
+recorded user choice; if it is genuinely absent, ask one concise choice rather
+than silently installing both. Extract the chosen ZIP and import individual
+JSONs additively through a supported route. Check for existing same-name/ID
+candidates first. Never overwrite original or R5 profiles, never replace the
+whole store with the old backup, and never repeat an import with uncertain effects.
+
+Inspect the resulting names, IDs and all layer targets; importer ID remapping
+is unknown. Make only narrow reversible corrections to broken links after a
+verified read. With games closed and appropriate user participation, test entry,
+hold and release return, ordinary keys, duplicate-modifier key-up handling and
+thumb/movement conflicts. A physical hand test cannot be replaced by JSON fields
+or injected simulated keys. No screenshots/video or global keylogging.
+
+If an operation is denied, blocked or leaves unknown effects, stop that affected
+route and inspect state before any retry. Do not bypass prior browser/import-
+handler access denials. Continue independently safe preparation only. Distinguish
+native store loading from the Import profiles dialog's acceptance.
+
+## Future game-action images
+
+The user postponed images. First review the HTML prototype, then reconcile
+actual or explicitly scoped source game bindings. One fixed device layout can
+have many game label sets. Changing the game changes displayed labels only;
+it must not rewrite outputs or switch profiles. Support keys, actions, and
+keys-plus-actions from the same validated records.
+
+Use GAME_READINESS_R6.json: requested 23 scopes are not verified key tables.
+Keep title/edition, keyboard scheme, character, gameplay context and mods
+separate. Unsupported labels stay unknown. Earlier AI posters are rejected
+as mapping evidence and cannot seed a new overlay.
+
+## Completion evidence and owner route
+
+Keep live exports/recovery files private in the existing Drive folder; keep
+sanitized results in this canonical repo after current-head/writer checks.
+Record what was checked in files, loaded in app, physically exercised, and
+verified in games separately. Do not merge unrelated PRs or adopt draft
+AGENTS preferences. Save a concise next boundary without claiming whole-project
+sync, deployment or background continuation.
