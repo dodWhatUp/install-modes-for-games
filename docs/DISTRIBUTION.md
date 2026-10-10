@@ -63,3 +63,12 @@ Use [GameTools source/knowledge checkpoint r5](https://drive.google.com/file/d/1
 Final archive: 190,808 bytes; SHA-256 `D2553493EE8430E498A2905A9E21DF91C0C9552D8D11FD572AD530A6CA0460D2`. Every source/manifest ZIP entry was size/hash-verified, final source hashes were rechecked and downloaded Drive bytes matched. Metadata confirmed the existing private folder and owner-only/not-shared access; no permissions changed. The final r5 link and this receipt were added after packaging, so the ZIP is not claimed identical to the later published commit. Earlier immutable checkpoints remain preserved.
 
 The updated exporter passed 40 synthetic contracts in both PowerShell 7 and Windows PowerShell 5.1; 35 catalog and 22 Hub tests passed. Final static review checked 108 local Markdown targets/anchors across all eight changed/new Markdown files with zero unresolved targets, and both JSON templates retained safe defaults. These checks establish source/planning/export behavior, not live input, native profile restore, graphics correctness, crash durability or measured resource overhead. No games, saves, settings changes, recording or benchmarks were started. No global Codex setting, new connector or automatic cross-chat synchronization was created.
+
+
+## 2026-10-11 — F12 game-specific interface policy export
+
+The [private F12 interface defaults snapshot](https://drive.google.com/file/d/11OhRLVDLAqVUZqxSr2fGnuLBvrrbfYKO/view) contains six reviewed instruction, preference, workflow and template files plus README and MANIFEST.json, sourced from canonical commit 495124eef67ae1a5e90998a62a2caf7a378ca655. Archive size: 27,819 bytes; SHA-256 A8DD9174CA21D6642043D6FEC16735DF45CD637855EE9FFCEFB6E35A0F78C25A.
+
+All six source files were size/hash-verified inside the local archive. The downloaded Drive archive matched the local archive byte-for-byte. Drive metadata confirms the existing Game Modding folder, shared=false / not_shared; no sharing permissions were changed.
+
+Coverage: six instruction sources copied and byte-verified; source owner/revision referenced; Drive archive readback byte-verified; restore-tested: no (this is a documentation snapshot, not a game-configuration restore). The receipt postdates the immutable archive. No game was launched or tested for this documentation update.
