@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-10-10",
+  "baseline_layout_git_blob": "9777635944cbd8b738383f9d8e95b137cdb1fb1a",
+  "baseline_layout_blob_matches_known": true,
+  "checks": {
+    "120_map_cells_match_json": true,
+    "107_workbook_case_rows_match_json": true,
+    "all_status_formulas_match_independent_audit": true,
+    "formula_error_scan_matches": 0,
+    "three_base_changes_formula": 3,
+    "nine_intentionally_blank_secondary_cells_formula": 9,
+    "F1_to_F9_match_digit_positions": true,
+    "one_workbook_overview_render_reviewed": true,
+    "native_v2_import_tested": false,
+    "keyboard_input_tested": false,
+    "gameplay_tested": false,
+    "stdlib_rebuild_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "rebuild_cases_byte_identical": true,
+    "rebuild_audit_semantically_identical": true,
+    "html_key_cells_match_source": 120,
+    "html_test_rows": 107,
+    "external_scripts_or_images_in_html": 0,
+    "html_browser_interaction_tested": false
+  },
+  "model_counts": {
+    "r2": {
+      "MODEL_ROUTE": 63,
+      "MODEL_CONFLICT": 41,
+      "NOT_IN_BANK": 3
+    },
+    "r3": {
+      "MODEL_ROUTE": 90,
+      "MODEL_CONFLICT": 16,
+      "NOT_IN_BANK": 1
+    },
+    "new_routes": 33,
+    "lost_routes": 6
+  },
+  "remaining_status": "Needs a current native v2 export before native mapping implementation; physical comfort is still unknown.",
+  "scope_note": "The 107 cases deliberately emphasize number chords; they are not a representative game-use distribution."
+}
