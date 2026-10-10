@@ -1,4 +1,13 @@
-# Cyberpunk 2077 — History
+﻿# Cyberpunk 2077 — History
+
+## 2026-10-11 — RTSS connection and latency report integration; capture remains stopped
+
+- User requested continuing Game Tool Hub connections and remaining controls while keeping benchmarking/recording stopped. Hub 0.2.0 reads the existing RTSS v2.21 mapping; six application entries had zero statistics samples, no capture flags and no latency instrumentation. Afterburner supplied 20 sources. These are desktop connection checks, not new Cyberpunk performance data.
+- RTSS supplies its calculated average/1%/0.1% lows; the Hub only converts documented tenths-of-FPS units. PresentMon v2 imports preserve documented GPU/display/input/instrumented/PC-latency fields, original unavailable cells and endpoint definitions. No custom low/latency engine or new ETW session was added. FrameView SDK collector is inventory-only; NVIDIA App interface launch and running-state refresh passed. NVIDIA latency export/in-game coverage remains unvalidated.
+- Twenty-two contracts passed. Live controls verified: five tabs, refresh, optional refresh On/Off (including keyboard-layout fix), RTSS interval details, copy status, private snapshot/file readback, synthetic PresentMon import/receipt/original-open, unconfirmed registration refusal, confirmed registration/backups in an isolated profile, Cancel, collector launch blocks and Hub close/reopen. The original private registry remained byte-identical; the final Hub uses that original profile with refresh Off.
+- Native file-dialog cache errors and ineffective automated Tk text entry were observed. Added direct path forms and an optional local startup draft that populates fields only; it cannot execute an action or prefill confirmation. Supported user-input guards were respected. Optional Browse/free-text typing are not claimed as automation-validated.
+- Afterburner root/profile and RTSS configuration hashes matched the snapshot. No game launch, mod/HDR/hardware tuning, recording-hotkey activation or third-party installation occurred. The historical elevated PresentMon process was neither resumed nor silently terminated; no per-frame CSV was found in the previous capture directory.
+- Rollback: close the Hub and restore its authored 0.1.0 source from the private just-in-time snapshot or historical commit, preserving private reports. Tool/game settings need no restore. Next boundary: populated reports, exact low method/frame coverage and optional NVIDIA exports require separately authorized recording/game work; benchmark scenarios remain deferred.
 
 ## 2026-10-11 — Tool connections prioritized; benchmark execution deferred
 

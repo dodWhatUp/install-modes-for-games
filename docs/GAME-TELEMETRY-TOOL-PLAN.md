@@ -6,7 +6,7 @@ Goal: a small local tool that captures and compares how an individual mod or com
 
 Scope clarified by the user, 2026-10-10: established programs should collect and calculate complex metrics such as 1%/0.1% lows, latency and specialized sensor/trace analysis. Our helper coordinates tests, integrates those programs and organizes their outputs. A custom statistical engine or duplicate complex collector is outside the current scope. Recording is on hold until the user explicitly resumes it; this plan does not start a capture.
 
-Active stage, confirmed 2026-10-11: connect/learn existing tools and prepare user control, not benchmark execution. [Game Tool Hub 0.1.0](../examples/game-tool-hub/README.md) implements initial inventory, a read-only Afterburner source adapter and private report imports without calculating complex metrics. See [connection evidence and remaining learning](GAME-TOOL-CONNECTIONS.md). The cross-game runner remains backlog; the learning preview does not complete it.
+Active stage, confirmed 2026-10-11: connect/learn existing tools and prepare user control, not benchmark execution. [Game Tool Hub 0.2.0](../examples/game-tool-hub/README.md) connects read-only Afterburner and RTSS sources, imports documented PresentMon latency fields without calculating complex metrics, inventories the installed FrameView SDK and launches existing interfaces. Twenty-two contracts and the core panel controls passed; synthetic checks are not game measurements. See [connection evidence and remaining learning](GAME-TOOL-CONNECTIONS.md). The cross-game runner remains backlog; recording stays deferred.
 
 ## Build sequence and acceptance
 
