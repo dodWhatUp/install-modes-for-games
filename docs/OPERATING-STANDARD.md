@@ -70,7 +70,7 @@ Use dependency order, omitting stages the current baseline already supplies:
 
 1. Stock baseline.
 2. Required translation layer or mod loader.
-3. Required host and game-specific input integration, if native inputs are insufficient.
+3. Required host and game-specific input integration, if native inputs are insufficient. When that integration exposes its own mod interface/menu, assign it to F12 and share the single F12 owner with Ultra+ if hosted there.
 4. Minimum supported DLSS/input path, with one owner per feature.
 5. Additional useful features, reusing existing capabilities and adding only missing dependencies one at a time.
 6. ReShade plus the compatible game-specific RenoDX visual profile; reuse the supported host and resolve overlapping shader/HDR work.

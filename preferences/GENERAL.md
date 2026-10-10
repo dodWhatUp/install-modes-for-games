@@ -84,10 +84,13 @@ User confirmed on 2026-09-14: when installing or extending DLSS, pursue as many 
 
 User confirmed on 2026-09-13, after the Batman F9 installation: make these controls the default whenever installing these graphics add-ons, regardless of which implementation is selected. Apply them as part of future requested installations without asking the user to select the same mapping again. Scope includes OptiScaler, RenoDX-derived neural add-ons, ReShade/Feeder chains, and equivalent implementations that expose the corresponding feature.
 
+User confirmed on 2026-10-11: Ultra+ menu uses F12, OptiScaler full menu uses Home, and ReShade overlay uses Delete. Whenever the requested or required stack includes a supported game-specific engine integration with its own mod interface/menu, bind that interface to F12. If it hosts Ultra+, use the shared host menu as one F12 owner (e.g. Cyberpunk CET). Inspect native and mod bindings before mutation; record unsupported actions and game-specific exceptions.
+
 | Key | Default action |
 |---|---|
-| Delete | Open/close the active graphics add-on's full controls; retain Home for ReShade when it is a separate host |
-| F12 | Open/close unified graphics controls: NR and supported native SR/RR/FG controls |
+| Delete | Open/close the ReShade overlay/menu, including ReShade-hosted add-on panels |
+| Home | Open/close the full OptiScaler menu |
+| F12 | Open/close the game-specific engine integration interface/menu; Ultra+ shares that interface when hosted there (e.g. Cyberpunk CET) |
 | F11 | Recall personal NR settings slots 0 → 1 → 2 → 3; Save Settings stores the selected slot |
 | F10 | Enable/disable neural rendering |
 | F8 | Unbound; user removed the placement shortcut |

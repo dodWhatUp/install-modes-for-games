@@ -2,16 +2,21 @@
 
 Follow the current [general preferences](../preferences/GENERAL.md). The latest 2026-09-13 request changes NR model resolution to **F7: 25% ↔ 100% only**. Earlier F9 cycles are historical.
 
+For requested installs, bind a supported game-specific engine integration's dedicated menu/interface to F12. When Ultra+ is served through that interface (as Cyberpunk uses CET), F12 opens the one shared interface; never bind a second F12 menu. Check game/mod conflicts and record unavailable actions or explicit game-specific exceptions.
+
 | Key | Meaning |
 |---|---|
-| Delete | Full graphics add-on controls |
-| F12 | Compact NR controls, with native SR controls beside them where supported |
+| Delete | ReShade overlay/menu, including ReShade-hosted add-on panels |
+| Home | Full OptiScaler menu |
+| F12 | Game-specific engine integration menu/interface; Ultra+ shares this interface when hosted there (e.g. Cyberpunk CET) |
 | F11 | Personal NR settings slots 0–3; Save Settings saves the selected slot |
 | F10 | NR on/off |
 | F8 | Unbound by user request |
 | F7 | NR model dimensions 25%/100% only |
 | F6 | Live native DLSS quality where an engine adapter exists |
 | Page Up / Page Down | Unbound; use NVIDIA statistics instead |
+
+When neither Ultra+ nor a game-specific engine interface is included in the selected stack, preserve existing game-specific F12 actions only after checking for conflicts.
 
 F7 is explicitly user-selected. F6 is the collision-avoiding implementation choice for separate SR because Cyberpunk already uses F9 for Quick Load. Preserve native game bindings unless a conflict must be resolved and documented. Do not bind the same action in two components.
 

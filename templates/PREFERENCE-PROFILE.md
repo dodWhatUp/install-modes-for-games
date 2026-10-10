@@ -17,6 +17,8 @@ Inherit the [general DLSS and ReShade/RenoDX defaults](../preferences/GENERAL.md
 
 Inherit [general defaults](../preferences/GENERAL.md) using the [installation procedure](../docs/GRAPHICS-CONTROLS.md). Adjust these relative links when copying the template into a game's folder.
 
+- Game-specific engine integration menu/interface: F12; host/component and effective configured binding:
+- Ultra+ shares that F12 interface when hosted there; ReShade overlay: Delete; OptiScaler full menu: Home; binding source:
 - Implemented keys and owning component:
 - Unsupported actions and reasons:
 - Game/overlay conflicts and explicit exceptions:

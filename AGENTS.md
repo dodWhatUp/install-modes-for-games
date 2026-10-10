@@ -36,6 +36,7 @@ An explicit emergency rollback may skip the option menu, but it must still prese
 
 - Change one layer, or one tightly related setting group, at a time.
 - Apply the user-selected graphics hotkeys in `preferences/GENERAL.md` and `docs/GRAPHICS-CONTROLS.md` as part of every requested compatible graphics add-on installation, regardless of tool. Configure supported actions without asking for the same preference again; record unavailable actions and game-specific exceptions.
+- When the selected installation uses or requires a supported game-specific engine-integrated mod interface/menu, bind that interface to F12. If it hosts Ultra+ (as CET does in Cyberpunk), share the host's single F12 menu/binding rather than adding a second owner. Inspect native and mod conflicts first; record any unsupported binding or game-specific exception.
 - Never allow two components to own the same proxy, swapchain, frame-generation path, or neural consumer unless the upstream projects explicitly support that chain.
 - Prefer reversible profiles and validated switch scripts over repeated installation. Never switch loaded DLLs while the game, launcher, store client, helper, or shader compiler is running.
 - If verification is in scope, test stock first, then each layer, then a repeatable gameplay scene. Check startup, menu transition, motion, UI, HDR, performance, resolution recreation, alt-tab, and clean shutdown in proportion to risk.
