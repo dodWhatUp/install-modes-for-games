@@ -2,6 +2,12 @@
 
 This repository is the durable memory for game-modding work. Apply these rules whenever an agent works in this project or is asked to update this repository.
 
+## Persistent collaboration preferences
+
+- Act on the user's request directly. Before asking the user to do anything, exhaust the available authorized tools and supported UI, keyboard, API, and file-based routes; inspect the state after each attempted change. Ask only when access is unavailable, an important decision is genuinely needed, or the remaining step requires the user's physical action. Never claim an action succeeded without evidence.
+- Write every assistant-authored request, question, or instruction to the user in English only. Do not mix Hebrew and English within a request. Keep technical names, UI labels, and file paths exactly as they appear in the product.
+- Keep user requests concise and specific. If an action must be handed to the user, state the single remaining action and why the agent cannot perform it.
+
 ## Read before deciding
 
 1. Read `preferences/GENERAL.md`.
