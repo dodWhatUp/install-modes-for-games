@@ -35,4 +35,4 @@ This verifies the live device-to-app layer transitions outside a game. It does n
 
 A fresh pre-change storage backup and a four-profile export package were saved privately to the existing Drive folder. The Drive report includes private recovery links and hashes. No profile UUIDs, private paths, raw logs, or recovery archives are stored in this public repository.
 
-The companion request for a per-game action-label overlay on one stable physical map is documented in [AZERON-GAME-KEYMAP-VIEWER-WISHLIST.md](../../../../../../docs/AZERON-GAME-KEYMAP-VIEWER-WISHLIST.md). Selecting a game's overlay is display-only and must not remap or switch the Azeron profile.
+The companion request for a per-game action-label overlay on one stable physical map is documented in [AZERON-GAME-KEYMAP-VIEWER-WISHLIST.md](../../../../../docs/AZERON-GAME-KEYMAP-VIEWER-WISHLIST.md). Selecting a game's overlay is display-only and must not remap or switch the Azeron profile.
