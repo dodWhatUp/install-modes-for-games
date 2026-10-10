@@ -1,6 +1,23 @@
 # Azeron cross-game controls — current research and design
 
-## Latest audit: R4, map unchanged
+## Latest delivery: R5 native-profile candidates
+
+Read [R5 native v2 files, schema notes and import boundary](stage-b/native-v2/README.md).
+The current 2.0.2 backup and annotated screenshots have now been received.
+No further export is needed to prepare candidate files. Four separately named
+SHARED R5 native-structure profiles were generated, with native button IDs,
+six paired layer links and the current dedicated single-press hold behavior.
+Only tags `layered 1` and `FOR CHAT` identify user-authored source profiles;
+the other presets are not preference evidence. All originals remain unchanged.
+
+The four-JSON delivery and optional augmented full backup are in the private
+Azeron Drive archive. Their file structures were checked; actual import,
+importer ID remapping and physical hold/release behavior remain unverified.
+Next user action is to import the four candidates without replacing originals
+and verify the target names and release return, not to create another map.
+Full-backup restore is not a merge and may rewind changes since the snapshot.
+
+## Latest corpus audit: R4, design unchanged
 
 Read [R4 corpus audit](stage-b/corpus-audit/README.md) alongside the R3 design.
 All 2,195 inherited R2 binding rows were processed; 2,167 expressions parsed
@@ -8,18 +25,17 @@ and 28 remain for manual review. The audit identifies same-bank gaps,
 ordinary-letter modifiers, stick/command-role conflicts and real instances of
 R3 regressions. It does not add games, change the map or verify all current
 source defaults. Fourteen rows received targeted primary-source rechecks.
-Native implementation still requires the current v2 export described below.
+The export prerequisite recorded during R4 was resolved by R5 above.
 
-## Current work: Stage B R3
+## Design reference: Stage B R3
 
 Read [Stage B R3: candidate maps, audit and implementation boundary](stage-b/README.md)
-for the current design. Four proposed banks retain 78 logical outputs.
+for the reviewed design. Four proposed banks retain 78 logical outputs.
 The 107-case conservative finger-group audit reports 90 model routes, 16
 conflicts and one missing direct input; it is not a hardware or gameplay test.
 
-**Next required input:** a current native JSON export of the Azeron Software v2
-software profile collection, including the four linked layers. No active
-profile has been modified, and the design JSON is not importable.
+R3's design JSON remains non-importable. R5 is its separate native-structure
+implementation candidate. No active device profile has been modified by this work.
 
 ## Research sources and versions
 
