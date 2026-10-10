@@ -2,13 +2,15 @@
 
 User-requested default, 2026-10-10: preserve machine-readable measurements and enough metadata for later analysis. Screenshots of results alone are insufficient. Use this procedure alongside the game-specific runtime record.
 
+Implementation preference clarified 2026-10-10: existing programs supply complex metrics such as 1%/0.1% lows, latency and specialized sensor/trace analysis. The helper coordinates authorized tests and imports, compares and archives their outputs. Preserve tool versions, definitions, units, frame classes, coverage and sample sizes; mark undocumented definitions as unknown. Do not independently recalculate or relabel a program's lows, or build duplicate complex measurement engines, without an explicit user request. The definitions below are interpretation references, not a requirement to implement them ourselves.
+
 ## Capture and provenance
 
 Each run needs an immutable ID, UTC timestamps plus local timezone, QPC/frequency markers, game/store/build, GPU/driver, display resolution/refresh/HDR/VRR, settings, native SR/RR/FG/Reflex state, mod versions/hashes, loaded owners, tool version/arguments, scene/save/route and cache state. Record requested versus observed settings separately. Store raw CSV/JSON and relevant logs privately; publish sanitized summaries and user-authored tools only. Include interrupted and failed runs with their failure boundaries. Never overwrite a prior capture.
 
 Use one frame-event collector and one resource collector. Prefer an existing working PresentMon/FrameView path. MSI Afterburner/RTSS are useful existing alternatives when their logged fields and sampling are validated; do not enable an additional hook/limiter just to get an overlay. A monitoring overlay can change the workload. Record collector CPU/memory and sample duration, and check overhead with repeated matched runs before attributing a small difference to a mod.
 
-`scripts/Measure-GameResources.ps1` is an initial read-only resource collector. `scripts/Analyze-FrameCapture.py` analyzes an explicitly selected timing column. They do not replace event capture. On this machine, ETW capture requires user-provided Windows privileges. An initial automated elevation was rejected; a renewed explicitly authorized approval prompt succeeded and the collector launched. Do not claim a frame CSV exists until readback proves it.
+`scripts/Measure-GameResources.ps1` is an initial read-only resource prototype whose existing evidence remains usable. `scripts/Analyze-FrameCapture.py` is a historical prototype for an explicitly selected timing column; under the clarified preference it is not the default provider of lows or latency. Prefer imports from validated existing programs for complex metrics. On this machine, ETW capture requires user-provided Windows privileges. An initial automated elevation was rejected; a renewed explicitly authorized approval prompt succeeded and the collector launched. Do not claim a frame CSV exists until readback proves it. Current Cyberpunk recording is on hold until the user explicitly resumes it.
 
 ## Memory, utilization and limits
 
@@ -27,7 +29,7 @@ Limit diagnosis needs matching frame intervals, CPU/GPU durations, queue/present
 
 Capture individual events; resource samples at roughly 1 Hz cannot reconstruct frame pacing. Keep each swapchain and supported `FrameType` separate. Distinguish app-present rate, instrumented rendered-frame rate and displayed/generated-frame rate. Do not divide an FG counter by the multiplier and call that measured base FPS.
 
-For a declared positive interval series, preserve sample count and duration, mean/median, P90/P95/P99/P99.9/P99.99 milliseconds, average rate `1000 / mean(interval_ms)`, and worst intervals. Define low-rate methods explicitly:
+When an existing program exports them, preserve sample count and duration, mean/median, P90/P95/P99/P99.9/P99.99 milliseconds, average rate and worst intervals. Record unavailable fields as unavailable rather than creating a substitute calculation. Interpret reported lows using the source program's documented method; these reference definitions are different:
 
 - Percentile reciprocal: `1000 / P99`, `1000 / P99.9`, `1000 / P99.99`; label these by their actual formula.
 - Slowest-tail mean: `1000 / mean(slowest ceil(N * fraction) intervals)` for 1%, 0.1%, 0.01%. Keep it separate from percentile reciprocal and another application's differently defined “low”.
