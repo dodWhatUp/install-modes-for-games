@@ -131,7 +131,7 @@ Keep the complete catalog separate from curated combinations. Curated recommenda
 
 ## Drive file access
 
-User preference recorded 2026-10-11: make intended files created in Drive viewable and downloadable by the recipient in the private Drive sharing preference record. Use read-only (reader) access, share the individual file after upload, and verify the permission. Keep the recipient address and private Drive identifiers out of this repository. The current Drive connector has no global default-sharing switch, so this preference is implemented as a per-file workflow; permission changes remain subject to any action-time authorization requirement. For existing files, confirm the exact collection before bulk sharing.
+User preference recorded 2026-10-11: every file the assistant creates or uploads in the connected Drive, across projects and file types, should be shared with the recipient in the private Drive preference record using read-only (reader) access. Apply the same permission to all existing assistant-created files and to each new file immediately after creation; verify the grant. Do not include user-supplied source files or files authored by others unless requested. Keep the address and private Drive IDs out of this repository. Drive has no global default through the current connector, so this is a per-file workflow and any tool-enforced confirmation still applies.
 
 ## Azeron and per-game keybindings
 
