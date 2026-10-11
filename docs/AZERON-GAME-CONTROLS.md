@@ -6,6 +6,8 @@ Scope extended by the user on 2026-09-15: every step also applies when using **r
 
 ## Desired result
 
+Current user-selected continuation, 2026-10-11: six new SHARED R8 SPARSE6 SOFTWARE profiles are installed alongside all preserved earlier profiles. The [overlay asset checkpoint](SPARSE6-OVERLAY-ASSETS-2026-10-11.md) records 90 registered views, automatic foreground-game associations, actual passive Windows rendering and preservation checks. Native bank telemetry is unavailable: displayed BASIC is Selected, not Observed. Five selector hold/return checks are user-reported passes; physical outputs/gameplay remain separate. Older GENERAL/R5 names and maps below retain their historical baseline scope; do not rename or replace them to adopt SPARSE6 display assets.
+
 Use one consistent logical base setup with multiple layers, implemented for each enrolled device and its chosen remapping software. Create separate game-specific mappings only when the shared setup cannot reasonably support that game's controls. Keep common physical actions in consistent positions so muscle memory transfers between games. Adapt the game's own bindings when practical, including the bindings represented by its gameplay prompts. Preserve user-created device presets as versioned baselines before adapting them.
 
 The current retained software profiles are to be named **GENERAL 1**, **GENERAL 2**, **GENERAL 3**, and **EMPTY**. These names replace FPS - GENERAL 1/2/3. They are the retained starting point; this instruction does not claim that a new universal layered layout has already been designed or tested.

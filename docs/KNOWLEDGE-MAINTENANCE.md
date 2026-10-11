@@ -4,6 +4,8 @@ Reviewed 2026-10-11. Use the [knowledge index](GAME-TOOLS-KNOWLEDGE-INDEX.md) as
 
 ## One owner, many useful views
 
+The [UI and content design foundation](UI-AND-CONTENT-DESIGN.md) is owned by this repository. Its portable local Codex skill copy should retain a source locator/date/hash and be reconciled when the source changes. Local global instructions can route other creation tasks to that skill; this is local instruction reuse, not account-wide ChatGPT memory, automatic cross-chat messaging or a claim that existing chats reloaded.
+
 Keep rich source masters in their owning workstream. A summary, diagram, catalog entry or task packet is a derivative with a source locator and revision; it does not replace the master or erase detailed progress. Link other repositories by role rather than merging unrelated personal records into this public game repository.
 
 | Knowledge class | Authoritative location | Connection rule |

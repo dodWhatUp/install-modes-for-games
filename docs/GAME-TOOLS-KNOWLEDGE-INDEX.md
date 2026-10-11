@@ -4,8 +4,11 @@ Reviewed 2026-10-11. Start here for research, game-mod work, PC assistance and a
 
 ## Read for the requested task
 
+Latest asset continuation, 2026-10-11: [SPARSE6 overlay checkpoint](SPARSE6-OVERLAY-ASSETS-2026-10-11.md) records 90 registered images, five groups, three actual gameplay-executable associations and enabled Hub 0.11.0 foreground selection. Native layer telemetry remains unavailable; actual host/passive rendering, selection fixtures and untested gameplay are separate. All 29 native profiles and 73 protected files were preserved; PoE2 COMBAT/MENU stays with its existing owner.
+
 | Task | First sources | Practical boundary |
 |---|---|---|
+| Create UI, learning materials, presentations or explanation files | [UI and content design](UI-AND-CONTENT-DESIGN.md), [preferences](../preferences/GENERAL.md), existing product/format guidance | Preferred compact selection/search/entry and progressive disclosure; preserve accessibility, meaningful state and static export; deeper research remains future |
 | General research or PC automation | [Preferences](../preferences/GENERAL.md), [automation procedures](AUTOMATION-OPERATING-PROCEDURES.md), exact app/tool history | Read-only inspection first; old results must match the current build |
 | Build or extend the toolkit | [Architecture](GAME-TOOLS-ARCHITECTURE.md), [catalog and overhead protocol](TOOL-RESOURCE-OVERHEAD.md), existing source/tests | Preserve source masters, interfaces, profiles and evidence states |
 | Install or diagnose game mods | [Operating standard](OPERATING-STANDARD.md), [feature decision](FEATURE-DECISION.md), exact game's history/catalog | Scope, snapshot, one owner/layer, observed verification and rollback |

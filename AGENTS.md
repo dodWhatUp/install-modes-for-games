@@ -10,6 +10,8 @@ This repository is the durable memory for game-modding work. Apply these rules w
 
 ## Read before deciding
 
+For software/interface creation, learning materials, presentations or structured explanation files, read `docs/UI-AND-CONTENT-DESIGN.md` and apply the compact selection/search/entry, contextual visibility and progressive-disclosure foundation alongside existing design and accessibility guidance. Use its creation/review protocol, adapt to the delivery format, and preserve user choices and source masters. Deeper research/integration is a future improvement, not a prerequisite or authorization to redesign unrelated work.
+
 1. Read `preferences/GENERAL.md`.
 2. Read `docs/OPERATING-STANDARD.md` and `docs/FEATURE-DECISION.md`.
 3. Search `games/` for the exact game, executable, renderer, tool, feature, error, and DLL name.
