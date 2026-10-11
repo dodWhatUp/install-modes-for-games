@@ -1,0 +1,30 @@
+{
+  "schema": "azeron-execution-receipt/v1",
+  "consumer_context": null,
+  "source_commit_read": null,
+  "family_chosen": null,
+  "candidate_zip_sha256": null,
+  "before_export_sha256": null,
+  "after_export_sha256": null,
+  "read_only_game_evidence": [],
+  "native_review_before": null,
+  "native_review_after": null,
+  "stages": {
+    "source_consumed": "NOT_RUN",
+    "family_selected": "NOT_RUN",
+    "native_backup_created": "NOT_RUN",
+    "native_import": "NOT_RUN",
+    "layer_entry_and_return": "NOT_RUN",
+    "ordinary_outputs": "NOT_RUN",
+    "held_transition_and_keyup": "NOT_RUN",
+    "physical_comfort": "NOT_RUN",
+    "effective_game_mapping": "NOT_RUN",
+    "gameplay": "NOT_RUN",
+    "live_overlay_integration": "NOT_RUN"
+  },
+  "observations": [],
+  "unrelated_work_preserved": null,
+  "stopped_reason": null,
+  "next_action": null,
+  "rule": "Pass only the observed scope, with an evidence reference. File generation/model tests do not prove native/device/game execution."
+}

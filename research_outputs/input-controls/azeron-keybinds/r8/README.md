@@ -1,5 +1,18 @@
 # Azeron R8 — held-input fixes, two native alternatives, source-backed Atlas
 
+## Current pre-Codex preparation
+
+Read [preflight/READY_FOR_CODEX.md](preflight/READY_FOR_CODEX.md) and
+[the preflight summary](preflight/README.md) before using the older commands.
+This addition preserves the exact R8 profile ZIPs; it adds a read-only native
+before/after reviewer, a corrected input collector and a checked display
+derivative. Forty-eight new Python tests and thirteen Atlas checks passed,
+alongside the existing native/query/event checks. The full offline rehearsal
+also passed on the registered Mac without touching either existing checkout,
+Azeron, game configs or running input hosts. Real Windows/game acceptance and
+live task consumption remain pending. No R9 mapping family was generated.
+
+
 **Status: native candidate files generated and independently checked; NOT installed or tested in games.** This is an additive continuation of R7, in the existing `dodWhatUp/install-modes-for-games` owner.
 
 Read the Hebrew `RESEARCH_R8_HE.md`, `CODEX_COORDINATION.md`, `SOURCES_R8.json` and `QA_SUMMARY_R8.json`. Private delivery links/hashes are in `PUBLICATION_RECEIPT_R8.json` after publication. Code/design in Git remain editable; native profile payloads/UUIDs and recovery files stay private.

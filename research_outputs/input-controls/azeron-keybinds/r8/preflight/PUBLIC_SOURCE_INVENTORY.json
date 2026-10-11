@@ -1,0 +1,122 @@
+{
+  "schema": "azeron-preflight-public-source/v1",
+  "owner": "dodWhatUp/install-modes-for-games",
+  "baseline_commit": "806f52e59ee8e5e16b20a40837134297b41144a9",
+  "source_destination": "research_outputs/input-controls/azeron-keybinds/r8/preflight",
+  "files": [
+    {
+      "name": "CONTINUITY.md",
+      "bytes": 2171,
+      "sha256": "f38f92851c05b7bcaa87f574eeb24ae05d597489c4de1d748338b776fb128165",
+      "git_blob": "9b59d48859d87439cab5ff0a0e4ad49d811fc54c"
+    },
+    {
+      "name": "EXECUTION_RECEIPT.template.json",
+      "bytes": 993,
+      "sha256": "6919d6e762467fedc98515befa757f3828932a4efcebddd76c437db555841575",
+      "git_blob": "f788b496af6ee21d63e5bead49245171289750ea"
+    },
+    {
+      "name": "PHYSICAL_TEST_PLAN.json",
+      "bytes": 13505,
+      "sha256": "aa1ba4a264766d47122a5e85bf5f3a1b95fa6c909989ffe5c6e54a5809d3733a",
+      "git_blob": "ac8adf98b8c049299da19d69cef49839ece80114"
+    },
+    {
+      "name": "QA_SUMMARY.json",
+      "bytes": 1548,
+      "sha256": "54ff5dfaaa21dce253d6b2396b0cad912a1a248ae0d7b9e72348f6564110bcc4",
+      "git_blob": "e275b8df69adba26ab561262f1e372ae4705245b"
+    },
+    {
+      "name": "README.md",
+      "bytes": 5147,
+      "sha256": "ee47d0d2daef0c4bc5ee0edcdc5a6129e6df20a47798f92f9ad7e8c96cbc9ceb",
+      "git_blob": "5c26fc117f992604d593e2c56890bbb9c5d4f804"
+    },
+    {
+      "name": "READY_FOR_CODEX.md",
+      "bytes": 7201,
+      "sha256": "9657efc4b15d5eebaaac5de4cff23bad264047414988deabed20bdc13fc22cdf",
+      "git_blob": "009ac46a975eb6f099fad8871609e9c60df5d933"
+    },
+    {
+      "name": "REPORT_HE.md",
+      "bytes": 10178,
+      "sha256": "2485db6cd94c038697dd6e3e912089499577993170b1589f30198af6eebc1484",
+      "git_blob": "88726da65d73f6c2b96eac3b3dac9e06a6d04cc5"
+    },
+    {
+      "name": "atlas_checked_adapter.js",
+      "bytes": 1557,
+      "sha256": "4e7101c6f53ea293101eceb0e48ad04b7aa6baa2a143c83257088b3196ded674",
+      "git_blob": "2224c5e0589bed0704acf71da83debda94b85e9c"
+    },
+    {
+      "name": "atlas_checks.js",
+      "bytes": 2084,
+      "sha256": "2d069d609e1c8613dad95ddd687b6096b49ec28253ad74929382ce7112dfb5d9",
+      "git_blob": "8278a3445ae62933bec385946517283f67820674"
+    },
+    {
+      "name": "build_checked_atlas.py",
+      "bytes": 3582,
+      "sha256": "1c210bde3e697750f6edc686250d80d27908eba95934d7e458000f4fbcb4f8a2",
+      "git_blob": "f50ddf7831240cefca8f900812a9fcd9209be50d"
+    },
+    {
+      "name": "build_test_plan.py",
+      "bytes": 5197,
+      "sha256": "a0f0c453b76886cde19f5155d11b4e551bc34836ab9922fe0d379ec698b34cc6",
+      "git_blob": "69d59059debee2485ba8caea69afc49084dc8c00"
+    },
+    {
+      "name": "input_evidence.py",
+      "bytes": 9770,
+      "sha256": "b526d897e1594efe224eee0966728952462c2413666d6764bdc493710955a0ba",
+      "git_blob": "53e5e8c12a4a486af0f51f97892f64f979a0d193"
+    },
+    {
+      "name": "native_review.py",
+      "bytes": 14520,
+      "sha256": "a4a8de129bf9ad2bf3d30e74845b55a34608609bdc4391a24162fcc5bf97de83",
+      "git_blob": "ef8a09c5c7190d603363f1f351fdada9bce04ed0"
+    },
+    {
+      "name": "render_markdown.py",
+      "bytes": 3148,
+      "sha256": "b7f625d3ecfb466a07e44bdb810fd604530aaf7c8bd450efd2e168958c1b8d2b",
+      "git_blob": "ed2bd1aed5c6cfbf11830776f7823c204acd9f11"
+    },
+    {
+      "name": "render_review.py",
+      "bytes": 3663,
+      "sha256": "9e95d709af18f27c83dd82d2c9ee24a7ad809787cc2596acd3918604d0cb0819",
+      "git_blob": "a7db69b91c20d5df70551e69244bf18adfb25d27"
+    },
+    {
+      "name": "run_checks.py",
+      "bytes": 4592,
+      "sha256": "4ba8bac73ff1a3f3396108180273a28b9957aa5d634501b0aa476b2a6df7b8c2",
+      "git_blob": "f2df3939e694f5df3e66af5ea7fe0c8fb1d03f6f"
+    },
+    {
+      "name": "safe_io.py",
+      "bytes": 4792,
+      "sha256": "3dc29fb2f62ea039820971fc58fa8480b3d9f69f721a949477aa02074a9e545f",
+      "git_blob": "2f281d3798585fe89902337793ba338e2e59b749"
+    },
+    {
+      "name": "test_atlas_preflight.js",
+      "bytes": 3456,
+      "sha256": "3f7b93803e4e109e75245b59839bbaa5f15807405700b70509b10b84017fc414",
+      "git_blob": "cb633c8b130bc5e72b6552d270bacafc956d2ede"
+    },
+    {
+      "name": "test_preflight.py",
+      "bytes": 12412,
+      "sha256": "8cee073cb9656c3c716e28dbe3c1d4c560462658ebe01c476153e2ae57250391",
+      "git_blob": "96062a09be186d4949dd996c4a0975ce6e03c158"
+    }
+  ]
+}

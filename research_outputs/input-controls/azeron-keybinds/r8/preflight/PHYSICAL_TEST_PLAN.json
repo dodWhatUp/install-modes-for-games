@@ -1,0 +1,324 @@
+{
+  "schema": "azeron-manual-test-plan/v1",
+  "design_sha256": "d65c807e0256447f81aa466fe4da0bd1cd252d0fbdff346687c8e02047c8b724",
+  "baseline": "R8_UNCHANGED",
+  "scope": "After an explicitly chosen family and authorized additive native import. Nothing in this plan runs automatically.",
+  "safety": "Games closed and a supported native inspector first. Stop on unexpected/stuck input, discomfort or unknown effects; never force a repeated key test.",
+  "families": {
+    "CORE5": {
+      "native_profile_count": 5,
+      "selector_buttons": {
+        "NUMBERS": 2,
+        "MENUS": 1,
+        "TOOLS": 36,
+        "NAV": 28
+      },
+      "tests": [
+        {
+          "id": "selector-NUMBERS",
+          "kind": "DEVICE_REQUIRED",
+          "buttons": [
+            2
+          ],
+          "instruction": "With BASIC selected and games closed, hold native button 2, observe NUMBERS, then release it.",
+          "expected": "Correct bank remains active while held; release returns to BASIC with no second press or stuck output.",
+          "known_limit": "The candidate has a reciprocal link; file presence is not an observed event.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "selector-MENUS",
+          "kind": "DEVICE_REQUIRED",
+          "buttons": [
+            1
+          ],
+          "instruction": "With BASIC selected and games closed, hold native button 1, observe MENUS, then release it.",
+          "expected": "Correct bank remains active while held; release returns to BASIC with no second press or stuck output.",
+          "known_limit": "The candidate has a reciprocal link; file presence is not an observed event.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "selector-TOOLS",
+          "kind": "DEVICE_REQUIRED",
+          "buttons": [
+            36
+          ],
+          "instruction": "With BASIC selected and games closed, hold native button 36, observe TOOLS, then release it.",
+          "expected": "Correct bank remains active while held; release returns to BASIC with no second press or stuck output.",
+          "known_limit": "The candidate has a reciprocal link; file presence is not an observed event.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "selector-NAV",
+          "kind": "DEVICE_REQUIRED",
+          "buttons": [
+            28
+          ],
+          "instruction": "With BASIC selected and games closed, hold native button 28, observe NAV, then release it.",
+          "expected": "Correct bank remains active while held; release returns to BASIC with no second press or stuck output.",
+          "known_limit": "The candidate has a reciprocal link; file presence is not an observed event.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "anchor-Ctrl",
+          "kind": "DEVICE_REQUIRED",
+          "buttons": [
+            5
+          ],
+          "instruction": "Using a supported native input inspector, check Ctrl on button 5 in each selected bank without running a game.",
+          "expected": "The expected keyboard output is generated and fully released.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "anchor-Shift",
+          "kind": "DEVICE_REQUIRED",
+          "buttons": [
+            9
+          ],
+          "instruction": "Using a supported native input inspector, check Shift on button 9 in each selected bank without running a game.",
+          "expected": "The expected keyboard output is generated and fully released.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "anchor-Space",
+          "kind": "DEVICE_REQUIRED",
+          "buttons": [
+            14
+          ],
+          "instruction": "Using a supported native input inspector, check Space on button 14 in each selected bank without running a game.",
+          "expected": "The expected keyboard output is generated and fully released.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "held-output-transition",
+          "kind": "DEVICE_REQUIRED",
+          "buttons": [
+            5,
+            9,
+            14
+          ],
+          "instruction": "Test one anchor at a time: anchor down, layer selector down/up, then anchor up. Inspect every release; do not test all anchors together.",
+          "expected": "No stuck or phantom key. Stop and record the exact order on failure.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "alt-and-movement",
+          "kind": "USER_HAND_REQUIRED",
+          "buttons": [
+            3,
+            24
+          ],
+          "instruction": "Check the BASIC Alt output on button 3 while moving the stick, then release both.",
+          "expected": "Reach and release are comfortable and deliberate. File/model availability is not sufficient.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "t-and-movement",
+          "kind": "USER_HAND_REQUIRED",
+          "buttons": [
+            31,
+            24
+          ],
+          "instruction": "Check whether the BASIC T placement on thumb31 meets the actual game task; do not assume independent stick use.",
+          "expected": "Record the tradeoff explicitly; a discomfort or concurrent-use failure is useful evidence, not a reason to force the position.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "zero-access",
+          "kind": "USER_HAND_REQUIRED",
+          "buttons": [
+            13
+          ],
+          "instruction": "Check 0 in NUMBERS with the selector held; record whether movement must be released.",
+          "expected": "The bank returns to BASIC cleanly and the access requirement fits the intended game.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "ctrl-number-route",
+          "kind": "USER_HAND_REQUIRED",
+          "buttons": [
+            2,
+            5,
+            18
+          ],
+          "instruction": "Check a required Ctrl+number route using one Ctrl copy at a time. Release the number and Ctrl before the selector until transition behavior is verified.",
+          "expected": "No duplicate modifier or missing key-up. Do not count merely separate button reach as a successful chord.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "reserved-button",
+          "kind": "FILE_AND_DEVICE_REQUIRED",
+          "buttons": [
+            19
+          ],
+          "instruction": "Confirm button19 remains reserved and that no unsupported external trigger has been introduced.",
+          "expected": "No game or keyboard shortcut assigned by this package. External Overlay integration is still separate.",
+          "status": "NOT_RUN"
+        }
+      ]
+    },
+    "SPARSE6": {
+      "native_profile_count": 6,
+      "selector_buttons": {
+        "NUMBERS": 2,
+        "MENUS": 1,
+        "TOOLS": 36,
+        "NAV": 28,
+        "SYMBOLS": 30
+      },
+      "tests": [
+        {
+          "id": "selector-NUMBERS",
+          "kind": "DEVICE_REQUIRED",
+          "buttons": [
+            2
+          ],
+          "instruction": "With BASIC selected and games closed, hold native button 2, observe NUMBERS, then release it.",
+          "expected": "Correct bank remains active while held; release returns to BASIC with no second press or stuck output.",
+          "known_limit": "The candidate has a reciprocal link; file presence is not an observed event.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "selector-MENUS",
+          "kind": "DEVICE_REQUIRED",
+          "buttons": [
+            1
+          ],
+          "instruction": "With BASIC selected and games closed, hold native button 1, observe MENUS, then release it.",
+          "expected": "Correct bank remains active while held; release returns to BASIC with no second press or stuck output.",
+          "known_limit": "The candidate has a reciprocal link; file presence is not an observed event.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "selector-TOOLS",
+          "kind": "DEVICE_REQUIRED",
+          "buttons": [
+            36
+          ],
+          "instruction": "With BASIC selected and games closed, hold native button 36, observe TOOLS, then release it.",
+          "expected": "Correct bank remains active while held; release returns to BASIC with no second press or stuck output.",
+          "known_limit": "The candidate has a reciprocal link; file presence is not an observed event.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "selector-NAV",
+          "kind": "DEVICE_REQUIRED",
+          "buttons": [
+            28
+          ],
+          "instruction": "With BASIC selected and games closed, hold native button 28, observe NAV, then release it.",
+          "expected": "Correct bank remains active while held; release returns to BASIC with no second press or stuck output.",
+          "known_limit": "The candidate has a reciprocal link; file presence is not an observed event.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "selector-SYMBOLS",
+          "kind": "DEVICE_REQUIRED",
+          "buttons": [
+            30
+          ],
+          "instruction": "With BASIC selected and games closed, hold native button 30, observe SYMBOLS, then release it.",
+          "expected": "Correct bank remains active while held; release returns to BASIC with no second press or stuck output.",
+          "known_limit": "The candidate has a reciprocal link; file presence is not an observed event.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "anchor-Ctrl",
+          "kind": "DEVICE_REQUIRED",
+          "buttons": [
+            5
+          ],
+          "instruction": "Using a supported native input inspector, check Ctrl on button 5 in each selected bank without running a game.",
+          "expected": "The expected keyboard output is generated and fully released.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "anchor-Shift",
+          "kind": "DEVICE_REQUIRED",
+          "buttons": [
+            9
+          ],
+          "instruction": "Using a supported native input inspector, check Shift on button 9 in each selected bank without running a game.",
+          "expected": "The expected keyboard output is generated and fully released.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "anchor-Space",
+          "kind": "DEVICE_REQUIRED",
+          "buttons": [
+            14
+          ],
+          "instruction": "Using a supported native input inspector, check Space on button 14 in each selected bank without running a game.",
+          "expected": "The expected keyboard output is generated and fully released.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "held-output-transition",
+          "kind": "DEVICE_REQUIRED",
+          "buttons": [
+            5,
+            9,
+            14
+          ],
+          "instruction": "Test one anchor at a time: anchor down, layer selector down/up, then anchor up. Inspect every release; do not test all anchors together.",
+          "expected": "No stuck or phantom key. Stop and record the exact order on failure.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "alt-and-movement",
+          "kind": "USER_HAND_REQUIRED",
+          "buttons": [
+            3,
+            24
+          ],
+          "instruction": "Check the BASIC Alt output on button 3 while moving the stick, then release both.",
+          "expected": "Reach and release are comfortable and deliberate. File/model availability is not sufficient.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "t-and-movement",
+          "kind": "USER_HAND_REQUIRED",
+          "buttons": [
+            31,
+            24
+          ],
+          "instruction": "Check whether the BASIC T placement on thumb31 meets the actual game task; do not assume independent stick use.",
+          "expected": "Record the tradeoff explicitly; a discomfort or concurrent-use failure is useful evidence, not a reason to force the position.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "zero-access",
+          "kind": "USER_HAND_REQUIRED",
+          "buttons": [
+            28
+          ],
+          "instruction": "Check 0 in NUMBERS with the selector held; record whether movement must be released.",
+          "expected": "The bank returns to BASIC cleanly and the access requirement fits the intended game.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "ctrl-number-route",
+          "kind": "USER_HAND_REQUIRED",
+          "buttons": [
+            2,
+            5,
+            23
+          ],
+          "instruction": "Check a required Ctrl+number route using one Ctrl copy at a time. Release the number and Ctrl before the selector until transition behavior is verified.",
+          "expected": "No duplicate modifier or missing key-up. Do not count merely separate button reach as a successful chord.",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "reserved-button",
+          "kind": "FILE_AND_DEVICE_REQUIRED",
+          "buttons": [
+            19
+          ],
+          "instruction": "Confirm button19 remains reserved and that no unsupported external trigger has been introduced.",
+          "expected": "No game or keyboard shortcut assigned by this package. External Overlay integration is still separate.",
+          "status": "NOT_RUN"
+        }
+      ]
+    }
+  },
+  "all_physical_results": "NOT_RUN"
+}

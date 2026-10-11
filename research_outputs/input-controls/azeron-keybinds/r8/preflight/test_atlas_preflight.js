@@ -1,0 +1,21 @@
+'use strict';
+const fs=require('fs'),vm=require('vm'),assert=require('assert'),crypto=require('crypto');
+const html=fs.readFileSync(process.argv[2],'utf8');
+const D=JSON.parse(html.match(/<script id="atlas-data" type="application\/json">([\s\S]*?)<\/script>/)[1]);
+const A=require('./atlas_checks.js');let count=0;
+function check(name,fn){fn();count++;}
+const hash=()=>crypto.createHash('sha256').update(JSON.stringify(D.design)).digest('hex'),before=hash();
+check('generic and left modifiers remain present',()=>{assert(A.availability(D,'CORE5','BASIC',['Ctrl','Space']).allCodesPresent);assert(A.availability(D,'CORE5','BASIC',['Left Ctrl','Space']).allCodesPresent)});
+check('right modifier cannot be satisfied by left',()=>{assert(!A.availability(D,'CORE5','BASIC',['Right Ctrl']).allCodesPresent);assert(!A.availability(D,'SPARSE6','NAV',['Right Shift']).allCodesPresent)});
+check('missing side projection stays unknown',()=>{const x=structuredClone(D);delete x.nativeRealizations;assert.equal(A.availability(x,'CORE5','BASIC',['Left Ctrl']).sideUnknown.length,1)});
+check('dormant side code is not an emitted code',()=>{const x=structuredClone(D);x.nativeRealizations.CORE5.BASIC['19']={types:['11','11','11'],meta:['ControlRight'],keys:[]};assert(!A.availability(x,'CORE5','BASIC',['Right Ctrl']).allCodesPresent)});
+check('unmapped code is flagged',()=>{assert(A.availability(D,'CORE5','BASIC',['Numpad 1']).missing.includes('Numpad 1'))});
+check('WASD existence remains separate from concurrency',()=>{assert(A.availability(D,'CORE5','NAV',['E','W']).allCodesPresent);assert(A.review(D,'CORE5','NAV',{labels:[],nativeId:17,key:'E'}).some(x=>x.kind==='THUMB_SELECTOR'))});
+check('tool overlap is optional and conditional',()=>{const c={labels:[],nativeId:4,key:'Home'};assert(!A.review(D,'CORE5','NAV',c,false).some(x=>x.kind==='POSSIBLE_TOOL_OVERLAP_NOT_LIVE'));assert(A.review(D,'CORE5','NAV',c,true).some(x=>x.kind==='POSSIBLE_TOOL_OVERLAP_NOT_LIVE'))});
+check('T on thumb is explicit',()=>{assert(A.review(D,'CORE5','BASIC',{labels:[],nativeId:31,key:'T'}).some(x=>x.kind==='T_ON_THUMB'))});
+check('tool policy does not establish installed state',()=>{assert.equal(D.graphicsPolicy.state,'GUIDANCE_ONLY_ACTUAL_ACTIVE_STACK_UNKNOWN')});
+check('source action count is unchanged',()=>{assert.equal(D.actions.entries.length,208)});
+check('all native maps unchanged by queries',()=>{assert.equal(hash(),before)});
+check('script syntax valid and no networking hooks',()=>{for(const match of html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)){if(match[0].includes('application/json'))continue;new vm.Script(match[1]);assert(!/\b(fetch|WebSocket|XMLHttpRequest|localStorage|sessionStorage)\b/.test(match[1]));assert(!/keydown|keyup|navigator\.hid|navigator\.serial/.test(match[1]))}});
+check('exact reserved/native 29 geometry contract retained',()=>{for(const [fam,info]of Object.entries(D.design.variants))for(const map of Object.values(info.maps)){assert.equal(Object.keys(map).length,30);assert.equal(map.R3,'UNASSIGNED');assert(Object.values(D.design.position_map).includes(36));assert(Object.values(D.design.position_map).includes(37))}});
+fs.writeFileSync(process.env.QA_OUTPUT||'QA_ATLAS_PREFLIGHT.json',JSON.stringify({tests:count,errors:0,native_design_unchanged:true,action_records:208,real_browser_rendered:false,live_input_tested:false},null,2)+'\n');console.log('PASS',count,'preflight query checks (not browser or gameplay).');

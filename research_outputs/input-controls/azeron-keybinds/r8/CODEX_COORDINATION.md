@@ -1,5 +1,21 @@
 # Current Azeron continuation — R8 candidates and game-input evidence
 
+## Read the checked preflight first
+
+The [R8 preflight](preflight/READY_FOR_CODEX.md) is the current preparation
+entry. Native CORE5/SPARSE6 files and all 208 action records remain unchanged.
+Use the corrected `preflight/input_evidence.py` for new config collection and
+`preflight/native_review.py` for before/after snapshot comparison. Do not
+repeat the older collector merely because the historical command below names
+it. The one-command rehearsal, checked Atlas and physical test templates are
+in the new private package. [Its receipt](preflight/PUBLICATION_RECEIPT.json)
+records exact online locators and source/remote checks after publication.
+
+No Windows config, native import, hardware or game test was performed. A
+passed offline rehearsal is not family-selection or installation authority.
+Existing R8 facts and the earlier coordination record follow unchanged.
+
+
 Owner: `dodWhatUp/install-modes-for-games`. Read current `AGENTS.md`, `docs/GAME-TOOLS-KNOWLEDGE-INDEX.md`, `docs/AZERON-ACTION-ATLAS.md`, and the current R8 publication receipt. This continues the same work as PR4 and the Studio/Hub integration. It does not replace those hosts or authorize unrelated paused game/benchmark work.
 
 ## New material to consume, without a user file transfer
