@@ -1,0 +1,79 @@
+{
+  "revision": "R8",
+  "status": "SOURCE_PUBLISHED_AND_PRIVATE_ARCHIVE_READBACK_VERIFIED",
+  "source_commit": "b4fe0a476d70244a8afe259b64814a78178825a3",
+  "source_parent": "3cc9a6673311a068ee2d833b723501587b9d7920",
+  "task_branch": "task/azeron-r8-20261011",
+  "authored_source_files": 31,
+  "navigation_files_updated": 2,
+  "native_payloads_in_public_git": false,
+  "drive_folder_id": "1VC1i0sh2GLrCnQpO0pjjbA6dnks6tpEr",
+  "artifacts": [
+    {
+      "filename": "Azeron_R8_CORE5_Profiles.zip",
+      "drive_file_id": "1KvvZYS7BWonnyTunS8QyMdIzG5NITAEA",
+      "bytes": 24370,
+      "sha256": "d4e3bb2b744e783a0172d6b8466b85bbc9d57c80c975f4af0cdeb7167d03ab0a"
+    },
+    {
+      "filename": "Azeron_R8_SPARSE6_Profiles.zip",
+      "drive_file_id": "1zPRp8IJeXmNIYyF9mtIpe-A54QGb3t1g",
+      "bytes": 28756,
+      "sha256": "cc6d8368ec8c64cdc0ea1e69060779d8c4227fa6b9f9e1b1c7bc7d8ea2d0db33"
+    },
+    {
+      "filename": "Azeron_R8_Action_Atlas_HE.html",
+      "drive_file_id": "1-0yT9TYbDOs5ucMXtAAF0NpJwYWo5KuG",
+      "bytes": 191455,
+      "sha256": "7db74e9baf356588c637e76a66afc179bddfc3776ddd277f18aaf6161969280d"
+    },
+    {
+      "filename": "Azeron_R8_Research_HE.html",
+      "drive_file_id": "1mKoY7P3M_ynq80OTsxI705DlZzaEHJbj",
+      "bytes": 22685,
+      "sha256": "8517ccf7b8f551302ca85129c2e6545566f19c745a63d736957fc0e81c6e1112"
+    },
+    {
+      "filename": "Azeron_R8_Complete_Recovery.zip",
+      "drive_file_id": "1W9tNONcQbZKytDVv_QCGSOA1lM5sYoc8",
+      "bytes": 2902522,
+      "sha256": "467a57df9360c5eb6c90861cad5933004e8e2c67e2e0bd96d2072ea24b3479de"
+    }
+  ],
+  "archive_readback": {
+    "chat_container_byte_identical": true,
+    "registered_Mac_download_hash_identical": true,
+    "members": 54,
+    "indexed_entries_verified": 53,
+    "prior_R7_unchanged": true
+  },
+  "source_sync": {
+    "separate_linked_Mac_worktree_created": true,
+    "original_Mac_main_checkout_and_dirty_state_preserved": true,
+    "byte_exact_source_transfer": true,
+    "main_and_task_source_head_verified": true,
+    "force_push_used": false,
+    "unrelated_PRs_merged": false,
+    "Windows_device_exposed": false,
+    "running_Codex_task_consumption_confirmed": false,
+    "PR4_comment_id": 6104251275,
+    "PR2_comment_id": 6104253860
+  },
+  "drive_index": {
+    "file_id": "1YazzDmaOkWb_ximHZfe-PfU3J3gTj3G_",
+    "bytes": 21588,
+    "sha256": "40d0f02beaa95b35c5205344a17fc61448280d8270522443400ef5209fcaa529",
+    "old_18129_byte_body_preserved": true,
+    "download_readback_identical": true
+  },
+  "not_claimed": [
+    "R8 native import",
+    "physical or game testing",
+    "actual Windows input-config access",
+    "real-browser rendering",
+    "live host or overlay-trigger integration",
+    "global optimum",
+    "whole-project/all-task sync"
+  ],
+  "receipt_relationship": "Postdates immutable archive and source commit; not claimed inside them."
+}
