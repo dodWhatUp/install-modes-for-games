@@ -1,5 +1,25 @@
 # Current Azeron continuation — R8 candidates and game-input evidence
 
+## Completed bounded design review — no native revision
+
+Read [the decision memo](design-review/DECISION_REVIEW_HE.md) and
+[the short Codex decision brief](design-review/CODEX_DECISION_BRIEF.md) before
+choosing CORE5 or SPARSE6. This is an analysis supplement, not another profile
+family or installation instruction. Both share 24 identical BASIC outputs;
+only BASIC #30 differs. Three of the 32 inherited targeted cases distinguish
+modeled family outcomes. Respect the user's sparse comfort constraint before
+using a total test count to choose a family. Collect effective configs first.
+
+[Readable private report](https://drive.google.com/file/d/1WreUr_C06O2eoQBz6TqibB2JBRKRBSlU/view)
+and [checked review package](https://drive.google.com/file/d/1pRHVnfLdOIcEfsFuelxgjhzyNd26L1-j/view)
+are in the existing private Azeron folder; no user re-upload is needed.
+The package contains only this review and its reproducible comparisons;
+existing R8 native and recovery packages remain unchanged.
+
+This does not retry or replace the blocked preflight publication receipt.
+The operational handoff below stays authoritative for execution.
+
+
 ## Read the checked preflight first
 
 The [R8 preflight](preflight/READY_FOR_CODEX.md) is the current preparation

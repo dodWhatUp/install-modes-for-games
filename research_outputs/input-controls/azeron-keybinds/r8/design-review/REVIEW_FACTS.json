@@ -1,0 +1,581 @@
+{
+  "status": "BOUNDED_REVIEW_OF_UNCHANGED_R8_NOT_NEW_PROFILE_FAMILY",
+  "input_sha256": {
+    "DESIGN_R8.json": "d65c807e0256447f81aa466fe4da0bd1cd252d0fbdff346687c8e02047c8b724",
+    "AUDIT_R8.json": "6a9f6b5d364c7c954901da725823b7af385030b4c167b10b7b44c0443c4ee9cc"
+  },
+  "native_mutations": 0,
+  "physical_tests": 0,
+  "game_tests": 0,
+  "common_banks": [
+    "BASIC",
+    "MENUS",
+    "NAV",
+    "NUMBERS",
+    "TOOLS"
+  ],
+  "keyboard_allocation_by_bank": [
+    {
+      "family": "CORE5",
+      "bank": "BASIC",
+      "keyboard_cells": 25,
+      "unique_keyboard_outputs": 25,
+      "selector_cells": 4,
+      "unassigned_cells": 1
+    },
+    {
+      "family": "CORE5",
+      "bank": "NUMBERS",
+      "keyboard_cells": 23,
+      "unique_keyboard_outputs": 21,
+      "selector_cells": 1,
+      "unassigned_cells": 6
+    },
+    {
+      "family": "CORE5",
+      "bank": "MENUS",
+      "keyboard_cells": 23,
+      "unique_keyboard_outputs": 23,
+      "selector_cells": 1,
+      "unassigned_cells": 6
+    },
+    {
+      "family": "CORE5",
+      "bank": "TOOLS",
+      "keyboard_cells": 23,
+      "unique_keyboard_outputs": 23,
+      "selector_cells": 1,
+      "unassigned_cells": 6
+    },
+    {
+      "family": "CORE5",
+      "bank": "NAV",
+      "keyboard_cells": 23,
+      "unique_keyboard_outputs": 21,
+      "selector_cells": 1,
+      "unassigned_cells": 6
+    },
+    {
+      "family": "SPARSE6",
+      "bank": "BASIC",
+      "keyboard_cells": 24,
+      "unique_keyboard_outputs": 24,
+      "selector_cells": 5,
+      "unassigned_cells": 1
+    },
+    {
+      "family": "SPARSE6",
+      "bank": "NUMBERS",
+      "keyboard_cells": 20,
+      "unique_keyboard_outputs": 18,
+      "selector_cells": 1,
+      "unassigned_cells": 9
+    },
+    {
+      "family": "SPARSE6",
+      "bank": "MENUS",
+      "keyboard_cells": 20,
+      "unique_keyboard_outputs": 20,
+      "selector_cells": 1,
+      "unassigned_cells": 9
+    },
+    {
+      "family": "SPARSE6",
+      "bank": "TOOLS",
+      "keyboard_cells": 20,
+      "unique_keyboard_outputs": 20,
+      "selector_cells": 1,
+      "unassigned_cells": 9
+    },
+    {
+      "family": "SPARSE6",
+      "bank": "NAV",
+      "keyboard_cells": 23,
+      "unique_keyboard_outputs": 21,
+      "selector_cells": 1,
+      "unassigned_cells": 6
+    },
+    {
+      "family": "SPARSE6",
+      "bank": "SYMBOLS",
+      "keyboard_cells": 21,
+      "unique_keyboard_outputs": 19,
+      "selector_cells": 1,
+      "unassigned_cells": 8
+    }
+  ],
+  "shared_bank_cells_compared": 150,
+  "shared_bank_differences": [
+    {
+      "bank": "BASIC",
+      "button_id": 30,
+      "position": "TH_D",
+      "CORE5": "Caps Lock",
+      "SPARSE6": "LAYER:SYMBOLS"
+    },
+    {
+      "bank": "MENUS",
+      "button_id": 7,
+      "position": "R2C2",
+      "CORE5": "L",
+      "SPARSE6": "UNASSIGNED"
+    },
+    {
+      "bank": "MENUS",
+      "button_id": 11,
+      "position": "R2C3",
+      "CORE5": "M",
+      "SPARSE6": "UNASSIGNED"
+    },
+    {
+      "bank": "MENUS",
+      "button_id": 16,
+      "position": "R2C4",
+      "CORE5": "O",
+      "SPARSE6": "UNASSIGNED"
+    },
+    {
+      "bank": "MENUS",
+      "button_id": 28,
+      "position": "TH_U",
+      "CORE5": "H",
+      "SPARSE6": "M"
+    },
+    {
+      "bank": "MENUS",
+      "button_id": 29,
+      "position": "TH_L",
+      "CORE5": "Left Arrow",
+      "SPARSE6": "L"
+    },
+    {
+      "bank": "MENUS",
+      "button_id": 22,
+      "position": "TH_C",
+      "CORE5": "Period",
+      "SPARSE6": "O"
+    },
+    {
+      "bank": "MENUS",
+      "button_id": 31,
+      "position": "TH_R",
+      "CORE5": "Right Arrow",
+      "SPARSE6": "Tab"
+    },
+    {
+      "bank": "MENUS",
+      "button_id": 30,
+      "position": "TH_D",
+      "CORE5": "Down Arrow",
+      "SPARSE6": "H"
+    },
+    {
+      "bank": "NAV",
+      "button_id": 1,
+      "position": "R4C1",
+      "CORE5": "Semicolon",
+      "SPARSE6": "Alt"
+    },
+    {
+      "bank": "NUMBERS",
+      "button_id": 38,
+      "position": "R5C2",
+      "CORE5": "Shift",
+      "SPARSE6": "UNASSIGNED"
+    },
+    {
+      "bank": "NUMBERS",
+      "button_id": 13,
+      "position": "R5C3",
+      "CORE5": "0",
+      "SPARSE6": "UNASSIGNED"
+    },
+    {
+      "bank": "NUMBERS",
+      "button_id": 18,
+      "position": "R5C4",
+      "CORE5": "Ctrl",
+      "SPARSE6": "UNASSIGNED"
+    },
+    {
+      "bank": "NUMBERS",
+      "button_id": 28,
+      "position": "TH_U",
+      "CORE5": "Left Bracket",
+      "SPARSE6": "0"
+    },
+    {
+      "bank": "NUMBERS",
+      "button_id": 22,
+      "position": "TH_C",
+      "CORE5": "Backtick",
+      "SPARSE6": "Shift"
+    },
+    {
+      "bank": "NUMBERS",
+      "button_id": 31,
+      "position": "TH_R",
+      "CORE5": "Equals",
+      "SPARSE6": "Alt"
+    },
+    {
+      "bank": "NUMBERS",
+      "button_id": 23,
+      "position": "ST_D",
+      "CORE5": "Alt",
+      "SPARSE6": "Ctrl"
+    },
+    {
+      "bank": "TOOLS",
+      "button_id": 8,
+      "position": "R1C2",
+      "CORE5": "F7",
+      "SPARSE6": "UNASSIGNED"
+    },
+    {
+      "bank": "TOOLS",
+      "button_id": 12,
+      "position": "R1C3",
+      "CORE5": "F8",
+      "SPARSE6": "UNASSIGNED"
+    },
+    {
+      "bank": "TOOLS",
+      "button_id": 17,
+      "position": "R1C4",
+      "CORE5": "F9",
+      "SPARSE6": "UNASSIGNED"
+    },
+    {
+      "bank": "TOOLS",
+      "button_id": 28,
+      "position": "TH_U",
+      "CORE5": "Home",
+      "SPARSE6": "F7"
+    },
+    {
+      "bank": "TOOLS",
+      "button_id": 29,
+      "position": "TH_L",
+      "CORE5": "Page Up",
+      "SPARSE6": "F8"
+    },
+    {
+      "bank": "TOOLS",
+      "button_id": 22,
+      "position": "TH_C",
+      "CORE5": "Insert",
+      "SPARSE6": "F9"
+    }
+  ],
+  "basic_identical_native_cells": 29,
+  "basic_identical_visible_cells_excluding_19": 28,
+  "basic_identical_keyboard_outputs_at_same_positions": 24,
+  "basic_difference": {
+    "bank": "BASIC",
+    "button_id": 30,
+    "position": "TH_D",
+    "CORE5": "Caps Lock",
+    "SPARSE6": "LAYER:SYMBOLS"
+  },
+  "numbers_function_alignment": {
+    "CORE5": [
+      {
+        "digit": 1,
+        "same_positions": true,
+        "number_positions": [
+          "R3C2"
+        ],
+        "function_positions": [
+          "R3C2"
+        ]
+      },
+      {
+        "digit": 2,
+        "same_positions": true,
+        "number_positions": [
+          "R3C3"
+        ],
+        "function_positions": [
+          "R3C3"
+        ]
+      },
+      {
+        "digit": 3,
+        "same_positions": true,
+        "number_positions": [
+          "R3C4"
+        ],
+        "function_positions": [
+          "R3C4"
+        ]
+      },
+      {
+        "digit": 4,
+        "same_positions": true,
+        "number_positions": [
+          "R2C2"
+        ],
+        "function_positions": [
+          "R2C2"
+        ]
+      },
+      {
+        "digit": 5,
+        "same_positions": true,
+        "number_positions": [
+          "R2C3"
+        ],
+        "function_positions": [
+          "R2C3"
+        ]
+      },
+      {
+        "digit": 6,
+        "same_positions": true,
+        "number_positions": [
+          "R2C4"
+        ],
+        "function_positions": [
+          "R2C4"
+        ]
+      },
+      {
+        "digit": 7,
+        "same_positions": true,
+        "number_positions": [
+          "R1C2"
+        ],
+        "function_positions": [
+          "R1C2"
+        ]
+      },
+      {
+        "digit": 8,
+        "same_positions": true,
+        "number_positions": [
+          "R1C3"
+        ],
+        "function_positions": [
+          "R1C3"
+        ]
+      },
+      {
+        "digit": 9,
+        "same_positions": true,
+        "number_positions": [
+          "R1C4"
+        ],
+        "function_positions": [
+          "R1C4"
+        ]
+      }
+    ],
+    "SPARSE6": [
+      {
+        "digit": 1,
+        "same_positions": true,
+        "number_positions": [
+          "R3C2"
+        ],
+        "function_positions": [
+          "R3C2"
+        ]
+      },
+      {
+        "digit": 2,
+        "same_positions": true,
+        "number_positions": [
+          "R3C3"
+        ],
+        "function_positions": [
+          "R3C3"
+        ]
+      },
+      {
+        "digit": 3,
+        "same_positions": true,
+        "number_positions": [
+          "R3C4"
+        ],
+        "function_positions": [
+          "R3C4"
+        ]
+      },
+      {
+        "digit": 4,
+        "same_positions": true,
+        "number_positions": [
+          "R2C2"
+        ],
+        "function_positions": [
+          "R2C2"
+        ]
+      },
+      {
+        "digit": 5,
+        "same_positions": true,
+        "number_positions": [
+          "R2C3"
+        ],
+        "function_positions": [
+          "R2C3"
+        ]
+      },
+      {
+        "digit": 6,
+        "same_positions": true,
+        "number_positions": [
+          "R2C4"
+        ],
+        "function_positions": [
+          "R2C4"
+        ]
+      },
+      {
+        "digit": 7,
+        "same_positions": false,
+        "number_positions": [
+          "R1C2"
+        ],
+        "function_positions": [
+          "TH_U"
+        ]
+      },
+      {
+        "digit": 8,
+        "same_positions": false,
+        "number_positions": [
+          "R1C3"
+        ],
+        "function_positions": [
+          "TH_L"
+        ]
+      },
+      {
+        "digit": 9,
+        "same_positions": false,
+        "number_positions": [
+          "R1C4"
+        ],
+        "function_positions": [
+          "TH_C"
+        ]
+      }
+    ]
+  },
+  "inherited_targeted_cases": 32,
+  "unique_exact_input_movement_directness_signatures": 28,
+  "duplicate_physical_signatures_different_contexts": [
+    [
+      "skyrim-sprint",
+      "bayo-lock-move"
+    ],
+    [
+      "warframe-sprint",
+      "tomb-evade",
+      "shadow-sprint"
+    ],
+    [
+      "shadow-heal",
+      "F1-direct"
+    ]
+  ],
+  "cases_distinguishing_families": [
+    {
+      "id": "openttd-shift-f8",
+      "keys": [
+        "Shift",
+        "F8"
+      ],
+      "movement_stress": false,
+      "direct_required": false,
+      "CORE5": "FINGER_MODEL_CONFLICT",
+      "SPARSE6": "LAYER_MODEL_ROUTE"
+    },
+    {
+      "id": "zero-during-movement",
+      "keys": [
+        "0"
+      ],
+      "movement_stress": true,
+      "direct_required": false,
+      "CORE5": "LAYER_MODEL_ROUTE",
+      "SPARSE6": "FINGER_MODEL_CONFLICT"
+    },
+    {
+      "id": "Ctrl-Shift-8",
+      "keys": [
+        "Ctrl",
+        "Shift",
+        "8"
+      ],
+      "movement_stress": true,
+      "direct_required": false,
+      "CORE5": "LAYER_MODEL_ROUTE",
+      "SPARSE6": "FINGER_MODEL_CONFLICT"
+    }
+  ],
+  "directness_field_caveat": [
+    {
+      "id": "openttd-shift-f2",
+      "family": "CORE5",
+      "status": "FINGER_MODEL_CONFLICT",
+      "explanation": "Only the directness clause is true; this does not say access succeeded."
+    },
+    {
+      "id": "openttd-shift-f2",
+      "family": "SPARSE6",
+      "status": "FINGER_MODEL_CONFLICT",
+      "explanation": "Only the directness clause is true; this does not say access succeeded."
+    },
+    {
+      "id": "openttd-shift-f8",
+      "family": "CORE5",
+      "status": "FINGER_MODEL_CONFLICT",
+      "explanation": "Only the directness clause is true; this does not say access succeeded."
+    },
+    {
+      "id": "openttd-raise-and-pan",
+      "family": "CORE5",
+      "status": "FINGER_MODEL_CONFLICT",
+      "explanation": "Only the directness clause is true; this does not say access succeeded."
+    },
+    {
+      "id": "openttd-raise-and-pan",
+      "family": "SPARSE6",
+      "status": "FINGER_MODEL_CONFLICT",
+      "explanation": "Only the directness clause is true; this does not say access succeeded."
+    },
+    {
+      "id": "zero-during-movement",
+      "family": "SPARSE6",
+      "status": "FINGER_MODEL_CONFLICT",
+      "explanation": "Only the directness clause is true; this does not say access succeeded."
+    },
+    {
+      "id": "Ctrl-Shift-8",
+      "family": "SPARSE6",
+      "status": "FINGER_MODEL_CONFLICT",
+      "explanation": "Only the directness clause is true; this does not say access succeeded."
+    }
+  ],
+  "selected_case_counts_for_diagnostics_only": {
+    "CORE5": {
+      "model_route_and_directness_fit": 25,
+      "unmet_or_unknown_in_model": 7
+    },
+    "SPARSE6": {
+      "model_route_and_directness_fit": 24,
+      "unmet_or_unknown_in_model": 8
+    }
+  },
+  "limits": [
+    "24 shared BASIC outputs and 23 cross-bank differences describe files, not hand comfort.",
+    "The 32 old cases are targeted and not representative of usage; do not turn counts into a winner score.",
+    "Deduplication preserves semantic source contexts; only mechanically identical signatures are grouped here.",
+    "Inheritance of R8 model results is not a new experimental or effective-game verification.",
+    "Same-finger conflicts remain hypotheses; different-finger routes are not proof of comfortable reach.",
+    "Native identities, schemas, game source tables and all input files remain untouched."
+  ]
+}

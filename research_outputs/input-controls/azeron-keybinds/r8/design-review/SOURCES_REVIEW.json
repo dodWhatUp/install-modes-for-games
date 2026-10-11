@@ -1,0 +1,70 @@
+{
+  "review_kind": "bounded targeted primary-source review, not systematic meta-analysis",
+  "checked_at": "2026-10-11",
+  "sources": [
+    {
+      "id": "H1",
+      "authors_year": "Sellen, Kurtenbach & Buxton (1992)",
+      "title": "The Prevention of Mode Errors Through Sensory Feedback",
+      "url": "https://billbuxton.com/ModeErrors.html",
+      "read_scope": "full online text: experiments, synchronization errors, effector separation",
+      "limits": "Text editing and foot pedal. Not a finger-keypad/gaming trial."
+    },
+    {
+      "id": "H2",
+      "authors_year": "Sanei & Keir (2013)",
+      "title": "Independence and control of the fingers depend on direction and contraction mode",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0167945713000092",
+      "read_scope": "publisher record and abstract",
+      "limits": "Force/contraction tasks; no subject-specific reach data or game evidence."
+    },
+    {
+      "id": "H3",
+      "authors_year": "Cockburn, Gutwin & Greenberg (2007)",
+      "title": "A Predictive Model of Menu Performance",
+      "url": "https://ir.canterbury.ac.nz/items/fd5ec0a7-03bf-4b08-a1a9-ba211be3d837",
+      "read_scope": "university repository abstract",
+      "limits": "GUI menu model. No calibrated coefficients for Azeron."
+    },
+    {
+      "id": "H4",
+      "authors_year": "Scarr et al. (2012)",
+      "title": "Improving Command Selection with CommandMaps",
+      "url": "https://hci.cs.umanitoba.ca/publications/details/improving-command-selection-with-commandmaps",
+      "read_scope": "authors lab abstract and study summary",
+      "limits": "No significant novice advantage in reported comparisons; expert finding is not personal latency proof."
+    },
+    {
+      "id": "H5",
+      "authors_year": "Uddin, Gutwin & Cockburn (2017)",
+      "title": "The Effects of Artificial Landmarks on Learning and Performance in Spatial-Memory Interfaces",
+      "url": "https://samicit06.github.io/publication/chi17Sami/index.html",
+      "read_scope": "author publication abstract",
+      "limits": "Effects vary with grid size; our geometry was not tested."
+    },
+    {
+      "id": "H6",
+      "authors_year": "Isherwood, McDougall & Curry (2007)",
+      "title": "Icon Identification in Context",
+      "url": "https://journals.sagepub.com/doi/10.1518/001872007X200102",
+      "read_scope": "publisher abstract including methods and results",
+      "limits": "Icon-learning experiment, not this user or the Atlas."
+    },
+    {
+      "id": "H7",
+      "authors_year": "Shea & Morgan (1979)",
+      "title": "Contextual interference effects on the acquisition, retention, and transfer of a motor skill",
+      "url": "https://doi.org/10.1037/0278-7393.5.2.179",
+      "read_scope": "publisher record abstract",
+      "limits": "Laboratory motor skill; practice/retention distinction is not an Azeron dose prescription."
+    },
+    {
+      "id": "H8",
+      "authors_year": "Lee, Wulf & Schmidt (1992)",
+      "title": "Contextual Interference in Motor Learning: Dissociated Effects Due to the Nature of Task Variations",
+      "url": "https://journals.sagepub.com/doi/abs/10.1080/14640749208401303",
+      "read_scope": "publisher abstract",
+      "limits": "Transfer effects vary by task; do not assume all mixed practice improves retention."
+    }
+  ]
+}

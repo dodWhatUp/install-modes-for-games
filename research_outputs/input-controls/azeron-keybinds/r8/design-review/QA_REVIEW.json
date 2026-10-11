@@ -1,0 +1,48 @@
+{
+  "review": "R8_BOUNDED_DESIGN_REVIEW",
+  "status": "DESCRIPTIVE_AND_DECISION_REVIEW_ONLY",
+  "baseline_git_commit": "de708d1aea46020095fae9b260f2e8c755fb741c",
+  "input_fingerprints": {
+    "DESIGN_R8.json": "d65c807e0256447f81aa466fe4da0bd1cd252d0fbdff346687c8e02047c8b724",
+    "AUDIT_R8.json": "6a9f6b5d364c7c954901da725823b7af385030b4c167b10b7b44c0443c4ee9cc",
+    "Azeron R8 - Complete native profiles Atlas research and recovery.zip": "467a57df9360c5eb6c90861cad5933004e8e2c67e2e0bd96d2072ea24b3479de",
+    "Azeron_R8_Preflight_Complete.zip": "9b727440c63952ef06fe24a066057173beaab4aa98585fc4adc3bd4244b5f3cd"
+  },
+  "derived_result_byte_identical_on_second_clean_run": true,
+  "existing_output_overwrite_refused": true,
+  "source_files_and_original_archives_unchanged": true,
+  "profiles_created": 0,
+  "profiles_changed": 0,
+  "game_configs_read": 0,
+  "new_game_tables": 0,
+  "new_physical_tests": 0,
+  "new_game_tests": 0,
+  "new_runtime_assurance": false,
+  "key_findings": {
+    "shared_bank_cells": 150,
+    "shared_bank_differences": 23,
+    "basic_identical_keyboard_outputs": 24,
+    "basic_only_changed_native_id": 30,
+    "inherited_cases": 32,
+    "exact_signature_groups": 28,
+    "different_route_directness_cases": 3
+  },
+  "literature_primary_records_used": 8,
+  "literature_all_fulltext": false,
+  "blocked_preflight_receipt_retried": false,
+  "new_global_preferences_adopted": false,
+  "limits": [
+    "No overall optimum or personal performance estimates.",
+    "Research and native delivery state remain distinct.",
+    "No browser or display runtime tests were attempted.",
+    "The proposed tests refer to the existing plan and remain not-run."
+  ],
+  "report_static_checks": {
+    "sections": 18,
+    "tables": 6,
+    "unique_anchors": true,
+    "internal_links_resolve": true,
+    "external_scripts_or_images": 0,
+    "real_browser_rendering_tested": false
+  }
+}
