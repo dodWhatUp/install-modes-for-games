@@ -2,6 +2,14 @@
 
 This is an implementation/readiness supplement, **not R9 or another native mapping family**. Start here, then continue the existing `r8/CODEX_COORDINATION.md`. The exact CORE5/SPARSE6 ZIPs and the 208 source-scoped action records are unchanged. Preserve every later Windows/R5/R6/R8 state. Do not use a recovery ZIP as a native Restore Backup.
 
+## Current working base — user clarification, 2026-10-11
+
+Use the latest user-provided preparation and design improvement as the base whenever these files are needed; add only subsequent changes that it does not already contain. Preserve the owning source and its improvements rather than rebuilding from an older delivery.
+
+The latest identified preparation is this R8 preflight plus the [design decision brief](../design-review/CODEX_DECISION_BRIEF.md) and [full decision memo](../design-review/DECISION_REVIEW_HE.md), byte-verified at source revision `b827c7f35e3aee85690842d945c0664a7ad397e9`. The subsequent Windows additions are at revision `9e438fd2887e1347a2c507ca799aefa04565bfd1`: Windows path/handle timestamp handling in `safe_io.py`, explicit UTF-8 reads in `build_checked_atlas.py`, seven metadata regressions, and the [Windows input/preservation receipt](../../../../../docs/AZERON-R8-WINDOWS-READ-2026-10-11.md). Use those corrected repository tools when preparing a current source copy. The immutable original preflight ZIP predates these additions and remains preserved separately.
+
+This clarification records source precedence. It does not change native candidates, select a family or verify game input. If a newer owner-held update is identified, compare its exact revision with these additions, retain fixes it still needs, and preserve later local work. Keep the shared R8 source separate from the newer game-specific PoE2 COMBAT/MENU proposal and its unresolved trigger.
+
 ## Obtain the exact files, not another user upload
 
 Use the existing private `Azeron profile backups` Drive folder and the current publication receipt for this `r8/preflight/` folder. The full preflight ZIP includes the unchanged R8 CORE5/SPARSE6 ZIPs and exact R8 recovery. Earlier research/exports are nested inside that recovery. Raw profiles and review receipts stay private. Git owns these authored tools and instructions.
