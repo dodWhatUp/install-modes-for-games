@@ -57,6 +57,6 @@ Use versioned interfaces and source revisions, cache slow discovery, batch reads
 
 ## Backups and handoffs
 
-Maintain three distinct categories: authored source and sanitized knowledge; private settings/assets/native exports; and game-specific recovery snapshots. Record original/current versions, file sizes/hashes, coverage, missing dependencies and restoration order. Verify archive entries and Drive readback without widening permissions. Keep prior checkpoints immutable.
+Maintain three distinct categories: authored source and sanitized knowledge; private settings/assets/native exports; and game-specific recovery snapshots. Record original/current versions, file sizes/hashes, coverage, missing dependencies and restoration order. Verify archive entries and Drive readback. For a requested Drive deliverable, apply the [Drive sharing policy](DRIVE-SHARING-POLICY.md): grant the privately recorded recipient reader access to that file, subject to required action-time authorization, and verify the resulting permission. Do not change unrelated files or make links public. Keep prior checkpoints immutable.
 
 For another chat, prepare a concise task with source links, observed state, permitted actions and the next boundary. Sending it still requires user authorization. Do not copy raw tool logs, credentials or unrelated personal material into public repositories. Follow [publishing](GITHUB-PUBLISHING.md) and [distribution](DISTRIBUTION.md).

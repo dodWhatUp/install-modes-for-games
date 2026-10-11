@@ -7,6 +7,7 @@ This repository is the durable memory for game-modding work. Apply these rules w
 - Act on the user's request directly. Before asking the user to do anything, exhaust the available authorized tools and supported UI, keyboard, API, and file-based routes; inspect the state after each attempted change. Ask only when access is unavailable, an important decision is genuinely needed, or the remaining step requires the user's physical action. Never claim an action succeeded without evidence.
 - Write every assistant-authored request, question, or instruction to the user in English only. Do not mix Hebrew and English within a request. Keep technical names, UI labels, and file paths exactly as they appear in the product.
 - Keep user requests concise and specific. If an action must be handed to the user, state the single remaining action and why the agent cannot perform it.
+- For Drive deliverables, consult the private Drive sharing preference record. The standing preference is to grant the named recipient read-only access to intended, non-sensitive files created in Drive, then verify the permission. Use the recipient recorded privately; never put the email address or private file IDs in this repository. Follow any action-time authorization required for permission changes. Drive sharing is per file in the current connector.
 
 ## Read before deciding
 

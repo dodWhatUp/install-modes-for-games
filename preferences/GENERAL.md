@@ -129,6 +129,10 @@ Keep the complete catalog separate from curated combinations. Curated recommenda
 - Use exact versions, hashes, effective resolution, process/API, relevant log evidence, performance/VRAM observations, confidence, and remaining unknowns.
 - When a feature appears active, verify the actual input and output path. For temporal features, check motion vectors, depth, color/HDR contract, UI handling, frame evaluation, and recreation—not only the overlay.
 
+## Drive file access
+
+User preference recorded 2026-10-11: make intended files created in Drive viewable and downloadable by the recipient in the private Drive sharing preference record. Use read-only (reader) access, share the individual file after upload, and verify the permission. Keep the recipient address and private Drive identifiers out of this repository. The current Drive connector has no global default-sharing switch, so this preference is implemented as a per-file workflow; permission changes remain subject to any action-time authorization requirement. For existing files, confirm the exact collection before bulk sharing.
+
 ## Azeron and per-game keybindings
 
 User confirmed 2026-09-15: apply [Azeron and game controls](../docs/AZERON-GAME-CONTROLS.md) to every game when controls are in scope. Use one shared base setup with multiple layers; create separate game profiles only for exceptional needs. Retain and rename the current starting profiles to GENERAL 1, GENERAL 2, GENERAL 3, and EMPTY. Archive old game profiles in Google Drive before removal, preserving importable data and readable button/key/action references for future suggestions.

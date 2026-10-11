@@ -15,6 +15,7 @@ Reviewed 2026-10-11. Start here for research, game-mod work, PC assistance and a
 | Crash evidence and video comparisons | [Architecture recovery and video sections](GAME-TOOLS-ARCHITECTURE.md), exact game history | Future optional modes; no guaranteed preservation of the unflushed tail |
 | Review chats, preserve lessons or connect knowledge | [Knowledge maintenance](KNOWLEDGE-MAINTENANCE.md), [lesson record](../templates/KNOWLEDGE-RECORD.example.json) | Preserve source ownership/revisions and declare review coverage; summaries do not replace masters |
 | Backup or publish | [Distribution](DISTRIBUTION.md), [GitHub procedure](GITHUB-PUBLISHING.md), [maintenance protocol](KNOWLEDGE-MAINTENANCE.md#backup-and-publication-protocol) | Source bundles, visible-message archives and installed recovery are different artifacts |
+| Drive file access | [Drive sharing policy](DRIVE-SHARING-POLICY.md), [maintenance protocol](KNOWLEDGE-MAINTENANCE.md#backup-and-publication-protocol) | Per-file reader grants for intended deliverables; verify each permission and scope |
 
 Search exact game/executable/feature/DLL/error before acting. Prefer current observed evidence over general advice; refresh upstream support when versions or experimental reviews change. Carry only the relevant records into a task, not unrelated account history.
 
