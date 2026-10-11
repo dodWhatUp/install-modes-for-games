@@ -1,0 +1,15 @@
+{
+ "revision":"R7","overall":"SUBSTANTIAL_CONTINUATION_NOT_WHOLE_GOAL_COMPLETION","native_design_unchanged":"R6",
+ "requirements":[
+  {"id":"broad-defaults","state":"PARTIAL","evidence":"94 inherited records/2195 rows; 177 selected old rows reread and 2 facts added in R7.","remaining":"Full current presets for every requested game not established."},
+  {"id":"game-normalized-similarity","state":"DONE_SCOPED","evidence":"4371 deduplicated keyboard-vocabulary comparisons plus four manually linked semantic roles.","remaining":"Sampling bias and mixed original contexts remain explicit."},
+  {"id":"deep-demand-analysis","state":"DONE_SCOPED","evidence":"22 source-linked or explicitly inferred temporal/access requirements.","remaining":"No personal timing/frequency or physical results."},
+  {"id":"universal-optimum","state":"NOT_PROVEN","evidence":"Universal-first decision hierarchy and existing4/5layer alternatives preserved.","remaining":"No single global optimum claim; urgent/held and hand-specific acceptance unresolved."},
+  {"id":"native-delivery","state":"ALREADY_DONE_R6_RECHECKED","evidence":"Nine R6 files/270visiblecells/387nativeinputs/14links revalidated without modification.","remaining":"R6 import/runtime/gameplay still pending."},
+  {"id":"action-atlas-prototype","state":"IMPLEMENTED_LOCAL","evidence":"29controls perview,8sourcegame samples,179records,18selectable targets,icons/colors/context/search.","remaining":"Real browser and host integration not tested."},
+  {"id":"requested-game-overlays","state":"PARTIAL","evidence":"Requested unsupported games remain visible as pending targets; R6 readiness23scopes retained.","remaining":"Effective PoE2/Cyberpunk and other requested exact presets missing."},
+  {"id":"onboarding-method","state":"DONE_DOCUMENTED","evidence":"Reusable procedure grounded in existing schema2 template and current owners.","remaining":"No automatic app integration or new native adapter installed."},
+  {"id":"future-toolkit-module","state":"DONE_AS_PLAN","evidence":"Namespaced display-only Atlas plan connected to Hub/Studio/shared architecture.","remaining":"Peek/pin/native layer observation/executable association remain future."},
+  {"id":"private-backup","state":"PUBLICATION_RECEIPT_IS_AUTHORITATIVE","evidence":"The immutable package carries source/data validation. The separate PUBLICATION_RECEIPT_R7.json records actual Git and Drive readback completion after upload.","remaining":"Not a byte-complete archive of unseen chats or live Windows state."}
+ ]
+}

@@ -1,0 +1,21 @@
+{
+  "revision": "R7",
+  "scope": "Azeron/game-controls project only",
+  "source": "current conversation, including explicit refinements and latest request on 2026-10-11",
+  "global_preferences_changed": false,
+  "items": [
+    {"id":"universal-first","state":"confirmed","text":"Prefer one shared native family with logical layers; genre-specific bases are secondary, triggered by actual unmet requirements."},
+    {"id":"reserve19","state":"confirmed","text":"Native index-side button19 stays unassigned/hidden for external overlay ownership; no key trigger is invented."},
+    {"id":"stable-geometry","state":"confirmed","text":"Do not draw joystick; retain the other29 digital positions including36/37; blanks stay in place."},
+    {"id":"menus-not-letters","state":"confirmed","text":"Use MENUS as remembered panel/UI destination; do not group merely by character type."},
+    {"id":"two-alternatives","state":"confirmed","text":"Retain COMPACT4 and separate source-mask SPARSE5; do not silently replace one with the other."},
+    {"id":"source-authorship","state":"confirmed","text":"Only layered1/FOR CHAT indicate user-authored sources; FOR CHAT is a schema demo, not gameplay preference."},
+    {"id":"default-not-effective","state":"confirmed","text":"Respect exact title/edition/context/mods and distinguish default/source evidence from active user controls."},
+    {"id":"icons-and-color","state":"requested-option","text":"Add optional action icons/miniatures and category color alongside readable action/key labels; exact palette is a proposal."},
+    {"id":"interactive-atlas","state":"future-integration-request","text":"Add search, filters and topic selection as a display/knowledge module of the existing gaming toolkit, not another remapper."},
+    {"id":"efficient-onboarding","state":"confirmed","text":"Reuse verified records and investigate changes that affect decisions; do not restart full research for every game."},
+    {"id":"continuity","state":"confirmed","text":"Preserve results, limitations, inputs, preferences and next actions in the existing Git owner and private Drive with verified recovery."},
+    {"id":"prior-posters","state":"correction","text":"Earlier AI-generated posters are not binding evidence or an accepted prototype."}
+  ],
+  "implementation_boundary": "Prototype options are not installed host defaults. No external overlay key or game/native profile was changed."
+}

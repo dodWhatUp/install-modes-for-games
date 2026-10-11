@@ -1,0 +1,31 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "title":"Optional display-only extension to GAME-KEYBINDS schema 2",
+ "type":"object","additionalProperties":false,
+ "required":["extension","schema_version","base_mapping_reference","base_mapping_fingerprint","display_only","annotations"],
+ "properties":{
+  "extension":{"const":"keymap.atlas"},"schema_version":{"const":1},
+  "base_mapping_reference":{"type":"string","minLength":1},
+  "base_mapping_fingerprint":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+  "display_only":{"const":true},
+  "annotations":{"type":"array","items":{
+   "type":"object","additionalProperties":false,
+   "required":["binding_reference","category_id","icon_id","action_label","evidence","source_refs","aliases"],
+   "properties":{
+    "binding_reference":{"type":"string","minLength":1},
+    "category_id":{"type":"string"},"icon_id":{"type":["string","null"]},
+    "action_label":{"type":["string","null"]},"aliases":{"type":"array","items":{"type":"string"}},
+    "source_refs":{"type":"array","items":{"type":"string"}},
+    "evidence":{"enum":["UNKNOWN","CONFLICT","STALE","PUBLISHED_SCOPED","EFFECTIVE_CONFIG","GAME_OBSERVED"]},
+    "effective_record_reference":{"type":["string","null"]},
+    "asset_reference":{"type":["string","null"]},
+    "recipe_reference":{"type":["string","null"]},
+    "execution_policy":{"const":"NONE"}
+   },
+   "allOf":[
+    {"if":{"properties":{"evidence":{"enum":["PUBLISHED_SCOPED","EFFECTIVE_CONFIG","GAME_OBSERVED"]}}},"then":{"properties":{"source_refs":{"minItems":1},"action_label":{"type":"string","minLength":1}}}},
+    {"if":{"properties":{"evidence":{"enum":["EFFECTIVE_CONFIG","GAME_OBSERVED"]}}},"then":{"required":["effective_record_reference"],"properties":{"effective_record_reference":{"type":"string","minLength":1}}}}
+   ]
+  }}
+ }
+}
