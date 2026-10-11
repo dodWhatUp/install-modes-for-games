@@ -1,0 +1,9 @@
+{
+  "tests_run": 15,
+  "failures": 0,
+  "errors": 0,
+  "synthetic_fixtures_only": true,
+  "user_config_read": false,
+  "no_game_launch": true,
+  "no_network": true
+}

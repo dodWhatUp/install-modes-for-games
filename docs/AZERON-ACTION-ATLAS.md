@@ -1,5 +1,20 @@
 # Azeron Action Atlas — existing toolkit module
 
+## Current R8 continuation
+
+[R8](../research_outputs/input-controls/azeron-keybinds/r8/README.md) provides
+CORE5/SPARSE6 native candidates and an updated display-only Atlas with 208
+action records, including 29 Bayonetta PC manual records. The new
+[read-only input-evidence collector and Codex handoff](../research_outputs/input-controls/azeron-keybinds/r8/CODEX_COORDINATION.md)
+prepare PoE2/Cyberpunk reconciliation without launching games or changing
+settings. Ten other requested targets remain explicitly pending.
+
+Preserve native R5/R6 and later local changes. R8 source and offline tests do
+not establish import, hardware or live host behavior. The R7 integration
+contract below remains applicable; this is an optional module of the same
+Studio/Hub toolkit, not a new remapper or queue.
+
+
 Current authored work: [R7 research, source and evidence](../research_outputs/input-controls/azeron-keybinds/r7/README.md).
 Read [the module plan](../research_outputs/input-controls/azeron-keybinds/r7/ACTION_ATLAS_PLAN.md), [game onboarding](../research_outputs/input-controls/azeron-keybinds/r7/GAME_ONBOARDING.md) and [continuity](../research_outputs/input-controls/azeron-keybinds/r7/CONTINUITY_R7.md).
 

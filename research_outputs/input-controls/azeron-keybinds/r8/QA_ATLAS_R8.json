@@ -1,0 +1,15 @@
+{
+  "named_query_contract_tests": 37,
+  "design_semantic_hash_unchanged": true,
+  "game_targets": 19,
+  "source_game_samples": 9,
+  "reviewed_action_records": 208,
+  "hidden_ids": [
+    19,
+    24
+  ],
+  "digital_controls_per_view": 29,
+  "real_browser_tested": false,
+  "physical_tested": false,
+  "gameplay_tested": false
+}

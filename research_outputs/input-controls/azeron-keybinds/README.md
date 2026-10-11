@@ -1,5 +1,24 @@
 # Azeron cross-game controls — current research and design
 
+## Current continuation: R8 held-input candidates and Action Atlas
+
+Read [R8 source, research and validation](r8/README.md) and the
+[Codex coordination handoff](r8/CODEX_COORDINATION.md) first. CORE5 and SPARSE6
+are new additive native candidate families, not installed replacements. They
+restore fixed Ctrl/Shift/Space anchors and move BASIC Alt off the thumb, with
+T-on-thumb and extra-layer tradeoffs explicitly recorded. The Atlas adds the
+official Bayonetta PC manual scope and fixes context/filter display issues.
+
+The [R7 display/research baseline](r7/README.md), R6 candidates and all older
+sources remain unchanged. Native payloads and exact recovery are private;
+[R8 publication receipt](r8/PUBLICATION_RECEIPT_R8.json) supplies stable locators.
+Source/branch coordination does not prove a running Windows task consumed
+the handoff. Effective game configs, native import, physical tests and live
+Overlay Studio integration remain separate acceptance gates.
+
+Historical milestones follow.
+
+
 ## Current revision: R6 research, native candidates and HTML prototype
 
 Read [R6 decision record and delivery](stage-b/native-v2/r6/README.md) first.

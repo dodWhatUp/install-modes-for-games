@@ -1,0 +1,1120 @@
+{
+  "schema_version": 1,
+  "revision": "R8",
+  "source_baseline": "SHARED R5 native files from supplied source backup 2.0.2",
+  "authorship_scope": [
+    "layered 1",
+    "FOR CHAT"
+  ],
+  "excluded_evidence": "AI generated game posters are not keybinding evidence and not a usable reference.",
+  "reserved_button": {
+    "id": 19,
+    "position": "R3",
+    "description": "right-facing index-finger side switch",
+    "mapping": "UNASSIGNED",
+    "hide_in_overlay": true,
+    "owner": "external overlay app, trigger not configured here",
+    "warning": "A disabled native binding does not itself emit a keyboard hotkey. Raw-input integration or an explicit approved trigger still must be set by the external app; no F13/hotkey is silently invented."
+  },
+  "position_map": {
+    "R1C1": 4,
+    "R1C2": 8,
+    "R1C3": 12,
+    "R1C4": 17,
+    "R2C1": 3,
+    "R2C2": 7,
+    "R2C3": 11,
+    "R2C4": 16,
+    "R3C1": 2,
+    "R3C2": 6,
+    "R3C3": 10,
+    "R3C4": 15,
+    "R4C1": 1,
+    "R4C2": 5,
+    "R4C3": 9,
+    "R4C4": 14,
+    "R5C1": 37,
+    "R5C2": 38,
+    "R5C3": 13,
+    "R5C4": 18,
+    "L3": 36,
+    "R3": 19,
+    "TH_U": 28,
+    "TH_L": 29,
+    "TH_C": 22,
+    "TH_R": 31,
+    "TH_D": 30,
+    "ST_RU": 41,
+    "ST_RD": 20,
+    "ST_D": 23
+  },
+  "source_sensitive_mask": {
+    "NUMBERS": [
+      38,
+      13,
+      18
+    ],
+    "MENUS": [
+      7,
+      11,
+      16
+    ],
+    "TOOLS": [
+      8,
+      12,
+      17
+    ]
+  },
+  "mask_basis": "These three sets were blank in the corresponding current user-authored NUMBER, MENU, MOD KEYS profiles; emptiness is observed, reason/difficulty is user-reported but no reach thresholds measured. Apply as a separate conservative variant, not universal ergonomics.",
+  "target_outputs": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "A",
+    "Alt",
+    "Apostrophe",
+    "B",
+    "Backslash",
+    "Backspace",
+    "Backtick",
+    "C",
+    "Caps Lock",
+    "Comma",
+    "Ctrl",
+    "D",
+    "Delete",
+    "Down Arrow",
+    "E",
+    "End",
+    "Enter",
+    "Equals",
+    "Esc",
+    "F",
+    "F1",
+    "F10",
+    "F11",
+    "F12",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "G",
+    "H",
+    "Home",
+    "I",
+    "Insert",
+    "J",
+    "K",
+    "L",
+    "Left Arrow",
+    "Left Bracket",
+    "M",
+    "Minus",
+    "N",
+    "O",
+    "P",
+    "Page Down",
+    "Page Up",
+    "Period",
+    "Q",
+    "R",
+    "Right Arrow",
+    "Right Bracket",
+    "S",
+    "Semicolon",
+    "Shift",
+    "Slash",
+    "Space",
+    "T",
+    "Tab",
+    "U",
+    "Up Arrow",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z"
+  ],
+  "status": "NATIVE_CANDIDATES_NOT_IMPORTED",
+  "baseline_revision": "R6",
+  "baseline_sha256": "fb084d59ae00fb08a1df22b9aa6f7327d250d341b6535f63299c97e11ff51d0a",
+  "variants": {
+    "CORE5": {
+      "name": "CORE5",
+      "profile_prefix": "SHARED R8 CORE5",
+      "maps": {
+        "BASIC": {
+          "R1C1": "Tab",
+          "R1C2": "1",
+          "R1C3": "2",
+          "R1C4": "G",
+          "R2C1": "Alt",
+          "R2C2": "3",
+          "R2C3": "Q",
+          "R2C4": "E",
+          "R3C1": "LAYER:NUMBERS",
+          "R3C2": "V",
+          "R3C3": "4",
+          "R3C4": "F",
+          "R4C1": "LAYER:MENUS",
+          "R4C2": "Ctrl",
+          "R4C3": "Shift",
+          "R4C4": "Space",
+          "R5C1": "Z",
+          "R5C2": "X",
+          "R5C3": "C",
+          "R5C4": "R",
+          "L3": "LAYER:TOOLS",
+          "R3": "UNASSIGNED",
+          "TH_U": "LAYER:NAV",
+          "TH_L": "B",
+          "TH_C": "N",
+          "TH_R": "T",
+          "TH_D": "Caps Lock",
+          "ST_RU": "Enter",
+          "ST_RD": "Esc",
+          "ST_D": "Backspace"
+        },
+        "NUMBERS": {
+          "R1C1": "UNASSIGNED",
+          "R1C2": "7",
+          "R1C3": "8",
+          "R1C4": "9",
+          "R2C1": "UNASSIGNED",
+          "R2C2": "4",
+          "R2C3": "5",
+          "R2C4": "6",
+          "R3C1": "LAYER:NUMBERS",
+          "R3C2": "1",
+          "R3C3": "2",
+          "R3C4": "3",
+          "R4C1": "UNASSIGNED",
+          "R4C2": "Ctrl",
+          "R4C3": "Shift",
+          "R4C4": "Space",
+          "R5C1": "UNASSIGNED",
+          "R5C2": "Shift",
+          "R5C3": "0",
+          "R5C4": "Ctrl",
+          "L3": "UNASSIGNED",
+          "R3": "UNASSIGNED",
+          "TH_U": "Left Bracket",
+          "TH_L": "Minus",
+          "TH_C": "Backtick",
+          "TH_R": "Equals",
+          "TH_D": "Right Bracket",
+          "ST_RU": "Enter",
+          "ST_RD": "Esc",
+          "ST_D": "Alt"
+        },
+        "MENUS": {
+          "R1C1": "UNASSIGNED",
+          "R1C2": "I",
+          "R1C3": "J",
+          "R1C4": "K",
+          "R2C1": "UNASSIGNED",
+          "R2C2": "L",
+          "R2C3": "M",
+          "R2C4": "O",
+          "R3C1": "UNASSIGNED",
+          "R3C2": "P",
+          "R3C3": "U",
+          "R3C4": "Y",
+          "R4C1": "LAYER:MENUS",
+          "R4C2": "Ctrl",
+          "R4C3": "Shift",
+          "R4C4": "Space",
+          "R5C1": "UNASSIGNED",
+          "R5C2": "Apostrophe",
+          "R5C3": "Alt",
+          "R5C4": "Backslash",
+          "L3": "UNASSIGNED",
+          "R3": "UNASSIGNED",
+          "TH_U": "H",
+          "TH_L": "Left Arrow",
+          "TH_C": "Period",
+          "TH_R": "Right Arrow",
+          "TH_D": "Down Arrow",
+          "ST_RU": "Enter",
+          "ST_RD": "Esc",
+          "ST_D": "Slash"
+        },
+        "TOOLS": {
+          "R1C1": "UNASSIGNED",
+          "R1C2": "F7",
+          "R1C3": "F8",
+          "R1C4": "F9",
+          "R2C1": "UNASSIGNED",
+          "R2C2": "F4",
+          "R2C3": "F5",
+          "R2C4": "F6",
+          "R3C1": "UNASSIGNED",
+          "R3C2": "F1",
+          "R3C3": "F2",
+          "R3C4": "F3",
+          "R4C1": "UNASSIGNED",
+          "R4C2": "Ctrl",
+          "R4C3": "Shift",
+          "R4C4": "Space",
+          "R5C1": "UNASSIGNED",
+          "R5C2": "F10",
+          "R5C3": "F11",
+          "R5C4": "F12",
+          "L3": "LAYER:TOOLS",
+          "R3": "UNASSIGNED",
+          "TH_U": "Home",
+          "TH_L": "Page Up",
+          "TH_C": "Insert",
+          "TH_R": "Alt",
+          "TH_D": "End",
+          "ST_RU": "Enter",
+          "ST_RD": "Esc",
+          "ST_D": "Delete"
+        },
+        "NAV": {
+          "R1C1": "Home",
+          "R1C2": "Page Up",
+          "R1C3": "Up Arrow",
+          "R1C4": "E",
+          "R2C1": "End",
+          "R2C2": "Page Down",
+          "R2C3": "Down Arrow",
+          "R2C4": "Insert",
+          "R3C1": "Left Bracket",
+          "R3C2": "Left Arrow",
+          "R3C3": "Right Arrow",
+          "R3C4": "Delete",
+          "R4C1": "Semicolon",
+          "R4C2": "Ctrl",
+          "R4C3": "Shift",
+          "R4C4": "Space",
+          "R5C1": "Esc",
+          "R5C2": "Backtick",
+          "R5C3": "Comma",
+          "R5C4": "Enter",
+          "L3": "Backspace",
+          "R3": "UNASSIGNED",
+          "TH_U": "LAYER:NAV",
+          "TH_L": "UNASSIGNED",
+          "TH_C": "UNASSIGNED",
+          "TH_R": "UNASSIGNED",
+          "TH_D": "UNASSIGNED",
+          "ST_RU": "Enter",
+          "ST_RD": "Esc",
+          "ST_D": "UNASSIGNED"
+        }
+      },
+      "layer_count": 5,
+      "selectors": {
+        "NUMBERS": 2,
+        "MENUS": 1,
+        "TOOLS": 36,
+        "NAV": 28
+      },
+      "status": "NATIVE_CANDIDATE_NOT_IMPORTED",
+      "unique_logical_outputs": 78,
+      "changes_from_R6": [
+        {
+          "layer": "BASIC",
+          "position": "R2C1",
+          "button_id": 3,
+          "before": "T",
+          "after": "Alt"
+        },
+        {
+          "layer": "BASIC",
+          "position": "TH_U",
+          "button_id": 28,
+          "before": "H",
+          "after": "LAYER:NAV"
+        },
+        {
+          "layer": "BASIC",
+          "position": "TH_R",
+          "button_id": 31,
+          "before": "Alt",
+          "after": "T"
+        },
+        {
+          "layer": "NUMBERS",
+          "position": "R4C4",
+          "button_id": 14,
+          "before": "Alt",
+          "after": "Space"
+        },
+        {
+          "layer": "NUMBERS",
+          "position": "ST_D",
+          "button_id": 23,
+          "before": "Comma",
+          "after": "Alt"
+        },
+        {
+          "layer": "MENUS",
+          "position": "R4C4",
+          "button_id": 14,
+          "before": "Alt",
+          "after": "Space"
+        },
+        {
+          "layer": "MENUS",
+          "position": "R5C3",
+          "button_id": 13,
+          "before": "Semicolon",
+          "after": "Alt"
+        },
+        {
+          "layer": "MENUS",
+          "position": "TH_U",
+          "button_id": 28,
+          "before": "Up Arrow",
+          "after": "H"
+        },
+        {
+          "layer": "TOOLS",
+          "position": "R4C4",
+          "button_id": 14,
+          "before": "Alt",
+          "after": "Space"
+        },
+        {
+          "layer": "TOOLS",
+          "position": "TH_R",
+          "button_id": 31,
+          "before": "Page Down",
+          "after": "Alt"
+        },
+        {
+          "layer": "NAV",
+          "position": "R1C1",
+          "button_id": 4,
+          "before": "NOT_PRESENT",
+          "after": "Home"
+        },
+        {
+          "layer": "NAV",
+          "position": "R1C2",
+          "button_id": 8,
+          "before": "NOT_PRESENT",
+          "after": "Page Up"
+        },
+        {
+          "layer": "NAV",
+          "position": "R1C3",
+          "button_id": 12,
+          "before": "NOT_PRESENT",
+          "after": "Up Arrow"
+        },
+        {
+          "layer": "NAV",
+          "position": "R1C4",
+          "button_id": 17,
+          "before": "NOT_PRESENT",
+          "after": "E"
+        },
+        {
+          "layer": "NAV",
+          "position": "R2C1",
+          "button_id": 3,
+          "before": "NOT_PRESENT",
+          "after": "End"
+        },
+        {
+          "layer": "NAV",
+          "position": "R2C2",
+          "button_id": 7,
+          "before": "NOT_PRESENT",
+          "after": "Page Down"
+        },
+        {
+          "layer": "NAV",
+          "position": "R2C3",
+          "button_id": 11,
+          "before": "NOT_PRESENT",
+          "after": "Down Arrow"
+        },
+        {
+          "layer": "NAV",
+          "position": "R2C4",
+          "button_id": 16,
+          "before": "NOT_PRESENT",
+          "after": "Insert"
+        },
+        {
+          "layer": "NAV",
+          "position": "R3C1",
+          "button_id": 2,
+          "before": "NOT_PRESENT",
+          "after": "Left Bracket"
+        },
+        {
+          "layer": "NAV",
+          "position": "R3C2",
+          "button_id": 6,
+          "before": "NOT_PRESENT",
+          "after": "Left Arrow"
+        },
+        {
+          "layer": "NAV",
+          "position": "R3C3",
+          "button_id": 10,
+          "before": "NOT_PRESENT",
+          "after": "Right Arrow"
+        },
+        {
+          "layer": "NAV",
+          "position": "R3C4",
+          "button_id": 15,
+          "before": "NOT_PRESENT",
+          "after": "Delete"
+        },
+        {
+          "layer": "NAV",
+          "position": "R4C1",
+          "button_id": 1,
+          "before": "NOT_PRESENT",
+          "after": "Semicolon"
+        },
+        {
+          "layer": "NAV",
+          "position": "R4C2",
+          "button_id": 5,
+          "before": "NOT_PRESENT",
+          "after": "Ctrl"
+        },
+        {
+          "layer": "NAV",
+          "position": "R4C3",
+          "button_id": 9,
+          "before": "NOT_PRESENT",
+          "after": "Shift"
+        },
+        {
+          "layer": "NAV",
+          "position": "R4C4",
+          "button_id": 14,
+          "before": "NOT_PRESENT",
+          "after": "Space"
+        },
+        {
+          "layer": "NAV",
+          "position": "R5C1",
+          "button_id": 37,
+          "before": "NOT_PRESENT",
+          "after": "Esc"
+        },
+        {
+          "layer": "NAV",
+          "position": "R5C2",
+          "button_id": 38,
+          "before": "NOT_PRESENT",
+          "after": "Backtick"
+        },
+        {
+          "layer": "NAV",
+          "position": "R5C3",
+          "button_id": 13,
+          "before": "NOT_PRESENT",
+          "after": "Comma"
+        },
+        {
+          "layer": "NAV",
+          "position": "R5C4",
+          "button_id": 18,
+          "before": "NOT_PRESENT",
+          "after": "Enter"
+        },
+        {
+          "layer": "NAV",
+          "position": "L3",
+          "button_id": 36,
+          "before": "NOT_PRESENT",
+          "after": "Backspace"
+        },
+        {
+          "layer": "NAV",
+          "position": "R3",
+          "button_id": 19,
+          "before": "NOT_PRESENT",
+          "after": "UNASSIGNED"
+        },
+        {
+          "layer": "NAV",
+          "position": "TH_U",
+          "button_id": 28,
+          "before": "NOT_PRESENT",
+          "after": "LAYER:NAV"
+        },
+        {
+          "layer": "NAV",
+          "position": "TH_L",
+          "button_id": 29,
+          "before": "NOT_PRESENT",
+          "after": "UNASSIGNED"
+        },
+        {
+          "layer": "NAV",
+          "position": "TH_C",
+          "button_id": 22,
+          "before": "NOT_PRESENT",
+          "after": "UNASSIGNED"
+        },
+        {
+          "layer": "NAV",
+          "position": "TH_R",
+          "button_id": 31,
+          "before": "NOT_PRESENT",
+          "after": "UNASSIGNED"
+        },
+        {
+          "layer": "NAV",
+          "position": "TH_D",
+          "button_id": 30,
+          "before": "NOT_PRESENT",
+          "after": "UNASSIGNED"
+        },
+        {
+          "layer": "NAV",
+          "position": "ST_RU",
+          "button_id": 41,
+          "before": "NOT_PRESENT",
+          "after": "Enter"
+        },
+        {
+          "layer": "NAV",
+          "position": "ST_RD",
+          "button_id": 20,
+          "before": "NOT_PRESENT",
+          "after": "Esc"
+        },
+        {
+          "layer": "NAV",
+          "position": "ST_D",
+          "button_id": 23,
+          "before": "NOT_PRESENT",
+          "after": "UNASSIGNED"
+        }
+      ]
+    },
+    "SPARSE6": {
+      "name": "SPARSE6",
+      "profile_prefix": "SHARED R8 SPARSE6",
+      "maps": {
+        "BASIC": {
+          "R1C1": "Tab",
+          "R1C2": "1",
+          "R1C3": "2",
+          "R1C4": "G",
+          "R2C1": "Alt",
+          "R2C2": "3",
+          "R2C3": "Q",
+          "R2C4": "E",
+          "R3C1": "LAYER:NUMBERS",
+          "R3C2": "V",
+          "R3C3": "4",
+          "R3C4": "F",
+          "R4C1": "LAYER:MENUS",
+          "R4C2": "Ctrl",
+          "R4C3": "Shift",
+          "R4C4": "Space",
+          "R5C1": "Z",
+          "R5C2": "X",
+          "R5C3": "C",
+          "R5C4": "R",
+          "L3": "LAYER:TOOLS",
+          "R3": "UNASSIGNED",
+          "TH_U": "LAYER:NAV",
+          "TH_L": "B",
+          "TH_C": "N",
+          "TH_R": "T",
+          "TH_D": "LAYER:SYMBOLS",
+          "ST_RU": "Enter",
+          "ST_RD": "Esc",
+          "ST_D": "Backspace"
+        },
+        "NUMBERS": {
+          "R1C1": "UNASSIGNED",
+          "R1C2": "7",
+          "R1C3": "8",
+          "R1C4": "9",
+          "R2C1": "UNASSIGNED",
+          "R2C2": "4",
+          "R2C3": "5",
+          "R2C4": "6",
+          "R3C1": "LAYER:NUMBERS",
+          "R3C2": "1",
+          "R3C3": "2",
+          "R3C4": "3",
+          "R4C1": "UNASSIGNED",
+          "R4C2": "Ctrl",
+          "R4C3": "Shift",
+          "R4C4": "Space",
+          "R5C1": "UNASSIGNED",
+          "R5C2": "UNASSIGNED",
+          "R5C3": "UNASSIGNED",
+          "R5C4": "UNASSIGNED",
+          "L3": "UNASSIGNED",
+          "R3": "UNASSIGNED",
+          "TH_U": "0",
+          "TH_L": "Minus",
+          "TH_C": "Shift",
+          "TH_R": "Alt",
+          "TH_D": "Right Bracket",
+          "ST_RU": "Enter",
+          "ST_RD": "Esc",
+          "ST_D": "Ctrl"
+        },
+        "MENUS": {
+          "R1C1": "UNASSIGNED",
+          "R1C2": "I",
+          "R1C3": "J",
+          "R1C4": "K",
+          "R2C1": "UNASSIGNED",
+          "R2C2": "UNASSIGNED",
+          "R2C3": "UNASSIGNED",
+          "R2C4": "UNASSIGNED",
+          "R3C1": "UNASSIGNED",
+          "R3C2": "P",
+          "R3C3": "U",
+          "R3C4": "Y",
+          "R4C1": "LAYER:MENUS",
+          "R4C2": "Ctrl",
+          "R4C3": "Shift",
+          "R4C4": "Space",
+          "R5C1": "UNASSIGNED",
+          "R5C2": "Apostrophe",
+          "R5C3": "Alt",
+          "R5C4": "Backslash",
+          "L3": "UNASSIGNED",
+          "R3": "UNASSIGNED",
+          "TH_U": "M",
+          "TH_L": "L",
+          "TH_C": "O",
+          "TH_R": "Tab",
+          "TH_D": "H",
+          "ST_RU": "Enter",
+          "ST_RD": "Esc",
+          "ST_D": "Slash"
+        },
+        "TOOLS": {
+          "R1C1": "UNASSIGNED",
+          "R1C2": "UNASSIGNED",
+          "R1C3": "UNASSIGNED",
+          "R1C4": "UNASSIGNED",
+          "R2C1": "UNASSIGNED",
+          "R2C2": "F4",
+          "R2C3": "F5",
+          "R2C4": "F6",
+          "R3C1": "UNASSIGNED",
+          "R3C2": "F1",
+          "R3C3": "F2",
+          "R3C4": "F3",
+          "R4C1": "UNASSIGNED",
+          "R4C2": "Ctrl",
+          "R4C3": "Shift",
+          "R4C4": "Space",
+          "R5C1": "UNASSIGNED",
+          "R5C2": "F10",
+          "R5C3": "F11",
+          "R5C4": "F12",
+          "L3": "LAYER:TOOLS",
+          "R3": "UNASSIGNED",
+          "TH_U": "F7",
+          "TH_L": "F8",
+          "TH_C": "F9",
+          "TH_R": "Alt",
+          "TH_D": "End",
+          "ST_RU": "Enter",
+          "ST_RD": "Esc",
+          "ST_D": "Delete"
+        },
+        "NAV": {
+          "R1C1": "Home",
+          "R1C2": "Page Up",
+          "R1C3": "Up Arrow",
+          "R1C4": "E",
+          "R2C1": "End",
+          "R2C2": "Page Down",
+          "R2C3": "Down Arrow",
+          "R2C4": "Insert",
+          "R3C1": "Left Bracket",
+          "R3C2": "Left Arrow",
+          "R3C3": "Right Arrow",
+          "R3C4": "Delete",
+          "R4C1": "Alt",
+          "R4C2": "Ctrl",
+          "R4C3": "Shift",
+          "R4C4": "Space",
+          "R5C1": "Esc",
+          "R5C2": "Backtick",
+          "R5C3": "Comma",
+          "R5C4": "Enter",
+          "L3": "Backspace",
+          "R3": "UNASSIGNED",
+          "TH_U": "LAYER:NAV",
+          "TH_L": "UNASSIGNED",
+          "TH_C": "UNASSIGNED",
+          "TH_R": "UNASSIGNED",
+          "TH_D": "UNASSIGNED",
+          "ST_RU": "Enter",
+          "ST_RD": "Esc",
+          "ST_D": "UNASSIGNED"
+        },
+        "SYMBOLS": {
+          "R1C1": "Left Bracket",
+          "R1C2": "Right Bracket",
+          "R1C3": "Minus",
+          "R1C4": "Equals",
+          "R2C1": "Semicolon",
+          "R2C2": "Apostrophe",
+          "R2C3": "Backslash",
+          "R2C4": "Slash",
+          "R3C1": "Backtick",
+          "R3C2": "Comma",
+          "R3C3": "Period",
+          "R3C4": "Caps Lock",
+          "R4C1": "Tab",
+          "R4C2": "Ctrl",
+          "R4C3": "Shift",
+          "R4C4": "Space",
+          "R5C1": "Esc",
+          "R5C2": "UNASSIGNED",
+          "R5C3": "UNASSIGNED",
+          "R5C4": "Enter",
+          "L3": "Backspace",
+          "R3": "UNASSIGNED",
+          "TH_U": "UNASSIGNED",
+          "TH_L": "UNASSIGNED",
+          "TH_C": "UNASSIGNED",
+          "TH_R": "UNASSIGNED",
+          "TH_D": "LAYER:SYMBOLS",
+          "ST_RU": "Enter",
+          "ST_RD": "Esc",
+          "ST_D": "UNASSIGNED"
+        }
+      },
+      "layer_count": 6,
+      "selectors": {
+        "NUMBERS": 2,
+        "MENUS": 1,
+        "TOOLS": 36,
+        "NAV": 28,
+        "SYMBOLS": 30
+      },
+      "status": "NATIVE_CANDIDATE_NOT_IMPORTED",
+      "unique_logical_outputs": 78,
+      "changes_from_R6": [
+        {
+          "layer": "BASIC",
+          "position": "R2C1",
+          "button_id": 3,
+          "before": "T",
+          "after": "Alt"
+        },
+        {
+          "layer": "BASIC",
+          "position": "TH_R",
+          "button_id": 31,
+          "before": "Alt",
+          "after": "T"
+        },
+        {
+          "layer": "BASIC",
+          "position": "TH_D",
+          "button_id": 30,
+          "before": "Caps Lock",
+          "after": "LAYER:SYMBOLS"
+        },
+        {
+          "layer": "NUMBERS",
+          "position": "R4C4",
+          "button_id": 14,
+          "before": "Alt",
+          "after": "Space"
+        },
+        {
+          "layer": "NUMBERS",
+          "position": "TH_R",
+          "button_id": 31,
+          "before": "Equals",
+          "after": "Alt"
+        },
+        {
+          "layer": "MENUS",
+          "position": "R4C4",
+          "button_id": 14,
+          "before": "Alt",
+          "after": "Space"
+        },
+        {
+          "layer": "MENUS",
+          "position": "R5C3",
+          "button_id": 13,
+          "before": "Semicolon",
+          "after": "Alt"
+        },
+        {
+          "layer": "TOOLS",
+          "position": "R4C4",
+          "button_id": 14,
+          "before": "Alt",
+          "after": "Space"
+        },
+        {
+          "layer": "TOOLS",
+          "position": "TH_R",
+          "button_id": 31,
+          "before": "Page Down",
+          "after": "Alt"
+        },
+        {
+          "layer": "NAV",
+          "position": "R1C4",
+          "button_id": 17,
+          "before": "Alt",
+          "after": "E"
+        },
+        {
+          "layer": "NAV",
+          "position": "R4C1",
+          "button_id": 1,
+          "before": "Period",
+          "after": "Alt"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R1C1",
+          "button_id": 4,
+          "before": "NOT_PRESENT",
+          "after": "Left Bracket"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R1C2",
+          "button_id": 8,
+          "before": "NOT_PRESENT",
+          "after": "Right Bracket"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R1C3",
+          "button_id": 12,
+          "before": "NOT_PRESENT",
+          "after": "Minus"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R1C4",
+          "button_id": 17,
+          "before": "NOT_PRESENT",
+          "after": "Equals"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R2C1",
+          "button_id": 3,
+          "before": "NOT_PRESENT",
+          "after": "Semicolon"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R2C2",
+          "button_id": 7,
+          "before": "NOT_PRESENT",
+          "after": "Apostrophe"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R2C3",
+          "button_id": 11,
+          "before": "NOT_PRESENT",
+          "after": "Backslash"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R2C4",
+          "button_id": 16,
+          "before": "NOT_PRESENT",
+          "after": "Slash"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R3C1",
+          "button_id": 2,
+          "before": "NOT_PRESENT",
+          "after": "Backtick"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R3C2",
+          "button_id": 6,
+          "before": "NOT_PRESENT",
+          "after": "Comma"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R3C3",
+          "button_id": 10,
+          "before": "NOT_PRESENT",
+          "after": "Period"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R3C4",
+          "button_id": 15,
+          "before": "NOT_PRESENT",
+          "after": "Caps Lock"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R4C1",
+          "button_id": 1,
+          "before": "NOT_PRESENT",
+          "after": "Tab"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R4C2",
+          "button_id": 5,
+          "before": "NOT_PRESENT",
+          "after": "Ctrl"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R4C3",
+          "button_id": 9,
+          "before": "NOT_PRESENT",
+          "after": "Shift"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R4C4",
+          "button_id": 14,
+          "before": "NOT_PRESENT",
+          "after": "Space"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R5C1",
+          "button_id": 37,
+          "before": "NOT_PRESENT",
+          "after": "Esc"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R5C2",
+          "button_id": 38,
+          "before": "NOT_PRESENT",
+          "after": "UNASSIGNED"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R5C3",
+          "button_id": 13,
+          "before": "NOT_PRESENT",
+          "after": "UNASSIGNED"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R5C4",
+          "button_id": 18,
+          "before": "NOT_PRESENT",
+          "after": "Enter"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "L3",
+          "button_id": 36,
+          "before": "NOT_PRESENT",
+          "after": "Backspace"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "R3",
+          "button_id": 19,
+          "before": "NOT_PRESENT",
+          "after": "UNASSIGNED"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "TH_U",
+          "button_id": 28,
+          "before": "NOT_PRESENT",
+          "after": "UNASSIGNED"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "TH_L",
+          "button_id": 29,
+          "before": "NOT_PRESENT",
+          "after": "UNASSIGNED"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "TH_C",
+          "button_id": 22,
+          "before": "NOT_PRESENT",
+          "after": "UNASSIGNED"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "TH_R",
+          "button_id": 31,
+          "before": "NOT_PRESENT",
+          "after": "UNASSIGNED"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "TH_D",
+          "button_id": 30,
+          "before": "NOT_PRESENT",
+          "after": "LAYER:SYMBOLS"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "ST_RU",
+          "button_id": 41,
+          "before": "NOT_PRESENT",
+          "after": "Enter"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "ST_RD",
+          "button_id": 20,
+          "before": "NOT_PRESENT",
+          "after": "Esc"
+        },
+        {
+          "layer": "SYMBOLS",
+          "position": "ST_D",
+          "button_id": 23,
+          "before": "NOT_PRESENT",
+          "after": "UNASSIGNED"
+        }
+      ]
+    }
+  },
+  "r8_tradeoffs": [
+    "BASIC Alt is now little-finger button3; T moves to thumb31. Alt+movement gains a distinct modeled route; T+movement loses one. Direction/reach comfort remains unmeasured.",
+    "Ctrl5, Shift9 and Space14 remain at the same locations across all banks. This preserves logical availability, not proof of held-output continuity across a layer transition.",
+    "CORE5 adds deliberate thumb-held NAV28. H moves from BASIC28 to MENUS28. The NUMBERS zero remains at finger13; the full numeric grid is preserved.",
+    "CORE5 NUMBERS keeps the 1–9 and zero grid plus alternate Ctrl18 and Shift38. Alt uses thumb23 instead of Comma, which remains in NAV; Alt with 5–0 while moving is not independently available there.",
+    "SPARSE6 preserves all nine extra user-source finger blanks; adds SYMBOLS on thumb30 instead of BASIC Caps Lock. Caps Lock remains on SYMBOLS.",
+    "NAV and SYMBOLS occupy the thumb while held. No independent thumbstick movement is claimed there.",
+    "NAV E17 with arrows provides a same-bank pouch/confirm chord route; this is deliberate access, not proof of a current Elden Ring preset.",
+    "TOOLS Alt on thumb31 trades simultaneous movement for retaining the F-key grid and Space14.",
+    "Number presence is not urgent access. F1 healing, 5–0 hotbar actions and C+2/C+4 remain candidates for scoped game-side rebinding or later physical validation.",
+    "No extra function bank or new default game remap is silently introduced. Existing R6 remains a rollback/comparison candidate, not a current live-state backup."
+  ]
+}

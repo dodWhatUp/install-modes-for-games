@@ -1,0 +1,194 @@
+{
+  "revision": "R8",
+  "target_repo": "dodWhatUp/install-modes-for-games",
+  "target_path": "research_outputs/input-controls/azeron-keybinds/r8",
+  "roles": "reviewed authored source and sanitized QA only",
+  "files": [
+    {
+      "name": "CODEX_COORDINATION.md",
+      "bytes": 7511,
+      "sha256": "87d77b98a1f53060ad7733d27a3c3c379529f8d2e0f0b29a5302f08d65feac4b",
+      "git_blob": "7e3c012c58520a0eae155069761b67a72fd12639"
+    },
+    {
+      "name": "CONTINUITY_R8.md",
+      "bytes": 2594,
+      "sha256": "e5b35784479199902edc36eba200c48b9dfe1707f64bba65d25c4dac0f7ca993",
+      "git_blob": "bb46e05f8178cfbea6f6f81f4526316e219618a2"
+    },
+    {
+      "name": "DESIGN_R8.json",
+      "bytes": 28166,
+      "sha256": "d65c807e0256447f81aa466fe4da0bd1cd252d0fbdff346687c8e02047c8b724",
+      "git_blob": "98909269b98bf5ec2d08d30801fb68461765e132"
+    },
+    {
+      "name": "PREFERENCES_DELTA_R8.json",
+      "bytes": 1008,
+      "sha256": "4de190dde47c5ca03d7f5e31e1d8d6991d6b2c1dbf58ee8de0eb297fd8b1718e",
+      "git_blob": "471c533a0613390d05bdf9b3c99155d92b7a82a6"
+    },
+    {
+      "name": "QA_ATLAS_R8.json",
+      "bytes": 326,
+      "sha256": "751f9db9c317c8970c4999c226684599b1d76c5dfb3386524d5381e8f2f70937",
+      "git_blob": "b9b168f3afb925ba4bf9f19ba35e51200dcc74cb"
+    },
+    {
+      "name": "QA_COLLECTOR_R8.json",
+      "bytes": 166,
+      "sha256": "3b7a28a01557fcd45ef5730a29c3f9b7fdba9e5fe74e43816da25efaa151e04a",
+      "git_blob": "1153883b593a7e6a52f5247ed8737a41471daa01"
+    },
+    {
+      "name": "QA_NATIVE_R8.json",
+      "bytes": 1323,
+      "sha256": "a1c4b1cd687c2c6d29a87899532d582dcaf2a9193304fa1b7276bef0642ee61e",
+      "git_blob": "5ce3f27096361ad299e3cb44b9c14c2222c0db50"
+    },
+    {
+      "name": "QA_REPRODUCTION_R8.json",
+      "bytes": 1551,
+      "sha256": "ccb6ed28a8c2bfb13f5d42a6746c9ba55ace0e34e233c42c6f7b6fc9197612b9",
+      "git_blob": "fcc30fee7a3e8f7fc4cdefd0bc74942f790f00f7"
+    },
+    {
+      "name": "QA_SUMMARY_R8.json",
+      "bytes": 865,
+      "sha256": "d6a0a71f432cd1459c9157ddd12621a867f80f5edb7efd7e05e1d331036b5ab2",
+      "git_blob": "4296e047268b5bf0fa78936f2abbb52fa99552ef"
+    },
+    {
+      "name": "QA_UI_EVENTS_R8.json",
+      "bytes": 189,
+      "sha256": "a7b2a1defd1f7d19919f84721140c7b73fbc3c59040c7aba67c0c94c43de0903",
+      "git_blob": "9e9bd0e7de1040d967d95758afeebecd79d13ca9"
+    },
+    {
+      "name": "README.md",
+      "bytes": 3413,
+      "sha256": "b7aeeb2b5f5680f786dfe5a267c6c933e76d717a8bd7e23596b43501e13a396b",
+      "git_blob": "201c2fc7d6c269dc034e5d138da242ee88acd489"
+    },
+    {
+      "name": "REPRODUCTION.md",
+      "bytes": 3240,
+      "sha256": "09d86d0c8b7fe7bc9b96e292cf44f52f2112b1531077ee4ae135089df123cf23",
+      "git_blob": "d0c203471187467b7ffaa8b419324a6baf12ec87"
+    },
+    {
+      "name": "REQUEST_CAPTURE_R8.md",
+      "bytes": 1751,
+      "sha256": "ea826523fe215e56f3afce776473e2352691bfea3a6942e506290fd2eeeb35b7",
+      "git_blob": "f8855492ab958bd83beb19594e55aacdbb58f3c6"
+    },
+    {
+      "name": "RESEARCH_R8_HE.md",
+      "bytes": 20135,
+      "sha256": "d7e7699ef484ac3b562eb0fdfbf4b35caed1465bea05c7e42193a376bb97fb93",
+      "git_blob": "83edd4fd6c57efc2b80f1888e49c40dc7d28e394"
+    },
+    {
+      "name": "SOURCES_R8.json",
+      "bytes": 6070,
+      "sha256": "3b6bfbec7bf31083dd0a2783444c41ef37c107f9fa011b8bf540183932ac4ca6",
+      "git_blob": "6924c0a0e483a99e0e869ac16ff45393794e4368"
+    },
+    {
+      "name": "atlas_core.js",
+      "bytes": 3025,
+      "sha256": "580da7e7e327416fd716876c1f08a1b82a07ccd5a25c800dfbb9ab547aa9f035",
+      "git_blob": "91e78bd49ca98263e59f32101dcc289933ed15e8"
+    },
+    {
+      "name": "atlas_template.html",
+      "bytes": 18725,
+      "sha256": "41f76c54f6bdb731e4ab2f49bdb8d5659bf45b700f8aa0cba6eebce30b1b7f9c",
+      "git_blob": "f6fe7a6279a8ab127efdc6db9789e4ba948e03ab"
+    },
+    {
+      "name": "audit_designs.py",
+      "bytes": 5588,
+      "sha256": "832a91a6860960928b2a515d9fe62eb71cfe7430d9ee04d7aee0f9b0e195cbd9",
+      "git_blob": "323d78dfc1b6e205eb8e4f648deee6aefa6a6320"
+    },
+    {
+      "name": "build_atlas.py",
+      "bytes": 3320,
+      "sha256": "b96cc26a107ad6df1ee16346e45fb0c9ba22bf374ccf01c55c5d1171771fee8f",
+      "git_blob": "868f47191084b0d10f7e6e7152dd24c2bcf25b77"
+    },
+    {
+      "name": "check_artifacts.py",
+      "bytes": 3971,
+      "sha256": "b639f2623f38bc7b2662ca0b6f67b4df7181f5717966d08ec1a9de3643fe4f68",
+      "git_blob": "3b3a53f185fee62de2f9fa6e64c45e0508fe7412"
+    },
+    {
+      "name": "collect_input_evidence.py",
+      "bytes": 9016,
+      "sha256": "653b02cc6bfa668bbd0078b76c43f0958fc8c22227d29093894893797825bb37",
+      "git_blob": "80281aafa11c4a399e2042f2de7e74519cf2a481"
+    },
+    {
+      "name": "compile_profiles.py",
+      "bytes": 4633,
+      "sha256": "5e408d7953702165c8696d2b2abe0c0c40893f875e06cd6325ac3ab8f940b6a4",
+      "git_blob": "afafdc85600939a5d0b8b84dcbf1faca54ec7198"
+    },
+    {
+      "name": "design_r8.py",
+      "bytes": 5084,
+      "sha256": "a73bdf32be8f3e3f9c60fb6e57f6efa7136a5b0543bc8125d759f1674f1708d9",
+      "git_blob": "48a74dc3a7f4e4824cafc8b601aeacf457cc9d26"
+    },
+    {
+      "name": "extend_actions.py",
+      "bytes": 5629,
+      "sha256": "585a63ac743c34f1ee965f73c5749996ea19b451114e3210c27069b55707fb0f",
+      "git_blob": "b86805ff4e508fadcbf7be64d0b8da2ee5a75871"
+    },
+    {
+      "name": "prepare_inputs.py",
+      "bytes": 2081,
+      "sha256": "5a1ce305f3466ab205d1515cdb876992b78b4ccbe56fc3c6578fa83f1f3bf53d",
+      "git_blob": "28addeb8170ed6b5aef9609d02ace83c88f6bb8d"
+    },
+    {
+      "name": "render_markdown.py",
+      "bytes": 3148,
+      "sha256": "b7f625d3ecfb466a07e44bdb810fd604530aaf7c8bd450efd2e168958c1b8d2b",
+      "git_blob": "ed2bd1aed5c6cfbf11830776f7823c204acd9f11"
+    },
+    {
+      "name": "test_atlas.js",
+      "bytes": 9212,
+      "sha256": "4d8eea63298865688f2d03d97fda15ff263eac9c80524beecf35e964e8b60b0c",
+      "git_blob": "1ee486543ec0564117772095a37218d6e20319cb"
+    },
+    {
+      "name": "test_collector.py",
+      "bytes": 3863,
+      "sha256": "aa078e1531d07368e491818136fb55894cbca1b85cb77feb17a8d94619d8f4da",
+      "git_blob": "b91bfc349fbb7a0f12c50405e0f783b8187ab1a7"
+    },
+    {
+      "name": "test_ui_events.js",
+      "bytes": 7816,
+      "sha256": "b5bd7940c7cbf2ec3240bb8a4f0eb2076649ab32d7b7ccfaf095494f58e23482",
+      "git_blob": "11dc5aeb4f72defac3ad0de71d86e264f38b252b"
+    },
+    {
+      "name": "validate_profiles.py",
+      "bytes": 7125,
+      "sha256": "988b262cf32dcbe22e10c2731e05b89a71f20a69ccfe7cd9cfde0663dd98def1",
+      "git_blob": "c801310eb4b96763f3943cf061704e340da0bb1c"
+    }
+  ],
+  "not_included": [
+    "native profile UUIDs/payloads",
+    "original publisher PDF",
+    "live Windows configs",
+    "large derived action/access tables"
+  ]
+}

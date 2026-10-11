@@ -1,0 +1,110 @@
+{
+  "revision": "R8",
+  "source_records": [
+    {
+      "id": "H-ABILITY",
+      "title": "Ability-based optimization of touchscreen interactions",
+      "url": "https://userinterfaces.aalto.fi/ability-based-optimization/",
+      "kind": "authors_research_summary_and_abstract",
+      "checked": "2026-10-11",
+      "fact": "The approach evaluates alternative interfaces against task-specific models parameterized by individual abilities.",
+      "inference": "Use targeted personal constraints and task demands rather than an average-hand universal score.",
+      "limit": "Touchscreen text entry, not an Azeron/game benchmark; no clinical or speed claim for the user."
+    },
+    {
+      "id": "H-FINGER",
+      "title": "Independence and control of the fingers depend on direction and contraction mode",
+      "url": "https://experts.mcmaster.ca/scholarly-works/1313336",
+      "kind": "authors_university_research_record",
+      "checked": "2026-10-11",
+      "fact": "The reported study used twelve participants and force tasks varying direction/contraction conditions; independence depended on those conditions and finger proximity.",
+      "inference": "Finger-column conflicts are screening hypotheses; source-specific physical press directions still need testing.",
+      "limit": "Abstract and record reviewed; not a rapid keypad or subject-specific comfort study."
+    },
+    {
+      "id": "G-BAYO",
+      "title": "Bayonetta PC official manual",
+      "url": "https://store.steampowered.com/manual/460790",
+      "kind": "publisher_manual",
+      "checked": "2026-10-11",
+      "locator": "Printed pp5-7; p5 table visually inspected from document rendering.",
+      "sha256": "621188b7c779e3a6edecb3bd908e6d35beb3cdf3f138061a76f9ed89f72e61f0",
+      "bytes": 13301067,
+      "fact": "Alt is held lock-on; Ctrl is held walk; Shift supports directional evade. Home differs between gameplay and menus.",
+      "inference": "Direct non-thumb Alt and context-qualified labels resolve consequential design/display problems.",
+      "limit": "First PC game only; no sequel/adapter/effective-installation inference. Source PDF retained at publisher; no full manual distributed in public Git."
+    },
+    {
+      "id": "G-GOW",
+      "title": "God of War Ragnarok accessibility",
+      "url": "https://www.playstation.com/en-us/games/god-of-war-ragnarok/accessibility/",
+      "kind": "publisher_documentation",
+      "checked": "2026-10-11",
+      "locator": "Alternative controls / Hold and presses",
+      "fact": "The source documents hold/toggle choices for block and aim, evade styles and sprint input alternatives.",
+      "inference": "Gesture/preset settings change the concurrent-input graph even when the action name is the same.",
+      "limit": "Controller-oriented guide; no exact PC default key table or user-selected option established."
+    },
+    {
+      "id": "G-CP",
+      "title": "Cyberpunk controls support",
+      "url": "https://support.cdprojektred.com/en/cyberpunk/pc/gameplay/issue/2407/i-am-experiencing-issues-with-controls",
+      "kind": "publisher_support",
+      "checked": "2026-10-11",
+      "fact": "CDPR asks for UserSettings.json and information about input scheme when diagnosing controls.",
+      "inference": "Read input configuration evidence before converting generic reference labels into effective labels.",
+      "limit": "The source does not establish the complete XML schema or that one JSON contains every override."
+    },
+    {
+      "id": "E-POE",
+      "title": "Public PoE2 configuration example — format only",
+      "url": "https://github.com/jakeuj/poe_production_Config/blob/736a1ded73559499c89552f920067772168f611d/poe2_production_Config.ini",
+      "kind": "third_party_authored_primary_config_example_NOT_default",
+      "checked": "2026-10-11",
+      "git_blob": "cd7ee28c381bf6c65d65cb58279a69e6a4499528",
+      "locator": "ACTION_KEYS, WASD_ACTION_KEYS and bounded input-mode fields",
+      "fact": "The file has separate action banks and different encodings for similarly named skill actions; it includes multiple mode indicators.",
+      "inference": "Collector keeps banks/mode fields separate and raw flags unresolved.",
+      "limit": "Not the user's file and not official defaults. Private/account/graphics values are not used as user preferences or copied into the Atlas."
+    },
+    {
+      "id": "P-GRAPHICS",
+      "title": "Existing game-tools graphics controls",
+      "url": "https://github.com/dodWhatUp/install-modes-for-games/blob/3cc9a6673311a068ee2d833b723501587b9d7920/docs/GRAPHICS-CONTROLS.md",
+      "kind": "current_owner_guidance",
+      "checked": "2026-10-11",
+      "git_blob": "bb1e18affdc8877f44071c5f4f8e6b3913ae44fd",
+      "fact": "Owner guidance reserves Delete for ReShade, Home for OptiScaler and F12 for one shared game-engine interface where supported.",
+      "inference": "Bayonetta Home/Delete may conflict if those tools are actually active; collect effective state rather than silently rebind.",
+      "limit": "A scoped installation default is not evidence of the live tool stack or permission to change shortcuts."
+    }
+  ],
+  "access_limits": [
+    {
+      "url": "https://game.capcom.com/manual/re4/en/steam/page/1/1",
+      "result": "403",
+      "action": "Not bypassed; no contents claimed."
+    },
+    {
+      "url": "https://game.capcom.com/manual/bio6/en-UK/page-102.html",
+      "result": "403",
+      "action": "Not bypassed; previous R6 source notes retained as historical only."
+    },
+    {
+      "source": "DMC Steam manual endpoints tested in bounded source scan",
+      "result": "No usable manual returned",
+      "action": "No key table fabricated or borrowed from a different title/port."
+    },
+    {
+      "source": "Prior real-browser rendering route",
+      "result": "Administrator-blocked in earlier turns",
+      "action": "Not retried or bypassed. R8 UI checks are static/pure logic only."
+    }
+  ],
+  "distinctions": [
+    "Source fact",
+    "Design inference",
+    "Personal preference",
+    "Unverified current state"
+  ]
+}

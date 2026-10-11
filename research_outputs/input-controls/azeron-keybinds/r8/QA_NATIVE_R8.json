@@ -1,0 +1,46 @@
+{
+  "revision": "R8",
+  "status": "NATIVE_STRUCTURE_AND_REBUILD_PASS_NOT_RUNTIME",
+  "families": [
+    {
+      "family": "CORE5",
+      "profiles": 5,
+      "input_records": 215,
+      "digital_cells": 150,
+      "keyboard_cells": 117,
+      "links": 8,
+      "disabled": 25,
+      "outputs": 78,
+      "all_nonvisual_records_preserved": true,
+      "ids_disjoint_from_priors": true,
+      "reserved19_disabled": true,
+      "Ctrl_Shift_Space_same_positions_all_layers": true
+    },
+    {
+      "family": "SPARSE6",
+      "profiles": 6,
+      "input_records": 258,
+      "digital_cells": 180,
+      "keyboard_cells": 128,
+      "links": 10,
+      "disabled": 42,
+      "outputs": 78,
+      "all_nonvisual_records_preserved": true,
+      "ids_disjoint_from_priors": true,
+      "reserved19_disabled": true,
+      "Ctrl_Shift_Space_same_positions_all_layers": true
+    }
+  ],
+  "profile_files": 11,
+  "digital_cells": 330,
+  "native_input_records": 473,
+  "directed_links": 18,
+  "deterministic_repeat_byte_identical": true,
+  "prior_files_checked_unchanged": 17,
+  "original_native_profiles_checked": 18,
+  "original_archive_sha256": "aa5f64b063a6a3bb39f77fc0fc6ca2b7743e038f54a4fd16cc68f98c0784947f",
+  "native_import_tested": false,
+  "physical_tested": false,
+  "gameplay_tested": false,
+  "current_live_backup": false
+}

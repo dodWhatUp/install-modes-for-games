@@ -1,0 +1,25 @@
+{
+  "revision": "R8",
+  "scope": "Azeron/game-controls only",
+  "confirmed_user_requests": [
+    "Universal-first layered design; genre variants secondary",
+    "Preserve sparse-finger option alongside a compact/core option",
+    "Reserve and hide index-side19; omit joystick drawing only; keep29remaining controls",
+    "MENUS not LETTERS",
+    "Readable action/key plus optional icons/category colors and future search",
+    "Create actual native files and preserve recovery",
+    "Coordinate with existing Codex/Hub/Studio work without manual retransfers"
+  ],
+  "new_design_proposals_not_confirmed_user_preferences": [
+    "Ctrl5/Shift9/Space14 fixed in every R8 bank",
+    "Alt on little-finger3 and T on thumb31",
+    "CORE5 or SPARSE6 additional banks"
+  ],
+  "effects_not_authorized_by_publication": [
+    "Automatic native import",
+    "Changing game controls",
+    "Starting games, captures or a background listener",
+    "Adopting a global preference",
+    "Merging unrelated task branches"
+  ]
+}

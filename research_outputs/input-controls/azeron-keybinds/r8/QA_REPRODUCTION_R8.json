@@ -1,0 +1,82 @@
+{
+  "revision": "R8",
+  "status": "ISOLATED_REBUILD_PASS",
+  "steps": [
+    {
+      "step": "prepare_inputs.py",
+      "exit_code": 0
+    },
+    {
+      "step": "design_r8.py",
+      "exit_code": 0
+    },
+    {
+      "step": "compile_profiles.py",
+      "exit_code": 0
+    },
+    {
+      "step": "validate_profiles.py",
+      "exit_code": 0
+    },
+    {
+      "step": "extend_actions.py",
+      "exit_code": 0
+    },
+    {
+      "step": "audit_designs.py",
+      "exit_code": 0
+    },
+    {
+      "step": "build_atlas.py",
+      "exit_code": 0
+    },
+    {
+      "step": "render_markdown.py",
+      "exit_code": 0
+    },
+    {
+      "step": "test_atlas.js",
+      "exit_code": 0
+    },
+    {
+      "step": "test_ui_events.js",
+      "exit_code": 0
+    },
+    {
+      "step": "test_collector.py",
+      "exit_code": 0
+    },
+    {
+      "step": "check_artifacts.py",
+      "exit_code": 0
+    },
+    {
+      "output": "DESIGN_R8.json",
+      "byte_identical": true
+    },
+    {
+      "output": "ACTIONS_R8.json",
+      "byte_identical": true
+    },
+    {
+      "output": "AUDIT_R8.json",
+      "byte_identical": true
+    },
+    {
+      "output": "REGRESSIONS_AND_GAINS_R8.json",
+      "byte_identical": true
+    },
+    {
+      "output": "Azeron_R8_Action_Atlas_HE.html",
+      "byte_identical": true
+    },
+    {
+      "output": "Azeron_R8_Research_HE.html",
+      "byte_identical": true
+    }
+  ],
+  "native_profiles_byte_identical": 11,
+  "native_private_manifest_byte_identical": true,
+  "live_settings_changed": false,
+  "browser_rendered": false
+}

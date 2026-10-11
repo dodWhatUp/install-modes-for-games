@@ -1,0 +1,7 @@
+{
+  "ui_event_assertions": 16,
+  "environment": "minimal DOM fixture, NOT browser rendering",
+  "actual_game_or_device": false,
+  "native_inputs_sent": false,
+  "external_network": false
+}
