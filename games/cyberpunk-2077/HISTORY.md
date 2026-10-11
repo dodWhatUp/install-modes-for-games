@@ -1,5 +1,11 @@
 ﻿# Cyberpunk 2077 — History
 
+## 2026-10-11 — R8 read-only Windows input reconciliation
+
+- Read UserSettings, shipped input mappings/contexts and current CET/ReShade input owners without launching the game or changing settings. Collected 92 saved IK candidates and 855 XML IK records; 242 overridable button records were joined to saved candidates/context references. Quick Save remains IK_F5, Quick Load IK_F6; configured CET/Ultra+ F12, GraphicsHotkeys F9 and ReShade Delete are preserved.
+- Effective context/includes, packed-mod overrides and reWASD remap state remain unknown. No candidate is EFFECTIVE_VERIFIED. Current hashes are in the [sanitized receipt](../../evidence/AZERON-R8-WINDOWS-READ-2026-10-11.json); selected input receipts stay in the existing private Drive route.
+- The [Windows receipt](../../docs/AZERON-R8-WINDOWS-READ-2026-10-11.md) records two source fixes, passed offline checks and unchanged files/profiles. R8 was not selected/imported; physical/game/host tests were not run. No runtime rollback is required. Next is input-context/remapper reconciliation and a separately selected/authorized family installation. Deferred game/benchmark work remains deferred.
+
 ## 2026-10-11 — Mandatory FG/memory benchmark preflight and guidance publication
 
 - User requested preserving the Dynamic MFG masking risk and Ultra+ memory-warning situation in canonical GitHub and Drive guidance, and checking adaptive FG is inactive before ordinary performance comparisons.

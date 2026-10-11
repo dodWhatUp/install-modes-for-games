@@ -26,7 +26,7 @@ def build(r8,out):
  anchor='<button id="clear" type="button">'
  assert text.count(anchor)==1
  text=text.replace(anchor,'<label><input id="toolHints" type="checkbox"> בדיקת חפיפה אפשרית לכלי גרפיקה</label>'+anchor)
- core=(ROOT/'atlas_checks.js').read_text();adapter=(ROOT/'atlas_checked_adapter.js').read_text()
+ core=(ROOT/'atlas_checks.js').read_text(encoding='utf-8');adapter=(ROOT/'atlas_checked_adapter.js').read_text(encoding='utf-8')
  text=text.replace('</body>','<script>'+core+'</script><script>'+adapter+'</script></body>')
  text=text.replace('R8: פרופילים חדשים ומפת פעולות תואמת','R8: אותה פריסה, עם בדיקות לפני שימוש')
  text=text.replace('CORE5 ו־SPARSE6 הן חלופות — לא צריך לייבא את שתיהן.','CORE5 ו־SPARSE6 הן חלופות — לא צריך לייבא את שתיהן. נוספו בדיקת צד Ctrl/Shift/Alt ואזהרות כלי גרפיקה מותנות; לא זוהתה התקנה חיה.')

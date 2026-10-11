@@ -1,0 +1,165 @@
+{
+  "schema": "azeron-r8-windows-consumption/v1",
+  "created_utc": "2026-10-11T17:01:00.806577+00:00",
+  "source_owner": "dodWhatUp/install-modes-for-games",
+  "source_head_read": "b827c7f35e3aee85690842d945c0664a7ad397e9",
+  "original_r8_source_commit": "b4fe0a476d70244a8afe259b64814a78178825a3",
+  "consumer_context": "This Windows Codex chat; other chat consumption is not asserted",
+  "scope": "READ_ONLY_PREPARATION_AND_RESEARCH",
+  "family_chosen": null,
+  "family_installed": "NOT_INSTALLED",
+  "game_config_sources": [
+    {
+      "basename": "poe2_production_Config.ini",
+      "bytes": 14117,
+      "sha256": "80d43307923862d0c2816349362888315fdb0cdfcd68eb6b7e0d2097212269be",
+      "mtime_utc": "2026-10-11T02:50:15.784384+00:00"
+    },
+    {
+      "basename": "UserSettings.json",
+      "bytes": 91708,
+      "sha256": "5f5a82da949e88945040af8a61cc67bef48c91ed0e8c9eec8d2953dfdbc5b4da",
+      "mtime_utc": "2026-10-11T02:39:52.443789+00:00"
+    },
+    {
+      "basename": "inputUserMappings.xml",
+      "bytes": 74062,
+      "sha256": "a57bd58879f3846f300ec9c30fc8111890b9d3aeb6b82842dc4070930e0ff48e",
+      "mtime_utc": "2026-09-02T17:01:25.923649+00:00"
+    },
+    {
+      "basename": "inputContexts.xml",
+      "bytes": 103646,
+      "sha256": "ce780595b77a060119a063434eb4b7dab2312e55252c772ef7ff17428bb90d70",
+      "mtime_utc": "2026-09-02T16:57:28.080861+00:00"
+    }
+  ],
+  "poe2": {
+    "bank_counts": {
+      "ACTION_KEYS": 97,
+      "WASD_ACTION_KEYS": 97
+    },
+    "different_bank_records": 14,
+    "input_mode": "UNRESOLVED_CONFLICT",
+    "GENERAL_user_input_mode": "wasd",
+    "GENERAL_last_selected_KBM_input_mode": "wasd",
+    "UI_use_wasd_to_move": "false",
+    "modifier_tokens_unresolved": [
+      2
+    ],
+    "equipped_skill_names": "UNKNOWN"
+  },
+  "cyberpunk": {
+    "saved_ik_records": 92,
+    "mapping_ik_records": 855,
+    "context_ik_records": 0,
+    "context_action_map_references": 723,
+    "overridable_button_join_records": 242,
+    "joins_with_saved_override_candidates": 227,
+    "duplicate_saved_option_ids": 0,
+    "quickSave": "IK_F5",
+    "quickLoad": "IK_F6",
+    "CET_overlay_configured": "F12",
+    "GraphicsHotkeys_configured": "F9",
+    "ReShade_menu_configured": "Delete",
+    "effective_inputs": "UNKNOWN",
+    "reWASD_engine_present": true,
+    "reWASD_effective_remap_state": "UNKNOWN",
+    "packed_mod_input_override_audit": "NOT_COMPLETE"
+  },
+  "native_store": {
+    "saved_software_profiles": 23,
+    "SHARED_R5_profiles": 4,
+    "R8_profiles": 0,
+    "unresolved_saved_layer_targets": 0,
+    "prior_profiles_content_unchanged": 23,
+    "global_files_content_unchanged": 2,
+    "app_running_at_inspection": false,
+    "live_UI_verified": false,
+    "onboard_state_verified": false,
+    "complete_native_export_created": false
+  },
+  "tests": {
+    "Windows_metadata_regressions": {
+      "passed": 7,
+      "failed": 0
+    },
+    "preflight_python": {
+      "run": 48,
+      "passed": 46,
+      "skipped": 2,
+      "failed": 0,
+      "skip_reason": "Symlink creation unavailable; mocked reparse refusal regression passed"
+    },
+    "atlas_extra_checks": 13,
+    "atlas_query_contracts": 37,
+    "atlas_DOM_assertions": 16,
+    "rehearsal_final": "OFFLINE_CHECKS_PASSED",
+    "native_family_comparisons": "BOTH_ABSENT_IN_SUPPLIED_SNAPSHOT",
+    "profile_preservation": "PASS_FOR_SUPPLIED_AND_RECHECKED_FILES",
+    "effective_game_mapping": "UNKNOWN",
+    "physical_outputs_comfort_keyup": "NOT_RUN",
+    "native_import": "NOT_RUN",
+    "browser_host_overlay": "NOT_RUN"
+  },
+  "resolved_failures": [
+    "Windows Python 3.12 lstat/fstat ctime mismatch: modified-file fixture reproduced; cross-API identity uses birthtime, independent path/path and handle/handle ctime checks retained.",
+    "Atlas JS source default cp1252 decoding: explicit UTF-8 reads fix the observed Windows build failure.",
+    "23-profile aggregate JSON exceeded conservative node limit: unchanged files supplied using the documented v2 ZIP layout; bounds were not raised."
+  ],
+  "package_verification": {
+    "preflight_zip_sha256": "9b727440c63952ef06fe24a066057173beaab4aa98585fc4adc3bd4244b5f3cd",
+    "preflight_manifest_entries": 33,
+    "original_source_bytes_match_pinned_git": true,
+    "R8_recovery_sha256": "467a57df9360c5eb6c90861cad5933004e8e2c67e2e0bd96d2072ea24b3479de",
+    "CORE5_sha256": "d4e3bb2b744e783a0172d6b8466b85bbc9d57c80c975f4af0cdeb7167d03ab0a",
+    "SPARSE6_sha256": "cc6d8368ec8c64cdc0ea1e69060779d8c4227fa6b9f9e1b1c7bc7d8ea2d0db33",
+    "design_review_zip_sha256": "d63d6c7875143a41de331b67a28ecd8efe7c446678da67e88a2d9e7ab58c9503",
+    "design_review_entries_verified": 9,
+    "immutable_existing_packages_changed": false
+  },
+  "source_files_read": [
+    "AGENTS.md",
+    "preferences/GENERAL.md",
+    "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+    "docs/AUTOMATION-OPERATING-PROCEDURES.md",
+    "docs/OPERATING-STANDARD.md",
+    "docs/FEATURE-DECISION.md",
+    "docs/KNOWLEDGE-MAINTENANCE.md",
+    "docs/AZERON-GAME-CONTROLS.md",
+    "docs/INPUT-DEVICE-REGISTRY.md",
+    "docs/AZERON-ACTION-ATLAS.md",
+    "docs/GITHUB-PUBLISHING.md",
+    "templates/GAME-KEYBINDS.example.json",
+    "templates/INPUT-DEVICE.example.json",
+    "templates/KNOWLEDGE-RECORD.example.json",
+    "r8/design-review/DECISION_REVIEW_HE.md",
+    "r8/design-review/CODEX_DECISION_BRIEF.md",
+    "r8/design-review/REVIEW_FACTS.json",
+    "r8/preflight/READY_FOR_CODEX.md",
+    "r8/preflight/input_evidence.py",
+    "r8/preflight/safe_io.py",
+    "r8/preflight/native_review.py",
+    "r8/preflight/run_checks.py",
+    "r8/preflight/build_checked_atlas.py",
+    "r8/preflight/PHYSICAL_TEST_PLAN.json",
+    "r8/preflight/EXECUTION_RECEIPT.template.json",
+    "r8/preflight/CONTINUITY.md",
+    "r8/CODEX_COORDINATION.md",
+    "r8/PUBLICATION_RECEIPT_R8.json",
+    "r8/PREFERENCES_DELTA_R8.json",
+    "r7/ACTION_ATLAS_PLAN.md",
+    "relevant local PoE2/Cyberpunk histories, preferences, keybind records, Studio integration and bounded related-chat turns"
+  ],
+  "other_work": "Separate PoE2 COMBAT/MENU candidate and F15 trigger remain uninstalled/unresolved after user-stopped UI work. Existing R5/Studio/Hub and dirty primary checkout were not edited or resumed.",
+  "limits": [
+    "Selected input fields only; not full original game-config backup",
+    "Saved native files are not a live SOFTWARE UI export or onboard backup",
+    "Two fresh snapshots and final readback prove bounded file preservation, not a working restore",
+    "No game launch, save access, input dispatch, graphics/driver/profile setting change, recorder, scheduler or background task",
+    "Existing blocked preflight/PUBLICATION_RECEIPT.json was neither retried nor replaced",
+    "No population-level or gameplay/physical conclusion follows from offline checks"
+  ],
+  "next_boundary": "Resolve consequential PoE2 mode/modifier and Cyberpunk context/remapper uncertainty; choose one family and separately authorize installation. SPARSE6 remains the preference-fit candidate while nine blank finger cells are required. Then obtain a fresh complete supported native backup and additive import/readback before physical checks.",
+  "rollback": "No game/profile rollback required. Source changes are isolated: revert only this authored Windows compatibility patch if desired; preserve immutable original packages and private failure receipts."
+}

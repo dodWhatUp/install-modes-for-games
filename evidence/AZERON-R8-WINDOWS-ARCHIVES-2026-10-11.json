@@ -1,0 +1,30 @@
+{
+  "schema": "azeron-r8-windows-archives/v1",
+  "source_owner": "dodWhatUp/install-modes-for-games",
+  "source_head_consumed": "b827c7f35e3aee85690842d945c0664a7ad397e9",
+  "existing_private_folder_id": "1VC1i0sh2GLrCnQpO0pjjbA6dnks6tpEr",
+  "private_evidence": {
+    "drive_file_id": "1HuSbgm-Lc4WPWlKkAPWydJq7wMDgbI0v",
+    "url": "https://drive.google.com/file/d/1HuSbgm-Lc4WPWlKkAPWydJq7wMDgbI0v/view?usp=drivesdk",
+    "bytes": 208061,
+    "sha256": "55ea73a4b0cbae3f5c17846b654ab191e836238f13aff5be19a0df131b841589",
+    "manifest_entries_verified": 30,
+    "coverage": "Selected input receipts, reconciliation, bounded native before/after snapshots, tests and preservation receipts; no full game-config/onboard/app export",
+    "Drive_readback_byte_identical": true,
+    "permissions": "owner_only_not_shared"
+  },
+  "authored_source_checkpoint": {
+    "drive_file_id": "1bnINNn5GCZHuggnIRsr4D1NjrUNYMpid",
+    "url": "https://drive.google.com/file/d/1bnINNn5GCZHuggnIRsr4D1NjrUNYMpid/view?usp=drivesdk",
+    "bytes": 37298,
+    "sha256": "f2a48054c1dcca717ab8bdb971a2e4f3d1f51c116961e09fdc3c80c7f4049208",
+    "manifest_entries_verified": 8,
+    "coverage": "Allowlisted source fixes, regressions and sanitized documentation at the prepublication checkpoint; no private native/config payloads",
+    "Drive_readback_byte_identical": true,
+    "permissions": "owner_only_not_shared"
+  },
+  "restore_tested": false,
+  "native_family_installed": "NOT_INSTALLED",
+  "relationship": "This receipt and its navigation link postdate both immutable packages. The source checkpoint has eight curated file versions before final archive links; it is not the entire later repository commit. Original R8/preflight/design-review packages remain unchanged.",
+  "blocked_preflight_publication_receipt_retried_or_replaced": false
+}

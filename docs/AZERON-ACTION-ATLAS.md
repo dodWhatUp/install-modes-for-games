@@ -2,6 +2,8 @@
 
 ## Current R8 continuation
 
+[Windows consumption and read-only input receipt, 2026-10-11](AZERON-R8-WINDOWS-READ-2026-10-11.md): source consumed, PoE2/Cyberpunk candidates collected, Windows fixes verified, and all 23 saved profiles preserved. R8 remains NOT_INSTALLED; effective controls, physical comfort and live host integration are pending.
+
 [R8](../research_outputs/input-controls/azeron-keybinds/r8/README.md) provides
 CORE5/SPARSE6 native candidates and an updated display-only Atlas with 208
 action records, including 29 Bayonetta PC manual records. The new

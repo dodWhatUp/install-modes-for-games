@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any, Tuple
 
 MAX_FILE = 8_000_000
+WINDOWS_STAT = os.name == 'nt'
 class ReviewError(ValueError):
     """Input needs inspection; errors are intentionally free of source path values."""
 
@@ -65,6 +66,13 @@ def plain_path(path: Path) -> Path:
 def signature(st) -> tuple:
     return (st.st_dev, st.st_ino, st.st_size, st.st_mtime_ns, st.st_ctime_ns)
 
+def opened_identity(st) -> tuple:
+    # Windows Python 3.12 can expose creation time through lstat's ctime,
+    # but change time through fstat's ctime. Compare birthtime across those
+    # APIs; retain ctime in the independent path/path and handle/handle checks.
+    clock = getattr(st, 'st_birthtime_ns', None) if WINDOWS_STAT else st.st_ctime_ns
+    return (st.st_dev, st.st_ino, st.st_size, st.st_mtime_ns, clock)
+
 def read_regular(path: Path, limit: int = MAX_FILE) -> Tuple[bytes, dict]:
     path = plain_path(Path(path))
     try:
@@ -75,11 +83,12 @@ def read_regular(path: Path, limit: int = MAX_FILE) -> Tuple[bytes, dict]:
         fd = os.open(str(path), flags)
         with os.fdopen(fd, 'rb') as f:
             opened = os.fstat(f.fileno())
-            if signature(before) != signature(opened): raise ReviewError('Input identity changed before read.')
+            if not stat.S_ISREG(opened.st_mode) or opened_identity(before) != opened_identity(opened):
+                raise ReviewError('Input identity changed before read.')
             raw = f.read(limit + 1)
             closed = os.fstat(f.fileno())
         after = path.lstat()
-        if len(raw) > limit or signature(before) != signature(closed) or signature(before) != signature(after):
+        if len(raw) > limit or signature(opened) != signature(closed) or signature(before) != signature(after):
             raise ReviewError('Input changed during read; inspect before any recollection.')
         # Recheck parents after the bounded read. This is not a hostile-filesystem guarantee.
         plain_path(path)
