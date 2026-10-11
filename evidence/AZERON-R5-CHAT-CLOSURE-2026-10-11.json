@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "record_id": "azeron-r5-chat-closure-archive-2026-10-11",
+  "created_at": "2026-10-11T17:56:58.682Z",
+  "artifact_alias": "AZERON-R5-CHAT-CLOSURE-2026-10-11",
+  "archive": {
+    "bytes": 75799,
+    "sha256": "e692b4739ef8095e45682639b725f6c4abba192d159b896c7bff184995f5aa4b",
+    "members": 20,
+    "allowlist_entries_excluding_manifest": 19,
+    "entry_paths_sizes_hashes_verified": true,
+    "drive_download_sha256_matched": true,
+    "permissions": "verified owner-only for new archive; sharing unchanged"
+  },
+  "coverage": {
+    "visible_message_turns": 2,
+    "visible_messages": 50,
+    "has_older_cursor": false,
+    "copied": "visible-message projection, private ledger/index, 13 selected document snapshots, two sanitized pre-publication continuity files",
+    "referenced": "native profile packages/recovery and complete owner implementations",
+    "excluded": [
+      "reasoning",
+      "tools and outputs",
+      "commands",
+      "attachment bytes",
+      "unfinished closure turn",
+      "other chats whole histories",
+      "native binaries/backups in this ZIP"
+    ],
+    "restore_tested": false
+  },
+  "source_main_at_packaging": "f7511d43956c20ab4280bbcf5e2d0744dd04adf1",
+  "original_r5_pr_head": "58068c3b96a2314df77c3510218d1fbefa629f39",
+  "post_package_boundary": "This immutable receipt and publication/index pointer postdate the package. The package does not equal the later repository commit.",
+  "runtime_changes_during_closure": false,
+  "knowledge_entry": "docs/AZERON-R5-CHAT-CLOSURE-2026-10-11.md",
+  "chat_archive_status": "separate final action after preservation; this receipt does not claim archival"
+}

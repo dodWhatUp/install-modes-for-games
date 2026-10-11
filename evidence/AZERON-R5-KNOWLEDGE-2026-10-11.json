@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "record_id": "azeron-r5-chat-closure-2026-10-11",
+  "record_kind": "continuity_and_lesson",
+  "status": "preserved_history_not_execution_authority",
+  "owner": {
+    "workstream": "Azeron SHARED R5 installation and game-label request",
+    "master_locator": "docs/AZERON-R5-CHAT-CLOSURE-2026-10-11.md"
+  },
+  "applicability": {
+    "game_id": null,
+    "tool_id": "azeron-software",
+    "versions": [
+      "2.0.2",
+      "initial file-version observation 2.0.2.442"
+    ],
+    "context": "Cyborg II; SOFTWARE profiles; shared layered map and per-game labels"
+  },
+  "symptom": "UI import selection could not be completed; repeated unclear delegation; continuation needs historical/live/source states kept distinct.",
+  "sources": [
+    {
+      "locator": "https://github.com/dodWhatUp/install-modes-for-games/pull/4",
+      "revision": "58068c3b96a2314df77c3510218d1fbefa629f39",
+      "sha256": null,
+      "reviewed_date": "2026-10-11",
+      "coverage": "PR state and two owned text records read",
+      "attachments_reviewed": false
+    },
+    {
+      "locator": "docs/AZERON-ACTION-ATLAS.md",
+      "revision": "f7511d43956c20ab4280bbcf5e2d0744dd04adf1",
+      "sha256": null,
+      "reviewed_date": "2026-10-11",
+      "coverage": "bounded current source documents read; no live acceptance",
+      "attachments_reviewed": false
+    },
+    {
+      "locator": "research_outputs/input-controls/azeron-keybinds/r8/design-review/CODEX_DECISION_BRIEF.md",
+      "revision": "b827c7f35e3aee85690842d945c0664a7ad397e9",
+      "sha256": null,
+      "reviewed_date": "2026-10-11",
+      "coverage": "decision brief read, full memo referenced",
+      "attachments_reviewed": false
+    },
+    {
+      "locator": "docs/AZERON-R8-WINDOWS-READ-2026-10-11.md",
+      "revision": "9e438fd2887e1347a2c507ca799aefa04565bfd1",
+      "sha256": null,
+      "reviewed_date": "2026-10-11",
+      "coverage": "newer owner receipt read, tests not rerun",
+      "attachments_reviewed": false
+    }
+  ],
+  "observation": {
+    "claim": "R5 historical app state: 19 to 23 SOFTWARE profiles; buttons 1/2/36 activate LETTERS/NUMBERS/TOOLS and release to BASIC. GUI importer acceptance and general/game outputs remain unverified. Newer owner file receipt preserved 23 profiles with R8 absent.",
+    "evidence_state": "historical_observed_and_newer_owner_reported",
+    "evidence_locator": "docs/AZERON-R5-CHAT-CLOSURE-2026-10-11.md"
+  },
+  "inference": {
+    "claim": "The display request should extend the existing Atlas/Studio/Hub source rather than duplicate its owner-held implementation.",
+    "confidence": "high for source routing; live integration unverified",
+    "alternatives": [
+      "Manual sourced labels remain useful without automation."
+    ]
+  },
+  "supported_next_action": {
+    "capability": "Explicit read/reconciliation and scoped extension of existing owners",
+    "adapter_version": null,
+    "success_evidence": [
+      "Current source head recorded",
+      "Current input/binding evidence separated",
+      "Fresh before/after native snapshots for an authorized installation",
+      "Physical and gameplay acceptance separately observed"
+    ]
+  },
+  "permission": {
+    "execution_authorized": false,
+    "current_request_reference": "Chat closure/preservation request; no new runtime authority"
+  },
+  "stop_conditions": [
+    "Unknown partial import or duplicate identities",
+    "Unexpected/stuck input",
+    "Unresolved material family choice",
+    "Unsupported/denied tool route",
+    "Concurrent owned-source changes"
+  ],
+  "recovery": {
+    "artifact_alias": "AZERON-R5-CHAT-CLOSURE-2026-10-11",
+    "coverage": [
+      "2 accessible completed turns / 50 visible messages copied",
+      "Selected source documents copied with manifest",
+      "Native backups and export separately referenced",
+      "No attachment/tool/reasoning bytes or current unfinished turn"
+    ],
+    "restore_tested": false,
+    "rollback_procedure": "Remove only owned documentation and index pointer; native rollback needs current-state reconciliation and separate scope."
+  },
+  "freshness": {
+    "reviewed_date": "2026-10-11",
+    "change_triggers": [
+      "Source heads/active owners, bindings, app/device state, provider permissions or user preference change"
+    ]
+  },
+  "privacy": {
+    "classification": "sanitized_history",
+    "payload_logging": false,
+    "automatic_upload": false
+  },
+  "next_boundary": "Use latest R8 preflight/Windows fixes and Atlas contract; resolve effective bindings before chosen-family installation or live host acceptance."
+}

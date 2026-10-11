@@ -81,3 +81,7 @@ Repository routing is linked from `AGENTS.md` and preferences. Read relevant rec
 Copy-ready request:
 
 > Use the canonical game-tools knowledge index, current preferences and the exact game/tool history. Preserve existing source masters, features and profiles. Separate tested, upstream-supported, inferred and unknown states. Inspect through supported tools first; execute only my requested scope, with a current-state snapshot, exclusive input ownership where needed, observed verification and a documented rollback. Use existing metric providers and private recovery archives. Do not resume deferred game tests, recording or benchmarks merely because a procedure exists.
+
+## Azeron R5 closure and latest continuation
+
+[Preserved R5 request, installation evidence and continuation](AZERON-R5-CHAT-CLOSURE-2026-10-11.md) retains the original draft PR4 and private visible-message/recovery alias. Read the newer [Action Atlas](AZERON-ACTION-ATLAS.md), [R8 Windows receipt](AZERON-R8-WINDOWS-READ-2026-10-11.md) and latest owner preflight before extending it. R5 layer transitions are historical; newer file snapshots and authored Atlas work do not establish current live input or host acceptance. Native recovery remains separate.
