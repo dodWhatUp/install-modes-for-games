@@ -1,0 +1,21 @@
+{
+  "revision":"R7",
+  "status":"GIT_AND_PRIVATE_DRIVE_PUBLISHED_ARCHIVE_READBACK_VERIFIED",
+  "source_commit":"23cf952b87abc57ac888087599ca76b901c928c3",
+  "source_parent":"78aa7aedd4bc5b9bc210d3603bbac28b90a989e0",
+  "source_files_added":23,
+  "existing_source_files_overwritten":0,
+  "drive_folder_id":"1VC1i0sh2GLrCnQpO0pjjbA6dnks6tpEr",
+  "sharing_permissions_changed":false,
+  "artifacts":[
+    {"file_name":"Azeron_R7_Action_Atlas_HE.html","drive_file_id":"18KwX9Vm-yhIk_Gyl4fM_i3AFI5Mepk2x","role":"display-only local prototype","bytes":164936,"sha256":"146ee5b73827b7eee4ea3a1aaefc4704192ddb3616924dc090261c77cb2f6422"},
+    {"file_name":"Azeron_R7_Research_HE.html","drive_file_id":"19rq77FqqxG2Hm-umq-tw8jFSveabMQi1","role":"research report","bytes":25280,"sha256":"2f1f98ff4d1eaa61aa6d1f5b0843c8dbcb25e3a99d6e71ca26040d0873b59b0c"},
+    {"file_name":"ACTION_ATLAS_PLAN.md","drive_file_id":"1wLQlUrtDZ6qJ47eEmvOPjyGcvF73hnkf","role":"existing-toolkit future module plan","bytes":8838,"sha256":"8da9c5ee5635f4a8b275ee93e7a7ce82a124860848a31eb9ee1a91f47f06fd61"},
+    {"file_name":"Azeron_R7_Complete_Recovery.zip","drive_file_id":"1Jnd1fa7tBYamfyxiBuuMqRgE0NYmdnfJ","role":"complete private recovery","bytes":2674438,"sha256":"91d9c4d0fee4c2ebed54e38f4dbe8d0a8889d49b73824756150159d06ae65a6f"}
+  ],
+  "recovery_readback":{"downloaded_drive_bytes_identical":true,"archive_members":38,"indexed_members":37,"every_indexed_entry_size_and_hash_verified":true,"native_R6_candidate_archives_unchanged":true,"source_R6_and_R5_archives_included":true,"all_raw_chat_messages_or_current_windows_state_included":false},
+  "existing_drive_index":{"file_id":"1YazzDmaOkWb_ximHZfe-PfU3J3gTj3G_","after_bytes":18129,"after_sha256":"f55a9ff2baa542019528a18fb69a5f62616a1cdd124ee0c4cdfc10e2116b853a","old_suffix_bytes":14692,"old_suffix_sha256":"72fcaf99e8e81ed6cee19d5080dc00c1c4a9d5194014aa1b09dfed66ad1cbdf9","readback_identical":true,"old_content_preserved":true},
+  "next_boundary":"Effective game controls and browser/host acceptance remain pending; no new native family or import. Read CONTINUITY_R7.md and existing-toolkit plan.",
+  "not_claimed":["Native R6 import or gameplay","Personal input frequency measurements","Universal optimal layout","Actual host Peek/pin integration","Full archive of inaccessible chat messages"],
+  "receipt_relationship":"This receipt postdates the immutable archive and is not claimed to be inside it."
+}
