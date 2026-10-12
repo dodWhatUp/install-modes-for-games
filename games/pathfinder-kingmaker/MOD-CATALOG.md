@@ -1,6 +1,6 @@
 # Pathfinder: Kingmaker Mod Catalog
 
-Last reviewed: 2026-09-14. Local build: 6757524. Candidates are **untested locally** unless [history](HISTORY.md) supplies direct evidence.
+Broad review: 2026-09-14; targeted clarity/automation update: 2026-10-12. Historical local build: 6757524 (not re-observed in the October review). Candidates are **untested locally** unless [history](HISTORY.md) supplies direct evidence.
 
 The [categorized comparison tables](COMPARISONS.md) are the catalog's detailed entries: author URLs, purpose, alternatives, dependencies, conflicts and content classification. They cover foundations/manager, performance, graphics/DLSS, QoL, configuration/UI, animation/movement, enemy behaviour, abilities/magic/tools, mechanics and added campaigns/content. Unknown support is marked as a gate, not a recommendation.
 
@@ -16,3 +16,7 @@ The [categorized comparison tables](COMPARISONS.md) are the catalog's detailed e
 See the explicit conflicts and content table in [comparisons](COMPARISONS.md). A trainer, cosmetic pack, shader preset, new class or rebalance is not a new authored campaign. Save-dependent changes require restoring the old save and mod profile together.
 
 The [recommendations](RECOMMENDATIONS.md) select combinations from this catalog; none authorizes a blanket installation.
+
+## 2026-10-12 focused additions
+
+The [current detailed comparison](COMPARISONS.md#spell-clarity-and-conditional-automation--reviewed-2026-10-12) adds Kingmaker Tactics, PathfinderAutoBuff and UI Extensions, refreshes Buff Bot, and separates raw-enemy-stat automation from original Inspect information limits. No verified comprehensive spell-description rewrite or tactical comparison dashboard was found. This catalog change is research, not installation approval.

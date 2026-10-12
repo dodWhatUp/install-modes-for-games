@@ -1,6 +1,8 @@
 # Pathfinder: Kingmaker
 
-Status: **installed files found; research only, untested locally**. Reviewed 2026-09-14.
+Status: **historical installed-file inventory; mod recommendations remain untested locally**. Runtime inventory: 2026-09-14. Focused research: 2026-10-12.
+
+Latest: [spell clarity, enemy information and conditional automation](COMPARISONS.md#spell-clarity-and-conditional-automation--reviewed-2026-10-12). Kingmaker Tactics is the newly verified automation option; raw enemy-stat use and real-time-only operation are material qualifications. No whole-spellbook simplification/comparison mod was verified.
 
 ## Observed environment
 
@@ -21,3 +23,7 @@ No game files or settings were changed for this research. Before a future instal
 ## Rollback
 
 No rollback is required for this documentation-only review. Any future package needs its own file manifest and pre-mod save/configuration snapshot; the comparisons identify persistent save dependencies.
+
+## Focused reference export
+
+[Dated spell-clarity and automation reference](https://drive.google.com/file/d/1lWexxSik29auH0EwdPGWaSxsIWuyYPDU/view), 2026-10-12. The editable guide remains [COMPARISONS.md](COMPARISONS.md); this export is a derived research note, not an installed configuration.
