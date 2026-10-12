@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "version": "0.1.0-candidate",
+  "date_local": "2026-10-13",
+  "timezone": "Asia/Jerusalem",
+  "host_os": "macOS 26.6.2",
+  "host_arch": "arm64",
+  "host_memory_bytes": 17179869184,
+  "source_verification": {
+    "outer_files": 12,
+    "base_files": 58,
+    "windows_files": 20,
+    "outer_sha256": "c40b3f17df0cdf670c3056c56862876b6dac1876d1f3696bacab6b73e440c34d",
+    "all_per_file_hashes": "PASS"
+  },
+  "offline_contracts": {
+    "tests": 21,
+    "outcome": "PASS"
+  },
+  "python_compile": "PASS",
+  "guest_shell_syntax": "PASS",
+  "skill_schema": "PASS using isolated PyYAML 6.0.3 validator environment",
+  "validator_initial_failures": [
+    "system Python missing PyYAML",
+    "bundled Python missing PyYAML"
+  ],
+  "mac_runtime_accepted": false,
+  "parallels_installed": false,
+  "host_input_used": false,
+  "screen_or_video_capture_used": false,
+  "linux_runtime": "NOT_RUN",
+  "windows_arm_runtime": "NOT_IMPLEMENTED_NOT_RUN",
+  "macos_native_runtime": "NOT_IMPLEMENTED_NOT_RUN",
+  "background_human_test": "NOT_RUN",
+  "fresh_development_chat": "NOT_RUN"
+}

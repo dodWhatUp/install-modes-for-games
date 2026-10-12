@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "version": "0.1.0-candidate",
+  "source_owner": "https://github.com/dodWhatUp/install-modes-for-games",
+  "runtime_accepted": false,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 8964,
+      "sha256": "c6562180231359c94187736fe5afb4789425cf6450ceec882ef2ae24c11e6dee"
+    },
+    {
+      "path": "VALIDATION.json",
+      "bytes": 1087,
+      "sha256": "2b520849c6887b0855bdb3f7ec8ca0846a67a256613ad4683456bd8407420e3a"
+    },
+    {
+      "path": "contracts.py",
+      "bytes": 5071,
+      "sha256": "a90257ea338b61ec7031467e151c1fae56125605219e935d2627df4337feacfa"
+    },
+    {
+      "path": "guest_bridge.py",
+      "bytes": 7219,
+      "sha256": "e41acc2c7415ba9e93e27896ff118fcfe50c7279f9822edf334f2409fe876348"
+    },
+    {
+      "path": "install-linux-guest.sh",
+      "bytes": 1349,
+      "sha256": "ecb29187a7b24d599ff7ca4f1b387241a43008ca9b923e5f57b78f6ec02df96e"
+    },
+    {
+      "path": "install_local.py",
+      "bytes": 5860,
+      "sha256": "7518732a6917a486b252df270dca8cdbb2bc38e2f71df3149a2ec8a9ad3bf3b4"
+    },
+    {
+      "path": "mac_lab.py",
+      "bytes": 15160,
+      "sha256": "3163aa7d212421ddbc35706df26b8f4118e94e2a2d0c37032a34130d7e90e1c6"
+    },
+    {
+      "path": "skill/SKILL.md",
+      "bytes": 2746,
+      "sha256": "0aaa9bc349da689d657b3cdd9a2d01208698ceef63a43d9839662d399af5fafb"
+    },
+    {
+      "path": "skill/scripts/resolve_lab.py",
+      "bytes": 1277,
+      "sha256": "5e5030b7197a0e6d7a5d7fd5f1e14d2e74999ef3c2f654242f25ca74522d861a"
+    },
+    {
+      "path": "test_mac_lab.py",
+      "bytes": 10023,
+      "sha256": "d39da69796488938aee4eba6676de75a4133af3c75a4e9cc5456d53140901ccd"
+    },
+    {
+      "path": "upstream/PROVENANCE.json",
+      "bytes": 890,
+      "sha256": "8a1befb4d4dc4cb4c84e2e1bc4850811b25d26fe6610da05ccd4242e4eba8ef5"
+    },
+    {
+      "path": "upstream/desktop_agent.py",
+      "bytes": 9517,
+      "sha256": "81cbb5daed71a3f202aa02d17745107417c328347108ff0ff122b28cb4ed36b0"
+    },
+    {
+      "path": "upstream/desktop_demo.py",
+      "bytes": 1291,
+      "sha256": "d6d63f3c2e0b1c2fe49fb84d076f621e00935d782e5cae286f17357f71539de7"
+    },
+    {
+      "path": "upstream/guest_agent.py",
+      "bytes": 24695,
+      "sha256": "f08ae985a3ea7c826c698ea5208476c124a1c03b508d631d044d95a42ff8199c"
+    },
+    {
+      "path": "upstream/prepare_guest_browser.py",
+      "bytes": 3572,
+      "sha256": "6b6d05b18230ef3a54decdedd39e6b4687a6903cd4d1c0c202aa6c133c345cad"
+    }
+  ]
+}
