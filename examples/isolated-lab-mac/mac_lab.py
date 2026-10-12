@@ -110,7 +110,7 @@ def trusted_cli():
     return str(cli)
 
 
-def preflight():
+def preflight(root=DEFAULT_ROOT):
     report = {"schema": 1, "version": VERSION, "host_os": platform.system(),
               "host_arch": platform.machine(), "mac_runtime_accepted": False,
               "internal_free_bytes": shutil.disk_usage(Path.home()).free,
@@ -125,6 +125,15 @@ def preflight():
         report["edition"] = "Requires installed license/edition inspection; no subscription inference"
     else:
         report["blocker"] = "Install signed Parallels Desktop and sign in; administrator/account consent is user-owned"
+    if (Path(root) / "private/config.json").is_file():
+        lab = MacLab(root)
+        report["local_backend"] = lab.config["backend"]
+        report["guest_state"] = lab.vm()[1]
+        report["lifecycle_accepted"] = lab.config.get("lifecycle_accepted", False)
+        report["transport_accepted"] = lab.config.get("transport_accepted", False)
+        report["runtime_acceptance"] = str(Path(root) / "private/acceptance.json")
+        if lab.config["backend"] == "lima":
+            report.pop("blocker", None)
     return report
 
 
@@ -137,8 +146,10 @@ class MacLab:
         if st.st_uid != os.getuid() or st.st_mode & 0o077:
             raise ValueError("Private state needs local owner and mode 700")
         self.config = json.loads(read_private(self.private / "config.json"))
-        if self.config.get("schema") != 1 or self.config.get("backend") != "parallels":
+        if self.config.get("schema") != 1 or self.config.get("backend") not in ("parallels", "lima"):
             raise ValueError("Unsupported backend configuration")
+        if self.config["backend"] == "lima" and self.config.get("transport") != "ssh":
+            raise ValueError("Lima requires the enrolled authenticated SSH bridge")
         self.uuid = vm_id(self.config["vm_uuid"])
         self.key = read_private(self.private / "transport.key")
         if len(self.key) != 32:
@@ -170,6 +181,9 @@ class MacLab:
         return {"reserved": True, "owner": owner}
 
     def vm(self):
+        if self.config["backend"] == "lima":
+            from lima_backend import observe
+            return observe(self.config, checked)
         cli = trusted_cli()
         rows = json.loads(checked([cli, "list", "-i", "-j", "{" + self.uuid + "}"]))
         if isinstance(rows, dict):
@@ -197,11 +211,19 @@ class MacLab:
             if action == "start":
                 if state != "stopped":
                     raise ValueError("Cold start requires stopped VM")
-                argv = [cli, "start", "{" + self.uuid + "}", "--headless"]
+                if self.config["backend"] == "lima":
+                    from lima_backend import command
+                    argv = command(self.config, "start", self.config["instance_name"])
+                else:
+                    argv = [cli, "start", "{" + self.uuid + "}", "--headless"]
             elif action == "stop":
                 if state != "running":
                     raise ValueError("Graceful stop requires running VM")
-                argv = [cli, "stop", "{" + self.uuid + "}"]
+                if self.config["backend"] == "lima":
+                    from lima_backend import command
+                    argv = command(self.config, "stop", self.config["instance_name"])
+                else:
+                    argv = [cli, "stop", "{" + self.uuid + "}"]
             else:
                 raise ValueError("Unsupported lifecycle action")
             sleep = subprocess.Popen(["/usr/bin/caffeinate", "-i", "-w", str(os.getpid())],
@@ -284,7 +306,7 @@ def main():
     args = p.parse_args()
     try:
         if args.action in ("preflight", "status"):
-            value = preflight()
+            value = preflight(args.root)
         else:
             lab = MacLab(args.root)
             if args.action == "reserve":

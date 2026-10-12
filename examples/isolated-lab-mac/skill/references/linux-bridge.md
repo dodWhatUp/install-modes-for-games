@@ -1,0 +1,19 @@
+# Local Linux command bridge
+
+Resolve the immutable source and private lab root first. Inspect preflight and the separate local acceptance record. A stopped accepted guest is available for an owned cold start; an existing reservation is a competing workflow, not a stale lock to remove. Linux acceptance does not supply Windows/macOS compatibility.
+
+The CLI supports `reserve`, `start`, `request`, `push`, `pull`, `release`, plus read-only `preflight`/`status`. Supply `--root` before the action and `--owner` for workflow operations. `request` reads a selected JSON file. Selected file commands use `--project <directory> --path <relative-file>`. A pull's host destination must be new; keep source masters separate.
+
+For a multi-step test, import `MacLab` from the resolved `mac_lab.py`. Construct `MacLab(lab_root)`, call `reserve(owner)`, then `lifecycle("start", owner)`. Observe forwarding readiness through `prepare_lima.wait_ssh_banner(lab.config["ssh_port"])`. Keep secret values internal to these helpers; never print the key or configuration as a debugging shortcut. Hold temporary `caffeinate -i -w <workflow-process-pid>` for a sustained run and release that owned process afterward.
+
+`lab.request({"op": operation, "args": arguments}, owner)` adds the schema, fresh request ID, exact VM identity and authentication. Replies have `ok`, `id`, and `result` or `error`. Desktop/browser requests also carry top-level `session`. Keep IDs and receipts when anything fails; inspect `request.status` with `args.request_id` under a new ID before recovery. Never replay a mutation automatically.
+
+Source transfer uses `contracts.selected(project, relative_path)` for `transfer.push`. Transfer only relevant regular files, each up to 64 KiB, into unique owned guest paths. `process.run` takes an `argv` array and optional workspace-relative `cwd`, with `timeout_ms` between 500 and 60000. Check its exit code, timeout and output limits. `transfer.pull` returns selected bytes and their hash; decode locally and call `contracts.publish(new_destination, relative_path, bytes, sha256)` for atomic non-overwriting retrieval. File paths remain relative to the owner's guest workspace.
+
+For a local site, open `desktop.open`, retain its returned session, then `desktop.launch` an owned `/usr/bin/python3 -m http.server <port> --bind 127.0.0.1` with `cwd` set to the built site folder. That server shares the private guest session/process group and closes with it. Do not use a bounded build command to detach an untracked server. Browser tests need no host port forwarding.
+
+Open `browser.open`, retain its session, and observe `browser.snapshot`. Every `browser.act` needs `args.snapshot` from the latest snapshot. Supported semantic actions include `goto` with an HTTP URL, `fill` with role/name/value, `click` with role/name, `check` with role/name/checked and `select` with role/name/value. Read the worker's actual schema for less common actions. Observe after each meaningful action and test the actual application's DOM text/controls. An old digest is rejected. Capture is excluded from this setup.
+
+Native Linux tests use `desktop.launch` in the private desktop session, then `desktop.snapshot` with `args.app` set to the returned app ID. `desktop.act` needs that app ID, the current tree digest and control ID, and an exposed `fill` or `invoke` action. Resolve a unique editable control or named exposed action from the current tree. The maintained `accept_linux.py` demonstrates current native parameter shapes, Unicode and stale-state rejection.
+
+Close owned browser and desktop sessions and read `capabilities` plus the selected process observations. Then call `lab.release(owner)`: it checks guest sessions/unresolved admissions, shuts down normally, verifies stopped state and finally removes the host reservation. Unknown effects retain ownership. A completed workflow never deletes another chat's reservation or sessions.

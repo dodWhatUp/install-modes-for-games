@@ -14,6 +14,52 @@ import uuid
 from contracts import canonical, digest, publish, relative
 
 
+def upgrade(source, root, skill_dir):
+    """Rebind this owned installation while preserving prior source and guidance."""
+    binding_file = skill_dir / "machine.json"
+    old_bytes = binding_file.read_bytes()
+    binding = json.loads(old_bytes)
+    previous = Path(binding["source"])
+    old_manifest = (previous / "MAC-SOURCE-MANIFEST.json").read_bytes()
+    if digest(old_manifest) != binding["source_sha256"]:
+        raise ValueError("Prior installed source changed; preserve and inspect")
+    for entry in json.loads(old_manifest)["files"]:
+        p = previous / entry["path"]
+        if p.is_symlink() or digest(p.read_bytes()) != entry["sha256"]:
+            raise ValueError("Prior source changed")
+        if entry["path"].startswith("skill/"):
+            installed = skill_dir / entry["path"][len("skill/"):]
+            if installed.is_symlink() or digest(installed.read_bytes()) != entry["sha256"]:
+                raise ValueError("Installed skill has later edits; reconcile rather than overwrite")
+    expected_skill = {p.relative_to(previous / "skill").as_posix() for p in (previous / "skill").rglob("*") if p.is_file()}
+    actual_skill = {p.relative_to(skill_dir).as_posix() for p in skill_dir.rglob("*") if p.is_file()}
+    if actual_skill != expected_skill | {"machine.json"}:
+        raise ValueError("Unexpected installed skill files; preserve later work")
+    raw = (source / "MAC-SOURCE-MANIFEST.json").read_bytes()
+    manifest_hash = digest(raw)
+    manifest = json.loads(raw)
+    target = root / "source" / ("mac-" + manifest.get("version", "candidate") + "-" + manifest_hash[:12])
+    target.mkdir(parents=True, mode=0o700, exist_ok=False)
+    for entry in manifest["files"]:
+        relative(entry["path"])
+        p = source / entry["path"]
+        if p.is_symlink() or not p.is_file() or len(p.read_bytes()) != entry["bytes"] or digest(p.read_bytes()) != entry["sha256"]:
+            raise ValueError("New source integrity failure")
+        publish(target, entry["path"], p.read_bytes(), entry["sha256"])
+    publish(target, "MAC-SOURCE-MANIFEST.json", raw, manifest_hash)
+    staging = skill_dir.parent / (".isolated-lab-upgrade-" + uuid.uuid4().hex)
+    shutil.copytree(target / "skill", staging)
+    binding.update(source=str(target), source_sha256=manifest_hash)
+    (staging / "machine.json").write_bytes(canonical(binding))
+    backup = skill_dir.parent / (".isolated-lab-before-" + uuid.uuid4().hex)
+    if binding_file.read_bytes() != old_bytes:
+        raise ValueError("Concurrent binding change; preserve it")
+    skill_dir.rename(backup)
+    staging.rename(skill_dir)
+    return {"source": str(target), "source_sha256": manifest_hash, "previous_skill": str(backup),
+            "global_instructions_changed": False, "VM_started": False}
+
+
 def install(source, root, skill_dir, agents_file):
     if skill_dir.exists() or skill_dir.is_symlink():
         raise FileExistsError("Existing isolated-lab skill preserved; review its binding before merging")
@@ -41,7 +87,7 @@ def install(source, root, skill_dir, agents_file):
     private.mkdir(mode=0o700, exist_ok=True)
     if private.stat().st_mode & 0o077:
         raise ValueError("Private state directory must have mode 700")
-    target = root / "source" / ("mac-0.1.0-candidate-" + manifest_hash[:12])
+    target = root / "source" / ("mac-" + manifest.get("version", "candidate") + "-" + manifest_hash[:12])
     target.mkdir(parents=True, mode=0o700, exist_ok=False)
     for entry in manifest["files"]:
         data = (source / entry["path"]).read_bytes()
@@ -101,5 +147,8 @@ if __name__ == "__main__":
     p.add_argument("--root", type=Path, default=Path.home() / ".local/share/isolatedlab")
     p.add_argument("--skill-dir", type=Path, default=Path.home() / ".agents/skills/isolated-lab")
     p.add_argument("--agents-file", type=Path, default=Path.home() / ".codex/AGENTS.md")
+    p.add_argument("--upgrade", action="store_true")
     args = p.parse_args()
-    print(json.dumps(install(Path(__file__).resolve().parent, args.root, args.skill_dir, args.agents_file), indent=2))
+    operation = upgrade(Path(__file__).resolve().parent, args.root, args.skill_dir) if args.upgrade else install(
+        Path(__file__).resolve().parent, args.root, args.skill_dir, args.agents_file)
+    print(json.dumps(operation, indent=2))

@@ -1,0 +1,11 @@
+[Unit]
+Description=isolatedLab authenticated structured guest bridge
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/sshd -D -f /etc/ssh/sshd_config.isolatedlab
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

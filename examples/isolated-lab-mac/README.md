@@ -1,57 +1,71 @@
-# isolatedLab Mac candidate 0.1.0
+# isolatedLab on Arm Mac — Lima candidate 0.2.0
 
-This is a prepared source candidate, not an accepted Mac environment. The current Mac has no installed Parallels Desktop or `prlctl`. Administrator installation and existing-subscription sign-in are required before edition and real CLI behavior can be measured. No guest was started and no host input or capture API was used.
+This Mac now has a tested Arm Linux guest behind a local command bridge. It uses Lima 2.2.1 and Apple Virtualization.framework (VZ), independently of Parallels licensing. Browser tests use real DOM/accessibility semantics; native Linux app tests use a private D-Bus/AT-SPI/Xvfb session. No host input or screen/video capture is admitted.
 
-The canonical owner is `dodWhatUp/install-modes-for-games`. This directory adds the Mac transport layer; `upstream/` preserves exact Linux guest source from the verified base 0.5.0 package. Its `PROVENANCE.json` lists hashes. The current standalone Drive records remain authoritative for subsequent Windows human acceptance. That report does not accept this Mac. The older snapshots inside the immutable ZIP remain historical.
+The canonical editable source owner remains `dodWhatUp/install-modes-for-games`. `upstream/` preserves byte-identical Linux guest source from the verified base 0.5.0 packet. Its `PROVENANCE.json` records those inputs. Windows human acceptance on the reference computer does not accept this Mac or a Windows Arm guest. Distribution 0.2.0 extends the existing schema-1 bridge; the shared core version remains 0.1.0-candidate and the preserved guest worker is 0.3.0.
 
-## Present source and evidence
+## Capability and evidence
 
 | Capability | Current state |
 |---|---|
-| Mac preflight, finite commands/output, own process-group cleanup | Offline tests on this Mac |
-| HMAC envelope, correlation, duplicate-ID rejection and retained receipts | Offline tests; guest roundtrip pending |
-| Atomic selected file publication, Unicode, traversal/symlink and overwrite rejection | Offline tests including concurrent publication |
-| Exact VM UUID plus bundle path, workflow reservation, headless lifecycle | Source candidate; actual Parallels acceptance pending |
-| Parallels Tools and loopback authenticated SSH command paths | Prepared; each needs installed guest transport probes |
-| Browser DOM and Linux native accessibility | Verified reusable source; Arm guest dependencies and actual readbacks pending |
-| Browser current-snapshot guard and other-owner rejection | Offline tests |
-| Windows Arm helper adaptation and macOS Accessibility adapter | Not implemented in this candidate |
-| Resource configuration, sleep lease, stopped backup/restore | Sleep lifecycle lease prepared; limits and restore acceptance pending |
-| Local skill/default discovery | Recorded separately in `VALIDATION.json` |
-| Cold login, build/UI actions, crash/lock/lost-helper recovery, mixed interval, fresh development chat | Not run on a Mac guest |
+| Arm Linux cold boot, normal shutdown, exact VM/file identity and resource readback | Passed on this Mac with Lima/VZ |
+| Authenticated structured requests, retained receipts, duplicate IDs and owner/workspace guards | Offline tests plus actual pinned SSH/HMAC roundtrips |
+| Selected source transfer, Unicode build/output and new-destination result retrieval | Actual Linux acceptance |
+| Browser DOM and Linux native accessibility actions, stale observation rejection and cleanup | Actual Linux acceptance: 37 checks per workload |
+| Five-minute mixed interval while the user used the Mac | Technical pass: 300.01 seconds, 11 workloads, 407 checks; separate human report recorded in local acceptance |
+| Mac installer/default and Codex skill discovery | Installed and discovered; fresh normal chat implicitly selected the guest, transferred/built/tested its app, retrieved results and cleaned up: 35 checks |
+| Stopped private encrypted checkpoint and restored bytes | See `VALIDATION.json` and the local acceptance record for final restore scope |
+| Parallels | Installed during this task: 27.0.3; license was not valid at inspection; no Parallels VM was started or modified |
+| Windows Arm and native macOS GUI adapters | Not implemented/accepted by this candidate; preserve separate guest/application acceptance |
+| Native VZ live snapshots | Actual command returned `unimplemented`; stopped backup is the measured recovery route |
+| Crash/helper-loss/unresponsive provider recovery | 26 operations passed; graphical Windows/macOS login-lock behavior remains separate |
 
-## Reproduce the safe preparation
+## Fresh destination setup
 
-Run `python3 -m unittest -v test_mac_lab.py` from this directory. Run `python3 mac_lab.py preflight`; it does not start or configure a VM. Only the host Python standard library is needed. Guest dependencies are separate and must never be installed by running guest scripts on the Mac.
+Verify the independently supplied ZIP SHA-256 and its `SOURCE-MANIFEST.json` before extraction. Verify `MAC-SOURCE-MANIFEST.json` against source files before executing setup. Preserve any existing source, machine binding, skill/default, guest owner and checkpoints.
 
-Install the signed Parallels application and sign in with the existing subscription through normal OS/account prompts. Inspect version, edition and the actual help/JSON output. CLI management is documented for Pro/Business/Enterprise; a subscription alone does not establish this entitlement. Do not start a paid trial, purchase an upgrade or infer readiness from help text. Capture sanitized capability results and retain raw configuration/license output privately.
+The host uses Python's standard library and the version-pinned official Lima Arm release. `prepare_lima.py` downloads the verified release into a private task-owned tools directory; no Homebrew or host administrator installation is needed. Its one known internal documentation symlink is validated and omitted. Archive hash or VM identity failure stops the affected stage. A partial job is retained; inspect its effects instead of repeating the command.
 
-This Mac has 16 GiB RAM and about 14 GiB internal free space. An attached ExFAT SSD has about 292 GB free and is a possible VM-storage target; verify suitability, stable mount and bundle I/O before provisioning. Keep keys/config/receipts on private internal storage. Do not delete existing files or reformat the disk. Start with one fresh Arm Linux guest, 2 vCPUs/4 GiB guest RAM and a host memory reserve, then separately provision Windows Arm and macOS only when their application tests require them. Confirm the actual installed backend's resource settings and isolation controls, rather than assuming flags.
+From a fresh private lab root, run `python3 prepare_lima.py --root <private-root>`. The default is `~/.local/share/isolatedlab`. A short private path is required by macOS's 104-character UNIX socket limit. Existing enrollment or a prior provisioning admission stops automatic preparation; this command does not replace an existing installation.
 
-Inspect all existing VMs and owners. Disable Coherence, shared clipboard, drag-and-drop, broad Home/profile sharing, and automatic USB/camera assignment for the new owned guest. Verify the resulting configuration. Do not alter another VM. Capture the exact installed JSON field names for UUID/home/state in the local enrollment; the candidate rejects unknown mappings rather than guessing a VM by its display name.
+The runner creates one fresh Ubuntu 24.04 Arm minimal guest from the exact pinned official image, two vCPUs, 4 GiB RAM and a sparse 12 GiB guest disk. Plain mode disables host folder mounts, dynamic forwarding, container services, Rosetta and agent forwarding. Audio/video devices are disabled. Only localhost SSH transport is exposed. Keep sufficient host memory/storage for normal use, other VMs and recovery; start one owned guest at a time for acceptance. Do not import a Windows x64 disk, personal profiles or reference-machine configuration.
 
-## Enrollment and transport gates
+The guest dependency script installs signed Ubuntu packages, inherited Playwright 1.63.0 and its platform-selected Arm Chromium shell, system Python GI/AT-SPI/GTK, private D-Bus/Xvfb and xauth. It writes resolved apt/pip records inside the guest. Do not run any guest script on the Mac. Do not run the byte-preserved x64 browser fallback on Arm. Dependency/install failures stop that stage and retain its job result.
 
-The local lab root is resolved by the installed skill. Its `private/` directory must be mode 700. `config.json`, the fresh 32-byte `transport.key`, pinned SSH known-hosts and the fresh SSH private key stay mode 600 outside Git and Drive. No credentials/settings from the Windows reference computer are imported.
+## Stable transport and identity
 
-The future enrollment record uses `schema:1`, `backend:parallels`, an exact `vm_uuid`, canonical `bundle_path`, `guest_os:linux`, `guest_arch:arm64`, `observed_json_fields:{uuid,home,state}`, `transport:tools` or `ssh`, and measured readiness fields. `lifecycle_accepted` and `transport_accepted` are false until independent local acceptance; do not flip these to skip the tests. An acceptance-mode enrollment/probe runner still needs to be completed after actual installed CLI behavior is available. Thus the candidate does not yet provision or accept a VM autonomously.
+Lima's bootstrap SSH host key changed across a cold restart. Strict host-key checking correctly refused the old pin; a signed protocol diagnosis confirmed that the failed request was not admitted. The repair uses a separate persistent guest SSH service on port 2222, forwarded only to a selected localhost port. It accepts the newly generated bridge key only, forces the fixed bridge command, and disables passwords, root login, PTY, X11, agent/tunnel/TCP forwarding. Its persistent host key and signed VM identity passed subsequent cold roundtrips. The old failure/pin is retained privately; no host-key checking was disabled.
 
-Deploy `contracts.py`, `guest_bridge.py`, and the preserved `upstream/guest_agent.py`, `desktop_agent.py`, `desktop_demo.py` directly into `/home/lab/agent/` in the newly enrolled guest. The guest requires a private `~/.local/state/isolatedlab-mac/enrollment.json` identifying the same UUID/OS/architecture and the newly generated transport key. Bootstrap only through the measured owned Tools/SSH path. The `install-linux-guest.sh` script installs through signed Ubuntu repositories and the exact inherited Playwright version; record resolved package versions. Do not invoke the preserved x86-only `prepare_guest_browser.py` on Arm. Any download or installation failure stops that stage; inspect its effects before a retry.
+Lima's own SSH path is limited to fresh provisioning and explicit recovery diagnostics. Normal requests use the dedicated pinned service. Fresh local transport/SSH keys, host-key pins, enrolled bundle path, VZ identifier hash, exact Lima binary/config hashes and observed resource limits live in mode-600 private files under a mode-700 local directory. They stay out of Git/Drive. Configuration changes require an explicit observed re-enrollment; unknown JSON fields or changed identity never select a VM by display name.
 
-Parallels Tools invokes Linux commands through a shell. Only a fixed guest bridge command and URL-safe encoded authenticated JSON are used; task data never becomes shell command text. The SSH path is loopback-only, key authenticated, host-key pinned, noninteractive and has forwarding disabled. Restrict the guest SSH account/key to the bridge when that transport is required. Test argument/Unicode behavior, exact exit codes, returned identity, interruptions and invalid envelopes independently. No network-facing MCP server or expansion of the existing read-only ChatGPT connector is installed.
+Parallels remains a separately prepared backend when its actual edition and Tools/SSH capabilities satisfy the task. Its account/license output is private. A subscription alone does not prove CLI entitlement. Do not buy an upgrade, start a trial, change licensing or adopt a user-created VM merely to make a prepared recipe usable.
 
-## Owned operation and recovery
+## Skill installation and routine use
 
-After measured enrollment, reserve with `python3 mac_lab.py reserve --owner <chat-id>`. Use the returned browser/desktop session and native app identity; browser mutations require the current snapshot digest. Native mutations preserve the base adapter's current-tree/process guards. `push` selects one project-relative file up to 64 KiB; `pull` retrieves one selected result and refuses an existing destination. Project masters stay in the chosen project. CLI `--project` is the explicitly selected project or result root.
+Run `python3 install_local.py --root <private-root>` for a fresh skill/default installation. The source installer verifies hashes, preserves prior instruction bytes and the managed dispatcher, and records a private backup/readback receipt. It refuses existing skill/default/override conflicts. Use `--upgrade` only to update this owned installation after the prior source and installed skill match their hashes; later edits are preserved and cause a stop. Upgrades keep the prior immutable source and skill directory and leave global instruction text untouched.
 
-Requests are admitted once on both sides and retain private request/transport/response receipts. After an ambiguous timeout, inspect `request.status` with a new ID referencing the original ID, then observe sessions/processes before recovery. A missing response does not permit mutation replay. An abandoned reservation never expires into permission to steal another owner. The current candidate requires manual reconciliation of ambiguous admission; it has no force-recovery switch.
+The skill lives in Codex's discovered user skill location. Its resolver validates the installed manifest/files and resolves the machine binding without starting a VM. Use named MCP tools only if their actual binding targets this local enrolled guest. The existing read-only ChatGPT connection remains separate. The supported local fallback is `python3 <resolved-source>/mac_lab.py`.
 
-Close only sessions created by the reserved workflow and release only after no guest session or unknown admitted request remains. The `release` command first releases the empty guest workflow, then stops the VM normally, and removes the host reservation only after stopped-state readback. Any ambiguous shutdown retains that reservation and its receipts for inspection. Normal orchestration still requires runtime acceptance before use.
+Compatible browser/native GUI software development uses the guest by default. Plain file edits and headless CLI work can stay in the selected project/environment. Explicit host/hardware tasks preserve that scope. Missing readiness permits scoped setup, never an automatic host mouse/keyboard/focus/display fallback.
 
-Before helper upgrades, prepare a stopped checkpoint preserving bundle/config/firmware, external disk dependencies and matching source. Verify all bytes before restore to a new disconnected copy with a fresh local identity. Preserve the original and test command/native readiness and normal stop. No backup/restore implementation or acceptance is claimed by this candidate.
+Reserve with `mac_lab.py reserve --owner <chat-id>`, start the stopped owned VM with `start`, and send schema-1 requests using `request --request <json> --owner <chat-id>`. `push --project <selected-project> --path <relative-file>` transfers one selected file up to 64 KiB; `pull` retrieves one selected result and refuses an existing target. Source masters remain in the chosen project. Guest workspaces are per-owner. Browser actions require the digest from the latest snapshot; native actions require current session/app/process/tree identity and exposed accessibility actions.
 
-## Acceptance still required
+After cold start, observe the dedicated SSH banner with `prepare_lima.wait_ssh_banner(config["ssh_port"])` before sending the first request. Lima can report a running VM before its static forwarding path is ready. This bounded readiness observation sends no authenticated operation; an operation that fails afterward retains its original ID and receipts.
 
-Complete provisioning/probe/recovery orchestration and independently accept Linux, Windows Arm and native macOS. Test cold start/login, realistic selected source/build/results, DOM/native mutation and readback, Unicode/invalid inputs, stale/path/identity rejection, deadlines/child cleanup, app crash, locked session and helper loss, exact session cleanup, shutdown and stopped checkpoint restore. Run no screen/video capture under this task's active instruction.
+For a small local web server, use `desktop.launch` inside the workflow's private guest session; it shares that owned process group and is removed by `desktop.close`. No host port forwarding is needed for the guest's browser. Reuse the recorded API instead of launching an untracked daemon through a bounded build command.
 
-Only when the user is ready, announce the start of a measured 5–10 minute mixed workload while they use the Mac. Record the separate mouse/keyboard/focus/display report afterward. Then create the authorized fresh Codex chat with a realistic development request that does not mention isolatedLab and verify routing, build, retrieval and cleanup. Discovery, candidate publication and default installation do not prove either test.
+Close owned browser/desktop sessions, then use `release`. The bridge checks empty sessions and unresolved admissions, normally shuts down the VM, verifies stopped state, and only then removes the host reservation. Unknown shutdown effects retain the reservation. Reservations never expire into permission to steal another chat's guest.
+
+## Acceptance and recovery
+
+Run `python3 -m unittest test_mac_lab.py test_lima_and_backup.py`; run `accept_linux.py --owner <owned-test-id>` for the measured source/build/DOM/native fixture. It retains failure reports and active-session identifiers; observation can be refreshed, but failed/unknown mutations are not replayed. After a timeout inspect `request.status` under a new ID referencing the original, then inspect the same processes/sessions before recovery. The current candidate deliberately has no force recovery command.
+
+Run `mixed_linux.py` only after announcing the five-minute test and receiving user readiness. It holds temporary sleep protection for that process, repeats build/browser/native/readback/cleanup, and releases sleep protection afterward. Obtain the independent mouse, keyboard, focus and display report separately. Technical success does not replace that report.
+
+The stopped backup command is `stopped_backup.py make --destination <new-private-backup-directory>`. It requires stopped VM state and no reservation while holding the operation lock. It captures selected bundle/disk/firmware/config, matching guest source and necessary private local recovery keys. The payload is compressed, encrypted with a fresh private key and authenticated with an independent HMAC; keys remain in private internal storage. No VM backup or key is uploaded with source.
+
+Restore with `stopped_backup.py restore --backup <backup> --keyfile <private-key> --destination <new-staging-directory>`. Authentication and ciphertext hashes are verified before decryption; exact member names/sizes/hashes, no links/traversal/collisions, new destinations and sparse disk reconstruction are enforced. Byte restoration does not by itself accept a VM. Clone into a fresh owned VZ identity, preserve the original, rotate local enrollment/transport/SSH identities, then test cold boot, selected app/command/native readiness and normal stop. Record the actual tested restore scope.
+
+`restore_lima.py` implements that fresh clone/enrollment route from authenticated staging. Its actual first attempt exposed forwarding readiness after the second boot; that failure is preserved. Observed service state, unchanged public host key and subsequent signed read probes resolved it before the selected 37-check runtime and normal shutdown passed. `recovery_linux.py` tests an owned process crash, identity-guarded provider loss/unresponsiveness, explicit state-loss readback, cleanup and fresh sessions. A private Xvfb session has no graphical login lock; this does not accept Windows/macOS login-lock behavior.
+
+Windows Arm/native macOS require separate enrollment, dependencies, application compatibility, native accessibility/login permissions, failure recovery and local human acceptance. Parallels user-created VMs retain their owner until explicitly enrolled. No source publication, local default, old Windows report or Linux pass proves those tracks ready.
