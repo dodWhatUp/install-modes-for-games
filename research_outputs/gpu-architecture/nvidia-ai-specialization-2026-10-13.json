@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "record_id": "nvidia-ai-specialization-2026-10-13",
+  "record_kind": "research_analysis",
+  "status": "reviewed_public_sources_internal_motives_inferred",
+  "title": "Why NVIDIA retains programmable GPU hardware alongside dedicated AI accelerators",
+  "owner": {
+    "repository": "dodWhatUp/install-modes-for-games",
+    "workstream": "GPU rendering research",
+    "master_path": "research_outputs/gpu-architecture/nvidia-ai-specialization-2026-10-13.json",
+    "base_revision_observed": "d44f9cee6782d1228d20610a08b404ee44a3aff8",
+    "related_record": "research_outputs/gpu-architecture/rdna5-ps6-helix-rtx50-2026-10-13.json",
+    "index_path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+    "index_update_status": "not_modified_in_this_record_creation",
+    "drive_role": "derived_snapshot_not_created_in_this_pass"
+  },
+  "applicability": {
+    "targets": ["GeForce and RTX PRO", "Hopper", "Blackwell datacenter", "Rubin", "Groq 3 LPX", "Google TPU", "NVDLA"],
+    "context": "Architectural and economic hypotheses; not a purchasing recommendation, measured cross-platform benchmark, or authorization to install or execute anything."
+  },
+  "sources": [
+    {"id":"hopper","type":"official_architecture","locator":"https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/","source_date":"2022-03-22"},
+    {"id":"blackwell-ultra","type":"official_architecture","locator":"https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era/","source_date":"2025-08-22"},
+    {"id":"softmax","type":"manufacturer_microbenchmark_and_architecture","locator":"https://developer.nvidia.com/blog/making-softmax-more-efficient-with-nvidia-blackwell-ultra/","source_date":"2026-02-25"},
+    {"id":"tpu","type":"official_architecture","locator":"https://docs.cloud.google.com/tpu/docs/system-architecture-tpu-vm"},
+    {"id":"nvdla","type":"official_hardware_specification","locator":"https://nvdla.org/hw/v1/hwarch.html"},
+    {"id":"lpx-architecture","type":"official_architecture","locator":"https://developer.nvidia.com/blog/inside-nvidia-groq-3-lpx-the-low-latency-inference-accelerator-for-the-nvidia-vera-rubin-platform/","source_date":"2026-03-16"},
+    {"id":"lpx-production","type":"official_production_announcement","locator":"https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai","source_date":"2026-08-24"},
+    {"id":"groq-license","type":"official_agreement_announcement","locator":"https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale","source_date":"2025-12-24"},
+    {"id":"cpx-announcement","type":"official_historical_product_announcement","locator":"https://nvidianews.nvidia.com/news/nvidia-unveils-rubin-cpx-a-new-class-of-gpu-designed-for-massive-context-inference","source_date":"2025-09-09"},
+    {"id":"cpx-roadmap","type":"reporter_observation_and_unconfirmed_interpretation","locator":"https://www.tomshardware.com/pc-components/gpus/nvidia-removes-rubin-cpx-accelerators-from-its-roadmap-groq-3-lpus-take-center-stage-as-cpx-is-removed","source_date":"2026-03-17"},
+    {"id":"rtx-pro","type":"official_product_scope","locator":"https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-6000/"},
+    {"id":"cuda-targets","type":"official_programming_targets","locator":"https://developer.nvidia.com/cuda/gpus"},
+    {"id":"rubin","type":"official_architecture","locator":"https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/"}
+  ],
+  "source_coverage": {"reviewed_date":"2026-10-13","coverage":"Relevant HTML text retrieved; no original third-party source bytes archived; no hardware tested.","late_cpx_reports":"A later August 2026 report was surfaced but could not be opened. Neither cancellation nor revival is adopted as current confirmed status."},
+  "observations": [
+    {"id":"O1","claim":"Datacenter GPUs are not simply gaming dies with extra RAM. NVIDIA describes H100 as primarily AI/HPC/data analytics, with only two graphics-capable TPCs in both SXM5 and PCIe implementations. Do not claim literally zero graphics-related hardware.","sources":["hopper"],"state":"official_architecture"},
+    {"id":"O2","claim":"Tensor Cores already provide dedicated matrix engines. Blackwell Ultra retains scalar/vector-capable CUDA cores, special-function units, dedicated tensor memory and data movement hardware. Counts of CUDA Cores and Tensor Cores are not comparable area units.","sources":["blackwell-ultra"],"state":"official_architecture_with_methodological_inference"},
+    {"id":"O3","claim":"NVIDIA doubled selected SFU exponential throughput in Blackwell Ultra to address softmax stalls. Its published FP8 attention-forward benchmark reports approximately 35 percent improvement; this is not a universal whole-model speedup or an independent measurement.","sources":["softmax"],"state":"manufacturer_reported_measurement"},
+    {"id":"O4","claim":"Google TPU contains matrix, vector and scalar units. An AI ASIC need not be limited to one fixed model, nor eliminate general operations.","sources":["tpu"],"state":"official_architecture"},
+    {"id":"O5","claim":"NVDLA is a configurable fixed-function inference architecture with convolution, activation, pooling, normalization and data-movement blocks. Specialization is not a capability NVIDIA only recently discovered.","sources":["nvdla"],"state":"official_architecture"},
+    {"id":"O6","claim":"Groq 3 LPX is a narrower low-latency inference complement to Vera Rubin, not a replacement for all GPU training and inference. Its LPU has matrix, vector and switching units and compiler-managed data movement. The published 500 MB SRAM figure is per chip; 128 GB SRAM is aggregate across 256 chips, not per card.","sources":["lpx-architecture"],"state":"official_architecture"},
+    {"id":"O7","claim":"NVIDIA announced LPX full production on August 24, 2026. The earlier Groq agreement was described by Groq as non-exclusive technology licensing and staff transfers, with Groq remaining independent; no acquisition price is adopted here.","sources":["lpx-production","groq-license"],"state":"official_company_announcements"},
+    {"id":"O8","claim":"CPX was announced as a specialized context-processing CUDA GPU. A March 2026 reporter observed its absence from a roadmap presentation and inferred a possible priority change. Omission does not establish official cancellation. CPX prefill and LPX low-latency decode are not identical roles.","sources":["cpx-announcement","cpx-roadmap","lpx-architecture"],"state":"confirmed_announcement_plus_unconfirmed_roadmap_inference"},
+    {"id":"O9","claim":"RTX PRO explicitly targets both AI and professional graphics, including ray tracing. Keeping graphics resources has a product-use rationale in this family that must not be generalized to datacenter dies.","sources":["rtx-pro","cuda-targets"],"state":"official_product_scope"}
+  ],
+  "ranked_hypotheses": {
+    "meaning":"Subjective relative explanatory importance, not probabilities or a causal percentage split. Hypotheses can coexist. Rumors receive limited weight and do not change the leading three explanations.",
+    "items":[
+      {"id":"H1","rank_evidence":1,"rank_with_rumors":1,"hypothesis":"AI needs a heterogeneous mix of matrix, vector, scalar, nonlinear and data-movement operations.","support":"very_high","basis":["O2","O3","O4","O6"]},
+      {"id":"H2","rank_evidence":2,"rank_with_rumors":2,"hypothesis":"Memory capacity, bandwidth, synchronization, power and utilization constrain useful system throughput; additional matrix density alone is insufficient.","support":"very_high","basis":["O2","O3","O6"]},
+      {"id":"H3","rank_evidence":3,"rank_with_rumors":3,"hypothesis":"Programmability and software continuity preserve value across models, precisions and changing kernels. Compatibility does not inherently require gaming blocks.","support":"high_for_mechanism_internal_weight_unknown","basis":["O2","O4","O8"]},
+      {"id":"H4","rank_evidence":4,"rank_with_rumors":6,"hypothesis":"Reuse, validation cost and multiple product workloads can justify shared designs, particularly RTX and RTX PRO.","support":"moderate_to_high_with_scoped_applicability","basis":["O9"],"qualification":"Economic inference; no NVIDIA internal cost allocation was obtained."},
+      {"id":"H5","rank_evidence":5,"rank_with_rumors":5,"hypothesis":"Architectural inheritance, development lead time and migration risk favor incremental specialization over a wholesale replacement.","support":"moderate","basis":["O2","O5","O7"]},
+      {"id":"H6","rank_evidence":6,"rank_with_rumors":4,"hypothesis":"Competitive pressure and maintaining control of the broader compute platform can accelerate selective adoption of specialized designs.","support":"moderate_inference","basis":["O7","O8"],"qualification":"The rumor-inclusive promotion is conditional on roadmap omission reflecting a real strategic reprioritization, not merely presentation changes; it is not proof of a motive or product cancellation."},
+      {"id":"H7","rank_evidence":7,"rank_with_rumors":7,"hypothesis":"Preserving a fallback to gaming if AI demand weakens.","support":"low_as_datacenter_explanation","qualification":"IP reuse is plausible, but completed H100/B200/Rubin products are not simply rebadged GeForce cards."},
+      {"id":"H8","rank_evidence":8,"rank_with_rumors":8,"hypothesis":"Deliberately wasting silicon or withholding a universally superior design to force more purchases.","support":"very_low_no_direct_evidence","qualification":"Market segmentation and pricing incentives do not by themselves demonstrate intentional engineering inefficiency."}
+    ]
+  },
+  "illustrative_calculations": [
+    {"status":"hypothetical_not_benchmark","assumptions":"80 percent of runtime benefits from matrix-engine acceleration; 20 percent is unchanged; accelerate the first part by 3x.","formula":"1 / (0.2 + 0.8 / 3)","total_speedup":2.1428571429,"lesson":"Compute-unit speedup is not automatically end-to-end speedup."}
+  ],
+  "limits": [
+    "No defensible published percentage of wasted gaming silicon or universal ASIC-versus-GPU performance-per-area multiplier was established.",
+    "Compare matched model quality, precision, sparsity, context, concurrency, latency target, total chip/memory area, process and system power. Peak TOPS alone are insufficient.",
+    "A rack of 256 specialized chips cannot establish per-chip superiority over one desktop GPU.",
+    "An AI-specific design can improve efficiency without producing an inexpensive consumer product or lowering GeForce prices.",
+    "Official architecture descriptions establish components and intended roles, not proof that a design is globally optimal or that inferred corporate motives are true."
+  ],
+  "freshness":{"reviewed_date":"2026-10-13","change_triggers":["Official CPX status update","Matched independent GPU/ASIC system benchmarks","Published die-area breakdowns","New compiler or architecture capabilities"]},
+  "permission":{"execution_authorized":false,"scope":"Public-source research and sanitized knowledge preservation only; no purchases, installations, benchmarks, messages to vendors or scheduled monitoring."},
+  "privacy":{"classification":"sanitized_public_research","raw_chat_history_included":false,"credentials_included":false},
+  "next_boundary":"Refresh only affected claims when new evidence appears; do not silently promote rumor to specification. Main question is answered; global index registration and any derived Drive snapshot are separate publication steps."
+}
