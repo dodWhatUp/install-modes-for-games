@@ -1,0 +1,340 @@
+{
+  "schema_version": 1,
+  "record_id": "gpu-nextgen-consoles-rtx50-2026-10-13",
+  "record_kind": "research_comparison",
+  "status": "reviewed_sources_console_performance_unverified",
+  "title": "RDNA 5, PS6 and Xbox Helix versus RTX 5080 and RTX 5090",
+  "owner": {
+    "repository": "dodWhatUp/install-modes-for-games",
+    "workstream": "GPU rendering research",
+    "master_path": "research_outputs/gpu-architecture/rdna5-ps6-helix-rtx50-2026-10-13.json",
+    "base_revision": "b6a460f073e763a57a6d988bf5fbffa34e2e8946",
+    "index_path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+    "drive_role": "derived_snapshot"
+  },
+  "applicability": {
+    "targets": [
+      "RDNA 5",
+      "PS6",
+      "Xbox Project Helix / Magnus",
+      "RTX 5080 desktop",
+      "RTX 5090 desktop"
+    ],
+    "context": "Rasterization, ray/path tracing, graphics AI and memory; no hardware purchase or installation."
+  },
+  "sources": [
+    {
+      "id": "sony-amethyst",
+      "evidence_type": "official",
+      "source_date": "2025-10-09",
+      "locator": "https://www.linkedin.com/posts/sony-interactive-entertainment-llc_amds-jack-huynh-svp-and-gm-computing-and-activity-7382037718492409857-NPTz",
+      "reviewed_date": "2026-10-13",
+      "coverage": "relevant_text_retrieved",
+      "source_bytes_archived": false
+    },
+    {
+      "id": "xbox-helix",
+      "evidence_type": "official",
+      "source_date": "2026-03-11",
+      "locator": "https://news.xbox.com/en-us/2026/03/11/project-helix-building-next-generation-of-xbox/",
+      "reviewed_date": "2026-10-13",
+      "coverage": "relevant_text_retrieved",
+      "source_bytes_archived": false
+    },
+    {
+      "id": "amd-diamond",
+      "evidence_type": "official",
+      "source_date": "2026-03",
+      "locator": "https://www.linkedin.com/posts/jackhuynh_big-moment-for-the-future-of-gaming-activity-7437559997045235713-v39f",
+      "reviewed_date": "2026-10-13",
+      "coverage": "relevant_text_retrieved",
+      "source_bytes_archived": false
+    },
+    {
+      "id": "kepler-raster",
+      "evidence_type": "original_rumor",
+      "source_date": "2025-08-04",
+      "locator": "https://www.neogaf.com/threads/mlid-ps6-early-specs-leak-amd-rdna-5-lower-price-than-ps5-pro.1686842/page-12",
+      "reviewed_date": "2026-10-13",
+      "coverage": "relevant_text_retrieved",
+      "source_bytes_archived": false
+    },
+    {
+      "id": "kepler-flops",
+      "evidence_type": "original_rumor",
+      "source_date": "2026-09-22",
+      "locator": "https://www.neogaf.com/threads/playstation-6-will-deliver-up-to-80-tflops-and-will-be-faster-than-the-rtx-5080.1701626/page-7",
+      "reviewed_date": "2026-10-13",
+      "coverage": "relevant_text_retrieved",
+      "source_bytes_archived": false
+    },
+    {
+      "id": "kepler-dual-issue",
+      "evidence_type": "original_rumor_correction",
+      "source_date": "2026-09-20",
+      "locator": "https://neogaf.com/threads/playstation-6-will-deliver-up-to-80-tflops-and-will-be-faster-than-the-rtx-5080.1701626/page-6",
+      "reviewed_date": "2026-10-13",
+      "coverage": "relevant_text_retrieved",
+      "source_bytes_archived": false
+    },
+    {
+      "id": "kepler-memory-ai",
+      "evidence_type": "original_rumor_and_thread_quote",
+      "source_date": "2025-10-13",
+      "locator": "https://www.neogaf.com/threads/mlid-amd-magnus-apu-full-leak-rdna-5-zen-6-110-tops-npu-xbox-next-gen-console.1688936/page-11",
+      "reviewed_date": "2026-10-13",
+      "coverage": "relevant_text_retrieved",
+      "source_bytes_archived": false
+    },
+    {
+      "id": "kepler-memory-correction",
+      "evidence_type": "original_rumor_correction",
+      "source_date": "2026-09-28",
+      "locator": "https://www.neogaf.com/threads/keplerl2-ps6-is-40-tflops-and-helix-is-56-tflops-final-layouts-taped-out.1701752/page-24",
+      "reviewed_date": "2026-10-13",
+      "coverage": "relevant_text_retrieved",
+      "source_bytes_archived": false
+    },
+    {
+      "id": "nvidia-5080",
+      "evidence_type": "official",
+      "source_date": "current_page",
+      "locator": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5080/",
+      "reviewed_date": "2026-10-13",
+      "coverage": "relevant_text_retrieved",
+      "source_bytes_archived": false
+    },
+    {
+      "id": "nvidia-5090",
+      "evidence_type": "official",
+      "source_date": "current_page",
+      "locator": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/",
+      "reviewed_date": "2026-10-13",
+      "coverage": "relevant_text_retrieved",
+      "source_bytes_archived": false
+    },
+    {
+      "id": "nvidia-whitepaper",
+      "evidence_type": "official",
+      "source_date": "Blackwell_v1.1",
+      "locator": "https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf",
+      "reviewed_date": "2026-10-13",
+      "coverage": "relevant_text_retrieved",
+      "source_bytes_archived": false
+    },
+    {
+      "id": "cb-5080",
+      "evidence_type": "first_hand_benchmark",
+      "source_date": "2025-01-29",
+      "locator": "https://www.computerbase.de/artikel/grafikkarten/nvidia-geforce-rtx-5080-test.91176/seite-2",
+      "reviewed_date": "2026-10-13",
+      "coverage": "relevant_text_retrieved",
+      "source_bytes_archived": false
+    },
+    {
+      "id": "cb-pathtracing",
+      "evidence_type": "first_hand_benchmark",
+      "source_date": "2025-01-29",
+      "locator": "https://www.computerbase.de/artikel/grafikkarten/nvidia-geforce-rtx-5080-test.91176/seite-6",
+      "reviewed_date": "2026-10-13",
+      "coverage": "relevant_text_retrieved",
+      "source_bytes_archived": false
+    },
+    {
+      "id": "cb-9070xt",
+      "evidence_type": "first_hand_benchmark",
+      "source_date": "2025_driver_comparison",
+      "locator": "https://www.computerbase.de/artikel/grafikkarten/nvidia-geforce-amd-radeon-treiber-vergleich-2025.93443/",
+      "reviewed_date": "2026-10-13",
+      "coverage": "relevant_text_retrieved",
+      "source_bytes_archived": false
+    }
+  ],
+  "observations": [
+    {
+      "id": "O1",
+      "claim": "Sony's Amethyst publication describes Neural Arrays, dedicated Radiance Cores and Universal Compression.",
+      "evidence_state": "official_future_technology_description",
+      "sources": [
+        "sony-amethyst"
+      ]
+    },
+    {
+      "id": "O2",
+      "claim": "Xbox describes a custom AMD SoC and an order-of-magnitude RT advance; no comparative benchmark method is supplied. Alpha hardware is planned for developers in 2027.",
+      "evidence_state": "official_manufacturer_claim",
+      "sources": [
+        "xbox-helix"
+      ]
+    },
+    {
+      "id": "O3",
+      "claim": "AMD describes FSR Diamond with neural rendering, ML upscaling, ML multi-frame generation and Ray Regeneration, optimized for Helix/GDK.",
+      "evidence_state": "official_future_feature_direction",
+      "sources": [
+        "amd-diamond"
+      ]
+    },
+    {
+      "id": "O4",
+      "claim": "An older direct Kepler estimate places PS6 near RX 9070 XT and Xbox near RTX 5080. This is neither an official specification nor a measured raster benchmark.",
+      "evidence_state": "unverified_rumor",
+      "sources": [
+        "kepler-raster"
+      ]
+    },
+    {
+      "id": "O5",
+      "claim": "September 2026 Kepler posts claim PS6 40 TFLOPS and Helix 56 TFLOPS. PS6's 40 already includes dual issue; the 80 TFLOPS interpretation is rejected.",
+      "evidence_state": "unverified_rumor_with_original_correction",
+      "sources": [
+        "kepler-flops",
+        "kepler-dual-issue"
+      ]
+    },
+    {
+      "id": "O6",
+      "claim": "A 2025 thread quotes Kepler's most-likely memory expectations of PS6 30 GB and Xbox 36 GB. Kepler directly rejected the older 48 GB Helix SKU possibility in September 2026. Final retail capacities remain unconfirmed.",
+      "evidence_state": "unverified_rumor_and_later_correction",
+      "sources": [
+        "kepler-memory-ai",
+        "kepler-memory-correction"
+      ]
+    },
+    {
+      "id": "O7",
+      "claim": "Kepler estimated approximately 1200 TOPS for PS6 in an INT8 discussion. Precision, density and workload are insufficiently defined for a cross-vendor performance ranking.",
+      "evidence_state": "unverified_rumor",
+      "sources": [
+        "kepler-memory-ai"
+      ]
+    }
+  ],
+  "nvidia_reference_specs": {
+    "sources": [
+      "nvidia-5080",
+      "nvidia-5090",
+      "nvidia-whitepaper"
+    ],
+    "metrics_are": "Compute throughput figures are published theoretical peaks at the reference boost clock; bandwidth is nominal, while VRAM capacity and TGP are reference specifications. None of these figures is game FPS.",
+    "rtx_5080": {
+      "dedicated_vram_gb": 16,
+      "bandwidth_gb_s": 960,
+      "fp32_tflops": 56.3,
+      "ai_fp4_sparse_tops": 1801,
+      "int8_dense_tops": 450.2,
+      "int8_sparse_tops": 900.4,
+      "tgp_w": 360
+    },
+    "rtx_5090": {
+      "dedicated_vram_gb": 32,
+      "bandwidth_gb_s": 1792,
+      "fp32_tflops": 104.8,
+      "ai_fp4_sparse_tops": 3352,
+      "int8_dense_tops": 838,
+      "int8_sparse_tops": 1676,
+      "tgp_w": 575
+    }
+  },
+  "benchmark_anchors": {
+    "coverage": "Historical published desktop tests, read in October 2026; not a new local benchmark or console test. Each suite matches per-game settings between the compared cards. Raster suites combine native rendering and upscaling at 4K output.",
+    "rtx5090_vs5080": {
+      "raster_ratio": 1.49,
+      "mixed_rt_ratio": 1.47,
+      "source": "cb-5080"
+    },
+    "cyberpunk_full_rt_4k_output_dlss_quality": {
+      "rtx5080_fps": 34.3,
+      "rtx5090_fps": 55.8,
+      "display_frame_generation_included": false,
+      "source": "cb-pathtracing"
+    },
+    "rx9070xt_vs5080": {
+      "rx9070xt_fps": 55.7,
+      "rtx5080_fps": 66.4,
+      "approx_ratio": 0.839,
+      "source": "cb-9070xt"
+    }
+  },
+  "inferences": [
+    {
+      "id": "I1",
+      "claim": "Under the older desktop-equivalence rumor, PS6 is plausibly below RTX 5080 in raster and Helix near RTX 5080. RTX 5090 would retain a substantial raster-performance lead in this conditional comparison.",
+      "confidence": "low_to_moderate_conditional_on_rumor",
+      "basis": [
+        "O4",
+        "benchmark_anchors"
+      ]
+    },
+    {
+      "id": "I2",
+      "claim": "The newer 56/40 ratio is 40% more theoretical shader throughput. It cannot be applied equally to raster FPS, RT, AI or entire-system performance, and does not independently validate the older desktop-equivalence estimate.",
+      "confidence": "high_methodological",
+      "basis": [
+        "O5"
+      ]
+    },
+    {
+      "id": "I3",
+      "claim": "Large RT/AI improvements from a current-console baseline are compatible with performance below RTX 5090. Exact RT and AI placements remain unknown; RTX 5080-class RT is only an unverified possibility.",
+      "confidence": "high_uncertainty_boundary",
+      "basis": [
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "id": "I4",
+      "claim": "Unified console RAM shares capacity with CPU-side game and system data. It has no fixed conversion to dedicated VRAM; compression and shared allocations further complicate the comparison. More capacity alone does not establish more bandwidth or FPS.",
+      "confidence": "high_methodological"
+    },
+    {
+      "id": "I5",
+      "claim": "A desktop RDNA 5 GPU can use different resources, power and memory than either console. Console estimates do not establish the architecture's desktop performance ceiling.",
+      "confidence": "high_methodological"
+    }
+  ],
+  "illustrative_calculation": {
+    "status": "hypothetical_not_prediction",
+    "assumptions": "Assume PS6 actually renders at 80% of RTX 5080, Helix actually renders 40% faster in the same workload, and RTX 5090 renders at 150% of RTX 5080.",
+    "helix_relative_to_5080": 1.12,
+    "helix_relative_to_5090": 0.7467,
+    "warning": "The second assumption is not proven by the 56/40 TFLOPS claim. Do not merge the earlier equivalence leak and later FLOPS leak into one measured forecast."
+  },
+  "rejected_interpretations": [
+    "PS6 has 80 TFLOPS after adding dual issue again.",
+    "40% greater shader throughput guarantees 40% more FPS or AI speed.",
+    "An RT hardware multiplier equals the full-frame multiplier.",
+    "1200 INT8 TOPS can be ranked directly against 1801 or 3352 sparse FP4 TOPS.",
+    "30–36 GB unified memory equals 30–36 GB dedicated VRAM.",
+    "Neural rendering as a category proves parity with DLSS 5's specific image-processing method.",
+    "Frame-generated display FPS establishes base render speed or simulation rate."
+  ],
+  "supported_next_action": {
+    "capability": "read_new_primary_sources",
+    "success_evidence": [
+      "Official retail console specifications.",
+      "Matched game scenes, settings, internal/output resolution and base/displayed FPS.",
+      "RT/PT and neural inference times with common workloads, precision and sparsity definitions.",
+      "Published usable memory budgets and bandwidth."
+    ]
+  },
+  "permission": {
+    "execution_authorized": false,
+    "scope": "Research and preservation only; no installations, purchases, benchmarks, account setting changes or scheduling."
+  },
+  "freshness": {
+    "reviewed_date": "2026-10-13",
+    "change_triggers": [
+      "Official console/RDNA5 specification release.",
+      "Direct comparable benchmarks.",
+      "Original rumor correction affecting these claims."
+    ]
+  },
+  "privacy": {
+    "classification": "sanitized_public_research",
+    "contains_private_user_history": false
+  },
+  "next_boundary": "Replace conditional comparisons when primary specifications or matched measurements exist; no automated monitoring has been activated."
+}

@@ -88,3 +88,7 @@ Copy-ready request:
 ## Azeron R5 closure and latest continuation
 
 [Preserved R5 request, installation evidence and continuation](AZERON-R5-CHAT-CLOSURE-2026-10-11.md) retains the original draft PR4 and private visible-message/recovery alias. Read the newer [Action Atlas](AZERON-ACTION-ATLAS.md), [R8 Windows receipt](AZERON-R8-WINDOWS-READ-2026-10-11.md) and latest owner preflight before extending it. R5 layer transitions are historical; newer file snapshots and authored Atlas work do not establish current live input or host acceptance. Native recovery remains separate.
+
+## GPU architecture research
+
+- [RDNA 5, PS6 and Xbox Helix versus RTX 5080/5090 — source record, 2026-10-13](../research_outputs/gpu-architecture/rdna5-ps6-helix-rtx50-2026-10-13.json): official technology statements, original rumor corrections and historical desktop benchmark anchors. Console raster placement remains conditional; comparable RT/AI performance and final memory budgets are unknown. Read this record before reusing the 40% claim or comparing unified RAM with dedicated VRAM.
