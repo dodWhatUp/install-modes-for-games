@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "version": "0.2.0-candidate",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 11938,
+      "sha256": "6771873eca28ebeaa59867338cc9a19a1cd77d83d15ab472a43169bc5ada54c0"
+    },
+    {
+      "path": "RESOLVED-GUEST-DEPENDENCIES.txt",
+      "bytes": 13880,
+      "sha256": "b491f402b3e979e2d6c4f328d28a57295d8b7c529769aa09b4ccdc26ee7c3aae"
+    },
+    {
+      "path": "VALIDATION.json",
+      "bytes": 5107,
+      "sha256": "40cb39b72903536d7fe06965930047e6bee7204c2817afa57924e50f62a47920"
+    },
+    {
+      "path": "accept_linux.py",
+      "bytes": 6869,
+      "sha256": "028661eb5806f17c2faea8f830687f026104a087010f0345c04705155356288f"
+    },
+    {
+      "path": "contracts.py",
+      "bytes": 5071,
+      "sha256": "a90257ea338b61ec7031467e151c1fae56125605219e935d2627df4337feacfa"
+    },
+    {
+      "path": "fixtures/build.py",
+      "bytes": 875,
+      "sha256": "213c4e0ef43defa48d1af5405d35c9f44a72de72952ffddb476efb32989a6260"
+    },
+    {
+      "path": "guest-sshd.conf",
+      "bytes": 534,
+      "sha256": "7afc9089b1c49c565e6870a8a16d069627fba67756672ac99b68b5d1eb061cda"
+    },
+    {
+      "path": "guest_bridge.py",
+      "bytes": 7219,
+      "sha256": "e41acc2c7415ba9e93e27896ff118fcfe50c7279f9822edf334f2409fe876348"
+    },
+    {
+      "path": "install-bridge-ssh.sh",
+      "bytes": 917,
+      "sha256": "44e673651fb5d8517375ec68ea7969ea07d90a126cc3537ea19b4a8a29328106"
+    },
+    {
+      "path": "install-linux-guest.sh",
+      "bytes": 1349,
+      "sha256": "ecb29187a7b24d599ff7ca4f1b387241a43008ca9b923e5f57b78f6ec02df96e"
+    },
+    {
+      "path": "install_local.py",
+      "bytes": 8851,
+      "sha256": "f2efb944f385b523059bc2b0ffd08fa65c5eb17df1545a097057a5617ebdf80f"
+    },
+    {
+      "path": "isolatedlab-sshd.service",
+      "bytes": 235,
+      "sha256": "75fe1f77774288cb9b4c9ff1a2321fb03c5db1150edb2cdd519e211900ef4e37"
+    },
+    {
+      "path": "lima_backend.py",
+      "bytes": 3072,
+      "sha256": "55e005d372104e6bdfa3995b5cd799e150265da72b6ad1677dbacf18f5a684af"
+    },
+    {
+      "path": "mac_lab.py",
+      "bytes": 16462,
+      "sha256": "66bb838b46150afb49ec304f8af33276dfc89e9410e63bea3719ae8bfefc77c1"
+    },
+    {
+      "path": "mixed_linux.py",
+      "bytes": 2047,
+      "sha256": "4398d9cf72fabd76ca7660fc231a28e868d3a175cb82155098a3ffa63e5c7863"
+    },
+    {
+      "path": "prepare_lima.py",
+      "bytes": 13140,
+      "sha256": "c37bca03fcc9f9446430ac3209a6611f2321f7881348063a86b01e173072acb9"
+    },
+    {
+      "path": "recovery_linux.py",
+      "bytes": 4684,
+      "sha256": "bf72e49073602c89973ff56d7a06688dc38fe2527a50a2b961f4a00dd753a0ef"
+    },
+    {
+      "path": "restore_lima.py",
+      "bytes": 9489,
+      "sha256": "6e46bacc575f232c68cb6e4a2ba09598443d654c06853b6fc2cef49c9a01f876"
+    },
+    {
+      "path": "skill/SKILL.md",
+      "bytes": 3056,
+      "sha256": "05c11ba65c0aaf00cbf547e0f3346f0fabf03eb28f2a9474750880ae4334419e"
+    },
+    {
+      "path": "skill/references/linux-bridge.md",
+      "bytes": 3933,
+      "sha256": "2b1fe615c52a5bc83b080df41a6d064628414755b0004712428abf82199f7629"
+    },
+    {
+      "path": "skill/scripts/resolve_lab.py",
+      "bytes": 1277,
+      "sha256": "5e5030b7197a0e6d7a5d7fd5f1e14d2e74999ef3c2f654242f25ca74522d861a"
+    },
+    {
+      "path": "stopped_backup.py",
+      "bytes": 9494,
+      "sha256": "76d0e42900e14370aeb4085ceb213a5933f03da4d9808aefed3056d2ad250512"
+    },
+    {
+      "path": "test_lima_and_backup.py",
+      "bytes": 8472,
+      "sha256": "3563434246fbd5eebd045999a1ca04f7058dfb5760076f1c1462e5391fd73c25"
+    },
+    {
+      "path": "test_mac_lab.py",
+      "bytes": 10023,
+      "sha256": "d39da69796488938aee4eba6676de75a4133af3c75a4e9cc5456d53140901ccd"
+    },
+    {
+      "path": "upstream/PROVENANCE.json",
+      "bytes": 890,
+      "sha256": "8a1befb4d4dc4cb4c84e2e1bc4850811b25d26fe6610da05ccd4242e4eba8ef5"
+    },
+    {
+      "path": "upstream/desktop_agent.py",
+      "bytes": 9517,
+      "sha256": "81cbb5daed71a3f202aa02d17745107417c328347108ff0ff122b28cb4ed36b0"
+    },
+    {
+      "path": "upstream/desktop_demo.py",
+      "bytes": 1291,
+      "sha256": "d6d63f3c2e0b1c2fe49fb84d076f621e00935d782e5cae286f17357f71539de7"
+    },
+    {
+      "path": "upstream/guest_agent.py",
+      "bytes": 24695,
+      "sha256": "f08ae985a3ea7c826c698ea5208476c124a1c03b508d631d044d95a42ff8199c"
+    },
+    {
+      "path": "upstream/prepare_guest_browser.py",
+      "bytes": 3572,
+      "sha256": "6b6d05b18230ef3a54decdedd39e6b4687a6903cd4d1c0c202aa6c133c345cad"
+    }
+  ]
+}

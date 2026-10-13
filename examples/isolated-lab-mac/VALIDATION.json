@@ -1,0 +1,116 @@
+{
+  "schema": 1,
+  "version": "0.2.0-candidate",
+  "date_local": "2026-10-13",
+  "timezone": "Asia/Jerusalem",
+  "host_os": "macOS 26.6.2",
+  "host_arch": "arm64",
+  "host_memory_bytes": 17179869184,
+  "source_verification": {
+    "outer_files": 12,
+    "base_files": 58,
+    "windows_files": 20,
+    "outer_sha256": "c40b3f17df0cdf670c3056c56862876b6dac1876d1f3696bacab6b73e440c34d",
+    "all_per_file_hashes": "PASS"
+  },
+  "offline_contracts": {
+    "tests": 31,
+    "outcome": "PASS"
+  },
+  "python_compile": "PASS",
+  "guest_shell_syntax": "PASS",
+  "skill_schema": "PASS using isolated PyYAML 6.0.3 validator environment",
+  "validator_initial_failures": [
+    "system Python missing PyYAML",
+    "bundled Python missing PyYAML"
+  ],
+  "mac_runtime_accepted": false,
+  "parallels_installed": true,
+  "host_input_used": false,
+  "screen_or_video_capture_used": false,
+  "linux_runtime": "PASS_SELECTED_37_CHECKS",
+  "windows_arm_runtime": "NOT_IMPLEMENTED_NOT_RUN",
+  "macos_native_runtime": "NOT_IMPLEMENTED_NOT_RUN",
+  "background_human_test": {
+    "technical": {
+      "elapsed_seconds": 300.01,
+      "workloads": 11,
+      "checks": 407,
+      "outcome": "PASS_TECHNICAL_INTERVAL"
+    },
+    "human": {
+      "mouse": "NO_INTERFERENCE",
+      "keyboard": "NO_INTERFERENCE",
+      "focus": "NO_INTERFERENCE",
+      "display": "NO_INTERFERENCE",
+      "source": "separate user report",
+      "exact_answer": "No interference in any of the four"
+    }
+  },
+  "fresh_development_chat": {
+    "outcome": "PASS_IMPLICIT_ROUTING_TRANSFER_BUILD_BROWSER_RESULTS_CLEANUP",
+    "checks": 35,
+    "host_input_used": false,
+    "capture_used": false,
+    "source_master_preserved": true,
+    "manifest_exact": true,
+    "guest_stopped": true,
+    "reservation_released": true
+  },
+  "backend": "Lima 2.2.1 / VZ",
+  "fresh_preparation": {
+    "outcome": "PASS_ACTUAL_FRESH_DIRECTORY",
+    "cold_starts": 2,
+    "selected_checks": 37,
+    "normal_shutdown": true
+  },
+  "stopped_backup_restore": {
+    "forwarding_readiness_failure": "retained; connection reset before SSH authentication; observed active service and unchanged public host key; new signed read probes after readiness; no mutation replay",
+    "fresh_ssh_and_transport_keys": true,
+    "fresh_vm_and_protocol_identity": true,
+    "normal_stop": true,
+    "original_preserved_stopped": true,
+    "restored_runtime": "PASS",
+    "selected_checks": 37,
+    "reproducible_restore_runner": "PASS_COMPLETE_FRESH_NAMESPACE_RUN",
+    "cold_start_twice": true
+  },
+  "owned_linux_recovery": {
+    "outcome": "PASS_OWNED_LINUX_RECOVERY",
+    "checks": 26,
+    "crash": "PASS_IDENTITY_GUARDED_SIGNAL_STATE_LOSS_CLEANUP_FRESH_SESSION",
+    "unresponsive": "PASS_IDENTITY_GUARDED_SIGNAL_STATE_LOSS_CLEANUP_FRESH_SESSION",
+    "graphical_login_lock": "NOT_APPLICABLE_TO_PRIVATE_XVFB; WINDOWS_MACOS_UNTESTED"
+  },
+  "tested_runtime_input_sha256": {
+    "contracts.py": "a90257ea338b61ec7031467e151c1fae56125605219e935d2627df4337feacfa",
+    "mac_lab.py": "66bb838b46150afb49ec304f8af33276dfc89e9410e63bea3719ae8bfefc77c1",
+    "lima_backend.py": "55e005d372104e6bdfa3995b5cd799e150265da72b6ad1677dbacf18f5a684af",
+    "guest_bridge.py": "e41acc2c7415ba9e93e27896ff118fcfe50c7279f9822edf334f2409fe876348",
+    "accept_linux.py": "028661eb5806f17c2faea8f830687f026104a087010f0345c04705155356288f",
+    "mixed_linux.py": "4398d9cf72fabd76ca7660fc231a28e868d3a175cb82155098a3ffa63e5c7863",
+    "fixtures/build.py": "213c4e0ef43defa48d1af5405d35c9f44a72de72952ffddb476efb32989a6260",
+    "guest-sshd.conf": "7afc9089b1c49c565e6870a8a16d069627fba67756672ac99b68b5d1eb061cda",
+    "isolatedlab-sshd.service": "75fe1f77774288cb9b4c9ff1a2321fb03c5db1150edb2cdd519e211900ef4e37",
+    "upstream/guest_agent.py": "f08ae985a3ea7c826c698ea5208476c124a1c03b508d631d044d95a42ff8199c",
+    "upstream/desktop_agent.py": "81cbb5daed71a3f202aa02d17745107417c328347108ff0ff122b28cb4ed36b0",
+    "upstream/desktop_demo.py": "d6d63f3c2e0b1c2fe49fb84d076f621e00935d782e5cae286f17357f71539de7"
+  },
+  "preserved_failures": [
+    "validator dependencies absent before isolated validation venv",
+    "Lima UNIX socket length and archive safe-extraction guards before effects",
+    "first acceptance result destination omission",
+    "default Lima bootstrap SSH host key changes after cold boot; pin refusal and signed not_admitted diagnosis; separate persistent SSH service",
+    "VZ native snapshots unimplemented",
+    "restored forwarding reset before SSH auth; observed same guest; readiness gate and recovery completed",
+    "recovery report process-list shape omission; effects inspected and normal release before new run"
+  ],
+  "additional_runtime_tested_sha256": {
+    "prepare_lima.py": "c37bca03fcc9f9446430ac3209a6611f2321f7881348063a86b01e173072acb9",
+    "restore_lima.py": "6e46bacc575f232c68cb6e4a2ba09598443d654c06853b6fc2cef49c9a01f876",
+    "recovery_linux.py": "bf72e49073602c89973ff56d7a06688dc38fe2527a50a2b961f4a00dd753a0ef"
+  },
+  "parallels_license_state_at_final_inspection": "not valid",
+  "parallels_user_vm_count": 1,
+  "local_linux_runtime_accepted": true
+}

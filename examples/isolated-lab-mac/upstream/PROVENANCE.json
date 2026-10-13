@@ -1,0 +1,29 @@
+{
+  "source_owner": "https://github.com/dodWhatUp/install-modes-for-games",
+  "package_sha256": "2befe3727ef66a4742276e3edbf608cb84fa40dc18074eb8f7c893d61aea371a",
+  "version": "0.5.0",
+  "files": [
+    {
+      "path": "guest_agent.py",
+      "bytes": 24695,
+      "sha256": "f08ae985a3ea7c826c698ea5208476c124a1c03b508d631d044d95a42ff8199c"
+    },
+    {
+      "path": "desktop_agent.py",
+      "bytes": 9517,
+      "sha256": "81cbb5daed71a3f202aa02d17745107417c328347108ff0ff122b28cb4ed36b0"
+    },
+    {
+      "path": "desktop_demo.py",
+      "bytes": 1291,
+      "sha256": "d6d63f3c2e0b1c2fe49fb84d076f621e00935d782e5cae286f17357f71539de7"
+    },
+    {
+      "path": "prepare_guest_browser.py",
+      "bytes": 3572,
+      "sha256": "6b6d05b18230ef3a54decdedd39e6b4687a6903cd4d1c0c202aa6c133c345cad"
+    }
+  ],
+  "modified": false,
+  "runtime_acceptance": "reference Windows host only"
+}
