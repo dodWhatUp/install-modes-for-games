@@ -336,5 +336,159 @@
     "classification": "sanitized_public_research",
     "contains_private_user_history": false
   },
-  "next_boundary": "Replace conditional comparisons when primary specifications or matched measurements exist; no automated monitoring has been activated."
+  "next_boundary": "Replace conditional comparisons when primary specifications or matched measurements exist; no automated monitoring has been activated.",
+  "mlid_analysis_2026_10_13": {
+    "record_status": "supplementary_research_nonverified_leaks",
+    "reviewed_date": "2026-10-13",
+    "scope": "MLID original video/report chronology, technical model plausibility, updated Sony/Microsoft/AMD evidence. This supplements the existing PS6/Helix/RTX50 comparison master; no console benchmark has been run.",
+    "read_coverage": "Original MLID episode titles/dated descriptions and public contemporary written reporting examined; complete YouTube video transcripts and alleged underlying private AMD documents could not be independently obtained. No claim is attributed to direct transcript viewing.",
+    "episodes": [
+      {
+        "date": "2025-09-11",
+        "title": "PS6 Full Specs Leak: RTX 5090 Ray Tracing & Next-Gen AI w/ AMD Orion!",
+        "url": "https://youtu.be/mmAX6XFQsA8",
+        "locator": "https://www.tweaktown.com/news/107684/playstation-6-full-specs-leak-rtx-5090-level-ray-tracing-6-12x-faster-rt-gaming-than-ps5/index.html",
+        "claim": "52-54 RDNA5 CU at 2.6-3.0GHz, 34-40 TFLOPS, 160-bit 32Gbps GDDR7 (640 GB/s), 10 MB L2, ~280mm2 TSMC3nm, 160W APU target, 30GB/40GB considered; 2.5-3x PS5 raster, 6-12x PS5 RT-specific, 4-8x with newer upscaling (workload not held constant).",
+        "evidence": "unverified_MLID_leak_and_estimate"
+      },
+      {
+        "date": "2025-09-22",
+        "title": "Broken Silicon #328 PS6 performance clarification",
+        "url": "https://www.youtube.com/watch?v=jRumGaseH28",
+        "locator": "https://tech4gamers.com/ps6-not-rtx-5090-performance-levels/",
+        "claim": "MLID narrowed RTX5090 comparison to specialized exceptional RT cases and described general RT as more plausibly RTX5080-class, with raster substantially below 5090.",
+        "evidence": "public_quote_reported_MLID_interpretation"
+      },
+      {
+        "date": "2025-10-09",
+        "title": "Xbox Magnus full specifications leak",
+        "url": "https://youtu.be/X_pjrZQDerw",
+        "locator": "https://www.ithome.com/0/888/382.htm",
+        "claim": "70 physical / ~68 enabled RDNA5 CUs, 24MB L2, 192-bit GDDR7, 24/36/48GB design possibilities, Zen6+Zen6c hybrid CPU, 264mm2 GPU and 144mm2 CPU/SoC chiplets, 110 TOPS NPU at 6W, about 25% theoretical PS6 lead; specs unconfirmed.",
+        "evidence": "unverified_MLID_leak"
+      },
+      {
+        "date": "2026-03-06",
+        "title": "February Loose Ends / Xbox Project Helix",
+        "url": "https://youtu.be/oROywsaqoWI",
+        "locator": "https://www.neogaf.com/threads/mlid-project-helix-is-25-percent-faster-than-ps6.1694323/",
+        "claim": "Xbox estimated approximately 25% ahead of PS6 by MLID, explicitly an estimate rather than observed game performance.",
+        "evidence": "unverified_MLID_estimate"
+      },
+      {
+        "date": "2026-08-07",
+        "title": "July Loose Ends: AMD RDNA5 and PS6 Global L2",
+        "url": "https://www.patreon.com/MooresLawIsDead/sitemap",
+        "locator": "https://elchapuzasinformatico.com/2026/08/amd-cache-rdna-5-global-l2-ps6/",
+        "claim": "MLID says older PS6 design had 16MB GL2 and 30-40MB Infinity Cache, while newer one moved to 10MB GL2 and no separate Infinity Cache, with ~54 CUs; internal performance simulation originally 2.2-2.5x became 2.5-3x PS5 raster target.",
+        "evidence": "unverified_internal_document_description"
+      },
+      {
+        "date": "2026-09-22",
+        "title": "Broken Silicon #380: RTX 6090, AMD RDNA5, PS6 Neural RT",
+        "url": "https://www.patreon.com/MooresLawIsDead/sitemap",
+        "locator": "https://www.bleav.com/shows/broken-silicon/episodes/380-rtx-6090-launch-leak-amd-rdna5-and-ps6-neural-ray-tracing-nvidia-ai-desperation/",
+        "claim": "Potential future AI-assisted global illumination and neural rendering discussed; research direction, not proven retail PS6 feature.",
+        "evidence": "reported_MLID_discussion_not_shipping_confirmation"
+      },
+      {
+        "date": "2026-10-09",
+        "title": "September Loose Ends: AMD RDNA5 Design Goals Leak",
+        "url": "https://www.youtube.com/watch?v=Jw-AprCqRaY",
+        "locator": "https://www.3dcenter.org/news/geruechtekueche-amds-rdna5-mit-veraenderten-caches-hoeheren-taktraten-und-doch-wieder-mit-unifi",
+        "claim": "An alleged AMD document describes professional AT0/Alpha Trion 0 aimed at local LLMs with unified RDNA5 graphics/CDNA compute. These AT0 claims must NOT be transferred to PS6 or Helix.",
+        "evidence": "unverified_leaked_manufacturer_document_secondary_report"
+      }
+    ],
+    "independent_context": [
+      {
+        "date": "2026-04-16",
+        "source": "https://neogaf.com/threads/mlid-project-helix-is-25-percent-faster-than-ps6.1694323/page-14",
+        "classification": "KeplerL2 original public countercalculation",
+        "finding": "Assassin's Creed Shadows workload illustration: 5ms of RT related work becomes 1.35ms; 25ms remaining becomes 8.33ms. Total 30ms -> 9.68ms or 3.10x whole-frame rate, not 10x. Uncapped theoretical 33.3 ->103.3FPS; not a console benchmark."
+      },
+      {
+        "date": "2026-09-23",
+        "source": "https://www.igorslab.de/en/gddr7-4-6-gb-per-chip-leak-larger-vram-configurations-2027-2028/",
+        "classification": "published density roadmap rumor",
+        "finding": "3GB 24Gbit GDDR7 packages exist; 4GB and 6GB package timing remains rumored. 30GB PS6 via 10x3GB with 5 controller channels and clamshell and Xbox 36GB via 12x3GB with six channels are arithmetically feasible but costly and unconfirmed."
+      },
+      {
+        "date": "2026-10-05",
+        "source": "https://www.3dcenter.org/news/geruechtekueche-amds-rdna5-mit-veraenderten-caches-hoeheren-taktraten-und-doch-wieder-mit-unifi",
+        "classification": "independent KeplerL2 architectural rumor secondary report",
+        "finding": "RDNA5 2 or 4 MB L2 per 32-bit UMC, no separate Infinity Cache, configurable L0/LDS; different AT0 professional design from console APUs."
+      },
+      {
+        "date": "2026-10-01",
+        "source": "https://blog.playstation.com/2026/10/01/ai-upscaling-is-coming-to-ps5/",
+        "classification": "official Sony release",
+        "finding": "QSSR from Project Amethyst uses streamlined neural architecture and optimized software on base PS5. Confirms graphics-AI co-development, not PS6 AI throughput."
+      },
+      {
+        "date": "2026-03-11",
+        "source": "https://news.xbox.com/en-us/2026/03/11/project-helix-building-next-generation-of-xbox/",
+        "classification": "official Microsoft positioning",
+        "finding": "Project Helix custom AMD SoC and order-of-magnitude RT capability advance are manufacturer direction, without defined benchmark baseline."
+      }
+    ],
+    "arithmetic_checks": {
+      "fp32_formula": "CU * 64 * 2(FMA) * 2(dual-issue) * GHz / 1000 TFLOPS theoretical peak; not attained for all instruction mixes.",
+      "ps6_52cu_2_6ghz_tflops": 34.6112,
+      "ps6_52cu_3_0ghz_tflops": 39.936,
+      "xbox_68cu_2_5ghz_tflops": 43.52,
+      "xbox_68cu_3_2ghz_tflops": 55.7056,
+      "xbox_ghz_for_56tflops_under_dual_issue": 3.2169117647058822,
+      "xbox_vs_ps6_cu_ratio": 1.3076923076923077,
+      "xbox_vs_ps6_bus_ratio": 1.2,
+      "xbox_vs_ps6_l2_ratio": 2.4,
+      "potential_160bit_ps6_gl2_mapping": "5x32bit UMC *2MB per UMC=10MB GL2 fits newer rumored RDNA5 L2 granularity",
+      "potential_192bit_xbox_l2_mapping": "6x32bit UMC *4MB per UMC=24MB GL2 fits newer rumored RDNA5 L2 granularity",
+      "ps6_memory_bandwidth_at_32gbps_gbs": 640,
+      "xbox_memory_bandwidth_at_32gbps_gbs": 768,
+      "ps6_bandwidth_vs_5080_ratio": 0.6666666666666666,
+      "xbox_bandwidth_vs_5080_ratio": 0.8,
+      "ps6_bandwidth_vs_5090_ratio": 0.35714285714285715,
+      "xbox_bandwidth_vs_5090_ratio": 0.42857142857142855,
+      "original_source_note": "25%-35% MLID Xbox advantage estimate differs from Kepler's later separate 40% shader throughput ratio. No direct game 40% has been measured."
+    },
+    "frame_time_sensitivity": [
+      {
+        "rt_fraction": 0.1,
+        "other_speedup": 3,
+        "rt_speedup": 10,
+        "overall_speedup": 3.2258064516129035
+      },
+      {
+        "rt_fraction": 0.5,
+        "other_speedup": 3,
+        "rt_speedup": 10,
+        "overall_speedup": 4.615384615384615
+      },
+      {
+        "rt_fraction": 0.7,
+        "other_speedup": 3,
+        "rt_speedup": 10,
+        "overall_speedup": 5.882352941176471
+      }
+    ],
+    "evaluation": {
+      "high_confidence_methodology": "Compute arithmetic is consistent with CU/clock rumors but no independent proof; Amdahl frame shares constrain full game gains; TFLOPS and TOPS cannot directly transfer to FPS; memory capacity does not equal bandwidth or directly comparable dedicated VRAM.",
+      "moderately_plausible_unconfirmed": "Dedicated RT and neural cores; narrow high-rate GDDR7 buses; GL2/cache redesign; PS6 2.5-3x raster vs PS5; Xbox stronger than PS6; 30/36GB clamshell memory configurations.",
+      "low_confidence_unverified": "Full mixed workload PS6 RT equal to RTX5080; niche PS6 RT equal to RTX5090; sustained 3.2GHz Xbox 56TF; 48GB retail Xbox; exact future desktop AT0 RDNA5 parity with Nvidia; 2027 guaranteed ship date.",
+      "not_supported": "10x RT accelerator means 10x whole-game frames; RT/AI claimed multipliers rank total gaming cards; 4-8x next-gen upscaling means 4-8x same-resolution native frames; 110 TOPS Xbox NPU can be ranked against RTX5090's FP4 sparse TOPS; professional AT0 design equals console GPU.",
+      "likely_raster_scenario_not_benchmark": "If Kepler older PS6~RX9070XT and Xbox~RTX5080 desktop-equivalence estimates are approximately true: PS6 near 0.84x RTX5080, Helix near 1.0x, RTX5090 near 1.49x. MLID's separate ~25% advantage estimate would give 1.05x 5080 from an assumed 0.84 PS6; do not pool assumptions into a false measured forecast.",
+      "ray_tracing": "Potential substantial RT per CU gain, but full game performance depends on shader, denoiser, ray generation, memory and power. Niche RT-kernel RTX5090 parity is possible but not established; RTX5090-class PT in full comparable 4K games unsupported.",
+      "graphics_ai": "FSR/PSSR/ML frame generation/neural rendering and inference model quality must compare common real inputs, output quality, model precision/sparsity, render-base FPS and latency. MLID professional RDNA5 unified-compute rumor does not establish console inference throughput."
+    },
+    "pending_verification": [
+      "Original full videos/transcripts and alleged AMD documents not independently read",
+      "Official PS6/Helix retail CU and clocks, shipping memory and bandwidth, launch window",
+      "Independent mixed raster, RT/PT and AI kernel tests with matched workload and settings",
+      "Check independent revision/corrections of MLID original claims before adopting fixed predictions"
+    ],
+    "no_automatic_monitoring": true,
+    "no_hardware_tests_authorized": true,
+    "no_purchase_authorized": true
+  }
 }
