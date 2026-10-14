@@ -201,7 +201,7 @@ def compare_installed(operation_plan,observed):
     rows=[]
     for item in operation_plan['items']:
         if item['kind']!='mod':continue
-        ident=item.get('mod_id',item.get('umm_id'));found=matches.get(ident.casefold(),[]) if ident else []
+        ident=item.get('mod_id') or item.get('umm_id');found=matches.get(ident.casefold(),[]) if ident else []
         if not ident:state='IDENTITY_NOT_CONFIGURED'
         elif len(found)>1:state='AMBIGUOUS_DUPLICATE'
         elif not found:state='NOT_OBSERVED' if complete else 'INCONCLUSIVE'

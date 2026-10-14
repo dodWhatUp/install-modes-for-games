@@ -1,5 +1,21 @@
 # Measurement-tool connections and user control
 
+
+## 2026-10-14 — Read-only planning and UMM instance source candidate 0.27
+
+The local `0.27.0-preview.1` candidate adds four modern multi-game read tools:
+opaque instance listing, explicit instance inspection, goal-plan DAG compilation
+and ownership/conflict graphs. Registration is deliberately absent from MCP and
+requires the local `Game-Instances.py register --confirm` route. The accepted
+adapter reads reviewed UMM markers, `Info.json` and declared assembly presence;
+it does not load code, infer enabled state or write a game/manager profile.
+
+Synthetic fixture acceptance and selected 0.26 regressions passed during source
+development. Final package/Windows/real-folder evidence is a separate gate. No
+specific ChatGPT/Codex product client, production installation, real manager
+profile, game runtime, gameplay or physical-device acceptance is established by
+this source record. See [the 0.27 slice contract](AI-PLANNING-READONLY-SLICE.md).
+
 ## 2026-10-14 — AI Efficiency Foundation 0.26 Windows and stdio acceptance
 
 The reconciled `0.26.0-preview.1` source adds dual-era MCP, a shared result envelope, manifest-verified search/fetch and resources, resume/change cursors, blocker explanations, batch status, catalog/report reads and an in-memory handoff capsule. The exact Preview passed native Windows 11 ARM64 launcher/Tk acceptance in a separate current-user profile. An independent external stdio client exercised modern `2026-07-28` and legacy `2025-11-25`, including one synthetic proposal that was rejected locally; no operation was approved or executed. See the [sanitized acceptance report](AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.md) and [canonical reconciliation](AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.md).

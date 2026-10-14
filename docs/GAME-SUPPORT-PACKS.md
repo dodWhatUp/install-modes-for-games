@@ -174,6 +174,30 @@ duplicate identity and inconclusive absence. A version match is **manifest data*
 not runtime success. All results keep `runtime=NOT_VERIFIED` and enabled state
 unknown. Manual check results retain their existing operator-reported labels.
 
+## Opaque installation identity and accepted read adapter — 0.27
+
+The 0.27 read-only slice adds a private `game-instances` registry under the
+existing Game Tools data root. A local operator selects and confirms one exact
+game folder through `Game-Instances.py`; the registry stores the private path and
+current support-definition revision. Public AI results expose only an opaque
+instance ID and path-free metadata. The AI tool surface has no registration,
+`path`, `game_dir`, `root` or `directory` argument.
+
+Only the UMM adapter is accepted by this slice. It reuses the existing bounded
+folder inspector for executable/loader markers, `Mods/*/Info.json` and the
+manifest-declared assembly. Other existing folder formats remain available to
+their earlier support-pack workflows but are **not** silently promoted to this
+instance adapter; registration returns `ADAPTER_ACCEPTANCE_PENDING` until a
+separate conformance pass exists.
+
+`game_tools_plan_goal` compiles dependencies and read steps but does not inspect
+a folder by itself. `game_tools_instance_inspect` performs the explicit read.
+`game_tools_conflicts` may compare exact planned UMM identity with one named
+registered instance, preserving duplicate/missing/inconclusive states. None of
+these tools install, enable, disable, upgrade or roll back a mod, and none treats
+manifest presence as runtime success. Full contract: [read-only planning and UMM
+instances](AI-PLANNING-READONLY-SLICE.md).
+
 ## AI integration
 
 The existing multi-game local stdio route adds four **read-only** tools:

@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/game-tools-goal-plan.schema.json",
+  "title": "Game Tools read-only goal plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "goal",
+    "game_id",
+    "instance_id",
+    "mode",
+    "selected_items",
+    "status",
+    "nodes",
+    "blockers",
+    "selection_issues",
+    "effects",
+    "automatic_execution",
+    "runtime_verified",
+    "gameplay_verified",
+    "plan_id",
+    "plan_revision"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "kind": { "const": "game_tools_goal_plan" },
+    "goal": {
+      "enum": [
+        "prepare-game",
+        "review-mods",
+        "inspect-installed",
+        "compare-intended-installed",
+        "review-keybinds"
+      ]
+    },
+    "game_id": { "$ref": "#/$defs/id" },
+    "instance_id": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/id" }
+      ]
+    },
+    "mode": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "string", "pattern": "^[a-z][a-z0-9-]{0,47}$" }
+      ]
+    },
+    "selected_items": {
+      "type": "array",
+      "maxItems": 100,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/id" }
+    },
+    "status": {
+      "enum": ["READY_FOR_READS", "PARTIAL_READ_PLAN", "BLOCKED"]
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 32,
+      "items": { "$ref": "#/$defs/node" }
+    },
+    "blockers": {
+      "type": "array",
+      "maxItems": 32,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/id" }
+    },
+    "selection_issues": {
+      "type": "array",
+      "maxItems": 128,
+      "items": { "$ref": "#/$defs/issue" }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["read", "write", "network"],
+      "properties": {
+        "read": {
+          "type": "array",
+          "maxItems": 32,
+          "items": { "type": "string", "minLength": 1, "maxLength": 256 }
+        },
+        "write": { "const": [] },
+        "network": { "const": false }
+      }
+    },
+    "automatic_execution": { "const": false },
+    "runtime_verified": { "const": false },
+    "gameplay_verified": { "const": false },
+    "plan_id": { "type": "string", "pattern": "^gtplan:[a-f0-9]{32}$" },
+    "plan_revision": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "owner",
+        "status",
+        "summary",
+        "depends_on",
+        "effects",
+        "blockers"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "$ref": "#/$defs/id" },
+        "owner": { "type": "string", "minLength": 1, "maxLength": 192 },
+        "status": {
+          "enum": ["READY", "BLOCKED", "WAITING_LOCAL_SELECTION", "NOT_APPLICABLE"]
+        },
+        "summary": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "depends_on": {
+          "type": "array",
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        },
+        "effects": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["read", "write"],
+          "properties": {
+            "read": {
+              "type": "array",
+              "maxItems": 32,
+              "items": { "type": "string", "minLength": 1, "maxLength": 256 }
+            },
+            "write": { "const": [] }
+          }
+        },
+        "blockers": {
+          "type": "array",
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        }
+      }
+    },
+    "issue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "severity", "owners", "message"],
+      "properties": {
+        "code": { "$ref": "#/$defs/id" },
+        "severity": { "enum": ["advisory", "blocker"] },
+        "owners": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "items": { "type": "string", "minLength": 1, "maxLength": 192 }
+        },
+        "message": { "type": "string", "minLength": 1, "maxLength": 512 }
+      }
+    }
+  }
+}

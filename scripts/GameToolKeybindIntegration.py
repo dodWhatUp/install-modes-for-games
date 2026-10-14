@@ -1,6 +1,6 @@
 """Opt-in extension of the existing Hub approval controller; no second mailbox.
 
-Rebased onto the 0.24.0-preview.1 host source and composed for the 0.25.0-preview.2 reviewed merge and retained by the 0.26.0-preview.1 additive host. Construction is inert. The existing
+Rebased onto the 0.24.0-preview.1 host source and composed for the 0.25.0-preview.2 reviewed merge and retained by the 0.27.0-preview.1 read-only planning host. Construction is inert. The existing
 local UI can call inherited approve_local/reject_local. AI can only propose;
 it cannot register targets, approve, run arbitrary code or supply filesystem paths.
 No live Hub file is patched by importing this module.

@@ -196,6 +196,43 @@ class ModernProtocolContracts(unittest.TestCase):
         self.assertIn("game_tools_resume", names)
         self.assertEqual(len(names), len(set(names)))
 
+    def test_workspace_modern_surface_adds_readonly_planning_without_legacy_registration(self):
+        from GameToolGameWorkspaces import WorkspaceAI
+        service = WorkspaceAI(self.root / "workspace-planning")
+        endpoint = DualEndpoint(service, False, source_root=self.package)
+        tools = endpoint.handle({
+            "jsonrpc": "2.0", "id": 1, "method": "tools/list",
+            "params": {"_meta": self.meta},
+        })["result"]["tools"]
+        names = {item["name"] for item in tools}
+        expected = {
+            "game_tools_instances", "game_tools_instance_inspect",
+            "game_tools_plan_goal", "game_tools_conflicts",
+        }
+        self.assertTrue(expected <= names)
+        self.assertFalse(any("register" in name for name in names))
+        for item in tools:
+            self.assertFalse({"path", "game_dir", "root", "directory"} &
+                             set(item["inputSchema"]["properties"]))
+        planned = endpoint.handle({
+            "jsonrpc": "2.0", "id": 2, "method": "tools/call",
+            "params": {
+                "_meta": self.meta, "name": "game_tools_plan_goal",
+                "arguments": {"game_id": "pathfinder-kingmaker", "goal": "review-mods"},
+            },
+        })["result"]
+        self.assertFalse(planned["isError"])
+        self.assertEqual(planned["structuredContent"]["result_type"], "preview")
+        self.assertEqual(planned["structuredContent"]["effects"]["write"], [])
+        self.assertFalse((self.root / "workspace-planning/game-instances").exists())
+        legacy = host.Endpoint(service)
+        legacy.handle({"jsonrpc": "2.0", "id": 3, "method": "initialize", "params": {}})
+        legacy.handle({"jsonrpc": "2.0", "method": "notifications/initialized"})
+        legacy_names = {item["name"] for item in legacy.handle({
+            "jsonrpc": "2.0", "id": 4, "method": "tools/list", "params": {},
+        })["result"]["tools"]}
+        self.assertFalse(expected & legacy_names)
+
     def test_modern_stdio_has_one_json_response_per_request(self):
         messages = [
             {"jsonrpc": "2.0", "id": 1, "method": "server/discover", "params": {"_meta": self.meta}},

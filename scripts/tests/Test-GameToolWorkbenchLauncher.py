@@ -8,7 +8,7 @@ spec=importlib.util.spec_from_loader(loader.name,loader);m=importlib.util.module
 class LauncherTests(unittest.TestCase):
  def setUp(self):
   self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup);self.root=Path(self.tmp.name)
-  paths=['Game-Tool-Hub.py','GameToolFocusUI.py','GameToolFocusPanels.py','GameToolWorkbench.py','GameToolGameWorkspaces.py','GameToolWorkbenchLaunch.pyw','GameToolAI.py','GameToolFocusLaunch.pyw','game_mod_ops/support.py','game_mod_ops/definitions.py','game_mod_ops/managers.py','game_mod_ops/handoff.py','GameToolKeybindIntegration.py','GameToolKeybindAI.py','game_keybind_ops/core.py','game_keybind_ops/panel.py']
+  paths=['Game-Tool-Hub.py','GameToolFocusUI.py','GameToolFocusPanels.py','GameToolWorkbench.py','GameToolGameWorkspaces.py','GameToolWorkbenchLaunch.pyw','GameToolAI.py','GameToolPlanning.py','GameToolInstances.py','GameToolFocusLaunch.pyw','game_mod_ops/support.py','game_mod_ops/definitions.py','game_mod_ops/managers.py','game_mod_ops/handoff.py','GameToolKeybindIntegration.py','GameToolKeybindAI.py','game_keybind_ops/core.py','game_keybind_ops/panel.py']
   self.rows=[]
   for name in paths:
    p=self.root/'scripts'/name;p.parent.mkdir(exist_ok=True,parents=True)
@@ -35,6 +35,9 @@ class LauncherTests(unittest.TestCase):
    with self.assertRaises(ValueError):
     with old.PreviewLease(data):pass
   with old.PreviewLease(data):pass
+ def test_missing_planning_core_refused(self):
+  self.rows=[r for r in self.rows if not r['path'].endswith('GameToolPlanning.py')];self.save()
+  with self.assertRaises(ValueError):m.verify(self.root)
  def test_missing_keybind_core_refused(self):
   self.rows=[r for r in self.rows if not r['path'].endswith('game_keybind_ops/core.py')];self.save()
   with self.assertRaises(ValueError):m.verify(self.root)

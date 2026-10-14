@@ -139,10 +139,10 @@ def dispatch_base(service, name, args, *, multi_game=False):
     return service.propose(**args)
 
 
-def foundation_tools():
+def foundation_tools(multi_game=False):
     out = output_schema()
     bounded_id = {"type": "string", "minLength": 1, "maxLength": 192}
-    return [
+    out_tools = [
         tool_definition(
             "game_tools_status", "Read one compact completion and capability summary.",
             {"game_id": bounded_id, "known_revision": {"type": "string", "pattern": "^[a-f0-9]{64}$"}},
@@ -188,7 +188,7 @@ def foundation_tools():
                         "type": "object", "additionalProperties": False,
                         "required": ["kind", "id"],
                         "properties": {
-                            "kind": {"type": "string", "enum": ["request", "keybind_plan", "job", "resource"]},
+                            "kind": {"type": "string", "enum": ["request", "keybind_plan", "job", "instance", "resource"]},
                             "id": bounded_id, "game_id": bounded_id,
                         },
                     },
@@ -222,3 +222,47 @@ def foundation_tools():
             }, output=out,
         ),
     ]
+    if multi_game:
+        out_tools.extend([
+            tool_definition(
+                "game_tools_instances",
+                "List opaque locally registered game installations without returning paths.",
+                {
+                    "game_id": bounded_id,
+                    "limit": {"type": "integer", "minimum": 1, "maximum": 64},
+                }, output=out,
+            ),
+            tool_definition(
+                "game_tools_instance_inspect",
+                "Read one registered UMM installation's markers and manifests; no DLL loading or writes.",
+                {"instance_id": bounded_id, "game_id": bounded_id},
+                ["instance_id"], output=out,
+            ),
+            tool_definition(
+                "game_tools_plan_goal",
+                "Compile a deterministic read-only goal DAG; creates no job, proposal, or execution.",
+                {
+                    "game_id": bounded_id,
+                    "goal": {"type": "string", "enum": [
+                        "prepare-game", "review-mods", "inspect-installed",
+                        "compare-intended-installed", "review-keybinds",
+                    ]},
+                    "instance_id": bounded_id,
+                    "mode": {"type": "string", "pattern": "^[a-z][a-z0-9-]{0,47}$"},
+                    "selected": {"type": "array", "maxItems": 100, "uniqueItems": True,
+                                 "items": bounded_id},
+                }, ["game_id", "goal"], output=out,
+            ),
+            tool_definition(
+                "game_tools_conflicts",
+                "Build declared ownership/dependency/conflict evidence and optionally read one registered UMM instance.",
+                {
+                    "game_id": bounded_id,
+                    "instance_id": bounded_id,
+                    "mode": {"type": "string", "pattern": "^[a-z][a-z0-9-]{0,47}$"},
+                    "selected": {"type": "array", "maxItems": 100, "uniqueItems": True,
+                                 "items": bounded_id},
+                }, ["game_id"], output=out,
+            ),
+        ])
+    return out_tools

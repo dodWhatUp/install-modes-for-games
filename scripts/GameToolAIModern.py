@@ -81,7 +81,7 @@ class ModernEndpoint:
         if hasattr(self.service, "keybinds"):
             from GameToolKeybindAI import extra_tools
             definitions += extra_tools(self.allow_requests, self.multi_game)
-        definitions += foundation_tools()
+        definitions += foundation_tools(self.multi_game)
         envelope_schema = output_schema()
         result = []
         seen = set()

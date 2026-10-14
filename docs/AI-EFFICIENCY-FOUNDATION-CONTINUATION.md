@@ -1,22 +1,27 @@
-# Continuation checkpoint — AI Efficiency Foundation 0.26.0-preview.1
+# Continuation checkpoint — read-only planning 0.27.0-preview.1
 
-## Current durable result
+## Current durable base
 
-- The read-first AI/MCP foundation is implemented and reconciled onto canonical base `043f3c4733788f082da98dfcb43c0972d2794c6a`.
-- Exact tested product-source commit: `42dc939bd37ff37e5af2cb429bce6d0aeb3eb29d`.
-- Later receipt/documentation commit: `1b619bd6fd1d3270d6b286edf411dc57d1f01717`; it does not expand runtime acceptance.
-- PR #7 was independently reviewed and merged into `main` as merge commit `cef163dee0bba0395611b1e3c15be972fa7db175`.
-- R7 passed native Windows/Tk, independent modern/legacy stdio, 11 focused suites and a real PowerShell 5.1 source export.
-- The proposal mailbox remains local-review-only; no proposal was approved or executed.
-- Production profiles, game files, input profiles, games and devices were not changed by publication.
+- AI Efficiency Foundation 0.26 was independently reviewed and merged into canonical `main` through PR #7, followed by its adoption record.
+- This slice starts from exact main commit `108cb332b874583776c7a9cb1a19ce67c8cc96e5` on `task/ai-plan-readonly-slice2-20261014`.
+- The existing proposal mailbox, approval controller, jobs, journal, game-support and keybind owners remain unchanged.
+
+## Current candidate
+
+- Opaque private game-instance identities are implemented; paths are selected and retained only through an explicit local operator route.
+- UMM is the first accepted read adapter. It reads reviewed executable/loader markers, `Info.json` and declared assembly presence without loading code or writing the game.
+- Deterministic goal-plan DAGs and ownership/conflict graphs are implemented as read-only previews.
+- Four new tools are limited to the modern multi-game MCP surface. The legacy tool list and payload shapes remain unchanged.
+- Synthetic UMM and selected regression tests have passed. Final package, native Windows and any real-folder read require separate receipts before publication claims.
 
 ## Next safe stages
 
-1. Begin the next separate read-first slice: goal-level plan DAG, ownership/conflict graph, bounded game-instance identity and one manager adapter with no writes.
-2. Configure a specific ChatGPT/Codex product client only through its selected local connection route. Independent stdio framing is already accepted and should not be repeated merely to prove protocol parsing.
-3. Add installed-state diffs only after the selected adapter passes synthetic and real read-only acceptance.
-4. Keep install, upgrade, disable and rollback transactions behind a later explicit gate.
+1. Finish exporter/package wiring, static checks and the selected/full regression gate.
+2. Perform native Windows acceptance against a copied candidate and synthetic UMM fixture; return the VM to its prior state.
+3. Optionally perform one separately authorized real-folder **read-only** acceptance. Absence of that pass remains visible and does not block synthetic source publication.
+4. Publish only a reviewed task branch and draft PR; do not merge automatically.
+5. Keep install, upgrade, disable, rollback, manager writes and arbitrary discovery behind a later transaction gate.
 
 ## Do not infer
 
-Main-branch adoption is not production installation, product-client UI acceptance, manager/game state, gameplay acceptance or physical-device acceptance. A proposal receipt is not approval or execution. A catalog match is not an installed-state observation.
+A registered instance is not installation health. UMM manifest presence is not enabled state, load order, runtime compatibility or gameplay acceptance. A goal plan is not a durable job, proposal, approval or execution. Task-branch publication is not main adoption or production installation.

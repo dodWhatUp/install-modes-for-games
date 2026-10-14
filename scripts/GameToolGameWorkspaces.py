@@ -28,6 +28,7 @@ from game_mod_ops.definitions import validate_mode
 from game_mod_ops.managers import inspect_game as inspect_defined_game, compare_installed, capabilities as adapter_capabilities
 from game_mod_ops.handoff import export_handoff
 from GameToolKeybindIntegration import KeybindAutomationMixin, OPERATIONS as KEYBIND_OPERATIONS
+from GameToolInstances import InstanceRegistry
 from game_keybind_ops.core import Service as KeybindService
 from game_keybind_ops.packs import list_packs as list_keybind_packs
 from game_keybind_ops.effective import list_instances as list_keybind_instances
@@ -265,6 +266,7 @@ class GameWorkspaces:
         self.mods_root=self.data_dir/'mod-workflows';self.runner=ActivityRunner();self._services={}
         self.builtin_id=load_recipe(builtin)['game_id']
         self.keybinds=KeybindService(self.data_dir)
+        self.instances=InstanceRegistry(self.data_dir,self)
 
     def game_rows(self):
         """Compose support-pack and keybind-pack capabilities without merging schemas."""

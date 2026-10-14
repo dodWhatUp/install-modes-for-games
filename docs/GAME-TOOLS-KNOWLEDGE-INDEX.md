@@ -1,5 +1,26 @@
 # Game tools knowledge and recovery index
 
+
+## 2026-10-14 — Read-only planning and UMM instance source candidate 0.27
+
+Read [Read-only planning and UMM instance slice](AI-PLANNING-READONLY-SLICE.md)
+and its [source validation record](AI-PLANNING-READONLY-VALIDATION.json)
+for the opaque local installation registry, accepted UMM manifest reader,
+deterministic goal DAG and ownership/conflict graph. The modern multi-game
+surface adds `game_tools_instances`, `game_tools_instance_inspect`,
+`game_tools_plan_goal` and `game_tools_conflicts`. Registration remains a local
+operator CLI action; AI receives no arbitrary-path field and public results omit
+the private path. The legacy MCP surface and all approval/execution owners remain
+unchanged.
+
+This record describes local source on
+`task/ai-plan-readonly-slice2-20261014`, based on canonical main
+`108cb332b874583776c7a9cb1a19ce67c8cc96e5`. Synthetic UMM inspection and
+selected regression tests passed; final package, Windows and real-folder
+acceptance are recorded separately when completed. It is not production
+installation, manager mutation, gameplay acceptance or permission to inspect an
+unregistered game directory.
+
 ## 2026-10-14 — AI Efficiency Foundation 0.26 adopted source
 
 Read the [AI Efficiency Foundation design](AI-EFFICIENCY-FOUNDATION.md),

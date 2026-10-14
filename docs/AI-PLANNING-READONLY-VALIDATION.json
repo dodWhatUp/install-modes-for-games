@@ -1,0 +1,257 @@
+{
+  "acceptance": {
+    "external_stdio_roundtrip_for_new_tools": "PENDING",
+    "native_windows": "PENDING_R4",
+    "production_installation": "NOT_PERFORMED",
+    "real_registered_game_folder": "NOT_PERFORMED",
+    "runtime_or_gameplay": "NOT_PERFORMED",
+    "source_export_package": "PENDING",
+    "synthetic_umm_fixture": "PASS",
+    "windows_r1": "RECONCILED_TEST_ASSERTION_FAILURE_NO_PRODUCT_EFFECT",
+    "windows_r2": "RECONCILED_ENVIRONMENT_FIXTURE_PRIVILEGE_NO_PRODUCT_EFFECT",
+    "windows_r3": "RECONCILED_EXPORT_METADATA_CONTRACT_NO_PRODUCT_EFFECT"
+  },
+  "candidate": {
+    "ai_transport": "0.27.0-preview.1",
+    "base_commit": "108cb332b874583776c7a9cb1a19ce67c8cc96e5",
+    "branch": "task/ai-plan-readonly-slice2-20261014",
+    "instances": "0.1.0",
+    "planning": "0.1.0",
+    "product_commit": null,
+    "source_scope_aggregate_sha256": "1d6f7b299dcd54378389a6c475afeaca32f930209728e96d26b5a203d3bf26db",
+    "source_scope_files": 19,
+    "tool_hub": "0.27.0-preview.1"
+  },
+  "created_utc": "2026-10-14T19:58:14.459850+00:00",
+  "date": "2026-10-14",
+  "effects": {
+    "capture_started": false,
+    "game_files_changed": false,
+    "game_launched": false,
+    "git_published": false,
+    "input_injected": false,
+    "manager_profile_changed": false,
+    "production_profile_changed": false,
+    "proposal_created_or_approved": false,
+    "provider_network_calls": false
+  },
+  "implemented": [
+    "opaque private game-instance registry with local confirmation only",
+    "UMM executable/loader/Info.json/declared-assembly read adapter",
+    "deterministic goal-plan DAG with explicit owners, dependencies, blockers and empty write sets",
+    "declared ownership/conflict graph with real alternative nodes and optional UMM manifest evidence",
+    "four modern multi-game read tools without registration or arbitrary path arguments",
+    "legacy MCP tool list and payload shapes unchanged"
+  ],
+  "kind": "game-tools-ai-planning-readonly-validation",
+  "limitations": [
+    "UMM manifest presence is not enabled state, load order, runtime compatibility or gameplay acceptance.",
+    "Other existing folder inspectors are not accepted instance adapters by this slice.",
+    "A goal plan is a deterministic preview, not a job, proposal, approval or execution.",
+    "Install, upgrade, disable and rollback transactions remain outside this slice."
+  ],
+  "privacy_and_authority": {
+    "ai_arbitrary_path_argument": false,
+    "ai_registration_tool": false,
+    "approval_authority_changed": false,
+    "automatic_retry_added": false,
+    "execution_authority_changed": false,
+    "public_build_profile_path_or_credential_labels": false,
+    "public_instance_path": false
+  },
+  "schema_version": 1,
+  "selected_validation": {
+    "automatic_retry": false,
+    "passed_methods": 297,
+    "skip_boundary": "Four source-checkout packaging checks require a generated MANIFEST.json and are rerun against the exported package.",
+    "skipped_methods": 4,
+    "status": "PASS",
+    "suite_count": 12,
+    "suites": [
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameToolPlanning.py",
+        "tests": 15
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameToolAIFoundation.py",
+        "tests": 17
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameToolAIModern.py",
+        "tests": 18
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameToolGameWorkspaces.py",
+        "tests": 41
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameSupport.py",
+        "tests": 56
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameToolAutomation.py",
+        "tests": 52
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameToolKeybindMerge.py",
+        "tests": 7
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameToolUnified.py",
+        "tests": 33
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameToolWorkbenchLauncher.py",
+        "tests": 10
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/keybinds/test_host_integration.py",
+        "tests": 35
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/keybinds/test_schema_contract.py",
+        "tests": 10
+      },
+      {
+        "skipped": 4,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameSupportPackaging.py",
+        "tests": 7
+      }
+    ],
+    "tests_run_total": 301,
+    "timeouts": 0
+  },
+  "source_scope": [
+    {
+      "bytes": 4433,
+      "path": "schemas/game-tools-goal-plan.schema.json",
+      "sha256": "d241ac3e57e95a2ce2d57ca1ef863275db5ae052fa262bea6c7384f7e921a760"
+    },
+    {
+      "bytes": 45571,
+      "path": "scripts/Export-GameTools.ps1",
+      "sha256": "0c3564f9a0703ac3bfa9457ca1e1338bcac14b0b802b0b60cd9fb8da1cb01963"
+    },
+    {
+      "bytes": 3722,
+      "path": "scripts/Game-Instances.py",
+      "sha256": "1dfe0820f2853eee173daf79b7bb9d939e9cb1226982690ab35090c17fb76a5d"
+    },
+    {
+      "bytes": 19324,
+      "path": "scripts/GameToolAIContracts.py",
+      "sha256": "e50876ac607cb49cf99b8faa3395767830d0ecf26bdb8a811051435557f75eed"
+    },
+    {
+      "bytes": 32161,
+      "path": "scripts/GameToolAIFoundation.py",
+      "sha256": "0c745bd338a821b2e4dc2e1233cd60d2af175af6921258f59596981cb095b919"
+    },
+    {
+      "bytes": 12525,
+      "path": "scripts/GameToolAIModern.py",
+      "sha256": "5a1046f3d950cac248d9deeca6db1d94e65fc8145e10f6a5dbe83730978ba5d9"
+    },
+    {
+      "bytes": 12422,
+      "path": "scripts/GameToolAITools.py",
+      "sha256": "e4914d2c3ddf14b7941f564c6c6ce1340ef22f1ffca3aaf04f2791f0bb4c0a01"
+    },
+    {
+      "bytes": 40288,
+      "path": "scripts/GameToolGameWorkspaces.py",
+      "sha256": "73278d36bd9ee87a60f8cc694c5dda65a30a53537830e234f617b3b3b2ca619a"
+    },
+    {
+      "bytes": 13571,
+      "path": "scripts/GameToolInstances.py",
+      "sha256": "9f5351132da8dd4269df1b49f570c7b6086877289f2e24836b251c6d349395de"
+    },
+    {
+      "bytes": 21641,
+      "path": "scripts/GameToolPlanning.py",
+      "sha256": "1e1e11b0b565691c1d7b786c9c76f02a5e191464d62533bd7e32c6e61b753d2e"
+    },
+    {
+      "bytes": 3145,
+      "path": "scripts/GameToolWorkbenchLaunch.pyw",
+      "sha256": "7bfdee915438ddcf56a66c6e76b180598c575f1eb4e3b65e4faed568cc6f4216"
+    },
+    {
+      "bytes": 2138,
+      "path": "scripts/check_host.py",
+      "sha256": "5af7912deb60c38f265e619ecf4f03899c183e5ced2987332788a1f203f2b966"
+    },
+    {
+      "bytes": 13286,
+      "path": "scripts/game_mod_ops/managers.py",
+      "sha256": "8f0f3c41861211ac2fd7665028b123ae532e0fd427826f5017c064656acd53a7"
+    },
+    {
+      "bytes": 25984,
+      "path": "scripts/tests/Test-GameSourceExport.ps1",
+      "sha256": "246975b0bcec9da1164833476ca26487be50d054aa8042d1d3f4093235e4214c"
+    },
+    {
+      "bytes": 22443,
+      "path": "scripts/tests/Test-GameSupport.py",
+      "sha256": "4643f25bbc9c5c2d5948082d8c36b4f04c27fa1f0678f94c270c6a1648e798c7"
+    },
+    {
+      "bytes": 5104,
+      "path": "scripts/tests/Test-GameSupportPackaging.py",
+      "sha256": "c90f27ff369e4440061dfd03e9b9fe0732e159ae9f81d6ce0b10ba3397140d62"
+    },
+    {
+      "bytes": 12869,
+      "path": "scripts/tests/Test-GameToolAIModern.py",
+      "sha256": "55b1e9195eacbef673e4166256ab3d60e3f3a892e9d49d2357c2bdcbab36939a"
+    },
+    {
+      "bytes": 14130,
+      "path": "scripts/tests/Test-GameToolPlanning.py",
+      "sha256": "2ca4afc64355e6497db91bec81c6f1d6851db5480c9eb57dd58647259cd8ae3d"
+    },
+    {
+      "bytes": 3523,
+      "path": "scripts/tests/Test-GameToolWorkbenchLauncher.py",
+      "sha256": "46d33d9bdc8a83d3d389d4380aa6a0a6b26fa920153a00ad76755ba6f7a9b5d0"
+    }
+  ],
+  "static_validation": {
+    "changed_json_files_parsed": 2,
+    "changed_paths_reviewed": 33,
+    "changed_python_files_parsed": 21,
+    "exact_host_pins": 12,
+    "forbidden_binary_or_archive_payloads": 0,
+    "git_diff_check": "PASS",
+    "host_reference_version": "0.27.0-preview.1",
+    "json_parse_errors": 0,
+    "nul_files": 0,
+    "privacy_pattern_hits": 0,
+    "python_parse_errors": 0
+  }
+}

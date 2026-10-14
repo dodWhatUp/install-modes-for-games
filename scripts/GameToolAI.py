@@ -15,7 +15,7 @@ from GameToolAIContracts import VERSION as FOUNDATION_VERSION
 from GameToolAITools import base_tools as tools, dispatch_base, validate_arguments
 from game_mod_ops.safety import ModError, require, read_json, strict_json
 
-VERSION = "0.26.0-preview.1"
+VERSION = "0.27.0-preview.1"
 if VERSION != FOUNDATION_VERSION:
     raise RuntimeError("AI transport and foundation versions diverged.")
 
