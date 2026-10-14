@@ -41,6 +41,17 @@ The final reconciled source was sealed as R7 and committed without changing its 
 - Windows focused gate: 11/11 suites; 295 tests run, 290 passed and 5 environment skips.
 - Native PowerShell 5.1 source export: 387 files with verified ZIP entry hashes; archive SHA-256 `264ea4eb59a3bbf2b7e41aa41a5f97fd31db9b5f05596cbf56509cfa352d4956`.
 
+## Subsequent canonical adoption
+
+After the R7 source and receipt commits were reviewed, PR #7 was merged with a merge commit so both boundaries remain visible in history:
+
+- Reviewed head: `1b619bd6fd1d3270d6b286edf411dc57d1f01717`
+- Tested product source: `42dc939bd37ff37e5af2cb429bce6d0aeb3eb29d`
+- Canonical merge commit: `cef163dee0bba0395611b1e3c15be972fa7db175`
+- Original base parent: `043f3c4733788f082da98dfcb43c0972d2794c6a`
+
+The merge changed Git publication state only. It did not add production installation, approve or execute a proposal, modify a game/profile/device, or expand the recorded Windows/runtime acceptance.
+
 ## Boundary
 
-This is a task-branch candidate. It does not merge `main`, install production, modify a game/profile/device, approve a proposal, or publish archive binaries into Git. The machine-readable classification is in [`AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.json`](AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.json).
+The reconciliation and test records remain scoped to their original task-branch execution. The later merge establishes canonical source adoption, not production/game/client acceptance. The machine-readable classification and adoption record are in [`AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.json`](AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.json).
