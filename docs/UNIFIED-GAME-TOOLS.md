@@ -11,10 +11,10 @@ ChatGPT/MCP cannot pass a game path. A plan is not a job, proposal, approval or
 execution. An observed `Info.json` is not enabled state, runtime compatibility or
 gameplay verification. See [the exact design and boundaries](AI-PLANNING-READONLY-SLICE.md).
 
-The exact tested task-branch source is commit
-`cd444009d063b27894bf8e399d517670b30ebc47`. Candidate R4 passed bounded
+The current tested task-branch source is commit
+`f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39`. Candidate R5 passed bounded
 [Windows/source-package/external-stdio acceptance](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.md)
-using a synthetic UMM fixture. It remains separate from the installed Hub 0.20.2
+using a synthetic UMM fixture; the same record retains the historical R4 boundary. It remains separate from the installed Hub 0.20.2
 lineage below and has not been installed into production, connected through a
 specific product UI or accepted against a real game folder.
 

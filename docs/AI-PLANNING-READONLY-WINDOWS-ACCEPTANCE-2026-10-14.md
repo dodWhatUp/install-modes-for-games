@@ -2,8 +2,37 @@
 
 **Date:** 2026-10-14
 **Version:** `0.27.0-preview.1`
-**Tested product commit:** `cd444009d063b27894bf8e399d517670b30ebc47`
+**Current tested product commit:** `f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39`
+**Historical R4 tested product commit:** `cd444009d063b27894bf8e399d517670b30ebc47`
 **Result:** **PASS** for the bounded synthetic read-only scope below.
+
+## Current correction boundary — R5
+
+R5 preserves the R4 architecture and corrects five reviewed source paths. Windows
+case and 8.3 aliases now resolve to one physical instance without weakening link
+refusal; `inspect-installed` and `review-keybinds` no longer invent a mod recipe;
+support-only UMM definitions can inspect an explicitly registered instance; mode
+validation and public read effects now use their owning contracts.
+
+The exact 715-file R5 candidate matched commit `f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39` after the repository's
+Git clean filters. Windows 11 ARM64 passed **13/13 suites: 374 tests, 367 passed
+and seven explicit skips**, with no timeout or automatic retry. The real source
+export contained **394 files / 395 ZIP entries**, SHA-256
+`e96ad5d012f03b1ee09a716b5e979d1385feaabb5d7bca7c30baa6ee81b6e3c9`;
+manifest SHA-256 is
+`445a4e74a0b6966b2e8a12500a6e4b11ce9f6af2ff8b39e23ff62107ec94c5d5`.
+Exported packaging passed 7/7 with zero skips. External modern/legacy stdio passed
+all 27 checks, including exact goal read effects; the synthetic game tree remained
+byte-identical and only one private instance record was written.
+
+An initial mixed R5 copy was isolated before Windows transfer because seven
+historical documents did not match the current worktree. A first independent
+readback compared checkout CRLF bytes directly with normalized Git blobs; the
+preserved R2 readback applied Git clean filters and passed. Neither attempt had a
+product effect. The R4 record below remains historical evidence rather than being
+rewritten.
+
+## Historical R4 acceptance
 
 ## Accepted behavior
 

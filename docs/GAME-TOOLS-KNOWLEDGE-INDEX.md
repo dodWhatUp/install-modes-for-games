@@ -13,10 +13,10 @@ operator CLI action; AI receives no arbitrary-path field and public results omit
 the private path. The legacy MCP surface and all approval/execution owners remain
 unchanged.
 
-The exact tested source is commit
-`cd444009d063b27894bf8e399d517670b30ebc47` on
+The current tested source is commit
+`f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39` on
 `task/ai-plan-readonly-slice2-20261014`, based on canonical main
-`108cb332b874583776c7a9cb1a19ce67c8cc96e5`. Candidate R4 passed the separate
+`108cb332b874583776c7a9cb1a19ce67c8cc96e5`. Candidate R5 passed the separate
 [Windows/source-package/external-stdio acceptance](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.md)
 and its [machine-readable record](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.json).
 A real game folder, production installation, manager mutation, runtime/gameplay

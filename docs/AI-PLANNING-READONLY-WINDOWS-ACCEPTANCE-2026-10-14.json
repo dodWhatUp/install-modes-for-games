@@ -11,6 +11,7 @@
     "unexpected": 0
   },
   "created_utc": "2026-10-14T20:08:18.995094+00:00",
+  "current_tested_product_commit": "f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39",
   "date": "2026-10-14",
   "effects": {
     "capture": false,
@@ -193,6 +194,7 @@
     "tests_run": 370,
     "timeouts": 0
   },
+  "historical_r4_tested_product_commit": "cd444009d063b27894bf8e399d517670b30ebc47",
   "independent_readback": {
     "checks": {
       "archive_entries_match": true,
@@ -222,6 +224,145 @@
     "Production installation, migration, install, upgrade, disable or rollback transactions.",
     "Main-branch adoption or merge of this task branch."
   ],
+  "post_review_r5": {
+    "candidate": {
+      "aggregate_sha256": "fbc07c7eed3319a9b778f76a11660609e8374107510e4f5b9493d9f079a77710",
+      "exact_commit_after_git_clean_filters": true,
+      "inventory_file_sha256": "99027ad573dc38510137ffd08cb58be2bb22477ac66f337353e9a1608cfcb519",
+      "payload_bytes": 8470140,
+      "payload_files": 715,
+      "revision": "R5"
+    },
+    "changed_files": [
+      {
+        "bytes": 32129,
+        "path": "scripts/GameToolAIFoundation.py",
+        "sha256": "4c9a701d605fa6deced22168a276b4c7d5071ca4dd3617ce63ac8a211e7cddd5"
+      },
+      {
+        "bytes": 14075,
+        "path": "scripts/GameToolInstances.py",
+        "sha256": "bd33881e606fd6977bc2e14ae55ed8725368108ae67e6f13483bdbc6ad32c611"
+      },
+      {
+        "bytes": 22612,
+        "path": "scripts/GameToolPlanning.py",
+        "sha256": "c65f8f8b38cae6a8a961d56e3816d5ea41de41f84b99bf4719bfbe32c18f873d"
+      },
+      {
+        "bytes": 2138,
+        "path": "scripts/check_host.py",
+        "sha256": "191d7b2847a95b8ef949b234e82382d033913d5faeed8b717878e9fb28c15c87"
+      },
+      {
+        "bytes": 17685,
+        "path": "scripts/tests/Test-GameToolPlanning.py",
+        "sha256": "0d5b28b5747d464f9964e3ff1dca1c12c29eac56636cd39fb57b5428791530e1"
+      }
+    ],
+    "corrections": [
+      "Treat Windows case and 8.3 aliases of one physical game directory as the same registered instance while continuing to reject links and duplicate ownership.",
+      "Allow inspect-installed and review-keybinds goals to remain read-only without inventing a mod recipe; support-only UMM games can inspect a registered instance.",
+      "Validate planning modes through the existing mode contract and expose the actual read-effect set in the AI result envelope.",
+      "Refresh exact host dependency pins and add four focused regression contracts."
+    ],
+    "effects": {
+      "capture": false,
+      "execution": false,
+      "git_main": false,
+      "input": false,
+      "manager_profile": false,
+      "network": false,
+      "production_profile": false,
+      "proposal": false,
+      "real_game": false
+    },
+    "external_stdio": {
+      "checks": 27,
+      "execution": false,
+      "goal_plan_read_effects_exact": true,
+      "legacy_tools": 24,
+      "modern_tools": 38,
+      "only_private_registry_metadata_written": true,
+      "proposal_created": false,
+      "status": "PASS",
+      "synthetic_game_unchanged": true
+    },
+    "historical_r4_tested_product_commit": "cd444009d063b27894bf8e399d517670b30ebc47",
+    "independent_readback": {
+      "archive_manifest_files_verified": 394,
+      "candidate_files_verified": 715,
+      "git_clean_filters_applied": true,
+      "predecessor": "R1 compared checkout CRLF bytes directly with normalized Git blobs and therefore reported expected line-ending differences; no source or product effect.",
+      "revision": "R2",
+      "status": "PASS"
+    },
+    "local_selected_gate": {
+      "harness_boundary": "The first run used the macOS /tmp spelling whose /var ancestor is linked and was correctly refused before product logic. A new bounded run used /private/tmp; link checks were not weakened.",
+      "passed": 301,
+      "skipped": 4,
+      "status": "PASS",
+      "suites": 12,
+      "tests_run": 305,
+      "timeouts": 0
+    },
+    "not_established": [
+      "A real registered game directory or live manager profile.",
+      "UMM enabled state, load order, runtime compatibility or gameplay.",
+      "Connection through a specific ChatGPT or Codex product UI.",
+      "Production installation or install/upgrade/disable/rollback transactions.",
+      "Main-branch adoption or merge of this task branch."
+    ],
+    "parent_commit": "14d0790ed04eeeeb04efe59e5c1430d0650f3277",
+    "receipt_sha256": {
+      "candidate_copy": "2ad8c9236829cbe063b542fc2037bc586ec2983ab9ad9af00186d519920d757d",
+      "candidate_hash": "858fceb5d4ed6c4e27bb15498e13e4336bed136ca3f2c162f15656a340bba3cf",
+      "exported_package_checks": "4d7ae02fabc75c87a1fe10dbf0e5ac8feab67393e29f6cb6b041267ddf409f38",
+      "external_stdio": "a6c0a6bd694f4117a4ecbb4fa1e2ea17edfee084a01e49130d2e5663e1f0c36c",
+      "focused_tests": "99b49f8aa6c092562260975786a7a6b6865a3b7d7b2607bffe74b21988bb6264",
+      "source_export": "322917cb804b5e0b0979ce7cb8e54d06ac70b0c353c98cc78a6ba6a138a5167e"
+    },
+    "reconciled_predecessors": [
+      {
+        "detail": "macOS /tmp resolved through a linked /var ancestor; the product refused it before business logic.",
+        "id": "local-gate-r1",
+        "status": "HARNESS_PATH_BOUNDARY_NO_PRODUCT_EFFECT"
+      },
+      {
+        "detail": "An initial copy mixed seven older R4 documentation files with current source; it was isolated before Windows transfer and rebuilt from the current worktree.",
+        "id": "candidate-r5-attempt1",
+        "status": "PRESERVED_NOT_TESTED_OR_PUBLISHED"
+      },
+      {
+        "detail": "Direct byte comparison ignored .gitattributes line-ending normalization; R2 used Git clean filters and passed.",
+        "id": "independent-readback-r1",
+        "status": "EXPECTED_GIT_FILTER_DIFFERENCE_NO_PRODUCT_EFFECT"
+      }
+    ],
+    "recorded_utc": "2026-10-14T21:05:52.161580+00:00",
+    "source_export": {
+      "archive_bytes": 1344646,
+      "archive_sha256": "e96ad5d012f03b1ee09a716b5e979d1385feaabb5d7bca7c30baa6ee81b6e3c9",
+      "files": 394,
+      "manifest_sha256": "445a4e74a0b6966b2e8a12500a6e4b11ce9f6af2ff8b39e23ff62107ec94c5d5",
+      "package_skips": 0,
+      "package_tests": 7,
+      "source_current_at_final_hash_check": true,
+      "status": "PASS",
+      "zip_entries": 395
+    },
+    "tested_product_commit": "f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39",
+    "windows_focused_gate": {
+      "automatic_retry": false,
+      "passed": 367,
+      "skip_boundary": "Two Game Support and one Automation symlink fixtures lacked standard-user privilege; four source-checkout package checks were rerun against the exported package with zero skips.",
+      "skipped": 7,
+      "status": "PASS",
+      "suites": 13,
+      "tests_run": 374,
+      "timeouts": 0
+    }
+  },
   "private_evidence_note": "Machine-local receipts and synthetic fixture paths remain outside Git; this record retains only sanitized identities, counts and hashes.",
   "receipt_hashes": {
     "candidate_hash": {
@@ -290,6 +431,7 @@
       "status": "RECONCILED_EXPORT_METADATA_CONTRACT_NO_PRODUCT_EFFECT"
     }
   ],
+  "record_scope": "Historical R4 fields are retained unchanged. post_review_r5 is the current accepted correction boundary and supersedes R4 only for the five corrected source paths.",
   "repository": "dodWhatUp/install-modes-for-games",
   "schema_version": 1,
   "source_export": {

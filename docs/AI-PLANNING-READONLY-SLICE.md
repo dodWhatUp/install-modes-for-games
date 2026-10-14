@@ -1,8 +1,14 @@
 # Read-only planning and UMM instance slice — 0.27.0-preview.1
 
-**Source status:** tested product commit `cd444009d063b27894bf8e399d517670b30ebc47`
+**Source status:** current tested product commit `f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39`; historical R4 product commit `cd444009d063b27894bf8e399d517670b30ebc47`
 
 **Acceptance:** bounded synthetic Windows/UMM and external stdio PASS; real-folder and production acceptance remain separate.
+
+R5 is the current correction boundary. It keeps the same read-only architecture
+while hardening physical-path aliases, non-recipe goals, mode validation and
+reported read effects. Its 715-file candidate passed 374 Windows tests and an
+independent 394-file source-package readback. R4 remains preserved in the dated
+acceptance record; neither acceptance establishes a real game or transaction.
 
 ## Purpose
 
@@ -104,10 +110,12 @@ conclusive installed match.
 
 The source-level test and boundary receipt is
 [`AI-PLANNING-READONLY-VALIDATION.json`](AI-PLANNING-READONLY-VALIDATION.json).
-Candidate R4 then passed the separate [Windows, source-package and external
+Candidate R5 then passed the separate [Windows, source-package and external
 stdio acceptance](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.md): 715
-payloads matched, 13 Windows suites ran 370 tests, exported packaging passed
-without skips, and the synthetic UMM directory remained byte-identical. A real
+payloads matched the current product commit after Git clean filters, 13 Windows
+suites ran 374 tests, exported packaging passed without skips, and the synthetic
+UMM directory remained byte-identical. The earlier R4 boundary is retained in
+that acceptance record. A real
 registered game folder, specific product UI and production transactions remain
 unaccepted.
 
