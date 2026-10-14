@@ -29,12 +29,18 @@ _STORES = {"steam", "gog", "epic", "microsoft", "other", "unknown"}
 _SHORT = re.compile(r"[^\x00-\x1f\x7f]{1,120}\Z")
 _SHA = re.compile(r"[a-f0-9]{64}\Z")
 _PRIVATE_METADATA = (
-    re.compile(r"(?i)(?:^|[\s(\"'=])[a-z]:[\\/]+"),
-    re.compile(r"^/"),
-    re.compile(r"(?:^|[\s(\"'=])/(?:[^\s/]+/)+[^\s/]*"),
-    re.compile(r"(?i)(?:^|[\s(\"'=])/(?:Users|home|private|Volumes|mnt|root|tmp|var)(?:/|$)"),
-    re.compile(r"(?:^|[\s(\"'=])\\\\"),
-    re.compile(r"(?i)\bfile:(?:/{2,3}|\\\\)"),
+    # Absolute paths may be embedded after punctuation, not just whitespace.
+    # The negative boundaries avoid treating ordinary URL path segments or
+    # relative identifiers such as ``Mods/Foo`` as local filesystem paths.
+    re.compile(r"(?i)(?<!\w)[a-z]:[\\/]+"),
+    re.compile(r"(?<![\w/])/(?!/)[^\s/]+(?:/[^\s/]+)*"),
+    re.compile(r"(?<![\w:])//[^/\s]+(?:/[^/\s]+)*"),
+    re.compile(r"(?<!\w)\\\\[^\\\s]+(?:\\[^\\\s]+)*"),
+    re.compile(r"(?<![\w\\])\\(?!\\)[^\\\s]+(?:\\[^\\\s]+)*"),
+    re.compile(r"(?i)(?<!\w)file:(?:/{2,3}|\\\\)"),
+    re.compile(r"(?<!\w)~[A-Za-z0-9._-]*[\\/]"),
+    re.compile(r"(?i)(?<!\w)(?:%[A-Z_][A-Z0-9_]*%|\$[A-Z_][A-Z0-9_]*|\$\{[A-Z_][A-Z0-9_]*\})[\\/]"),
+    re.compile(r"(?i)\b[a-z][a-z0-9+.-]*://[^\s/@:]+:[^\s/@]+@"),
     re.compile(r"(?i)\bghp_[A-Za-z0-9]{20,}\b"),
     re.compile(r"(?i)\bgithub_pat_[A-Za-z0-9_]{20,}\b"),
     re.compile(r"(?i)\bBearer\s+[A-Za-z0-9._-]{25,}"),
@@ -213,26 +219,31 @@ class InstanceRegistry:
         if game_id is not None:
             game_id = slug(game_id)
         rows = []
-        for position, path in enumerate(self._paths(), start=1):
+        matched = 0
+        paths = self._paths()
+        for position, path in enumerate(paths, start=1):
+            public = None
             try:
                 record = self._read_path(path)
                 if game_id is None or record["body"]["game_id"] == game_id:
-                    rows.append(self._public(record))
+                    public = self._public(record)
             except (ModError, OSError, ValueError, KeyError):
                 if game_id is None:
-                    rows.append({
+                    public = {
                         "instance_id": f"corrupt-record-{position:03d}",
                         "status": "INCOMPLETE_OR_CORRUPT",
                         "path_included": False,
                         "writes_game_files": False,
                         "runtime_verified": False,
-                    })
-            if len(rows) >= limit:
-                break
+                    }
+            if public is not None:
+                matched += 1
+                if len(rows) < limit:
+                    rows.append(public)
         return {
             "instances": rows,
             "count": len(rows),
-            "truncated": len(rows) == limit and len(self._paths()) > limit,
+            "truncated": matched > len(rows),
             "registration": "LOCAL_OPERATOR_ONLY",
             "accepted_adapter": "umm",
             "paths_included": False,

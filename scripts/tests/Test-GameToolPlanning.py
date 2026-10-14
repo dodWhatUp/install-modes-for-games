@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import shutil
 from pathlib import Path
 import sys
 import tempfile
@@ -193,6 +194,44 @@ class ReadOnlyPlanningContracts(unittest.TestCase):
         private_uri = "build file:" + "///" + "Users/private/file.dll"
         self._assert_private_manifest_value_refused(private_uri)
 
+    def test_public_inspection_refuses_punctuated_and_short_absolute_paths(self):
+        slash = "/"
+        backslash = "\\"
+        values = [
+            "build " + slash + "games",
+            "build [" + slash + "games]",
+            "path=" + slash + "games",
+            "path:" + slash + "games",
+            "build " + slash + "g",
+            "build (" + slash + "g)",
+            "build [C:" + backslash + "Users" + backslash + "private" + backslash + "file.dll]",
+            "build,C:" + backslash + "Users" + backslash + "private" + backslash + "file.dll",
+            "build [" + backslash * 2 + "server" + backslash + "share" + backslash + "file.dll]",
+            "build," + backslash * 2 + "server" + backslash + "share" + backslash + "file.dll",
+            "build " + backslash * 2 + "server",
+            "build " + slash * 2 + "server",
+            "build " + backslash + "Users" + backslash + "private" + backslash + "file.dll",
+            "build ~" + slash + "private" + slash + "file.dll",
+            "build ~other" + slash + "private" + slash + "file.dll",
+            "build $HOME" + slash + "private" + slash + "file.dll",
+            "build %USERPROFILE%" + backslash + "private" + backslash + "file.dll",
+            "https:" + slash * 2 + "user:password@example.invalid/release",
+        ]
+        for value in values:
+            with self.subTest(value=value):
+                self._assert_private_manifest_value_refused(value)
+
+    def test_public_metadata_keeps_relative_identifiers_versions_and_https(self):
+        from GameToolInstances import _assert_public_metadata
+        slash = "/"
+        for value in (
+            "1.0.1", "KingmakerTactics", "Mods" + slash + "Foo",
+            "version 1.0" + slash + "2.0",
+            "https:" + slash * 2 + "example.invalid/releases/v1",
+        ):
+            with self.subTest(value=value):
+                _assert_public_metadata(value)
+
     def test_same_instance_case_alias_is_idempotent(self):
         self.register()
         alternate = Path(str(self.game).replace("Kingmaker", "KINGMAKER"))
@@ -277,6 +316,30 @@ class ReadOnlyPlanningContracts(unittest.TestCase):
             self.register("kingmaker-other")
         self.assertEqual(raised.exception.code, "INSTANCE_PATH_OWNED")
         self.assertEqual(len(list((self.data / "game-instances").glob("*.json"))), 1)
+        self.assert_game_unchanged()
+
+    def test_filtered_instance_list_reports_truncation_only_for_matching_rows(self):
+        self.register()
+        wrath = self.root / "Wrath-listing"
+        wrath.mkdir()
+        (wrath / "Wrath.exe").write_bytes(b"synthetic wrath executable marker\n")
+        self.service.workspaces.instances.register_local(
+            instance_id="wrath-listing", game_id="pathfinder-wrath-of-the-righteous",
+            game_dir=wrath, confirmed=True,
+        )
+        one_game = self.planning.list_instances("pathfinder-kingmaker", limit=1)
+        self.assertEqual(one_game["count"], 1)
+        self.assertFalse(one_game["truncated"])
+
+        second = self.root / "Kingmaker-second"
+        shutil.copytree(self.game, second)
+        self.service.workspaces.instances.register_local(
+            instance_id="kingmaker-second", game_id="pathfinder-kingmaker",
+            game_dir=second, confirmed=True,
+        )
+        two_matching = self.planning.list_instances("pathfinder-kingmaker", limit=1)
+        self.assertEqual(two_matching["count"], 1)
+        self.assertTrue(two_matching["truncated"])
         self.assert_game_unchanged()
 
     def test_public_list_and_batch_status_never_return_private_path(self):
