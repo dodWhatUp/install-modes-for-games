@@ -14,9 +14,9 @@ the private path. The legacy MCP surface and all approval/execution owners remai
 unchanged.
 
 The current tested source is commit
-`f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39` on
+`dbed124f40e3d336baf49e7598c16f2d1b57189d` on
 `task/ai-plan-readonly-slice2-20261014`, based on canonical main
-`108cb332b874583776c7a9cb1a19ce67c8cc96e5`. Candidate R5 passed the separate
+`108cb332b874583776c7a9cb1a19ce67c8cc96e5`. Candidate R8 passed the separate
 [Windows/source-package/external-stdio acceptance](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.md)
 and its [machine-readable record](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.json).
 A real game folder, production installation, manager mutation, runtime/gameplay

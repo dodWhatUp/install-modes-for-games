@@ -13,9 +13,9 @@ profile, save, input or graphics state.
 
 Read the [0.27 design and boundaries](AI-PLANNING-READONLY-SLICE.md) and the
 [bounded Windows/source-package/external-stdio acceptance](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.md).
-The current product source is commit `f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39`.
-Candidate R5 passed synthetic UMM and native Windows process-level gates; the
-same acceptance record preserves the historical R4 boundary. A
+The current product source is commit `dbed124f40e3d336baf49e7598c16f2d1b57189d`.
+Candidate R8 passed synthetic UMM, privacy-refusal and native Windows process-level
+gates; the same acceptance record preserves R5, R4 and bounded R6/R7 evidence. A
 separately authorized real-folder read remains unperformed. Install, upgrade,
 disable and rollback transactions are still later work.
 

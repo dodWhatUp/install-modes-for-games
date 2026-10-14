@@ -2,11 +2,44 @@
 
 **Date:** 2026-10-14
 **Version:** `0.27.0-preview.1`
-**Current tested product commit:** `f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39`
+**Current tested product commit:** `dbed124f40e3d336baf49e7598c16f2d1b57189d`
+**Historical R5 tested product commit:** `f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39`
 **Historical R4 tested product commit:** `cd444009d063b27894bf8e399d517670b30ebc47`
 **Result:** **PASS** for the bounded synthetic read-only scope below.
 
-## Current correction boundary — R5
+## Current privacy and refusal boundary — R8
+
+R8 preserves the accepted read-only architecture and closes two publication
+boundaries found during exact-head review. Corrupt or renamed registry records
+now expose only neutral ordinal placeholders; SHA revisions and filename identity
+are validated; arbitrary UMM manifest text is recursively refused when it
+contains an absolute path, file URI or credential candidate. Known domain
+refusals remain typed result-envelope blockers, and an unexpected stdio fallback
+preserves the request id instead of reporting a JSON parse error.
+
+The exact 715-file R8 candidate matched commit `dbed124f40e3d336baf49e7598c16f2d1b57189d` after Git clean
+filters. Windows 11 ARM64 passed **13/13 suites: 385 tests, 378 passed and seven
+explicit skips**, with no timeout or automatic retry. The real source export
+contained **394 files / 395 ZIP entries**, SHA-256
+`4e5bcd4caae7752270a1b29101f873b85a9692dd04abd8b5e0419130cba252d2`;
+manifest SHA-256 is
+`fd442dabf9569eb84538fd20983c68fb40eec5f24d3cc7387f6eeccd803d4bc8`.
+Exported packaging passed 7/7 with zero skips.
+
+External modern/legacy stdio passed all **32 checks**. Three valid synthetic UMM
+instances and one corrupt registry fixture were inspected. The corrupt filename
+was not exposed; invented credential and Windows-path metadata returned typed
+`INSTANCE_PRIVATE_METADATA` blockers without echo. All three game trees remained
+byte-identical; only four private registry records were written, with no job,
+request, proposal or execution.
+
+R6 passed runtime gates but was refused by the source privacy gate before export
+mutation because an invented path literal appeared in test source. R7 passed
+source export and packaging, but its first expected domain refusal was mislabeled
+as a JSON parse error; readback established unchanged games and no execution
+effect. Both revisions remain preserved as evidence and were not relabeled as R8.
+
+## Historical correction boundary — R5
 
 R5 preserves the R4 architecture and corrects five reviewed source paths. Windows
 case and 8.3 aliases now resolve to one physical instance without weakening link

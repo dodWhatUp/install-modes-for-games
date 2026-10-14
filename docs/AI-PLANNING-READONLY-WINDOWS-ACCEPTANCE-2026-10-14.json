@@ -1,4 +1,7 @@
 {
+  "acceptance": {
+    "windows_r8": "PASS_BOUNDED_SYNTHETIC_READ_ONLY_WITH_PRIVACY_REFUSALS"
+  },
   "base_commit": "108cb332b874583776c7a9cb1a19ce67c8cc96e5",
   "branch": "task/ai-plan-readonly-slice2-20261014",
   "candidate": {
@@ -11,7 +14,7 @@
     "unexpected": 0
   },
   "created_utc": "2026-10-14T20:08:18.995094+00:00",
-  "current_tested_product_commit": "f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39",
+  "current_tested_product_commit": "dbed124f40e3d336baf49e7598c16f2d1b57189d",
   "date": "2026-10-14",
   "effects": {
     "capture": false,
@@ -195,6 +198,7 @@
     "timeouts": 0
   },
   "historical_r4_tested_product_commit": "cd444009d063b27894bf8e399d517670b30ebc47",
+  "historical_r5_tested_product_commit": "f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39",
   "independent_readback": {
     "checks": {
       "archive_entries_match": true,
@@ -363,6 +367,176 @@
       "timeouts": 0
     }
   },
+  "post_review_r8": {
+    "candidate": {
+      "aggregate_sha256": "4dc1cbd371b3376b0b987300ec132ccfbd719675617a3c7a78880397c71f7c83",
+      "exact_product_commit_after_git_clean_filters": true,
+      "inventory_file_sha256": "57c94971e51b7b4a1cb6775d7cc840a9c488e57096c50576698a39771844e041",
+      "payload_bytes": 8487225,
+      "payload_files": 715,
+      "revision": "R8"
+    },
+    "canonical_base_commit": "108cb332b874583776c7a9cb1a19ce67c8cc96e5",
+    "changed_files": [
+      {
+        "bytes": 8185,
+        "path": "scripts/GameToolAI.py",
+        "sha256": "92b5189b8726882d194451233df9681409d6182c13199fdeb1004785860a2b69"
+      },
+      {
+        "bytes": 12586,
+        "path": "scripts/GameToolAIModern.py",
+        "sha256": "d0fd6e30b2995c765dc3d84c4e5e8ebda038142de87ff6d88a10b78124e0840b"
+      },
+      {
+        "bytes": 20040,
+        "path": "scripts/GameToolAIContracts.py",
+        "sha256": "7e815a847fe59335aad3d29e63c8335df61546eef2940dad8f543f8e7940e39b"
+      },
+      {
+        "bytes": 16607,
+        "path": "scripts/GameToolInstances.py",
+        "sha256": "ff66f36243d2074525a2b610e805dc86cbccd108500c6858fea62eb2f4644143"
+      },
+      {
+        "bytes": 2138,
+        "path": "scripts/check_host.py",
+        "sha256": "56ffedddab1460e8b8ba9290f9002e4e90ff4c53bf31f5cbcb5c1dbb6a803517"
+      },
+      {
+        "bytes": 14753,
+        "path": "scripts/tests/Test-GameToolAIModern.py",
+        "sha256": "3dce45faea4d90d07ae769185918c32e8928a74c447dd0410916e303e308e6b1"
+      },
+      {
+        "bytes": 21574,
+        "path": "scripts/tests/Test-GameToolPlanning.py",
+        "sha256": "3a5bbe5c9fa9857c0ce277b0b1a7239673d1c71faf500405203ef9153b21cbce"
+      }
+    ],
+    "corrections": [
+      "Corrupt or renamed private registry records publish only neutral ordinal placeholders, never filenames or filename-derived fingerprints.",
+      "Definition and support revisions require lowercase hexadecimal SHA-256 form, and filename identity is bound to the record body.",
+      "Public UMM metadata is recursively screened for absolute paths, file URIs and credential candidates before entering an AI result.",
+      "Known ModError refusals become typed result-envelope blockers; the stdio fallback preserves the request id and no longer mislabels domain refusals as JSON parse errors.",
+      "Synthetic private fixtures are built at runtime so the authored source remains publishable without weakening the source privacy scan."
+    ],
+    "effects": {
+      "capture": false,
+      "execution": false,
+      "git_main": false,
+      "input": false,
+      "manager_profile": false,
+      "network": false,
+      "production_profile": false,
+      "proposal": false,
+      "real_game": false
+    },
+    "external_stdio": {
+      "all_synthetic_game_trees_unchanged": true,
+      "checks": 32,
+      "credential_refusal_typed_without_echo": true,
+      "execution": false,
+      "legacy_tools": 24,
+      "modern_tools": 38,
+      "only_private_registry_metadata_written": true,
+      "opaque_corrupt_placeholders": 1,
+      "path_refusal_typed_without_echo": true,
+      "proposal_created": false,
+      "status": "PASS",
+      "valid_instance_records": 3
+    },
+    "historical_r4_tested_product_commit": "cd444009d063b27894bf8e399d517670b30ebc47",
+    "historical_r5_tested_product_commit": "f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39",
+    "independent_readback": {
+      "archive_manifest_files_verified": 394,
+      "candidate_files_verified": 715,
+      "git_clean_filters_applied_for_commit_readback": true,
+      "revision": "R2",
+      "sanitized_receipts_privacy_clean": true,
+      "status": "PASS"
+    },
+    "local_selected_gate": {
+      "host_pins": {
+        "matched": 12,
+        "total": 12
+      },
+      "passed": 312,
+      "skipped": 4,
+      "status": "PASS",
+      "suites": 12,
+      "tests_run": 316,
+      "timeouts": 0
+    },
+    "not_established": [
+      "A real registered game directory or live manager profile.",
+      "UMM enabled state, load order, runtime compatibility or gameplay.",
+      "Connection through a specific ChatGPT or Codex product UI.",
+      "Production installation or install/upgrade/disable/rollback transactions.",
+      "Main-branch adoption or merge of this task branch."
+    ],
+    "parent_commit": "0bb46e9c2e54ca51afa7c1150b8dbf3f35e899ad",
+    "receipt_sha256": {
+      "candidate_copy": "45ae8bae60f98bc1709453c83ed4461d156fee0500bedf7086b90a6524bccd03",
+      "candidate_hash": "355acaef42063a4cbe9e38844a64bb861be0b185cf06010f015237bd345290ca",
+      "exported_package_checks": "aa2249ff55ce8fcd5a2bf281a1c3239b40aeee57a401f1fcf95cfb75f84d1cfe",
+      "external_stdio": "ecc600a2136291982bd6bfbbd0f1e6da819c579ea653b2414256fa72638fe3c3",
+      "focused_tests": "b06c3b00d68e432218913b34fa3fc8eba91ffe64c081c881342889b1dcc3bf84",
+      "independent_readback_r2": "0e82123a5a6eb419b393890b09cbe5676d6132d0087a4552b1dc253e20f2ccc5",
+      "product_commit_readback": "6f4ce2fe68077746a367c90d31e8724e26042d81018de5a2fcdf8b6485b977f7",
+      "source_export": "2f049c87c6391efa88af402e2314dc9006d7eef92e6b0eb9fda1c26f350539b2"
+    },
+    "reconciled_predecessors": [
+      {
+        "detail": "Runtime and Windows focused gates passed, but the source privacy gate refused an invented Windows-path literal in test source before export mutation.",
+        "revision": "R6",
+        "status": "RUNTIME_PASS_EXPORT_REFUSED_NO_OUTPUT"
+      },
+      {
+        "detail": "Source export and packaging passed; the first expected private-metadata refusal escaped the modern endpoint and was mislabeled as JSON parse error. The root was reconciled with unchanged game trees and no jobs, proposals, execution or lingering process.",
+        "revision": "R7",
+        "status": "EXPORT_PASS_MCP_FRAMING_FAIL_NO_GAME_EFFECT"
+      },
+      {
+        "detail": "Parallels rejected the first long-path invocation before Windows; no receipt, log or process existed before the successful invocation.",
+        "revision": "R8-focused-first-invocation",
+        "status": "HOST_INVOCATION_REJECTED_NO_WINDOWS_EFFECT"
+      },
+      {
+        "detail": "Two long-path package-check invocations were rejected before Windows; the short-wrapper invocation later passed 7/7.",
+        "revision": "R8-package-first-invocations",
+        "status": "HOST_INVOCATION_REJECTED_NO_WINDOWS_EFFECT"
+      },
+      {
+        "detail": "The independent checker expected 31 MCP checks while the final harness contained 32; all 32 were true and R2 passed without rerunning product work.",
+        "revision": "R8-readback-r1",
+        "status": "CHECKER_COUNT_MISMATCH_NO_PRODUCT_EFFECT"
+      }
+    ],
+    "recorded_utc": "2026-10-14T21:47:30.971840+00:00",
+    "source_export": {
+      "archive_bytes": 1349308,
+      "archive_sha256": "4e5bcd4caae7752270a1b29101f873b85a9692dd04abd8b5e0419130cba252d2",
+      "files": 394,
+      "manifest_sha256": "fd442dabf9569eb84538fd20983c68fb40eec5f24d3cc7387f6eeccd803d4bc8",
+      "package_skips": 0,
+      "package_tests": 7,
+      "source_current_at_final_hash_check": true,
+      "status": "PASS",
+      "zip_entries": 395
+    },
+    "tested_product_commit": "dbed124f40e3d336baf49e7598c16f2d1b57189d",
+    "windows_focused_gate": {
+      "automatic_retry": false,
+      "passed": 378,
+      "skip_boundary": "Two Game Support and one Automation symlink fixtures lacked standard-user privilege; four source-checkout package checks were rerun against the exported package with zero skips.",
+      "skipped": 7,
+      "status": "PASS",
+      "suites": 13,
+      "tests_run": 385,
+      "timeouts": 0
+    }
+  },
   "private_evidence_note": "Machine-local receipts and synthetic fixture paths remain outside Git; this record retains only sanitized identities, counts and hashes.",
   "receipt_hashes": {
     "candidate_hash": {
@@ -431,7 +605,7 @@
       "status": "RECONCILED_EXPORT_METADATA_CONTRACT_NO_PRODUCT_EFFECT"
     }
   ],
-  "record_scope": "Historical R4 fields are retained unchanged. post_review_r5 is the current accepted correction boundary and supersedes R4 only for the five corrected source paths.",
+  "record_scope": "Original R4 and post_review_r5 fields remain historical evidence. post_review_r8 is the current accepted product boundary at dbed124; the later documentation commit records acceptance and does not expand the tested product bytes.",
   "repository": "dodWhatUp/install-modes-for-games",
   "schema_version": 1,
   "source_export": {

@@ -12,9 +12,9 @@ execution. An observed `Info.json` is not enabled state, runtime compatibility o
 gameplay verification. See [the exact design and boundaries](AI-PLANNING-READONLY-SLICE.md).
 
 The current tested task-branch source is commit
-`f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39`. Candidate R5 passed bounded
+`dbed124f40e3d336baf49e7598c16f2d1b57189d`. Candidate R8 passed bounded
 [Windows/source-package/external-stdio acceptance](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.md)
-using a synthetic UMM fixture; the same record retains the historical R4 boundary. It remains separate from the installed Hub 0.20.2
+using synthetic UMM fixtures, typed private-metadata refusals and opaque corrupt-record handling; the same record retains R5, R4 and bounded R6/R7 evidence. It remains separate from the installed Hub 0.20.2
 lineage below and has not been installed into production, connected through a
 specific product UI or accepted against a real game folder.
 

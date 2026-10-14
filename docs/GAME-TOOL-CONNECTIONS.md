@@ -10,10 +10,11 @@ requires the local `Game-Instances.py register --confirm` route. The accepted
 adapter reads reviewed UMM markers, `Info.json` and declared assembly presence;
 it does not load code, infer enabled state or write a game/manager profile.
 
-Candidate R5 passed the separate [Windows, source-package and external stdio
-gate](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.md): 374 focused tests,
-394-file verified source export, zero-skip exported packaging and path-free UMM
-reads over one synthetic fixture. The same record preserves R4 as historical evidence. The fixture stayed byte-identical and no job,
+Candidate R8 passed the separate [Windows, source-package and external stdio
+gate](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.md): 385 focused tests,
+394-file verified source export, zero-skip exported packaging and path/credential
+refusals without echo over three synthetic fixtures. The same record preserves R5,
+R4 and the bounded R6/R7 attempts as historical evidence. The fixtures stayed byte-identical and no job,
 proposal or execution was created. No specific ChatGPT/Codex product UI,
 production installation, real manager profile, game runtime, gameplay or
 physical-device acceptance is established. See [the 0.27 slice contract](AI-PLANNING-READONLY-SLICE.md).
