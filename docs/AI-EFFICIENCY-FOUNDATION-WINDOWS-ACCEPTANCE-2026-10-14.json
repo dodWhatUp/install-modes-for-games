@@ -204,5 +204,118 @@
     "Remote HTTP/plugin/MCP App deployment",
     "Git merge or main-branch adoption"
   ],
-  "private_evidence_note": "Full machine-local receipts remain in the private acceptance delivery; this record omits user names and filesystem paths."
+  "private_evidence_note": "Full machine-local receipts remain in the private acceptance delivery; this record omits user names and filesystem paths.",
+  "canonical_task_branch_seal": {
+    "status": "PASS",
+    "candidate": "R7",
+    "task_branch": "task/ai-efficiency-foundation-reconcile-20261014",
+    "tested_source_commit": "42dc939bd37ff37e5af2cb429bce6d0aeb3eb29d",
+    "candidate_payload_files": 708,
+    "candidate_total_files_with_inventory": 709,
+    "candidate_aggregate_sha256": "773ea9f590ab20ff9ec510d015eec80d8d74e07e4a1e18e693f746090bfd6fba",
+    "candidate_inventory_sha256": "fb15687c018a647bfc10dd808e6683ce17d20b8893998b89c9822f6d2d77aa9c",
+    "windows_copy_hash_verification": "PASS",
+    "focused_gate": {
+      "suite_count": 11,
+      "tests_run": 295,
+      "passed": 290,
+      "skipped": 5,
+      "suites": [
+        {
+          "suite": "Test-GameSupportPackaging.py",
+          "tests": 7,
+          "skipped": 4
+        },
+        {
+          "suite": "Test-GameToolAIFoundation.py",
+          "tests": 17,
+          "skipped": 0
+        },
+        {
+          "suite": "Test-GameToolAIModern.py",
+          "tests": 17,
+          "skipped": 0
+        },
+        {
+          "suite": "Test-GameToolAutomation.py",
+          "tests": 52,
+          "skipped": 1
+        },
+        {
+          "suite": "Test-GameToolGameWorkspaces.py",
+          "tests": 41,
+          "skipped": 0
+        },
+        {
+          "suite": "Test-GameToolKeybindMerge.py",
+          "tests": 7,
+          "skipped": 0
+        },
+        {
+          "suite": "Test-GameToolUnified.py",
+          "tests": 33,
+          "skipped": 0
+        },
+        {
+          "suite": "Test-GameToolWorkbenchLauncher.py",
+          "tests": 9,
+          "skipped": 0
+        },
+        {
+          "suite": "keybinds/test_host_integration.py",
+          "tests": 35,
+          "skipped": 0
+        },
+        {
+          "suite": "keybinds/test_schema_contract.py",
+          "tests": 10,
+          "skipped": 0
+        },
+        {
+          "suite": "Test-GameSourceExport.ps1",
+          "tests": 67,
+          "skipped": 0
+        }
+      ]
+    },
+    "native_powershell_5_1_export": {
+      "status": "PASS",
+      "files": 387,
+      "bytes": 1310636,
+      "archive_sha256": "264ea4eb59a3bbf2b7e41aa41a5f97fd31db9b5f05596cbf56509cfa352d4956",
+      "manifest_sha256": "e178e30d6fa5140445cc3a19048b8340da6828e997357870d00805e38e6c5c2a",
+      "source_current_at_final_hash_check": true,
+      "integrity": "all_source_and_manifest_zip_entries_verified"
+    },
+    "effects": {
+      "production_profile_changed": false,
+      "game_files_changed": false,
+      "game_launched": false,
+      "input_injected": false,
+      "proposal_executed": false,
+      "main_merged": false
+    }
+  },
+  "candidate_iterations": [
+    {
+      "candidate": "R4",
+      "outcome": "STOPPED",
+      "finding": "Windows 8.3 and long-path spellings caused a false linked-path refusal in the Workbench launcher test. The verifier was changed to inspect actual symlink/junction components."
+    },
+    {
+      "candidate": "R5",
+      "outcome": "STOPPED",
+      "finding": "All Python suites passed; the PowerShell contract still invoked the newly pinned unbundled-reference function without its required exact revision. The test was corrected without weakening the exporter."
+    },
+    {
+      "candidate": "R6",
+      "outcome": "PASS",
+      "finding": "All focused Windows and PowerShell suites passed before the Git allowlist review."
+    },
+    {
+      "candidate": "R7",
+      "outcome": "PASS_FINAL_SOURCE_COMMIT",
+      "finding": "The narrow schema/data-pack Git allowlist and whitespace-only source cleanup were included; the full gate and real export passed again."
+    }
+  ]
 }

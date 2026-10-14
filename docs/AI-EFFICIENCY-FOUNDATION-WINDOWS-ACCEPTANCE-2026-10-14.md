@@ -20,6 +20,16 @@
 
 The first external-client harness reached the pending proposal but used the wrong field name when reading the returned change cursor. Before any retry, the same request mailbox was inspected, the pending synthetic proposal was rejected locally, and the absence of a Mods execution directory was verified. The corrected harness then used a new isolated data root and passed. The machine-readable record preserves both outcomes.
 
+## Canonical task-branch seal
+
+The reconciled **R7** source was copied to a new Windows directory and verified against its complete inventory before execution. The candidate contains 708 payload files plus its inventory; no file was missing, changed or unexpected. The exact product source was committed as `42dc939bd37ff37e5af2cb429bce6d0aeb3eb29d` on `task/ai-efficiency-foundation-reconcile-20261014`.
+
+- Candidate aggregate SHA-256: `773ea9f590ab20ff9ec510d015eec80d8d74e07e4a1e18e693f746090bfd6fba`
+- Inventory-file SHA-256: `fb15687c018a647bfc10dd808e6683ce17d20b8893998b89c9822f6d2d77aa9c`
+- Focused native gate: **11/11 suites**, 295 tests run, 290 passed and 5 environment skips.
+- Native Windows PowerShell 5.1 export: 387 files, full ZIP entry verification, archive SHA-256 `264ea4eb59a3bbf2b7e41aa41a5f97fd31db9b5f05596cbf56509cfa352d4956` and manifest SHA-256 `e178e30d6fa5140445cc3a19048b8340da6828e997357870d00805e38e6c5c2a`.
+- R4 and R5 stopped on two bounded portability/contract findings; each effect was inspected before a new candidate was created. R6 passed, and R7 reran the full gate after the narrow Git allowlist change.
+
 ## Environment
 
 | Item | Accepted value |

@@ -96,6 +96,10 @@ The canonical repository test pass also makes its third-party test dependencies 
 
 The source-checkout tests create a bounded ordinary-file package fixture with a generated temporary manifest. Production and CLI defaults still require the sealed package `MANIFEST.json`; no repository fallback, arbitrary path or unsigned runtime mode was added.
 
+## Canonical branch seal
+
+The reconciled R7 source passed its complete Windows focused gate and real PowerShell 5.1 export, then was committed as `42dc939bd37ff37e5af2cb429bce6d0aeb3eb29d` on `task/ai-efficiency-foundation-reconcile-20261014`. This commit is the immutable tested product-source boundary; later receipt updates are documentation-only. The branch is not merged into `main`.
+
 ## Deliberately deferred
 
 - Connection through a specific ChatGPT/Codex product UI and remote plugin deployment.

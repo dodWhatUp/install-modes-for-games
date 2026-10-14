@@ -1,25 +1,20 @@
 # Continuation checkpoint — AI Efficiency Foundation 0.26.0-preview.1
 
-## Current result
+## Current durable result
 
-- The read-first foundation is implemented in an isolated task source tree.
-- The reviewed R2 Mods + Keybinds architecture remains the behavioral base.
-- Legacy and modern stdio protocols coexist through adapters.
-- Ten new `game_tools_*` tools are implemented; consequential execution authority is
-  unchanged.
-- Packaging and validation evidence live beside this file.
-- Native Windows/Tk and independent modern/legacy stdio-client acceptance passed in the separate Preview profile; no production/game operation ran.
+- The read-first AI/MCP foundation is implemented and reconciled onto canonical base `043f3c4733788f082da98dfcb43c0972d2794c6a`.
+- Exact tested source commit: `42dc939bd37ff37e5af2cb429bce6d0aeb3eb29d` on `task/ai-efficiency-foundation-reconcile-20261014`.
+- R7 passed native Windows/Tk, independent modern/legacy stdio, 11 focused suites and a real PowerShell 5.1 source export.
+- The proposal mailbox remains local-review-only; no proposal was approved or executed.
+- Production profiles, game files, input profiles and `main` were not changed.
 
 ## Next safe stages
 
-1. Reconcile this package against the canonical `origin/main` without replacing later project-owned preferences, Azeron research or GPU research.
-2. Run the combined repository test/export/link/privacy gates from a dedicated task worktree and publish only a reviewed task branch; do not merge automatically.
-3. Configure a specific ChatGPT/Codex product client only after its local connection path is selected. The independent stdio acceptance is already complete and should not be rerun merely to prove framing again.
-4. Begin the next separate read-first slice: goal-level plan DAG, ownership/conflict graph, bounded game-instance identity and one manager adapter with no writes.
-5. Add installed-state diffs only after that adapter passes synthetic and real read-only acceptance. Install/upgrade/rollback transactions remain a later gate.
+1. Publish the existing task branch and open a reviewed pull request; do not merge automatically.
+2. Configure a specific ChatGPT/Codex product client only through its selected local connection route. Independent stdio framing is already accepted and should not be repeated merely to prove protocol parsing.
+3. Begin the next separate read-first slice: goal-level plan DAG, ownership/conflict graph, bounded game-instance identity and one manager adapter with no writes.
+4. Add installed-state diffs only after that adapter passes synthetic and real read-only acceptance. Install, upgrade and rollback transactions remain a later gate.
 
 ## Do not infer
 
-Native Windows/Tk and independent stdio acceptance do not establish a specific product-client UI, production installation, manager/game state, approval or execution. A proposal receipt is not approval or execution. A catalog match is not an installed-state observation.
-Do not touch a real game, manager profile, input profile or graphics stack until its
-read-only adapter and exact diff have passed a separate acceptance gate.
+Task-branch publication is not main-branch adoption, production installation, product-client UI acceptance, manager/game state, gameplay acceptance or physical-device acceptance. A proposal receipt is not approval or execution. A catalog match is not an installed-state observation.

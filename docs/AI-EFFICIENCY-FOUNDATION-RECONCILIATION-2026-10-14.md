@@ -31,6 +31,16 @@ The sealed 0.26 source archive was not copied over the repository wholesale. Its
 
 The source package predated native Windows acceptance. The exact Preview subsequently passed native Windows/Tk and independent modern/legacy external stdio-client acceptance. See [`AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.md`](AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.md).
 
+## Validated task-branch source
+
+The final reconciled source was sealed as R7 and committed without changing its tested bytes:
+
+- Branch: `task/ai-efficiency-foundation-reconcile-20261014`
+- Tested source commit: `42dc939bd37ff37e5af2cb429bce6d0aeb3eb29d`
+- Candidate aggregate SHA-256: `773ea9f590ab20ff9ec510d015eec80d8d74e07e4a1e18e693f746090bfd6fba`
+- Windows focused gate: 11/11 suites; 295 tests run, 290 passed and 5 environment skips.
+- Native PowerShell 5.1 source export: 387 files with verified ZIP entry hashes; archive SHA-256 `264ea4eb59a3bbf2b7e41aa41a5f97fd31db9b5f05596cbf56509cfa352d4956`.
+
 ## Boundary
 
 This is a task-branch candidate. It does not merge `main`, install production, modify a game/profile/device, approve a proposal, or publish archive binaries into Git. The machine-readable classification is in [`AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.json`](AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.json).

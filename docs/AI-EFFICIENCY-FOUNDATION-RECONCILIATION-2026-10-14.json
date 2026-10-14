@@ -55,7 +55,7 @@
     "force_push": false,
     "main_merge": false
   },
-  "status": "CANDIDATE_RECONCILED_NOT_YET_PUBLISHED_OR_MERGED",
+  "status": "TASK_BRANCH_COMMITTED_AND_VALIDATED_NOT_YET_MERGED",
   "cross_branch_adoptions": [
     {
       "path": "docs/AZERON-GAME-KEYMAP-VIEWER-WISHLIST.md",
@@ -72,5 +72,103 @@
     "games/path-of-exile-2/HISTORY.md": "Exact private history not reconstructed; routed to public R8 review and private recovery archive.",
     "AZERON-DECISION-CHAT-REVIEW-2026-10-12.md": "Exact chat-preservation file unavailable; routed to public R8 decision review and private decision/evidence package.",
     "ISOLATED-LAB-*.md": "Separate owner retained at exact PR6 commit and private Drive source/recovery; not copied into this branch."
+  },
+  "tested_task_branch": {
+    "branch": "task/ai-efficiency-foundation-reconcile-20261014",
+    "source_commit": "42dc939bd37ff37e5af2cb429bce6d0aeb3eb29d",
+    "candidate": "R7",
+    "aggregate_sha256": "773ea9f590ab20ff9ec510d015eec80d8d74e07e4a1e18e693f746090bfd6fba",
+    "inventory_sha256": "fb15687c018a647bfc10dd808e6683ce17d20b8893998b89c9822f6d2d77aa9c"
+  },
+  "final_acceptance": {
+    "status": "PASS",
+    "candidate": "R7",
+    "task_branch": "task/ai-efficiency-foundation-reconcile-20261014",
+    "tested_source_commit": "42dc939bd37ff37e5af2cb429bce6d0aeb3eb29d",
+    "candidate_payload_files": 708,
+    "candidate_total_files_with_inventory": 709,
+    "candidate_aggregate_sha256": "773ea9f590ab20ff9ec510d015eec80d8d74e07e4a1e18e693f746090bfd6fba",
+    "candidate_inventory_sha256": "fb15687c018a647bfc10dd808e6683ce17d20b8893998b89c9822f6d2d77aa9c",
+    "windows_copy_hash_verification": "PASS",
+    "focused_gate": {
+      "suite_count": 11,
+      "tests_run": 295,
+      "passed": 290,
+      "skipped": 5,
+      "suites": [
+        {
+          "suite": "Test-GameSupportPackaging.py",
+          "tests": 7,
+          "skipped": 4
+        },
+        {
+          "suite": "Test-GameToolAIFoundation.py",
+          "tests": 17,
+          "skipped": 0
+        },
+        {
+          "suite": "Test-GameToolAIModern.py",
+          "tests": 17,
+          "skipped": 0
+        },
+        {
+          "suite": "Test-GameToolAutomation.py",
+          "tests": 52,
+          "skipped": 1
+        },
+        {
+          "suite": "Test-GameToolGameWorkspaces.py",
+          "tests": 41,
+          "skipped": 0
+        },
+        {
+          "suite": "Test-GameToolKeybindMerge.py",
+          "tests": 7,
+          "skipped": 0
+        },
+        {
+          "suite": "Test-GameToolUnified.py",
+          "tests": 33,
+          "skipped": 0
+        },
+        {
+          "suite": "Test-GameToolWorkbenchLauncher.py",
+          "tests": 9,
+          "skipped": 0
+        },
+        {
+          "suite": "keybinds/test_host_integration.py",
+          "tests": 35,
+          "skipped": 0
+        },
+        {
+          "suite": "keybinds/test_schema_contract.py",
+          "tests": 10,
+          "skipped": 0
+        },
+        {
+          "suite": "Test-GameSourceExport.ps1",
+          "tests": 67,
+          "skipped": 0
+        }
+      ]
+    },
+    "native_powershell_5_1_export": {
+      "status": "PASS",
+      "files": 387,
+      "bytes": 1310636,
+      "archive_sha256": "264ea4eb59a3bbf2b7e41aa41a5f97fd31db9b5f05596cbf56509cfa352d4956",
+      "manifest_sha256": "e178e30d6fa5140445cc3a19048b8340da6828e997357870d00805e38e6c5c2a",
+      "source_current_at_final_hash_check": true,
+      "integrity": "all_source_and_manifest_zip_entries_verified"
+    },
+    "effects": {
+      "production_profile_changed": false,
+      "game_files_changed": false,
+      "game_launched": false,
+      "input_injected": false,
+      "proposal_executed": false,
+      "main_merged": false
+    }
   }
 }
