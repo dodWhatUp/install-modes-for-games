@@ -15,6 +15,7 @@ from GameToolAIContracts import VERSION, output_schema
 from GameToolAIFoundation import FoundationError, FoundationService
 from GameToolAIKnowledge import KnowledgeError
 from GameToolAITools import foundation_tools, validate_arguments
+from game_mod_ops.safety import ModError
 
 MODERN_PROTOCOL = "2026-07-28"
 LEGACY_PROTOCOL = "2025-11-25"
@@ -109,7 +110,7 @@ class ModernEndpoint:
             else:
                 value = self.legacy.call(name, args)
             return self.foundation.wrap_legacy(name, value, failed=False), False
-        except (FoundationError, KnowledgeError, ValueError, OSError, TypeError, KeyError) as error:
+        except (FoundationError, KnowledgeError, ModError, ValueError, OSError, TypeError, KeyError) as error:
             code = getattr(error, "code", "REFUSED")
             value = {"status": code, "message": "Inspect the current local state; no automatic retry or alternate executor was used."}
             return self.foundation.wrap_legacy(name, value, failed=True), True
@@ -154,7 +155,7 @@ class ModernEndpoint:
                 return self._error(ident, -32602, "Invalid tool call.")
             try:
                 value, failed = self._dispatch(clean["name"], clean.get("arguments", {}))
-            except (FoundationError, KnowledgeError, ValueError, OSError, TypeError, KeyError) as error:
+            except (FoundationError, KnowledgeError, ModError, ValueError, OSError, TypeError, KeyError) as error:
                 value = self.foundation.blocker(getattr(error, "code", "INVALID_ARGUMENTS"))
                 failed = True
             result = {

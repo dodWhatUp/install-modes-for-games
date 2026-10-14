@@ -23,9 +23,24 @@ VERSION = "0.1.0"
 SCHEMA_VERSION = 1
 MAX_INSTANCES = 64
 MAX_RECORD_BYTES = 64 * 1024
+MAX_PUBLIC_VALUES = 4096
 _ACCEPTED_ADAPTERS = {"umm"}
 _STORES = {"steam", "gog", "epic", "microsoft", "other", "unknown"}
 _SHORT = re.compile(r"[^\x00-\x1f\x7f]{1,120}\Z")
+_SHA = re.compile(r"[a-f0-9]{64}\Z")
+_PRIVATE_METADATA = (
+    re.compile(r"(?i)(?:^|[\s(\"'=])[a-z]:[\\/]+"),
+    re.compile(r"^/"),
+    re.compile(r"(?:^|[\s(\"'=])/(?:[^\s/]+/)+[^\s/]*"),
+    re.compile(r"(?i)(?:^|[\s(\"'=])/(?:Users|home|private|Volumes|mnt|root|tmp|var)(?:/|$)"),
+    re.compile(r"(?:^|[\s(\"'=])\\\\"),
+    re.compile(r"(?i)\bfile:(?:/{2,3}|\\\\)"),
+    re.compile(r"(?i)\bghp_[A-Za-z0-9]{20,}\b"),
+    re.compile(r"(?i)\bgithub_pat_[A-Za-z0-9_]{20,}\b"),
+    re.compile(r"(?i)\bBearer\s+[A-Za-z0-9._-]{25,}"),
+    re.compile(r"\bsk-[A-Za-z0-9_-]{20,}"),
+    re.compile(r"\bAKIA[A-Z0-9]{16}\b"),
+)
 
 
 def _text(value, field, *, optional=False):
@@ -51,6 +66,37 @@ def _same_path(left: Path, right: Path) -> bool:
         return os.path.samefile(left, right)
     except (FileNotFoundError, OSError):
         return _path_key(left) == _path_key(right)
+
+
+def _assert_public_metadata(value, depth=0):
+    """Fail closed before arbitrary manifest text reaches a public AI result."""
+    require(depth <= 16, "INSTANCE_PRIVATE_METADATA",
+            "Installed metadata exceeded the public result depth limit.")
+    if value is None or type(value) in (bool, int, float):
+        return
+    if type(value) is str:
+        require(len(value) <= 4096 and not any(ord(char) < 32 for char in value),
+                "INSTANCE_PRIVATE_METADATA",
+                "Installed metadata contains unsupported private text.")
+        require(not any(pattern.search(value) for pattern in _PRIVATE_METADATA),
+                "INSTANCE_PRIVATE_METADATA",
+                "Installed metadata contains a path or credential candidate; review it locally.")
+        return
+    if type(value) is list:
+        require(len(value) <= MAX_PUBLIC_VALUES,
+                "INSTANCE_PRIVATE_METADATA", "Installed metadata exceeds its public list bound.")
+        for item in value:
+            _assert_public_metadata(item, depth + 1)
+        return
+    if type(value) is dict:
+        require(len(value) <= 512 and all(type(key) is str and len(key) <= 120 for key in value),
+                "INSTANCE_PRIVATE_METADATA", "Installed metadata has unsupported public fields.")
+        for key, item in value.items():
+            _assert_public_metadata(key, depth + 1)
+            _assert_public_metadata(item, depth + 1)
+        return
+    raise ModError("INSTANCE_PRIVATE_METADATA",
+                   "Installed metadata contains an unsupported public value type.")
 
 
 class InstanceRegistry:
@@ -110,10 +156,10 @@ class InstanceRegistry:
         require(body["store"] in _STORES, "INSTANCE_CORRUPT", "Instance store is unsupported.")
         _text(body["build"], "build")
         _text(body["profile"], "profile", optional=True)
-        require(type(body["definition_revision"]) is str and len(body["definition_revision"]) == 64,
+        require(type(body["definition_revision"]) is str and bool(_SHA.fullmatch(body["definition_revision"])),
                 "INSTANCE_CORRUPT", "Definition revision is invalid.")
         require(body["support_revision"] is None or
-                (type(body["support_revision"]) is str and len(body["support_revision"]) == 64),
+                (type(body["support_revision"]) is str and bool(_SHA.fullmatch(body["support_revision"]))),
                 "INSTANCE_CORRUPT", "Support revision is invalid.")
         require(type(body["game_dir"]) is str and os.path.isabs(body["game_dir"]),
                 "INSTANCE_CORRUPT", "Private game directory is invalid.")
@@ -124,16 +170,20 @@ class InstanceRegistry:
         return value
 
     def _read_path(self, path: Path):
-        return self._validate_record(read_json(path, MAX_RECORD_BYTES))
+        record = self._validate_record(read_json(path, MAX_RECORD_BYTES))
+        try:
+            expected = slug(path.stem)
+        except ModError:
+            raise ModError("INSTANCE_CORRUPT", "Instance filename is not a valid opaque identity.") from None
+        require(record["body"]["instance_id"] == expected,
+                "INSTANCE_CORRUPT", "Instance filename and identity differ.")
+        return record
 
     def _read(self, instance_id):
         instance_id = slug(instance_id)
         path = contained(self.root, instance_id + ".json")
         require(path.is_file(), "INSTANCE_NOT_FOUND", "Registered game instance was not found.")
-        record = self._read_path(path)
-        require(record["body"]["instance_id"] == instance_id,
-                "INSTANCE_CORRUPT", "Instance filename and identity differ.")
-        return record
+        return self._read_path(path)
 
     @staticmethod
     def _public(record, *, status="REGISTERED_READ_ONLY"):
@@ -163,7 +213,7 @@ class InstanceRegistry:
         if game_id is not None:
             game_id = slug(game_id)
         rows = []
-        for path in self._paths():
+        for position, path in enumerate(self._paths(), start=1):
             try:
                 record = self._read_path(path)
                 if game_id is None or record["body"]["game_id"] == game_id:
@@ -171,7 +221,7 @@ class InstanceRegistry:
             except (ModError, OSError, ValueError, KeyError):
                 if game_id is None:
                     rows.append({
-                        "instance_id": path.stem,
+                        "instance_id": f"corrupt-record-{position:03d}",
                         "status": "INCOMPLETE_OR_CORRUPT",
                         "path_included": False,
                         "writes_game_files": False,
@@ -277,6 +327,7 @@ class InstanceRegistry:
                 "INSTANCE_STALE",
                 "The support definition changed after instance registration; review it locally.")
         observation = inspect_game(Path(body["game_dir"]), definition)
+        _assert_public_metadata(observation)
         return {
             "instance": self._public(record),
             "inventory": observation,

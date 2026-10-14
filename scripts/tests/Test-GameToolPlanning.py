@@ -19,7 +19,7 @@ from GameToolAIFoundation import FoundationService
 from GameToolGameWorkspaces import WorkspaceAI
 from GameToolPlanning import PlanningService
 from GameToolAITestPackage import build_ai_test_package
-from game_mod_ops.safety import ModError
+from game_mod_ops.safety import ModError, object_hash
 
 
 class ReadOnlyPlanningContracts(unittest.TestCase):
@@ -119,6 +119,79 @@ class ReadOnlyPlanningContracts(unittest.TestCase):
             self.assertEqual(raised.exception.code, "INSTANCE_PRIVATE_LABEL")
         self.assertFalse((self.data / "game-instances").exists())
         self.assert_game_unchanged()
+
+    def test_corrupt_registry_filename_is_never_exposed(self):
+        registry = self.data / "game-instances"
+        registry.mkdir(parents=True)
+        private_name = "ghp_" + "a" * 24
+        (registry / (private_name + ".json")).write_text("{}", encoding="utf-8")
+        listing = self.planning.list_instances()
+        self.assertEqual(listing["count"], 1)
+        self.assertEqual(listing["instances"][0]["status"], "INCOMPLETE_OR_CORRUPT")
+        self.assertEqual(listing["instances"][0]["instance_id"], "corrupt-record-001")
+        self.assertNotIn(private_name, json.dumps(listing))
+        self.assert_game_unchanged()
+
+    def test_renamed_valid_record_is_reported_only_as_opaque_corruption(self):
+        self.register()
+        registry = self.data / "game-instances"
+        original = registry / "kingmaker-main.json"
+        renamed = registry / "renamed-private-record.json"
+        original.rename(renamed)
+        listing = self.planning.list_instances()
+        self.assertEqual(listing["count"], 1)
+        self.assertEqual(listing["instances"][0]["status"], "INCOMPLETE_OR_CORRUPT")
+        self.assertEqual(listing["instances"][0]["instance_id"], "corrupt-record-001")
+        self.assertNotIn("renamed-private-record", json.dumps(listing))
+        self.assert_game_unchanged()
+
+    def test_nonhex_record_revision_is_rejected_even_when_record_hash_matches(self):
+        self.register()
+        path = self.data / "game-instances/kingmaker-main.json"
+        record = json.loads(path.read_text(encoding="utf-8"))
+        record["body"]["definition_revision"] = "Z" * 64
+        record["revision"] = object_hash(record["body"])
+        path.write_text(json.dumps(record), encoding="utf-8")
+        with self.assertRaises(ModError) as raised:
+            self.service.workspaces.instances.public("kingmaker-main")
+        self.assertEqual(raised.exception.code, "INSTANCE_CORRUPT")
+        self.assert_game_unchanged()
+
+    def _assert_private_manifest_value_refused(self, private_value):
+        path = self.game / "Mods/KingmakerTactics/Info.json"
+        value = json.loads(path.read_text(encoding="utf-8"))
+        value["Version"] = private_value
+        path.write_text(json.dumps(value), encoding="utf-8")
+        self.before_game = self._tree_hash(self.game)
+        self.register()
+        with self.assertRaises(ModError) as raised:
+            self.planning.inspect_instance("kingmaker-main", "pathfinder-kingmaker")
+        self.assertEqual(raised.exception.code, "INSTANCE_PRIVATE_METADATA")
+        self.assertNotIn(private_value, str(raised.exception))
+        blocker = self.foundation.blocker("INSTANCE_PRIVATE_METADATA")
+        self.assertFalse(blocker["effects"]["unknown"])
+        self.assertFalse(blocker["retry"]["allowed"])
+        self.assert_game_unchanged()
+
+    def test_public_inspection_refuses_credential_manifest_metadata(self):
+        self._assert_private_manifest_value_refused("ghp_" + "b" * 24)
+
+    def test_public_inspection_refuses_windows_path_manifest_metadata(self):
+        private_path = "build C:" + "\\" + "Users" + "\\private\\file.dll"
+        self._assert_private_manifest_value_refused(private_path)
+
+    def test_public_inspection_refuses_posix_path_manifest_metadata(self):
+        self._assert_private_manifest_value_refused("build /Users/private/file.dll")
+
+    def test_public_inspection_refuses_generic_absolute_posix_path_metadata(self):
+        self._assert_private_manifest_value_refused("build /games/private/file.dll")
+
+    def test_public_inspection_refuses_unc_path_manifest_metadata(self):
+        self._assert_private_manifest_value_refused(r"\\server\private\file.dll")
+
+    def test_public_inspection_refuses_file_uri_manifest_metadata(self):
+        private_uri = "build file:" + "///" + "Users/private/file.dll"
+        self._assert_private_manifest_value_refused(private_uri)
 
     def test_same_instance_case_alias_is_idempotent(self):
         self.register()

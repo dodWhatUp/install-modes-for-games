@@ -260,6 +260,18 @@ _BLOCKERS = {
         "inspection_tool": "game_tools_instances",
         "user_action": "Review and register the current definition locally; do not reuse the stale binding.",
     },
+    "INSTANCE_CORRUPT": {
+        "meaning": "A private instance record failed identity, revision, or filename integrity checks.",
+        "effects_known": True, "retry": False,
+        "inspection_tool": "game_tools_instances",
+        "user_action": "Review the local registry record; do not expose or reconstruct its private filename.",
+    },
+    "INSTANCE_PRIVATE_METADATA": {
+        "meaning": "Installed metadata contains a path or credential candidate that is not safe for an AI result.",
+        "effects_known": True, "retry": False,
+        "inspection_tool": "game_tools_instances",
+        "user_action": "Review the exact manifest locally and remove or separately sanitize the private value.",
+    },
     "ADAPTER_ACCEPTANCE_PENDING": {
         "meaning": "The requested manager adapter has not passed this read-only slice's acceptance gate.",
         "effects_known": True, "retry": False,

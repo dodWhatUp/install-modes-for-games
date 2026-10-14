@@ -79,9 +79,20 @@ def stdio(service,allow_requests=False,input_stream=None,output_stream=None,sour
         line=inp.readline(MAX_LINE+1)
         if not line:break
         if len(line)>MAX_LINE:break
-        try:response=endpoint.handle(strict_json(line))
+        try:
+            message=strict_json(line)
         except (ModError,ValueError,RecursionError):
             response={'jsonrpc':'2.0','id':None,'error':{'code':-32700,'message':'Parse error'}}
+        else:
+            try:
+                response=endpoint.handle(message)
+            except ModError as error:
+                ident=message.get('id') if type(message) is dict else None
+                response={'jsonrpc':'2.0','id':ident,'error':{'code':-32030,
+                    'message':'Local request refused','data':{'status':getattr(error,'code','REFUSED')}}}
+            except (ValueError,RecursionError,OSError,TypeError,KeyError):
+                ident=message.get('id') if type(message) is dict else None
+                response={'jsonrpc':'2.0','id':ident,'error':{'code':-32603,'message':'Internal error'}}
         if response is not None:
             raw=json.dumps(response,ensure_ascii=False,allow_nan=False).encode('utf-8')+b'\n'
             if len(raw)>600*1024:break
