@@ -1,0 +1,24 @@
+{
+  "id": "red-dead-redemption-2",
+  "name": "Red Dead Redemption 2",
+  "schema_status": "encoded_schema_review",
+  "locations": [
+    {
+      "root": "documents",
+      "pattern": "Rockstar Games/Red Dead Redemption 2/Profiles/*/KeyMappings"
+    }
+  ],
+  "format": "Extensionless KeyMappings file; safe encoding/record round-trip must be established from the original",
+  "limitations": [
+    "The binding-mod author describes editing with a binary editor; ordinary Notepad editing is not established as safe. Do not treat a copied XML-shaped fragment as a valid native replacement.",
+    "Confirm record encoding, IDs, duplicated/contextual actions and all relevant on-foot/mounted/vehicle/menu contexts. Preserve L/R mouse and scrolling.",
+    "No downloaded third-party complete keymap is substituted for your current settings."
+  ],
+  "source_urls": [
+    "https://www.nexusmods.com/reddeadredemption2/mods/205",
+    "https://steamcommunity.com/app/1174180/discussions/0/3191360735182412182/"
+  ],
+  "discovery_only": true,
+  "native_recipe_bundled": false,
+  "source_review_date": "2026-10-13"
+}

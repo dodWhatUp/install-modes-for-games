@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "kind": "diagnostic",
+  "target": {"game_id": null, "executable": null, "build": null, "renderer": null},
+  "layer": {"component": "ExampleLayer", "version": null, "sha256": null, "source_revision": null, "source_sha256": null, "freshness": "unknown"},
+  "resources": [],
+  "processes": [],
+  "snapshot": {"current": "unknown", "known_good": "unknown", "distinct": null},
+  "changes": [],
+  "checks": [],
+  "observations": [{"id": "ExampleWarning", "kind": "memory_warning", "source_sha256": null}],
+  "hypotheses": [
+    {"id": "ExampleMemoryHypothesis", "category": "memory_pressure", "support": ["ExampleWarning"], "contradicts": [], "requests": ["memory_scopes", "first_failure", "fixed_fg"]},
+    {"id": "ExampleUnknownHypothesis", "category": "unknown", "support": [], "contradicts": [], "requests": ["target_identity", "loaded_owners", "upstream_compatibility"]}
+  ]
+}

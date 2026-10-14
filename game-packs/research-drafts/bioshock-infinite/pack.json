@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "kind": "game-keybind-pack",
+  "id": "bioshock-infinite",
+  "version": "0.1.0",
+  "game_id": "bioshock-infinite",
+  "title": "BioShock Infinite",
+  "keymaps": {
+    "keyboard": {
+      "Space": "Space",
+      "F": "F",
+      "E": "E",
+      "R": "R",
+      "MouseLeft": "MouseLeft",
+      "MouseRight": "MouseRight",
+      "WheelUp": "WheelUp",
+      "WheelDown": "WheelDown"
+    }
+  },
+  "files": [
+    {
+      "id": "input",
+      "adapter": "unresolved-native",
+      "locations": [
+        {
+          "root": "DOCUMENTS",
+          "pattern": "My Games/BioShock Infinite/XGame/Config/XUserOptions.ini"
+        }
+      ],
+      "fields": [],
+      "inventory_complete": false,
+      "stopped_processes": [],
+      "writable": true,
+      "priority": 100,
+      "fingerprints": []
+    }
+  ],
+  "variants": [
+    {
+      "id": "keyboard",
+      "files": [
+        "input"
+      ]
+    }
+  ],
+  "presets": [],
+  "evidence": {
+    "stage": "draft",
+    "notes": "Location-research draft only: encoded_schema_unresolved",
+    "sources": []
+  },
+  "fixtures": []
+}

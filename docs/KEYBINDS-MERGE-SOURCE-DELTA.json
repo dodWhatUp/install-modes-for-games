@@ -1,0 +1,345 @@
+{
+  "schema_version": 2,
+  "created_utc": "2026-10-14T01:56:40.201301+00:00",
+  "lineage": {
+    "original_host": {
+      "version": "0.24.0-preview.1",
+      "payload_files": 221,
+      "manifest_sha256": "b181a22074e904ace5374abe401ab3bc04944785f1be86694f64c3408f2f0013"
+    },
+    "initial_semantic_merge": {
+      "version": "0.25.0-preview.1",
+      "payload_files": 361,
+      "record_sha256": "eacddd39e3028df95cfbd9ca4c474524b55a1deae9e02e02f354ac02181873f1",
+      "summary": {
+        "base": "verified A 0.24 source payload",
+        "excluded": [
+          "MANIFEST.json (regenerated after this comparison)",
+          "docs/KEYBINDS-MERGE-SOURCE-DELTA.json (self-referential record)"
+        ],
+        "unchanged_payload_paths": 210,
+        "added_payload_paths_excluding_self": 139,
+        "changed_payload_paths": 11,
+        "removed_payload_paths": 0
+      }
+    }
+  },
+  "focused_review_delta": {
+    "from": {
+      "version": "0.25.0-preview.1",
+      "payload_files": 361,
+      "manifest_sha256": "43e4638a724d0e0083142cc48ecd2801cecf20dce0a94fade43e4d84c1eafa6b"
+    },
+    "to": {
+      "version": "0.25.0-preview.2",
+      "payload_files_including_this_record": 366
+    },
+    "comparison": {
+      "base": "sealed initial merged source candidate",
+      "excluded": [
+        "MANIFEST.json (regenerated after this comparison)",
+        "docs/KEYBINDS-MERGE-SOURCE-DELTA.json (self-referential record)",
+        "Python bytecode/cache files"
+      ],
+      "unchanged_payload_paths": 336,
+      "added_payload_paths": 5,
+      "changed_payload_paths": 24,
+      "removed_payload_paths": 0
+    },
+    "added": [
+      {
+        "path": "docs/UI-AND-CONTENT-DESIGN.md",
+        "bytes": 7965,
+        "sha256": "258619c44fe90df09eda947a3240f70c55337df7b0b101689e5755f7b7382b60"
+      },
+      {
+        "path": "docs/keybinds/README.md",
+        "bytes": 1318,
+        "sha256": "bb299560486838fe24dbd699a1d69079e7c8c3639147e0dbf10cda3011abda54"
+      },
+      {
+        "path": "docs/keybinds/history/DEPENDENCY_PINS-B-0.2.0-preview.1.json",
+        "bytes": 1573,
+        "sha256": "8ece7da5a4c24722b7b277662079f013e607c2f20d0287729a13adc64425b1a8"
+      },
+      {
+        "path": "docs/keybinds/history/INTEGRATION-HANDOFF-B-0.2.0-preview.1.md",
+        "bytes": 7839,
+        "sha256": "3f549a81b71d5c494c60b9e52a0b7cc63eb95249d476b2b73ac76420ec1dd3e2"
+      },
+      {
+        "path": "scripts/tests/keybinds/test_schema_contract.py",
+        "bytes": 3392,
+        "sha256": "d62240daf9ac17e5e1b57db568d3567b49e8e824d89386519036fdfeecb70fbf"
+      }
+    ],
+    "changed": [
+      {
+        "path": "docs/KEYBINDS-MERGE-CONTINUATION.md",
+        "before": {
+          "bytes": 1686,
+          "sha256": "e438e48bdca2489f99132ed19a1a219bffca084cbb8bd11f966b174b9ff334b4"
+        },
+        "after": {
+          "bytes": 1927,
+          "sha256": "ab8a57f6ffa7c256416d3bbafd38851964e04350bf26cc0d89c289a4122fb802"
+        }
+      },
+      {
+        "path": "docs/KEYBINDS-MERGE-INTAKE.json",
+        "before": {
+          "bytes": 4103,
+          "sha256": "a347f8fe857b69d463f9821dabb6f038d37dc542cda9d33817abaa2d2d0a54df"
+        },
+        "after": {
+          "bytes": 4913,
+          "sha256": "14d0e2ea454ee2574e295eda02509297e82488e5cd714ac1275f0a3eb1f7ff98"
+        }
+      },
+      {
+        "path": "docs/KEYBINDS-MERGE-LIMITATIONS.md",
+        "before": {
+          "bytes": 1723,
+          "sha256": "12050672cdb4129193acb6c0441c84f556e701e6f33cf97c9ed484e0783b3ee6"
+        },
+        "after": {
+          "bytes": 2217,
+          "sha256": "8acebe83aab58f2943e739d847cf8b38f48c4be855cc2592a9b2d0768a9eb7a3"
+        }
+      },
+      {
+        "path": "docs/KEYBINDS-MERGE-REVIEW.md",
+        "before": {
+          "bytes": 3381,
+          "sha256": "7f11e760ff75690d9c921fad5b5d91e8d668729a450f7094e35cd16ff6aa67db"
+        },
+        "after": {
+          "bytes": 5604,
+          "sha256": "3ab6b82467a9610c761bb89472b54a8fe7da8ecdbf477a22260ef0538c9316b0"
+        }
+      },
+      {
+        "path": "docs/KEYBINDS-MERGE-VALIDATION.json",
+        "before": {
+          "bytes": 6407,
+          "sha256": "954f10bb88f3b4ec8fd37aa7b0999e0bc148a3071a491c42db956177f2bcd12a"
+        },
+        "after": {
+          "bytes": 15089,
+          "sha256": "1b7cfe46342afce136533e1ce5ee9166c5821fd136338476933b575f6b5d41c4"
+        }
+      },
+      {
+        "path": "docs/keybinds/COMPONENT-CHECKPOINT.md",
+        "before": {
+          "bytes": 543,
+          "sha256": "cb1fa3c3cfb6107c2449d2a1499e8e4359bae8e881b6f9e6791e63d95accbb2b"
+        },
+        "after": {
+          "bytes": 671,
+          "sha256": "81e5a851f2a450a0ec053f166459bb9e1e5990bcdee8bf242e1676b96f8ead33"
+        }
+      },
+      {
+        "path": "docs/keybinds/COMPONENT-README.md",
+        "before": {
+          "bytes": 4009,
+          "sha256": "deb30cf3159db93c69b46772e5d1a7a0ead0c76d6f648041334886598b574f9c"
+        },
+        "after": {
+          "bytes": 1665,
+          "sha256": "49d9cf0d6edea535adcc5798ba9c2f508808afb8cf5232ee3a4b9baebf5bb9be"
+        }
+      },
+      {
+        "path": "docs/keybinds/DEPENDENCY_PINS.json",
+        "before": {
+          "bytes": 1573,
+          "sha256": "8ece7da5a4c24722b7b277662079f013e607c2f20d0287729a13adc64425b1a8"
+        },
+        "after": {
+          "bytes": 1826,
+          "sha256": "06517c7e745b6ee54d7a797fcafce8509e2093893a6e2176d1b4b08bbb75df6f"
+        }
+      },
+      {
+        "path": "docs/keybinds/INTEGRATION-HANDOFF.md",
+        "before": {
+          "bytes": 7839,
+          "sha256": "3f549a81b71d5c494c60b9e52a0b7cc63eb95249d476b2b73ac76420ec1dd3e2"
+        },
+        "after": {
+          "bytes": 968,
+          "sha256": "73b17ee068f2684ac72cab2dd95b1c50f66ac8fca3daabee92c646c03803797b"
+        }
+      },
+      {
+        "path": "docs/keybinds/INTEGRATION.md",
+        "before": {
+          "bytes": 172,
+          "sha256": "3b64d72cf329385f523db55c13c24c3a4301231d759a0afec2d6d6ad70d3056b"
+        },
+        "after": {
+          "bytes": 721,
+          "sha256": "aa10a026eeadd7135456686bcc920d77ab5d04a4edcaba70215d105e04b14472"
+        }
+      },
+      {
+        "path": "docs/keybinds/REVIEW_NOTES.md",
+        "before": {
+          "bytes": 688,
+          "sha256": "fa8614be8e54d7dfa984be9bc6575a45ffcf682267322d827950757039abdb17"
+        },
+        "after": {
+          "bytes": 1086,
+          "sha256": "297f23d87230e95b0dbbf4679d74dac65fe30343d0f2de75fd610f9a41b147b5"
+        }
+      },
+      {
+        "path": "schemas/game-pack.schema.json",
+        "before": {
+          "bytes": 11357,
+          "sha256": "e169ad9cef54e27ef6f83201b9293010ecc75d02fddc6946e9a891c8a9b5e26f"
+        },
+        "after": {
+          "bytes": 12001,
+          "sha256": "5b8b5db4e69beb50f769a7f4b71c5113cd305e7b84c69fa759f450c945b85b8d"
+        }
+      },
+      {
+        "path": "schemas/semantic-intent.schema.json",
+        "before": {
+          "bytes": 968,
+          "sha256": "43fb896fd603a6ab7ba9d19879095432711527a5a28aeba71d06fb6a605aa00e"
+        },
+        "after": {
+          "bytes": 1021,
+          "sha256": "d54f5b7b73b9d6f8b6069ce1d3388070d91206faae7567c0cd01a2409d64bc6c"
+        }
+      },
+      {
+        "path": "scripts/Export-GameTools.ps1",
+        "before": {
+          "bytes": 41892,
+          "sha256": "4f6d177a2dd73d4621f710f2901b9eb98e78f8759d39871ec598e1186011adb4"
+        },
+        "after": {
+          "bytes": 42752,
+          "sha256": "7236e9cfef77f159ba1e76df1c20c2bcf3ae7643f2888465ca1f60bf250a1221"
+        }
+      },
+      {
+        "path": "scripts/Game-Tool-Hub.py",
+        "before": {
+          "bytes": 90081,
+          "sha256": "578846b857c6ea079c20ba4238f14f4990c7d885a622eb6b9e16c49c6c0700b3"
+        },
+        "after": {
+          "bytes": 90081,
+          "sha256": "0ebc06b648b66801292a68c1873061c04e4f77fe4890aeacb783d38b9ef8a60c"
+        }
+      },
+      {
+        "path": "scripts/GameToolAI.py",
+        "before": {
+          "bytes": 11590,
+          "sha256": "89baa68a459bed072b5678a9dd62a4e52ae0047f1e5114271034dbf2f95f0333"
+        },
+        "after": {
+          "bytes": 11590,
+          "sha256": "0a92948fd29e9817bc9c4483b8af9b27ae6283ea6090bace4be7a2c84b9634e5"
+        }
+      },
+      {
+        "path": "scripts/GameToolGameWorkspaces.py",
+        "before": {
+          "bytes": 39834,
+          "sha256": "57dedae73e96f776fcd9ed7b81aa9a5a71d15f289d14a1e545f316dbf8ab4ddc"
+        },
+        "after": {
+          "bytes": 40181,
+          "sha256": "a0f68663d86a9eaacad7307fda1066fb8c33eeed566785fc7fa3f808ad76110e"
+        }
+      },
+      {
+        "path": "scripts/GameToolKeybindAI.py",
+        "before": {
+          "bytes": 12716,
+          "sha256": "e0d58fb427710ef99342c779186f646c92f0ea64aff995cce16c01629b8113bc"
+        },
+        "after": {
+          "bytes": 12716,
+          "sha256": "4477eafd2bd88e818c0a6101ac2b66fa148a6bb1a8b3fa443b84675e73b1f5ec"
+        }
+      },
+      {
+        "path": "scripts/GameToolKeybindIntegration.py",
+        "before": {
+          "bytes": 9284,
+          "sha256": "ae9b822e8373ec5b7b3e1ddd7d90bf7c1a5d18cb8e1153ffb85de027d6b41588"
+        },
+        "after": {
+          "bytes": 9284,
+          "sha256": "39f6b5cb6d6345d00f8e3de6bcce2227d3977e410a787c484201d64f4ac5161a"
+        }
+      },
+      {
+        "path": "scripts/GameToolWorkbenchLaunch.pyw",
+        "before": {
+          "bytes": 3048,
+          "sha256": "83fea40ca7ade67ffff6fd25bc5518597248c144d6ac01da711b619c8f2d58eb"
+        },
+        "after": {
+          "bytes": 3060,
+          "sha256": "284d73b6b723ceb745450d483bdb80088bb89f966a1d1693831e4ee625221844"
+        }
+      },
+      {
+        "path": "scripts/check_host.py",
+        "before": {
+          "bytes": 1433,
+          "sha256": "208783514b83e8dae91fb2109bad1e6838a703b1821b0eba97ccd1467e8db695"
+        },
+        "after": {
+          "bytes": 1433,
+          "sha256": "618f89f5c865eb9e6e32be32dfa3433a04d8d2fef86b4047e16272492e126690"
+        }
+      },
+      {
+        "path": "scripts/tests/Run-KeybindChecks.py",
+        "before": {
+          "bytes": 2531,
+          "sha256": "b604b32a28a6521b0d6a391ca39e29f0da7a7af3354f42158805b34a9f8cc5a6"
+        },
+        "after": {
+          "bytes": 2612,
+          "sha256": "faeab5cd14e2d2622147e248689b20f0d79c7d3821b4a625990d00422f8559ec"
+        }
+      },
+      {
+        "path": "scripts/tests/Test-GameSupportPackaging.py",
+        "before": {
+          "bytes": 4320,
+          "sha256": "12459bd69d818602fdb65527b6b26d6199dd708e46f376312c9d84607731aefd"
+        },
+        "after": {
+          "bytes": 4555,
+          "sha256": "238516986f13e4fe96b8210639c1d8b7cd246df7ad413631d605f3e657656f6f"
+        }
+      },
+      {
+        "path": "scripts/tests/Test-GameToolsInstaller.py",
+        "before": {
+          "bytes": 5332,
+          "sha256": "ff941819bf314f321494a91128c1315c380b52092210e29f710dfebb4b71243b"
+        },
+        "after": {
+          "bytes": 5389,
+          "sha256": "802db2ba4dce3da235c363c2255f27e8819b4f2facbe31af21a88b681d771c18"
+        }
+      }
+    ],
+    "removed": []
+  },
+  "scope_note": "This delta records only the focused R2 source change. Test logs, packaging workspaces and delivery ZIPs are external evidence and are not source payloads."
+}

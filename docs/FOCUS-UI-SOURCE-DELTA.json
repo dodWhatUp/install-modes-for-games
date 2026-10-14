@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "baseline_archive": "Unified-Game-Tools-0.21.0-preview.1-Mods-AI-2026-10-13.zip",
+  "baseline_sha256": "38fba39fe3ec18c6ca3fc5a0a1a5351be72f7f02444ddf11b26583e53c643755",
+  "original_payloads": 181,
+  "unchanged_original_payloads": 175,
+  "changed_original_paths": [
+    "docs/GAME-TOOLS-MASTER-CHECKLIST.md",
+    "docs/UNIFIED-UI-DESIGN.md",
+    "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+    "scripts/GameToolModIntegration.py",
+    "scripts/Game-Tool-Hub.py",
+    "scripts/Export-GameTools.ps1"
+  ],
+  "added_paths_excluding_this_record": [
+    "docs/FOCUS-UI-PRIOR-ARTIFACTS.json",
+    "docs/FOCUS-UI-REVIEW.md",
+    "docs/FOCUS-UI-VALIDATION.json",
+    "docs/WORKSTREAM-AUDIT-2026-10-13.json",
+    "scripts/GameToolFocusLaunch.pyw",
+    "scripts/GameToolFocusPanels.py",
+    "scripts/GameToolFocusUI.py",
+    "scripts/tests/Test-GameToolFocus.py",
+    "scripts/tests/Test-GameToolFocusHost.py",
+    "scripts/tests/Test-GameToolFocusLauncher.py"
+  ],
+  "removed_paths": [],
+  "native_ahk_count": 15,
+  "all_native_ahk_byte_identical": true,
+  "engines_byte_identical": true,
+  "notes": "Only the main optional UI selection, mod-pane factory, exporter inventory, and three navigation/design records were changed. New views reuse service implementations. Added source preview launcher has a separate profile and no production update effects."
+}

@@ -24,6 +24,31 @@
 !preferences/
 !preferences/**
 
+# Versioned schemas are source contracts, not generated runtime data.
+!schemas/
+!schemas/*.schema.json
+
+# Only the reviewed data-only pack shapes are publishable. Keep arbitrary
+# files under game-packs ignored unless a later review adds another exact
+# source role and pattern.
+!game-packs/
+!game-packs/format-examples/
+!game-packs/format-examples/*/
+!game-packs/format-examples/*/pack.json
+!game-packs/format-examples/*/fixtures/
+!game-packs/format-examples/*/fixtures/*.cfg
+!game-packs/format-examples/*/fixtures/*.ini
+!game-packs/format-examples/*/fixtures/*.json
+!game-packs/format-examples/*/fixtures/*.jsonc
+!game-packs/format-examples/*/fixtures/*.txt
+!game-packs/format-examples/*/fixtures/*.vdf
+!game-packs/format-examples/*/fixtures/*.xml
+!game-packs/research-drafts/
+!game-packs/research-drafts/*/
+!game-packs/research-drafts/*/AUTHORING.md
+!game-packs/research-drafts/*/location-evidence.json
+!game-packs/research-drafts/*/pack.json
+
 # Sanitized input-device records only; private exports remain outside Git.
 !devices/
 !devices/master-forge-left/

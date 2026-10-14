@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "component_id": "game-mod-workflows",
+  "version": "0.1.1",
+  "state": "mounted-in-Hub-0.21.0-preview.1-source; Windows-runtime-unverified",
+  "owner": "dodWhatUp/install-modes-for-games",
+  "entrypoint": "scripts/Game-Mod-Ops.py",
+  "python_minimum": "3.10",
+  "gui_mount": "GameToolModIntegration.Integration",
+  "close_guard": "ModWorkflowPanel.can_close",
+  "autoload": false,
+  "background_service": false,
+  "capabilities": {
+    "catalog": "implemented",
+    "plan": "implemented",
+    "acquire": "implemented-live-provider-acceptance-pending",
+    "import-archive": "implemented",
+    "stage": "implemented-not-installation",
+    "inspect-game": "implemented-kingmaker-only",
+    "install-new": "implemented-kingmaker-umm-windows-acceptance-pending",
+    "audit": "implemented-file-comparison-not-runtime",
+    "rollback-new": "implemented-unchanged-new-folder-and-user-data-only",
+    "existing-mod-upgrade": "native-manager-handoff",
+    "umm-loader-installation": "native-manager-handoff",
+    "vortex-mo2-rhi-execution": "not-implemented",
+    "game-launch": "not-authorized-or-implemented",
+    "benchmark": "existing-host-owner-not-triggered",
+    "driver-installation": "out-of-scope"
+  },
+  "protected_owners": [
+    "Hub tools.json",
+    "native Azeron SPARSE6",
+    "existing overlay groups",
+    "AHK input modules",
+    "measurement providers",
+    "game saves and unrelated settings"
+  ],
+  "note": "One source integration in the current Hub, not an installed external plugin or running agent. Native deployment and provider acceptance remain separate.",
+  "shared_ai_boundary": "GameToolAutomation + GameToolAI; reads/proposals; local approval only"
+}

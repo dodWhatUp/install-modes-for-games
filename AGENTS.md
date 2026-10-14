@@ -12,6 +12,9 @@ This repository is the durable memory for game-modding work. Apply these rules w
 
 For software/interface creation, learning materials, presentations or structured explanation files, read `docs/UI-AND-CONTENT-DESIGN.md` and apply the compact selection/search/entry, contextual visibility and progressive-disclosure foundation alongside existing design and accessibility guidance. Use its creation/review protocol, adapt to the delivery format, and preserve user choices and source masters. Deeper research/integration is a future improvement, not a prerequisite or authorization to redesign unrelated work.
 
+
+For unified-toolkit development, input/overlay/UI work or continuation after chat archival, retrieve `docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md` through the knowledge index and reconcile it with the current request, source masters and latest accepted receipt. Preserve stable GT requirement IDs and separate private chat/attachment evidence from sanitized knowledge. Retrieval or archival does not resume games, benchmarks, recording, graphics changes or game-input experiments, create automatic global memory, or authorize messages to another chat.
+
 1. Read `preferences/GENERAL.md`.
 2. Read `docs/OPERATING-STANDARD.md` and `docs/FEATURE-DECISION.md`.
 3. Search `games/` for the exact game, executable, renderer, tool, feature, error, and DLL name.
@@ -30,6 +33,7 @@ For chat review, knowledge reuse, backup or cross-repository handoffs, follow `d
 - Prefer official in-game or driver overrides when they expose the desired feature. Use a bridge only when the game supplies the required inputs, and use a feeder only when its supported API and input requirements are met.
 - For DLSS installs/extensions, follow the 2026-09-14 defaults in `preferences/GENERAL.md`: establish the minimum path using real engine inputs, research a supported game-specific input adapter if necessary, then add the missing dependencies for each useful compatible feature. Reuse existing capabilities and minimize programs/hooks without discarding essential dependencies or desired features. OptiScaler is a candidate, not a mandatory product.
 - Include ReShade and a compatible game-specific RenoDX visual profile as a separate stage of requested graphics installs, then validate the combined stack. Distinguish HDR/shader profiles from neural consumers, share supported hosts, resolve overlapping hooks/tonemapping, and record any reason the combined stage cannot be used.
+- Dynamic DLSS SR targets 30 base rendered FPS only with supported, enabled native/mod FG and a verified engine-resolution controller. Otherwise use fixed/manual SR. Provide dynamic On/Off and manual DLSS resolution controls, preserve the user's manual override, and keep rendered FPS separate from generated/display FPS. This is not a hard FPS cap. Follow `docs/DYNAMIC-DLSS-SR.md` for transitions and validation.
 - Make a just-in-time snapshot immediately before mutation. Preserve both the last known-good baseline and the current state if they differ. Record hashes, versions, settings, launch options, and external configuration—not just the game directory.
 
 An explicit emergency rollback may skip the option menu, but it must still preserve a resumable current-state snapshot when safe.
@@ -69,3 +73,13 @@ For any game-control, keypad-profile, input-mod, keybinding or control-diagram t
 For a reinstall or renewed keybinding setup of a previously configured game, recovering and reconciling the game's own saved bindings is a default step. Include its personal Steam Input layout when applicable; do not assume Steam Cloud backs up its keybinding files. Follow the reinstall sequence in `docs/AZERON-GAME-CONTROLS.md`.
 
 These control defaults also apply to reWASD, Azeron through reWASD, and other supported keyboards/keypads. Read `docs/INPUT-DEVICE-REGISTRY.md` and use `templates/INPUT-DEVICE.example.json` for first identification and later recognition. Preserve the user's preconfigured baseline, map verified physical positions to actual outputs, reuse one logical layered base, and create the same keys/actions/combined diagrams for the actual device shape. At the start of requested control work, match connected devices to saved records; ask only when identity or mapping is unknown, ambiguous or materially changed. Give precise instructions for physical actions or UI-only verification the user must perform. Do not claim background device monitoring or successful enrollment without evidence.
+
+## Multi-game support extension — current 0.26 source
+
+For a new game or reusable mod-manager/file-format capability, start with
+`docs/GAME-SUPPORT-PACKS.md` and the existing `GameToolGameWorkspaces` services.
+Create a reviewed data-only support pack under the existing game-support owner
+instead of rebuilding the app or hardcoding a new game into the UI. Use known
+adapters first; unknown executable adapter code needs separate source review and
+conformance tests. A named research draft, file-location hint or successful
+parser fixture is not certified game support or permission to mutate a game.

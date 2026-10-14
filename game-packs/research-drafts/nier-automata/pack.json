@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "kind": "game-keybind-pack",
+  "id": "nier-automata",
+  "version": "0.1.0",
+  "game_id": "nier-automata",
+  "title": "NieR Automata",
+  "keymaps": {
+    "keyboard": {
+      "Space": "Space",
+      "F": "F",
+      "E": "E",
+      "R": "R",
+      "MouseLeft": "MouseLeft",
+      "MouseRight": "MouseRight",
+      "WheelUp": "WheelUp",
+      "WheelDown": "WheelDown"
+    }
+  },
+  "files": [
+    {
+      "id": "input",
+      "adapter": "unresolved-native",
+      "locations": [
+        {
+          "root": "DOCUMENTS",
+          "pattern": "My Games/NieR_Automata/SystemData.dat"
+        }
+      ],
+      "fields": [],
+      "inventory_complete": false,
+      "stopped_processes": [],
+      "writable": true,
+      "priority": 100,
+      "fingerprints": []
+    }
+  ],
+  "variants": [
+    {
+      "id": "keyboard",
+      "files": [
+        "input"
+      ]
+    }
+  ],
+  "presets": [],
+  "evidence": {
+    "stage": "draft",
+    "notes": "Location-research draft only: binary_schema_and_mouse_review",
+    "sources": []
+  },
+  "fixtures": []
+}

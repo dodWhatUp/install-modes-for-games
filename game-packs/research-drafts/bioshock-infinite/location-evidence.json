@@ -1,0 +1,22 @@
+{
+  "id": "bioshock-infinite",
+  "name": "BioShock Infinite",
+  "schema_status": "encoded_schema_unresolved",
+  "locations": [
+    {
+      "root": "documents",
+      "pattern": "My Games/BioShock Infinite/XGame/Config/XUserOptions.ini"
+    }
+  ],
+  "format": "XUserOptions.ini contains an encoded UserKeyMappings value, not a simple action table",
+  "limitations": [
+    "A firsthand edit-and-diff investigation identifies UserKeyMappings as an encoded blob. Ordinary Unreal Bindings lines are not an established substitute.",
+    "The 20 requested assignments remain a source-derived plan; all other preferences and the mouse controls must remain intact."
+  ],
+  "source_urls": [
+    "https://steamcommunity.com/app/8870/discussions/0/828935672950243443"
+  ],
+  "discovery_only": true,
+  "native_recipe_bundled": false,
+  "source_review_date": "2026-10-13"
+}

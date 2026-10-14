@@ -1,0 +1,518 @@
+{
+  "schema_version": 2,
+  "source_version": "0.25.0-preview.2",
+  "reviewed_utc": "2026-10-14T01:54:23.231608+00:00",
+  "environment": {
+    "system": "Linux",
+    "python": "3.13.5",
+    "tk_widget_tests": "Xvfb where required",
+    "powershell_7_available": false
+  },
+  "counting_policy": "Every test group is reported separately. Broad regression and revalidation overlap earlier suites and are not added into one headline total.",
+  "premerge_provenance": {
+    "A_baseline": {
+      "passed_test_methods": 348,
+      "timeout_no_retry": {
+        "suite": "GameModPanel",
+        "reason": "One bounded Xvfb wrapper did not return; effects/processes were inspected, no process remained, and the suite was not retried or counted as passed."
+      }
+    },
+    "B_native_component": {
+      "passed_test_methods": 258
+    },
+    "B_against_exact_A_0_24": {
+      "passed_test_methods": 121
+    }
+  },
+  "initial_merged_candidate_evidence": {
+    "focused_merged_suites": {
+      "passed_test_methods": 114
+    },
+    "keybind_component_and_host": {
+      "passed_test_methods": 320
+    },
+    "merge_conflict_contracts": {
+      "passed_test_methods": 7
+    },
+    "updater_xvfb": {
+      "passed_test_methods": 33
+    }
+  },
+  "focused_review_r2": {
+    "detected_regression": {
+      "area": "recipe-only workspace refresh after semantic merge",
+      "affected_tests": [
+        "test_old_job_retains_old_definition_when_pack_updates",
+        "test_recipe_change_invalidates_pending_request",
+        "test_removed_item_keeps_old_proposal_reviewable_not_approvable"
+      ],
+      "resolution": "Refresh a cached scoped service when only the recipe revision changes; retain SOURCE_CHANGED/reopen for a capability-shape change."
+    },
+    "post_fix_suites": [
+      {
+        "suite": "GameSupport",
+        "passed_methods": 56
+      },
+      {
+        "suite": "GameToolKeybindMerge",
+        "passed_methods": 7
+      }
+    ],
+    "keybind_consolidated": {
+      "passed_methods": 330,
+      "suites": [
+        {
+          "suite": "core",
+          "tests": 109
+        },
+        {
+          "suite": "extended",
+          "tests": 22
+        },
+        {
+          "suite": "extensibility",
+          "tests": 78
+        },
+        {
+          "suite": "effective",
+          "tests": 31
+        },
+        {
+          "suite": "host-integration",
+          "tests": 35
+        },
+        {
+          "suite": "pack-integration",
+          "tests": 27
+        },
+        {
+          "suite": "schema-contract",
+          "tests": 10
+        },
+        {
+          "suite": "panel",
+          "tests": 9
+        },
+        {
+          "suite": "pack-panel",
+          "tests": 9
+        }
+      ]
+    },
+    "broad_regression": {
+      "suite_logs_with_pass_result": 48,
+      "passed_methods": 1519,
+      "skipped_methods": 2,
+      "overlaps_other_groups": true,
+      "suites": [
+        {
+          "suite": "Test-GameToolEvidenceCLI",
+          "executed": 12,
+          "passed_methods": 12,
+          "skipped": 0,
+          "log_group": "regression-batch-1"
+        },
+        {
+          "suite": "Test-GameToolEvidencePanel",
+          "executed": 21,
+          "passed_methods": 21,
+          "skipped": 0,
+          "log_group": "regression-batch-1"
+        },
+        {
+          "suite": "Test-GameToolFocus",
+          "executed": 41,
+          "passed_methods": 41,
+          "skipped": 0,
+          "log_group": "regression-batch-1"
+        },
+        {
+          "suite": "Test-GameToolFocusHost",
+          "executed": 10,
+          "passed_methods": 10,
+          "skipped": 0,
+          "log_group": "regression-batch-1"
+        },
+        {
+          "suite": "Test-GameToolFocusLauncher",
+          "executed": 11,
+          "passed_methods": 11,
+          "skipped": 0,
+          "log_group": "regression-batch-2"
+        },
+        {
+          "suite": "Test-GameToolGameWorkspaces",
+          "executed": 41,
+          "passed_methods": 41,
+          "skipped": 0,
+          "log_group": "regression-batch-2"
+        },
+        {
+          "suite": "Test-GameToolHub",
+          "executed": 22,
+          "passed_methods": 22,
+          "skipped": 0,
+          "log_group": "regression-batch-2"
+        },
+        {
+          "suite": "Test-GameToolHubCatalog",
+          "executed": 45,
+          "passed_methods": 45,
+          "skipped": 0,
+          "log_group": "regression-batch-2"
+        },
+        {
+          "suite": "Test-GameToolJournal",
+          "executed": 59,
+          "passed_methods": 59,
+          "skipped": 0,
+          "log_group": "regression-batch-2"
+        },
+        {
+          "suite": "Test-GameToolModernUI",
+          "executed": 22,
+          "passed_methods": 22,
+          "skipped": 0,
+          "log_group": "regression-batch-3"
+        },
+        {
+          "suite": "Test-GameToolOverlay",
+          "executed": 54,
+          "passed_methods": 53,
+          "skipped": 1,
+          "log_group": "regression-batch-3"
+        },
+        {
+          "suite": "Test-GameToolReadiness",
+          "executed": 59,
+          "passed_methods": 59,
+          "skipped": 0,
+          "log_group": "regression-batch-3"
+        },
+        {
+          "suite": "Test-GameToolReadinessCLI",
+          "executed": 9,
+          "passed_methods": 9,
+          "skipped": 0,
+          "log_group": "regression-batch-3"
+        },
+        {
+          "suite": "Test-GameToolReadinessPanel",
+          "executed": 19,
+          "passed_methods": 19,
+          "skipped": 0,
+          "log_group": "regression-batch-3"
+        },
+        {
+          "suite": "Test-GameToolReportImport",
+          "executed": 42,
+          "passed_methods": 42,
+          "skipped": 0,
+          "log_group": "regression-batch-4"
+        },
+        {
+          "suite": "Test-GameToolReportImportCLI",
+          "executed": 16,
+          "passed_methods": 16,
+          "skipped": 0,
+          "log_group": "regression-batch-4"
+        },
+        {
+          "suite": "Test-GameToolReportImportPanel",
+          "executed": 41,
+          "passed_methods": 41,
+          "skipped": 0,
+          "log_group": "regression-batch-4"
+        },
+        {
+          "suite": "Test-GameToolSessionCLI",
+          "executed": 12,
+          "passed_methods": 12,
+          "skipped": 0,
+          "log_group": "regression-batch-4"
+        },
+        {
+          "suite": "Test-GameToolSessionPanel",
+          "executed": 61,
+          "passed_methods": 61,
+          "skipped": 0,
+          "log_group": "regression-batch-4"
+        },
+        {
+          "suite": "Test-GameToolUnified",
+          "executed": 33,
+          "passed_methods": 33,
+          "skipped": 0,
+          "log_group": "regression-batch-5"
+        },
+        {
+          "suite": "Test-GameToolUserData",
+          "executed": 42,
+          "passed_methods": 42,
+          "skipped": 0,
+          "log_group": "regression-batch-5"
+        },
+        {
+          "suite": "Test-GameToolUserDataPanel",
+          "executed": 32,
+          "passed_methods": 32,
+          "skipped": 0,
+          "log_group": "regression-batch-5"
+        },
+        {
+          "suite": "Test-GameToolWorkbench",
+          "executed": 21,
+          "passed_methods": 21,
+          "skipped": 0,
+          "log_group": "regression-batch-5"
+        },
+        {
+          "suite": "Test-GameToolWorkbenchLauncher",
+          "executed": 8,
+          "passed_methods": 8,
+          "skipped": 0,
+          "log_group": "regression-batch-5"
+        },
+        {
+          "suite": "Test-GameToolWorkflow",
+          "executed": 48,
+          "passed_methods": 48,
+          "skipped": 0,
+          "log_group": "regression-batch-6"
+        },
+        {
+          "suite": "Test-GameToolWorkflowCLI",
+          "executed": 10,
+          "passed_methods": 10,
+          "skipped": 0,
+          "log_group": "regression-batch-6"
+        },
+        {
+          "suite": "Test-GameToolWorkflowPanel",
+          "executed": 23,
+          "passed_methods": 23,
+          "skipped": 0,
+          "log_group": "regression-batch-6"
+        },
+        {
+          "suite": "Test-GameToolWorkspace",
+          "executed": 40,
+          "passed_methods": 40,
+          "skipped": 0,
+          "log_group": "regression-batch-6"
+        },
+        {
+          "suite": "Test-ModernStartup",
+          "executed": 1,
+          "passed_methods": 1,
+          "skipped": 0,
+          "log_group": "regression-batch-7"
+        },
+        {
+          "suite": "Test-NativePictureLayout",
+          "executed": 4,
+          "passed_methods": 4,
+          "skipped": 0,
+          "log_group": "regression-batch-7"
+        },
+        {
+          "suite": "Test-PictureHost",
+          "executed": 11,
+          "passed_methods": 11,
+          "skipped": 0,
+          "log_group": "regression-batch-7"
+        },
+        {
+          "suite": "Test-UnifiedToolsLaunchers",
+          "executed": 12,
+          "passed_methods": 12,
+          "skipped": 0,
+          "log_group": "regression-batch-7"
+        },
+        {
+          "suite": "test_game_fg_inspector",
+          "executed": 34,
+          "passed_methods": 33,
+          "skipped": 1,
+          "log_group": "regression-batch-7"
+        },
+        {
+          "suite": "test_game_fg_preflight",
+          "executed": 67,
+          "passed_methods": 67,
+          "skipped": 0,
+          "log_group": "regression-batch-7"
+        },
+        {
+          "suite": "Test-GameModOps",
+          "executed": 63,
+          "passed_methods": 63,
+          "skipped": 0,
+          "log_group": "regression-batch-8"
+        },
+        {
+          "suite": "Test-GameSupportPanel",
+          "executed": 14,
+          "passed_methods": 14,
+          "skipped": 0,
+          "log_group": "regression-batch-8"
+        },
+        {
+          "suite": "Test-GameToolAppearance",
+          "executed": 46,
+          "passed_methods": 46,
+          "skipped": 0,
+          "log_group": "regression-batch-8"
+        },
+        {
+          "suite": "Test-GameToolAutomation",
+          "executed": 52,
+          "passed_methods": 52,
+          "skipped": 0,
+          "log_group": "regression-batch-8"
+        },
+        {
+          "suite": "Test-GameToolAutomationPanel",
+          "executed": 22,
+          "passed_methods": 22,
+          "skipped": 0,
+          "log_group": "regression-batch-8"
+        },
+        {
+          "suite": "Test-GameToolAzeronLayer",
+          "executed": 22,
+          "passed_methods": 22,
+          "skipped": 0,
+          "log_group": "regression-batch-8"
+        },
+        {
+          "suite": "Test-GameToolCatalog",
+          "executed": 35,
+          "passed_methods": 35,
+          "skipped": 0,
+          "log_group": "regression-batch-8"
+        },
+        {
+          "suite": "Test-GameToolCatalogBridge",
+          "executed": 36,
+          "passed_methods": 36,
+          "skipped": 0,
+          "log_group": "regression-batch-8"
+        },
+        {
+          "suite": "Test-GameToolCompactUI",
+          "executed": 40,
+          "passed_methods": 40,
+          "skipped": 0,
+          "log_group": "regression-batch-9"
+        },
+        {
+          "suite": "Test-GameToolComparison",
+          "executed": 63,
+          "passed_methods": 63,
+          "skipped": 0,
+          "log_group": "regression-batch-9"
+        },
+        {
+          "suite": "Test-GameToolComparisonCLI",
+          "executed": 9,
+          "passed_methods": 9,
+          "skipped": 0,
+          "log_group": "regression-batch-9"
+        },
+        {
+          "suite": "Test-GameToolComparisonPanel",
+          "executed": 39,
+          "passed_methods": 39,
+          "skipped": 0,
+          "log_group": "regression-batch-9"
+        },
+        {
+          "suite": "Test-GameToolCoordinator",
+          "executed": 47,
+          "passed_methods": 47,
+          "skipped": 0,
+          "log_group": "regression-batch-9"
+        },
+        {
+          "suite": "Test-GameToolCrashEvidence",
+          "executed": 50,
+          "passed_methods": 50,
+          "skipped": 0,
+          "log_group": "regression-batch-9"
+        }
+      ],
+      "wrapper_note": "The outer batch invocation ended after Test-GameToolFocusHost, but that suite log records 10/10 PASS and no active process remained; only the observed suite result is claimed."
+    },
+    "powershell_test_boundary": {
+      "initial_environment_misclassification": "The first Test-GameToolsInstaller run produced 7 errors because the harness referenced a nonexistent fallback pwsh path.",
+      "corrected_result": "The harness now discovers pwsh and explicitly skips when unavailable; 7/7 tests were skipped in this Linux environment.",
+      "native_acceptance": false
+    },
+    "static_contracts": {
+      "ui_design_snapshot_sha256": "258619c44fe90df09eda947a3240f70c55337df7b0b101689e5755f7b7382b60",
+      "ui_design_git_blob_sha1": "db9de4ea51af6a17ea3d49218cd5326a2a16edf8",
+      "unbundled_reference_revision": "043f3c4733788f082da98dfcb43c0972d2794c6a",
+      "preview_launcher": "Static review only; Python 3.10+/Tk preflight precedes shortcut creation and launch, and no user-specific Downloads path remains."
+    }
+  },
+  "packaging_note": "Final manifest, archive, CRC, entry-hash, updater-parser and extracted-preview checks are performed only after this record is sealed and are reported in the external delivery receipt.",
+  "not_established": [
+    "native Windows launcher/API/ACL acceptance",
+    "installed Hub or ChatGPT/MCP client acceptance",
+    "real game configuration mutation or gameplay",
+    "physical Azeron/profile acceptance",
+    "background service behavior",
+    "Git publication",
+    "Drive delivery"
+  ],
+  "final_source_seal_revalidation": {
+    "executed_utc": "2026-10-14T01:56:25.930253+00:00",
+    "groups": [
+      {
+        "check": "Python source compiled in memory",
+        "source_files": 150,
+        "status": "PASS"
+      },
+      {
+        "suite": "GameSupport",
+        "passed_methods": 56,
+        "status": "PASS"
+      },
+      {
+        "suite": "GameToolKeybindMerge",
+        "passed_methods": 7,
+        "environment": "Xvfb",
+        "status": "PASS"
+      },
+      {
+        "suite": "GameToolGameWorkspaces",
+        "passed_methods": 41,
+        "status": "PASS"
+      },
+      {
+        "suite": "GameToolWorkbenchLauncher",
+        "passed_methods": 8,
+        "status": "PASS"
+      },
+      {
+        "suite": "GameToolUnified",
+        "passed_methods": 33,
+        "environment": "Xvfb",
+        "status": "PASS"
+      },
+      {
+        "suite": "GameSupportPackaging",
+        "passed_methods": 7,
+        "status": "PASS"
+      },
+      {
+        "check": "GameToolUnified.inspect_directory",
+        "payloads": 366,
+        "status": "PASS"
+      }
+    ],
+    "overlaps_other_groups": true,
+    "display_note": "Direct no-display attempts of the two Tk-bearing suites stopped at TclError before applicable widget assertions; both complete Xvfb runs passed and only those applicable results are claimed."
+  }
+}

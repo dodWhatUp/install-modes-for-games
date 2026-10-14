@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "kind": "installation",
+  "target": {"game_id": null, "executable": null, "build": null, "renderer": null},
+  "layer": {"component": "ExampleLayer", "version": null, "sha256": null, "source_revision": null, "source_sha256": null, "freshness": "unknown"},
+  "resources": [{"id": "ExampleResource", "kind": "configuration", "owners": null, "expected_owner": "ExampleLayer", "requires": []}],
+  "processes": [
+    {"role": "game", "state": "unknown"}, {"role": "launcher", "state": "unknown"},
+    {"role": "store", "state": "unknown"}, {"role": "helper", "state": "unknown"},
+    {"role": "compiler", "state": "unknown"}
+  ],
+  "snapshot": {"current": "inventory_only", "known_good": "unknown", "distinct": null},
+  "changes": [{"id": "ExampleChange", "action": "replace", "target": "example-layer.ini", "owner": "ExampleLayer", "resource": "ExampleResource", "before_sha256": null, "after_sha256": null, "current_state": "unknown", "current_sha256": null, "backup_state": "inventory_only", "backup_sha256": null}],
+  "checks": [
+    {"phase": "creation", "result": "unknown"}, {"phase": "evaluation", "result": "unknown"},
+    {"phase": "delivery", "result": "unknown"}, {"phase": "presentation", "result": "unknown"},
+    {"phase": "visual", "result": "unknown"}, {"phase": "stability", "result": "unknown"}
+  ],
+  "observations": [],
+  "hypotheses": []
+}

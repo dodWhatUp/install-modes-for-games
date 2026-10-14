@@ -6,6 +6,7 @@ import configparser
 import csv
 import ctypes
 import hashlib
+import importlib.util
 import io
 import json
 import math
@@ -18,7 +19,7 @@ import time
 import uuid
 from datetime import datetime, timezone
 
-VERSION = "0.2.0"
+VERSION = "0.26.0-preview.1"
 HEADER = struct.Struct("<5Ii2I")
 ENTRY_MIN = 1324
 MAX_MAP = 16 * 1024 * 1024
@@ -447,53 +448,248 @@ Sensors and RTSS: Refresh reads existing shared memory with read access only. Af
 
 Reports: choose a report exported by an existing program. Import preserves original bytes plus provider, definition and SHA-256. PresentMon v2 CSV previews retain up to five original rows, GPU/latency field definitions, application/PID/swapchain and frame type where supplied. N/A and blank cells stay intact; no lows or latency are calculated. Software input-to-display estimates are not an optical measurement. HML/other formats remain opaque. Select an import to see its receipt; Ctrl+E opens its archived original in the associated application.
 
+Catalog: Ctrl+6 opens recorded components, games, features, sources and relationships. Filters and details are read-only. Prepare comparison previews one-factor or 2x2 plans using the existing catalog engine; required hosts remain On and resource measurements stay null. Source changes require explicit Reload. Catalog capabilities and source links are inert data, not clickable launch/install/capture actions. Copy details/plan exports only catalog data, not private executable registry paths. Existing native/AHK profiles are not edited.
+
+FG preflight: Check FG explicitly reads native settings and documented NVIDIA driver profiles where available. Preparing or copying an in-game plan rechecks automatically. Dynamic MFG active, unknown effective mode, missing/stale/conflicting or configuration-only evidence blocks comparisons. A native FG choice or disabled driver override is not runtime proof. Manager-idle scope is not applicable and reads no FG source. Optional paths stay local and are not saved. No game, collector, graphics or profile action is performed.
+
 User control: Add tool shows a local path/name form and an explicit interface-only confirmation. Reports accepts a local file path plus program and definitions; Browse is optional. Save snapshot creates a new immutable file inside the private data folder; its location appears in the status bar. Configure each application's sensor selection, overlay and shortcuts in its own settings. This helper does not write Afterburner/RTSS profiles, overclock settings or game settings. It supplies no global hotkeys, input injection, remote server, startup task or automatic uploads.
 
 Agent control: inspect and snapshot commands return structured JSON; import-report archives an explicitly selected report. Future adapters can import a provider's summaries with original definitions, frame classes and latency endpoints. Recording stays deferred until explicitly requested.
 
 Local shortcuts (only while this panel is focused): Ctrl+1 Tools, Ctrl+2 Sensors, Ctrl+3 RTSS, Ctrl+4 Reports, Ctrl+5 How to use; Ctrl+R Refresh, Ctrl+O Open selected tool, Ctrl+A Add tool, Ctrl+C Copy status, Ctrl+S Save snapshot, Ctrl+I Import report, Ctrl+E Open selected original. Sensors/RTSS: Ctrl+T toggles optional refresh. Alt+F4 closes only this panel. Collectors remain blocked even if registered under another name.
 
+Catalog uses Ctrl+6, Ctrl+R Reload and Ctrl+C Copy selected record (normal text copy/select-all is retained). Ctrl+O/A/S/I/E are blocked on Catalog so a remembered selection in another tab cannot launch, register, snapshot or import anything accidentally. Use the original tab for those existing actions.
+
+Comparison uses Ctrl+7. Explicitly load an existing normalized provider-summary JSON, inspect run values, metadata and blocked reasons, then export a new local HTML/JSON report. The tab never collects data, starts recording, opens other programs or writes profiles. It computes only simple differences and spread across existing provider summaries; it does not calculate lows or latency from raw frames. Synthetic fixtures are labeled and cannot establish performance. Real in-game datasets remain blocked for numerical cost inference until trusted runtime FG evidence is supported; imported declarations cannot override the live Catalog gate. Process-idle datasets require matched metadata and at least three complete runs per case. Missing values, memory warnings and unmatched workloads remain visible. Ctrl+R reloads the selected data; Ctrl+C copies the current offline result. Ctrl+O/A/S/I/E do not invoke remembered Tools/Reports actions on this tab.
+
 Closing this panel stops its optional refresh. It does not close other programs or stop an unrelated existing collector.
+
+Saved crash evidence: Sessions → Saved crash evidence opens an inert selected-file view. Explicitly choose saved Windows event XML, Hub journal JSONL or opaque text/log files, preview hashes and an uncertain timeline, then create a new private packet outside the repository. Originals/private locators stay private; portable copy excludes payloads/names/paths. No live watcher, crash cause, verified memory exhaustion, recorder or game control is provided. CLI saved-evidence inspect/packet and session inspect-evidence use the same fixed backend. No upload or replay is automatic.
+
+Workflow dry-runs: Sessions → Workflow dry-runs opens an inert recipe preview. Explicitly choose a data-only installation or diagnostic recipe, inspect private local targets separately from the portable change/rollback plan, then Copy or Export a new JSON outside the repository. Unknown/conflicting owners, dependency cycles/missing hosts, stopped-process declarations, backup coverage, hash drift and memory warnings remain visible. PREPARED_NOT_AUTHORIZED means only that declarations are structurally complete; it does not verify the live target, copied backups, restored behavior or effective FG. Diagnostic hypotheses rank declared support counts, not likelihood or proven cause. No Install, Apply, Launch or Rollback execution exists. workflow inspect/export and session inspect-workflow reuse the same fixed backend and do not read providers or the registry. Games, benchmarks and recording remain deferred.
+
+Saved report adapters: on Comparison, choose Import saved reports, select supported Cyberpunk benchmark summary JSON or PresentMon GUI statistics CSV, and explicitly assign baseline/a conditions. Preview extracted values, definitions and missing metadata, then create a new private import folder and load its generated comparison dataset. Original bytes are archived/hash-verified; no hand-written normalized JSON is required. Unknown UTC/settings/FG/memory remain unknown and real rendering comparisons remain BLOCKED. Raw frame CSV, HML and unrecognized summaries are not silently converted. Agent routes inspect-saved-report and import-saved-reports use the same bounded backend without reading providers or executable registry.
+
+Provider / scenario contracts: Sessions opens an optional private JSON editor and offline mock checker. Load a path explicitly (Browse optional), Preview unsaved edits and Save NEW scenario outside the repository. Originals are hash-pinned and never overwritten. Approval/process presence is not fresh writing; missing, partial, stale, wrong-context or gapped mock records block readiness. MOCK_HEALTHY and PREPARED_NOT_AUTHORIZED are declaration verdicts, never live capture, FG PASS or permission. Versioned phases, cache/workload readback, camera/HUD/animation tags, budgets and stop policies contain no commands, keys or save/graphics actions. Readiness CLI inspect/save-scenario and session inspect-readiness use fixed backends; no provider launch, recorder or scenario runner exists.
+
+Sessions uses Ctrl+8. Explicitly create a new offline journal, record checkpoints and inspect saved reports/comparisons through a fixed read-only coordinator. Each acknowledged journal entry is flushed and fsynced. Inspect or recover an interrupted journal's verified complete prefix into a new evidence-only file; the original is never repaired or replayed. Cooperative ownership, cancellation and expiry affect only this session, not other apps or chats. This is process-interruption recovery, not a guarantee against every storage failure or a crash-cause diagnosis. No game input, capture, benchmark, recording or settings adapter is enabled. Ctrl+R refreshes this tab; Ctrl+C copies its sanitized summary; Ctrl+O/A/S/I/E cannot invoke remembered Tools/Reports actions. Closing the Hub releases only its own session. Session CLI capabilities, inspect, recover, inspect-report and compare use the same offline modules without registry/provider reads.
 """
 
 
-def gui(data_dir, draft=None):
+def load_catalog_module(name):
+    # Authored exact sibling modules only; JSON records can never select code.
+    if name not in {"GameToolFocusUI", "GameToolModIntegration", "GameToolAppearance", "GameToolWorkspace", "GameToolUserData", "GameToolUserDataPanel", "GameToolUnified", "GameToolUnifiedPanel", "GameToolCatalogBridge", "GameToolCatalogPanel", "GameToolComparison", "GameToolComparisonPanel", "GameToolReportImport", "GameToolJournal", "GameToolCoordinator", "GameToolSessionPanel", "GameToolCrashEvidence", "GameToolEvidencePanel", "GameToolWorkflow", "GameToolWorkflowPanel", "GameToolReadiness", "GameToolReadinessPanel", "GameToolOverlay", "GameToolCompactUI", "GameToolOverlayPanel"}:
+        raise ValueError("Unsupported optional authored module")
+    path = Path(__file__).resolve().with_name(name + ".py")
+    before = path.stat()
+    with path.open("rb") as handle:
+        source = handle.read(1024 * 1024 + 1)
+    after = path.stat()
+    if len(source) > 1024 * 1024 or len(source) != before.st_size or \
+            (before.st_size, before.st_mtime_ns, before.st_ctime_ns) != \
+            (after.st_size, after.st_mtime_ns, after.st_ctime_ns):
+        raise ValueError("Optional catalog module exceeded its limit or changed during loading")
+    spec = importlib.util.spec_from_file_location("hub_" + name, path)
+    if spec is None or spec.loader is None:
+        raise ImportError("Optional catalog module unavailable")
+    module = importlib.util.module_from_spec(spec)
+    # Compile these captured authored bytes; do not consume/write timestamp pyc caches.
+    exec(compile(source, str(path), "exec", dont_inherit=True), module.__dict__)
+    return module
+
+
+def new_catalog_service(path=None):
+    return load_catalog_module("GameToolCatalogBridge").CatalogService(path)
+
+
+def journal_summary(result):
+    """Portable structural evidence, not user metadata or replay authority."""
+    keys = ("valid", "clean_end", "verified_count", "verified_bytes", "source_sha256", "source_bytes",
+            "error", "recovery_required", "discarded_tail_bytes", "limitations", "safety_caveat")
+    return {**{key: result[key] for key in keys if key in result},
+            "execution": "none", "replay_allowed": False}
+
+
+def gui(data_dir, draft=None, catalog_path=None, overlay_page=False, unified_install=None, interface_preview=None):
     import tkinter as tk
     from tkinter import ttk, filedialog, messagebox
     data_dir.mkdir(parents=True, exist_ok=True)
     registry = data_dir / "tools.json"
     tools = load_tools(registry)
     draft = draft or {}
+    if unified_install is not None and os.name == "nt":
+        # Match the native AHK system-DPI-aware host before creating Tk windows;
+        # avoid cross-process SetParent resetting the overlay engine's DPI mode.
+        dpi_api = ctypes.WinDLL("user32", use_last_error=True)
+        dpi_api.SetProcessDpiAwarenessContext.argtypes = [ctypes.c_void_p]
+        dpi_api.SetProcessDpiAwarenessContext(ctypes.c_void_p(-2))
     root = tk.Tk()
-    root.title(f"Game Tool Hub {VERSION} — Learning mode")
-    root.geometry("1120x720")
-    root.minsize(1000, 600)
+    instance_handle = None
+    if unified_install is not None:
+        kernel = ctypes.WinDLL("kernel32", use_last_error=True)
+        kernel.CreateMutexW.argtypes = [ctypes.c_void_p, ctypes.c_bool, ctypes.c_wchar_p]
+        kernel.CreateMutexW.restype = ctypes.c_void_p
+        kernel.CloseHandle.argtypes = [ctypes.c_void_p]
+        token = hashlib.sha256(str(unified_install.resolve()).lower().encode()).hexdigest()
+        instance_handle = kernel.CreateMutexW(None, False, "Local\\GameToolsUnified-" + token)
+        if not instance_handle or ctypes.get_last_error() == 183:
+            messagebox.showinfo("Unified Game Tools", "This unified installation is already open. Use its existing window.", parent=root)
+            if instance_handle: kernel.CloseHandle(instance_handle)
+            root.destroy()
+            return
+    root.title(f'{"Unified Game Tools" if unified_install else "Game Tool Hub"} {VERSION} — Learning mode')
+    if interface_preview in ("Focus", "Original"):
+        root.title(f"Game Tools — {interface_preview} UI preview · {VERSION}")
+    root.resizable(True, True)
+    try:
+        compact_ui = load_catalog_module("GameToolCompactUI")
+    except ImportError:
+        # An optional presentation module must not break original Hub pages.
+        class LegacyScroll(ttk.Frame):
+            def __init__(self, parent, min_width=0):
+                super().__init__(parent); self.body = self
+            def close(self): pass
+        class LegacyToolbar(ttk.Frame):
+            def add(self, text, command):
+                button=ttk.Button(self,text=text,command=command)
+                button.pack(side="left",padx=4); return button
+        class LegacyUI:
+            ScrollableFrame=LegacyScroll
+            FlowToolbar=LegacyToolbar
+        compact_ui=LegacyUI
+    bounds = compact_ui.window_bounds(root.winfo_screenwidth(), root.winfo_screenheight()) if hasattr(compact_ui, "window_bounds") else (1360,880,760,540)
+    root.geometry(f"{bounds[0]}x{bounds[1]}")
+    root.minsize(bounds[2], bounds[3])
     status = tk.StringVar(value="Ready")
-    ttk.Label(root, textvariable=status, wraplength=1000).pack(side="bottom", anchor="w", fill="x", padx=22, pady=12)
-    ttk.Label(root, text="Game Tool Hub", font=("Segoe UI", 21, "bold")).pack(anchor="w", padx=22, pady=(18, 3))
-    ttk.Label(root, text="Connect tools • Read their values • Organize reports", font=("Segoe UI", 11)).pack(anchor="w", padx=22)
-    tk.Label(root, text="LEARNING MODE   •   Tool connections and report management", bg="#fff0bf", fg="#604800", padx=12, pady=10).pack(fill="x", padx=22, pady=14)
-    tabs = ttk.Notebook(root)
-    tabs.pack(fill="both", expand=True, padx=22)
-    tool_tab, sensor_tab, rtss_tab, report_tab, guide_tab = [ttk.Frame(tabs, padding=12) for _ in range(5)]
-    for tab, name in zip((tool_tab, sensor_tab, rtss_tab, report_tab, guide_tab), ("Tools", "Sensors", "RTSS", "Reports", "How to use")):
+    status_bar = ttk.Frame(root, padding=(12, 6))
+    status_bar.pack(side="bottom", fill="x")
+    resize_grip = ttk.Sizegrip(status_bar)
+    resize_grip.pack(side="right", anchor="se")
+    status_label=ttk.Label(status_bar, textvariable=status, wraplength=1000)
+    status_label.pack(side="left", anchor="w", fill="x", expand=True)
+    header = ttk.Frame(root, padding=(12,8)); header.pack(fill="x")
+    app_title=ttk.Label(header, text="GameTools", font=("Segoe UI", 16, "bold")); app_title.pack(side="left")
+    scope_label=tk.Label(root, text="CONTROLLED WORKSPACE   •   Games, benchmarks and recording stay stopped" if unified_install else "LEARNING MODE   •   Tool connections and report management", bg="#fff0bf", fg="#604800", padx=10, pady=4, wraplength=900)
+    scope_label.pack(fill="x", padx=12, pady=(0,4))
+    root.game_tools_scope_banner = scope_label
+    workspace = None
+    if unified_install is not None or interface_preview in ("Focus", "Original"):
+        try:
+            workspace_api = load_catalog_module("GameToolWorkspace")
+            nav_registry = None
+            try:
+                nav_registry = load_catalog_module("GameToolModIntegration").navigation_registry(workspace_api)
+            except (ImportError, OSError, ValueError):
+                pass  # Preserve the original navigation when an optional module is absent.
+            workspace = workspace_api.Workspace(root, status, registry=nav_registry)
+            workspace.frame.pack(fill="both", expand=True, padx=12)
+        except Exception as error:
+            status.set("Optional goal navigation unavailable: " + str(error))
+    tabs = ttk.Notebook(workspace.content if workspace else root)
+    tabs.pack(fill="both", expand=True, **({} if workspace else {"padx":22}))
+    original_tabs = [ttk.Frame(tabs, padding=10) for _ in range(5)]
+    original_scrolls = [compact_ui.ScrollableFrame(tab, min_width=420) for tab in original_tabs]
+    for tab, scroll, name in zip(original_tabs, original_scrolls, ("Tools", "Sensors", "RTSS", "Reports", "How to use")):
         tabs.add(tab, text=name)
+        scroll.pack(fill="both",expand=True)
+    tool_tab, sensor_tab, rtss_tab, report_tab, guide_tab = [scroll.body for scroll in original_scrolls]
+    catalog_tab = ttk.Frame(tabs, padding=12)
+    tabs.add(catalog_tab, text="Catalog")
+    catalog_panel = None
+    try:
+        catalog_panel = load_catalog_module("GameToolCatalogPanel").CatalogPanel(
+            catalog_tab, lambda: new_catalog_service(catalog_path), status)
+    except Exception as error:
+        ttk.Label(catalog_tab, text="Optional Catalog unavailable. Original Hub tabs remain usable.",
+                  wraplength=950).pack(anchor="w", pady=12)
+        ttk.Label(catalog_tab, text=str(error), wraplength=950).pack(anchor="w")
+    comparison_tab = ttk.Frame(tabs, padding=12)
+    tabs.add(comparison_tab, text="Comparison")
+    comparison_panel = None
+    try:
+        comparison_panel = load_catalog_module("GameToolComparisonPanel").ComparisonPanel(
+            comparison_tab, status)
+    except Exception as error:
+        ttk.Label(comparison_tab, text="Optional Comparison unavailable. Existing Hub tabs remain usable.",
+                  wraplength=950).pack(anchor="w", pady=12)
+        ttk.Label(comparison_tab, text=str(error), wraplength=950).pack(anchor="w")
+    session_tab = ttk.Frame(tabs, padding=12)
+    tabs.add(session_tab, text="Sessions")
+    session_panel = None
+    try:
+        session_panel = load_catalog_module("GameToolSessionPanel").SessionPanel(
+            session_tab,
+            lambda **options: load_catalog_module("GameToolCoordinator").Coordinator(**options),
+            load_catalog_module("GameToolJournal"), status.set,
+            evidence_factory=lambda parent, callback: load_catalog_module("GameToolEvidencePanel").EvidencePanel(
+                parent, load_catalog_module("GameToolCrashEvidence"), callback),
+            workflow_factory=lambda parent, callback: load_catalog_module("GameToolWorkflowPanel").WorkflowPanel(
+                parent, load_catalog_module("GameToolWorkflow"), callback),
+            readiness_factory=lambda parent, callback: load_catalog_module("GameToolReadinessPanel").ReadinessPanel(
+                parent, load_catalog_module("GameToolReadiness"), callback))
+    except Exception as error:
+        ttk.Label(session_tab, text="Optional Sessions unavailable. Existing Hub tabs remain usable.",
+                  wraplength=950).pack(anchor="w", pady=12)
+        ttk.Label(session_tab, text=str(error), wraplength=950).pack(anchor="w")
+    overlay_tab = ttk.Frame(tabs, padding=12)
+    tabs.add(overlay_tab, text="Overlays")
+    overlay_panel = None
+    try:
+        overlay_panel = load_catalog_module("GameToolOverlayPanel").OverlayPanel(overlay_tab, data_dir, status)
+    except Exception:
+        ttk.Label(overlay_tab, text="Optional overlays unavailable. Existing Hub tabs remain usable; inspect source/dependencies.").pack(anchor="w")
+    mod_integration = None
+    try:
+        mod_integration = load_catalog_module("GameToolModIntegration").Integration(tabs, data_dir, status, focus=(interface_preview == "Focus"))
+    except Exception:
+        status.set("Optional Mods / AI integration unavailable; original pages remain usable.")
+    if overlay_page:
+        tabs.select(overlay_tab)
+    unified_panel = None
+    data_panel = None
+    data_tab = None
+    if unified_install is not None:
+        try:
+            unified_panel = load_catalog_module("GameToolUnifiedPanel").UnifiedPanel(
+                root, tabs, unified_install, load_catalog_module("GameToolUnified"), status)
+            tabs.select(unified_panel.studio_tab)
+        except Exception as error:
+            status.set("Unified Studio unavailable; original Hub features remain usable: " + str(error))
+        data_tab = ttk.Frame(tabs, padding=12)
+        tabs.add(data_tab, text="User data")
+        try:
+            data_panel = load_catalog_module("GameToolUserDataPanel").UserDataPanel(
+                data_tab, load_catalog_module("GameToolUserData"), status, VERSION)
+        except Exception as error:
+            ttk.Label(data_tab,text="Optional private-data tools unavailable: " + str(error),wraplength=700).pack(anchor="w")
+    if workspace is not None:
+        routes = dict(zip(("tools","sensors","rtss","reports","guide"), original_tabs))
+        routes.update(catalog=catalog_tab,comparison=comparison_tab,sessions=session_tab,overlays=overlay_tab)
+        if mod_integration is not None: routes.update(mod_integration.routes)
+        if unified_panel is not None:
+            routes.update(studio=unified_panel.studio_tab,updates=unified_panel.update_tab)
+        if data_tab is not None: routes["data"] = data_tab
+        workspace.attach(tabs,routes)
     state = {}
+    if mod_integration is not None: mod_integration.automation.tool_snapshot = lambda: state
 
     def table(parent, columns):
         box = ttk.Frame(parent)
         box.pack(fill="both", expand=True)
+        box.columnconfigure(0,weight=1); box.rowconfigure(0,weight=1)
         tree = ttk.Treeview(box, columns=columns, show="headings")
         for column in columns:
             tree.heading(column, text=column)
             tree.column(column, width=150, minwidth=80)
-        tree.pack(side="left", fill="both", expand=True)
+        tree.grid(row=0,column=0,sticky="nsew")
         scroll = ttk.Scrollbar(box, command=tree.yview)
-        scroll.pack(side="right", fill="y")
+        scroll.grid(row=0,column=1,sticky="ns")
         tree.configure(yscrollcommand=scroll.set)
+        horizontal = ttk.Scrollbar(box,orient="horizontal",command=tree.xview)
+        horizontal.grid(row=1,column=0,sticky="ew"); tree.configure(xscrollcommand=horizontal.set)
         return tree
 
-    toolbar = ttk.Frame(tool_tab)
+    toolbar = compact_ui.FlowToolbar(tool_tab)
     toolbar.pack(fill="x", pady=(0, 10))
     registration = ttk.Frame(tool_tab)
     tool_tree = table(tool_tab, ("Tool", "Installed", "Running", "File version"))
@@ -642,11 +838,11 @@ def gui(data_dir, draft=None):
         except Exception as error:
             status.set(f"Import refused: {error}")
 
-    ttk.Button(toolbar, text="Refresh connection", command=refresh).pack(side="left", padx=(0, 6))
-    ttk.Button(toolbar, text="Open selected tool", command=open_tool).pack(side="left", padx=6)
-    ttk.Button(toolbar, text="Add installed tool", command=add_tool).pack(side="left", padx=6)
-    ttk.Button(toolbar, text="Copy status", command=copy_summary).pack(side="left", padx=6)
-    ttk.Button(toolbar, text="Save snapshot", command=save_snapshot).pack(side="left", padx=6)
+    toolbar.add("Refresh connection", refresh)
+    toolbar.add("Open selected tool", open_tool)
+    toolbar.add("Add installed tool", add_tool)
+    toolbar.add("Copy status", copy_summary)
+    toolbar.add("Save snapshot", save_snapshot)
     ttk.Button(sensor_bar, text="Refresh connection", command=refresh).pack(side="left")
     ttk.Checkbutton(sensor_bar, text="Auto refresh every 5 seconds", variable=auto).pack(side="left", padx=12)
     ttk.Button(rtss_bar, text="Refresh connection", command=refresh).pack(side="left")
@@ -721,8 +917,10 @@ def gui(data_dir, draft=None):
     text.configure(state="disabled")
     text.pack(fill="both", expand=True)
 
+    # Callback closures select Notebook pages, not the new scroll-body frames.
+    tool_tab, sensor_tab, rtss_tab, report_tab, guide_tab = original_tabs
     shortcuts = {}
-    for index, tab in enumerate((tool_tab, sensor_tab, rtss_tab, report_tab, guide_tab), 1):
+    for index, tab in enumerate((tool_tab, sensor_tab, rtss_tab, report_tab, guide_tab, catalog_tab, comparison_tab, session_tab), 1):
         shortcuts[str(index)] = lambda t=tab: tabs.select(t)
     for key, action in (("r", refresh), ("o", open_tool), ("a", add_tool), ("c", copy_summary),
                         ("s", save_snapshot), ("i", import_file), ("e", open_report)):
@@ -737,8 +935,65 @@ def gui(data_dir, draft=None):
         key = shortcut_key(event.keycode, event.keysym, os.name == "nt")
         if focused is None or focused.winfo_toplevel() != root or root.grab_current() is not None:
             return
-        if key in ("a", "c") and isinstance(focused, (ttk.Entry, tk.Text)):
+        if key == "k" and workspace is not None:
+            surface = getattr(root, "game_tools_focus", None)
+            if surface is not None and surface.active:
+                return surface.focus_search(event)
+            return workspace._focus_search(event)  # Physical Ctrl+K also works with Hebrew layout.
+        if key in ("a", "c") and isinstance(focused, (ttk.Entry, ttk.Combobox, tk.Text)):
             return
+        if workspace is not None and workspace.home_visible:
+            # The hidden Notebook may still remember Tools. Home must not
+            # forward its launch/capture/import shortcuts to a hidden editor.
+            if key in {str(i) for i in range(1, 9)}:
+                shortcuts[key]()
+                workspace.reveal_selected_page()
+            else:
+                status.set("Home uses navigation only; open a workspace for its explicit actions.")
+            return "break"
+        if mod_integration is not None and tabs.select() in {str(p) for p in mod_integration.routes.values()} and key in {"r", "c", "o", "a", "s", "i", "e", "t"}:
+            if key == "r":
+                if tabs.select() == str(mod_integration.mods): mod_integration.mods.refresh()
+                else: mod_integration.automation.refresh()
+            else:
+                status.set("Mods / AI use explicit controls; no remembered Tools or Reports action is forwarded.")
+            return "break"
+        if data_tab is not None and tabs.select() == str(data_tab) and key in {"r", "c", "o", "a", "s", "i", "e"}:
+            status.set("User data uses explicit reviewed-copy actions only.")
+            return "break"
+        if unified_panel is not None and tabs.select() in (str(unified_panel.studio_tab), str(unified_panel.update_tab)) and key in {"r", "c", "o", "a", "s", "i", "e"}:
+            status.set("Studio / Updates use their explicit controls; no remembered Tools/Reports action is forwarded.")
+            return "break"
+        if tabs.select() == str(overlay_tab) and key in {"r", "c", "o", "a", "s", "i", "e"}:
+            if key == "r" and overlay_panel is not None:
+                overlay_panel.tick(reschedule=False)
+            else:
+                status.set("Overlays use explicit controls only; no tool launch or capture shortcut is forwarded.")
+            return "break"
+        if tabs.select() == str(session_tab) and key in {"r", "c", "o", "a", "s", "i", "e"}:
+            if key == "r" and session_panel is not None:
+                session_panel.reload()
+            elif key == "c" and session_panel is not None:
+                session_panel.copy_summary()
+            else:
+                status.set("Sessions is offline only. Use its explicit buttons or the original Tools/Reports tab.")
+            return "break"
+        if tabs.select() == str(comparison_tab) and key in {"r", "c", "o", "a", "s", "i", "e"}:
+            if key == "r" and comparison_panel is not None:
+                comparison_panel.reload()
+            elif key == "c" and comparison_panel is not None:
+                comparison_panel.copy_summary()
+            else:
+                status.set("Comparison is offline only. Use its explicit load/export buttons or Tools/Reports for existing actions.")
+            return "break"
+        if tabs.select() == str(catalog_tab) and key in {"r", "c", "o", "a", "s", "i", "e"}:
+            if key == "r" and catalog_panel is not None:
+                catalog_panel.reload()
+            elif key == "c" and catalog_panel is not None:
+                catalog_panel.copy_details()
+            else:
+                status.set("Catalog is read-only. Use Tools or Reports for their existing actions.")
+            return "break"
         if key in shortcuts:
             shortcuts[key]()
             return "break"
@@ -749,15 +1004,114 @@ def gui(data_dir, draft=None):
             refresh()
         root.after(5000, tick)
 
+    focus_surface = None
+    close_deadline = None
+    def close_hub():
+        nonlocal close_deadline
+        if mod_integration is not None and not mod_integration.can_close():
+            status.set("Cancellation requested. Close again after the bounded active operation returns; no effects are replayed.")
+            return False
+        if data_panel is not None and data_panel.busy:
+            status.set("Wait for the explicit private-data operation to finish before closing.")
+            return False
+        if unified_panel is not None and not unified_panel.close():
+            if not unified_panel.updating:
+                if close_deadline is None: close_deadline = time.monotonic() + 6
+                if time.monotonic() < close_deadline:
+                    root.after(100, close_hub)
+                    status.set("Closing only this app’s Studio normally…")
+                else:
+                    status.set("Studio has not closed normally; no forced termination. Close it before retrying.")
+                    close_deadline = None
+            else: status.set("Wait for the explicit source update to finish before closing.")
+            return False
+        try:
+            if focus_surface is not None: focus_surface.close()
+            if appearance is not None: appearance.close()
+            if mod_integration is not None: mod_integration.close()
+            for scroll in original_scrolls: scroll.close()
+            if data_panel is not None: data_panel.close()
+            if catalog_panel is not None: catalog_panel.close()
+            if workspace is not None: workspace.close()
+            if overlay_panel is not None:
+                overlay_panel.close()
+            if session_panel is not None:
+                session_panel.close()
+        finally:
+            root.destroy()
+        return True
+    appearance = None
+    try:
+        appearance = load_catalog_module("GameToolAppearance").Appearance(
+            root, header, workspace, status, data_dir / "ui-preferences.json", VERSION)
+        for target,role,name in ((app_title,"app-title","Application title"),
+                (scope_label,"safety-banner","Offline safety scope"),(status_label,"status","Current status")):
+            appearance.markers.register(target,"UI-004."+role,name)
+        if workspace:
+            appearance.register_panel(workspace.frame,"UI-004",workspace,
+                exclude=(workspace.content,workspace.tree,workspace.selector))
+        for body, identifier in zip((s.body for s in original_scrolls),
+                                   ("UI-404","UI-204","UI-205","UI-203","UI-407")):
+            appearance.register_panel(body, identifier)
+        for page, identifier, panel in ((catalog_tab,"UI-401",catalog_panel),
+                (comparison_tab,"UI-201",comparison_panel),(session_tab,"UI-301",session_panel),
+                (overlay_tab,"UI-403",overlay_panel),(data_tab,"UI-406",data_panel)):
+            if page is not None: appearance.register_panel(page,identifier,panel)
+        if mod_integration is not None:
+            appearance.register_panel(mod_integration.mods,"UI-408",mod_integration.mods_roles)
+            appearance.register_panel(mod_integration.automation,"UI-409",mod_integration.automation_roles)
+        if comparison_panel is not None:
+            appearance.markers.register(comparison_panel.buttons["Import saved reports"],
+                "UI-202", "Comparison / saved-report import adapters", replace=True)
+        if session_panel is not None:
+            for caption, identifier in (("Saved crash evidence","UI-302"),("Workflow dry-runs","UI-303"),
+                                       ("Provider / scenario contracts","UI-304")):
+                appearance.markers.register(session_panel.buttons[caption], identifier, caption, replace=True)
+        if unified_panel is not None:
+            appearance.register_panel(unified_panel.studio_tab,"UI-109",unified_panel,exclude=(unified_panel.viewport,unified_panel.canvas))
+            appearance.register_panel(unified_panel.update_tab,"UI-405",unified_panel)
+            appearance.native_feedback = unified_panel.set_identification
+            appearance.native_filter = unified_panel.set_identification_filter
+        if interface_preview is not None and interface_preview not in ("Focus", "Original") and workspace is not None:
+            appearance.preview(interface_preview)
+    except (ImportError, OSError, ValueError) as error:
+        status.set("Optional layout controls unavailable; original pages retained: " + str(error))
+    if interface_preview == "Focus" and workspace is not None and appearance is not None:
+        try:
+            focus_surface = load_catalog_module("GameToolFocusUI").FocusSurface(
+                root, header, scope_label, workspace, status, appearance, data_dir, mod_integration)
+        except Exception as error:
+            status.set("Focus layout unavailable; original pages retained: " + str(error))
+    root.game_tools_mod_integration = mod_integration
+    root.game_tools_notebook = tabs
+    if unified_panel is not None: unified_panel.on_close = close_hub
+    root.protocol("WM_DELETE_WINDOW", close_hub)
+    # This is an explicitly requested GUI entry point. Launchers may hide their
+    # console helper; that startup flag must not leave the actual app unmapped.
+    # No editor, profile, capture or input action is invoked by showing the root.
+    root.deiconify()
     refresh()
     root.after(5000, tick)
-    root.mainloop()
+    try:
+        root.mainloop()
+    finally:
+        if instance_handle:
+            kernel.CloseHandle(instance_handle)
 
 
-def main():
+def main(argv=None):
+    # Fixed structured overlay endpoint; no arbitrary runner or input channel.
+    if argv is None:
+        argv = sys.argv[1:]
+    if argv and argv[0] == "overlay":
+        return load_catalog_module("GameToolOverlay").cli(argv[1:])
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data-dir", type=Path, default=Path(os.environ.get("LOCALAPPDATA", str(Path.home()))) / "GameToolHub")
     parser.add_argument("--form-file", type=Path, help="Optional local JSON draft; prefill forms only, never perform an action")
+    parser.add_argument("--catalog-file", type=Path, help="Optional catalog JSON; read-only, never executable")
+    parser.add_argument("--overlay-page", action="store_true", help="Show the existing Hub's optional overlay page; no automatic activation")
+    parser.add_argument("--unified-install", type=Path, help="Verified unified installation root; dock its preserved Studio and show explicit Updates")
+    parser.add_argument("--interface-preview", choices=("Modern", "Focus", "Original"), help="Session-only preview; saved layout is unchanged")
     sub = parser.add_subparsers(dest="action")
     sub.add_parser("inspect")
     snapshot = sub.add_parser("snapshot")
@@ -766,7 +1120,246 @@ def main():
     importing.add_argument("--source", type=Path, required=True)
     importing.add_argument("--provider", required=True)
     importing.add_argument("--definition", default="Unknown; retain provider documentation")
-    args = parser.parse_args()
+    catalog = sub.add_parser("catalog", help="Read records or prepare a plan; never execute")
+    catalog_sub = catalog.add_subparsers(dest="catalog_action", required=True)
+    catalog_sub.add_parser("status")
+    listing = catalog_sub.add_parser("list")
+    for field in ("kind", "category", "game", "status", "installation", "relationship", "search"):
+        listing.add_argument("--" + field)
+    listing.add_argument("--sort", default="id", choices=("id", "name", "kind", "status"))
+    showing = catalog_sub.add_parser("show")
+    showing.add_argument("id")
+    planning = catalog_sub.add_parser("plan-overhead")
+    planning.add_argument("--scope", required=True, choices=("process-idle", "in-game"))
+    planning.add_argument("--game")
+    planning.add_argument("--factor", required=True, action="append")
+    checking = catalog_sub.add_parser("fg-preflight", help="Explicit read-only effective-FG check; never run a game")
+    checking.add_argument("--scope", required=True, choices=("process-idle", "in-game"))
+    checking.add_argument("--game")
+    for command in (planning, checking):
+        command.add_argument("--executable", type=Path, help="Actual rendering executable; identify only, never launch")
+        command.add_argument("--native-settings", type=Path, help="Optional native settings JSON; read only")
+    comparing = sub.add_parser("compare-report", help="Compare existing normalized summaries only; never collect or execute")
+    comparing.add_argument("--source", type=Path, required=True)
+    comparing.add_argument("--metric", help="Optional metric ID from the dataset")
+    comparing.add_argument("--output", type=Path, help="New local HTML or JSON output; never overwrite")
+    comparing.add_argument("--format", choices=("json", "html"), default="json")
+    report_check = sub.add_parser("inspect-saved-report", help="Read a supported saved summary only; no collection or archive writes")
+    report_check.add_argument("--source", type=Path, required=True)
+    report_check.add_argument("--adapter", choices=("auto", "cyberpunk_benchmark_summary", "presentmon_gui_stats"), default="auto")
+    report_import = sub.add_parser("import-saved-reports", help="Create a new private immutable summary bundle; never run a game or provider")
+    report_import.add_argument("--baseline", type=Path, action="append", default=[])
+    report_import.add_argument("--a", type=Path, action="append", default=[])
+    report_import.add_argument("--output-directory", type=Path, required=True)
+    report_import.add_argument("--title", default="Saved reports")
+    report_import.add_argument("--question", default="Compare saved provider summaries.")
+    report_import.add_argument("--factor", default="changed_configuration")
+    sessions = sub.add_parser("session", help="Offline saved-data coordination and journal evidence only")
+    session_sub = sessions.add_subparsers(dest="session_action", required=True)
+    session_sub.add_parser("capabilities")
+    session_inspect = session_sub.add_parser("inspect", help="Inspect a journal without changing it")
+    session_inspect.add_argument("--source", type=Path, required=True)
+    recovering = session_sub.add_parser("recover", help="Copy verified prefix into a new evidence-only journal")
+    recovering.add_argument("--source", type=Path, required=True)
+    recovering.add_argument("--output", type=Path, required=True)
+    recovering.add_argument("--expected-sha256", required=True)
+    evidence = sub.add_parser("saved-evidence", help="Selected saved evidence only; no live logs, games or recording")
+    evidence_sub = evidence.add_subparsers(dest="evidence_action", required=True)
+    for command in ("inspect", "packet"):
+        evidence_command = evidence_sub.add_parser(command)
+        evidence_command.add_argument("--source", type=Path, required=True, action="append")
+        evidence_command.add_argument("--expected-sha256", action="append", help="One hash per source, in the same order")
+        if command == "packet":
+            evidence_command.add_argument("--output-directory", type=Path, required=True)
+    workflow = sub.add_parser("workflow", help="Data-only dry-run and rollback planning; never execute")
+    workflow_sub = workflow.add_subparsers(dest="workflow_action", required=True)
+    for command in ("inspect", "export"):
+        workflow_command = workflow_sub.add_parser(command)
+        workflow_command.add_argument("--source", type=Path, required=True)
+        workflow_command.add_argument("--expected-sha256", required=command == "export")
+        if command == "export":
+            workflow_command.add_argument("--output", type=Path, required=True)
+    readiness = sub.add_parser("readiness", help="Offline declared provider health and editable scenarios; no runner")
+    readiness_sub = readiness.add_subparsers(dest="readiness_action", required=True)
+    for command in ("inspect", "save-scenario"):
+        contract = readiness_sub.add_parser(command)
+        contract.add_argument("--source", type=Path, required=True)
+        contract.add_argument("--expected-sha256", required=command == "save-scenario")
+        if command == "save-scenario":
+            contract.add_argument("--draft", type=Path, required=True)
+            contract.add_argument("--output", type=Path, required=True)
+    for command in ("inspect-report", "compare", "inspect-evidence", "inspect-workflow", "inspect-readiness"):
+        command_parser = session_sub.add_parser(command, help="One explicit saved-data action in a new journal; no replay")
+        command_parser.add_argument("--source", type=Path, required=True)
+        command_parser.add_argument("--journal", type=Path, required=True, help="New private JSONL journal; never overwrite")
+        command_parser.add_argument("--expected-sha256", required=True)
+        command_parser.add_argument("--label", default="Offline saved-data inspection")
+        command_parser.add_argument("--lifetime-seconds", type=int, default=900)
+        if command == "inspect-report":
+            command_parser.add_argument("--adapter", choices=("auto", "cyberpunk_benchmark_summary", "presentmon_gui_stats"), default="auto")
+        elif command == "compare":
+            command_parser.add_argument("--metric")
+        elif command == "inspect-evidence":
+            command_parser.add_argument("--adapter", choices=("auto", "hub_journal", "opaque_text", "windows_event_xml"), default="auto")
+    args = parser.parse_args(argv)
+    if args.action == "readiness":
+        try:
+            api = load_catalog_module("GameToolReadiness")
+            if args.readiness_action == "inspect":
+                result = api.inspect_source(args.source, expected_sha256=args.expected_sha256)
+            else:
+                core = load_catalog_module("GameToolCoordinator")
+                raw, snapshot = core._capture(args.draft, api.MAX_SOURCE_BYTES)
+                result = api.save_scenario(args.source, args.output, raw, args.expected_sha256)
+            print(json.dumps(result, ensure_ascii=True, allow_nan=False, indent=2))
+            return 3 if result.get("status") == "BLOCKED" else 0
+        except Exception:
+            print(json.dumps({"valid": False, "error_code": "READINESS_REFUSED", "execution": "none",
+                "error": "Offline contract request refused; originals retained and no live action performed."}))
+            return 2
+    if args.action == "workflow":
+        try:
+            api = load_catalog_module("GameToolWorkflow")
+            result = api.inspect_source(args.source, expected_sha256=args.expected_sha256) if args.workflow_action == "inspect" else api.export_plan(
+                args.source, args.output, expected_sha256=args.expected_sha256)
+            print(json.dumps(result, ensure_ascii=True, allow_nan=False, indent=2))
+            return 3 if result.get("status") == "BLOCKED" else 0
+        except Exception:
+            print(json.dumps({"valid": False, "error_code": "WORKFLOW_REFUSED", "execution": "none",
+                "error": "Offline recipe/plan request refused; originals retained and no live action performed."}))
+            return 2
+    if args.action == "saved-evidence":
+        try:
+            api = load_catalog_module("GameToolCrashEvidence")
+            hashes = args.expected_sha256
+            if hashes is not None and len(hashes) != len(args.source):
+                raise ValueError("One expected hash per source required")
+            assignments = [{"path": path, "expected_sha256": None if hashes is None else hashes[index]}
+                           for index, path in enumerate(args.source)]
+            result = api.build_packet(assignments) if args.evidence_action == "inspect" else \
+                api.export_packet(assignments, args.output_directory)
+            print(json.dumps(result, ensure_ascii=False, allow_nan=False, indent=2))
+            return 0
+        except (OSError, ValueError, TypeError, ImportError, RecursionError, SyntaxError):
+            print(json.dumps({"valid": False, "error_code": "SAVED_EVIDENCE_REFUSED", "execution": "none",
+                "error": "Saved evidence could not be inspected/exported safely; originals retained, no live action taken."}))
+            return 2
+    if args.action == "session":
+        coordinator = None
+        try:
+            if args.session_action == "capabilities":
+                result = load_catalog_module("GameToolCoordinator").capabilities()
+            elif args.session_action == "inspect":
+                result = journal_summary(load_catalog_module("GameToolJournal").inspect_journal(args.source))
+            elif args.session_action == "recover":
+                result = load_catalog_module("GameToolJournal").recover_journal(
+                    args.source, args.output, expected_sha256=args.expected_sha256)
+            else:
+                core = load_catalog_module("GameToolCoordinator")
+                coordinator = core.Coordinator(owner="Hub CLI", lifetime_seconds=args.lifetime_seconds)
+                coordinator.start(args.journal, label=args.label)
+                if args.session_action == "inspect-report":
+                    action_result = coordinator.inspect_saved_report(args.source, adapter=args.adapter,
+                        expected_sha256=args.expected_sha256)
+                elif args.session_action == "inspect-evidence":
+                    action_result = coordinator.inspect_crash_evidence(args.source, adapter=args.adapter,
+                        expected_sha256=args.expected_sha256)
+                elif args.session_action == "inspect-workflow":
+                    action_result = coordinator.inspect_workflow(args.source, expected_sha256=args.expected_sha256)
+                elif args.session_action == "inspect-readiness":
+                    action_result = coordinator.inspect_readiness(args.source, expected_sha256=args.expected_sha256)
+                else:
+                    action_result = coordinator.inspect_comparison(args.source, metric=args.metric,
+                        expected_sha256=args.expected_sha256)
+                finished = coordinator.finish()
+                if finished.get("state") != "finished":
+                    raise ValueError("Session completion was not acknowledged")
+                result = {"action_result": action_result, "session": finished}
+            print(json.dumps(result, ensure_ascii=False, allow_nan=False, indent=2))
+            if args.session_action == "inspect" and not result.get("valid"):
+                return 3
+            return 3 if result.get("action_result", {}).get("status") == "BLOCKED" else 0
+        except (OSError, ValueError, TypeError, ImportError, RecursionError, SyntaxError) as error:
+            # Loader/OS exceptions can contain private install/source locators.
+            # Export only a code-owned reason token, never arbitrary error text.
+            code = getattr(error, "code", None)
+            if not isinstance(code, str) or not code or not all(c in "ABCDEFGHIJKLMNOPQRSTUVWXYZ_" for c in code):
+                code = "SESSION_REQUEST_FAILED"
+            print(json.dumps({"valid": False, "error_code": code,
+                "error": "Offline session request failed; inspect retained evidence and verify the selected source or optional modules.",
+                "execution": "offline_only", "replay_allowed": False}, ensure_ascii=False))
+            return 2
+        finally:
+            if coordinator is not None:
+                try:
+                    coordinator.close()
+                except (OSError, ValueError):
+                    # A failed/poisoned journal is retained as incomplete evidence.
+                    # Do not mask the already-reported action failure or replay it.
+                    pass
+    if args.action in ("inspect-saved-report", "import-saved-reports"):
+        # Explicit saved-data routes remain independent of registry/readers,
+        # profile writes, runtime FG inspection and launch/capture controls.
+        try:
+            importer = load_catalog_module("GameToolReportImport")
+            if args.action == "inspect-saved-report":
+                result = importer.inspect_report(args.source, adapter=args.adapter)
+                # Original locators are private, never part of portable preview.
+                result.pop("private_source", None)
+                result["execution"] = "none"
+                print(json.dumps(result, ensure_ascii=False, allow_nan=False, indent=2))
+                return 0
+            assignments = [{"path": path, "case": case} for case in ("baseline", "a")
+                           for path in getattr(args, case)]
+            result = importer.import_bundle(assignments, args.output_directory,
+                title=args.title, question=args.question, factor=args.factor)
+            print(json.dumps(result, ensure_ascii=False, allow_nan=False, indent=2))
+            # A BLOCKED comparison is a successful archive/import, not a
+            # successful performance comparison. Preserve the explicit verdict.
+            return 3 if result.get("status") == "BLOCKED" else 0
+        except (OSError, ValueError, TypeError, ImportError, RecursionError, SyntaxError) as error:
+            print(json.dumps({"valid": False, "error": str(error), "execution": "none"}, ensure_ascii=False))
+            return 2
+    if args.action == "compare-report":
+        # Offline analysis does not load the executable registry or live providers,
+        # and cannot return a trusted runtime-FG receipt to the Catalog planner.
+        try:
+            core = load_catalog_module("GameToolComparison")
+            dataset = core.load_dataset(args.source)
+            result = core.compare_dataset(dataset, args.metric)
+            if args.output:
+                receipt = core.export_report(args.source, args.output, format=args.format,
+                    expected_sha256=dataset["_source"]["sha256"], metric_id=args.metric)
+                result["export_receipt"] = receipt
+            print(json.dumps(result, ensure_ascii=False, allow_nan=False, indent=2))
+            return 3 if result.get("status") == "BLOCKED" else 0
+        except (OSError, ValueError, TypeError, ImportError, RecursionError, SyntaxError) as error:
+            print(json.dumps({"valid": False, "error": str(error), "execution": "none"}, ensure_ascii=False))
+            return 2
+    if args.action == "catalog":
+        # Browse routes read only authored catalog data. Explicit FG checks and
+        # in-game plans additionally observe FG sources, never private registry/readers.
+        try:
+            service = new_catalog_service(args.catalog_file)
+            if args.catalog_action == "status":
+                result = service.reload()
+            elif args.catalog_action == "list":
+                result = {"nodes": service.list_nodes(**{field: getattr(args, field) for field in
+                    ("kind", "category", "game", "status", "installation", "relationship", "search", "sort")}),
+                    "revision": service.revision, "execution": "none"}
+            elif args.catalog_action == "show":
+                result = service.details(args.id)
+            elif args.catalog_action == "fg-preflight":
+                result = service.fg_preflight(args.scope, game=args.game, executable=args.executable,
+                    native_settings_path=args.native_settings)
+            else:
+                result = service.prepare_plan(args.scope, game=args.game, factors=args.factor,
+                    executable=args.executable, native_settings_path=args.native_settings)
+            print(json.dumps(result, ensure_ascii=False, allow_nan=False, indent=2))
+            return 3 if result.get("status") in {"blocked", "BLOCKED"} else 0
+        except (OSError, ValueError, TypeError, ImportError, RecursionError, SyntaxError) as error:
+            print(json.dumps({"valid": False, "error": str(error), "execution": "none"}, ensure_ascii=False))
+            return 2
     registry = args.data_dir / "tools.json"
     tools = load_tools(registry)
     if args.action == "inspect":
@@ -778,7 +1371,12 @@ def main():
         print(import_report(args.source, args.data_dir / "imports", args.provider, args.definition))
     else:
         draft = read_form_file(args.form_file) if args.form_file else None
-        gui(args.data_dir, draft)
+        options = {"overlay_page": args.overlay_page}
+        if args.unified_install is not None:
+            options["unified_install"] = args.unified_install
+        if args.interface_preview is not None:
+            options["interface_preview"] = args.interface_preview
+        gui(args.data_dir, draft, args.catalog_file, **options)
 
 
 def read_form_file(path):
@@ -795,4 +1393,4 @@ def read_form_file(path):
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

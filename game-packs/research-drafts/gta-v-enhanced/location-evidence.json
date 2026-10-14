@@ -1,0 +1,28 @@
+{
+  "id": "gta-v-enhanced",
+  "name": "GTA V Enhanced",
+  "schema_status": "original_and_schema_review",
+  "locations": [
+    {
+      "root": "documents",
+      "pattern": "Rockstar Games/GTAV Enhanced/Profiles/*/control/user.xml"
+    },
+    {
+      "root": "documents",
+      "pattern": "Rockstar Games/GTAV Enhanced/Profiles/*/control/user.autosave"
+    }
+  ],
+  "format": "XML control mappings with action, source-device and parameter entries; sparse overrides",
+  "limitations": [
+    "Use Enhanced, not a Legacy GTA V configuration. Firsthand XML examples identify Input/Source/Parameters and KEY_* keyboard tokens.",
+    "Mouse/wheel XML records must remain byte-preserved. A sparse override cannot safely be replaced by an invented full default table.",
+    "Reconcile on-foot, vehicle and menu contexts and the V3 camera binding against the installed build."
+  ],
+  "source_urls": [
+    "https://steamcommunity.com/app/3240220/discussions/0/597394435107464246/",
+    "https://steamcommunity.com/app/3240220/discussions/0/573795107743050651/"
+  ],
+  "discovery_only": true,
+  "native_recipe_bundled": false,
+  "source_review_date": "2026-10-13"
+}

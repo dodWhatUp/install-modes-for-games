@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "kind": "game-keybind-pack",
+  "id": "control",
+  "version": "0.1.0",
+  "game_id": "control",
+  "title": "Control",
+  "keymaps": {
+    "keyboard": {
+      "Space": "Space",
+      "F": "F",
+      "E": "E",
+      "R": "R",
+      "MouseLeft": "MouseLeft",
+      "MouseRight": "MouseRight",
+      "WheelUp": "WheelUp",
+      "WheelDown": "WheelDown"
+    }
+  },
+  "files": [
+    {
+      "id": "input",
+      "adapter": "unresolved-native",
+      "locations": [
+        {
+          "root": "STEAM_USER",
+          "pattern": "870780/remote/preferences_data"
+        },
+        {
+          "root": "DOCUMENTS",
+          "pattern": "My Games/Control/Saves/preferences_data"
+        },
+        {
+          "root": "LOCAL",
+          "pattern": "Remedy/Control/Default-Epic-User/preferences/data.chunk"
+        },
+        {
+          "root": "LOCAL",
+          "pattern": "Remedy/Control/Default-Generic-User/preferences/data.chunk"
+        }
+      ],
+      "fields": [],
+      "inventory_complete": false,
+      "stopped_processes": [],
+      "writable": true,
+      "priority": 100,
+      "fingerprints": []
+    }
+  ],
+  "variants": [
+    {
+      "id": "keyboard",
+      "files": [
+        "input"
+      ]
+    }
+  ],
+  "presets": [],
+  "evidence": {
+    "stage": "draft",
+    "notes": "Location-research draft only: binary_schema_unresolved",
+    "sources": []
+  },
+  "fixtures": []
+}

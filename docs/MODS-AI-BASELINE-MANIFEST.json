@@ -1,0 +1,1238 @@
+{
+  "schema_version": 1,
+  "bundle": "GameTools",
+  "bundle_kind": "authored-source-and-sanitized-knowledge-checkpoint",
+  "client_date": "2026-10-13",
+  "client_timezone": "Asia/Jerusalem",
+  "component_versions": {
+    "game_input": "0.5-preview.3",
+    "overlay_studio": "2.2.0-unified.10",
+    "tool_hub": "0.20.2",
+    "tool_catalog": "0.1.1",
+    "coordinator": "0.4.0",
+    "journal": "0.1.0",
+    "session_panel": "0.4.0",
+    "crash_evidence": "0.1.0",
+    "evidence_panel": "0.1.0",
+    "workflow": "0.1.0",
+    "workflow_panel": "0.1.0",
+    "readiness": "0.1.0",
+    "readiness_panel": "0.1.0",
+    "overlay": "0.2.0",
+    "overlay_panel": "0.2.0",
+    "azeron_layer": "0.1.0",
+    "compact_ui": "0.4.0",
+    "appearance": "0.5.1",
+    "modern_ui": "0.1.1",
+    "unified": "0.2.0",
+    "unified_panel": "0.4.0",
+    "workspace": "0.4.0",
+    "user_data": "0.1.0",
+    "user_data_panel": "0.1.1"
+  },
+  "archive_name": "GameTools-input-0.5-preview.3-hub-0.20.2-catalog-0.1.1-2026-10-13.zip",
+  "source": "https://github.com/dodWhatUp/install-modes-for-games",
+  "source_state": "Exact packaged file hashes; not claimed to match a published Git revision.",
+  "runtime_status": "Historical v0.3.1 partial game input; current host has partial profile/picture observations. Current module lifecycle, game text/Unicode/Enter/Escape/hold acceptance remain pending. Export executes no runtime acceptance tests.",
+  "input_validation_reference": "examples/game-input/VALIDATION.json",
+  "input_recorded_date": "2026-10-11",
+  "input_declared_runtime": {
+    "host_GUI_lifecycle_cleanup": "partial_host_profile_and_picture_acceptance_only; latest_module_Start_Stop_restart_indicator_cleanup_pending",
+    "original_HUD_output": "not_visually_confirmed",
+    "last_observed_module_state": "off",
+    "game_receipt": "pending",
+    "arbitrary_text_unicode_enter_escape_holds": "pending",
+    "integration_into_existing_larger_AHK_tool": "source_wiring_installed_static_verified_runtime_pending",
+    "MFG_FrameWarp_third_person_performance": "deferred"
+  },
+  "exclusions": [
+    "game/mod/interpreter binaries and archives",
+    "installed settings and picture assets",
+    "native/onboard/remapper profiles and device identities",
+    "Hub private registry, imported reports, private session journals, saved-evidence packets and private workflow recipes/plans",
+    "saves, credentials, private paths and raw logs/video",
+    "unlisted sources and third-party SDK headers"
+  ],
+  "recovery_boundary": "Source restoration only, not full installed-tool/game/native-profile recovery. Private backups and supported runtimes are separate requirements. Restore/import acceptance is not established by archive integrity.",
+  "created_utc": "2026-10-12T21:13:13.9393025Z",
+  "source_consistency_policy": "Source hashes checked before output mutation and again after archive verification. Any mismatch refuses a successful current-source receipt; an already-created checkpoint is retained, not overwritten.",
+  "files": [
+    {
+      "path": "docs/AGENT-GAME-INPUT.md",
+      "bytes": 16637,
+      "sha256": "11A7F2AFA8425A04BAD4FB0C90DA44F1A94533617089457958F31A92E0C83833"
+    },
+    {
+      "path": "docs/GAME-TOOLS-ARCHITECTURE.md",
+      "bytes": 33333,
+      "sha256": "CEF2701CBA05D24DA683B5A0C3F9C7D9D3CEA2BE8B8F3A7619329E295375B763"
+    },
+    {
+      "path": "examples/game-input/README.md",
+      "bytes": 7788,
+      "sha256": "8AB487A723886B5D7532759A990B613286C84E99D48011A064078C47D4D9FE67"
+    },
+    {
+      "path": "examples/game-input/GameInputModule.ahk",
+      "bytes": 29017,
+      "sha256": "AA68E104F3D65283745ABB16E6F65AE1863C1736B1E86B70E81C2C944A9A2164"
+    },
+    {
+      "path": "examples/game-input/Start-GameInput.ahk",
+      "bytes": 1536,
+      "sha256": "8DA454EFD23E135EE0C6AC8CA333D719D651BD204CD093F26018C2005AEC86B4"
+    },
+    {
+      "path": "examples/game-input/HostIntegration.example.ahk",
+      "bytes": 1414,
+      "sha256": "7BC562890CFA63536F0C894DA3F4FBC95EDD590F0E5AB0824D8CF113241FB785"
+    },
+    {
+      "path": "examples/game-input/AzeronOverlayStudio.integrated.ahk",
+      "bytes": 51772,
+      "sha256": "75619FF81854D7C34821B95F0F9B674911E477195A59A685D122D04788C9D0FB"
+    },
+    {
+      "path": "examples/game-input/OverlayStudioGameInput.ahk",
+      "bytes": 10966,
+      "sha256": "0FBDACC8FF8F17D9440A73D1F09D19D0015471380AC3C8DE08AAE2C810197F60"
+    },
+    {
+      "path": "examples/game-input/StudioPictureModule.ahk",
+      "bytes": 85365,
+      "sha256": "56AB02A30E5E045D8AE31AF5E3C9DC803320134BE7D4B1EEB48BBB8ECBBE3BEB"
+    },
+    {
+      "path": "examples/game-input/StudioOverlayGroups.ahk",
+      "bytes": 7224,
+      "sha256": "CDA7525BAD2C0441F45E30B31265AFAF9D1F4C7EFE429D729B60D98E8E3A7F00"
+    },
+    {
+      "path": "examples/game-input/StudioHubBridge.ahk",
+      "bytes": 13506,
+      "sha256": "5208D10E275ABF232287C04491A31A9FBF4CFB78FC3660A7CAF1AE03F5179CD0"
+    },
+    {
+      "path": "examples/game-input/tests/Test-OverlayGroups.ahk",
+      "bytes": 1205,
+      "sha256": "71C73558027FD3D56883F412D6B58C264F55FEB72068680F868DA9CD4C0E37A8"
+    },
+    {
+      "path": "examples/game-input/tests/Test-UIFeedback.ahk",
+      "bytes": 5002,
+      "sha256": "CDBB6E03354C6387F200FBA35E9A5B1FC9CB0CDF8825E990A32CF4A278B2FB29"
+    },
+    {
+      "path": "examples/game-input/tests/Test-PictureModule.ahk",
+      "bytes": 33086,
+      "sha256": "3F1A306879AF9AC18926D617E0932AF5FE26EE3313C5F7B0BD8791A7821EB541"
+    },
+    {
+      "path": "examples/game-input/tests/Test-PictureEditor.ahk",
+      "bytes": 6384,
+      "sha256": "8CB07DE666FB03E16A1C6779F15B44E298C19AF32C1A27F46D1C6EC090AF263C"
+    },
+    {
+      "path": "examples/game-input/tests/Test-MicEditor.ahk",
+      "bytes": 7864,
+      "sha256": "CBC25F379855CD5EB5423A593A2BD09A906C27318CDE38ECC25E0872EA5FCE30"
+    },
+    {
+      "path": "scripts/tests/Test-PictureHost.py",
+      "bytes": 4717,
+      "sha256": "681FFD033D9DA704DE773A8E55659CF0B0A0D78E17CE5ADDB0D1E2094AED0C56"
+    },
+    {
+      "path": "scripts/tests/Run-NativePictureDesktop.py",
+      "bytes": 2285,
+      "sha256": "929FDDE2995B09D4DCF63D95267243DB5514C9DF64A582603108A2565B49ABA2"
+    },
+    {
+      "path": "scripts/tests/Test-NativePictureLayout.py",
+      "bytes": 946,
+      "sha256": "FF9ACB1F8DB85C54B905F8EAB0401B6ABE730AB42A3497EA03CCFD5D0710003E"
+    },
+    {
+      "path": "scripts/tests/Test-ModernStartup.py",
+      "bytes": 3134,
+      "sha256": "9B6C7A4CCF6B0304DB4ECC2BA90661E6EBF67C6BA9C62F4F7143C468F97CB6BB"
+    },
+    {
+      "path": "examples/game-input/PICTURE-BUTTONS.md",
+      "bytes": 5942,
+      "sha256": "57824CE89F41174DA5405EAAF1FDA68B466B1D9DE805FD62B6C3E928A06DCA4E"
+    },
+    {
+      "path": "examples/game-input/OVERLAY-STUDIO-INTEGRATION.md",
+      "bytes": 6718,
+      "sha256": "F8D69F15B0CF8E2CBB1D40C8068543B8A1B5A76F819298D25EBFBEB510BAB2B7"
+    },
+    {
+      "path": "examples/game-input/OTHER-CHAT-HANDOFF.txt",
+      "bytes": 8631,
+      "sha256": "955AA830E4F0C9870E57F72546DA77307290C801A931631C4359A4836E412066"
+    },
+    {
+      "path": "examples/game-input/VALIDATION.json",
+      "bytes": 3921,
+      "sha256": "BD2394A9E25F5844C2C30DB075E4FAF69605386122A7F73B8CAFD9FEAF12623C"
+    },
+    {
+      "path": "examples/game-input/baseline/ControlHelper-v031.ahk",
+      "bytes": 13276,
+      "sha256": "EAFD9509DC8B7C579915668648AD20F000D377B5018B5ECE9D4CD9B43F7A46D8"
+    },
+    {
+      "path": "examples/skyrim-special-edition/Skyrim-F12-Test.ahk",
+      "bytes": 274,
+      "sha256": "24CC841F7CCB3386B5FCE78A86AE58BA29ED649A563CBD5C4A38E04809155A3F"
+    },
+    {
+      "path": "examples/skyrim-special-edition/README.md",
+      "bytes": 1132,
+      "sha256": "A6CAC5EE6E8775C41A1D8DFAC0E0E322AA3CEA27C7AFDF4C3552FC9377098F36"
+    },
+    {
+      "path": "scripts/Export-GameInput.ps1",
+      "bytes": 874,
+      "sha256": "7C9DC923C98937359FEA910BB2020A5EF0ABB772BAB7D76D765443B9616AAB56"
+    },
+    {
+      "path": "scripts/Export-GameTools.ps1",
+      "bytes": 28530,
+      "sha256": "9D5E0C4257F3D3D25E8123A48309EFBD0EA4F408BB1A63239043F0FABD3188DD"
+    },
+    {
+      "path": "scripts/tests/Test-GameSourceExport.ps1",
+      "bytes": 22610,
+      "sha256": "B9750A6C85F64B88BBB58706E9503370BD3EAAF4B220E010143F91E8A4DAEEB5"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 12337,
+      "sha256": "511C9F7B1CD0BBCF21C00C1C91ABBFDBB84DB427867D430AAC199F6C705BCC23"
+    },
+    {
+      "path": "preferences/GENERAL.md",
+      "bytes": 30208,
+      "sha256": "4131CDEC71B4D49AFB1965199BD9D753A75FEE0BCDE6E05F263EB4F3AB7BA719"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "bytes": 35559,
+      "sha256": "6545D3A2DFA88AEE7C668A6084F64E4794D58605E241BBCB13949CDA3585F0B1"
+    },
+    {
+      "path": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md",
+      "bytes": 13104,
+      "sha256": "2BE106A9EFE32E2E22B745923B4A2201F5E430F35F120165D524BD63493D2CAE"
+    },
+    {
+      "path": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.json",
+      "bytes": 4786,
+      "sha256": "CEE505522DC4E365FB27532A5CD5B165C6EF4C06A6DAA62EF8301B03DD79B2B3"
+    },
+    {
+      "path": "docs/GAME-TOOLS-MASTER-CHECKLIST.md",
+      "bytes": 54547,
+      "sha256": "150F79A2D529F1D06F99E48CC7264E840DC81F79FFFBF6D89DA031B7E5A5FB62"
+    },
+    {
+      "path": "docs/GAME-TELEMETRY-TOOL-PLAN.md",
+      "bytes": 15157,
+      "sha256": "B07B3B6A3BF438CF641F673C62735CB957B031C1CE68FF40693D322A9FDE904F"
+    },
+    {
+      "path": "docs/OFFLINE-COMPARISON-REPORTS.md",
+      "bytes": 14373,
+      "sha256": "1450F83F1A272118066F51A61A05CCDAB6F557C5A75D054E7C39620004A7EFB2"
+    },
+    {
+      "path": "docs/KNOWLEDGE-MAINTENANCE.md",
+      "bytes": 7705,
+      "sha256": "03157801187E7EBA3C5BFA501F9A3C376E23601435C138F49187BE283D269F70"
+    },
+    {
+      "path": "docs/AUTOMATION-OPERATING-PROCEDURES.md",
+      "bytes": 17061,
+      "sha256": "CFC72ECE544ED6CEB05A46B5C5AFF996820E65B2EE8B563BED3AE63DC515DFEA"
+    },
+    {
+      "path": "docs/TOOL-RESOURCE-OVERHEAD.md",
+      "bytes": 11386,
+      "sha256": "E46148FDAC830C82DF1162E7EBF525D480CE09FEF0FEF2EB5FA18DF1723DDE2D"
+    },
+    {
+      "path": "docs/GAME-PERFORMANCE-MEASUREMENT.md",
+      "bytes": 14997,
+      "sha256": "AA65A47CD13BFD4F52E8B25501A5D6DF18F26B9C41B1F8B1257D54E7FCD88A6A"
+    },
+    {
+      "path": "docs/GAME-TOOL-CONNECTIONS.md",
+      "bytes": 93592,
+      "sha256": "FF2CE53AE0063A0DB8C05C0678C841FD503D1E5E43EE1877A11242BABCBA0131"
+    },
+    {
+      "path": "docs/OPERATING-STANDARD.md",
+      "bytes": 9484,
+      "sha256": "6853FC6E7211DF25FE6A3FCCB7254EADE7E667A15CA34A20FF1C9365E9A9C19E"
+    },
+    {
+      "path": "docs/FEATURE-DECISION.md",
+      "bytes": 12995,
+      "sha256": "B67B403E4672EA24FB16E17688A4CFB4257B45B0050BCB206EF753730A6E7A59"
+    },
+    {
+      "path": "docs/AZERON-GAME-CONTROLS.md",
+      "bytes": 21068,
+      "sha256": "1CAD83986B339BF3E397A6601D4B812D541482DFE8863E3DE8898E806CD871CD"
+    },
+    {
+      "path": "docs/INPUT-DEVICE-REGISTRY.md",
+      "bytes": 9237,
+      "sha256": "F71B6CA3E1290F6ED0C90685C764555FA4EB639C419C687CD7CB4B89215FE8CB"
+    },
+    {
+      "path": "docs/GITHUB-PUBLISHING.md",
+      "bytes": 2170,
+      "sha256": "F0425B41EAF518BDE01D104296E9068FA6DF68BAAD2EBD49257C6792946107ED"
+    },
+    {
+      "path": "docs/DISTRIBUTION.md",
+      "bytes": 30750,
+      "sha256": "303652E2B4C1A67CF1D1EE00E5501EC4EAB030353D7FA06E50441A3051050BB5"
+    },
+    {
+      "path": "examples/game-tool-hub/README.md",
+      "bytes": 45036,
+      "sha256": "4D4A4A8E973F723F4EDF8026EDA84F9B4662A77E80D55643950C3EFD4376C8C0"
+    },
+    {
+      "path": "examples/game-tool-hub/Start-GameToolHub.ps1",
+      "bytes": 973,
+      "sha256": "F7C775AEAE04E975793881E2555FDAD993E15ADCB53DC34620EDAE17C75A05CC"
+    },
+    {
+      "path": "examples/game-tool-hub/form-draft.example.json",
+      "bytes": 225,
+      "sha256": "3058055F09C51DB6C0C6A82D6844AB825886EC86E788B043C5573D79938D9CB5"
+    },
+    {
+      "path": "examples/game-tool-hub/catalog.example.json",
+      "bytes": 31726,
+      "sha256": "604F42DA71A1F0E4719F9ADC1479717D041822E60C1674FDDB144EBB51F3AC0A"
+    },
+    {
+      "path": "examples/game-tool-hub/comparison-fixture.example.json",
+      "bytes": 13109,
+      "sha256": "2AB6C658E0C9E517E0B2591E942D0CBA1C412BD3F630EA716C63C5E543409C8C"
+    },
+    {
+      "path": "examples/game-tool-hub/COMPARISON-DATASET.md",
+      "bytes": 9778,
+      "sha256": "B05385C7106709ABAD932FF448A90996DAEEFBAE3D8DE15D105A18A44D75C524"
+    },
+    {
+      "path": "scripts/Game-Tool-Hub.py",
+      "bytes": 87124,
+      "sha256": "701DA42DEB0FD9EF68C978B1697095A0850B04293CF833A1D991028D6B6B910A"
+    },
+    {
+      "path": "scripts/GameToolCatalogBridge.py",
+      "bytes": 15153,
+      "sha256": "F1906B4DCA76963A9A3E6FAA6FFCD971BD79AF8CBC1ED3F28D7DE65D3E92A113"
+    },
+    {
+      "path": "scripts/GameToolCatalogPanel.py",
+      "bytes": 17053,
+      "sha256": "69E75A7525BED52A12D8481A440A714232D3902EA1EF9B9810CCEF067E6E5A4B"
+    },
+    {
+      "path": "scripts/GameToolComparison.py",
+      "bytes": 35502,
+      "sha256": "C1CBB82FCB58C5E9CD56AFAD5882113E11EF65B13AF580A694B8F57401612FCF"
+    },
+    {
+      "path": "scripts/GameToolComparisonPanel.py",
+      "bytes": 34903,
+      "sha256": "92CB8C500AD78FCB9D56A4BA02CA6E9BCFBF66A9454F1EBEC69AADD3E469B03C"
+    },
+    {
+      "path": "scripts/GameToolReportImport.py",
+      "bytes": 29651,
+      "sha256": "3D11DA98F9643BD77CB1F80BEA76AC5AA77EB2B5B0329DFDF938FA0A42C11099"
+    },
+    {
+      "path": "scripts/GameToolJournal.py",
+      "bytes": 21469,
+      "sha256": "01E76B93C69ADEFA742DFCB139756903C2259812C437EC72C508739B2A81657A"
+    },
+    {
+      "path": "scripts/GameToolCoordinator.py",
+      "bytes": 28539,
+      "sha256": "21F99EB28053CE36139C9E623B1AF484D75B5122F51DB43525A059A82F2FC7C8"
+    },
+    {
+      "path": "scripts/GameToolSessionPanel.py",
+      "bytes": 28617,
+      "sha256": "00005242C6E3BA4E10C9206C3C92481494965A026A146490EB36E679B933A608"
+    },
+    {
+      "path": "scripts/GameToolCrashEvidence.py",
+      "bytes": 20816,
+      "sha256": "52BD8988DA7A9BEE130F12473CB21830A9BFF0B11E29B2AEACD87FCB88EFEF8C"
+    },
+    {
+      "path": "scripts/GameToolEvidencePanel.py",
+      "bytes": 7668,
+      "sha256": "5595E159D7E7153667BA50CF25C2FE11624D31504785A4EDC8286DE89F735199"
+    },
+    {
+      "path": "scripts/GameToolWorkflow.py",
+      "bytes": 23134,
+      "sha256": "EC98D51BADA3D1ED0E930C5AD0F9BE9EA6E059ADB03F64E439BB7839176671BD"
+    },
+    {
+      "path": "scripts/GameToolWorkflowPanel.py",
+      "bytes": 8312,
+      "sha256": "A9051755D41B54FAB546B0FD944B5C5E20AD0DEB27F2439BE4347EC9D7CCCA04"
+    },
+    {
+      "path": "scripts/GameToolReadiness.py",
+      "bytes": 15145,
+      "sha256": "3DC9B37B18A0AD6BAC20B196343FECA18E9B54543E7DC97CC9C94447412876B1"
+    },
+    {
+      "path": "scripts/GameToolReadinessPanel.py",
+      "bytes": 8355,
+      "sha256": "D011E2DBB0E4BE4A3A7FF1348F8B1477B4FE928109EF7799C90BA567CF92C3E9"
+    },
+    {
+      "path": "scripts/GameToolOverlay.py",
+      "bytes": 37232,
+      "sha256": "595F37F0786B835D90F6817064B40DBF37A576F7EFCF027FAF7B54D70A1FAE8F"
+    },
+    {
+      "path": "scripts/GameToolOverlayPanel.py",
+      "bytes": 29400,
+      "sha256": "B82D417113CBC63754BADCA9B8A90FBA3BFC940CD286B610751B2212D16F211A"
+    },
+    {
+      "path": "scripts/GameToolAzeronLayer.py",
+      "bytes": 12630,
+      "sha256": "5408DAF74B534D23A9B9FF56EA80DC01FAF67AE6416A3061EA64A07356A1EDCA"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolAzeronLayer.py",
+      "bytes": 11587,
+      "sha256": "8ADBC000B445DCC1FA5328609CA940B8793C8ADD58AA3478793A2F757FD1C700"
+    },
+    {
+      "path": "scripts/GameToolCompactUI.py",
+      "bytes": 17079,
+      "sha256": "9E06805A30D5A4B157A8A28196AD8DF5C74FEF58F8B1DA6F467610283D755C6B"
+    },
+    {
+      "path": "scripts/GameToolAppearance.py",
+      "bytes": 32893,
+      "sha256": "7D49CDC508D0A18CD5D85056D8B7131DA891327E0BCF5D62290074093634E7B2"
+    },
+    {
+      "path": "scripts/GameToolModernUI.py",
+      "bytes": 22311,
+      "sha256": "3F8583339EE9CA9A1359C0C716266BB9ECC1B712357C8F776016C083CB3259FB"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolModernUI.py",
+      "bytes": 12730,
+      "sha256": "FFA73D8B31A9FCE4DED590499024A992986A771FF3284DA947D5CBABC398FA16"
+    },
+    {
+      "path": "scripts/tests/Render-GameToolModernUI.py",
+      "bytes": 4327,
+      "sha256": "040160CF7B81956D0DD89D5CCF7E0A69317E47A7EC1D140D021C94C3F67B1B22"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolAppearance.py",
+      "bytes": 24468,
+      "sha256": "E0D325BED812F02527214129F831E9A20CCB7106E726AF1525BA2CE4BA08720F"
+    },
+    {
+      "path": "docs/UNIFIED-UI-DESIGN.md",
+      "bytes": 23731,
+      "sha256": "639566CD60E8E9080EB40C5D0C96EB20F2DB45B3B5CBBABDCF27CE6FB6A5C53E"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolCompactUI.py",
+      "bytes": 20295,
+      "sha256": "C9C4CE15FD7451F124C3B2328049FE34D011D3B50A67CE74EA767BE190F235E6"
+    },
+    {
+      "path": "scripts/Build-OverlayContract.py",
+      "bytes": 2818,
+      "sha256": "63513F81C972FCFB56240C762F8E9E91B974C1BA1A20246233C0A5102368AA8A"
+    },
+    {
+      "path": "scripts/Install-GameToolsRelease.ps1",
+      "bytes": 6955,
+      "sha256": "582CC63626C98F395529A3915485C5D6598350E024DC4640C8B7ABAB96DB285E"
+    },
+    {
+      "path": "scripts/GameToolUnified.py",
+      "bytes": 20434,
+      "sha256": "A130F7BABCC544E6C6A61EA92A15B8FD50EB97B0B32DA232CBB075A321A59E67"
+    },
+    {
+      "path": "scripts/GameToolUnifiedPanel.py",
+      "bytes": 20994,
+      "sha256": "44A6D8DBC042BC3EBCBA9900A5549A467A251269843345BA2D8B71647D3AF5AB"
+    },
+    {
+      "path": "scripts/GameToolWorkspace.py",
+      "bytes": 38840,
+      "sha256": "AF437CBADB93851102A7729592ED99D5ECFB82EE98893FEE2A3C9E1E3B29E511"
+    },
+    {
+      "path": "scripts/GameToolUserData.py",
+      "bytes": 24398,
+      "sha256": "3AF955524A1A83361F75DB2F393788AE692AE1D741D1AAAC513399B1C6FBBDA0"
+    },
+    {
+      "path": "scripts/GameToolUserDataPanel.py",
+      "bytes": 11687,
+      "sha256": "CB9803A6146F8BF1244BFFABC59B92F63ED70F0D75C282C47F54622D63947BB6"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolWorkspace.py",
+      "bytes": 22323,
+      "sha256": "09EDAAE54F0A5313F088455B1DAE8DD8614681A5CF96DB8C9A72A19666B0CF9F"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolUserData.py",
+      "bytes": 21323,
+      "sha256": "E7D8923E2657653C7A619A9BBCDDEEF18373F15F205793F42926B18BF2615084"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolUserDataPanel.py",
+      "bytes": 21143,
+      "sha256": "8F7C57C0C7BA4944F1D9BAF3EB01D664B3CC60748B871BC292FE30E7F81826E2"
+    },
+    {
+      "path": "scripts/Start-UnifiedTools.pyw",
+      "bytes": 2739,
+      "sha256": "0F7915DFB972242BF1E19B8755E1106196947BD0C24156DBD4F4E6D56D301EDA"
+    },
+    {
+      "path": "scripts/Install-UnifiedTools.py",
+      "bytes": 2039,
+      "sha256": "6E9CBF34B8FAA0427159887F6C1C021662AFDDEFB5AD018741397F4F28328654"
+    },
+    {
+      "path": "scripts/Create-UnifiedToolsLaunchers.py",
+      "bytes": 9663,
+      "sha256": "790E05F100D854277AE57B9BF8F3C88A1DD40096963056D32433CCFCDC1DFE08"
+    },
+    {
+      "path": "scripts/Create-UnifiedToolsShortcut.ps1",
+      "bytes": 3199,
+      "sha256": "4B710F8F37A05CEF081A41027176CB1080AE8627AAF52007569945B1576A2E90"
+    },
+    {
+      "path": "scripts/tests/Test-UnifiedToolsLaunchers.py",
+      "bytes": 6542,
+      "sha256": "07F6ABEE19B3231D2FEA2E1FD011EA6ADEBCFBE7B52A99131D1A9F0422406CF8"
+    },
+    {
+      "path": "scripts/Backup-UnifiedTools.ps1",
+      "bytes": 3055,
+      "sha256": "398DBD7851FD91A65238BEAB15C0FFCC07BDACFBFBD62E37192DD8401444783C"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolUnified.py",
+      "bytes": 25187,
+      "sha256": "E9D15002C20E0922EDE79CF4768E6A6844D40C267DF0CD9CE6BB7DC41697BBE8"
+    },
+    {
+      "path": "docs/UNIFIED-GAME-TOOLS.md",
+      "bytes": 19477,
+      "sha256": "272E05CF551223187121851E8185A7125CA490D8502DEB79DD8109AE9CFA049C"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolOverlay.py",
+      "bytes": 24080,
+      "sha256": "8BF59620D4AF6B88A3CDCE90FDB51435828D7CE711EDFA31E145AB2583958148"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolsInstaller.py",
+      "bytes": 5332,
+      "sha256": "FF941819BF314F321494A91128C1315C380B52092210E29F710DFEBB4B71243B"
+    },
+    {
+      "path": "docs/OVERLAY-GROUPS.md",
+      "bytes": 18300,
+      "sha256": "638B3C989429B586270167638E349B738453A72D9EF1DDFB622A2642D04066D0"
+    },
+    {
+      "path": "examples/game-tool-hub/overlay-manifest.example.json",
+      "bytes": 4928,
+      "sha256": "C324EFB0E191946D2073F80A2DA59D4547229FA75E81FE04738881FC078018C2"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolReadiness.py",
+      "bytes": 15825,
+      "sha256": "7C16A073EAF6D563DFB6970F47A798D1094F5909A311C03D7FDBEF69C9CDA957"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolReadinessPanel.py",
+      "bytes": 8879,
+      "sha256": "653BEB84F30D2036DEAFB0C16BFD29DF8048BD19887F98B907F8397EDC8901EF"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolReadinessCLI.py",
+      "bytes": 4072,
+      "sha256": "33FE0552099987FD6DFE4A7E8DF6E8BAC2E834B3E5DA2D8287AC55BC8318BBE8"
+    },
+    {
+      "path": "examples/game-tool-hub/provider-health.example.json",
+      "bytes": 1068,
+      "sha256": "70382669293A3CF9BC7112CAE575CCF6AD512CE7F1C4E4DB254CDF346330AD47"
+    },
+    {
+      "path": "examples/game-tool-hub/scenario.example.json",
+      "bytes": 1452,
+      "sha256": "88DD98E77B1693623B35117FCF15F5B1268CF0A302892772F88ED1CBF9A6A2F4"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolWorkflow.py",
+      "bytes": 19525,
+      "sha256": "65A9BFFA4874925CC9D78E4F12B18F929CBCE38684CAAC69DCB9011D015D1E53"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolWorkflowPanel.py",
+      "bytes": 10387,
+      "sha256": "072E70D7F00D9ECD30BBDFDD0DC6645A1387773EBA87C371D15F99854D7049BB"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolWorkflowCLI.py",
+      "bytes": 5224,
+      "sha256": "D918E85FA2F029D8F7B5CC2335622D36F02602FDE5E6F38A2B098DFABCA2B2E3"
+    },
+    {
+      "path": "examples/game-tool-hub/workflow-installation.example.json",
+      "bytes": 1383,
+      "sha256": "10697193146B0151DE1DDB490A071ED322F84E0767A22EC7E9BEB0E6AFDB6F5F"
+    },
+    {
+      "path": "examples/game-tool-hub/workflow-diagnostic.example.json",
+      "bytes": 903,
+      "sha256": "49ED0093A5F6BF86C9731F486AA9E3A9C1A9D5796305EC16B0E3CFC79B227605"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolCrashEvidence.py",
+      "bytes": 23792,
+      "sha256": "EFB5AD8B15034D3E679DE9572B0253E7875E554BE09FD8FD6E55DBD12951DA75"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolEvidencePanel.py",
+      "bytes": 9904,
+      "sha256": "08C846FD94E61867F98B53070C5C76A51343B12B6B8D27B3E1FF7E7994F2C2CC"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolEvidenceCLI.py",
+      "bytes": 6153,
+      "sha256": "A19B0B61722B352BF5820B9DCEA518F8B1B00F2E2A0D1677A99B790027EBDFF4"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolJournal.py",
+      "bytes": 31682,
+      "sha256": "9CACDBF2F0BE7109D04224A988C30A8C64DF06D3157B3BE036D7A395D93749FE"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolCoordinator.py",
+      "bytes": 28643,
+      "sha256": "81EFDFFA556018E70430E661969646EC26EF004C8BD044781E692D9015698DEE"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolSessionPanel.py",
+      "bytes": 37059,
+      "sha256": "B7F05A929E107624C59DF079A744F04F35A8EEC2C3E51B0465C7EDE2AB5F6CC5"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolSessionCLI.py",
+      "bytes": 8249,
+      "sha256": "31CF20891AE08D3F8C4DE7DE0C748DD70785EF66B9BCB0F859A2EF323D84598A"
+    },
+    {
+      "path": "scripts/GameFgInspector.py",
+      "bytes": 23086,
+      "sha256": "171B8F12860A39805AD8B7E6B18AC895DD84289920E653A5B13836924BD6C81E"
+    },
+    {
+      "path": "scripts/GameFgPreflight.py",
+      "bytes": 19419,
+      "sha256": "D3D1ABD99F6200AC832166541B4EFFCB8876AEDCEFA94236B922A025431663E9"
+    },
+    {
+      "path": "scripts/Game-Tool-Catalog.py",
+      "bytes": 19111,
+      "sha256": "91F748656FDA7856A1C481EE042379A542E23CA5F6B23E9501618B4020BF0D42"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolHub.py",
+      "bytes": 11435,
+      "sha256": "013822044C6467FF3AB3E6799300EA7E7F03053AF63E319A4EA1C1018CA34A36"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolCatalogBridge.py",
+      "bytes": 20096,
+      "sha256": "81BD3F74772785D32D1B543BA76AF40AAEEF4D1BC0FEB3A6B2D5C1F369C02217"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolHubCatalog.py",
+      "bytes": 33778,
+      "sha256": "9D88BC0153D45F566FB983FD4599B90503FA14966F69096E7089C918700D6D31"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolComparison.py",
+      "bytes": 26108,
+      "sha256": "1C70ADA4AF5C76D54ECCDAD1D74955240AC3AE095E392478EE07A7016E0E5A21"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolComparisonPanel.py",
+      "bytes": 27542,
+      "sha256": "2670DE14E44CAE5FFCB8F4991E0B3AD0C90AF70393A8373FC787AD0F9BA867D0"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolComparisonCLI.py",
+      "bytes": 6037,
+      "sha256": "5B4293F94670AAEAFB55D70DFA47DE3F9C991293E81A87FDC9A7790941E3835B"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolReportImport.py",
+      "bytes": 21277,
+      "sha256": "E03DA257119DF4D4021C26A38B47BEA4DBBC886951F2078D6B708B54CEC3A6C6"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolReportImportPanel.py",
+      "bytes": 31330,
+      "sha256": "1D58199C3E3829FAA6A7508DBFFB6ED8E4722A38AF111EC60BECF345D754FE78"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolReportImportCLI.py",
+      "bytes": 10387,
+      "sha256": "C24AEF82EF89DA2701A63BBD2213E4BC24C1BDFFE6FDCF5B1B0EFD9A2A7A6504"
+    },
+    {
+      "path": "examples/game-tool-hub/import-fixtures/cyberpunk-summary.example.json",
+      "bytes": 502,
+      "sha256": "2F94C236367DF23C31C273135A4476AF434555CFD7308A93394C6A1F4B6EE032"
+    },
+    {
+      "path": "examples/game-tool-hub/import-fixtures/presentmon-stats.example.csv",
+      "bytes": 202,
+      "sha256": "3E0C0D304B20ADA86F58CBAC10759539D2DE92F11605FD5405311670EF3B0946"
+    },
+    {
+      "path": "examples/game-tool-hub/import-fixtures/presentmon-no-animation-stats.example.csv",
+      "bytes": 193,
+      "sha256": "E977A7C9F70FC1092214A47392EDAF75771422C211E9AFA7721039CBC85B0879"
+    },
+    {
+      "path": "examples/game-tool-hub/import-fixtures/presentmon-zero-stats.example.csv",
+      "bytes": 159,
+      "sha256": "E35D3F2EB9FE892E4DD7C288C2A1F0F372CA06A5A325313734F2E79E4493D9EE"
+    },
+    {
+      "path": "scripts/tests/test_game_fg_inspector.py",
+      "bytes": 18704,
+      "sha256": "BF78624543A91CDB387E5578C28193726016524386FCA636380B2452DD787BC8"
+    },
+    {
+      "path": "scripts/tests/test_game_fg_preflight.py",
+      "bytes": 28855,
+      "sha256": "4AAEEEB400BBB9D50F6CD60F3FEC730689489954BBB53BAA771B0BE2DCE3C8D9"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolCatalog.py",
+      "bytes": 12015,
+      "sha256": "C3BD1391B64DC53F401FCD42739674F73749B5507839C725BC6B3F51D8478654"
+    },
+    {
+      "path": "templates/AUTOMATION-TASK.example.json",
+      "bytes": 1220,
+      "sha256": "88E142F585B29D86EF3A1A19EF4BA3D07830507A6B156832CFB465E22D264CAA"
+    },
+    {
+      "path": "templates/KNOWLEDGE-RECORD.example.json",
+      "bytes": 1190,
+      "sha256": "73F0D42102EB1C316E1E881AF1CD4E5D4BCCBA0C3447E3C43AF0E49695B6DEBD"
+    },
+    {
+      "path": "templates/GAME-KEYBINDS.example.json",
+      "bytes": 3161,
+      "sha256": "554B2095744135265080310BA1F9A4504DE7E20C665477D83ECD8841223F56F0"
+    },
+    {
+      "path": "templates/INPUT-DEVICE.example.json",
+      "bytes": 2316,
+      "sha256": "9DC197FC251E65B19AABD4CD1AB87A0EAE7A458DBEB1C85013835169D6274800"
+    },
+    {
+      "path": "templates/PROFILE-MANIFEST.example.json",
+      "bytes": 903,
+      "sha256": "84BCAFFBFFFD4B0035FB0AA20A8A12A02A981D898CBFC4230A2588A05E20996B"
+    },
+    {
+      "path": "templates/EXPERIMENT-LOG.md",
+      "bytes": 1791,
+      "sha256": "6EF407FE812D4C726C223DF8AD61CC9BFA2132EAE2F0205699762034AC06DB1C"
+    },
+    {
+      "path": "templates/GAME-HISTORY.md",
+      "bytes": 361,
+      "sha256": "A60EF56B900C8D20F6DC46BED3410AA197226F0193692647D0AED196300940C6"
+    },
+    {
+      "path": "templates/MOD-CATALOG.md",
+      "bytes": 817,
+      "sha256": "55A045E680D29FECF4E8C7D98A0096C9458FEB767226926E89D9EC606705D1F8"
+    },
+    {
+      "path": "templates/OPTION-MENU.md",
+      "bytes": 869,
+      "sha256": "366BFA837686623D6422B660845242FEFF76524EFF1DFB70BBD947A2CC0B2D04"
+    },
+    {
+      "path": "templates/PREFERENCE-PROFILE.md",
+      "bytes": 1968,
+      "sha256": "22A6AB3F6E9DD904D298766AB5682047FD3ED494BBC0EBDBBCDF76DC385B4882"
+    }
+  ],
+  "unbundled_references": [
+    {
+      "from": "docs/GAME-TOOLS-ARCHITECTURE.md",
+      "reference": "UI-AND-CONTENT-DESIGN.md",
+      "excluded_source": "docs/UI-AND-CONTENT-DESIGN.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/UI-AND-CONTENT-DESIGN.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "preferences/GENERAL.md",
+      "reference": "../docs/UI-AND-CONTENT-DESIGN.md",
+      "excluded_source": "docs/UI-AND-CONTENT-DESIGN.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/UI-AND-CONTENT-DESIGN.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "preferences/GENERAL.md",
+      "reference": "../docs/OWNED-GAMES.md",
+      "excluded_source": "docs/OWNED-GAMES.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/OWNED-GAMES.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "preferences/GENERAL.md",
+      "reference": "../docs/DYNAMIC-DLSS-SR.md",
+      "excluded_source": "docs/DYNAMIC-DLSS-SR.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/DYNAMIC-DLSS-SR.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "preferences/GENERAL.md",
+      "reference": "../docs/GRAPHICS-CONTROLS.md",
+      "excluded_source": "docs/GRAPHICS-CONTROLS.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/GRAPHICS-CONTROLS.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "reference": "SPARSE6-ADDITIONAL-GAME-MAPS-2026-10-12.md",
+      "excluded_source": "docs/SPARSE6-ADDITIONAL-GAME-MAPS-2026-10-12.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/SPARSE6-ADDITIONAL-GAME-MAPS-2026-10-12.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "reference": "../games/path-of-exile-2/CONTINUATION-AND-DEVELOPMENT.json",
+      "excluded_source": "games/path-of-exile-2/CONTINUATION-AND-DEVELOPMENT.json",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/path-of-exile-2/CONTINUATION-AND-DEVELOPMENT.json",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "reference": "../games/path-of-exile-2/HISTORY.md",
+      "excluded_source": "games/path-of-exile-2/HISTORY.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/path-of-exile-2/HISTORY.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "reference": "AZERON-DECISION-CHAT-REVIEW-2026-10-12.md",
+      "excluded_source": "docs/AZERON-DECISION-CHAT-REVIEW-2026-10-12.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/AZERON-DECISION-CHAT-REVIEW-2026-10-12.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "reference": "SPARSE6-OVERLAY-ASSETS-2026-10-11.md",
+      "excluded_source": "docs/SPARSE6-OVERLAY-ASSETS-2026-10-11.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/SPARSE6-OVERLAY-ASSETS-2026-10-11.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "reference": "UI-AND-CONTENT-DESIGN.md",
+      "excluded_source": "docs/UI-AND-CONTENT-DESIGN.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/UI-AND-CONTENT-DESIGN.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "reference": "ISOLATED-LAB-HANDOFF-2026-10-12.md",
+      "excluded_source": "docs/ISOLATED-LAB-HANDOFF-2026-10-12.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/ISOLATED-LAB-HANDOFF-2026-10-12.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "reference": "ISOLATED-DEVELOPMENT-LAB.md",
+      "excluded_source": "docs/ISOLATED-DEVELOPMENT-LAB.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/ISOLATED-DEVELOPMENT-LAB.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "reference": "ISOLATED-LAB-GUEST-TOOLS.md",
+      "excluded_source": "docs/ISOLATED-LAB-GUEST-TOOLS.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/ISOLATED-LAB-GUEST-TOOLS.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "reference": "ISOLATED-LAB-PORTABILITY.md",
+      "excluded_source": "docs/ISOLATED-LAB-PORTABILITY.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/ISOLATED-LAB-PORTABILITY.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "reference": "ISOLATED-LAB-WEB-CONNECTION.md",
+      "excluded_source": "docs/ISOLATED-LAB-WEB-CONNECTION.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/ISOLATED-LAB-WEB-CONNECTION.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "reference": "../games/CYBERPUNK-2077.md",
+      "excluded_source": "games/CYBERPUNK-2077.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/CYBERPUNK-2077.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "reference": "../games/cyberpunk-2077/HISTORY.md",
+      "excluded_source": "games/cyberpunk-2077/HISTORY.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/cyberpunk-2077/HISTORY.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "reference": "../games/cyberpunk-2077/HISTORY.md",
+      "excluded_source": "games/cyberpunk-2077/HISTORY.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/cyberpunk-2077/HISTORY.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "reference": "../games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "excluded_source": "games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "reference": "GRAPHICS-CONTROLS.md",
+      "excluded_source": "docs/GRAPHICS-CONTROLS.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/GRAPHICS-CONTROLS.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "reference": "PUREDARK-ARCHIVE-2026-10-07.md",
+      "excluded_source": "docs/PUREDARK-ARCHIVE-2026-10-07.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/PUREDARK-ARCHIVE-2026-10-07.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md",
+      "reference": "../games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "excluded_source": "games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md",
+      "reference": "SPARSE6-OVERLAY-ASSETS-2026-10-11.md",
+      "excluded_source": "docs/SPARSE6-OVERLAY-ASSETS-2026-10-11.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/SPARSE6-OVERLAY-ASSETS-2026-10-11.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md",
+      "reference": "AZERON-DECISION-CHAT-REVIEW-2026-10-12.md",
+      "excluded_source": "docs/AZERON-DECISION-CHAT-REVIEW-2026-10-12.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/AZERON-DECISION-CHAT-REVIEW-2026-10-12.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md",
+      "reference": "UI-AND-CONTENT-DESIGN.md",
+      "excluded_source": "docs/UI-AND-CONTENT-DESIGN.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/UI-AND-CONTENT-DESIGN.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md",
+      "reference": "../games/skyrim-special-edition/HISTORY.md",
+      "excluded_source": "games/skyrim-special-edition/HISTORY.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/skyrim-special-edition/HISTORY.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md",
+      "reference": "PUREDARK-ARCHIVE-2026-10-07.md",
+      "excluded_source": "docs/PUREDARK-ARCHIVE-2026-10-07.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/PUREDARK-ARCHIVE-2026-10-07.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-MASTER-CHECKLIST.md",
+      "reference": "AZERON-GAME-KEYMAP-VIEWER-WISHLIST.md",
+      "excluded_source": "docs/AZERON-GAME-KEYMAP-VIEWER-WISHLIST.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/AZERON-GAME-KEYMAP-VIEWER-WISHLIST.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-MASTER-CHECKLIST.md",
+      "reference": "../games/cyberpunk-2077/HISTORY.md",
+      "excluded_source": "games/cyberpunk-2077/HISTORY.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/cyberpunk-2077/HISTORY.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-MASTER-CHECKLIST.md",
+      "reference": "../games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "excluded_source": "games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TOOLS-MASTER-CHECKLIST.md",
+      "reference": "GRAPHICS-CONTROLS.md",
+      "excluded_source": "docs/GRAPHICS-CONTROLS.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/GRAPHICS-CONTROLS.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TELEMETRY-TOOL-PLAN.md",
+      "reference": "../games/cyberpunk-2077/RUNTIME-VALIDATION.md#2026-10-11-interpretation-audit--effective-fg-mode-remains-unverified",
+      "excluded_source": "games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-TELEMETRY-TOOL-PLAN.md",
+      "reference": "../games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "excluded_source": "games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/KNOWLEDGE-MAINTENANCE.md",
+      "reference": "UI-AND-CONTENT-DESIGN.md",
+      "excluded_source": "docs/UI-AND-CONTENT-DESIGN.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/UI-AND-CONTENT-DESIGN.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/AUTOMATION-OPERATING-PROCEDURES.md",
+      "reference": "UI-AND-CONTENT-DESIGN.md#creation-and-review-protocol",
+      "excluded_source": "docs/UI-AND-CONTENT-DESIGN.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/UI-AND-CONTENT-DESIGN.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/AUTOMATION-OPERATING-PROCEDURES.md",
+      "reference": "../games/cyberpunk-2077/HISTORY.md",
+      "excluded_source": "games/cyberpunk-2077/HISTORY.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/cyberpunk-2077/HISTORY.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-PERFORMANCE-MEASUREMENT.md",
+      "reference": "../games/cyberpunk-2077/RUNTIME-VALIDATION.md#2026-10-11-interpretation-audit--effective-fg-mode-remains-unverified",
+      "excluded_source": "games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-PERFORMANCE-MEASUREMENT.md",
+      "reference": "../games/cyberpunk-2077/HISTORY.md",
+      "excluded_source": "games/cyberpunk-2077/HISTORY.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/cyberpunk-2077/HISTORY.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/GAME-PERFORMANCE-MEASUREMENT.md",
+      "reference": "../games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "excluded_source": "games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/OPERATING-STANDARD.md",
+      "reference": "OWNED-GAMES.md",
+      "excluded_source": "docs/OWNED-GAMES.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/OWNED-GAMES.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/OPERATING-STANDARD.md",
+      "reference": "GRAPHICS-CONTROLS.md",
+      "excluded_source": "docs/GRAPHICS-CONTROLS.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/GRAPHICS-CONTROLS.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/FEATURE-DECISION.md",
+      "reference": "COMPONENTS.md",
+      "excluded_source": "docs/COMPONENTS.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/COMPONENTS.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/FEATURE-DECISION.md",
+      "reference": "DYNAMIC-DLSS-SR.md",
+      "excluded_source": "docs/DYNAMIC-DLSS-SR.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/DYNAMIC-DLSS-SR.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/FEATURE-DECISION.md",
+      "reference": "GRAPHICS-CONTROLS.md",
+      "excluded_source": "docs/GRAPHICS-CONTROLS.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/GRAPHICS-CONTROLS.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/FEATURE-DECISION.md",
+      "reference": "../games/batman-arkham-knight/HISTORY.md",
+      "excluded_source": "games/batman-arkham-knight/HISTORY.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/batman-arkham-knight/HISTORY.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/FEATURE-DECISION.md",
+      "reference": "../games/BATMAN-ARKHAM-KNIGHT.md",
+      "excluded_source": "games/BATMAN-ARKHAM-KNIGHT.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/BATMAN-ARKHAM-KNIGHT.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/AZERON-GAME-CONTROLS.md",
+      "reference": "SPARSE6-OVERLAY-ASSETS-2026-10-11.md",
+      "excluded_source": "docs/SPARSE6-OVERLAY-ASSETS-2026-10-11.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/SPARSE6-OVERLAY-ASSETS-2026-10-11.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/DISTRIBUTION.md",
+      "reference": "INSTALLED-GAMES-MOD-GUIDE.md",
+      "excluded_source": "docs/INSTALLED-GAMES-MOD-GUIDE.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/INSTALLED-GAMES-MOD-GUIDE.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/DISTRIBUTION.md",
+      "reference": "../games/skyrim-special-edition/HISTORY.md",
+      "excluded_source": "games/skyrim-special-edition/HISTORY.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/games/skyrim-special-edition/HISTORY.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/DISTRIBUTION.md",
+      "reference": "PUREDARK-ARCHIVE-2026-10-07.md",
+      "excluded_source": "docs/PUREDARK-ARCHIVE-2026-10-07.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/PUREDARK-ARCHIVE-2026-10-07.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "docs/UNIFIED-UI-DESIGN.md",
+      "reference": "UI-AND-CONTENT-DESIGN.md",
+      "excluded_source": "docs/UI-AND-CONTENT-DESIGN.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/UI-AND-CONTENT-DESIGN.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    },
+    {
+      "from": "templates/PREFERENCE-PROFILE.md",
+      "reference": "../docs/GRAPHICS-CONTROLS.md",
+      "excluded_source": "docs/GRAPHICS-CONTROLS.md",
+      "canonical_source": "https://github.com/dodWhatUp/install-modes-for-games/blob/main/docs/GRAPHICS-CONTROLS.md",
+      "exists_in_checkout": true,
+      "note": "Not bundled; link does not prove publication, access or runtime acceptance."
+    }
+  ],
+  "privacy_review": "Curated inventory and limited pattern scan; manual content/privacy review remains required before publication."
+}

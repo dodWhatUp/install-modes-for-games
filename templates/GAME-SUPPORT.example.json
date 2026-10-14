@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "kind": "game_support_pack",
+  "pack_version": "0.1.0",
+  "definition": {
+    "game_id": "your-game",
+    "name": "Your Game",
+    "manager_id": "manual",
+    "adapter": "directory",
+    "platform": "windows",
+    "executable_any": [
+      "Game.exe"
+    ],
+    "mods_relative": "Mods",
+    "loader_markers": [],
+    "scan_depth": 3,
+    "review_note": "Template only. Verify exact build, paths, loader and author instructions before using real mods."
+  },
+  "recipe": null,
+  "sources": [
+    {
+      "url": "https://example.invalid/replace-with-author-source",
+      "checked_on": "2026-10-13",
+      "evidence": "template-unverified"
+    }
+  ],
+  "notes": [
+    "No mod list yet. Research author instructions, then add recipe items and presets. No game or mod is installed by this template."
+  ]
+}

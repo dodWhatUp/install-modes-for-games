@@ -1,4 +1,4 @@
-[CmdletBinding(DefaultParameterSetName = 'Export')]
+﻿[CmdletBinding(DefaultParameterSetName = 'Export')]
 param(
     [Parameter(Mandatory = $true, ParameterSetName = 'Export')][string]$OutputDirectory,
     [Parameter(ParameterSetName = 'Export')][ValidateSet('GameTools', 'GameInput')][string]$Bundle = 'GameTools',
@@ -24,6 +24,19 @@ function Get-GameSourcePaths {
         'examples/game-input/HostIntegration.example.ahk',
         'examples/game-input/AzeronOverlayStudio.integrated.ahk',
         'examples/game-input/OverlayStudioGameInput.ahk',
+        'examples/game-input/StudioPictureModule.ahk',
+        'examples/game-input/StudioOverlayGroups.ahk',
+        'examples/game-input/StudioHubBridge.ahk',
+        'examples/game-input/tests/Test-OverlayGroups.ahk',
+        'examples/game-input/tests/Test-UIFeedback.ahk',
+        'examples/game-input/tests/Test-PictureModule.ahk',
+        'examples/game-input/tests/Test-PictureEditor.ahk',
+        'examples/game-input/tests/Test-MicEditor.ahk',
+        'scripts/tests/Test-PictureHost.py',
+        'scripts/tests/Run-NativePictureDesktop.py',
+        'scripts/tests/Test-NativePictureLayout.py',
+        'scripts/tests/Test-ModernStartup.py',
+        'examples/game-input/PICTURE-BUTTONS.md',
         'examples/game-input/OVERLAY-STUDIO-INTEGRATION.md',
         'examples/game-input/OTHER-CHAT-HANDOFF.txt',
         'examples/game-input/VALIDATION.json',
@@ -39,6 +52,12 @@ function Get-GameSourcePaths {
         'AGENTS.md',
         'preferences/GENERAL.md',
         'docs/GAME-TOOLS-KNOWLEDGE-INDEX.md',
+        'docs/UI-AND-CONTENT-DESIGN.md',
+        'docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md',
+        'docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.json',
+        'docs/GAME-TOOLS-MASTER-CHECKLIST.md',
+        'docs/GAME-TELEMETRY-TOOL-PLAN.md',
+        'docs/OFFLINE-COMPARISON-REPORTS.md',
         'docs/KNOWLEDGE-MAINTENANCE.md',
         'docs/AUTOMATION-OPERATING-PROCEDURES.md',
         'docs/TOOL-RESOURCE-OVERHEAD.md',
@@ -47,6 +66,7 @@ function Get-GameSourcePaths {
         'docs/OPERATING-STANDARD.md',
         'docs/FEATURE-DECISION.md',
         'docs/AZERON-GAME-CONTROLS.md',
+        'docs/AZERON-GAME-KEYMAP-VIEWER-WISHLIST.md',
         'docs/INPUT-DEVICE-REGISTRY.md',
         'docs/GITHUB-PUBLISHING.md',
         'docs/DISTRIBUTION.md',
@@ -54,9 +74,112 @@ function Get-GameSourcePaths {
         'examples/game-tool-hub/Start-GameToolHub.ps1',
         'examples/game-tool-hub/form-draft.example.json',
         'examples/game-tool-hub/catalog.example.json',
+        'examples/game-tool-hub/comparison-fixture.example.json',
+        'examples/game-tool-hub/COMPARISON-DATASET.md',
         'scripts/Game-Tool-Hub.py',
+        'scripts/GameToolCatalogBridge.py',
+        'scripts/GameToolCatalogPanel.py',
+        'scripts/GameToolComparison.py',
+        'scripts/GameToolComparisonPanel.py',
+        'scripts/GameToolReportImport.py',
+        'scripts/GameToolJournal.py',
+        'scripts/GameToolCoordinator.py',
+        'scripts/GameToolSessionPanel.py',
+        'scripts/GameToolCrashEvidence.py',
+        'scripts/GameToolEvidencePanel.py',
+        'scripts/GameToolWorkflow.py',
+        'scripts/GameToolWorkflowPanel.py',
+        'scripts/GameToolReadiness.py',
+        'scripts/GameToolReadinessPanel.py',
+        'scripts/GameToolOverlay.py',
+        'scripts/GameToolOverlayPanel.py',
+        'scripts/GameToolAzeronLayer.py',
+        'scripts/tests/Test-GameToolAzeronLayer.py',
+        'scripts/GameToolCompactUI.py',
+        'scripts/GameToolAppearance.py',
+        'scripts/GameToolGameWorkspaces.py',
+        'scripts/GameToolWorkbench.py',
+        'scripts/GameToolWorkbenchLaunch.pyw',
+        'scripts/tests/Test-GameToolGameWorkspaces.py',
+        'scripts/tests/Test-GameToolWorkbench.py',
+        'scripts/tests/Test-GameToolWorkbenchLauncher.py',
+        'docs/WORKBENCH-REVIEW.md',
+        'docs/WORKBENCH-VALIDATION.json',
+        'docs/WORKBENCH-SOURCE-DELTA.json',
+        'scripts/GameToolFocusUI.py',
+        'scripts/GameToolFocusPanels.py',
+        'scripts/GameToolFocusLaunch.pyw',
+        'scripts/tests/Test-GameToolFocus.py',
+        'scripts/tests/Test-GameToolFocusHost.py',
+        'scripts/tests/Test-GameToolFocusLauncher.py',
+        'docs/FOCUS-UI-REVIEW.md',
+        'docs/WORKSTREAM-AUDIT-2026-10-13.json',
+        'docs/FOCUS-UI-PRIOR-ARTIFACTS.json',
+        'docs/FOCUS-UI-VALIDATION.json',
+        'docs/FOCUS-UI-SOURCE-DELTA.json',
+        'scripts/GameToolModernUI.py',
+        'scripts/tests/Test-GameToolModernUI.py',
+        'scripts/tests/Render-GameToolModernUI.py',
+        'scripts/tests/Test-GameToolAppearance.py',
+        'docs/UNIFIED-UI-DESIGN.md',
+        'scripts/tests/Test-GameToolCompactUI.py',
+        'scripts/Build-OverlayContract.py',
+        'scripts/Install-GameToolsRelease.ps1',
+        'scripts/GameToolUnified.py',
+        'scripts/GameToolUnifiedPanel.py',
+        'scripts/GameToolWorkspace.py',
+        'scripts/GameToolUserData.py',
+        'scripts/GameToolUserDataPanel.py',
+        'scripts/tests/Test-GameToolWorkspace.py',
+        'scripts/tests/Test-GameToolUserData.py',
+        'scripts/tests/Test-GameToolUserDataPanel.py',
+        'scripts/Start-UnifiedTools.pyw',
+        'scripts/Install-UnifiedTools.py',
+        'scripts/Create-UnifiedToolsLaunchers.py',
+        'scripts/Create-UnifiedToolsShortcut.ps1',
+        'scripts/tests/Test-UnifiedToolsLaunchers.py',
+        'scripts/Backup-UnifiedTools.ps1',
+        'scripts/tests/Test-GameToolUnified.py',
+        'docs/UNIFIED-GAME-TOOLS.md',
+        'scripts/tests/Test-GameToolOverlay.py',
+        'scripts/tests/Test-GameToolsInstaller.py',
+        'docs/OVERLAY-GROUPS.md',
+        'examples/game-tool-hub/overlay-manifest.example.json',
+        'scripts/tests/Test-GameToolReadiness.py',
+        'scripts/tests/Test-GameToolReadinessPanel.py',
+        'scripts/tests/Test-GameToolReadinessCLI.py',
+        'examples/game-tool-hub/provider-health.example.json',
+        'examples/game-tool-hub/scenario.example.json',
+        'scripts/tests/Test-GameToolWorkflow.py',
+        'scripts/tests/Test-GameToolWorkflowPanel.py',
+        'scripts/tests/Test-GameToolWorkflowCLI.py',
+        'examples/game-tool-hub/workflow-installation.example.json',
+        'examples/game-tool-hub/workflow-diagnostic.example.json',
+        'scripts/tests/Test-GameToolCrashEvidence.py',
+        'scripts/tests/Test-GameToolEvidencePanel.py',
+        'scripts/tests/Test-GameToolEvidenceCLI.py',
+        'scripts/tests/Test-GameToolJournal.py',
+        'scripts/tests/Test-GameToolCoordinator.py',
+        'scripts/tests/Test-GameToolSessionPanel.py',
+        'scripts/tests/Test-GameToolSessionCLI.py',
+        'scripts/GameFgInspector.py',
+        'scripts/GameFgPreflight.py',
         'scripts/Game-Tool-Catalog.py',
         'scripts/tests/Test-GameToolHub.py',
+        'scripts/tests/Test-GameToolCatalogBridge.py',
+        'scripts/tests/Test-GameToolHubCatalog.py',
+        'scripts/tests/Test-GameToolComparison.py',
+        'scripts/tests/Test-GameToolComparisonPanel.py',
+        'scripts/tests/Test-GameToolComparisonCLI.py',
+        'scripts/tests/Test-GameToolReportImport.py',
+        'scripts/tests/Test-GameToolReportImportPanel.py',
+        'scripts/tests/Test-GameToolReportImportCLI.py',
+        'examples/game-tool-hub/import-fixtures/cyberpunk-summary.example.json',
+        'examples/game-tool-hub/import-fixtures/presentmon-stats.example.csv',
+        'examples/game-tool-hub/import-fixtures/presentmon-no-animation-stats.example.csv',
+        'examples/game-tool-hub/import-fixtures/presentmon-zero-stats.example.csv',
+        'scripts/tests/test_game_fg_inspector.py',
+        'scripts/tests/test_game_fg_preflight.py',
         'scripts/tests/Test-GameToolCatalog.py',
         'templates/AUTOMATION-TASK.example.json',
         'templates/KNOWLEDGE-RECORD.example.json',
@@ -67,7 +190,222 @@ function Get-GameSourcePaths {
         'templates/GAME-HISTORY.md',
         'templates/MOD-CATALOG.md',
         'templates/OPTION-MENU.md',
-        'templates/PREFERENCE-PROFILE.md'
+        'templates/PREFERENCE-PROFILE.md',
+        'docs/MOD-WORKFLOWS-INTEGRATION.md',
+        'docs/MOD-WORKFLOWS.md',
+        'docs/MODS-AI-BASELINE-MANIFEST.json',
+        'docs/MODS-AI-INTEGRATION.md',
+        'docs/MODS-AI-MODULE-BASELINE-MANIFEST.json',
+        'docs/MODS-AI-SOURCE-DELTA.json',
+        'docs/MODS-AI-START-HERE.html',
+        'docs/MODS-AI-VALIDATION.json',
+        'examples/game-tool-hub/MOD-WORKFLOWS-CAPABILITIES.json',
+        'examples/game-tool-hub/ai-plan-request.example.json',
+        'examples/game-tool-hub/mod-recipes/pathfinder-kingmaker.json',
+        'scripts/Game-Mod-Ops.py',
+        'scripts/Game-Mod-Panel.py',
+        'scripts/GameToolAI.py',
+        'scripts/GameToolAIContracts.py',
+        'scripts/GameToolAITools.py',
+        'scripts/GameToolAIKnowledge.py',
+        'scripts/GameToolAIFoundation.py',
+        'scripts/GameToolAIModern.py',
+        'scripts/tests/Test-GameToolAIFoundation.py',
+        'scripts/tests/Test-GameToolAIModern.py',
+        'scripts/tests/GameToolAITestPackage.py',
+        'scripts/tests/requirements.txt',
+        'docs/AI-EFFICIENCY-FOUNDATION.md',
+        'docs/AI-EFFICIENCY-FOUNDATION-REVIEW.md',
+        'docs/AI-EFFICIENCY-FOUNDATION-VALIDATION.json',
+        'docs/AI-EFFICIENCY-FOUNDATION-SOURCE-DELTA.json',
+        'docs/AI-EFFICIENCY-FOUNDATION-LIMITATIONS.md',
+        'docs/AI-EFFICIENCY-FOUNDATION-CONTINUATION.md',
+        'docs/AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.md',
+        'docs/AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.json',
+        'docs/AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.md',
+        'docs/AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.json',
+        'schemas/ai-result-envelope.schema.json',
+        'scripts/GameToolAutomation.py',
+        'scripts/GameToolAutomationPanel.py',
+        'scripts/GameToolModIntegration.py',
+        'scripts/game_mod_ops/__init__.py',
+        'scripts/game_mod_ops/archive.py',
+        'scripts/game_mod_ops/cli.py',
+        'scripts/game_mod_ops/network.py',
+        'scripts/game_mod_ops/panel.py',
+        'scripts/game_mod_ops/recipes.py',
+        'scripts/game_mod_ops/safety.py',
+        'scripts/game_mod_ops/umm.py',
+        'scripts/game_mod_ops/workflow.py',
+        'scripts/tests/Test-GameModOps.py',
+        'scripts/tests/Test-GameModPanel.py',
+        'scripts/tests/Test-GameToolAutomation.py',
+        'scripts/tests/Test-GameToolAutomationPanel.py',
+        'templates/MOD-WORKFLOW.example.json',
+        'scripts/game_mod_ops/definitions.py',
+        'scripts/game_mod_ops/managers.py',
+        'scripts/game_mod_ops/support.py',
+        'scripts/game_mod_ops/handoff.py',
+        'scripts/Game-Support.py',
+        'scripts/tests/Test-GameSupport.py',
+        'scripts/tests/Test-GameSupportPanel.py',
+        'scripts/tests/Test-GameSupportPackaging.py',
+        'docs/GAME-SUPPORT-PACKS.md',
+        'docs/GAME-SUPPORT-VALIDATION.json',
+        'docs/GAME-SUPPORT-SOURCE-DELTA.json',
+        'templates/GAME-SUPPORT.example.json',
+        'templates/GAME-SUPPORT-AUTHORING.json',
+        'examples/game-tool-hub/mod-recipes/stardew-valley.json',
+        'examples/game-tool-hub/game-support/cyberpunk-2077.json',
+        'examples/game-tool-hub/game-support/pathfinder-kingmaker.json',
+        'examples/game-tool-hub/game-support/pathfinder-wrath-of-the-righteous.json',
+        'examples/game-tool-hub/game-support/skyrim-special-edition.json',
+        'examples/game-tool-hub/game-support/stardew-valley.json',
+        'examples/game-tool-hub/game-support/valheim.json',
+        'docs/KEYBINDS-MERGE-CONTINUATION.md',
+        'docs/KEYBINDS-MERGE-INTAKE.json',
+        'docs/KEYBINDS-MERGE-LIMITATIONS.md',
+        'docs/KEYBINDS-MERGE-REVIEW.md',
+        'docs/KEYBINDS-MERGE-SOURCE-DELTA.json',
+        'docs/KEYBINDS-MERGE-VALIDATION.json',
+        'docs/keybinds/COMPONENT-CHECKPOINT.md',
+        'docs/keybinds/README.md',
+        'docs/keybinds/history/INTEGRATION-HANDOFF-B-0.2.0-preview.1.md',
+        'docs/keybinds/history/DEPENDENCY_PINS-B-0.2.0-preview.1.json',
+        'docs/keybinds/COMPONENT-README.md',
+        'docs/keybinds/DEPENDENCY_PINS.json',
+        'docs/keybinds/EXTENSION_GUIDE.md',
+        'docs/keybinds/GAME_COVERAGE.md',
+        'docs/keybinds/GAP_AUDIT.md',
+        'docs/keybinds/INPUT-B-MANIFEST.json',
+        'docs/keybinds/INTEGRATION-HANDOFF.md',
+        'docs/keybinds/INTEGRATION.md',
+        'docs/keybinds/ORIGINAL-OPENING-MESSAGE-HE.txt',
+        'docs/keybinds/PUBLIC_SOURCES.json',
+        'docs/keybinds/RECIPES.md',
+        'docs/keybinds/RECOVERY.md',
+        'docs/keybinds/REVIEW_NOTES.md',
+        'examples/adapter-sdk/named_tokens.py',
+        'examples/keybinds/game-locations.json',
+        'game-packs/format-examples/sample-cfg-bind/fixtures/after.cfg',
+        'game-packs/format-examples/sample-cfg-bind/fixtures/before.cfg',
+        'game-packs/format-examples/sample-cfg-bind/pack.json',
+        'game-packs/format-examples/sample-colon-lines/fixtures/after.txt',
+        'game-packs/format-examples/sample-colon-lines/fixtures/before.txt',
+        'game-packs/format-examples/sample-colon-lines/pack.json',
+        'game-packs/format-examples/sample-ini-sparse/fixtures/after.ini',
+        'game-packs/format-examples/sample-ini-sparse/fixtures/before.ini',
+        'game-packs/format-examples/sample-ini-sparse/pack.json',
+        'game-packs/format-examples/sample-ini/fixtures/after.ini',
+        'game-packs/format-examples/sample-ini/fixtures/before.ini',
+        'game-packs/format-examples/sample-ini/pack.json',
+        'game-packs/format-examples/sample-json/fixtures/after.json',
+        'game-packs/format-examples/sample-json/fixtures/before.json',
+        'game-packs/format-examples/sample-json/pack.json',
+        'game-packs/format-examples/sample-jsonc/fixtures/after.jsonc',
+        'game-packs/format-examples/sample-jsonc/fixtures/before.jsonc',
+        'game-packs/format-examples/sample-jsonc/pack.json',
+        'game-packs/format-examples/sample-keyvalues/fixtures/after.vdf',
+        'game-packs/format-examples/sample-keyvalues/fixtures/before.vdf',
+        'game-packs/format-examples/sample-keyvalues/pack.json',
+        'game-packs/format-examples/sample-ue-chord/fixtures/after.ini',
+        'game-packs/format-examples/sample-ue-chord/fixtures/before.ini',
+        'game-packs/format-examples/sample-ue-chord/pack.json',
+        'game-packs/format-examples/sample-ue-ini/fixtures/after.ini',
+        'game-packs/format-examples/sample-ue-ini/fixtures/before.ini',
+        'game-packs/format-examples/sample-ue-ini/pack.json',
+        'game-packs/format-examples/sample-xml/fixtures/after.xml',
+        'game-packs/format-examples/sample-xml/fixtures/before.xml',
+        'game-packs/format-examples/sample-xml/pack.json',
+        'game-packs/research-drafts/bayonetta-pc/AUTHORING.md',
+        'game-packs/research-drafts/bayonetta-pc/location-evidence.json',
+        'game-packs/research-drafts/bayonetta-pc/pack.json',
+        'game-packs/research-drafts/bioshock-2-remastered/AUTHORING.md',
+        'game-packs/research-drafts/bioshock-2-remastered/location-evidence.json',
+        'game-packs/research-drafts/bioshock-2-remastered/pack.json',
+        'game-packs/research-drafts/bioshock-infinite/AUTHORING.md',
+        'game-packs/research-drafts/bioshock-infinite/location-evidence.json',
+        'game-packs/research-drafts/bioshock-infinite/pack.json',
+        'game-packs/research-drafts/bioshock-remastered/AUTHORING.md',
+        'game-packs/research-drafts/bioshock-remastered/location-evidence.json',
+        'game-packs/research-drafts/bioshock-remastered/pack.json',
+        'game-packs/research-drafts/control/AUTHORING.md',
+        'game-packs/research-drafts/control/location-evidence.json',
+        'game-packs/research-drafts/control/pack.json',
+        'game-packs/research-drafts/cyberpunk-2077/AUTHORING.md',
+        'game-packs/research-drafts/cyberpunk-2077/location-evidence.json',
+        'game-packs/research-drafts/cyberpunk-2077/pack.json',
+        'game-packs/research-drafts/devil-may-cry-5/AUTHORING.md',
+        'game-packs/research-drafts/devil-may-cry-5/location-evidence.json',
+        'game-packs/research-drafts/devil-may-cry-5/pack.json',
+        'game-packs/research-drafts/doom-the-dark-ages/AUTHORING.md',
+        'game-packs/research-drafts/doom-the-dark-ages/location-evidence.json',
+        'game-packs/research-drafts/doom-the-dark-ages/pack.json',
+        'game-packs/research-drafts/god-of-war-ragnarok/AUTHORING.md',
+        'game-packs/research-drafts/god-of-war-ragnarok/location-evidence.json',
+        'game-packs/research-drafts/god-of-war-ragnarok/pack.json',
+        'game-packs/research-drafts/gta-v-enhanced/AUTHORING.md',
+        'game-packs/research-drafts/gta-v-enhanced/location-evidence.json',
+        'game-packs/research-drafts/gta-v-enhanced/pack.json',
+        'game-packs/research-drafts/hogwarts-legacy/AUTHORING.md',
+        'game-packs/research-drafts/hogwarts-legacy/location-evidence.json',
+        'game-packs/research-drafts/hogwarts-legacy/pack.json',
+        'game-packs/research-drafts/middle-earth-shadow-of-war/AUTHORING.md',
+        'game-packs/research-drafts/middle-earth-shadow-of-war/location-evidence.json',
+        'game-packs/research-drafts/middle-earth-shadow-of-war/pack.json',
+        'game-packs/research-drafts/nier-automata/AUTHORING.md',
+        'game-packs/research-drafts/nier-automata/location-evidence.json',
+        'game-packs/research-drafts/nier-automata/pack.json',
+        'game-packs/research-drafts/path-of-exile-2/AUTHORING.md',
+        'game-packs/research-drafts/path-of-exile-2/location-evidence.json',
+        'game-packs/research-drafts/path-of-exile-2/pack.json',
+        'game-packs/research-drafts/pathfinder-kingmaker/AUTHORING.md',
+        'game-packs/research-drafts/pathfinder-kingmaker/location-evidence.json',
+        'game-packs/research-drafts/pathfinder-kingmaker/pack.json',
+        'game-packs/research-drafts/red-dead-redemption-2/AUTHORING.md',
+        'game-packs/research-drafts/red-dead-redemption-2/location-evidence.json',
+        'game-packs/research-drafts/red-dead-redemption-2/pack.json',
+        'game-packs/research-drafts/v-rising/AUTHORING.md',
+        'game-packs/research-drafts/v-rising/location-evidence.json',
+        'game-packs/research-drafts/v-rising/pack.json',
+        'schemas/game-pack.schema.json',
+        'schemas/semantic-intent.schema.json',
+        'scripts/Game-Keybinds.py',
+        'scripts/GameToolKeybindAI.py',
+        'scripts/GameToolKeybindIntegration.py',
+        'scripts/GameToolKeybindWorkspaces.py',
+        'scripts/check_host.py',
+        'scripts/game_keybind_ops/__init__.py',
+        'scripts/game_keybind_ops/adapter_registry.py',
+        'scripts/game_keybind_ops/authoring.py',
+        'scripts/game_keybind_ops/core.py',
+        'scripts/game_keybind_ops/deps.py',
+        'scripts/game_keybind_ops/discovery.py',
+        'scripts/game_keybind_ops/documents.py',
+        'scripts/game_keybind_ops/effective.py',
+        'scripts/game_keybind_ops/format_extensions.py',
+        'scripts/game_keybind_ops/key_codec.py',
+        'scripts/game_keybind_ops/known_folders_reference.py',
+        'scripts/game_keybind_ops/pack_cli.py',
+        'scripts/game_keybind_ops/pack_panel.py',
+        'scripts/game_keybind_ops/pack_transport.py',
+        'scripts/game_keybind_ops/packs.py',
+        'scripts/game_keybind_ops/panel.py',
+        'scripts/game_keybind_ops/planner.py',
+        'scripts/game_keybind_ops/recovery.py',
+        'scripts/game_keybind_ops/store_discovery.py',
+        'scripts/keybind_demo.py',
+        'scripts/tests/Run-KeybindChecks.py',
+        'scripts/tests/Test-GameToolKeybindMerge.py',
+        'scripts/tests/keybinds/test_effective.py',
+        'scripts/tests/keybinds/test_extended.py',
+        'scripts/tests/keybinds/test_extensibility.py',
+        'scripts/tests/keybinds/test_host_integration.py',
+        'scripts/tests/keybinds/test_keybinds.py',
+        'scripts/tests/keybinds/test_pack_integration.py',
+        'scripts/tests/keybinds/test_schema_contract.py',
+        'scripts/tests/keybinds/test_pack_panel.py',
+        'scripts/tests/keybinds/test_panel.py'
     )
 }
 
@@ -134,7 +472,7 @@ function Get-GameSourcePlan {
     param([string]$RepositoryRoot, [string[]]$RelativePaths)
     $taskRoot = [IO.Path]::GetFullPath($RepositoryRoot).TrimEnd([IO.Path]::DirectorySeparatorChar)
     $taskSeen = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
-    $taskAllowed = @('.md', '.txt', '.json', '.ps1', '.py', '.ahk')
+    $taskAllowed = @('.md', '.txt', '.html', '.json', '.jsonc', '.ps1', '.py', '.pyw', '.ahk', '.csv', '.ini', '.cfg', '.vdf', '.xml')
     $taskUtf8 = [Text.UTF8Encoding]::new($false, $true)
     $taskPlan = @()
     foreach ($taskRelative in $RelativePaths) {
@@ -196,6 +534,13 @@ function Get-GameBundleMetadata {
         throw 'Input source version disagrees with the validation record.'
     }
     $taskVersions = [ordered]@{ game_input=$taskVersion }
+    $taskStudioEntries = @($Plan | Where-Object path -eq 'examples/game-input/AzeronOverlayStudio.integrated.ahk')
+    if ($taskStudioEntries.Count) {
+        if ($taskStudioEntries.Count -ne 1) { throw 'Ambiguous Studio version source.' }
+        $taskStudioMatches = [regex]::Matches($taskStudioEntries[0].text, 'this\.Version\s*:=\s*"([0-9][A-Za-z0-9.+_-]{0,63})"')
+        if ($taskStudioMatches.Count -ne 1) { throw 'Exactly one Studio Version is required.' }
+        $taskVersions['overlay_studio'] = $taskStudioMatches[0].Groups[1].Value
+    }
     if ($Bundle -eq 'GameTools') {
         foreach ($taskComponent in @(@{name='tool_hub';path='scripts/Game-Tool-Hub.py'}, @{name='tool_catalog';path='scripts/Game-Tool-Catalog.py'})) {
             $taskEntries = @($Plan | Where-Object path -eq $taskComponent.path)
@@ -204,24 +549,63 @@ function Get-GameBundleMetadata {
             if ($taskMatches.Count -ne 1) { throw "Exactly one component VERSION is required: $($taskComponent.path)" }
             $taskVersions[$taskComponent.name] = $taskMatches[0].Groups[1].Value
         }
+        foreach ($taskComponent in @(@{name='coordinator';path='scripts/GameToolCoordinator.py'},
+            @{name='journal';path='scripts/GameToolJournal.py'}, @{name='session_panel';path='scripts/GameToolSessionPanel.py'},
+            @{name='crash_evidence';path='scripts/GameToolCrashEvidence.py'}, @{name='evidence_panel';path='scripts/GameToolEvidencePanel.py'},
+            @{name='workflow';path='scripts/GameToolWorkflow.py'}, @{name='workflow_panel';path='scripts/GameToolWorkflowPanel.py'},
+            @{name='readiness';path='scripts/GameToolReadiness.py'}, @{name='readiness_panel';path='scripts/GameToolReadinessPanel.py'},
+            @{name='overlay';path='scripts/GameToolOverlay.py'}, @{name='overlay_panel';path='scripts/GameToolOverlayPanel.py'},
+            @{name='azeron_layer';path='scripts/GameToolAzeronLayer.py'},
+            @{name='compact_ui';path='scripts/GameToolCompactUI.py'}, @{name='appearance';path='scripts/GameToolAppearance.py'},
+            @{name='modern_ui';path='scripts/GameToolModernUI.py'},
+            @{name='unified';path='scripts/GameToolUnified.py'}, @{name='unified_panel';path='scripts/GameToolUnifiedPanel.py'},
+            @{name='workspace';path='scripts/GameToolWorkspace.py'}, @{name='user_data';path='scripts/GameToolUserData.py'},
+            @{name='user_data_panel';path='scripts/GameToolUserDataPanel.py'},
+            @{name='mod_ops';path='scripts/game_mod_ops/__init__.py'},
+            @{name='mod_integration';path='scripts/GameToolModIntegration.py'},
+            @{name='automation';path='scripts/GameToolAutomation.py'},
+            @{name='automation_panel';path='scripts/GameToolAutomationPanel.py'},
+            @{name='game_workspaces';path='scripts/GameToolGameWorkspaces.py'},
+            @{name='workbench';path='scripts/GameToolWorkbench.py'},
+            @{name='ai_transport';path='scripts/GameToolAI.py'},
+            @{name='keybinds';path='scripts/GameToolKeybindIntegration.py'})) {
+            $taskEntries = @($Plan | Where-Object path -eq $taskComponent.path)
+            # Historical/synthetic plans may omit this later optional slice.
+            if ($taskEntries.Count -eq 0) { continue }
+            if ($taskEntries.Count -ne 1) { throw "Ambiguous component source: $($taskComponent.path)" }
+            $taskMatches = [regex]::Matches($taskEntries[0].text, '(?m)^VERSION\s*=\s*"([0-9][A-Za-z0-9.+_-]{0,63})"\s*$')
+            if ($taskMatches.Count -ne 1) { throw "Exactly one component VERSION is required: $($taskComponent.path)" }
+            $taskVersions[$taskComponent.name] = $taskMatches[0].Groups[1].Value
+        }
     }
     $taskArchiveName = if ($Bundle -eq 'GameInput') { "GameInputModule-$taskVersion-$ClientDate.zip" }
-        else { "GameTools-input-$taskVersion-hub-$($taskVersions.tool_hub)-catalog-$($taskVersions.tool_catalog)-$ClientDate.zip" }
+        else { "Unified-Game-Tools-$($taskVersions.tool_hub)-Keybinds-Reviewed-Source-$ClientDate.zip" }
     return [ordered]@{
         schema_version=1; bundle=$Bundle; bundle_kind='authored-source-and-sanitized-knowledge-checkpoint'
         client_date=$ClientDate; client_timezone='Asia/Jerusalem'; component_versions=$taskVersions
         archive_name=$taskArchiveName; source='https://github.com/dodWhatUp/install-modes-for-games'
-        source_state='Exact packaged file hashes; not claimed to match a published Git revision.'
-        runtime_status='Historical v0.3.1 partial game input; current host has partial profile/picture observations. Current module lifecycle, game text/Unicode/Enter/Escape/hold acceptance remain pending. Export executes no runtime acceptance tests.'
+        source_state='Canonical task-branch reconciliation of the verified 0.26 source against base 043f3c4733788f082da98dfcb43c0972d2794c6a; exact source bytes and sanitized acceptance records; not claimed merged into main.'
+        canonical_reference_revision='043f3c4733788f082da98dfcb43c0972d2794c6a'
+        canonical_reference_meaning='Exact reconciliation base. A later task-branch commit may contain the reviewed candidate without implying main-branch adoption.'
+        windows_acceptance_reference='docs/AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.json'
+        reconciliation_reference='docs/AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.json'
+        runtime_status='Native Windows 11 ARM64 launcher/Tk and independent external modern/legacy stdio-client acceptance passed in an isolated preview profile. Specific ChatGPT/Codex product UI, production installation, real game/manager/device, gameplay and physical-device acceptance remain pending. Export itself executes no runtime acceptance tests.'
         input_validation_reference='examples/game-input/VALIDATION.json'; input_recorded_date=$taskValidation.recorded_date
         input_declared_runtime=$taskValidation.preview_runtime
-        exclusions=@('game/mod/interpreter binaries and archives', 'installed settings and picture assets', 'native/onboard/remapper profiles and device identities', 'Hub private registry and imported reports', 'saves, credentials, private paths and raw logs/video', 'unlisted sources and third-party SDK headers')
+        exclusions=@('game/mod/interpreter binaries and archives', 'installed settings and picture assets', 'native/onboard/remapper profiles and device identities', 'Hub private registry, imported reports, private session journals, saved-evidence packets and private workflow recipes/plans', 'saves, credentials, private paths and raw logs/video', 'unlisted sources and third-party SDK headers')
         recovery_boundary='Source restoration only, not full installed-tool/game/native-profile recovery. Private backups and supported runtimes are separate requirements. Restore/import acceptance is not established by archive integrity.'
+        integration_validation_reference=if (@($Plan | Where-Object path -eq 'docs/KEYBINDS-MERGE-VALIDATION.json').Count) { 'docs/KEYBINDS-MERGE-VALIDATION.json' } else { $null }
+        source_delta_reference=if (@($Plan | Where-Object path -eq 'docs/KEYBINDS-MERGE-SOURCE-DELTA.json').Count) { 'docs/KEYBINDS-MERGE-SOURCE-DELTA.json' } else { $null }
+        merge_review_reference=if (@($Plan | Where-Object path -eq 'docs/KEYBINDS-MERGE-REVIEW.md').Count) { 'docs/KEYBINDS-MERGE-REVIEW.md' } else { $null }
+        merge_intake_reference=if (@($Plan | Where-Object path -eq 'docs/KEYBINDS-MERGE-INTAKE.json').Count) { 'docs/KEYBINDS-MERGE-INTAKE.json' } else { $null }
+        limitations_reference=if (@($Plan | Where-Object path -eq 'docs/KEYBINDS-MERGE-LIMITATIONS.md').Count) { 'docs/KEYBINDS-MERGE-LIMITATIONS.md' } else { $null }
+        continuation_reference=if (@($Plan | Where-Object path -eq 'docs/KEYBINDS-MERGE-CONTINUATION.md').Count) { 'docs/KEYBINDS-MERGE-CONTINUATION.md' } else { $null }
     }
 }
 
 function Get-GameUnbundledReferences {
-    param([string]$RepositoryRoot, [object[]]$Plan)
+    param([string]$RepositoryRoot, [object[]]$Plan, [string]$CanonicalRevision)
+    if ($CanonicalRevision -notmatch '^[a-f0-9]{40}$') { throw 'An exact canonical reference revision is required.' }
     $taskIncluded = @($Plan.path)
     $taskReferences = @()
     foreach ($taskEntry in $Plan) {
@@ -238,8 +622,9 @@ function Get-GameUnbundledReferences {
             $taskRelative = $taskResolved.Substring($RepositoryRoot.Length + 1).Replace('\', '/')
             if ($taskRelative -notin $taskIncluded) {
                 $taskReferences += [ordered]@{ from=$taskEntry.path; reference=$taskLink; excluded_source=$taskRelative
-                    canonical_source='https://github.com/dodWhatUp/install-modes-for-games/blob/main/' + (($taskRelative -split '/' | ForEach-Object { [Uri]::EscapeDataString($_) }) -join '/')
-                    exists_in_checkout=(Test-Path -LiteralPath $taskResolved); note='Not bundled; link does not prove publication, access or runtime acceptance.' }
+                    canonical_revision=$CanonicalRevision
+                    canonical_source='https://github.com/dodWhatUp/install-modes-for-games/blob/' + $CanonicalRevision + '/' + (($taskRelative -split '/' | ForEach-Object { [Uri]::EscapeDataString($_) }) -join '/')
+                    exists_in_checkout=(Test-Path -LiteralPath $taskResolved); note='Not bundled; exact reference pin does not prove publication, access or runtime acceptance.' }
             }
         }
     }
@@ -258,7 +643,7 @@ function Invoke-GameSourceExport {
     $taskManifest.created_utc = [DateTime]::UtcNow.ToString('o')
     $taskManifest.source_consistency_policy = 'Source hashes checked before output mutation and again after archive verification. Any mismatch refuses a successful current-source receipt; an already-created checkpoint is retained, not overwritten.'
     $taskManifest.files = @($Plan | ForEach-Object { [ordered]@{path=$_.path;bytes=$_.bytes;sha256=$_.sha256} })
-    $taskManifest.unbundled_references = @(Get-GameUnbundledReferences -RepositoryRoot $taskRoot -Plan $Plan)
+    $taskManifest.unbundled_references = @(Get-GameUnbundledReferences -RepositoryRoot $taskRoot -Plan $Plan -CanonicalRevision ([string]$Metadata.canonical_reference_revision))
     $taskManifest.privacy_review = 'Curated inventory and limited pattern scan; manual content/privacy review remains required before publication.'
     $taskUtf8 = [Text.UTF8Encoding]::new($false)
     $taskManifestBytes = $taskUtf8.GetBytes(($taskManifest | ConvertTo-Json -Depth 16))

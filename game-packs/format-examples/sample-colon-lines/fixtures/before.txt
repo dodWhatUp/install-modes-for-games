@@ -1,0 +1,5 @@
+# retained
+key.use:E
+key.reload:R
+key.fire:MouseLeft
+volume:0.73

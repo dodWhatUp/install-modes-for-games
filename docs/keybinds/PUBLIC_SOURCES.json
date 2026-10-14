@@ -1,0 +1,35 @@
+{
+  "checked": "2026-10-13",
+  "purpose": "primary references for OS/protocol design; no native-game certification",
+  "sources": [
+    {
+      "url": "https://docs.python.org/3/library/os.html",
+      "supports": "os.replace/fsync semantics and platform boundaries"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-replacefilew",
+      "supports": "Windows replacement behavior and failures; native implementation remains untested here"
+    },
+    {
+      "url": "https://partner.steamgames.com/doc/features/cloud",
+      "supports": "Cloud can synchronize selected files around game sessions; local backups are separate"
+    },
+    {
+      "url": "https://www.jsonrpc.org/specification",
+      "supports": "Request IDs, notifications, typed errors; no automatic request replay"
+    },
+    {
+      "url": "https://docs.python.org/3.13/library/zipfile.html",
+      "supports": "Archive CRC/path/resource/interruption pitfalls; our stricter checks are implementation choices, not a certification."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc6902",
+      "supports": "JSON patch/pointer terminology; implemented draft edits are an explicitly restricted add/replace/remove subset, not full RFC6902."
+    },
+    {
+      "url": "https://dev.epicgames.com/documentation/unreal-engine/configuration-files-in-unreal-engine",
+      "supports": "Native file precedence and array directive complexity; no full Unreal effective-array resolver is claimed."
+    }
+  ],
+  "store_metadata_note": "Steam/Epic helpers were tested against authored manifest fixtures only. No undocumented store schema is represented as a current official contract."
+}

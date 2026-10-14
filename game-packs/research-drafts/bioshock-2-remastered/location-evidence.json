@@ -1,0 +1,28 @@
+{
+  "id": "bioshock-2-remastered",
+  "name": "BioShock 2 Remastered",
+  "schema_status": "original_and_schema_review",
+  "locations": [
+    {
+      "root": "roaming",
+      "pattern": "BioshockHD/Bioshock2/User.ini"
+    },
+    {
+      "root": "roaming",
+      "pattern": "My Games/Bioshock Epic HD/Bioshock2/User.ini"
+    }
+  ],
+  "format": "INI key-to-command mappings, with multiple sections/contexts",
+  "limitations": [
+    "Map the actual command strings and their aliases, including contextual Use/Interact. Preserve mouse keys and all unrelated INI lines.",
+    "The V3 Exit Scout Mode -> Tab placement needs a console/context collision audit on the installed build."
+  ],
+  "source_urls": [
+    "https://steamcommunity.com/app/409720/discussions/0/343786745999791557/",
+    "https://steamcommunity.com/app/409720/discussions/0/1645418344568208939/",
+    "https://www.nexusmods.com/bioshock2/mods/13"
+  ],
+  "discovery_only": true,
+  "native_recipe_bundled": false,
+  "source_review_date": "2026-10-13"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "doom-the-dark-ages",
+  "name": "DOOM The Dark Ages",
+  "schema_status": "original_and_schema_review",
+  "locations": [
+    {
+      "root": "saved_games",
+      "pattern": "id Software/DOOMTheDarkAges/base/DOOMTheDarkAgesConfig.cfg"
+    },
+    {
+      "root": "saved_games",
+      "pattern": "id Software/DOOMTheDarkAges/base/DOOMTheDarkAgesConfig.local"
+    }
+  ],
+  "format": "Native .cfg / .local settings; installed action identifiers and bind-set ownership require inspection",
+  "limitations": [
+    "Do not borrow DOOM Eternal impulse numbers or assume the local renderer/cvar file is a complete binding map.",
+    "Confirm Slayer, Atlan and dragon/context action ownership where the source labels involve those actions. Preserve renderer, HDR, DLSS, performance and all unrelated settings.",
+    "The project records the game as previously uninstalled and a graphics experiment as paused; this package does not reinstall or resume it."
+  ],
+  "source_urls": [
+    "https://steamcommunity.com/app/3017860/discussions/0/599653207707285077/",
+    "https://steamcommunity.com/app/3017860/discussions/0/599654293341000813/",
+    "https://help.bethesda.net/app/answers/detail/a_id/70057/~/where-are-the-save-files-located-on-pc-for-doom%3A-the-dark-ages%3F"
+  ],
+  "discovery_only": true,
+  "native_recipe_bundled": false,
+  "source_review_date": "2026-10-13"
+}

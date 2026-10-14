@@ -1,0 +1,28 @@
+{
+  "id": "god-of-war-ragnarok",
+  "name": "God of War Ragnarok",
+  "schema_status": "binary_schema_unresolved",
+  "locations": [
+    {
+      "root": "saved_games",
+      "pattern": "God of War Ragnarök/*/userpreferences"
+    },
+    {
+      "root": "saved_games",
+      "pattern": "God of War Ragnarok/*/userpreferences"
+    }
+  ],
+  "format": "Extensionless userpreferences container; keyboard schema not verified",
+  "limitations": [
+    "The Unicode ö in the folder name matters. The collector also checks the plain-o spelling as a fallback candidate and labels it as such.",
+    "The current keyboard-record representation and integrity rules have not been verified; no fabricated INI/JSON is supplied.",
+    "No PSN-related mod, bypass or preference reset is part of this work."
+  ],
+  "source_urls": [
+    "https://steamcommunity.com/app/2322010/discussions/0/4843148117770530553/",
+    "https://steamcommunity.com/app/2322010/discussions/1/568164991158572163/"
+  ],
+  "discovery_only": true,
+  "native_recipe_bundled": false,
+  "source_review_date": "2026-10-13"
+}

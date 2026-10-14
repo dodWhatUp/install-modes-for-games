@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "report_id": "game-tools-ab-merge-intake-2026-10-14",
+  "created_utc": "2026-10-14T00:27:00.399980+00:00",
+  "canonical_owner": "dodWhatUp/install-modes-for-games",
+  "canonical_owner_head_observed": "043f3c4733788f082da98dfcb43c0972d2794c6a",
+  "scope": "Local isolated semantic source merge only; no Git/Drive publication, installation, game launch, profile mutation, native Windows acceptance, client connection, or gameplay claim.",
+  "inputs": {
+    "A": {
+      "role": "host owner and current application base",
+      "version": "0.24.0-preview.1",
+      "archive_name": "Unified-Game-Tools-0.24.0-preview.1-Multi-Game-Source-REPACKED-2026-10-13.zip",
+      "archive_sha256": "12f8198536dd9ae442cfa993c71d185e7e727fef813753951cd73aeee5d237a9",
+      "manifest_sha256": "b181a22074e904ace5374abe401ab3bc04944785f1be86694f64c3408f2f0013",
+      "payload_files_excluding_manifest": 221
+    },
+    "B": {
+      "role": "Keybinds component candidate rebased into A",
+      "version": "0.2.0-preview.1",
+      "archive_name": "GameTools_Keybinds_0.2.0-preview.1_Extensible_Source_and_Handoff_2026-10-13.zip",
+      "archive_sha256": "439eae9bea536861da988de8aaa8eebf45f8418e1e3a4ee651dc498d747c870a",
+      "manifest_sha256": "6d38a4fc772bac3a6e10c0dd5ab6ab19de790d48d6fd1cfa2c9a31db0adcf478",
+      "payload_files_excluding_manifest": 171,
+      "research_drafts": 17,
+      "synthetic_format_packs": 10,
+      "game_specific_native_recipes_bundled": 0
+    },
+    "envelope": {
+      "archive_name": "GameTools_A_and_B_One_ZIP_For_Merger_2026-10-13.zip",
+      "sha256": "fd3cb621c83220f15c7fa5d51efe2916bba9ced70d8505d57f404300b498a4b2",
+      "outer_and_inner_hashes_verified": true,
+      "zip_crc_verified": true
+    }
+  },
+  "host_pin_state": {
+    "matching": [
+      "scripts/GameToolJournal.py",
+      "scripts/game_mod_ops/safety.py"
+    ],
+    "semantic_rebase_required": [
+      "scripts/GameToolAutomation.py",
+      "scripts/GameToolAI.py",
+      "scripts/GameToolGameWorkspaces.py"
+    ]
+  },
+  "merge_decisions": [
+    {
+      "stable_id": "host.automation.service",
+      "owner": "A GameToolAutomation",
+      "decision": "Keep A AutomationService and compose B KeybindAutomationMixin; reuse the existing request, journal and local-approval roots."
+    },
+    {
+      "stable_id": "host.ai.endpoint",
+      "owner": "A GameToolAI",
+      "decision": "Keep A endpoint lifecycle and append the keybind tool family once, including multi-game game_id scope."
+    },
+    {
+      "stable_id": "host.game.workspaces",
+      "owner": "A GameToolGameWorkspaces",
+      "decision": "Rebase keybind registry, rows and services into the A owner; B compatibility host files are excluded."
+    },
+    {
+      "stable_id": "schema.game_id",
+      "owner": "workspace composition layer",
+      "decision": "Keep game-support-pack and game-keybind-pack in separate registries even when game_id matches."
+    },
+    {
+      "stable_id": "state.data_root",
+      "owner": "A host data root",
+      "decision": "Use one explicit root with a separate keybinds subtree and the shared governance layer; no second daemon, queue or journal."
+    },
+    {
+      "stable_id": "ui.workbench.lifecycle",
+      "owner": "A Workbench",
+      "decision": "Mount one Keybinds pane into the existing lifecycle, Stop control and close cleanup."
+    },
+    {
+      "stable_id": "export.manifest",
+      "owner": "A exporter plus regenerated merged manifest",
+      "decision": "Extend the allowlist, regenerate hashes and exclude B compat copies and historical runtime logs."
+    },
+    {
+      "stable_id": "tests.keybind",
+      "owner": "merged test tree",
+      "decision": "Retain component tests in distinct paths and add merge-conflict contracts; do not add historical headline counts as new independent evidence."
+    },
+    {
+      "stable_id": "game.adapters.drafts",
+      "owner": "keybind research area",
+      "decision": "Retain all 17 game folders as research drafts only; they are not certified native adapters."
+    }
+  ],
+  "publication_state": "LOCAL_ONLY_NOT_PUBLISHED",
+  "focused_review_r2": {
+    "reviewed_utc": "2026-10-14T01:50:01.422924+00:00",
+    "candidate_version": "0.25.0-preview.2",
+    "game_workspaces_version": "0.2.1",
+    "scope": "Compatibility, documentation integrity, schema parity, reference pinning and preview-launch portability only.",
+    "adopted": [
+      "recipe-only service refresh",
+      "current keybind documentation route",
+      "schema/runtime contract alignment",
+      "exact UI-design source snapshot",
+      "exact canonical revision pins",
+      "portable Python/Tk preview preflight",
+      "explicit PowerShell-unavailable test skip"
+    ],
+    "deferred": [
+      "pack-import recovery mutation",
+      "native game adapters",
+      "automatic discovery",
+      "broad refactor",
+      "bulk unrelated documentation copy"
+    ]
+  }
+}
