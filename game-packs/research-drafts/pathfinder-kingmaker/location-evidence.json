@@ -1,0 +1,20 @@
+{
+  "id": "pathfinder-kingmaker",
+  "name": "Pathfinder Kingmaker",
+  "schema_status": "registry_schema_review",
+  "locations": [],
+  "format": "Unity preferences in Windows Registry; exact binding value types/payload need inspection",
+  "limitations": [
+    "A native keybinding file analogous to Wrath of the Righteous settings.json has not been established for Kingmaker.",
+    "A future deliverable should change only verified binding values and preserve value types, unrelated preferences and exact rollback. A whole-branch overwrite is not an acceptable shortcut.",
+    "A registry export may contain non-binding preferences; the bundle remains private."
+  ],
+  "source_urls": [
+    "https://steamcommunity.com/app/640820/discussions/0/1734339901253520870/",
+    "https://steamcommunity.com/app/640820/discussions/0/1842440600621279126/",
+    "https://www.gog.com/forum/pathfinder_kingmaker/game_stuck_at_loading_screen"
+  ],
+  "discovery_only": true,
+  "native_recipe_bundled": false,
+  "source_review_date": "2026-10-13"
+}

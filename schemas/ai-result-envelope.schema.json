@@ -1,0 +1,321 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "result_type",
+    "status",
+    "scope",
+    "revision",
+    "freshness",
+    "completion",
+    "evidence",
+    "effects",
+    "data",
+    "next_safe_actions",
+    "retry",
+    "privacy"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "result_type": {
+      "type": "string",
+      "enum": [
+        "blocked",
+        "preview",
+        "proposal",
+        "read",
+        "receipt"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "game_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+        },
+        "instance_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+        },
+        "plan_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+        },
+        "request_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+        }
+      }
+    },
+    "revision": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "freshness": {
+      "type": "object",
+      "maxProperties": 16
+    },
+    "completion": {
+      "type": "object",
+      "required": [
+        "source",
+        "tests",
+        "package",
+        "installation",
+        "connection",
+        "execution",
+        "runtime",
+        "gameplay",
+        "publication"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "type": "string",
+          "enum": [
+            "blocked",
+            "not_applicable",
+            "not_started",
+            "partially_verified",
+            "prepared",
+            "unknown",
+            "verified"
+          ]
+        },
+        "tests": {
+          "type": "string",
+          "enum": [
+            "blocked",
+            "not_applicable",
+            "not_started",
+            "partially_verified",
+            "prepared",
+            "unknown",
+            "verified"
+          ]
+        },
+        "package": {
+          "type": "string",
+          "enum": [
+            "blocked",
+            "not_applicable",
+            "not_started",
+            "partially_verified",
+            "prepared",
+            "unknown",
+            "verified"
+          ]
+        },
+        "installation": {
+          "type": "string",
+          "enum": [
+            "blocked",
+            "not_applicable",
+            "not_started",
+            "partially_verified",
+            "prepared",
+            "unknown",
+            "verified"
+          ]
+        },
+        "connection": {
+          "type": "string",
+          "enum": [
+            "blocked",
+            "not_applicable",
+            "not_started",
+            "partially_verified",
+            "prepared",
+            "unknown",
+            "verified"
+          ]
+        },
+        "execution": {
+          "type": "string",
+          "enum": [
+            "blocked",
+            "not_applicable",
+            "not_started",
+            "partially_verified",
+            "prepared",
+            "unknown",
+            "verified"
+          ]
+        },
+        "runtime": {
+          "type": "string",
+          "enum": [
+            "blocked",
+            "not_applicable",
+            "not_started",
+            "partially_verified",
+            "prepared",
+            "unknown",
+            "verified"
+          ]
+        },
+        "gameplay": {
+          "type": "string",
+          "enum": [
+            "blocked",
+            "not_applicable",
+            "not_started",
+            "partially_verified",
+            "prepared",
+            "unknown",
+            "verified"
+          ]
+        },
+        "publication": {
+          "type": "string",
+          "enum": [
+            "blocked",
+            "not_applicable",
+            "not_started",
+            "partially_verified",
+            "prepared",
+            "unknown",
+            "verified"
+          ]
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "maxItems": 128,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "level",
+          "revision"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+          },
+          "level": {
+            "type": "string",
+            "enum": [
+              "documented",
+              "observed",
+              "reported",
+              "tested",
+              "unknown"
+            ]
+          },
+          "revision": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "required": [
+        "read",
+        "write",
+        "network",
+        "unknown"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "read": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        "write": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        "network": {
+          "type": "boolean"
+        },
+        "unknown": {
+          "type": "boolean"
+        }
+      }
+    },
+    "data": {},
+    "next_safe_actions": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 512
+      }
+    },
+    "retry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowed",
+        "inspect_handle"
+      ],
+      "properties": {
+        "allowed": {
+          "type": "boolean"
+        },
+        "inspect_handle": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+            }
+          ]
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "paths_included",
+        "credentials_included",
+        "raw_logs_included",
+        "source_relative_references_only"
+      ],
+      "properties": {
+        "paths_included": {
+          "type": "boolean"
+        },
+        "credentials_included": {
+          "type": "boolean"
+        },
+        "raw_logs_included": {
+          "type": "boolean"
+        },
+        "source_relative_references_only": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

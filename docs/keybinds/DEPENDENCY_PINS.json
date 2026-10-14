@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "status": "local_ai_foundation_candidate_not_published_or_installed",
+  "canonical_owner": "dodWhatUp/install-modes-for-games",
+  "canonical_owner_head_observed": "043f3c4733788f082da98dfcb43c0972d2794c6a",
+  "host_base": {
+    "version": "0.24.0-preview.1",
+    "archive_sha256": "12f8198536dd9ae442cfa993c71d185e7e727fef813753951cd73aeee5d237a9"
+  },
+  "merged_candidate": {
+    "host_version": "0.26.0-preview.1",
+    "keybind_component_version": "0.2.0-preview.1",
+    "game_workspaces_version": "0.2.1",
+    "source_manifest": "../../MANIFEST.json",
+    "reviewed_keybind_merge_host_version": "0.25.0-preview.2"
+  },
+  "tested_host_dependencies": {
+    "scripts/GameToolAutomation.py": "34bffd633608713905f87f3ecdac50653169fbb815415e6a737a6766bad3fccf",
+    "scripts/GameToolAI.py": "26448c2e5dda9f71f225b340f4ad1dfa7d8f21de3e78a8a2eca4617022cf6efb",
+    "scripts/GameToolJournal.py": "01e76b93c69adefa742dfcb139756903c2259812c437ec72c508739b2a81657a",
+    "scripts/game_mod_ops/safety.py": "a40f7a172716a02d19c4aef688ee67d45b4e86dcede00702eed766528175598b",
+    "scripts/GameToolGameWorkspaces.py": "a0f68663d86a9eaacad7307fda1066fb8c33eeed566785fc7fa3f808ad76110e",
+    "scripts/GameToolWorkbench.py": "be9b75cc7544b3d6520855b80c342f3d5c3209786e465f027c9ca619f8090b63"
+  },
+  "canonical_reference_snapshot": {
+    "revision": "043f3c4733788f082da98dfcb43c0972d2794c6a",
+    "path": "docs/UI-AND-CONTENT-DESIGN.md",
+    "git_blob_sha1": "db9de4ea51af6a17ea3d49218cd5326a2a16edf8",
+    "sha256": "258619c44fe90df09eda947a3240f70c55337df7b0b101689e5755f7b7382b60",
+    "byte_verified": true
+  },
+  "historical_input_b": {
+    "host_version": "0.23.0-preview.1",
+    "pins": "history/DEPENDENCY_PINS-B-0.2.0-preview.1.json",
+    "handoff": "history/INTEGRATION-HANDOFF-B-0.2.0-preview.1.md",
+    "current_guidance": false
+  },
+  "not_installed_or_adopted": true,
+  "ai_efficiency_foundation": {
+    "version": "0.26.0-preview.1",
+    "legacy_protocol": "2025-11-25",
+    "modern_protocol": "2026-07-28",
+    "code_sha256": {
+      "scripts/GameToolAIContracts.py": "929b83543f952415863dee7903cd3bd8a526a11f089e96d70df51d9b58fc3001",
+      "scripts/GameToolAITools.py": "49de053fc7b50ce3046200b4d495d4c6ab9dc40d6c0733cbe14731627f68f6a9",
+      "scripts/GameToolAIKnowledge.py": "bcc556800910b3ada06767518fabf43f312571380473a0d8225becf3b78eac5c",
+      "scripts/GameToolAIFoundation.py": "114c76abe016efe54cefe12f8d429b69b8348390deba0af93c995d3073acf541",
+      "scripts/GameToolAIModern.py": "0053e2b062aa9420cf8defdc951b904715d541562d1de615e7ecadc7236a19e0"
+    },
+    "validation": "../AI-EFFICIENCY-FOUNDATION-VALIDATION.json",
+    "not_installed_or_client_accepted": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "operation": "mods.create_plan",
+  "arguments": {
+    "selected": [
+      "kingmaker-tactics",
+      "buff-bot"
+    ],
+    "mode": "real-time"
+  },
+  "request_id": "kingmaker-preparation-example-001"
+}

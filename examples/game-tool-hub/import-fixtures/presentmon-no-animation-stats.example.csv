@@ -1,0 +1,2 @@
+Duration,Total Frames,Average FPS,Minimum FPS,1st Percentile FPS,5th Percentile FPS,Maximum FPS,AnimationErrorPerSecond,AnimationErrorPerFrame
+60.000,3600,60.000,40.000,42.000,48.000,90.000,00

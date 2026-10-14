@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "record_id": "UNIFIED-TOOLKIT-CHAT-20261012",
+  "record_kind": "continuation_and_preservation",
+  "status": "archival_handoff_not_execution_authorization",
+  "owner": {
+    "workstream": "unified_game_toolkit_integration",
+    "master_locator": "docs/GAME-TOOLS-MASTER-CHECKLIST.md"
+  },
+  "applicability": {
+    "game_id": null,
+    "tool_id": "unified_game_tools",
+    "versions": [
+      "Hub 0.20.2",
+      "Studio 2.2.0-unified.10",
+      "Game Input 0.5-preview.3"
+    ],
+    "context": "Relevant future development and separately authorized desktop/game workflows"
+  },
+  "symptom": "Requests, failures, partial acceptance and future plans must remain retrievable after chat archival",
+  "sources": [
+    {
+      "locator": "private archive alias UNIFIED-TOOLKIT-CHAT-20261012",
+      "revision": "10 returned pages; 81 distinct turns; 629 visible messages",
+      "sha256": "b378aaa24a7278adbb951d0994e335eec4f6cb3532130ad2b1ae8abd7dd7dfd4",
+      "reviewed_date": "2026-10-12",
+      "coverage": "visible messages copied; exact identity/hashes in private manifest; seven referenced attachments copied",
+      "attachments_reviewed": false
+    },
+    {
+      "locator": "docs/GAME-TOOL-CONNECTIONS.md#2026-10-12--native-multi-image-canvas-redesign-installed",
+      "revision": "148-file exact installed authored-source package",
+      "sha256": "5ebce6ad4e0c76bebe9310b0cc2c05cdb5718ff8315e8af3e9727e58c6a0edc0",
+      "reviewed_date": "2026-10-12",
+      "coverage": "exact source and private acceptance copied; historical scope retained",
+      "attachments_reviewed": false
+    }
+  ],
+  "observation": {
+    "claim": "Primary Picture/MIC redesigns are installed; offline toolkit foundations are bounded; broader live/game requirements remain partial or deferred",
+    "evidence_state": "historical_observed_and_fixture_tested_with_scoped_boundaries",
+    "evidence_locator": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md"
+  },
+  "inference": {
+    "claim": "Key display could be the next native editor slice after a new scoped development request",
+    "confidence": "proposal_not_acceptance",
+    "alternatives": [
+      "Status/Game Input presentation",
+      "Advanced Picture/library flows",
+      "Supported product-specific offline adapters"
+    ]
+  },
+  "supported_next_action": {
+    "capability": "retrieve_scoped_task_packet",
+    "adapter_version": null,
+    "success_evidence": [
+      "Match current owner source and installed version",
+      "Recover relevant GT IDs and fresh user scope",
+      "Prepare preservation, tests, cancellation and rollback"
+    ]
+  },
+  "permission": {
+    "execution_authorized": false,
+    "current_request_reference": "2026-10-12: preserve available information/chat/requests/continuation, then archive this chat"
+  },
+  "stop_conditions": [
+    "Unresolved current ownership",
+    "Unsupported or ambiguous control route",
+    "Unrequested launch/capture/profile/graphics change",
+    "Memory warning during later authorized comparison"
+  ],
+  "recovery": {
+    "artifact_alias": "UNIFIED-TOOLKIT-CHAT-20261012",
+    "coverage": [
+      "Visible chat/user requests",
+      "Seven copied local attachments",
+      "Before/current knowledge",
+      "Exact installed authored-source and acceptance",
+      "Prior bounded related-source indexes/evidence"
+    ],
+    "restore_tested": false,
+    "rollback_procedure": "Later UI rollback requires normal closure and fresh ownership/hash checks using the guarded updater and retained 0.19.2 source; never restore whole native profiles or expired relay state"
+  },
+  "freshness": {
+    "reviewed_date": "2026-10-12",
+    "change_triggers": [
+      "New user request",
+      "Source/installed/data revision changed",
+      "Bindings, driver, game, provider or preference changed",
+      "Related source owner updated"
+    ]
+  },
+  "privacy": {
+    "classification": "sanitized_handoff",
+    "payload_logging": false,
+    "automatic_upload": false
+  },
+  "next_boundary": "Later explicitly scoped development; games, benchmarks, recording and game-input experiments remain deferred",
+  "preservation_result": {
+    "verified_date": "2026-10-12",
+    "archive_entries_byte_verified": 80,
+    "private_archive_bytes": 19102190,
+    "private_archive_sha256": "599f0c6d19e33e561afcb30a1b0a990c9c5a36ff68f9d9d0c9bebd4c86ad239b",
+    "download_copy_byte_verified": true,
+    "attachments_copied": 7,
+    "attachments_missing": 0,
+    "refreshed_authored_source_files": 150,
+    "refreshed_authored_source_sha256": "a8d052099b8ab8309778a3ca963708ea0f5d3ccce91d12cd4be432ed8d6a96be",
+    "restore_tested": false,
+    "github_published": false,
+    "cloud_uploaded": false,
+    "chat_archival_requested": true,
+    "receipt_postdates_immutable_packages": true
+  }
+}

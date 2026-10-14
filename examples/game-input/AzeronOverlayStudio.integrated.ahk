@@ -1,15 +1,19 @@
 #Requires AutoHotkey v2.0
+#Warn All, StdOut
 #SingleInstance Force
 #Include %A_LineFile%\..\GameInputModule.ahk
 #Include %A_LineFile%\..\OverlayStudioGameInput.ahk
+#Include %A_LineFile%\..\StudioPictureModule.ahk
+#Include %A_LineFile%\..\StudioOverlayGroups.ahk
+#Include %A_LineFile%\..\StudioHubBridge.ahk
 
 if A_Args.Length && A_Args[1] = "--game-input-self-test" {
     try {
         GI_RunSelfTests()
         OS_GI_RunSelfTests()
         ExitApp(0)
-    } catch as err {
-        FileAppend err.Message "`n", "**"
+    } catch as startupDiagnosticError {
+        FileAppend startupDiagnosticError.Message "`n", "**"
         ExitApp(1)
     }
 }
@@ -17,8 +21,8 @@ if A_Args.Length && A_Args[1] = "--game-input-profile-check" {
     try {
         OS_GI_CheckSavedProfile()
         ExitApp(0)
-    } catch as err {
-        FileAppend err.Message "`n", "**"
+    } catch as startupDiagnosticError {
+        FileAppend startupDiagnosticError.Message "`n", "**"
         ExitApp(1)
     }
 }
@@ -33,8 +37,25 @@ studio := OverlayStudio()
 
 class OverlayStudio {
     __New() {
-        this.Version := "2.0.0-beta"
+        this.Version := "2.2.0-unified.10"
         this.Dir := A_AppData "\AzeronOverlayStudio"
+        this.DesktopTest := false
+        if A_Args.Length && A_Args[1] = "--picture-ui-fixture" {
+            if A_Args.Length != 2
+                throw Error("Desktop fixture requires one prepared, isolated settings directory.")
+            fixture := RTrim(StrReplace(A_Args[2], "/", "\"), "\")
+            SplitPath(fixture, &leaf, &parent)
+            if StrLower(parent) != StrLower(RTrim(A_Temp, "\")) || !RegExMatch(leaf, "^StudioPictureUiFixture-[a-f0-9]{32}$")
+                || !FileExist(fixture "\settings.ini")
+                throw Error("Refused non-isolated or unprepared desktop fixture.")
+            for target in [A_Temp, fixture, fixture "\settings.ini"] {
+                attributes := DllCall("GetFileAttributesW", "str", target, "uint")
+                if attributes = 0xFFFFFFFF || (attributes & 0x400)
+                    throw Error("Refused a linked or missing desktop fixture target.")
+            }
+            this.Dir := fixture
+            this.DesktopTest := true
+        }
         DirCreate(this.Dir)
         this.Config := this.Dir "\settings.ini"
         this.LogLines := []
@@ -65,12 +86,17 @@ class OverlayStudio {
             IgnoreMods: 0}
         this.LoadConfig()
         this.GameInput := OS_GameInputHost(this)
+        this.Pictures := StudioPictureModule(this)
+        this.GroupRoute := StudioOverlayGroups(this)
+        this.HubBridge := StudioHubBridge(this)
         this.BuildGui()
+        this.HubBridge.Attach()
         this.BuildTray()
         this.BindAll()
         this.StartKeyDisplay()
         this.WriteLog("Application launched. Control panel is open.")
-        this.Gui.Show("w976 h733")
+        if !this.HubBridge.Show()
+            this.Gui.Show("w976 h733")
         this.RefreshStatus()
         A_IconTip := "Azeron Overlay Studio - RUNNING (right-click for menu)"
         TrayTip("Running. Configure images and press Test. Closing this window keeps it running.",
@@ -227,12 +253,22 @@ class OverlayStudio {
     BuildGui() {
         g := Gui("+Resize", "Azeron Overlay Studio | Images - MIC - Key display")
         this.Gui := g
+        if this.DesktopTest
+            g.Title .= " | ISOLATED DESKTOP TEST - no input hooks"
         g.BackColor := "F5F7FA"
         g.SetFont("s10", "Segoe UI")
-        g.AddText("x18 y13 w680 h27 c16293D", "AZERON OVERLAY STUDIO   |   Control panel")
+        this.TitleText := g.AddText("x18 y13 w680 h27 c16293D", "AZERON OVERLAY STUDIO   |   Control panel")
         this.RunText := g.AddText("x18 y43 w930 h22 c087C4E", "Starting...")
+        this.Feedback := StudioComponentFeedback(this)
+        if !this.HubBridge.Parent {
+            identifyToggle := g.AddButton("x872 y12 w80 h25", "? UI IDs")
+            identifyToggle.OnEvent("Click", this.Feedback.ShowMenu.Bind(this.Feedback))
+            this.Feedback.Targets[identifyToggle] := true
+        }
+        this.Feedback.RegisterNew(g, "UI-109", this)
         tabs := g.AddTab3("x15 y75 w944 h574", ["1. Picture buttons", "2. Multi Image Canvas", "3. Key display", "4. Status / log", "5. Game Input"])
         this.Tabs := tabs
+        this.Feedback.RegisterNew(g, "UI-109", this)
 
         ; Picture slots and detailed editor.
         tabs.UseTab(1)
@@ -279,26 +315,41 @@ class OverlayStudio {
         g.AddText("x519 y541", "Timed sec")
         this.FDuration := g.AddEdit("x519 y563 w74")
         g.AddButton("x611 y558 w138", "SAVE SLOT").OnEvent("Click", this.SaveSlot.Bind(this))
-        g.AddButton("x764 y558 w175", "TEST (2 seconds)").OnEvent("Click", this.TestSlot.Bind(this))
-        g.AddText("x36 y608 w890 c596577", "Hold: show until key release  |  Toggle: press again to hide  |  Timed: hide automatically  |  No games are modified.")
+        g.AddButton("x764 y558 w175", "PREVIEW CURRENT EDITS").OnEvent("Click", this.TestSlot.Bind(this))
+        g.AddButton("x36 y601 w260", "Advanced pictures / Library").OnEvent("Click", (*) => this.Pictures.Open(this.Selected))
+        g.AddButton("x309 y601 w235", "Automatic overlay groups…").OnEvent("Click", this.GroupRoute.Open.Bind(this.GroupRoute))
+        g.AddText("x555 y607 w375 c596577", "Optional display route. No new trigger or remapping.")
+        ; Reuse the original controls/callbacks and retain a session-only Classic
+        ; layout. This presentation service never saves or activates a feature.
+        this.PictureEditor := StudioPictureEditor(this, g)
+        this.Feedback.RegisterNew(g, "UI-101", this, ["List", "FName", "FEnabled", "FKey", "FSource", "FMode", "FFile", "FMicCanvas", "FPass", "FWidth", "FOpacity", "FPosition", "FOffsetX", "FOffsetY", "FDuration"])
+        this.Feedback.RegisterNew(g, "UI-101", this.PictureEditor)
 
         ; Multi Image Canvas bridge UI.
         tabs.UseTab(2)
-        g.AddText("x38 y115 w875 h45", "Multi Image Canvas has separate 'Overlay Show/Hide' and 'Set switch key' actions. This bridge lets Hold work without reWASD.")
+        this.MicIntro := g.AddText("x38 y115 w875 h45", "Multi Image Canvas has separate 'Overlay Show/Hide' and 'Set switch key' actions. This bridge lets Hold work without reWASD.")
         this.MicText := g.AddText("x38 y175 w870 h28", "Checking MultiImageCanvas.exe...")
-        g.AddText("x38 y226", "MIC Overlay Show/Hide shortcut:")
+        this.MicShortcutLabel := g.AddText("x38 y226", "MIC Overlay Show/Hide shortcut:")
         this.MicHotkeyField := g.AddHotkey("x38 y254 w200", this.MicToggle)
-        g.AddButton("x253 y252 w215", "Save MIC shortcut").OnEvent("Click", this.SaveMicShortcut.Bind(this))
-        g.AddText("x38 y294 w845 c596577", "Default: Ctrl+Alt+H. It must match File > Settings > Key Bindings in Multi Image Canvas.")
-        g.AddButton("x38 y344 w210", "Test MIC toggle ON/OFF").OnEvent("Click", this.ManualMicToggle.Bind(this))
-        g.AddButton("x264 y344 w220", "Mark MIC as hidden").OnEvent("Click", this.MarkMicHidden.Bind(this))
-        g.AddButton("x502 y344 w165", "Open MIC website").OnEvent("Click", (*) => Run("https://github.com/tokonoha00/Multi-image-canvas"))
-        g.AddText("x38 y413 w840 h135", "TO CONFIGURE A MIC SLOT:`n" .
+        this.MicSaveButton := g.AddButton("x253 y252 w215", "Save MIC shortcut")
+        this.MicSaveButton.OnEvent("Click", this.SaveMicShortcut.Bind(this))
+        this.MicShortcutHint := g.AddText("x38 y294 w845 c596577", "Default: Ctrl+Alt+H. It must match File > Settings > Key Bindings in Multi Image Canvas.")
+        this.MicTestButton := g.AddButton("x38 y344 w210", "Test MIC toggle ON/OFF")
+        this.MicTestButton.OnEvent("Click", this.ManualMicToggle.Bind(this))
+        this.MicHiddenButton := g.AddButton("x264 y344 w220", "Mark MIC as hidden")
+        this.MicHiddenButton.OnEvent("Click", this.MarkMicHidden.Bind(this))
+        this.MicWebsiteButton := g.AddButton("x502 y344 w165", "Open MIC website")
+        this.MicWebsiteButton.OnEvent("Click", (*) => Run("https://github.com/tokonoha00/Multi-image-canvas"))
+        this.MicGuide := g.AddText("x38 y413 w840 h135", "TO CONFIGURE A MIC SLOT:`n" .
             "1. In MIC, create a canvas tab, load its picture, right-click tab > Set switch key (e.g. F15).`n" .
             "2. Here, on Picture buttons tab, set Source = MIC, Trigger key = F18, MIC tab key = F15, Mode = Hold.`n" .
             "3. Ensure MIC's overlay starts HIDDEN. Holding F18 then shows it; releasing F18 hides it.`n" .
             "IMPORTANT: MIC only has a toggle; changing MIC overlay manually can desynchronize this bridge.")
-        g.AddText("x38 y574 w850 cAE4B27", "If you prefer reliable on/off without synchronization, choose Source = Local (built-in picture overlay).")
+        this.MicLocalHint := g.AddText("x38 y574 w850 cAE4B27", "If you prefer reliable on/off without synchronization, choose Source = Local (built-in picture overlay).")
+        ; Retain the old feedback identifiers despite naming the layout controls.
+        this.Feedback.RegisterNew(g, "UI-105", {MicText: this.MicText, MicHotkeyField: this.MicHotkeyField})
+        this.MicEditor := StudioMicEditor(this, g)
+        this.Feedback.RegisterNew(g, "UI-105", this.MicEditor)
 
         ; Keyboard HUD and style controls.
         tabs.UseTab(3)
@@ -324,6 +375,7 @@ class OverlayStudio {
         this.HudLastKey := g.AddText("x37 y395 w850 h50", "Last key observed: none")
         g.AddText("x37 y468 w840 h130", "Shows keys from Windows, including Azeron buttons mapped to keyboard keys. Does NOT read Azeron hardware button IDs or its internal layers.`n`n" .
             "Choose your own color hex codes (e.g. FFFFFF / 202833). Key history is temporary in memory. The application does not save the full keyboard stream or send it online.")
+        this.Feedback.RegisterNew(g, "UI-106", this, ["HudEnabled", "HudDuration", "HudFont", "HudOpacity", "HudPosition", "HudRecent", "HudTextColor", "HudBgColor", "HudIgnoreMods"])
 
         ; Activity and troubleshooting.
         tabs.UseTab(4)
@@ -338,20 +390,27 @@ class OverlayStudio {
         g.AddButton("x292 y578 w225", "Create MIC Hold preset").OnEvent("Click", this.AddMicPreset.Bind(this))
         g.AddButton("x535 y578 w188", "Hebrew setup guide").OnEvent("Click", this.OpenGuide.Bind(this))
         g.AddText("x38 y614 w876 c596577", "Actions/errors only, not full keyboard history. Hide UI minimizes to the tray.")
+        this.Feedback.RegisterNew(g, "UI-107", this, ["LogEdit"])
 
         this.GameInput.BuildGui(g, tabs)
+        this.Feedback.RegisterNew(g, "UI-108", this.GameInput, ["Extended"])
         tabs.UseTab()
         this.BottomText := g.AddText("x23 y666 w715 h36 c36536B", "")
-        g.AddButton("x777 y661 w90", "Hide UI").OnEvent("Click", this.HidePanel.Bind(this))
-        g.AddButton("x879 y661 w77", "EXIT").OnEvent("Click", (*) => ExitApp())
-        g.OnEvent("Close", this.HidePanel.Bind(this))
+        this.HideButton := g.AddButton("x777 y661 w90", "Hide UI")
+        this.HideButton.OnEvent("Click", this.HidePanel.Bind(this))
+        this.ExitButton := g.AddButton("x879 y661 w77", "EXIT")
+        this.ExitButton.OnEvent("Click", (*) => ExitApp())
+        this.Feedback.RegisterNew(g, "UI-109", this)
+        g.OnEvent("Close", this.HubBridge.ClosePanel.Bind(this.HubBridge))
         g.OnEvent("Escape", this.HidePanel.Bind(this))
-        ; Keep the initial fixed layout stable; resizing isn't required.
-        g.Opt("-Resize")
+        g.Opt("+MinSize700x733")
+        g.OnEvent("Size", this.PictureEditor.OnSize.Bind(this.PictureEditor))
+        tabs.OnEvent("Change", this.PictureEditor.Reflow.Bind(this.PictureEditor))
         this.RefreshList()
         this.ReadSlotFields(1)
         this.LoadHudFields()
         this.RefreshLogField()
+        this.PictureEditor.Reflow()
     }
 
     BuildTray() {
@@ -367,8 +426,10 @@ class OverlayStudio {
     }
 
     ShowPanel(*) {
-        this.Gui.Show()
-        WinActivate("ahk_id " this.Gui.Hwnd)
+        if !this.HubBridge.Show() {
+            this.Gui.Show()
+            WinActivate("ahk_id " this.Gui.Hwnd)
+        }
         this.RefreshStatus()
     }
     HidePanel(*) {
@@ -394,12 +455,21 @@ class OverlayStudio {
     SelectSlot(lv, row, selected) {
         if this.Selecting || !selected || row < 1 || row > this.Slots.Length
             return
+        if row != this.Selected && !this.ConfirmDiscardDraft("Discard unsaved edits and select another picture?") {
+            this.Selecting := true
+            try {
+                lv.Modify(row, "-Select")
+                lv.Modify(this.Selected, "Select Focus Vis")
+            } finally this.Selecting := false
+            return
+        }
         this.Selected := row
         this.ReadSlotFields(row)
         this.WriteLog("Selected slot " row ": " this.Slots[row].Name)
     }
 
     ReadSlotFields(i) {
+        this.Pictures.Suspend()
         s := this.Slots[i]
         this.FName.Value := s.Name
         this.FEnabled.Value := s.Enabled
@@ -416,12 +486,16 @@ class OverlayStudio {
         this.FDuration.Value := s.Duration
         this.FPass.Value := s.Pass
         this.OnSourceChanged()
+        if this.HasOwnProp("PictureEditor")
+            this.PictureEditor.UpdateDraftStatus()
     }
 
     OnSourceChanged(*) {
         isLocal := this.FSource.Text = "Local"
         this.FFile.Enabled := isLocal
         this.FMicCanvas.Enabled := !isLocal
+        if this.HasOwnProp("PictureEditor")
+            this.PictureEditor.Reflow()
     }
 
     ReadCurrentSlot() {
@@ -447,6 +521,7 @@ class OverlayStudio {
             this.UnbindAll()
             this.HideCurrent()
             this.Slots := copy
+            this.Pictures.LegacyChanged(this.Selected)
             this.BindAll()
             this.SaveConfig()
             this.RefreshList()
@@ -463,7 +538,8 @@ class OverlayStudio {
             MsgBox("Maximum 12 slots.")
             return
         }
-        ; Save the existing selection first to avoid silently discarding edits.
+        if !this.ConfirmDiscardDraft()
+            return
         this.Slots.Push(this.NewSlot(this.Slots.Length + 1))
         this.Selected := this.Slots.Length
         this.SaveConfig()
@@ -481,6 +557,7 @@ class OverlayStudio {
             return
         this.HideCurrent(), this.UnbindAll()
         this.Slots.RemoveAt(this.Selected)
+        this.Pictures.LegacyChanged(0, true)
         this.Selected := Min(this.Selected, this.Slots.Length)
         this.BindAll(), this.SaveConfig()
         this.RefreshList(), this.ReadSlotFields(this.Selected)
@@ -488,9 +565,9 @@ class OverlayStudio {
     }
 
     BrowsePicture(*) {
-        file := FileSelect(1, , "Choose your picture", "Images (*.png; *.jpg; *.jpeg; *.bmp; *.gif; *.tif; *.tiff)")
-        if file != "" {
-            this.FFile.Value := file
+        chosenImageFile := FileSelect(1, , "Choose your picture", "Images (*.png; *.jpg; *.jpeg; *.bmp; *.gif; *.tif; *.tiff)")
+        if chosenImageFile != "" {
+            this.FFile.Value := chosenImageFile
             this.FSource.Choose("Local")
             this.FEnabled.Value := 1
             this.OnSourceChanged()
@@ -498,6 +575,10 @@ class OverlayStudio {
     }
 
     RecordKey(*) {
+        if this.DesktopTest {
+            MsgBox("Physical key capture is disabled in this isolated UI test.")
+            return
+        }
         this.HideCurrent()
         this.UnbindAll()
         this.StopKeyDisplay()
@@ -533,7 +614,7 @@ class OverlayStudio {
     }
 
     BindAll() {
-        if !this.Enabled || this.Capturing
+        if this.DesktopTest || !this.Enabled || this.Capturing
             return
         try {
             for i, s in this.Slots {
@@ -569,7 +650,12 @@ class OverlayStudio {
         if !this.Enabled || this.Pressed.Has(i)
             return
         this.Pressed[i] := 0  ; Ignore repeated key-down until an up event.
-        s := this.Slots[i]
+        try s := this.Pictures.ResolveSlot(i, 0, true)
+        catch Error as err {
+            this.HideCurrent()
+            this.WriteLog("PICTURE ROUTING REFUSED: " err.Message)
+            return
+        }
         this.TotalEvents += 1
         this.LastEvent := "DOWN " s.Key " -> " s.Name
         this.WriteLog("DOWN " s.Key " / slot " i " / " s.Mode)
@@ -577,8 +663,8 @@ class OverlayStudio {
             this.HideCurrent()
             return
         }
-        token := this.ShowSlot(i)
-        this.Pressed[i] := token
+        token := this.ShowSlot(i, s)
+        this.Pressed[i] := {Token: token, Mode: s.Mode}
         if token && s.Mode = "Timed"
             this.ArmHide(token, s.Duration)
     }
@@ -587,19 +673,25 @@ class OverlayStudio {
         Critical()
         if !this.Pressed.Has(i)
             return
-        token := this.Pressed[i]
+        pressed := this.Pressed[i]
+        token := IsObject(pressed) ? pressed.Token : 0
         this.Pressed.Delete(i)
-        s := this.Slots[i]
+        s := this.Slots[i]  ; Release uses the actual DOWN snapshot, not a new context match.
         this.TotalEvents += 1
         this.LastEvent := "UP " s.Key " -> " s.Name
         this.WriteLog("UP " s.Key " / slot " i)
-        if s.Mode = "Hold" && token && token = this.Generation && this.Current = i
+        if IsObject(pressed) && pressed.Mode = "Hold" && token && token = this.Generation && this.Current = i
             this.HideCurrent()
     }
 
-    ShowSlot(i) {
+    ShowSlot(i, resolvedSlot := 0) {
+        try s := IsObject(resolvedSlot) ? resolvedSlot : this.Pictures.ResolveSlot(i, 0, true)
+        catch Error as err {
+            this.HideCurrent()
+            this.WriteLog("PICTURE ROUTING REFUSED: " err.Message)
+            return 0
+        }
         this.HideCurrent()
-        s := this.Slots[i]
         if s.Source = "Local" {
             if !this.ShowLocal(s)
                 return 0
@@ -621,25 +713,15 @@ class OverlayStudio {
         }
         g := 0
         try {
-            MonitorGet(MonitorGetPrimary(), &left, &top, &right, &bottom)
-            maxW := right - left - 32, maxH := bottom - top - 32
+            geometry := this.Pictures.Geometry(s)
             g := Gui("-Caption +ToolWindow +AlwaysOnTop -DPIScale +E0x08000020", "Azeron picture")
             g.MarginX := 0, g.MarginY := 0
             g.BackColor := "202833"
-            pic := g.AddPicture("x0 y0 w" Min(Integer(s.Width), maxW) " h-1", s.File)
-            pic.GetPos(,, &w, &h)
-            if h > maxH {
-                w := Max(1, Floor(w * maxH / h)), h := maxH
-                pic.Value := "*w" w " *h" h " " s.File
-                pic.Move(0, 0, w, h)
-            }
+            w := geometry.w, h := geometry.h
+            pic := g.AddPicture("x0 y0 w" w " h" h, s.File)
             if w < 1 || h < 1
                 throw Error("The picture has an invalid display size.")
-            x := InStr(s.Position, "Right") ? right - w - 16 : left + 16
-            y := InStr(s.Position, "Bottom") ? bottom - h - 16 : top + 16
-            if s.Position = "Center"
-                x := left + Floor((right - left - w) / 2), y := top + Floor((bottom - top - h) / 2)
-            x += Integer(s.OffsetX), y += Integer(s.OffsetY)
+            x := geometry.x, y := geometry.y
             g.Show("NA x" x " y" y " w" w " h" h)
             WinSetTransparent(Round(Integer(s.Opacity) * 255 / 100), "ahk_id " g.Hwnd)
             this.PictureGui := g
@@ -654,6 +736,8 @@ class OverlayStudio {
     }
 
     ShowMIC(s) {
+        if this.DesktopTest
+            return false
         if !ProcessExist("MultiImageCanvas.exe") {
             this.WriteLog("MIC ERROR: MultiImageCanvas.exe is not running.")
             TrayTip("Start Multi Image Canvas first (its overlay should start hidden).",
@@ -701,6 +785,7 @@ class OverlayStudio {
 
     HideAll(*) {
         this.HideCurrent()
+        this.Pictures.Suspend()
         this.ClearHud()
         this.WriteLog("Hide all requested.")
     }
@@ -715,14 +800,16 @@ class OverlayStudio {
     }
 
     TestSlot(*) {
-        ; The test uses saved settings; SAVE SLOT to apply any edits first.
         if !this.Slots.Has(this.Selected)
             return
-        s := this.Slots[this.Selected]
-        if s.Source = "Local" && s.File = "" {
-            MsgBox("Choose a picture, enable and SAVE SLOT first.", "Test slot", "Icon!")
+        s := this.ReadCurrentSlot()
+        if s.Source = "Local" {
+            try this.Pictures.RenderPreview(this.Selected, s)
+            catch Error as err
+                MsgBox(err.Message, "Picture preview", "Icon!")
             return
         }
+        ; MIC is an explicit external shortcut test, not a local draft preview.
         token := this.ShowSlot(this.Selected)
         if token {
             this.ArmHide(token, 2)
@@ -731,6 +818,7 @@ class OverlayStudio {
     }
 
     TogglePaused(*) {
+        this.Pictures.Suspend()
         this.HideCurrent()
         this.UnbindAll()
         this.Enabled := !this.Enabled
@@ -748,7 +836,7 @@ class OverlayStudio {
     }
 
     SaveMicShortcut(*) {
-        combo := this.MicHotkeyField.Value
+        combo := this.MicEditor.ReadShortcut()
         if !this.ValidCombo(combo) {
             MsgBox("Record one complete keyboard shortcut, such as Ctrl+Alt+H or F19.")
             return
@@ -759,9 +847,14 @@ class OverlayStudio {
         this.MicToggle := combo
         this.SaveConfig()
         this.WriteLog("MIC toggle shortcut saved: " combo)
+        this.MicEditor.UpdateDraftStatus()
     }
 
     ManualMicToggle(*) {
+        if this.DesktopTest {
+            MsgBox("External MIC shortcut tests are disabled in this isolated UI test.")
+            return
+        }
         if !ProcessExist("MultiImageCanvas.exe") {
             this.WriteLog("MIC not running. Nothing sent.")
             MsgBox("Open Multi Image Canvas before testing.")
@@ -832,6 +925,8 @@ class OverlayStudio {
     }
 
     StartKeyDisplay() {
+        if this.DesktopTest
+            return
         if !this.Hud.Enabled || !this.Enabled || this.Capturing || this.KeyHook
             return
         try {
@@ -1013,19 +1108,19 @@ class OverlayStudio {
     }
 
     ImportLegacy(*) {
-        file := FileSelect(1, , "Select your old LayerPictures.ini", "INI settings (*.ini)")
-        if file = ""
+        legacyIniFile := FileSelect(1, , "Select your old LayerPictures.ini", "INI settings (*.ini)")
+        if legacyIniFile = ""
             return
         if MsgBox("Importing will REPLACE current picture slots. Continue?", "Import old settings", "YesNo Icon?") != "Yes"
             return
         imported := []
-        SplitPath(file, , &iniDir)
+        SplitPath(legacyIniFile, , &iniDir)
         Loop 4 {
             n := A_Index
             slot := this.NewSlot(n)
             slot.Name := "Imported picture " n
             for property in ["File", "Key", "Mode", "Opacity", "Width", "Position", "Duration", "Pass"] {
-                try slot.%property% := IniRead(file, "Slot" n, property, slot.%property%)
+                try slot.%property% := IniRead(legacyIniFile, "Slot" n, property, slot.%property%)
             }
             if slot.File != "" && !RegExMatch(slot.File, "i)^(?:[a-z]:[\\]|\\\\)")
                 slot.File := iniDir "\" slot.File
@@ -1039,6 +1134,7 @@ class OverlayStudio {
         }
         this.UnbindAll(), this.HideCurrent()
         this.Slots := imported, this.Selected := 1
+        this.Pictures.LegacyChanged(0, true)
         this.BindAll(), this.SaveConfig(), this.RefreshList(), this.ReadSlotFields(1)
         this.Tabs.Choose(1)
         this.WriteLog("Imported previous LayerPictures.ini: " file)
@@ -1083,6 +1179,7 @@ class OverlayStudio {
         slot.Enabled := 1, slot.Source := "MIC", slot.Mode := "Hold"
         slot.Key := key, slot.MicCanvas := "", slot.Name := "MIC hold (" key ")"
         this.Slots[index] := slot
+        this.Pictures.LegacyChanged(index, false, true)
         this.Selected := index
         this.UnbindAll(), this.HideCurrent()
         this.BindAll(), this.SaveConfig(), this.RefreshList(), this.ReadSlotFields(index)
@@ -1095,11 +1192,24 @@ class OverlayStudio {
     }
 
     Shutdown(*) {
+        this.Feedback.Shutdown()
+        this.HubBridge.Shutdown()
+        this.GroupRoute.Shutdown()
+        this.Pictures.Shutdown()
         this.GameInput.StopForHost()
         SetTimer(this.TickFn, 0)
         this.HideCurrent()
         this.StopKeyDisplay()
         this.DestroyHUD()
         this.UnbindAll()
+    }
+
+    ConfirmDiscardDraft(question := "This slot has unsaved edits. Discard them and add a new slot?") {
+        draft := this.ReadCurrentSlot()
+        for field, value in this.Slots[this.Selected].OwnProps() {
+            if (draft.%field% "") != (value "")
+                return MsgBox(question, "Unsaved picture edits", "YesNo Icon?") = "Yes"
+        }
+        return true
     }
 }

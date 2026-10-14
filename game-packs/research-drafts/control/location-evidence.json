@@ -1,0 +1,37 @@
+{
+  "id": "control",
+  "name": "Control",
+  "schema_status": "binary_schema_unresolved",
+  "locations": [
+    {
+      "root": "steam_user",
+      "pattern": "870780/remote/preferences_data"
+    },
+    {
+      "root": "documents",
+      "pattern": "My Games/Control/Saves/preferences_data"
+    },
+    {
+      "root": "local",
+      "pattern": "Remedy/Control/Default-Epic-User/preferences/data.chunk"
+    },
+    {
+      "root": "local",
+      "pattern": "Remedy/Control/Default-Generic-User/preferences/data.chunk"
+    }
+  ],
+  "format": "Opaque binary preferences; storefront-dependent filenames",
+  "limitations": [
+    "A binary preferences file is not renderer.ini. Renderer settings must not be fabricated as keyboard bindings.",
+    "The current keyboard-record schema and any integrity fields remain unresolved. Microsoft Store/WGS variants are not assigned an invented container filename.",
+    "V3 Switch Weapon shares a documented context/hold relationship with Use/Seize; the actual file must establish whether the bindings are separable."
+  ],
+  "source_urls": [
+    "https://www.gog.com/forum/control/control_save_game_files/page2",
+    "https://community.pcgamingwiki.com/files/file/2581-control-hdrultrawidedlssrt-patch/page/6/",
+    "https://rutube.ru/video/dd6260e728040ec5246fa2c64e6d5226/"
+  ],
+  "discovery_only": true,
+  "native_recipe_bundled": false,
+  "source_review_date": "2026-10-13"
+}

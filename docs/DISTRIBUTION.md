@@ -1,5 +1,29 @@
 # Repository and Drive export
 
+## 2026-10-14 — AI Efficiency Foundation 0.26 source and acceptance
+
+The sealed source delivery contains 380 authored payloads plus generated manifest metadata. Source archive SHA-256: `ad4bcddbd76845bf35bdb67e1eee529dcab921263a742a596eec93fb6d41afd6`; exact Preview SHA-256: `bf2989da32f197f021283aef06368e7f028cfe7e23619c5d766715f2e242f977`. The Preview later passed the bounded native Windows/Tk and external stdio acceptance recorded in [`AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.md`](AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.md).
+
+A private Drive delivery preserves the immutable ZIP and checksum; the public repository keeps editable source, sanitized receipts and exact hashes rather than archive binaries or machine-local receipts. Canonical reconciliation is documented separately and does not itself prove merge, production installation or game/runtime acceptance.
+
+## 2026-10-11 — Workflow dry-run source continuation
+
+Hub 0.9.0 adds two optional data-only workflow modules, three fixture suites and two generic unknown/blocked recipe examples; Coordinator/Sessions are 0.3.0, Journal remains 0.1.0. Combined curated inventory includes their exact versions; input-only source inventory is unchanged. [Current scoped receipt](GAME-TOOL-CONNECTIONS.md#2026-10-11--090-offline-workflow-dry-runs) records acceptance/preservation. No operational installer/rollback, runtime/game/recording acceptance or publication is implied.
+
+Current checks: 784 toolkit cases (782 passes/two physical-symlink skips), 11 separate PictureHost static checks and 50 PowerShell 7 export contracts. Fixture/withdrawn-widget success is not installed-host acceptance or a native profile restore test.
+
+Private recipes/plans, selected original evidence/reports/journals, installed settings/native profiles/assets and third-party binaries remain excluded. Source ZIP verification is not whole-system or restored-behavior acceptance. No Drive/GitHub publication, commit/push or sharing change is requested in this continuation. Prior 0.8.0/checkpoints remain separate. Any checksum receipt added after packaging belongs to a later documentation revision, not the immutable archive.
+
+Local source archive: `GameTools-input-0.5-preview.3-hub-0.9.0-catalog-0.1.1-2026-10-11.zip`, **98 curated authored files plus MANIFEST.json**, 486619 bytes; SHA-256 `017633EE6D5058B606DCA681EE8DBCBFA567684E5AAEBDD2C7EB0E6586F6B778`; manifest SHA-256 `42956FF84D324BE768096D3B72951A5A1E674E0D057407CC322BF064ADA878AC`. All archive entries were byte-verified and source hashes current at `2026-10-11T18:15:03.3207994Z`. This appended receipt is newer than the packaged document and is not a published Git revision. Scoped before/after checkpoints, authored BLOCKED plan and closed offline journal remain private/separate; restoration is untested.
+
+## 2026-10-11 — Saved crash-evidence source continuation
+
+Hub 0.8.0 adds two optional saved-evidence modules and three fixture suites; Coordinator/Sessions are 0.2.0 and Journal remains 0.1.0. The combined curated source inventory includes this authored slice and exact component versions; the input-only bundle is unchanged. **701 toolkit passes/two physical-symlink skips**, 11 separate PictureHost static checks and 48 PowerShell 7 export contracts pass. All 11 protected file bytes/times are preserved. See [the scoped receipt](GAME-TOOL-CONNECTIONS.md#2026-10-11--080-saved-crash-evidence-intake).
+
+Saved-evidence packets, raw original XML/journals/logs, private receipts/locators, settings/device profiles and third-party binaries are excluded. Local source packaging is not whole-system/native-profile backup or restore acceptance. No Drive/GitHub publication, commit/push, sharing change or live game/capture/benchmark/input test is included. A checksum receipt appended after packaging belongs to a later documentation revision than the immutable archive.
+
+Local source archive: `GameTools-input-0.5-preview.3-hub-0.8.0-catalog-0.1.1-2026-10-11.zip`, **91 curated authored files plus MANIFEST.json**, 458646 bytes; SHA-256 `EF142A7769778E83BA9FCFCD2C72FDF0FC5E56B327B830489B687B0E83A3882D`; manifest SHA-256 `E8E806D9F13C4FE25C283364FE737E1FB7D4173F58169C6128F25ABB16CFB359`. Every archive entry was byte-verified; source hashes were current at `2026-10-11T17:45:17.7546045Z`. This receipt is newer than the packaged document and is not a published Git revision. Scoped private before/after snapshots, synthetic evidence packets and journals remain separate; restoration remains untested.
+
 The maintained source is [dodWhatUp/install-modes-for-games](https://github.com/dodWhatUp/install-modes-for-games). Start with the [installed-games guide](INSTALLED-GAMES-MOD-GUIDE.md). Google Drive holds a dated information export; it is not an automatic synchronization service.
 
 ## 2026-10-11 — FG/memory benchmark safety guidance
@@ -75,6 +99,22 @@ Final archive: 190,808 bytes; SHA-256 `D2553493EE8430E498A2905A9E21DF91C0C9552D8
 The updated exporter passed 40 synthetic contracts in both PowerShell 7 and Windows PowerShell 5.1; 35 catalog and 22 Hub tests passed. Final static review checked 108 local Markdown targets/anchors across all eight changed/new Markdown files with zero unresolved targets, and both JSON templates retained safe defaults. These checks establish source/planning/export behavior, not live input, native profile restore, graphics correctness, crash durability or measured resource overhead. No games, saves, settings changes, recording or benchmarks were started. No global Codex setting, new connector or automatic cross-chat synchronization was created.
 
 
+## 2026-10-11 — Local Hub 0.4.0 FG-preflight source checkpoint
+
+The local authored-source checkpoint contains 57 curated files plus `MANIFEST.json`, adding the read-only FG inspector/policy and their fixture tests to the previous Hub/catalog foundation. Versions: GameInputModule 0.5-preview.3 unchanged, Hub 0.4.0, Catalog 0.1.1 unchanged, FG inspector/policy 0.1.0. Archive `GameTools-input-0.5-preview.3-hub-0.4.0-catalog-0.1.1-2026-10-11.zip`: 253,231 bytes, SHA-256 `2A9D6FEC7283C72236AD5DA4743D323815423446B8131573092F592390F8B15A`. Manifest SHA-256 `F61025EFE0F0B7C6D4411881B056AFCA0C2B54867A6FE3982AFE42E034B435D3`. Every source/manifest ZIP entry was verified and source hashes rechecked at `2026-10-11T00:33:05.0346252Z`.
+
+All 230 Python contracts and 42 PowerShell 7 export contracts passed. Existing Windows PowerShell 5.1 execution policy blocked the current invocation; it was not changed or bypassed, and no new pass is claimed there. Before/after inventories verify all 18 protected AHK/Studio/settings/Hub-registry/historical R5 files unchanged. The actual read-only Cyberpunk FG check observed configured Dynamic mode and returned BLOCKED; native settings bytes/time remained unchanged. Runtime delivery/owners, game input, memory/workload and benchmark acceptance remain unverified/deferred.
+
+This source package and the private observation/preservation receipts are local only. No GitHub commit/push, Drive upload, permission change or profile migration occurred for this feature. Earlier r5/public guidance checkpoints are preserved and do not contain this implementation. The receipt/index postdate the immutable archive; later documentation is not claimed byte-identical to its packaged revision. It is source recovery, not a native-profile/game/installed-state backup. Follow the [0.4.0 evidence and scoped rollback](GAME-TOOL-CONNECTIONS.md#2026-10-11--040-read-only-fg-preflight).
+
+## 2026-10-11 — Local Hub 0.3.0 source checkpoint
+
+The local catalog integration checkpoint contains 53 curated authored files plus `MANIFEST.json`, including the optional bridge/panel and their tests. Archive filename: `GameTools-input-0.5-preview.3-hub-0.3.0-catalog-0.1.1-2026-10-11.zip`; size 214,716 bytes; SHA-256 `FD9F3B7ECBC7BF73510E0CF5D8AFD0C6E20602396FCF2CF31301A61E2C38C39B`. All source and manifest ZIP entries were size/hash-verified, with source hashes rechecked after archive verification. This receipt postdates the immutable package; the archive is not claimed identical to subsequently edited documentation or a Git commit.
+
+Before/after preservation inventories show all 18 tracked AHK, Studio settings, Hub registry and historical R5 files byte-identical. The existing AHK process was left running and untouched. Source tests establish the optional catalog GUI/CLI contracts, not a complete host/profile regression or game test. No profile import/migration, game, save, graphics, capture or benchmark action occurred.
+
+This checkpoint is local only: no GitHub commit/push or Drive upload was made for this build stage. The earlier r5 Drive checkpoint remains preserved and contains Hub 0.2.0. The new archive is authored-source recovery, not personal settings, native-profile, installed-state or full-system recovery. Follow the [Hub integration evidence](GAME-TOOL-CONNECTIONS.md#2026-10-11--030-catalog-integration) for acceptance and scoped rollback.
+
 ## 2026-10-11 — F12 game-specific interface policy export
 
 The [private F12 interface defaults snapshot](https://drive.google.com/file/d/11OhRLVDLAqVUZqxSr2fGnuLBvrrbfYKO/view) contains six reviewed instruction, preference, workflow and template files plus README and MANIFEST.json, sourced from canonical commit 495124eef67ae1a5e90998a62a2caf7a378ca655. Archive size: 27,819 bytes; SHA-256 A8DD9174CA21D6642043D6FEC16735DF45CD637855EE9FFCEFB6E35A0F78C25A.
@@ -82,3 +122,31 @@ The [private F12 interface defaults snapshot](https://drive.google.com/file/d/11
 All six source files were size/hash-verified inside the local archive. The downloaded Drive archive matched the local archive byte-for-byte. Drive metadata confirms the existing Game Modding folder, shared=false / not_shared; no sharing permissions were changed.
 
 Coverage: six instruction sources copied and byte-verified; source owner/revision referenced; Drive archive readback byte-verified; restore-tested: no (this is a documentation snapshot, not a game-configuration restore). The receipt postdates the immutable archive. No game was launched or tested for this documentation update.
+
+## 2026-10-11 — Offline comparison source continuation
+
+The local Hub 0.5.0 source continuation adds a [60-item checklist](GAME-TOOLS-MASTER-CHECKLIST.md), [offline report guide](OFFLINE-COMPARISON-REPORTS.md), pure comparison core, optional panel, schema/example and fixture tests to the previous Hub/catalog/FG foundation. No game/mod binary, raw personal report, native profile or installed-state recovery is included. Existing AHK implementation/settings are not deployed or migrated.
+
+Current acceptance: 339 Python toolkit contracts, 11 separate PictureHost source checks and 43 PowerShell 7 export contracts pass. Withdrawn Tk widgets are fixture UI acceptance, not observed live desktop/game acceptance. All 11 tracked protected files retain their bytes and modification times. Real rendering/injected imports remain BLOCKED pending trusted runtime FG; normalized bytes and declared original-report hashes cannot override the gate. See [the scoped connection receipt](GAME-TOOL-CONNECTIONS.md#2026-10-11--050-offline-comparison-and-reporting).
+
+This stage has no GitHub commit/push, Drive upload or sharing change. Published r5 and older checkpoints remain unchanged. Source packaging is a local immutable checkpoint; the final archive receipt added after packaging is not claimed byte-identical to that packaged documentation revision. No agent game/capture/benchmark work was resumed.
+
+Local final source archive: `GameTools-input-0.5-preview.3-hub-0.5.0-catalog-0.1.1-2026-10-11.zip`, **71 curated authored files plus MANIFEST.json**, 346,494 bytes; SHA-256 `B7FE818F542160BD9653BC94E3F57EAE8A7686391A5CDC4D3922E5381A9207A6`. Manifest SHA-256 `C014848D998868B97A073A58ECF9147B4BE83025EE0E809902D9CD633DF41A41`. Every source/manifest ZIP entry was verified; source hashes were current at `2026-10-11T02:38:37.7027444Z`. This receipt postdates the immutable packaged revision; it is source recovery, not native-profile/installed-state/full-system recovery. Private before/after inventories and synthetic report outputs remain separate and were not uploaded.
+
+## 2026-10-11 — Saved-report adapters source continuation
+
+Hub 0.6.0 adds the bounded [saved-summary importer](../scripts/GameToolReportImport.py), optional Comparison wizard/CLI, Comparison core 0.1.1 metadata extension, four authored synthetic format examples and new fixture contracts. The combined curated export includes these sources; the GameInput-only bundle is not widened. Personal original reports, private import bundles/receipts/settings/profiles and third-party binaries remain excluded. CSV allowance is for the explicitly curated authored format examples, not an automatic export of saved captures.
+
+Acceptance: **442 Python toolkit passes, one physical-symlink test skipped**, **11 separate PictureHost source checks** and **44 PowerShell 7 export contracts**. Scoped protected-file hash/time preservation passed. Four historical Cyberpunk reports were inspected read-only; PresentMon stats acceptance is source-layout fixtures only. The [connection receipt](GAME-TOOL-CONNECTIONS.md#2026-10-11--060-saved-report-import-adapters) owns exact coverage and rollback. Games, benchmarks and recording stayed stopped; no AHK/profile migration occurred. No GitHub/Drive publication or sharing change was performed. A local source checkpoint is recovery of curated source only, not installed/native-profile/full-system recovery; the final receipt appended after packaging does not retroactively change the immutable packaged documentation.
+
+Local archive: `GameTools-input-0.5-preview.3-hub-0.6.0-catalog-0.1.1-2026-10-11.zip`, **79 curated authored files plus MANIFEST.json**, 384332 bytes; SHA-256 `E328B3531106F478FED329C70CB98DD9A020C90AAA4EB575C0460F2A68C57CA7`. Manifest SHA-256 `28A32D99D93F02B97022C7378BAEDF4C54374B0F6F21F8406C915CA45FB759C7`. Every source/manifest ZIP entry was verified and source hashes were current at `2026-10-11T03:00:22.0520781Z`. This receipt was appended after packaging; the package retains that earlier immutable documentation revision. Private before/after inventories, original personal reports and synthetic import/export test outputs remain outside it. Restore acceptance and complete native-profile recovery are not claimed.
+
+## 2026-10-11 — Offline coordination and journal source continuation
+
+Hub 0.7.0 adds Coordinator/Journal/Sessions panel 0.1.0 and fixed saved-data CLI capabilities without replacing AHK features or profiles. The combined source export adds three authored modules and four test suites; the input-only bundle remains unchanged. Component versions are captured from exact source bytes. Private journals, recovered evidence, settings, original personal reports, native exports, raw logs/video and third-party binaries are excluded.
+
+Acceptance: **618 Python toolkit passes, two physical-symlink tests skipped**, **11 separate PictureHost source checks** and **46 PowerShell 7 export contracts**. Authored helper interruption and valid-prefix recovery, fixed read-only dispatch, lifecycle/drift/durability/ownership failures and withdrawn Tk callbacks are fixture-scoped, not live game/installed-host or measured resource acceptance. All 11 protected files retain exact bytes and UTC modification times. See [the current connection receipt](GAME-TOOL-CONNECTIONS.md#2026-10-11--070-offline-coordination-and-journal) for coverage and rollback.
+
+No game, benchmark, recording, save/input/graphics/native-profile change or AHK restart occurred. No Drive/GitHub upload, commit/push or sharing change is included. This is an immutable local curated-source checkpoint, not whole-system/native-profile recovery or restore acceptance. Private preservation inventories and synthetic test journals are separate. The final archive/checksum receipt appended after packaging is newer than that package's document revision.
+
+Local archive: `GameTools-input-0.5-preview.3-hub-0.7.0-catalog-0.1.1-2026-10-11.zip`, **86 curated authored files plus MANIFEST.json**, 432198 bytes; SHA-256 `60496058C30807D19E372DA9DC59ABD0AC7AD66EFB806559E2A0DF9374A14B81`. Manifest SHA-256 `B456D6C3E49CBC70595F4BFB68119379BECB604C9CDE8A025E53488196F46053`. Every source/manifest ZIP entry was verified; source hashes were current at `2026-10-11T07:15:22.8648172Z`. The manifest records Hub 0.7.0 and coordinator/journal/panel 0.1.0 from their exact sources. This checksum receipt postdates the immutable packaged document; no claim is made that the archive matches later documentation bytes or a published Git revision. Restoration remains untested, and private recovery/configuration/test-journal data is not included.

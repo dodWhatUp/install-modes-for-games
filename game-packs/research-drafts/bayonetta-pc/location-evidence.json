@@ -1,0 +1,29 @@
+{
+  "id": "bayonetta-pc",
+  "name": "Bayonetta PC",
+  "schema_status": "storage_unresolved",
+  "locations": [
+    {
+      "root": "documents",
+      "pattern": "Bayonetta/system_data"
+    },
+    {
+      "root": "steam_user",
+      "pattern": "460790/remote/system_data"
+    }
+  ],
+  "format": "Opaque system-data candidates; authoritative keyboard-binding storage/decoder unresolved",
+  "limitations": [
+    "Firsthand reports disagree about which copy stores which settings. Documents system_data may chiefly contain graphics settings; resetting it did not consistently reset keybindings.",
+    "No verified current binary schema or keybinding record layout. No replacement file or repair of the invalid Azeron ZIP is attempted.",
+    "V3 gameplay and menus are separate; Punch/Kick and weapon scrolling remain mouse-owned."
+  ],
+  "source_urls": [
+    "https://steamcommunity.com/app/460790/discussions/0/1319961618835302733/",
+    "https://steamcommunity.com/app/460790/discussions/0/1734333281939610244/",
+    "https://steamcommunity.com/app/460790/discussions/0/135514507322469998/"
+  ],
+  "discovery_only": true,
+  "native_recipe_bundled": false,
+  "source_review_date": "2026-10-13"
+}

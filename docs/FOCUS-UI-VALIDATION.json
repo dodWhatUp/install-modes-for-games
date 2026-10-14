@@ -1,0 +1,969 @@
+{
+  "schema_version": 1,
+  "version": "0.22.0-preview.1",
+  "environment": "isolated Linux/Python 3.13/Tk under Xvfb; widget geometry only; no capture",
+  "baseline": {
+    "suites": 42,
+    "passed": 1381,
+    "skipped": 2
+  },
+  "candidate": {
+    "suites": 45,
+    "test_cases": 1445,
+    "passed": 1443,
+    "skipped": 2,
+    "new_tests": 62,
+    "suites_detail": [
+      {
+        "suite": "Test-GameModOps.py",
+        "returncode": 0,
+        "tests": 63,
+        "skipped": 0,
+        "seconds": 0.96,
+        "log_sha256": "2016dca502c998fa8bc0b0ada4c88bcff5212548479b7f10e40daffea0422d53"
+      },
+      {
+        "suite": "Test-GameModPanel.py",
+        "returncode": 0,
+        "tests": 8,
+        "skipped": 0,
+        "seconds": 1.11,
+        "log_sha256": "c4bcfd67c7924ead6e6f523f6ff5ba14f6a0c3b94c0b5bf52bfc4d0c17f82396"
+      },
+      {
+        "suite": "Test-GameToolAppearance.py",
+        "returncode": 0,
+        "tests": 46,
+        "skipped": 0,
+        "seconds": 5.86,
+        "log_sha256": "e9eb4d34b2627b392973ca89c23bb04107cd27720f70cd830aa0dc7e5a2cbd48"
+      },
+      {
+        "suite": "Test-GameToolAutomation.py",
+        "returncode": 0,
+        "tests": 52,
+        "skipped": 0,
+        "seconds": 1.09,
+        "log_sha256": "400cbfcf908a38e1502201d1bb20c1e0eb9e781de9b573eac721905edd8276db"
+      },
+      {
+        "suite": "Test-GameToolAutomationPanel.py",
+        "returncode": 0,
+        "tests": 22,
+        "skipped": 0,
+        "seconds": 3.14,
+        "log_sha256": "1345ee627d2d63054592a9aad08a5eda1f23fa822eacce0a706f8fe935ff7ff3"
+      },
+      {
+        "suite": "Test-GameToolAzeronLayer.py",
+        "returncode": 0,
+        "tests": 22,
+        "skipped": 0,
+        "seconds": 1.17,
+        "log_sha256": "49dd289801d696525da7aceac1f853b8db3c29e2bd9d72669d7d4033bcfe9ab5"
+      },
+      {
+        "suite": "Test-GameToolCatalog.py",
+        "returncode": 0,
+        "tests": 35,
+        "skipped": 0,
+        "seconds": 0.9,
+        "log_sha256": "ffbb40b003db5fc5fc714ef85ba10e70336ee279c4428e67493a65299d662d76"
+      },
+      {
+        "suite": "Test-GameToolCatalogBridge.py",
+        "returncode": 0,
+        "tests": 36,
+        "skipped": 0,
+        "seconds": 1.11,
+        "log_sha256": "01677176247d0102dc8cc04eec42855d40056bdc173a076b814f369da8a6e880"
+      },
+      {
+        "suite": "Test-GameToolCompactUI.py",
+        "returncode": 0,
+        "tests": 40,
+        "skipped": 0,
+        "seconds": 1.66,
+        "log_sha256": "c0b2f794d142e366e528445be80b2280a47b96000d358d75eef98c813ea8345c"
+      },
+      {
+        "suite": "Test-GameToolComparison.py",
+        "returncode": 0,
+        "tests": 63,
+        "skipped": 0,
+        "seconds": 1.22,
+        "log_sha256": "b7e7ed40eaa369b561e53993876befc8e9f2adf327193bc4f1a3f2e77ff8ef2f"
+      },
+      {
+        "suite": "Test-GameToolComparisonCLI.py",
+        "returncode": 0,
+        "tests": 9,
+        "skipped": 0,
+        "seconds": 0.96,
+        "log_sha256": "a0ea47c105422ff2a61eab2c0c85415c65d1e85d039f9a9690ebd4515d6a6233"
+      },
+      {
+        "suite": "Test-GameToolComparisonPanel.py",
+        "returncode": 0,
+        "tests": 39,
+        "skipped": 0,
+        "seconds": 2.28,
+        "log_sha256": "84b976b9c3464b0fac289a961d61e679e25036fadf2c3384e2b61c369a53f49b"
+      },
+      {
+        "suite": "Test-GameToolCoordinator.py",
+        "returncode": 0,
+        "tests": 47,
+        "skipped": 0,
+        "seconds": 1.14,
+        "log_sha256": "a7c592f3e73b015d4b71ac02bfe9c0924f6d82ae7649eb5e22041dc5a6e19bdb"
+      },
+      {
+        "suite": "Test-GameToolCrashEvidence.py",
+        "returncode": 0,
+        "tests": 50,
+        "skipped": 0,
+        "seconds": 1.12,
+        "log_sha256": "79bc19c2918abd52d7ab2a4f5c65f54c89ddf8d33219fcb3fb27f31c2a26a371"
+      },
+      {
+        "suite": "Test-GameToolEvidenceCLI.py",
+        "returncode": 0,
+        "tests": 12,
+        "skipped": 0,
+        "seconds": 1.04,
+        "log_sha256": "701c8ee9e750a38bdfd752b03ffbd69520a3afce7e6b2868aa6c42c7b5f8437a"
+      },
+      {
+        "suite": "Test-GameToolEvidencePanel.py",
+        "returncode": 0,
+        "tests": 21,
+        "skipped": 0,
+        "seconds": 1.76,
+        "log_sha256": "df743dbfd68d3a65ed056213965863e7d224fd7d18f69740873ef8ea4fa8178a"
+      },
+      {
+        "suite": "Test-GameToolHub.py",
+        "returncode": 0,
+        "tests": 22,
+        "skipped": 0,
+        "seconds": 0.81,
+        "log_sha256": "ede5344222d913c73129611372fa93eee9b5f8d634055e3bcd5c1de4b0293cca"
+      },
+      {
+        "suite": "Test-GameToolHubCatalog.py",
+        "returncode": 0,
+        "tests": 45,
+        "skipped": 0,
+        "seconds": 4.92,
+        "log_sha256": "2c983d2584718709f9786bf23cd5600a366163c69745937844bd463d57b68a6b"
+      },
+      {
+        "suite": "Test-GameToolJournal.py",
+        "returncode": 0,
+        "tests": 59,
+        "skipped": 0,
+        "seconds": 1.38,
+        "log_sha256": "3d5886b3c92161cfb8d9bb50d2d821f1cf23025a6b4cdd8e6577666f3bfe2f44"
+      },
+      {
+        "suite": "Test-GameToolModernUI.py",
+        "returncode": 0,
+        "tests": 22,
+        "skipped": 0,
+        "seconds": 10.47,
+        "log_sha256": "afae476a60eb67fef432680d7a6cd4cce9d4d9f2a116433f77be8f89e7946dab"
+      },
+      {
+        "suite": "Test-GameToolOverlay.py",
+        "returncode": 0,
+        "tests": 54,
+        "skipped": 1,
+        "seconds": 2.89,
+        "log_sha256": "ecb20163cc1e5ae759da972083f8cb3abb72723717bea24ff28e31691059d292"
+      },
+      {
+        "suite": "Test-GameToolReadiness.py",
+        "returncode": 0,
+        "tests": 59,
+        "skipped": 0,
+        "seconds": 1.86,
+        "log_sha256": "452f8dd18e8fe28beb68c64f83bef9f94127c71304d2a78745a09e72b4922006"
+      },
+      {
+        "suite": "Test-GameToolReadinessCLI.py",
+        "returncode": 0,
+        "tests": 9,
+        "skipped": 0,
+        "seconds": 7.86,
+        "log_sha256": "7d0e0c230a1290776c5c38b6b57b92b172bc9578c5bde9b781e80e169f78af52"
+      },
+      {
+        "suite": "Test-GameToolReadinessPanel.py",
+        "returncode": 0,
+        "tests": 19,
+        "skipped": 0,
+        "seconds": 2.03,
+        "log_sha256": "33ee41967c8fbd7abbc5bb0da51fb277d74aabf597ac5529a17b2861a906b61c"
+      },
+      {
+        "suite": "Test-GameToolReportImport.py",
+        "returncode": 0,
+        "tests": 42,
+        "skipped": 0,
+        "seconds": 0.96,
+        "log_sha256": "b1d9da847d40d2ebf78e282efe29948fddc6a54bd37d7b652fb7a1c4a756ddac"
+      },
+      {
+        "suite": "Test-GameToolReportImportCLI.py",
+        "returncode": 0,
+        "tests": 16,
+        "skipped": 0,
+        "seconds": 1.02,
+        "log_sha256": "d740879e0f28c6ebf30e602fbc7a0dfb92c14a2f4cb0388e3e73a93501f5b439"
+      },
+      {
+        "suite": "Test-GameToolReportImportPanel.py",
+        "returncode": 0,
+        "tests": 41,
+        "skipped": 0,
+        "seconds": 2.86,
+        "log_sha256": "8668e687abcc423a123e2990980049e538299508478fe410b18201280136e8f0"
+      },
+      {
+        "suite": "Test-GameToolSessionCLI.py",
+        "returncode": 0,
+        "tests": 12,
+        "skipped": 0,
+        "seconds": 0.92,
+        "log_sha256": "3e7c70d26af9d26242df9d61c26163883cce9fc941dfb004bae16af3dfc3d510"
+      },
+      {
+        "suite": "Test-GameToolSessionPanel.py",
+        "returncode": 0,
+        "tests": 61,
+        "skipped": 0,
+        "seconds": 2.77,
+        "log_sha256": "90d278cb378fd15510e60a100874075bce873c07e5e8e6f6181f2a3bad8632e0"
+      },
+      {
+        "suite": "Test-GameToolUnified.py",
+        "returncode": 0,
+        "tests": 33,
+        "skipped": 0,
+        "seconds": 1.24,
+        "log_sha256": "272d2d850409c2432e0d1259c407b3314b9c8be22ab27f9dc59b46b3621ed978"
+      },
+      {
+        "suite": "Test-GameToolUserData.py",
+        "returncode": 0,
+        "tests": 42,
+        "skipped": 0,
+        "seconds": 0.74,
+        "log_sha256": "e9422f0368d50f15569d1030866515bd32d34c949860c1b69f7a7669ff57da34"
+      },
+      {
+        "suite": "Test-GameToolUserDataPanel.py",
+        "returncode": 0,
+        "tests": 32,
+        "skipped": 0,
+        "seconds": 1.89,
+        "log_sha256": "9b5174ac88f1f3d7663ea72caaef8336640acafe0b8067b93f3b31bb5d9ec422"
+      },
+      {
+        "suite": "Test-GameToolWorkflow.py",
+        "returncode": 0,
+        "tests": 48,
+        "skipped": 0,
+        "seconds": 0.86,
+        "log_sha256": "1a575785e497d656c4b8095c0bf07ef723f3519e0b69be44dc6ed4ed16662638"
+      },
+      {
+        "suite": "Test-GameToolWorkflowCLI.py",
+        "returncode": 0,
+        "tests": 10,
+        "skipped": 0,
+        "seconds": 0.9,
+        "log_sha256": "bde7483e1bf801fdf831a7680cea9c560d98f7177d546734c152f403826b357c"
+      },
+      {
+        "suite": "Test-GameToolWorkflowPanel.py",
+        "returncode": 0,
+        "tests": 23,
+        "skipped": 0,
+        "seconds": 1.65,
+        "log_sha256": "9d13d91e3dbe7fe2367abc4785f0e5b35168e1202176f2f4dea800a4cb7236c4"
+      },
+      {
+        "suite": "Test-GameToolWorkspace.py",
+        "returncode": 0,
+        "tests": 40,
+        "skipped": 0,
+        "seconds": 5.34,
+        "log_sha256": "a2d09cc5ea126ee0323ceb7fca4b37dbda2992631c6df63fa1c5659f0bb54e6d"
+      },
+      {
+        "suite": "Test-ModernStartup.py",
+        "returncode": 0,
+        "tests": 1,
+        "skipped": 0,
+        "seconds": 2.85,
+        "log_sha256": "1e3e4d327051de81b67cf02e5c6613215a900d6c0871feded187ebd1d2150378"
+      },
+      {
+        "suite": "Test-NativePictureLayout.py",
+        "returncode": 0,
+        "tests": 4,
+        "skipped": 0,
+        "seconds": 0.75,
+        "log_sha256": "c5f90bec2420d83bf546c2facf8d1de4cb856d0109736b20b5cd2b59a1d7c1ba"
+      },
+      {
+        "suite": "Test-PictureHost.py",
+        "returncode": 0,
+        "tests": 11,
+        "skipped": 0,
+        "seconds": 0.71,
+        "log_sha256": "5ca5bd9b0e7047b84b2220f40cb4359995f34608e8f6215d2252687806b6a9e2"
+      },
+      {
+        "suite": "Test-UnifiedToolsLaunchers.py",
+        "returncode": 0,
+        "tests": 12,
+        "skipped": 0,
+        "seconds": 0.89,
+        "log_sha256": "6beca50ffc6cf5b6f7fbebdf33dbc62d990de27ea2762d7dbc7a09c9713bd4cb"
+      },
+      {
+        "suite": "test_game_fg_inspector.py",
+        "returncode": 0,
+        "tests": 34,
+        "skipped": 1,
+        "seconds": 0.81,
+        "log_sha256": "59fadf488cfa87a9ab492a76646192204cb41c45a181bdea87987a682af9b8d4"
+      },
+      {
+        "suite": "test_game_fg_preflight.py",
+        "returncode": 0,
+        "tests": 67,
+        "skipped": 0,
+        "seconds": 0.85,
+        "log_sha256": "a2b3f1683a0ef4b12dc4b953544d60a8975906a1ea2b2ef5a2aee3624aae1826"
+      },
+      {
+        "suite": "Test-GameToolFocus.py",
+        "returncode": 0,
+        "tests": 41,
+        "skipped": 0,
+        "seconds": 11.54,
+        "log_sha256": "801b3cf2cc5c9afc174e2151b377bef9b21c53abd178a68ff4f9b3dd1692612f"
+      },
+      {
+        "suite": "Test-GameToolFocusHost.py",
+        "returncode": 0,
+        "tests": 10,
+        "skipped": 0,
+        "seconds": 22.26,
+        "log_sha256": "bcc78592da67a4b47d2811304826244cf0a820920d7c11e3c2bef1ec1c13c9b4"
+      },
+      {
+        "suite": "Test-GameToolFocusLauncher.py",
+        "returncode": 0,
+        "tests": 11,
+        "skipped": 0,
+        "seconds": 0.74,
+        "log_sha256": "a1d2ea85d610f4045734dc23a84df55b6f32ea8b465afd061464dc94e59df679"
+      }
+    ]
+  },
+  "geometry": [
+    {
+      "width": 1280,
+      "height": 760,
+      "zoom": 100,
+      "widgets": {
+        "commands": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 99,
+          "mapped": true
+        },
+        "search": {
+          "x": 152,
+          "y": 8,
+          "w": 729,
+          "h": 26,
+          "mapped": true
+        },
+        "view": {
+          "x": 1145,
+          "y": 5,
+          "w": 127,
+          "h": 32,
+          "mapped": true
+        },
+        "zoom": {
+          "x": 1014,
+          "y": 5,
+          "w": 127,
+          "h": 32,
+          "mapped": true
+        },
+        "title": {
+          "x": 8,
+          "y": 44,
+          "w": 47,
+          "h": 25,
+          "mapped": true
+        },
+        "stop": {
+          "x": 1132,
+          "y": 42,
+          "w": 140,
+          "h": 30,
+          "mapped": true
+        },
+        "body": {
+          "x": 202,
+          "y": 109,
+          "w": 1064,
+          "h": 643,
+          "mapped": true
+        },
+        "tree": {
+          "x": 202,
+          "y": 339,
+          "w": 1049,
+          "h": 353,
+          "mapped": true
+        },
+        "details": {
+          "x": 202,
+          "y": 793,
+          "w": 157,
+          "h": 30,
+          "mapped": true
+        },
+        "scope": {
+          "x": 8,
+          "y": 72,
+          "w": 997,
+          "h": 22,
+          "mapped": true
+        }
+      },
+      "callbacks": []
+    },
+    {
+      "width": 1024,
+      "height": 700,
+      "zoom": 100,
+      "widgets": {
+        "commands": {
+          "x": 0,
+          "y": 0,
+          "w": 1024,
+          "h": 99,
+          "mapped": true
+        },
+        "search": {
+          "x": 152,
+          "y": 8,
+          "w": 473,
+          "h": 26,
+          "mapped": true
+        },
+        "view": {
+          "x": 889,
+          "y": 5,
+          "w": 127,
+          "h": 32,
+          "mapped": true
+        },
+        "zoom": {
+          "x": 758,
+          "y": 5,
+          "w": 127,
+          "h": 32,
+          "mapped": true
+        },
+        "title": {
+          "x": 8,
+          "y": 44,
+          "w": 47,
+          "h": 25,
+          "mapped": true
+        },
+        "stop": {
+          "x": 876,
+          "y": 42,
+          "w": 140,
+          "h": 30,
+          "mapped": true
+        },
+        "body": {
+          "x": 202,
+          "y": 109,
+          "w": 808,
+          "h": 583,
+          "mapped": true
+        },
+        "tree": {
+          "x": 202,
+          "y": 339,
+          "w": 793,
+          "h": 353,
+          "mapped": true
+        },
+        "details": {
+          "x": 202,
+          "y": 793,
+          "w": 157,
+          "h": 30,
+          "mapped": true
+        },
+        "scope": {
+          "x": 8,
+          "y": 72,
+          "w": 741,
+          "h": 22,
+          "mapped": true
+        }
+      },
+      "callbacks": []
+    },
+    {
+      "width": 820,
+      "height": 640,
+      "zoom": 100,
+      "widgets": {
+        "commands": {
+          "x": 0,
+          "y": 0,
+          "w": 820,
+          "h": 99,
+          "mapped": true
+        },
+        "search": {
+          "x": 152,
+          "y": 8,
+          "w": 269,
+          "h": 26,
+          "mapped": true
+        },
+        "view": {
+          "x": 685,
+          "y": 5,
+          "w": 127,
+          "h": 32,
+          "mapped": true
+        },
+        "zoom": {
+          "x": 554,
+          "y": 5,
+          "w": 127,
+          "h": 32,
+          "mapped": true
+        },
+        "title": {
+          "x": 8,
+          "y": 44,
+          "w": 47,
+          "h": 25,
+          "mapped": true
+        },
+        "stop": {
+          "x": 672,
+          "y": 42,
+          "w": 140,
+          "h": 30,
+          "mapped": true
+        },
+        "body": {
+          "x": 202,
+          "y": 109,
+          "w": 604,
+          "h": 523,
+          "mapped": true
+        },
+        "tree": {
+          "x": 202,
+          "y": 375,
+          "w": 589,
+          "h": 353,
+          "mapped": true
+        },
+        "details": {
+          "x": 202,
+          "y": 793,
+          "w": 157,
+          "h": 30,
+          "mapped": false
+        },
+        "scope": {
+          "x": 8,
+          "y": 72,
+          "w": 537,
+          "h": 22,
+          "mapped": true
+        }
+      },
+      "callbacks": []
+    },
+    {
+      "width": 820,
+      "height": 700,
+      "zoom": 150,
+      "widgets": {
+        "commands": {
+          "x": 0,
+          "y": 0,
+          "w": 820,
+          "h": 169,
+          "mapped": true
+        },
+        "search": {
+          "x": 58,
+          "y": 53,
+          "w": 746,
+          "h": 36,
+          "mapped": true
+        },
+        "view": {
+          "x": 633,
+          "y": 5,
+          "w": 179,
+          "h": 44,
+          "mapped": true
+        },
+        "zoom": {
+          "x": 450,
+          "y": 5,
+          "w": 179,
+          "h": 44,
+          "mapped": true
+        },
+        "title": {
+          "x": 8,
+          "y": 96,
+          "w": 68,
+          "h": 35,
+          "mapped": true
+        },
+        "stop": {
+          "x": 604,
+          "y": 94,
+          "w": 208,
+          "h": 40,
+          "mapped": true
+        },
+        "body": {
+          "x": 14,
+          "y": 179,
+          "w": 792,
+          "h": 513,
+          "mapped": true
+        },
+        "tree": {
+          "x": 14,
+          "y": 524,
+          "w": 777,
+          "h": 518,
+          "mapped": true
+        },
+        "details": {
+          "x": 14,
+          "y": 1167,
+          "w": 240,
+          "h": 40,
+          "mapped": true
+        },
+        "scope": {
+          "x": 8,
+          "y": 134,
+          "w": 417,
+          "h": 30,
+          "mapped": true
+        }
+      },
+      "callbacks": []
+    },
+    {
+      "width": 1024,
+      "height": 700,
+      "zoom": 200,
+      "widgets": {
+        "commands": {
+          "x": 0,
+          "y": 0,
+          "w": 1024,
+          "h": 213,
+          "mapped": true
+        },
+        "search": {
+          "x": 72,
+          "y": 66,
+          "w": 936,
+          "h": 45,
+          "mapped": true
+        },
+        "view": {
+          "x": 785,
+          "y": 5,
+          "w": 231,
+          "h": 57,
+          "mapped": true
+        },
+        "zoom": {
+          "x": 550,
+          "y": 5,
+          "w": 231,
+          "h": 57,
+          "mapped": true
+        },
+        "title": {
+          "x": 8,
+          "y": 120,
+          "w": 87,
+          "h": 45,
+          "mapped": true
+        },
+        "stop": {
+          "x": 745,
+          "y": 116,
+          "w": 271,
+          "h": 53,
+          "mapped": true
+        },
+        "body": {
+          "x": 14,
+          "y": 223,
+          "w": 996,
+          "h": 469,
+          "mapped": true
+        },
+        "tree": {
+          "x": 14,
+          "y": 666,
+          "w": 981,
+          "h": 672,
+          "mapped": true
+        },
+        "details": {
+          "x": 14,
+          "y": 1525,
+          "w": 314,
+          "h": 53,
+          "mapped": true
+        },
+        "scope": {
+          "x": 8,
+          "y": 169,
+          "w": 506,
+          "h": 39,
+          "mapped": true
+        }
+      },
+      "callbacks": []
+    },
+    {
+      "width": 1600,
+      "height": 1000,
+      "zoom": 200,
+      "widgets": {
+        "commands": {
+          "x": 0,
+          "y": 0,
+          "w": 1600,
+          "h": 213,
+          "mapped": true
+        },
+        "search": {
+          "x": 72,
+          "y": 66,
+          "w": 1512,
+          "h": 45,
+          "mapped": true
+        },
+        "view": {
+          "x": 1361,
+          "y": 5,
+          "w": 231,
+          "h": 57,
+          "mapped": true
+        },
+        "zoom": {
+          "x": 1126,
+          "y": 5,
+          "w": 231,
+          "h": 57,
+          "mapped": true
+        },
+        "title": {
+          "x": 8,
+          "y": 120,
+          "w": 87,
+          "h": 45,
+          "mapped": true
+        },
+        "stop": {
+          "x": 1321,
+          "y": 116,
+          "w": 271,
+          "h": 53,
+          "mapped": true
+        },
+        "body": {
+          "x": 384,
+          "y": 223,
+          "w": 1202,
+          "h": 769,
+          "mapped": true
+        },
+        "tree": {
+          "x": 384,
+          "y": 607,
+          "w": 1187,
+          "h": 731,
+          "mapped": true
+        },
+        "details": {
+          "x": 384,
+          "y": 1525,
+          "w": 314,
+          "h": 53,
+          "mapped": true
+        },
+        "scope": {
+          "x": 8,
+          "y": 169,
+          "w": 1082,
+          "h": 39,
+          "mapped": true
+        }
+      },
+      "callbacks": []
+    },
+    {
+      "width": 640,
+      "height": 580,
+      "zoom": 80,
+      "widgets": {
+        "commands": {
+          "x": 0,
+          "y": 0,
+          "w": 640,
+          "h": 117,
+          "mapped": true
+        },
+        "search": {
+          "x": 41,
+          "y": 37,
+          "w": 583,
+          "h": 24,
+          "mapped": true
+        },
+        "view": {
+          "x": 520,
+          "y": 5,
+          "w": 112,
+          "h": 28,
+          "mapped": true
+        },
+        "zoom": {
+          "x": 404,
+          "y": 5,
+          "w": 112,
+          "h": 28,
+          "mapped": true
+        },
+        "title": {
+          "x": 8,
+          "y": 68,
+          "w": 39,
+          "h": 22,
+          "mapped": true
+        },
+        "stop": {
+          "x": 508,
+          "y": 66,
+          "w": 124,
+          "h": 26,
+          "mapped": true
+        },
+        "body": {
+          "x": 14,
+          "y": 127,
+          "w": 612,
+          "h": 445,
+          "mapped": true
+        },
+        "tree": {
+          "x": 14,
+          "y": 331,
+          "w": 597,
+          "h": 287,
+          "mapped": true
+        },
+        "details": {
+          "x": 14,
+          "y": 713,
+          "w": 142,
+          "h": 26,
+          "mapped": true
+        },
+        "scope": {
+          "x": 8,
+          "y": 92,
+          "w": 388,
+          "h": 20,
+          "mapped": true
+        }
+      },
+      "callbacks": []
+    }
+  ],
+  "html_review": {
+    "javascript_syntax_ok": true,
+    "ids_unique": true,
+    "section_count": 4,
+    "audit_row_count": 12,
+    "inline_only": true,
+    "browser_acceptance": "blocked file navigation by administrator; not retried or bypassed",
+    "screenshots": false
+  },
+  "known_unexecuted": [
+    "Seven original PowerShell installer cases (runtime missing)",
+    "Native AHK and PowerShell source-exporter suites",
+    "Windows shell/interpreter/shortcut acceptance",
+    "Windows DPI and screen-reader/UIA behavior",
+    "Real provider downloads and AI-client connection",
+    "Game, native device, benchmark and capture acceptance"
+  ],
+  "corrections": [
+    {
+      "issue": "Focus source module omitted from explicit loader allowlist",
+      "found_by": "Full host fixture",
+      "fix": "Added exactly GameToolFocusUI to authored module allowlist; no arbitrary imports"
+    },
+    {
+      "issue": "Shortcut helper AST fixture exposed closure dependency",
+      "found_by": "Original Test-GameToolWorkspace",
+      "fix": "Read optional surface from root; original guards and tests retained"
+    },
+    {
+      "issue": "Manual poll fixture double-scheduled Tk callback",
+      "found_by": "Focused widget fixture",
+      "fix": "Cancel previous owned callback before rescheduling"
+    },
+    {
+      "issue": "Collapsed navigation could resist manual showing on narrow view",
+      "found_by": "Geometry/design review",
+      "fix": "Separate manual visibility from automatic collapse; no operational settings"
+    }
+  ],
+  "blocked_routes_preserved": true,
+  "git_publication": "not attempted; prior affected write block retained",
+  "installed_windows": "not accessed or changed"
+}

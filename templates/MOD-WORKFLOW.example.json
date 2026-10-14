@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "game_mod_recipe",
+  "game_id": "example-game",
+  "name": "Example only \u2014 not installable",
+  "manager_id": "manual",
+  "game_exe": null,
+  "presets": {
+    "real-time": [
+      "example-mod"
+    ],
+    "turn-based": [
+      "example-mod"
+    ]
+  },
+  "items": [
+    {
+      "id": "example-mod",
+      "name": "Replace with a researched exact mod",
+      "kind": "mod",
+      "source": {
+        "kind": "manual"
+      },
+      "download_page": "https://www.nexusmods.com/",
+      "max_download_bytes": 16777216,
+      "sha256": null,
+      "requires": [],
+      "warnings": [
+        "Research the exact game build, manager support, dependencies and installation layout first."
+      ]
+    }
+  ],
+  "warnings": [
+    "Template is data, not approval or compatibility evidence."
+  ]
+}

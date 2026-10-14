@@ -42,6 +42,8 @@ Write a short dependency chain: **game/input source â†’ required host/adapter â†
 
 After the minimum baseline passes, check newer SR/DLAA models, actual SR quality modes, RR, FG/MFG, neural rendering and supported live/dynamic SR. Reuse existing capabilities, then add only the next missing prerequisite. Do not stop at a loaded interceptor or the first successful feature. Keep unsupported features off and record the exact missing input/format/API/hardware requirement, any supported remedy, and its cost.
 
+Apply the [dynamic SR preference](DYNAMIC-DLSS-SR.md): a 30-rendered-FPS target only with supported, enabled native/mod FG and a verified engine controller. Otherwise use fixed/manual DLSS SR. Provide dynamic On/Off and manual resolution controls; a manual choice exits automatic mode and persists. This is not a hard FPS cap, an NR-size controller, or permission to add FG solely to qualify.
+
 | Feature | Already supplied by | Missing prerequisite | Smallest addition/setting | Conflict/overhead | Evidence and decision |
 |---|---|---|---|---|---|
 | SR/DLAA/models | | | | | |

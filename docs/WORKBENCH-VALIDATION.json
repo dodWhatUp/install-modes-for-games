@@ -1,0 +1,412 @@
+{
+  "schema_version": 1,
+  "source_version": "0.23.0-preview.1",
+  "environment": "Temporary Linux / Python 3.13.5 / Tk with Xvfb; no screenshots",
+  "new_targeted_tests": [
+    {
+      "suite": "Test-GameToolGameWorkspaces.py",
+      "tests": 41,
+      "passed": 41,
+      "log_sha256": "998efaabf4bd74c2a8a69a1164123a4f7479f06fca373b10c811b9418bdd73e2"
+    },
+    {
+      "suite": "Test-GameToolWorkbench.py",
+      "tests": 21,
+      "passed": 21,
+      "log_sha256": "4846f7bd65723819e7e157e50fc1b873a17f46b8146e3cac0e1b8f762d8a3dff"
+    },
+    {
+      "suite": "Test-GameToolWorkbenchLauncher.py",
+      "tests": 6,
+      "passed": 6,
+      "log_sha256": "a205b36b6eab0cbb929a435ae7794561dbcc99e07f69c2c9b5ae8c4255f4983b"
+    }
+  ],
+  "new_passed": 68,
+  "inherited_suites": [
+    {
+      "suite": "Test-GameToolEvidencePanel.py",
+      "returncode": 0,
+      "tests": 21,
+      "skipped": 0,
+      "seconds": 2.37,
+      "log_sha256": "96a8bf1c98729ff029bc40d7bdb2518f8bb0dca98ff198403e66951d533ac14b"
+    },
+    {
+      "suite": "Test-GameToolHub.py",
+      "returncode": 0,
+      "tests": 22,
+      "skipped": 0,
+      "seconds": 0.95,
+      "log_sha256": "c3d689e923f4f468afcebb1c363e07d2e614d912cad1519116c5a5b83922dbd7"
+    },
+    {
+      "suite": "Test-GameToolHubCatalog.py",
+      "returncode": 0,
+      "tests": 45,
+      "skipped": 0,
+      "seconds": 6.83,
+      "log_sha256": "b6b05ecbf1011180cf00509c0be9fb1694650c6ae5787b4c29a2ed9dcac24a41"
+    },
+    {
+      "suite": "Test-GameToolJournal.py",
+      "returncode": 0,
+      "tests": 59,
+      "skipped": 0,
+      "seconds": 2.0,
+      "log_sha256": "d23e1c5362f93e5dd5e2130f5b84d99998a102f6e3a330cfa772a32de88044fa"
+    },
+    {
+      "suite": "Test-GameToolModernUI.py",
+      "returncode": 0,
+      "tests": 22,
+      "skipped": 0,
+      "seconds": 15.37,
+      "log_sha256": "d00a036db1a346340114a65160d71d49802e48d1f47036cf5384e2771e51252e"
+    },
+    {
+      "suite": "Test-GameToolOverlay.py",
+      "returncode": 0,
+      "tests": 54,
+      "skipped": 1,
+      "seconds": 4.24,
+      "log_sha256": "18e3ec41566faa852011c1f18c3bcff5b115e6072ad17e2c3512d070c0d17dbe"
+    },
+    {
+      "suite": "Test-GameToolUserData.py",
+      "returncode": 0,
+      "tests": 42,
+      "skipped": 0,
+      "seconds": 1.01,
+      "log_sha256": "1ee73d4dd572ab7be5a56b7ba6f4cdc61f64854004c45bb9411e09b46194b2f6"
+    },
+    {
+      "suite": "Test-GameToolUserDataPanel.py",
+      "returncode": 0,
+      "tests": 32,
+      "skipped": 0,
+      "seconds": 2.51,
+      "log_sha256": "0ad98636b59b337c8dd169a5ea80fa3d24d44701f21824855f5d42a87768d640"
+    },
+    {
+      "suite": "Test-GameToolWorkflow.py",
+      "returncode": 0,
+      "tests": 48,
+      "skipped": 0,
+      "seconds": 1.1,
+      "log_sha256": "b9133e5d3861f5e6cef0aef9086e7d2455ab66eed50017b7b09e5232ccef4035"
+    },
+    {
+      "suite": "Test-GameToolWorkflowCLI.py",
+      "returncode": 0,
+      "tests": 10,
+      "skipped": 0,
+      "seconds": 1.05,
+      "log_sha256": "3441661e9c9e60cf1b3cbd2441c80eb7e8d78c6290d3a0aeb707a5ccc752973d"
+    },
+    {
+      "suite": "Test-GameToolWorkflowPanel.py",
+      "returncode": 0,
+      "tests": 23,
+      "skipped": 0,
+      "seconds": 1.91,
+      "log_sha256": "ba751fd865f84ed81a70eb880da082d17262770f765bbb162f50b423e8531989"
+    },
+    {
+      "suite": "Test-GameToolWorkspace.py",
+      "returncode": 0,
+      "tests": 40,
+      "skipped": 0,
+      "seconds": 7.59,
+      "log_sha256": "8b94fd404827c3f1ebbe071b7dc405691ff7a9f2b26710228692ec85e95e3e28"
+    },
+    {
+      "suite": "Test-ModernStartup.py",
+      "returncode": 0,
+      "tests": 1,
+      "skipped": 0,
+      "seconds": 3.3,
+      "log_sha256": "1a134574bdc909a7b6430eb1f6945047870a1c02376ce1e54039dda31e291f70"
+    },
+    {
+      "suite": "Test-NativePictureLayout.py",
+      "returncode": 0,
+      "tests": 4,
+      "skipped": 0,
+      "seconds": 0.88,
+      "log_sha256": "feabb4add9e2ca3374e538560634d1ec97dc4f4ce89aab12f3d726e36ea9b2f6"
+    },
+    {
+      "suite": "Test-GameToolFocusLauncher.py",
+      "returncode": 0,
+      "tests": 11,
+      "skipped": 0,
+      "seconds": 0.98,
+      "log_sha256": "a583f324a05ce8f0bdf6a7e4df3e1531094fdab218030c8551cc041d5638cdd2"
+    },
+    {
+      "suite": "Test-GameToolReadiness.py",
+      "returncode": 0,
+      "tests": 59,
+      "skipped": 0,
+      "seconds": 2.33,
+      "log_sha256": "741ce89fdcbad092cb5405d46006c255459b261f93af19dcdb564383129eda47"
+    },
+    {
+      "suite": "Test-GameToolReadinessCLI.py",
+      "returncode": 0,
+      "tests": 9,
+      "skipped": 0,
+      "seconds": 10.06,
+      "log_sha256": "61f931f7f7a845e985949c00960b7c2d2675453b48c4fd443b12add2eb3dbbf6"
+    },
+    {
+      "suite": "Test-GameToolReadinessPanel.py",
+      "returncode": 0,
+      "tests": 19,
+      "skipped": 0,
+      "seconds": 2.89,
+      "log_sha256": "25ca474ab882757e19c3eacbe0b8b873a0b722c946001066c2074cf93bddb67b"
+    },
+    {
+      "suite": "Test-GameToolReportImport.py",
+      "returncode": 0,
+      "tests": 42,
+      "skipped": 0,
+      "seconds": 1.03,
+      "log_sha256": "ed87d0eb05596c69159bf6713a6af729db96eecd27eb3e9abe5c838edbe8a3b6"
+    },
+    {
+      "suite": "Test-GameToolReportImportCLI.py",
+      "returncode": 0,
+      "tests": 16,
+      "skipped": 0,
+      "seconds": 1.31,
+      "log_sha256": "2139e99a50148661d6a892c0e6a678b09785ce1ec19c20c3e19b7c0a09ca37a3"
+    },
+    {
+      "suite": "Test-GameToolReportImportPanel.py",
+      "returncode": 0,
+      "tests": 41,
+      "skipped": 0,
+      "seconds": 4.61,
+      "log_sha256": "1ac7291c3ea38b0a60873412713131a03c8df061bfafbf863f21e0f11aed9fe2"
+    },
+    {
+      "suite": "Test-GameToolSessionCLI.py",
+      "returncode": 0,
+      "tests": 12,
+      "skipped": 0,
+      "seconds": 1.18,
+      "log_sha256": "3b70273f02294ccc856fc15e249de91dc528b185d311730324403dff24a1057b"
+    },
+    {
+      "suite": "Test-GameToolSessionPanel.py",
+      "returncode": 0,
+      "tests": 61,
+      "skipped": 0,
+      "seconds": 3.64,
+      "log_sha256": "a7791a794cb05b1467ac8bc9be7c44c1904d11e91a6099a79520f69bad32dce7"
+    },
+    {
+      "suite": "Test-GameToolUnified.py",
+      "returncode": 0,
+      "tests": 33,
+      "skipped": 0,
+      "seconds": 1.67,
+      "log_sha256": "f7469e59bd51ecae7161e554619700896db99e96181b4762505e2c1fddcfea86"
+    },
+    {
+      "suite": "Test-PictureHost.py",
+      "returncode": 0,
+      "tests": 11,
+      "skipped": 0,
+      "seconds": 0.84,
+      "log_sha256": "a403b031ca53505b1068c5c1262f30475f8ef294ae83636c47835f0a12e632af"
+    },
+    {
+      "suite": "Test-UnifiedToolsLaunchers.py",
+      "returncode": 0,
+      "tests": 12,
+      "skipped": 0,
+      "seconds": 1.07,
+      "log_sha256": "a61d46146771819b9095c652e422bc264d8c0a22ed56162125145ba2e3ce5a9e"
+    },
+    {
+      "suite": "test_game_fg_inspector.py",
+      "returncode": 0,
+      "tests": 34,
+      "skipped": 1,
+      "seconds": 0.94,
+      "log_sha256": "4756bed546273f62a3e016c7171ce2b85aedd1e3645d7a2ac4a7c8ad87a63bff"
+    },
+    {
+      "suite": "test_game_fg_preflight.py",
+      "returncode": 0,
+      "tests": 67,
+      "skipped": 0,
+      "seconds": 1.01,
+      "log_sha256": "7bbe9937c6eac3aacead35ad9eeeb01de5ad7bd62ad3a87d02a8396ed7a4e388"
+    },
+    {
+      "suite": "Test-GameToolFocus.py",
+      "returncode": 0,
+      "tests": 41,
+      "skipped": 0,
+      "seconds": 16.91,
+      "log_sha256": "3614fed5797b29327d6643d05ea0cf3746cf297a6f4fcf5dc95744e9aa0b161b"
+    },
+    {
+      "suite": "Test-GameModOps.py",
+      "returncode": 0,
+      "tests": 63,
+      "skipped": 0,
+      "seconds": 1.58,
+      "log_sha256": "99988d59865b1a97d9881ad8f49ec5d6940a760670cebe2bc3b60ff44ff6ad8a"
+    },
+    {
+      "suite": "Test-GameModPanel.py",
+      "returncode": 0,
+      "tests": 8,
+      "skipped": 0,
+      "seconds": 1.41,
+      "log_sha256": "65bf11b74d39dfe626b5dd2e41f4e66bc16ff032965136dc29d6c72faf851b01"
+    },
+    {
+      "suite": "Test-GameToolAppearance.py",
+      "returncode": 0,
+      "tests": 46,
+      "skipped": 0,
+      "seconds": 7.62,
+      "log_sha256": "fadb881c1861b2f873d1efb3d9431704b59ebfe723a73f11e34dc372b531cfe2"
+    },
+    {
+      "suite": "Test-GameToolAutomation.py",
+      "returncode": 0,
+      "tests": 52,
+      "skipped": 0,
+      "seconds": 1.33,
+      "log_sha256": "ab4bf3fa9baa802cd33818057d46bd7ed214ab6ee5488cb6d054d7ff1bf44249"
+    },
+    {
+      "suite": "Test-GameToolAutomationPanel.py",
+      "returncode": 0,
+      "tests": 22,
+      "skipped": 0,
+      "seconds": 4.42,
+      "log_sha256": "b827482217d7e6ad07ab405e370689dcf7310708afe0938834f549519c399ddf"
+    },
+    {
+      "suite": "Test-GameToolAzeronLayer.py",
+      "returncode": 0,
+      "tests": 22,
+      "skipped": 0,
+      "seconds": 1.87,
+      "log_sha256": "bf66a1cd57d6f4548de8ce42652f02cf400a6ab098c56af1908b891a9ec3e933"
+    },
+    {
+      "suite": "Test-GameToolCatalog.py",
+      "returncode": 0,
+      "tests": 35,
+      "skipped": 0,
+      "seconds": 1.05,
+      "log_sha256": "4219a65651e3c39aef4bb4bcd4a678ecdc95f67bc089952bb87029816e231075"
+    },
+    {
+      "suite": "Test-GameToolCatalogBridge.py",
+      "returncode": 0,
+      "tests": 36,
+      "skipped": 0,
+      "seconds": 1.36,
+      "log_sha256": "32632f9efffbafa81e128f136dcbfabed6bb042a846ea4e7275e365b523cbe9d"
+    },
+    {
+      "suite": "Test-GameToolCompactUI.py",
+      "returncode": 0,
+      "tests": 40,
+      "skipped": 0,
+      "seconds": 1.98,
+      "log_sha256": "9649957bdc6e533c9866d711db52a4b3b55f372831f30e042baa05e1fc6c2087"
+    },
+    {
+      "suite": "Test-GameToolComparison.py",
+      "returncode": 0,
+      "tests": 63,
+      "skipped": 0,
+      "seconds": 1.4,
+      "log_sha256": "def86705fd526f31c57cd7659b25a796ed5315495d6f209347e5020fd144409e"
+    },
+    {
+      "suite": "Test-GameToolComparisonCLI.py",
+      "returncode": 0,
+      "tests": 9,
+      "skipped": 0,
+      "seconds": 1.07,
+      "log_sha256": "514ecb5ccf16aed998d661968689bd4818c8278c7c645e0811fefc35639370e9"
+    },
+    {
+      "suite": "Test-GameToolComparisonPanel.py",
+      "returncode": 0,
+      "tests": 39,
+      "skipped": 0,
+      "seconds": 4.01,
+      "log_sha256": "f25cb1f23db47be17163efc816b50bf6b2f9279500a80a9455a5baba91eee78d"
+    },
+    {
+      "suite": "Test-GameToolCoordinator.py",
+      "returncode": 0,
+      "tests": 47,
+      "skipped": 0,
+      "seconds": 1.28,
+      "log_sha256": "3481db306676ecededaebb67279e191eea08a344e4c67f870e58b1f708579735"
+    },
+    {
+      "suite": "Test-GameToolCrashEvidence.py",
+      "returncode": 0,
+      "tests": 50,
+      "skipped": 0,
+      "seconds": 1.29,
+      "log_sha256": "04e930d9fb54f134e1d859c8c956fb4af4102ff2fd3e84be7612b59fb787cf3d"
+    },
+    {
+      "suite": "Test-GameToolEvidenceCLI.py",
+      "returncode": 0,
+      "tests": 12,
+      "skipped": 0,
+      "seconds": 1.07,
+      "log_sha256": "2cef0948b0d2c297ca1d4c6515e370d90046abde7aa25978567773b3d9c45cb6"
+    },
+    {
+      "suite": "Test-GameToolFocusHost.py",
+      "tests": 10,
+      "skipped": 0,
+      "returncode": null,
+      "completed_log_ok": true,
+      "log_sha256": "45c50c6d68a7684a6e3296b119f4a71fd7993ded00a531151790c4a2a5cc24db",
+      "note": "Wrapper timeout after completed OK test log. Subsequent process inventory found no running suite. No native operation was performed."
+    }
+  ],
+  "inherited_cases": 1445,
+  "inherited_skips": 2,
+  "total_passed": 1511,
+  "not_executed": [
+    "7 inherited PowerShell installer cases",
+    "native Windows / Start menu / PowerShell / AHK acceptance",
+    "live download providers / Nexus auth",
+    "real AI client / real game / screen reader / visual acceptance"
+  ],
+  "corrections": [
+    "Initial splitter layout left the main pane at one pixel; shell geometry events recompute sashes after layout.",
+    "Hidden unused game-list column removed.",
+    "Final 200% narrow-window check caught a clipped More button; native requested-size header wrapping now keeps every visible header control reachable with an added regression case.",
+    "Legacy request-status positional argument retained while adding explicit multi-game arguments.",
+    "AI-created job completion stays with captured game and plan.",
+    "A test incorrectly excluded AutoBuff for a Buff query; it now uses exact Buff Bot text without altering filtering.",
+    "Original Focus host completed 10 tests before a wrapper timeout; process/effect state was checked."
+  ],
+  "launch_validation": "Source contracts only; native launch pending",
+  "source_package_validation": "See post-packaging delivery receipt",
+  "app_installed": false,
+  "new_git_publication": false,
+  "network_downloads_executed": false
+}

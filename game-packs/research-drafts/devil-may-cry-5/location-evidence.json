@@ -1,0 +1,23 @@
+{
+  "id": "devil-may-cry-5",
+  "name": "Devil May Cry 5",
+  "schema_status": "storage_unresolved",
+  "locations": [
+    {
+      "root": "dmc5",
+      "pattern": "dmc5config.ini"
+    }
+  ],
+  "format": "dmc5config.ini exists, but keyboard-binding ownership and system-save record schema are not established",
+  "limitations": [
+    "Capcom identifies the configuration and save directory, but does not identify an editable keyboard section in the cited FAQ.",
+    "No invented [KEYBOARD] section and no borrowed system-save offsets. The exact storage/record format remains a blocker even after the initial inspection samples.",
+    "All three source characters (Nero, Dante, V) are included. The planner contains no Vergil V3 variant."
+  ],
+  "source_urls": [
+    "https://steamcommunity.com/app/601150/discussions/0/1839063537789550470/"
+  ],
+  "discovery_only": true,
+  "native_recipe_bundled": false,
+  "source_review_date": "2026-10-13"
+}

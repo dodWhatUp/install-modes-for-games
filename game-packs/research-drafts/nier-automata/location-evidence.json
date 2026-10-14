@@ -1,0 +1,24 @@
+{
+  "id": "nier-automata",
+  "name": "NieR Automata",
+  "schema_status": "binary_schema_and_mouse_review",
+  "locations": [
+    {
+      "root": "documents",
+      "pattern": "My Games/NieR_Automata/SystemData.dat"
+    }
+  ],
+  "format": "Per-slot binary saves contain a binding block in a documented older implementation; global SystemData is separate",
+  "limitations": [
+    "A published save-tool implementation locates a binding block in SlotData. Its old offsets/lengths are evidence of storage, not authorization to patch a current save at assumed offsets.",
+    "Current slot layout, key-code representation and integrity checks must be verified. Steam/account identity and progression must remain untouched.",
+    "V3 explicitly defers Fire, Light Attack and Heavy Attack for mouse-ownership checking. Those are not missing placements to invent."
+  ],
+  "source_urls": [
+    "https://github.com/RisingFog/NierAutomataSaveImporter",
+    "https://steamcommunity.com/app/524220/discussions/0/135511913387958505/"
+  ],
+  "discovery_only": true,
+  "native_recipe_bundled": false,
+  "source_review_date": "2026-10-13"
+}

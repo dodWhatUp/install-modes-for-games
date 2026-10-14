@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "kind": "provider_health",
+  "provider": {
+    "id": "MockProvider",
+    "version": "1.0",
+    "capabilities": [
+      "connect",
+      "capture",
+      "report_import"
+    ]
+  },
+  "context": {
+    "target_id": "MockTarget",
+    "run_id": "MockRun",
+    "phase_id": "MockPhase"
+  },
+  "clock": {
+    "domain": "mock_monotonic_ms",
+    "now_ms": 10000,
+    "max_age_ms": 2000
+  },
+  "lifecycle": {
+    "discovered": true,
+    "connected": true,
+    "approval": "approved",
+    "process": "running",
+    "armed": true,
+    "cancelled": false
+  },
+  "stream": {
+    "complete_write": true,
+    "closed": false,
+    "expected_interval_ms": 1000,
+    "dropped_records": 0,
+    "missing_fields": [],
+    "records": [
+      {
+        "sequence": 1,
+        "at_ms": 8000,
+        "target_id": "MockTarget",
+        "run_id": "MockRun",
+        "phase_id": "MockPhase"
+      },
+      {
+        "sequence": 2,
+        "at_ms": 9000,
+        "target_id": "MockTarget",
+        "run_id": "MockRun",
+        "phase_id": "MockPhase"
+      }
+    ]
+  }
+}

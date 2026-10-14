@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "kind": "game-tools-ai-foundation-windows-acceptance",
+  "date": "2026-10-14",
+  "source_preview_sha256": "bf2989da32f197f021283aef06368e7f028cfe7e23619c5d766715f2e242f977",
+  "profile": "GameToolHub-Workbench-Preview-0.26.0-preview.1-AIFoundation-Keybinds",
+  "status": "PASS",
+  "environment": {
+    "os": "Windows 11 ARM64",
+    "powershell": "5.1",
+    "python": "3.12.10 ARM64 (official per-user package)",
+    "tk": "8.6.15",
+    "tk_scaling": 1.3338703940816616,
+    "screen_pixels": [
+      2953,
+      1623
+    ]
+  },
+  "launcher_and_ui": {
+    "archive_sha256_verified": "bf2989da32f197f021283aef06368e7f028cfe7e23619c5d766715f2e242f977",
+    "extracted_files": 387,
+    "verify_only_workbench_exit": 0,
+    "verify_only_original_exit": 0,
+    "verify_only_created_profile": false,
+    "verify_only_created_shortcuts": false,
+    "workbench_title": "Game Tools — Workbench preview",
+    "original_title": "Game Tools — Original UI preview · 0.26.0-preview.1",
+    "workbench_clean_close": {
+      "exited": true,
+      "forced": false,
+      "exit_code": null
+    },
+    "original_clean_close": {
+      "exited": true,
+      "forced": false,
+      "exit_code": null
+    },
+    "current_user_shortcuts_created": true,
+    "other_game_tool_profiles_unchanged": true,
+    "isolated_profile_files": 3,
+    "isolated_profile_sha256": "60a72834a0111cc6228ec99559ea96a256b969bba733d3cbc891e2b079664369"
+  },
+  "native_tk_widget_audit": {
+    "status": "PASS",
+    "tabs": [
+      "Mods",
+      "AI requests",
+      "Manual checks",
+      "Keybinds"
+    ],
+    "checks": {
+      "title": true,
+      "tabs": true,
+      "stop": true,
+      "more": true,
+      "keybind_panel": true,
+      "core_texts": true,
+      "scaling": true,
+      "clean_close": true
+    },
+    "scale_results": [
+      {
+        "zoom": 100,
+        "requested_geometry": "1240x800",
+        "actual_geometry": "1240x800+182+182",
+        "root_exists": true,
+        "more_mapped": true,
+        "tabs": [
+          "Mods",
+          "AI requests",
+          "Manual checks",
+          "Keybinds"
+        ],
+        "body_font_size": 10,
+        "title_font_size": 17
+      },
+      {
+        "zoom": 200,
+        "requested_geometry": "760x600",
+        "actual_geometry": "760x600+182+182",
+        "root_exists": true,
+        "more_mapped": true,
+        "tabs": [
+          "Mods",
+          "AI requests",
+          "Manual checks",
+          "Keybinds"
+        ],
+        "body_font_size": 20,
+        "title_font_size": 34
+      },
+      {
+        "zoom": 100,
+        "requested_geometry": "1240x800",
+        "actual_geometry": "1240x800+182+182",
+        "root_exists": true,
+        "more_mapped": true,
+        "tabs": [
+          "Mods",
+          "AI requests",
+          "Manual checks",
+          "Keybinds"
+        ],
+        "body_font_size": 10,
+        "title_font_size": 17
+      }
+    ]
+  },
+  "external_stdio_roundtrip": {
+    "status": "PASS",
+    "protocols": [
+      "2026-07-28",
+      "2025-11-25"
+    ],
+    "external_processes": 3,
+    "modern_tool_count": 15,
+    "modern_tools": [
+      "game_tools_catalog",
+      "game_tools_changes",
+      "game_tools_explain_blocker",
+      "game_tools_fetch",
+      "game_tools_prepare_handoff",
+      "game_tools_reports",
+      "game_tools_resume",
+      "game_tools_search",
+      "game_tools_status",
+      "game_tools_status_batch",
+      "hub_capabilities",
+      "hub_context",
+      "hub_propose",
+      "hub_request_status",
+      "mods_preview_plan"
+    ],
+    "resource_count_first_page": 88,
+    "search_matches": 3,
+    "proposal_initial_status": "AWAITING_LOCAL_APPROVAL",
+    "proposal_local_final_status": "REJECTED",
+    "proposal_approved": false,
+    "execution_performed": false,
+    "checks": {
+      "modern_discover": true,
+      "modern_tools_sorted": true,
+      "modern_output_schemas": true,
+      "modern_expected_tools": true,
+      "no_approval_tool": true,
+      "status_envelope": true,
+      "search_fetch": true,
+      "resource_read": true,
+      "handoff_preview_only": true,
+      "proposal_pending": true,
+      "proposal_mailbox_only": true,
+      "status_pending": true,
+      "resume_contains_request": true,
+      "batch_contains_request": true,
+      "blocker_typed": true,
+      "change_cursor": true,
+      "modern_private": true,
+      "no_mod_execution": true,
+      "local_rejection": true,
+      "still_no_mod_execution_after_rejection": true,
+      "modern_rejection_readback": true,
+      "legacy_initialize": true,
+      "legacy_context_raw_shape": true,
+      "legacy_rejection_readback": true,
+      "legacy_no_proposal_tool": true,
+      "legacy_private": true,
+      "processes_clean": true
+    }
+  },
+  "first_harness_failure_reconciliation": {
+    "status": "RECONCILED",
+    "failed_stage": "change_cursor_field_read",
+    "pending_request_found": [
+      {
+        "request_id": "windows-modern-proposal",
+        "status": "AWAITING_LOCAL_APPROVAL",
+        "operation": "mods.create_plan"
+      }
+    ],
+    "local_resolution": [
+      {
+        "request_id": "windows-modern-proposal",
+        "status": "REJECTED",
+        "operation": "mods.create_plan"
+      }
+    ],
+    "mods_root_exists": false,
+    "execution_performed": false,
+    "automatic_retry": false
+  },
+  "effects": {
+    "production_profile": false,
+    "game_files": false,
+    "game_launch": false,
+    "input_injection": false,
+    "capture": false,
+    "network_provider": false,
+    "proposal_execution": false
+  },
+  "not_established": [
+    "Connection through a specific ChatGPT or Codex product UI",
+    "Production installation or migration",
+    "Real-game, manager, device, runtime or gameplay acceptance",
+    "Remote HTTP/plugin/MCP App deployment",
+    "Git merge or main-branch adoption"
+  ],
+  "private_evidence_note": "Full machine-local receipts remain in the private acceptance delivery; this record omits user names and filesystem paths."
+}

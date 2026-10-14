@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "kind": "overlay_manifest",
+  "games": [
+    {
+      "id": "example-game",
+      "label": "Example game"
+    }
+  ],
+  "keymaps": [
+    {
+      "id": "r8-sparse6-example",
+      "label": "R8 SPARSE6 example — replace with private installed contract",
+      "revision": "replace-with-exact-installed-revision",
+      "outputs_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "geometry_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "atlas_revision": "f7511d43956c20ab4280bbcf5e2d0744dd04adf1",
+      "family": "SPARSE6",
+      "layers": [
+        {
+          "id": "BASIC",
+          "profile_id": "installed-BASIC-example",
+          "profile_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "id": "NUMBERS",
+          "profile_id": "installed-NUMBERS-example",
+          "profile_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "id": "MENUS",
+          "profile_id": "installed-MENUS-example",
+          "profile_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "id": "TOOLS",
+          "profile_id": "installed-TOOLS-example",
+          "profile_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "id": "NAV",
+          "profile_id": "installed-NAV-example",
+          "profile_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "id": "SYMBOLS",
+          "profile_id": "installed-SYMBOLS-example",
+          "profile_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "visible_positions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        20,
+        22,
+        23,
+        28,
+        29,
+        30,
+        31,
+        36,
+        37,
+        38,
+        41
+      ],
+      "hidden_positions": [
+        19
+      ],
+      "blank_masks": {
+        "BASIC": [],
+        "NUMBERS": [
+          1,
+          3,
+          4,
+          36,
+          37,
+          38,
+          13,
+          18
+        ],
+        "MENUS": [
+          2,
+          3,
+          4,
+          36,
+          37,
+          7,
+          11,
+          16
+        ],
+        "TOOLS": [
+          1,
+          2,
+          3,
+          4,
+          37,
+          8,
+          12,
+          17
+        ],
+        "NAV": [22, 23, 29, 30, 31],
+        "SYMBOLS": [13, 22, 23, 28, 29, 31, 38]
+      },
+      "joystick_drawn": false
+    }
+  ],
+  "assets": [
+    {
+      "id": "basic-keys",
+      "label": "BASIC Keys",
+      "path": "generated/basic-keys.png",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "keymap_id": "r8-sparse6-example",
+      "layer": "BASIC",
+      "context": "gameplay",
+      "view": "Keys",
+      "profile_id": "installed-BASIC-example",
+      "evidence": "unknown"
+    },
+    {
+      "id": "basic-actions",
+      "label": "BASIC Actions",
+      "path": "generated/basic-actions.png",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "keymap_id": "r8-sparse6-example",
+      "layer": "BASIC",
+      "context": "gameplay",
+      "view": "Actions",
+      "profile_id": "installed-BASIC-example",
+      "evidence": "unknown"
+    },
+    {
+      "id": "basic-combined",
+      "label": "BASIC Combined",
+      "path": "generated/basic-combined.png",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "keymap_id": "r8-sparse6-example",
+      "layer": "BASIC",
+      "context": "gameplay",
+      "view": "Combined",
+      "profile_id": "installed-BASIC-example",
+      "evidence": "unknown"
+    }
+  ],
+  "groups": [
+    {
+      "id": "example-group",
+      "label": "Shared SPARSE6 / example game",
+      "game_id": "example-game",
+      "keymap_id": "r8-sparse6-example",
+      "asset_ids": [
+        "basic-keys",
+        "basic-actions",
+        "basic-combined"
+      ],
+      "rendering": {
+        "size_mode": "Screen width %",
+        "size_value": 30,
+        "opacity": 85,
+        "monitor": 1,
+        "anchor": "TopRight",
+        "offset_x": 0,
+        "offset_y": 0
+      }
+    }
+  ],
+  "associations": [
+    {
+      "id": "example-association",
+      "game_id": "example-game",
+      "executables": [
+        "Gameplay.exe"
+      ],
+      "excluded_executables": [
+        "Launcher.exe"
+      ],
+      "keymap_id": "r8-sparse6-example",
+      "default_group": "example-group",
+      "cycle_groups": [
+        "example-group"
+      ],
+      "cycle_enabled": false,
+      "priority": 0
+    }
+  ]
+}

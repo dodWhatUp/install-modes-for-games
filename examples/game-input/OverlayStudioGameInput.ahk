@@ -42,6 +42,10 @@ class OS_GameInputHost {
     }
 
     Start(*) {
+        if this.Host.HasOwnProp("DesktopTest") && this.Host.DesktopTest {
+            MsgBox("Game Input is disabled in this isolated desktop UI test.", "Desktop test")
+            return
+        }
         if this.Module && this.Module.Started
             return
         try {

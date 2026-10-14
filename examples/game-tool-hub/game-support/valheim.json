@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "kind": "game_support_pack",
+  "pack_version": "1.0.0",
+  "definition": {
+    "game_id": "valheim",
+    "name": "Valheim",
+    "manager_id": "bepinex",
+    "adapter": "bepinex",
+    "platform": "windows",
+    "executable_any": [
+      "valheim.exe"
+    ],
+    "mods_relative": "BepInEx/plugins",
+    "loader_markers": [
+      "BepInEx/core/BepInEx.dll"
+    ],
+    "scan_depth": 3,
+    "review_note": "Filesystem metadata only. Build/runtime compatibility and installation must be reviewed independently."
+  },
+  "recipe": null,
+  "sources": [
+    {
+      "url": "https://docs.bepinex.dev/articles/user_guide/installation/index.html",
+      "checked_on": "2026-10-13",
+      "evidence": "template-unverified"
+    }
+  ],
+  "notes": [
+    "Layout template only. Validate the game-specific BepInEx package before adding mod choices.",
+    "Plugin filenames are observed; DLL GUIDs, versions and loaded state are not guessed."
+  ]
+}

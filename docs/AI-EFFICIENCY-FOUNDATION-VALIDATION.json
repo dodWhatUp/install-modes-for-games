@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-14T08:16:48.643442+00:00",
+  "candidate": {
+    "tool_hub": "0.26.0-preview.1",
+    "ai_transport": "0.26.0-preview.1",
+    "keybinds": "0.2.0-preview.1",
+    "base_delivery_sha256": "f606e0625527dc68e2ef929b9310573492709d54ce6ff9f0158ade982a2fb587",
+    "local_task_branch": "task/ai-efficiency-foundation-20261014",
+    "canonical_reference_revision": "043f3c4733788f082da98dfcb43c0972d2794c6a"
+  },
+  "implemented": [
+    "dual MCP transport: 2026-07-28 plus legacy 2025-11-25",
+    "shared strict result envelope and completion matrix",
+    "manifest-verified allowlisted search, fetch and resources",
+    "status, resume, change cursors, blocker explanation and batch status",
+    "read-only catalog and explicitly shared report access",
+    "sanitized deterministic handoff preview",
+    "legacy tool shapes and local visible approval retained"
+  ],
+  "final_focused_validation": {
+    "status": "PASS",
+    "suite_count": 10,
+    "passed_methods": 226,
+    "skipped_methods": 0,
+    "suites": [
+      {
+        "suite": "Test-GameSupportPackaging.py",
+        "passed": 7
+      },
+      {
+        "suite": "Test-GameToolAIFoundation.py",
+        "passed": 16
+      },
+      {
+        "suite": "Test-GameToolAIModern.py",
+        "passed": 17
+      },
+      {
+        "suite": "Test-GameToolAutomation.py",
+        "passed": 52
+      },
+      {
+        "suite": "Test-GameToolGameWorkspaces.py",
+        "passed": 41
+      },
+      {
+        "suite": "Test-GameToolKeybindMerge.py",
+        "passed": 7
+      },
+      {
+        "suite": "Test-GameToolUnified.py",
+        "passed": 33
+      },
+      {
+        "suite": "Test-GameToolWorkbenchLauncher.py",
+        "passed": 8
+      },
+      {
+        "suite": "keybinds/test_host_integration.py",
+        "passed": 35
+      },
+      {
+        "suite": "keybinds/test_schema_contract.py",
+        "passed": 10
+      }
+    ],
+    "harness_correction": "The first focused host-integration invocation omitted the required GAME_TOOLS_HOST_SOURCE test fixture variable and exited before collecting tests. The corrected invocation used the current verified source root and passed 35/35; no product effect existed to reconcile."
+  },
+  "broad_regression": {
+    "status": "PASS_WITH_DECLARED_BOUNDARIES",
+    "completed_suite_logs": 62,
+    "tests_run_in_completed_suites": 1951,
+    "passed_methods": 1942,
+    "skipped_methods": 9,
+    "all_completed_suite_logs_end_in_OK": true,
+    "forced_cleanup_suites": [
+      "Test-GameToolComparisonPanel.py",
+      "Test-GameToolReadinessCLI.py",
+      "Test-ModernStartup.py",
+      "Test-NativePictureLayout.py",
+      "Test-PictureHost.py",
+      "Test-UnifiedToolsLaunchers.py",
+      "test_game_fg_preflight.py",
+      "keybinds/test_effective.py",
+      "keybinds/test_extended.py",
+      "keybinds/test_extensibility.py",
+      "keybinds/test_host_integration.py",
+      "keybinds/test_keybinds.py",
+      "keybinds/test_pack_integration.py",
+      "keybinds/test_pack_panel.py",
+      "keybinds/test_panel.py",
+      "keybinds/test_schema_contract.py"
+    ],
+    "forced_cleanup_note": "Each listed suite printed its complete unittest OK result before the bounded supervisor terminated only the still-live test process group. This is retained as a cleanup limitation and is not native Windows acceptance."
+  },
+  "timeouts_not_retried": [
+    {
+      "suite": "Test-GameToolFocusHost.py",
+      "state": "TIMEOUT_NO_RETRY",
+      "detail": "Six cases completed before the seventh GUI case stopped producing a final unittest result. The process group was inspected and removed; no product success is claimed."
+    },
+    {
+      "suite": "Test-GameModPanel.py",
+      "state": "INHERITED_R2_TIMEOUT_NO_RETRY",
+      "detail": "The unchanged R2 bounded timeout was preserved and not retried in this slice."
+    }
+  ],
+  "environment_boundaries": {
+    "linux_python_contracts": true,
+    "xvfb_widget_contracts": true,
+    "powershell_available": false,
+    "native_windows_acceptance": false,
+    "live_client_acceptance": false,
+    "real_game_or_device_acceptance": false,
+    "production_installation": false,
+    "native_windows_environment_preflight": true
+  },
+  "effects": {
+    "production_profile_changed": false,
+    "game_files_changed": false,
+    "games_launched": false,
+    "input_injected": false,
+    "recording_started": false,
+    "git_published": false,
+    "drive_published": false,
+    "temporary_windows_probe_created_and_removed": true
+  },
+  "static_validation": {
+    "python_sources_compiled_in_memory": 157,
+    "json_files_parsed": 101,
+    "json_parse_errors": 0,
+    "privacy_pattern_hits": 0,
+    "git_diff_check": "PASS",
+    "manifest_payloads_before_final_receipt": 380,
+    "exporter_allowlist_exact": true
+  },
+  "protocol_acceptance": {
+    "legacy_2025_11_25": {
+      "status": "PASS_FIXTURES_AND_STDIO",
+      "payload_shapes_preserved": true
+    },
+    "modern_2026_07_28": {
+      "status": "PASS_FIXTURES_AND_STDIO",
+      "external_client": false
+    },
+    "proposal_enabled_fixture": {
+      "status": "PASS",
+      "local_mailbox_only": true,
+      "approved_or_executed": false
+    },
+    "resources": {
+      "status": "PASS",
+      "manifest_verified": true,
+      "arbitrary_paths": false
+    }
+  },
+  "windows_preflight": {
+    "status": "PARTIAL_ENVIRONMENT_PASS_RUNTIME_BLOCKED",
+    "device": "Parallels Windows 11 VM on authorized Mac",
+    "vm_initial_state": "suspended",
+    "vm_final_state": "suspended",
+    "os": "Microsoft Windows NT 10.0.26300.0",
+    "architecture": "ARM64",
+    "powershell": "5.1.26100.9457",
+    "current_user_exec": true,
+    "isolated_localappdata_probe": {
+      "write_readback": "PASS",
+      "sha256": "ba9c736f19e7f60b7f6764adb0b7908c0a2b394e09b6c09863528c7f2bc86095",
+      "cleanup_readback_remaining_directories": 0,
+      "production_profile_touched": false
+    },
+    "python_discovery": {
+      "only_command": "%LOCALAPPDATA%\\Microsoft\\WindowsApps\\python.exe",
+      "windowsapps_placeholder": true,
+      "trusted_python_3_10_plus_found": false,
+      "tk_probe_run": false
+    },
+    "exact_preview_bytes_transferred": false,
+    "preview_or_external_client_executed": false,
+    "boundary": "The product correctly requires a trusted Python 3.10+ with Tk. No runtime was installed automatically and no acceptance claim is made."
+  },
+  "claims_scope": "Original source-seal claims below predate the post-package Windows acceptance and remain unchanged for provenance.",
+  "post_package_acceptance": {
+    "date": "2026-10-14",
+    "record": "AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.json",
+    "native_windows_launcher_tk": true,
+    "independent_external_stdio_client": true,
+    "modern_protocol": "2026-07-28",
+    "legacy_protocol": "2025-11-25",
+    "specific_chatgpt_or_codex_product_ui": false,
+    "production_installation": false,
+    "real_game_or_manager": false,
+    "proposal_approved": false,
+    "operation_executed": false,
+    "first_failed_harness_attempt_reconciled_before_new_isolated_run": true
+  }
+}

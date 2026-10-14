@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "kind": "game-keybind-pack",
+  "id": "cyberpunk-2077",
+  "version": "0.1.0",
+  "game_id": "cyberpunk-2077",
+  "title": "Cyberpunk 2077",
+  "keymaps": {
+    "keyboard": {
+      "Space": "Space",
+      "F": "F",
+      "E": "E",
+      "R": "R",
+      "MouseLeft": "MouseLeft",
+      "MouseRight": "MouseRight",
+      "WheelUp": "WheelUp",
+      "WheelDown": "WheelDown"
+    }
+  },
+  "files": [
+    {
+      "id": "input",
+      "adapter": "unresolved-native",
+      "locations": [
+        {
+          "root": "LOCAL",
+          "pattern": "CD Projekt Red/Cyberpunk 2077/UserSettings.json"
+        },
+        {
+          "root": "CYBERPUNK",
+          "pattern": "r6/config/inputUserMappings.xml"
+        },
+        {
+          "root": "CYBERPUNK",
+          "pattern": "r6/config/inputContexts.xml"
+        },
+        {
+          "root": "CYBERPUNK",
+          "pattern": "engine/config/platform/pc/input_loader.ini"
+        },
+        {
+          "root": "CYBERPUNK",
+          "pattern": "r6/cache/inputUserMappings.xml"
+        },
+        {
+          "root": "CYBERPUNK",
+          "pattern": "r6/cache/inputContexts.xml"
+        },
+        {
+          "root": "CYBERPUNK",
+          "pattern": "r6/input/*.xml"
+        }
+      ],
+      "fields": [],
+      "inventory_complete": false,
+      "stopped_processes": [],
+      "writable": true,
+      "priority": 100,
+      "fingerprints": []
+    }
+  ],
+  "variants": [
+    {
+      "id": "keyboard",
+      "files": [
+        "input"
+      ]
+    }
+  ],
+  "presets": [],
+  "evidence": {
+    "stage": "draft",
+    "notes": "Location-research draft only: original_and_context_review",
+    "sources": []
+  },
+  "fixtures": []
+}

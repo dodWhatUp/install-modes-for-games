@@ -1,0 +1,49 @@
+{
+  "id": "cyberpunk-2077",
+  "name": "Cyberpunk 2077",
+  "schema_status": "original_and_context_review",
+  "locations": [
+    {
+      "root": "local",
+      "pattern": "CD Projekt Red/Cyberpunk 2077/UserSettings.json"
+    },
+    {
+      "root": "cyberpunk",
+      "pattern": "r6/config/inputUserMappings.xml"
+    },
+    {
+      "root": "cyberpunk",
+      "pattern": "r6/config/inputContexts.xml"
+    },
+    {
+      "root": "cyberpunk",
+      "pattern": "engine/config/platform/pc/input_loader.ini"
+    },
+    {
+      "root": "cyberpunk",
+      "pattern": "r6/cache/inputUserMappings.xml"
+    },
+    {
+      "root": "cyberpunk",
+      "pattern": "r6/cache/inputContexts.xml"
+    },
+    {
+      "root": "cyberpunk",
+      "pattern": "r6/input/*.xml"
+    }
+  ],
+  "format": "JSON user-setting entries with IK_* keycodes; XML mapping/context definitions",
+  "limitations": [
+    "V3 specifies 28 placements but defers 30 contextual actions. Call vehicle, vehicle controls and braindance functions cannot be moved by a global text replacement.",
+    "The retained evidence distinguishes right Ctrl/Shift hold bindings from left Ctrl/Shift dash/toggle bindings. The generic planner labels do not prove they are the same physical key.",
+    "Preserve graphics hotkeys and CET/UltraPlus/ReShade settings. Existing input mods may redirect the effective XML, so their files must be audited without enabling or replacing mods."
+  ],
+  "source_urls": [
+    "https://support.cdprojektred.com/en/cyberpunk/pc/gameplay/issue/2407/i-am-experiencing-issues-with-controls",
+    "https://github.com/steliosc/Cyberpunk-2077-Custom-Controls-Guide",
+    "https://github.com/jackhumbert/cyberpunk2077-input-loader"
+  ],
+  "discovery_only": true,
+  "native_recipe_bundled": false,
+  "source_review_date": "2026-10-13"
+}

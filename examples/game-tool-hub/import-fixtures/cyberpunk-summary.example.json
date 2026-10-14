@@ -1,0 +1,20 @@
+{
+  "RootType": "worldBenchmarkSummary",
+  "Data": {
+    "gameVersion": "2.31",
+    "benchmarkName": "Synthetic fixture benchmark",
+    "averageFps": 60.0,
+    "minFps": 40.0,
+    "maxFps": 90.0,
+    "time": 60.0,
+    "frameNumber": 3600,
+    "renderWidth": 2560,
+    "renderHeight": 1440,
+    "DLSSFrameGenEnabled": true,
+    "DLSSMultiFrameGenEnabled": true,
+    "DLSSMultiFrameGenFrameToGenerate": 3,
+    "rayTracedPathTracingEnabled": false,
+    "gpuMemory": 16384,
+    "systemMemory": 32768
+  }
+}

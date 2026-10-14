@@ -1,0 +1,3 @@
+# Test-only dependencies. Game Tools runtime remains standard-library/Tk based.
+jsonschema==4.26.0
+Pillow==12.3.0

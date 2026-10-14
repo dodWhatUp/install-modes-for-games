@@ -1,0 +1,18 @@
+{
+  "id": "middle-earth-shadow-of-war",
+  "name": "Middle-earth Shadow of War",
+  "schema_status": "storage_and_action_support_unresolved",
+  "locations": [],
+  "format": "Native keyboard-binding file/decoder not verified; known .cfg files are graphics-related",
+  "limitations": [
+    "A firsthand investigation found graphics.cfg and render.cfg but did not establish a keyboard-binding file. Its suggestion that saves own bindings remains speculation.",
+    "V3 Map: M -> N is additionally unresolved because users report that map cannot be rebound through the normal controls menu.",
+    "No external remapper or device-output change is substituted for an unsupported native mapping."
+  ],
+  "source_urls": [
+    "https://steamcommunity.com/app/356190/discussions/0/2946998508808164641/"
+  ],
+  "discovery_only": true,
+  "native_recipe_bundled": false,
+  "source_review_date": "2026-10-13"
+}

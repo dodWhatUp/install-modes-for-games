@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "kind": "scenario",
+  "scenario_id": "MockScenario",
+  "revision": 1,
+  "mode": "builtin",
+  "requested_workload": {
+    "game_id": "MockGame",
+    "build": "1.0",
+    "scene_id": "MockBuiltinScene",
+    "settings_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "declared_readback": {
+    "game_id": "MockGame",
+    "build": "1.0",
+    "scene_id": "MockBuiltinScene",
+    "settings_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "cache": {
+    "process_start": "warm",
+    "visit": "warm_revisit",
+    "shader_cache": "documented_warm",
+    "source_revision": "MockCacheRevision"
+  },
+  "repeat_count": 3,
+  "measurement": {
+    "purpose": "cost_comparison",
+    "provider_id": "MockProvider",
+    "frame_class": "rendered",
+    "endpoint": "none",
+    "calibration": "not_applicable",
+    "meaningful_input": false
+  },
+  "phases": [
+    {
+      "id": "MockPhase",
+      "duration_ms": 60000,
+      "actions": [
+        {
+          "kind": "marker",
+          "duration_ms": 0
+        },
+        {
+          "kind": "builtin_scene",
+          "duration_ms": 60000
+        }
+      ]
+    }
+  ],
+  "stop": {
+    "on_focus_loss": true,
+    "on_provider_failure": true,
+    "on_memory_warning": true,
+    "on_cancel": true,
+    "deadline_ms": 60000
+  },
+  "safety": {
+    "save_access": false,
+    "quest_changes": false,
+    "graphics_changes": false
+  }
+}

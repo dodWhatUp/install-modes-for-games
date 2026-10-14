@@ -1,8 +1,49 @@
 # Unified game tools architecture and build plan
 
+## 2026-10-14 — AI Efficiency Foundation implemented
+
+The first read-first AI slice is implemented in `0.26.0-preview.1`: protocol framing is separated from deterministic business tools; modern and legacy stdio coexist; modern results expose explicit completion/evidence/effects/privacy; packaged knowledge supports bounded search/fetch/resources; continuation and batch tools inspect without replay; catalog/report reads reuse existing owners. Native Windows/Tk and independent external stdio acceptance passed. Local approval remains the only consequential boundary, and no daemon, arbitrary command/path, automatic execution or cloud credential was added. Read the [design](AI-EFFICIENCY-FOUNDATION.md), [Windows/client acceptance](AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.md) and [canonical reconciliation](AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.md).
+
+The next architecture gate is still read-only: goal-level plan DAG, ownership/conflict graph, bounded game-instance identity and one manager adapter. Write transactions remain later work.
+
+## 2026-10-13 — Mods and shared AI source integration
+
+**Hub 0.21.0-preview.1 source candidate**, based on the verified 0.20.2 export.
+[Current integration, controls, provenance and remaining gates](MODS-AI-INTEGRATION.md)
+adds the Mods and AI & automation workspaces, one Kingmaker recipe, local approvals,
+MCP/CLI read-and-proposal interface and explicitly shared provider/tool summaries.
+Source integration is not a Windows deployment, live provider acceptance or Git
+publication. All original native Studio/AHK files remain byte-identical; original
+features and GT-001–060 retain their existing owners and historical acceptance.
+
+This advances **GT-006/008/009/034/040/041/055–059** within their existing scope.
+Named mod operations share their previous ledger, overlay selection uses the original
+Store, reports use their original parsers, and approvals reuse GameToolJournal.
+No duplicate project queue, collector, remapping system, task master or cloud sync
+was created. No game, capture, driver or benchmark action was started.
+
+
+Continuation, 2026-10-12: [Hub 0.13.2 / Studio 2.2](UNIFIED-GAME-TOOLS.md)
+adds a shared feature/goal registry and optional coherent workspace around the
+existing panels, private data export/import and additive shared-record migration.
+Schema/data versions are separate from program versions; native formats remain
+opaque and byte-preserved. Compatible journal schema-1 evidence is readable
+across module releases without rewriting immutable records. Source ownership,
+bootstrap updates and restart cleanup strengthen the existing update path.
+This is incremental reuse, not a replacement of every tool or implementation of
+cloud sync/internal live automation. Desktop acceptance is recorded separately
+after installation. Games, benchmarks, capture and deferred game-input work
+remain stopped. Older dated acceptance paragraphs below remain historical.
+
+Current continuation, 2026-10-11: [Hub 0.10.0](../examples/game-tool-hub/README.md#offline-provider-health-and-editable-scenarios--0100) implements the bounded offline provider-health and editable scenario portion of the benchmark-derived contracts below. Readiness 0.1.0 and Coordinator/Sessions 0.4.0 reuse fixed capture/journal/publishing guards; all earlier features remain. [Acceptance/preservation receipt](GAME-TOOL-CONNECTIONS.md#2026-10-11--0100-offline-provider-health-and-scenario-contracts): 870 toolkit passes/two skips, 11 separate AHK source checks and 52 export contracts. Mock health/declared preparation is never live capture, FG PASS, optical-latency proof or runner acceptance. Proposed observation/OCR/product adapters, recording/player and AHK migration remain unfinished; all game/capture deferrals remain. Earlier “current”/“proposed” paragraphs retain their dated boundary.
+
+Current continuation, 2026-10-11: [Hub 0.9.0](../examples/game-tool-hub/README.md#installation-and-diagnostic-dry-runs--090) adds a generic data-only recipe engine/view and fixed workflow coordination, retaining all prior features. Coordinator/Sessions 0.3.0 reuse Journal 0.1.0 and source checks. Private change lists, owner/dependency/hash/recovery blockers, typed diagnostic evidence requests and conditional rollback plans are fixture-tested; no executable installer/rollback or current live preflight is supplied. GT-034/035/036/040 remain partial: researched per-game/product adapters and actual acceptance are separate. The 0.8.0 and older paragraphs below retain dated evidence, not latest-version claims. [Current receipt](GAME-TOOL-CONNECTIONS.md#2026-10-11--090-offline-workflow-dry-runs) owns scope; game/input/benchmark/recording deferrals remain.
+
+Current continuation, 2026-10-11: Hub 0.8.0 adds [selected saved crash-evidence intake](../examples/game-tool-hub/README.md#saved-crash-evidence-intake--080) and Coordinator/Sessions 0.2.0, retaining Journal 0.1.0 and existing features. Bounded XML/journal/opaque-text inputs can form private hashed packets and a portable uncertain timeline. This completes an offline portion of gate 4/GT-028, not the full live crash companion. Tables describing 0.7.0 below remain historical foundation evidence. Live heartbeats/process/WER collection, recorder contracts/player and AHK/keymap integration are separate remaining stages; game/input/benchmark/recording deferrals remain unchanged.
+
 Proposal, 2026-10-11. Combine the measurement Hub, optional AHK input module, overlays and keymap work through one shared coordination core. Preserve their working features and native device profiles. A single user interface can expose the modules without turning the entire project into one large AHK script.
 
-The current boundary is consolidation and planning. Game input acceptance follows the tooling gates; MFG/FrameWarp remains deferred. The requested Cyberpunk highest-level Ultra+ VRAM benchmark comes last, after the earlier work and a user-facing continuation proposal. This plan does not activate recording, launch games, load saves, change graphics or schedule work.
+The current boundary includes local Hub catalog integration, read-only FG planning gates, offline saved-summary comparison/reporting and the Hub 0.7.0 offline session/journal foundation. Broader operational adapters remain planned. Use the [master checklist](GAME-TOOLS-MASTER-CHECKLIST.md) for consolidated requirement status. Game input acceptance follows the tooling gates; MFG/FrameWarp remains deferred. The requested Cyberpunk highest-level Ultra+ VRAM benchmark comes last, after the earlier work and a user-facing continuation proposal. This plan does not activate recording, launch games, load saves, change graphics or schedule work.
 
 The same-day extension makes individual tool/feature resource cost and combination interactions the primary analysis goal. Use the [typed catalog and overhead protocol](TOOL-RESOURCE-OVERHEAD.md), [knowledge and recovery index](GAME-TOOLS-KNOWLEDGE-INDEX.md) and [automation procedures](AUTOMATION-OPERATING-PROCEDURES.md). Extend the shared registry with managers, stores, official mod kits and scoped prepared capabilities; distinguish their external processes from the features they deploy or host inside a game.
 
@@ -18,7 +59,8 @@ The preferred interface foundation is [compact UI and structured content design]
 
 | Component | Observed or recorded capability | Remaining boundary |
 |---|---|---|
-| Game Tool Hub 0.2.0 | Read-only Afterburner/RTSS connections, report imports, interface registry and 22 synthetic contracts with core panel acceptance | Populated game reports, runner, crash recording and comparison player |
+| Game Tool Hub 0.7.0 | Original readers/imports/registry/Catalog/Comparison retained; optional Sessions panel and structured offline CLI with compact ownership/lifecycle and append-only evidence | Tests are fixture/withdrawn-Tk contracts, not observed live desktop/game acceptance. Real rendering imports remain BLOCKED; broader adapters, runner, crash recording and synchronized video remain separate |
+| Shared coordinator/journal 0.1.0 | Explicit fresh offline sessions, fixed saved-summary/comparison capabilities, cooperative expiry/cancellation, fsynced hash-chain records and new-copy verified-prefix recovery | No existing-session replay, desktop-wide reservation, game control, live heartbeat/WER collector, recorder or crash-cause diagnosis; durability guarantee is limited to verified-prefix process-interruption evidence |
 | Game Tool Catalog 0.1.1 | Filterable typed catalog, dependency-preserving overhead plans and 35 pure tests | Read-only planning foundation; no external-tool execution or measured overhead acceptance |
 | Overlay Studio 2 integration | Optional fifth tab and library wiring; 60 original methods retained; settings hash unchanged; saved picture preview observed after loader repair | Module Start/Stop/restart after the latest repair, HUD output and original-feature regression checks |
 | GameInputModule v0.5-preview.3 | Native integrated-host validation, 36 module plus 8 host policy checks; installed and repository source match | Text, Unicode, Enter, Escape, hold/release and cancellation in each game |
@@ -30,7 +72,11 @@ Sources: [Hub evidence](GAME-TOOL-CONNECTIONS.md), [input integration record](..
 
 ## Shared core and ownership
 
-The shared core serves input, measurement, mod workflows, crash evidence and label rendering through versioned contracts. Front ends remain replaceable; a new adapter should add a capability to the common registry rather than copy discovery and logging into every tool.
+The component table is not the complete backlog. The [60-item requirement ledger](GAME-TOOLS-MASTER-CHECKLIST.md) preserves newer related-chat owner reports (including R8 and Pro transition-preservation work) and their independent-audit limits. [Offline reporting](OFFLINE-COMPARISON-REPORTS.md) accepts explicit normalized summaries or two reviewed original-summary adapters: provider metrics retain lineage, missing/failed runs remain visible, and eligible deltas do not certify compatibility, causal cost or runtime FG. Original-byte identity is not a measurement-validity seal. It adds no shared action server or AHK/profile migration.
+
+The intended shared core serves input, measurement, mod workflows, crash evidence and label rendering through versioned contracts. Front ends remain replaceable; a new adapter should add a capability to the common registry rather than copy discovery and logging into every tool. The implemented 0.1.0 core deliberately serves only saved-data operations; it does not claim that every existing tool has migrated.
+
+Implemented interfaces and usage are in [Hub Sessions](../examples/game-tool-hub/README.md#offline-coordination-and-crash-safe-journal-foundation--070). [Coordinator](../scripts/GameToolCoordinator.py) reuses the existing bounded saved-report/comparison backends and records compact action identity/outcome, not raw report or typed-input data. [Journal](../scripts/GameToolJournal.py) writes ordered UTC/monotonic clock-identified records, acknowledges only after flush/fsync and refuses continuation after durability failure. Inspection is read-only; recovery checks drift and publishes a new exclusive verified-prefix copy, never rewriting the original or conferring permission. An incomplete journal is not a game-crash verdict. The next operational adapter must independently establish scope, cancellation, target and result acceptance; adding a capability is not authorization to use it.
 
 | Shared service | Responsibilities | Ownership boundary |
 |---|---|---|
@@ -70,6 +116,23 @@ Keep actual game input on an authorized, supported control route. Do not introdu
 
 Useful UI additions are a compact capabilities/status page, visible active owner, one Stop control, a binding/conflict inspector, a last-failure panel and a preview of exactly what a recipe would change. A session can save an evidence request for another chat without sending it automatically.
 
+## Benchmark-chat-derived contracts — 2026-10-11
+
+The [Source B reconciliation](GAME-TOOLS-MASTER-CHECKLIST.md#benchmark-chat-reconciliation--2026-10-11) reviewed all 16 turns returned by the supported reader, with no older cursor. These are proposed expansions of existing GT IDs, not new implemented capabilities or renewed authority. Provider outputs/tool code/attachment bytes were not independently inspected in this chat review. Existing Hub 0.9.0 dry-runs and Journal 0.1.0 remain the accepted offline foundation; the following operational contracts are not implemented by that generic slice.
+
+| Proposed contract | Required data and behavior | First offline acceptance |
+|---|---|---|
+| Provider lifecycle/health (GT-005/006/026/027/040) | Version/capabilities and separately recorded connection, permission, approval-pending, process-start, capture-armed and fresh-writing evidence; target/run/phase, actual sampling cadence, gaps/dropped data, last good record and stopped/failed boundary | Mock approved-but-not-started, started-without-output, stale/wrong-target files, partial writes, producer exit, missing fields and cancellation. Neither UAC approval nor an open process is a valid-capture claim. No capture action is enabled by discovery/import. |
+| Scenario specification (GT-023/033/038) | Stable revision; built-in versus route/action mode; requested/observed workload identity; phases; cold-start/first-visit/warm-revisit/cache labels; rotation/translation/HUD/animation endpoint; input/calibration/repetition requirements and stop/checkpoint conditions | Parse/migrate authored data and preview actions without dispatch. Refuse unknown context, unsafe save/quest actions and phase ambiguity. A declared route is not proof of repeatability or save safety. |
+| Supported observation fallback (GT-039) | API/export/accessibility first; bounded OCR text/coordinates/confidence only when needed; observed target/window and coordinate basis, display/layout/scale, timestamp/expiry, ambiguous alternatives and expected result | Mock source changes, stale coordinates, low confidence, moved windows, focus races and uncertain action outcomes. Require fresh inspection after any later authorized action; don't silently click a guessed match or introduce a hidden injection channel. |
+| User-editable recipes and provider selection (GT-006/009/034/041) | Separate data schema/migrations, replaceable optional adapter IDs/version/capabilities, scope, dependencies, expected evidence and previewed diff; distinguish interface app from collector and supported versus unsupported actions | Preserve old entry points/settings/profiles; reject arbitrary command payloads, unsupported capabilities and stale sources. Direct path entry remains available when Browse is unreliable; test layout-independent shortcut identities separately from display text. |
+| Deployment and effective-setting evidence (GT-001/012/034–036) | Exact shared/native file owners, manager deployment state, old script/shortcut redeployment hazards, current/known-good snapshots including external config, requested settings and post-apply dependent transitions | Data-only mocked manager inventories and PT/RR-style setting changes produce blockers/diffs, not installs. Later supported product adapters must read effective state; generic declared hashes/passes do not establish current process state or runtime correctness. |
+| Efficient evidence policy (GT-010/030/032/039) | Original provider files, selected result/anomaly evidence and phase markers by default; optional video mode, privacy/retention/disk limits, provider/observer cadence and overhead recorded separately | Compare authored evidence policies without capturing. Later measure responsiveness, token/observation error cost and collector/recording overhead against matched controls before claiming savings. Preserve the separate synchronized-video backlog. |
+
+Source B's decisive correction is retained: established tools calculate complex lows, latency and trace/sensor metrics. Our core coordinates, imports, checks comparability and reports; the historical custom analyzer remains a prototype, not the default engine. Camera response and physical input-to-pixel latency remain separate. Timed capture proposed during interrupted work is a future explicitly scoped option, not an automatic retry. Historical capture approval, save/route examples and obsolete key assignments do not survive later deferrals/current preferences as authority.
+
+Proposed next development order while games/capture remain deferred: define these data contracts and migrations → test mocks and interrupted/stale evidence → integrate optional read-only status/previews into the existing Hub → separately authorized ordinary desktop acceptance. Only after a user-facing boundary report may supported provider/game actions be requested. The mandatory effective-FG/memory gate remains fail-closed; MFG/FrameWarp and highest-compatible Ultra+ VRAM work stay last. This review itself implements none of those stages.
+
 ## Keymaps and input devices
 
 Retain native Azeron/reWASD features. Separate verified device geometry and physical positions, native outputs/layer gestures, effective game/mod bindings, and displayed actions/icons. One versioned mapping drives Keys, Actions and Combined views and the in-game picture overlay. Changing games must leave native output and geometry hashes unchanged.
@@ -82,9 +145,13 @@ Acceptance includes all 120 visible digital cells agreeing with the source, unch
 
 ## Mod installation and diagnosis workflows
 
+Implemented offline slice: [schema/usage](../examples/game-tool-hub/README.md#installation-and-diagnostic-dry-runs--090), [planner](../scripts/GameToolWorkflow.py), optional Sessions child view and CLI. Recipes cannot choose code or commands. Fully declared proposals remain PREPARED_NOT_AUTHORIZED; copied/hash-inventory declarations, stopped-process declarations and declared verification passes cannot establish observed backups/current process state/runtime FG. Source-bound portable plans omit private targets; diagnosis ranks declared evidence counts rather than likelihood, and contains no mutations. Conditional rollback refuses incomplete/mismatched originals, unknown ownership and drift rather than acting on imported authority. General preparation is fixture-tested, not a researched game/product adapter or universal compatibility certificate.
+
 Use one reusable recipe sequence: preflight → current-state snapshot → one scoped change → observed verification → evidence checkpoint → retain or rollback. A recipe declares supported game/build, exact input and hook owners, required stopped processes, save risk and expected component-specific evidence.
 
 Provide dry-run, resumable boundaries, cancellation and a readable change list. Never swap loaded DLLs or treat an overlay as proof of FG/MFG/FrameWarp. Distinguish creation, evaluation, presentation, visual correctness and stability. On failure, preserve the first evidence, rank hypotheses by confidence, and change one layer at a time. Configuration advice and a running action are separate modes.
+
+Product-specific plans must also inspect external manager deployment/redeployment and legacy switching entry points before proposing removal or replacement. Preserve shared dependencies and native files; no broad recursive cleanup. A later apply adapter must read back effective settings after dependent transitions rather than trust the intended recipe (the benchmark owner reported a PT confirmation changing RR). These are future adapter requirements, not capabilities of the current generic dry-run engine.
 
 Gameplay assistance and automation are opt-in recipes with a named scope and duration, not an always-on controller. Unsupported protected games or inaccessible actions stay unsupported. A later mod-help workflow can inspect effective bindings, loaded components and logs before proposing a focused repair.
 
@@ -105,6 +172,8 @@ A comparison player can show two clips beside charts with a shared seek cursor, 
 Separate telemetry-only and recording-enabled runs to measure CPU/GPU/VRAM/encoding/disk effects. Preserve HDR/color-space metadata and distinguish a tone-mapped preview from the original HDR recording. Do not use video-induced memory pressure as evidence of a mod's standalone VRAM cost.
 
 ## Build gates
+
+**Local continuation completed, 2026-10-11:** the requested catalog-to-Hub slice of gate 3 is implemented without changing the installed AHK host or native profiles. The optional bridge/panel reuse Catalog 0.1.1, preserve original entry points/shortcuts and keep source freshness, dependency gates and unknown metrics visible. All 110 Python contracts and 41 export checks passed; 18 tracked preservation files are unchanged. This is not completion of session/action/owner contracts, host acceptance or the full shared core. Current user scope explicitly leaves games and benchmarks for later; gate 2's game checks are not implicitly resumed. See the [integration evidence](GAME-TOOL-CONNECTIONS.md#2026-10-11--030-catalog-integration) and [Hub usage](../examples/game-tool-hub/README.md).
 
 1. **Consolidation and preservation.** Adopt architecture, reconcile source masters and revisions, keep private checkpoints and record current acceptance. No wholesale replacement of Studio 2 with Studio 3 or unpublished Pro artifacts.
 2. **Input and host acceptance.** Complete mapper-aware reservations and inert diagnostic entry points; then observe actual host Start/Stop/restart, indicator, original picture/HUD availability and cleanup. Separately test safe text/raw/Unicode, harmless Credits Enter, Escape and caret hold/release/cancellation in each game. No saves or graphics changes. Unsupported fields/actions stay pending rather than choosing a dangerous substitute.

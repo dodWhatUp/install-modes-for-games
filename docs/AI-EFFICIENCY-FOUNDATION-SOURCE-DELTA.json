@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-14T08:16:48.643442+00:00",
+  "from": {
+    "version": "0.25.0-preview.2",
+    "delivery_sha256": "f606e0625527dc68e2ef929b9310573492709d54ce6ff9f0158ade982a2fb587",
+    "local_baseline_commit": "059c2db7a4c9581c75acee7fc26c9bc4254607aa",
+    "payload_files": 366
+  },
+  "to": {
+    "version": "0.26.0-preview.1",
+    "payload_files_including_this_record": 380
+  },
+  "comparison": {
+    "excluded": [
+      "MANIFEST.json (regenerated after this comparison)",
+      "docs/AI-EFFICIENCY-FOUNDATION-SOURCE-DELTA.json (self-referential record)"
+    ],
+    "added_count_excluding_self": 13,
+    "modified_count": 15,
+    "removed_count": 0,
+    "added": [
+      "docs/AI-EFFICIENCY-FOUNDATION-CONTINUATION.md",
+      "docs/AI-EFFICIENCY-FOUNDATION-LIMITATIONS.md",
+      "docs/AI-EFFICIENCY-FOUNDATION-REVIEW.md",
+      "docs/AI-EFFICIENCY-FOUNDATION-VALIDATION.json",
+      "docs/AI-EFFICIENCY-FOUNDATION.md",
+      "schemas/ai-result-envelope.schema.json",
+      "scripts/GameToolAIContracts.py",
+      "scripts/GameToolAIFoundation.py",
+      "scripts/GameToolAIKnowledge.py",
+      "scripts/GameToolAIModern.py",
+      "scripts/GameToolAITools.py",
+      "scripts/tests/Test-GameToolAIFoundation.py",
+      "scripts/tests/Test-GameToolAIModern.py"
+    ],
+    "modified": [
+      "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "docs/keybinds/COMPONENT-CHECKPOINT.md",
+      "docs/keybinds/COMPONENT-README.md",
+      "docs/keybinds/DEPENDENCY_PINS.json",
+      "docs/keybinds/INTEGRATION-HANDOFF.md",
+      "docs/keybinds/README.md",
+      "scripts/Export-GameTools.ps1",
+      "scripts/Game-Tool-Hub.py",
+      "scripts/GameToolAI.py",
+      "scripts/GameToolKeybindAI.py",
+      "scripts/GameToolKeybindIntegration.py",
+      "scripts/GameToolWorkbenchLaunch.pyw",
+      "scripts/check_host.py",
+      "scripts/tests/Run-KeybindChecks.py",
+      "scripts/tests/Test-GameSupportPackaging.py"
+    ],
+    "removed": []
+  },
+  "scope": "Additive AI Efficiency Foundation plus exact version/document/export integration. No production data, game files, installed profiles, GitHub branch or Drive object is part of this source comparison."
+}

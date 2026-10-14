@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "kind": "game-tools-canonical-source-reconciliation",
+  "date": "2026-10-14",
+  "repository": "dodWhatUp/install-modes-for-games",
+  "base_commit": "043f3c4733788f082da98dfcb43c0972d2794c6a",
+  "source_archive_sha256": "ad4bcddbd76845bf35bdb67e1eee529dcab921263a742a596eec93fb6d41afd6",
+  "source_payloads": 380,
+  "classification": {
+    "new_paths": 329,
+    "source_owned_overlaps": 15,
+    "canonical_main_overlaps": 7,
+    "semantic_merges": 3,
+    "archive_only_excluded": 1
+  },
+  "source_owned_overlaps": [
+    "docs/AUTOMATION-OPERATING-PROCEDURES.md",
+    "docs/DISTRIBUTION.md",
+    "docs/FEATURE-DECISION.md",
+    "docs/GAME-PERFORMANCE-MEASUREMENT.md",
+    "docs/GAME-TELEMETRY-TOOL-PLAN.md",
+    "docs/GAME-TOOL-CONNECTIONS.md",
+    "docs/GAME-TOOLS-ARCHITECTURE.md",
+    "docs/TOOL-RESOURCE-OVERHEAD.md",
+    "examples/game-input/AzeronOverlayStudio.integrated.ahk",
+    "examples/game-input/OverlayStudioGameInput.ahk",
+    "examples/game-tool-hub/README.md",
+    "scripts/Export-GameTools.ps1",
+    "scripts/Game-Tool-Hub.py",
+    "scripts/tests/Test-GameSourceExport.ps1",
+    "templates/PREFERENCE-PROFILE.md"
+  ],
+  "canonical_main_overlaps": [
+    "docs/AZERON-GAME-CONTROLS.md",
+    "docs/INPUT-DEVICE-REGISTRY.md",
+    "docs/OPERATING-STANDARD.md",
+    "examples/game-tool-hub/Start-GameToolHub.ps1",
+    "scripts/Export-GameInput.ps1",
+    "templates/GAME-KEYBINDS.example.json",
+    "templates/INPUT-DEVICE.example.json"
+  ],
+  "semantic_merges": {
+    "AGENTS.md": "Preserved current project rules and added only the non-conflicting unified-toolkit, Dynamic SR and multi-game routes.",
+    "preferences/GENERAL.md": "Preserved later RHI/renderer and current graphics-hotkey defaults; rejected the packaged conflicting Cyberpunk hotkey variant; added only toolkit continuity/delivery/layering and compatible Dynamic SR guidance.",
+    "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md": "Used the integrated 0.26 index while preserving the canonical Azeron R5 closure and GPU architecture research sections."
+  },
+  "excluded": {
+    "MANIFEST.json": "Generated archive inventory, not editable repository source."
+  },
+  "post_package_acceptance": "AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.json",
+  "safety": {
+    "game_files_changed": false,
+    "production_profile_changed": false,
+    "archives_or_binaries_committed": false,
+    "force_push": false,
+    "main_merge": false
+  },
+  "status": "CANDIDATE_RECONCILED_NOT_YET_PUBLISHED_OR_MERGED",
+  "cross_branch_adoptions": [
+    {
+      "path": "docs/AZERON-GAME-KEYMAP-VIEWER-WISHLIST.md",
+      "source_branch": "codex/azeron-shared-r5-2026-10-11",
+      "source_commit": "58068c3b96a2314df77c3510218d1fbefa629f39",
+      "source_blob": "106a7a07b584664a002f96fc573e304efd91685d",
+      "normalized_sha256": "dc50fbf49c3fea747651901a7c74fe2f568d7cbff362d70320d87ea41f17f4f3",
+      "treatment": "Exact text adopted with line-ending normalization because current main documentation already referenced this owner file."
+    }
+  ],
+  "missing_pointer_dispositions": {
+    "SPARSE6-ADDITIONAL-GAME-MAPS-2026-10-12.md": "Exact file unavailable in Git/Library by name; routed to private Azeron start page and public R8 records.",
+    "games/path-of-exile-2/CONTINUATION-AND-DEVELOPMENT.json": "Exact private backlog not reconstructed; routed to public R8 review and private recovery archive.",
+    "games/path-of-exile-2/HISTORY.md": "Exact private history not reconstructed; routed to public R8 review and private recovery archive.",
+    "AZERON-DECISION-CHAT-REVIEW-2026-10-12.md": "Exact chat-preservation file unavailable; routed to public R8 decision review and private decision/evidence package.",
+    "ISOLATED-LAB-*.md": "Separate owner retained at exact PR6 commit and private Drive source/recovery; not copied into this branch."
+  }
+}

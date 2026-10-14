@@ -1,0 +1,873 @@
+{
+  "schema_version": 1,
+  "artifact": "Game Tools Keybinds",
+  "version": "0.2.0-preview.1",
+  "kind": "ADD_ON_SOURCE_CANDIDATE_NOT_A_WHOLE_APP_UPDATE",
+  "created_utc": "2026-10-13T17:00:13.272899+00:00",
+  "canonical_owner": "dodWhatUp/install-modes-for-games",
+  "game_specific_native_recipes_bundled": 0,
+  "research_drafts": 17,
+  "synthetic_format_packs": 10,
+  "tests_passed": 472,
+  "new_test_methods": 145,
+  "native_windows_tests_performed": false,
+  "in_game_tests_performed": false,
+  "cloud_publication_performed": false,
+  "files": [
+    {
+      "path": "00_START_HERE.html",
+      "bytes": 6020,
+      "sha256": "1bb1d4bebec7a5a0ec259066dbeb660f3766ac899b0099f558ec5b9fa5275a50"
+    },
+    {
+      "path": "CHECKPOINT.md",
+      "bytes": 543,
+      "sha256": "cb1fa3c3cfb6107c2449d2a1499e8e4359bae8e881b6f9e6791e63d95accbb2b"
+    },
+    {
+      "path": "KEYBIND_INTEGRATION_HANDOFF.md",
+      "bytes": 7839,
+      "sha256": "3f549a81b71d5c494c60b9e52a0b7cc63eb95249d476b2b73ac76420ec1dd3e2"
+    },
+    {
+      "path": "OPENING_MESSAGE_HE.txt",
+      "bytes": 2543,
+      "sha256": "30402c4c6319f69c010a5ae2fcb4672b753a829c487082b7d12867d3bd65ac9b"
+    },
+    {
+      "path": "Open-Keybinds.cmd",
+      "bytes": 1064,
+      "sha256": "9b95ad986cd8cc59054a240e1171802536cfb2959aba7f482f82fc3bf4f3f6f9"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4009,
+      "sha256": "deb30cf3159db93c69b46772e5d1a7a0ead0c76d6f648041334886598b574f9c"
+    },
+    {
+      "path": "compat/GameToolJournal.py",
+      "bytes": 21469,
+      "sha256": "01e76b93c69adefa742dfcb139756903c2259812c437ec72c508739b2a81657a"
+    },
+    {
+      "path": "compat/game_mod_ops/__init__.py",
+      "bytes": 63,
+      "sha256": "ca719be0e374a95094a74795f3c3706a36f0dc3d223e49d2943b55de4159ce68"
+    },
+    {
+      "path": "compat/game_mod_ops/safety.py",
+      "bytes": 6278,
+      "sha256": "a40f7a172716a02d19c4aef688ee67d45b4e86dcede00702eed766528175598b"
+    },
+    {
+      "path": "docs/DEPENDENCY_PINS.json",
+      "bytes": 1573,
+      "sha256": "8ece7da5a4c24722b7b277662079f013e607c2f20d0287729a13adc64425b1a8"
+    },
+    {
+      "path": "docs/EXTENSION_GUIDE.md",
+      "bytes": 10475,
+      "sha256": "6ba04409a7629bb3ce3168f0c729675c5e8d92231d4497028335f4918028b5cb"
+    },
+    {
+      "path": "docs/GAME_COVERAGE.md",
+      "bytes": 1049,
+      "sha256": "fee77aab1f840bcec072b96172def6d0cb800161d1a190931c1588899ded49f1"
+    },
+    {
+      "path": "docs/GAP_AUDIT.md",
+      "bytes": 2893,
+      "sha256": "47c3df93b039e3d08120526f39c1cdffa124ff808ae76f79f3ea4752c7d51160"
+    },
+    {
+      "path": "docs/INTEGRATION.md",
+      "bytes": 172,
+      "sha256": "3b64d72cf329385f523db55c13c24c3a4301231d759a0afec2d6d6ad70d3056b"
+    },
+    {
+      "path": "docs/PUBLIC_SOURCES.json",
+      "bytes": 1699,
+      "sha256": "da75ad210ead5d103f99e0af51cbf2e0b841113307d3656b1845efb490e75115"
+    },
+    {
+      "path": "docs/RECIPES.md",
+      "bytes": 273,
+      "sha256": "19bc1068352345dbc315d1189c7766a782dea2c68c4c3ba64269acd1702b16f4"
+    },
+    {
+      "path": "docs/RECOVERY.md",
+      "bytes": 1866,
+      "sha256": "c1db8ffce5e0113d080d886875158451f6851e26913e35859d244754f5c70ee3"
+    },
+    {
+      "path": "docs/REVIEW_NOTES.md",
+      "bytes": 688,
+      "sha256": "fa8614be8e54d7dfa984be9bc6575a45ffcf682267322d827950757039abdb17"
+    },
+    {
+      "path": "examples/adapter-sdk/named_tokens.py",
+      "bytes": 1368,
+      "sha256": "0f1a7dbd744cbffe59a164d2181f73a0f02f33fcc187de0703c6ec36dc13ab32"
+    },
+    {
+      "path": "examples/keybinds/game-locations.json",
+      "bytes": 21043,
+      "sha256": "f7211f0fe44d01047dc52a01a96807fd8247871ef6c375e22a2fb5ca869cbcd2"
+    },
+    {
+      "path": "game-packs/format-examples/sample-cfg-bind/fixtures/after.cfg",
+      "bytes": 116,
+      "sha256": "288e093836685b5c09d55251b7912ac1a93c18e656f13d57f74dc2e6c0a5a3cb"
+    },
+    {
+      "path": "game-packs/format-examples/sample-cfg-bind/fixtures/before.cfg",
+      "bytes": 116,
+      "sha256": "7195addeffc39a64fb463c1c85db4badf0006c817cfae17a0d6a3752329a116f"
+    },
+    {
+      "path": "game-packs/format-examples/sample-cfg-bind/pack.json",
+      "bytes": 2683,
+      "sha256": "dea6e3c6515979d4eb9f3122827efe2e2ebabbfc24c60ca51d11a8aa79d4099a"
+    },
+    {
+      "path": "game-packs/format-examples/sample-colon-lines/fixtures/after.txt",
+      "bytes": 65,
+      "sha256": "804c98aa64902f0329d1cac08ea5788ffdab81f5e30c93408be37a0266271673"
+    },
+    {
+      "path": "game-packs/format-examples/sample-colon-lines/fixtures/before.txt",
+      "bytes": 65,
+      "sha256": "84633f85dee5d30e9ab0bc2ea833ad074df11316061b9a66315c364d48cd936b"
+    },
+    {
+      "path": "game-packs/format-examples/sample-colon-lines/pack.json",
+      "bytes": 2692,
+      "sha256": "0b59446c919046a5ac48113f37fccaea501cd67fae03bc594b5c9bd49b62bf31"
+    },
+    {
+      "path": "game-packs/format-examples/sample-ini/fixtures/after.ini",
+      "bytes": 93,
+      "sha256": "0cfae69c888182a1e6addd28292c88e184a688d686af3b757151b0d779d58315"
+    },
+    {
+      "path": "game-packs/format-examples/sample-ini/fixtures/before.ini",
+      "bytes": 93,
+      "sha256": "f1d4d6eb2faab0a434f4d65a22d139946529795f8255ecaccc39bef19f2d1f6c"
+    },
+    {
+      "path": "game-packs/format-examples/sample-ini/pack.json",
+      "bytes": 2826,
+      "sha256": "01877590cb456f5eb6039c5383b586dd25ee6330d1a2ee2d9f6a882ff79f37c0"
+    },
+    {
+      "path": "game-packs/format-examples/sample-ini-sparse/fixtures/after.ini",
+      "bytes": 119,
+      "sha256": "b3112fd48e5bdd102ce79adfeffd9c533ea20e7a130390f8428ed22570895fb3"
+    },
+    {
+      "path": "game-packs/format-examples/sample-ini-sparse/fixtures/before.ini",
+      "bytes": 111,
+      "sha256": "dc6a9cf973bb8e911fd79990ec2aa54845e0583a11a54f3bfd207f37040f6749"
+    },
+    {
+      "path": "game-packs/format-examples/sample-ini-sparse/pack.json",
+      "bytes": 2950,
+      "sha256": "eb2b0d3eb475c6c0bf3c2d61c7f65c71273e0bbcc138c2e0239c92e78cede7e7"
+    },
+    {
+      "path": "game-packs/format-examples/sample-json/fixtures/after.json",
+      "bytes": 83,
+      "sha256": "87f44727f4d476a50705d4a8dfd1af7bb82c847bec4097f95e8468ee60a1de38"
+    },
+    {
+      "path": "game-packs/format-examples/sample-json/fixtures/before.json",
+      "bytes": 83,
+      "sha256": "fd09803d5b659c2030b05ccd75b62254e55e8eb19a11f378d77507373185d060"
+    },
+    {
+      "path": "game-packs/format-examples/sample-json/pack.json",
+      "bytes": 2608,
+      "sha256": "7d0f00359e9d9d14ce8d50099d69fd743e768b99a8628c3f89d9a73f31be6b06"
+    },
+    {
+      "path": "game-packs/format-examples/sample-jsonc/fixtures/after.jsonc",
+      "bytes": 104,
+      "sha256": "72e18e73e0094ba89d8b59ff2954fa181bae3000f860bf6b885cfffa06114ead"
+    },
+    {
+      "path": "game-packs/format-examples/sample-jsonc/fixtures/before.jsonc",
+      "bytes": 104,
+      "sha256": "7927a17cea27147398973e306c86fccd9ebc4dc668dd05054b02dc85d47212b8"
+    },
+    {
+      "path": "game-packs/format-examples/sample-jsonc/pack.json",
+      "bytes": 2615,
+      "sha256": "2e7f2177678dddde11aa56fe8213fac3c9cbaae058ffd8a29fa9546f4be7d2ab"
+    },
+    {
+      "path": "game-packs/format-examples/sample-keyvalues/fixtures/after.vdf",
+      "bytes": 86,
+      "sha256": "f650f28767778e26458c6217c231ea0308fe3d01368e395304fef5ce7c5c7f52"
+    },
+    {
+      "path": "game-packs/format-examples/sample-keyvalues/fixtures/before.vdf",
+      "bytes": 86,
+      "sha256": "2c239b11b8a8be0d6edbc7a45ffc2c199520c2da5dfb4152c1ef28d594b3b390"
+    },
+    {
+      "path": "game-packs/format-examples/sample-keyvalues/pack.json",
+      "bytes": 3081,
+      "sha256": "15c4b480ad10a1f7924ee75929708c745de395549db683212aa204556374dade"
+    },
+    {
+      "path": "game-packs/format-examples/sample-ue-chord/fixtures/after.ini",
+      "bytes": 307,
+      "sha256": "c460196e1dc280e5a4fb68d2607662e16cf262be8e3440f723867e72b0a9e0a3"
+    },
+    {
+      "path": "game-packs/format-examples/sample-ue-chord/fixtures/before.ini",
+      "bytes": 307,
+      "sha256": "668a0311cc322aafba77246bc17259e96db61f2344a27b2af5bb4a04f685ca60"
+    },
+    {
+      "path": "game-packs/format-examples/sample-ue-chord/pack.json",
+      "bytes": 6870,
+      "sha256": "7667a7eba8da750f15816f31e0e1540c277af94e70fb9c4f89ae6053a775e56f"
+    },
+    {
+      "path": "game-packs/format-examples/sample-ue-ini/fixtures/after.ini",
+      "bytes": 307,
+      "sha256": "c460196e1dc280e5a4fb68d2607662e16cf262be8e3440f723867e72b0a9e0a3"
+    },
+    {
+      "path": "game-packs/format-examples/sample-ue-ini/fixtures/before.ini",
+      "bytes": 307,
+      "sha256": "668a0311cc322aafba77246bc17259e96db61f2344a27b2af5bb4a04f685ca60"
+    },
+    {
+      "path": "game-packs/format-examples/sample-ue-ini/pack.json",
+      "bytes": 2832,
+      "sha256": "25915bda9a0ff47167afb211c5762adb511fd87abf54b43e0bcc68937e34d7d3"
+    },
+    {
+      "path": "game-packs/format-examples/sample-xml/fixtures/after.xml",
+      "bytes": 169,
+      "sha256": "c2b9bc122aefbf995e2ea8046ef386c40f0a012a8b80d93cc8ee3d14821765b1"
+    },
+    {
+      "path": "game-packs/format-examples/sample-xml/fixtures/before.xml",
+      "bytes": 169,
+      "sha256": "f7218c83d3467fc7ad6890cf819528ed01e84d617542f7b3bed125a9467efae5"
+    },
+    {
+      "path": "game-packs/format-examples/sample-xml/pack.json",
+      "bytes": 3009,
+      "sha256": "ae327762b85d2775a7ebed440765ce77b2c5396cb2d762ff8c1ccd2904e42bf8"
+    },
+    {
+      "path": "game-packs/research-drafts/bayonetta-pc/AUTHORING.md",
+      "bytes": 714,
+      "sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31"
+    },
+    {
+      "path": "game-packs/research-drafts/bayonetta-pc/location-evidence.json",
+      "bytes": 1192,
+      "sha256": "ecd491f23e2e108529fd6ec50570b82bbffc99c695767a4cf38879363d9b7889"
+    },
+    {
+      "path": "game-packs/research-drafts/bayonetta-pc/pack.json",
+      "bytes": 1134,
+      "sha256": "3d0f96dd30496b07c901d539bf8d11e477c9e27ddfe7edb5bd2d840131b818b4"
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-2-remastered/AUTHORING.md",
+      "bytes": 714,
+      "sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31"
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-2-remastered/location-evidence.json",
+      "bytes": 1012,
+      "sha256": "4690bd8347d9f42b17bac5e276efdd1af7e9a32d0e60928ca60693c80d276bca"
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-2-remastered/pack.json",
+      "bytes": 1191,
+      "sha256": "5049df937ec1f6c8e61b850af90919198cc1e9dab67036c2efea9dc0dcb8b359"
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-infinite/AUTHORING.md",
+      "bytes": 714,
+      "sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31"
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-infinite/location-evidence.json",
+      "bytes": 860,
+      "sha256": "479e31f4122893543322ab5f1b1ecca2eb0fee84ba09c66d5e3f23b0bcb7b92c"
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-infinite/pack.json",
+      "bytes": 1089,
+      "sha256": "5f686187b24e78575b471387719ff96ed79681241658cc1cbd0569908075a1d7"
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-remastered/AUTHORING.md",
+      "bytes": 714,
+      "sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31"
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-remastered/location-evidence.json",
+      "bytes": 817,
+      "sha256": "6a46a5ac19e441e5248c95698a12163bd92e4b93aeeb11a3392ee636b80bb912"
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-remastered/pack.json",
+      "bytes": 1066,
+      "sha256": "63c965076b5ec0b1c605c6c512ab2f3c2350e8de46ecedba3c2d81dae7f720dd"
+    },
+    {
+      "path": "game-packs/research-drafts/control/AUTHORING.md",
+      "bytes": 714,
+      "sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31"
+    },
+    {
+      "path": "game-packs/research-drafts/control/location-evidence.json",
+      "bytes": 1412,
+      "sha256": "dff065fdfbac62e1a46523e3e52faa927e20ebdb348d529aa960adb9bcfd0a69"
+    },
+    {
+      "path": "game-packs/research-drafts/control/pack.json",
+      "bytes": 1405,
+      "sha256": "0b906ae2d40edbd75c525ad8e9a196a6b18d0e4e7fa87d6552cfd22bc8794828"
+    },
+    {
+      "path": "game-packs/research-drafts/cyberpunk-2077/AUTHORING.md",
+      "bytes": 714,
+      "sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31"
+    },
+    {
+      "path": "game-packs/research-drafts/cyberpunk-2077/location-evidence.json",
+      "bytes": 1797,
+      "sha256": "2aeca91b4dfa04891c931f221cf4f3fef3b8718b578f9c1824516f5e7196c90f"
+    },
+    {
+      "path": "game-packs/research-drafts/cyberpunk-2077/pack.json",
+      "bytes": 1695,
+      "sha256": "e8fc7e1f12b54c172e7ddbf7fcd79fbe1b7378762a8edb4bdc8626abadebc419"
+    },
+    {
+      "path": "game-packs/research-drafts/devil-may-cry-5/AUTHORING.md",
+      "bytes": 714,
+      "sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31"
+    },
+    {
+      "path": "game-packs/research-drafts/devil-may-cry-5/location-evidence.json",
+      "bytes": 942,
+      "sha256": "591d6e267b9d8578c2851d6139d2d691035ce91c540a23a46bfea12fbb918c05"
+    },
+    {
+      "path": "game-packs/research-drafts/devil-may-cry-5/pack.json",
+      "bytes": 1029,
+      "sha256": "6f909e1828d9e909190bcbca364764503a8133e270a71caf9e579dc3035cef8e"
+    },
+    {
+      "path": "game-packs/research-drafts/doom-the-dark-ages/AUTHORING.md",
+      "bytes": 714,
+      "sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31"
+    },
+    {
+      "path": "game-packs/research-drafts/doom-the-dark-ages/location-evidence.json",
+      "bytes": 1374,
+      "sha256": "19117b410fb0984d58d5891de645c33448c4b1dbcdc064c113fbda043fec5c1b"
+    },
+    {
+      "path": "game-packs/research-drafts/doom-the-dark-ages/pack.json",
+      "bytes": 1235,
+      "sha256": "b1e8d4e7eeda21f628556f988a5bdc0b6058acf3753e8a47b1a366b38a5e3c90"
+    },
+    {
+      "path": "game-packs/research-drafts/god-of-war-ragnarok/AUTHORING.md",
+      "bytes": 714,
+      "sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31"
+    },
+    {
+      "path": "game-packs/research-drafts/god-of-war-ragnarok/location-evidence.json",
+      "bytes": 1074,
+      "sha256": "da667a7bb9b7ec13125467249c33c600bece7e1df6883df171b8a6e2d529be77"
+    },
+    {
+      "path": "game-packs/research-drafts/god-of-war-ragnarok/pack.json",
+      "bytes": 1193,
+      "sha256": "87bba9377c4a205fb2bae6aa17f4eab083d733039411ca9627e609b736180464"
+    },
+    {
+      "path": "game-packs/research-drafts/gta-v-enhanced/AUTHORING.md",
+      "bytes": 714,
+      "sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31"
+    },
+    {
+      "path": "game-packs/research-drafts/gta-v-enhanced/location-evidence.json",
+      "bytes": 1154,
+      "sha256": "6efd07527ac11bcaee8462c903487d965d54b68a8c98ac1962f6909c71b82674"
+    },
+    {
+      "path": "game-packs/research-drafts/gta-v-enhanced/pack.json",
+      "bytes": 1218,
+      "sha256": "4a04fe48e82030438c3d7091d03d7548f046a035068ca9b1b09cd3cf7e939a0f"
+    },
+    {
+      "path": "game-packs/research-drafts/hogwarts-legacy/AUTHORING.md",
+      "bytes": 714,
+      "sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31"
+    },
+    {
+      "path": "game-packs/research-drafts/hogwarts-legacy/location-evidence.json",
+      "bytes": 996,
+      "sha256": "a600a93f32e3876db5837ef3abca29db95dc2c9da5bac6893ecf57416524cbdf"
+    },
+    {
+      "path": "game-packs/research-drafts/hogwarts-legacy/pack.json",
+      "bytes": 1078,
+      "sha256": "17851411e6be3e19ea15dc8eaa2caaf03adceaab0fae137089eee358728278c6"
+    },
+    {
+      "path": "game-packs/research-drafts/middle-earth-shadow-of-war/AUTHORING.md",
+      "bytes": 714,
+      "sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31"
+    },
+    {
+      "path": "game-packs/research-drafts/middle-earth-shadow-of-war/location-evidence.json",
+      "bytes": 895,
+      "sha256": "6eac106cbf92f30dabcf73b5a0632b7c96d33f9ca1b8bb38e4ac67cd2a814bfb"
+    },
+    {
+      "path": "game-packs/research-drafts/middle-earth-shadow-of-war/pack.json",
+      "bytes": 1089,
+      "sha256": "fbacecce190111e624e9389648c9153c8a82631ef537f5a375e2c12e80049e73"
+    },
+    {
+      "path": "game-packs/research-drafts/nier-automata/AUTHORING.md",
+      "bytes": 714,
+      "sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31"
+    },
+    {
+      "path": "game-packs/research-drafts/nier-automata/location-evidence.json",
+      "bytes": 1122,
+      "sha256": "d04a0234769219ef23b2733bac419ca6080b8e7078c65ee16c1e160266d59fff"
+    },
+    {
+      "path": "game-packs/research-drafts/nier-automata/pack.json",
+      "bytes": 1063,
+      "sha256": "9d44921476740581e27fae019701ac758a997e217d16632f882af43d6c6c743f"
+    },
+    {
+      "path": "game-packs/research-drafts/path-of-exile-2/AUTHORING.md",
+      "bytes": 714,
+      "sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31"
+    },
+    {
+      "path": "game-packs/research-drafts/path-of-exile-2/location-evidence.json",
+      "bytes": 1259,
+      "sha256": "eb5d17a7b45fc18ad9e266be28754ca125c4a86f6e33296b330ff7934a47382b"
+    },
+    {
+      "path": "game-packs/research-drafts/path-of-exile-2/pack.json",
+      "bytes": 1080,
+      "sha256": "8115536f711310c521d092e522d2fc8b61a5303eeb5c340c3904f2c92325daf0"
+    },
+    {
+      "path": "game-packs/research-drafts/pathfinder-kingmaker/AUTHORING.md",
+      "bytes": 714,
+      "sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31"
+    },
+    {
+      "path": "game-packs/research-drafts/pathfinder-kingmaker/location-evidence.json",
+      "bytes": 1031,
+      "sha256": "78a323221dce26dc03d33f1fbb484310fcc008a93ec57f1fc8e273de3f785d08"
+    },
+    {
+      "path": "game-packs/research-drafts/pathfinder-kingmaker/pack.json",
+      "bytes": 1056,
+      "sha256": "33a5587a74c9b600fe7e6605f29a15596eef61ffb28e8528531731977f78d904"
+    },
+    {
+      "path": "game-packs/research-drafts/red-dead-redemption-2/AUTHORING.md",
+      "bytes": 714,
+      "sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31"
+    },
+    {
+      "path": "game-packs/research-drafts/red-dead-redemption-2/location-evidence.json",
+      "bytes": 1102,
+      "sha256": "bf34b31691c1495ae296f81ca353222299fc685185c15898d18c6e9de979f57b"
+    },
+    {
+      "path": "game-packs/research-drafts/red-dead-redemption-2/pack.json",
+      "bytes": 1100,
+      "sha256": "61471c5821ed9b374b760ff56dcd84a8d90a88ff09a7ca464b95e88c9d099878"
+    },
+    {
+      "path": "game-packs/research-drafts/v-rising/AUTHORING.md",
+      "bytes": 714,
+      "sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31"
+    },
+    {
+      "path": "game-packs/research-drafts/v-rising/location-evidence.json",
+      "bytes": 963,
+      "sha256": "197eaa432ba06545b1284e257545b8b85709ef2612ed9537920163320e925251"
+    },
+    {
+      "path": "game-packs/research-drafts/v-rising/pack.json",
+      "bytes": 1061,
+      "sha256": "7701765534899de924c5bad1630f1f8c5d1540063f86ed936bddbdded151f04b"
+    },
+    {
+      "path": "schemas/game-pack.schema.json",
+      "bytes": 11357,
+      "sha256": "e169ad9cef54e27ef6f83201b9293010ecc75d02fddc6946e9a891c8a9b5e26f"
+    },
+    {
+      "path": "schemas/semantic-intent.schema.json",
+      "bytes": 968,
+      "sha256": "43fb896fd603a6ab7ba9d19879095432711527a5a28aeba71d06fb6a605aa00e"
+    },
+    {
+      "path": "scripts/Game-Keybinds.py",
+      "bytes": 7370,
+      "sha256": "55afd29cfdf44781684e2418ac6b08addbac25ee9342dd8301dce563e2aea45c"
+    },
+    {
+      "path": "scripts/GameToolKeybindAI.py",
+      "bytes": 12264,
+      "sha256": "5c5b897ea1d9017c59effc778c0668e6a644a380218d1da5d41e8401a9104aef"
+    },
+    {
+      "path": "scripts/GameToolKeybindIntegration.py",
+      "bytes": 9230,
+      "sha256": "06dfa12350ef4d991156ca6549ec22582ee3fb398c390ae78f170ff1d92b2eba"
+    },
+    {
+      "path": "scripts/GameToolKeybindWorkspaces.py",
+      "bytes": 5213,
+      "sha256": "27bfff9711977807ee4f7cb89da00930a9abe6f28a59243e0ed40d920a1225e5"
+    },
+    {
+      "path": "scripts/check_host.py",
+      "bytes": 1433,
+      "sha256": "2b5673e5930db5247b70a5cfda06d389e326de25551f9fd3b00e4a926d3bea55"
+    },
+    {
+      "path": "scripts/game_keybind_ops/__init__.py",
+      "bytes": 106,
+      "sha256": "7d9ca3cb02eda52397459189cd40a8b53f363b1c88159cd3d11874a55b851ad2"
+    },
+    {
+      "path": "scripts/game_keybind_ops/adapter_registry.py",
+      "bytes": 3040,
+      "sha256": "ef1c2af47c5e9a410ce42ff1d6356b233f813ba5462de187362cbc19a0eda0e4"
+    },
+    {
+      "path": "scripts/game_keybind_ops/authoring.py",
+      "bytes": 15222,
+      "sha256": "cfb70dfb70879cb78ccb4e2165609f5963d8677cf1531c3e70fc494dbc4900ab"
+    },
+    {
+      "path": "scripts/game_keybind_ops/core.py",
+      "bytes": 35798,
+      "sha256": "5891f7cc5e7d24b424af754bdc4acf245eb73466403bea337031c68970f30fca"
+    },
+    {
+      "path": "scripts/game_keybind_ops/deps.py",
+      "bytes": 1055,
+      "sha256": "77a692f13f2efcc0b8b2641e3248d956ab89bdf4891ece782dbd8a971db0ae2b"
+    },
+    {
+      "path": "scripts/game_keybind_ops/discovery.py",
+      "bytes": 4681,
+      "sha256": "475b6f85b1344d8acb751e3a05f0711f4beb66cffe748deda4fdb595e2f4a34d"
+    },
+    {
+      "path": "scripts/game_keybind_ops/documents.py",
+      "bytes": 13137,
+      "sha256": "2126ac0be5020be56bbf31dbfab852676973f133b0cb6bc7193f808fd9571104"
+    },
+    {
+      "path": "scripts/game_keybind_ops/effective.py",
+      "bytes": 14682,
+      "sha256": "0ec3aee6632f62be6163717e5acd4253fb9c5912b4f6afbc874b112434deeea5"
+    },
+    {
+      "path": "scripts/game_keybind_ops/format_extensions.py",
+      "bytes": 12197,
+      "sha256": "e314279b1a1e5acec9a0075e1be8da4cc25a3e736cf03e4356c1b6cbb00e2c26"
+    },
+    {
+      "path": "scripts/game_keybind_ops/key_codec.py",
+      "bytes": 1924,
+      "sha256": "0373bd3744a1c54b560a5b5f0e276a6007f6962f8da9d86750bcb98df520a975"
+    },
+    {
+      "path": "scripts/game_keybind_ops/known_folders_reference.py",
+      "bytes": 20422,
+      "sha256": "7ccdf77c578de2aadccdfdcfc360a1b5a6c77320c948fbe7940f3a4b800cf052"
+    },
+    {
+      "path": "scripts/game_keybind_ops/pack_cli.py",
+      "bytes": 6107,
+      "sha256": "adcb15b154c945c51dc6dcc10173c2f6535b8db17069d49d864b92d22de46a8f"
+    },
+    {
+      "path": "scripts/game_keybind_ops/pack_panel.py",
+      "bytes": 9308,
+      "sha256": "14a02b2037d9f760505e0714300d224296cb07ce65366a4f92b079807c071506"
+    },
+    {
+      "path": "scripts/game_keybind_ops/pack_transport.py",
+      "bytes": 4523,
+      "sha256": "607668887e598cc4248cbe78b6204e7498be11da7c76de47117750210d3f4e9b"
+    },
+    {
+      "path": "scripts/game_keybind_ops/packs.py",
+      "bytes": 24915,
+      "sha256": "699525e687205d705c858882720f9870c201591d8ae58010c95b39afc87f1b70"
+    },
+    {
+      "path": "scripts/game_keybind_ops/panel.py",
+      "bytes": 9866,
+      "sha256": "2d076f939435d39b474994a6e6c3bccaef25a4200bc9571f91e6594a6bb84259"
+    },
+    {
+      "path": "scripts/game_keybind_ops/planner.py",
+      "bytes": 4309,
+      "sha256": "ea1b6fff5124967b2345ed3621eb90303a5c79de383fdf9ffb20879f78cfaae3"
+    },
+    {
+      "path": "scripts/game_keybind_ops/recovery.py",
+      "bytes": 4975,
+      "sha256": "3e8a0447c2788cd3a3df9ed1f99596003b1848dbd02d6b76371e83cc52b5e5de"
+    },
+    {
+      "path": "scripts/game_keybind_ops/store_discovery.py",
+      "bytes": 3900,
+      "sha256": "b74baa050bcec883a103d104d2daee7e01d872e5b93018b2809a6932d1b296d1"
+    },
+    {
+      "path": "scripts/keybind_demo.py",
+      "bytes": 2802,
+      "sha256": "22effa8493cbb031b745add1bc345f424f5290b11491b01b3399f99a4e74ccf7"
+    },
+    {
+      "path": "scripts/run_checks.py",
+      "bytes": 4170,
+      "sha256": "004c2d3aa43775a0d1f68dc584b1c1920176295cee1a72c1c8a4aeb287e87a96"
+    },
+    {
+      "path": "scripts/tests/test_effective.py",
+      "bytes": 16390,
+      "sha256": "a25e522fa2b36a8d9ce870d9c03294800e902a5567438abc7901a4a374a8f82d"
+    },
+    {
+      "path": "scripts/tests/test_extended.py",
+      "bytes": 10314,
+      "sha256": "5a104ee008e70e85746162ce92335defccf23bf1bd339870105e9b265a8e5373"
+    },
+    {
+      "path": "scripts/tests/test_extensibility.py",
+      "bytes": 23451,
+      "sha256": "125a10c3ea5af1519300533581dfe638beb315d48470ee01fe2987593fd33e62"
+    },
+    {
+      "path": "scripts/tests/test_host_integration.py",
+      "bytes": 11111,
+      "sha256": "270cf1b69de142cb81227d912f34e37dfaf389cbcb8a419797c560a2d8e5f464"
+    },
+    {
+      "path": "scripts/tests/test_keybinds.py",
+      "bytes": 26749,
+      "sha256": "9080f60216b2fc8daf32201f4f9987179b5359112bad3fa133fac00ffb341bb5"
+    },
+    {
+      "path": "scripts/tests/test_pack_integration.py",
+      "bytes": 10629,
+      "sha256": "d799ec84f84f2418ad5568a687cc2d6c16d1ac11b5735d773f87241c5689dbc0"
+    },
+    {
+      "path": "scripts/tests/test_pack_panel.py",
+      "bytes": 4842,
+      "sha256": "082145899307f3667429ba8a0552c1d4af719d03e3373cadacdfefe14dd6a61f"
+    },
+    {
+      "path": "scripts/tests/test_panel.py",
+      "bytes": 3383,
+      "sha256": "5a391773cec50c51263dcf2958a1e3b4f3699ce7bd412ec85147dcbc86685765"
+    },
+    {
+      "path": "validation/FORMAT_ROUNDTRIPS.json",
+      "bytes": 1870,
+      "sha256": "13dbca4da1c268d58c5f6b1531c7245666e6486f299ff9c827efe09519c2f4e4"
+    },
+    {
+      "path": "validation/HOST_DEPENDENCIES.json",
+      "bytes": 1475,
+      "sha256": "f135d1e339ec63de3093e09a0f2938aed9a2e49dd8882b5bddb323d6646a339f"
+    },
+    {
+      "path": "validation/PACK_COVERAGE.json",
+      "bytes": 1310,
+      "sha256": "0247930737595326f640c0b1f6b9b7348b84466a666d5c374149bb7092a10ccb"
+    },
+    {
+      "path": "validation/PLANNER_REUSE.json",
+      "bytes": 219,
+      "sha256": "80a3072df235f8103ebe361ca023cd815c0bb60d89be5f146087d3540325cfbd"
+    },
+    {
+      "path": "validation/PUBLICATION_STATUS.json",
+      "bytes": 266,
+      "sha256": "68a5fd8ea885cf0e42a2f8c2a67021d11639458dde986b0660ff6b77d0e5ed87"
+    },
+    {
+      "path": "validation/SOURCE_DELTA.json",
+      "bytes": 7809,
+      "sha256": "834accec82d3f61d36342327d82647bec4a91e92e03852b9fed4e6c9a6dfc9d8"
+    },
+    {
+      "path": "validation/SOURCE_PRESERVATION.json",
+      "bytes": 878,
+      "sha256": "791c3dae410391a90fff8f00166670cc9235b69cdc17494a02f99a045e758b0b"
+    },
+    {
+      "path": "validation/STATIC_CHECKS.json",
+      "bytes": 333,
+      "sha256": "02682ff287d4069770c8eab50de001ff4d996a52a9b2083e7fdda97420639bed"
+    },
+    {
+      "path": "validation/VALIDATION.json",
+      "bytes": 2791,
+      "sha256": "066a9ab6720329d400332d1b8f48b6796563451b089aed1b28bd4da4bc074068"
+    },
+    {
+      "path": "validation/final/VALIDATION.json",
+      "bytes": 2791,
+      "sha256": "066a9ab6720329d400332d1b8f48b6796563451b089aed1b28bd4da4bc074068"
+    },
+    {
+      "path": "validation/final/core.log",
+      "bytes": 9216,
+      "sha256": "8f67cb57a1f7e0e4b3aab959522d28b0554b8d381e05e94249220465149a8610"
+    },
+    {
+      "path": "validation/final/effective.log",
+      "bytes": 3502,
+      "sha256": "7aa240d15afee793657ce9e08665cae9aef1b7619f7fd3f9ad85258a19063bad"
+    },
+    {
+      "path": "validation/final/extended.log",
+      "bytes": 2049,
+      "sha256": "d0ac09020816cc0f16cd70061540f64d38c333bcad2c6156a016dd87baeb68c7"
+    },
+    {
+      "path": "validation/final/extensibility.log",
+      "bytes": 6967,
+      "sha256": "d292559080046c2f9c1ae825c587c02c8bca98403d9af4ee68cc00495d5821fb"
+    },
+    {
+      "path": "validation/final/host-automation-regression.log",
+      "bytes": 4773,
+      "sha256": "bb944c784fc42c65e52569db820cc2602208362dcdd0fa9a17e9494780549cd0"
+    },
+    {
+      "path": "validation/final/host-integration.log",
+      "bytes": 3191,
+      "sha256": "951e2a7c589f3384ed213dd868af6145302fa79988cd35c34e1e3203184b26ba"
+    },
+    {
+      "path": "validation/final/host-journal-regression.log",
+      "bytes": 158,
+      "sha256": "3a9cc210137f6545eddc032b03b1d519e808a7962e2d0e446293a951aaf6b22a"
+    },
+    {
+      "path": "validation/final/host-workspaces-regression.log",
+      "bytes": 4556,
+      "sha256": "33adea66f215ba3049fc90ff94e9e34cf3b1194904564f8ffe342fbe3e19d76a"
+    },
+    {
+      "path": "validation/final/pack-integration.log",
+      "bytes": 2921,
+      "sha256": "993be38ecf0c8010255f0b80e20b888e86df6305f62cc01d3306b285774300e0"
+    },
+    {
+      "path": "validation/final/pack-panel.log",
+      "bytes": 999,
+      "sha256": "3d10d83bbd3ac87fe5d256708793626826c00ad700f395349d6b18f15668f9e4"
+    },
+    {
+      "path": "validation/final/panel.log",
+      "bytes": 931,
+      "sha256": "a70a23a4ceea52f54dfef12f039d51dc134dba67dc0ac85ff6972d27f02a8f69"
+    },
+    {
+      "path": "validation/previous-0.1/DEMO_RESULT.json",
+      "bytes": 1053,
+      "sha256": "b46ed0eeae3c460bb58e7721fc5f64651fb1c649c07912487bc88eeb8398d27f"
+    },
+    {
+      "path": "validation/previous-0.1/HOST_DEPENDENCIES.json",
+      "bytes": 1205,
+      "sha256": "8c22e450a7bdb1fc48beae202e49a46771a6fe75887ab95557d6a52dc8b1a7cc"
+    },
+    {
+      "path": "validation/previous-0.1/PLANNER_REUSE.json",
+      "bytes": 450,
+      "sha256": "5e1d1c9f8d1f19eb85b714dae916449d3d3ad64e9a227340adf759f5b89ef83c"
+    },
+    {
+      "path": "validation/previous-0.1/PUBLICATION_STATUS.json",
+      "bytes": 742,
+      "sha256": "2e1fb609df089efed626b779fee91b2f8a3d7998268d039add9dd9e680d0af45"
+    },
+    {
+      "path": "validation/previous-0.1/SOURCE_PRESERVATION.json",
+      "bytes": 32657,
+      "sha256": "d74687e6e88d00356d0937fd1046d85521bf0b38b3235ebdd1c32df15efa4f76"
+    },
+    {
+      "path": "validation/previous-0.1/STATIC_CHECKS.json",
+      "bytes": 817,
+      "sha256": "483908fca5f5e772cd823d77c5970383cc3f65d361ad130827d4d673fcc6a324"
+    },
+    {
+      "path": "validation/previous-0.1/VALIDATION.json",
+      "bytes": 1901,
+      "sha256": "7033298095a3538d39a689ac93a2972636190a17fcf3b0c2e32d021bc91fe290"
+    },
+    {
+      "path": "validation/previous-0.1/core.log",
+      "bytes": 9216,
+      "sha256": "5d064d69599fe5a3e03fd1e39210d934992c10ffbf359191b51722775c97f7ff"
+    },
+    {
+      "path": "validation/previous-0.1/extended.log",
+      "bytes": 2049,
+      "sha256": "b5af6550b618d8ceaa89cc2b38e77c7ee317f205aa25301c0118d171d08a2da9"
+    },
+    {
+      "path": "validation/previous-0.1/host-automation-regression.log",
+      "bytes": 4773,
+      "sha256": "11c54261ae992a15df13e7f3167ac28a95cfd084c02c20748e4789e6a93868ec"
+    },
+    {
+      "path": "validation/previous-0.1/host-integration.log",
+      "bytes": 3191,
+      "sha256": "c4c242310cb480459190119ecf1028a057afa6262110e97ec55ac11ccb31683a"
+    },
+    {
+      "path": "validation/previous-0.1/host-journal-regression.log",
+      "bytes": 158,
+      "sha256": "a68451d38cff789facff17ad0c8325139b5efcc8d82bdae4517601683efe85be"
+    },
+    {
+      "path": "validation/previous-0.1/panel.log",
+      "bytes": 931,
+      "sha256": "f8edfe5f20874e4b23fee7e1a860ee9ca381c84adc0a61a43b9be92303d88463"
+    }
+  ]
+}

@@ -1,0 +1,329 @@
+{
+  "schema_version": 1,
+  "kind": "game-keybind-pack",
+  "id": "sample-ue-chord",
+  "version": "1.0.0",
+  "game_id": "sample-ue-chord",
+  "title": "Synthetic format example \u2014 ue-chord",
+  "keymaps": {
+    "keyboard": {
+      "E": {
+        "key": "E",
+        "shift": false,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "F": {
+        "key": "F",
+        "shift": false,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "R": {
+        "key": "R",
+        "shift": false,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "Space": {
+        "key": "Space",
+        "shift": false,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "Q": {
+        "key": "Q",
+        "shift": false,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "V": {
+        "key": "V",
+        "shift": false,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "MouseLeft": {
+        "key": "MouseLeft",
+        "shift": false,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "MouseRight": {
+        "key": "MouseRight",
+        "shift": false,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "WheelUp": {
+        "key": "WheelUp",
+        "shift": false,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "WheelDown": {
+        "key": "WheelDown",
+        "shift": false,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "Ctrl+E": {
+        "key": "E",
+        "shift": false,
+        "ctrl": true,
+        "alt": false,
+        "cmd": false
+      },
+      "Ctrl+F": {
+        "key": "F",
+        "shift": false,
+        "ctrl": true,
+        "alt": false,
+        "cmd": false
+      },
+      "Ctrl+R": {
+        "key": "R",
+        "shift": false,
+        "ctrl": true,
+        "alt": false,
+        "cmd": false
+      },
+      "Ctrl+Space": {
+        "key": "Space",
+        "shift": false,
+        "ctrl": true,
+        "alt": false,
+        "cmd": false
+      },
+      "Ctrl+Q": {
+        "key": "Q",
+        "shift": false,
+        "ctrl": true,
+        "alt": false,
+        "cmd": false
+      },
+      "Ctrl+V": {
+        "key": "V",
+        "shift": false,
+        "ctrl": true,
+        "alt": false,
+        "cmd": false
+      },
+      "Ctrl+MouseLeft": {
+        "key": "MouseLeft",
+        "shift": false,
+        "ctrl": true,
+        "alt": false,
+        "cmd": false
+      },
+      "Ctrl+MouseRight": {
+        "key": "MouseRight",
+        "shift": false,
+        "ctrl": true,
+        "alt": false,
+        "cmd": false
+      },
+      "Ctrl+WheelUp": {
+        "key": "WheelUp",
+        "shift": false,
+        "ctrl": true,
+        "alt": false,
+        "cmd": false
+      },
+      "Ctrl+WheelDown": {
+        "key": "WheelDown",
+        "shift": false,
+        "ctrl": true,
+        "alt": false,
+        "cmd": false
+      },
+      "Shift+E": {
+        "key": "E",
+        "shift": true,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "Shift+F": {
+        "key": "F",
+        "shift": true,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "Shift+R": {
+        "key": "R",
+        "shift": true,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "Shift+Space": {
+        "key": "Space",
+        "shift": true,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "Shift+Q": {
+        "key": "Q",
+        "shift": true,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "Shift+V": {
+        "key": "V",
+        "shift": true,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "Shift+MouseLeft": {
+        "key": "MouseLeft",
+        "shift": true,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "Shift+MouseRight": {
+        "key": "MouseRight",
+        "shift": true,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "Shift+WheelUp": {
+        "key": "WheelUp",
+        "shift": true,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      },
+      "Shift+WheelDown": {
+        "key": "WheelDown",
+        "shift": true,
+        "ctrl": false,
+        "alt": false,
+        "cmd": false
+      }
+    }
+  },
+  "files": [
+    {
+      "id": "input",
+      "adapter": "ue-chord",
+      "locations": [
+        {
+          "root": "GAME_CONFIG",
+          "pattern": "Input.ini"
+        }
+      ],
+      "fields": [
+        {
+          "id": "use",
+          "selector": {
+            "section": "/Script/Engine.InputSettings",
+            "action": "Use",
+            "occurrence": 0
+          },
+          "keymap": "keyboard",
+          "action": "use",
+          "contexts": [
+            "gameplay"
+          ],
+          "modifier_match": "exact",
+          "locked": false
+        },
+        {
+          "id": "reload",
+          "selector": {
+            "section": "/Script/Engine.InputSettings",
+            "action": "Reload",
+            "occurrence": 0
+          },
+          "keymap": "keyboard",
+          "action": "reload",
+          "contexts": [
+            "gameplay"
+          ],
+          "modifier_match": "exact",
+          "locked": false
+        },
+        {
+          "id": "fire",
+          "selector": {
+            "section": "/Script/Engine.InputSettings",
+            "action": "Fire",
+            "occurrence": 0
+          },
+          "keymap": "keyboard",
+          "action": "fire",
+          "contexts": [
+            "gameplay"
+          ],
+          "modifier_match": "exact",
+          "locked": true
+        }
+      ],
+      "inventory_complete": true,
+      "stopped_processes": [
+        "SyntheticGameNeverInstalled.exe"
+      ],
+      "writable": true,
+      "priority": 100,
+      "fingerprints": []
+    }
+  ],
+  "variants": [
+    {
+      "id": "keyboard",
+      "files": [
+        "input"
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "id": "use-f",
+      "variant": "keyboard",
+      "changes": [
+        {
+          "action": "use",
+          "context": "gameplay",
+          "key": "F"
+        }
+      ]
+    }
+  ],
+  "evidence": {
+    "stage": "fixture-tested",
+    "notes": "Synthetic parser/transaction fixture, not a real game or native acceptance. Review live originals before any reuse.",
+    "sources": [
+      {
+        "url": "source:generated-format-fixture",
+        "note": "Authored harmless text fixture for adapter tests."
+      }
+    ]
+  },
+  "fixtures": [
+    {
+      "file_id": "input",
+      "before": "fixtures/before.ini",
+      "after": "fixtures/after.ini",
+      "changes": {
+        "use": "F"
+      }
+    }
+  ]
+}
