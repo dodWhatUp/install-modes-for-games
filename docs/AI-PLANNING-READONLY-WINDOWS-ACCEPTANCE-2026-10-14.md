@@ -2,12 +2,44 @@
 
 **Date:** 2026-10-14
 **Version:** `0.27.0-preview.1`
-**Current tested product commit:** `dbed124f40e3d336baf49e7598c16f2d1b57189d`
+**Current tested product commit:** `e454433e81e067b1f11267a3cac18081b60512f8`
+**Historical R8 tested product commit:** `dbed124f40e3d336baf49e7598c16f2d1b57189d`
 **Historical R5 tested product commit:** `f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39`
 **Historical R4 tested product commit:** `cd444009d063b27894bf8e399d517670b30ebc47`
 **Result:** **PASS** for the bounded synthetic read-only scope below.
 
-## Current privacy and refusal boundary — R8
+## Current embedded-path and filtered-list boundary — R9
+
+R9 preserves the accepted read-only architecture and closes two exact-head
+review findings. Public UMM metadata now refuses short or punctuated absolute
+Windows, POSIX, UNC, rooted, home/environment and file-URI paths plus URL
+credentials, while ordinary relative identifiers, versions and HTTPS URLs remain
+available. Filtered instance listing now computes `truncated` only from matching
+public records read from one bounded registry snapshot.
+
+The exact 715-file R9 candidate matched commit `e454433e81e067b1f11267a3cac18081b60512f8` after Git clean
+filters. Windows 11 ARM64 passed **13/13 suites: 388 tests, 381 passed and seven
+explicit skips**, with no timeout or automatic retry. The real source export
+contained **394 files / 395 ZIP entries**, SHA-256
+`369a396b00f845a74fbaa7abfe8c004bf5a0d64becd24ea003cd575e79b6fc30`; manifest SHA-256 is `8090318a4a9e3acb89ffba636780891c43ff358d7d88009604d67b9b7355c0d0`. Exported packaging passed 7/7 with zero
+skips, both verify-only paths passed without creating the preview profile, and
+all 12 exact host pins matched.
+
+External modern/legacy stdio passed all **34 checks**. Four Kingmaker instances,
+one support-only Wrath instance and one corrupt registry fixture were inspected.
+Credential, Windows-path and short punctuated POSIX-path metadata returned typed
+`INSTANCE_PRIVATE_METADATA` blockers without echo. A one-row Wrath filter stayed
+`truncated=false` despite four Kingmaker records. All five synthetic game trees
+remained byte-identical; only six private registry records were written, with no
+job, request, proposal or execution.
+
+The first R9 copy was accidentally invoked under the Windows system account. It
+copied only the sealed candidate into an isolated system-profile test root; the
+Python hash gate did not start. That known copy and its reconciliation receipt
+remain preserved. A new current-user root passed the complete acceptance above;
+no uncertain effect was retried or relabeled.
+
+## Historical privacy and refusal boundary — R8
 
 R8 preserves the accepted read-only architecture and closes two publication
 boundaries found during exact-head review. Corrupt or renamed registry records

@@ -1,17 +1,16 @@
 # Read-only planning and UMM instance slice — 0.27.0-preview.1
 
-**Source status:** current tested product commit `dbed124f40e3d336baf49e7598c16f2d1b57189d`; historical R5 product commit `f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39` and R4 product commit `cd444009d063b27894bf8e399d517670b30ebc47` remain preserved
+**Source status:** current tested product commit `e454433e81e067b1f11267a3cac18081b60512f8`; historical R8 product commit `dbed124f40e3d336baf49e7598c16f2d1b57189d`, R5 product commit `f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39` and R4 product commit `cd444009d063b27894bf8e399d517670b30ebc47` remain preserved
 
 **Acceptance:** bounded synthetic Windows/UMM and external stdio PASS; real-folder and production acceptance remain separate.
 
-R8 is the current correction boundary. It keeps the same read-only architecture
-while preventing corrupt registry filenames, absolute paths, file URIs and
-credential candidates from entering public AI results, and while preserving
-typed MCP refusals across both the normal and fallback framing paths. Its
-715-file candidate passed 385 Windows tests, 32 external stdio checks and an
-independent 394-file source-package readback. R5, R4 and the bounded R6/R7
-attempts remain preserved in the dated acceptance record; none establishes a
-real game or transaction.
+R9 is the current correction boundary. It preserves the same read-only
+architecture while closing embedded short/punctuated absolute-path cases and
+making filtered instance pagination depend only on matching records from one
+bounded registry snapshot. Its 715-file candidate passed 388 Windows tests, 34
+external stdio checks and an independent 394-file source-package readback. R8,
+R5, R4 and the bounded R6/R7 attempts remain preserved in the dated acceptance
+record; none establishes a real game or transaction.
 
 ## Purpose
 
@@ -113,13 +112,14 @@ conclusive installed match.
 
 The source-level test and boundary receipt is
 [`AI-PLANNING-READONLY-VALIDATION.json`](AI-PLANNING-READONLY-VALIDATION.json).
-Candidate R8 then passed the separate [Windows, source-package and external
+Candidate R9 then passed the separate [Windows, source-package and external
 stdio acceptance](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.md): 715
 payloads matched the current product commit after Git clean filters, 13 Windows
-suites ran 385 tests, exported packaging passed without skips, and three
-synthetic UMM directories remained byte-identical while private metadata was
-refused without echo. The earlier R5/R4 boundaries and bounded R6/R7 attempts are
-retained in that acceptance record. A real
+suites ran 388 tests, exported packaging passed without skips, and five synthetic
+game directories remained byte-identical while embedded private metadata was
+refused without echo and filtered pagination stayed accurate. The earlier R8,
+R5/R4 boundaries and bounded R6/R7 attempts are retained in that acceptance
+record. A real
 registered game folder, specific product UI and production transactions remain
 unaccepted.
 

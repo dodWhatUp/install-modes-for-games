@@ -8,12 +8,12 @@
 
 ## Accepted task-branch source
 
-- Current tested product commit: `dbed124f40e3d336baf49e7598c16f2d1b57189d`; historical R5 `f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39` and R4 `cd444009d063b27894bf8e399d517670b30ebc47` product commits remain preserved.
-- Candidate R8: 715 payload files, aggregate SHA-256 `4dc1cbd371b3376b0b987300ec132ccfbd719675617a3c7a78880397c71f7c83`.
-- Windows gate: 13/13 suites, 385 tests, 378 passes and seven explicit environment/package skips; no timeout or automatic retry.
-- Real source export: 394 files, ZIP SHA-256 `4e5bcd4caae7752270a1b29101f873b85a9692dd04abd8b5e0419130cba252d2`; exported packaging reran 7/7 with zero skips.
-- External stdio: modern exposed the four read-only planning tools with exact read effects; legacy remained unchanged. Three synthetic UMM trees stayed byte-identical, one corrupt filename remained opaque, and credential/path metadata was refused without echo across 32 checks.
-- R1–R5 and the bounded R6 export refusal, R7 framing failure, host-invocation refusals and first R8 checker-count mismatch remain preserved with their exact boundaries; none was overwritten or presented as the R8 pass.
+- Current tested product commit: `e454433e81e067b1f11267a3cac18081b60512f8`; historical R8 `dbed124f40e3d336baf49e7598c16f2d1b57189d`, R5 `f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39` and R4 `cd444009d063b27894bf8e399d517670b30ebc47` product commits remain preserved.
+- Candidate R9: 715 payload files, aggregate SHA-256 `da3e7f3de4c106cc24ba0b7b3be01ea85898fede9aa348b90d6953f18595d9d1`.
+- Windows gate: 13/13 suites, 388 tests, 381 passes and seven explicit environment/package skips; no timeout or automatic retry.
+- Real source export: 394 files, ZIP SHA-256 `369a396b00f845a74fbaa7abfe8c004bf5a0d64becd24ea003cd575e79b6fc30`; exported packaging reran 7/7 with zero skips.
+- External stdio: modern exposed the four read-only planning tools with exact read effects; legacy remained unchanged. Five synthetic game trees stayed byte-identical, one corrupt filename remained opaque, embedded credential/Windows/short POSIX paths were refused without echo, and filtered cross-game pagination stayed accurate across 34 checks.
+- R1–R8 and the isolated R9 system-context copy remain preserved with their exact boundaries; none was overwritten or presented as the current-user R9 pass.
 
 ## Current capability boundary
 
@@ -25,7 +25,7 @@
 
 ## Next safe stages
 
-1. Refresh draft PR #9 with the exact R8 product and later documentation commit; keep it draft and do not merge automatically.
+1. Refresh draft PR #9 with the exact R9 product and later documentation commit; keep it draft until an independent exact-head review.
 2. Optionally perform one separately authorized real-folder **read-only** acceptance. Its absence remains visible and does not invalidate the synthetic source acceptance.
 3. After independent review, extend installed-state comparison only through another separately accepted read adapter or richer UMM evidence; do not begin transactions yet.
 4. Keep install, upgrade, disable, rollback and shared-resource leases behind the later transaction state-machine gate.
