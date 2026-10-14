@@ -43,7 +43,14 @@ def _text(value, field, *, optional=False):
 
 
 def _path_key(path: Path) -> str:
-    return os.path.normcase(os.path.abspath(str(path)))
+    return os.path.normcase(os.path.realpath(os.path.abspath(str(path))))
+
+
+def _same_path(left: Path, right: Path) -> bool:
+    try:
+        return os.path.samefile(left, right)
+    except (FileNotFoundError, OSError):
+        return _path_key(left) == _path_key(right)
 
 
 class InstanceRegistry:
@@ -214,8 +221,12 @@ class InstanceRegistry:
             target = contained(self.root, instance_id + ".json")
             if target.exists():
                 current = self._read_path(target)
-                comparable = {key: current["body"][key] for key in body_common}
-                require(comparable == body_common, "INSTANCE_CONFLICT",
+                comparable_keys = set(body_common) - {"game_dir"}
+                comparable = {key: current["body"][key] for key in comparable_keys}
+                expected = {key: body_common[key] for key in comparable_keys}
+                existing_root = no_links(Path(current["body"]["game_dir"]))
+                require(comparable == expected and _same_path(existing_root, root),
+                        "INSTANCE_CONFLICT",
                         "This instance ID already describes another reviewed installation.")
                 return {
                     "instance": self._public(current, status="ALREADY_REGISTERED_READ_ONLY"),
@@ -230,10 +241,10 @@ class InstanceRegistry:
                 }
             require(len(self._paths()) < MAX_INSTANCES, "RECORD_LIMIT",
                     "At most 64 local game instances are retained.")
-            selected_key = _path_key(root)
             for path in self._paths():
                 current = self._read_path(path)
-                require(_path_key(Path(current["body"]["game_dir"])) != selected_key,
+                existing_root = no_links(Path(current["body"]["game_dir"]))
+                require(not _same_path(existing_root, root),
                         "INSTANCE_PATH_OWNED",
                         "This game directory already belongs to another registered instance.")
             body = {**body_common, "nonce": uuid.uuid4().hex}

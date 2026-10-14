@@ -492,7 +492,7 @@ class FoundationService:
             result_type="preview", status=value["status"], data=value,
             game_id=game_id, instance_id=instance_id, plan_id=value["plan_id"],
             revision=value["plan_revision"], next_actions=actions,
-            effects={"read": ["reviewed definitions", "registered instance metadata"],
+            effects={"read": value["effects"]["read"],
                      "write": [], "network": False, "unknown": False},
             evidence=[{
                 "id": "goal-plan", "level": "tested", "revision": value["plan_revision"],

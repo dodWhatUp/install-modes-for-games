@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from pathlib import Path
 import sys
 import tempfile
@@ -118,6 +119,82 @@ class ReadOnlyPlanningContracts(unittest.TestCase):
             self.assertEqual(raised.exception.code, "INSTANCE_PRIVATE_LABEL")
         self.assertFalse((self.data / "game-instances").exists())
         self.assert_game_unchanged()
+
+    def test_same_instance_case_alias_is_idempotent(self):
+        self.register()
+        alternate = Path(str(self.game).replace("Kingmaker", "KINGMAKER"))
+        if not alternate.exists() or not os.path.samefile(self.game, alternate):
+            self.skipTest("Filesystem is case-sensitive; exact-path idempotence is covered separately.")
+        result = self.service.workspaces.instances.register_local(
+            instance_id="kingmaker-main",
+            game_id="pathfinder-kingmaker",
+            game_dir=alternate,
+            store="steam",
+            build="2.1.7",
+            profile="default",
+            confirmed=True,
+        )
+        self.assertFalse(result["metadata_written"])
+        self.assertEqual(result["instance"]["status"], "ALREADY_REGISTERED_READ_ONLY")
+        self.assertEqual(len(list((self.data / "game-instances").glob("*.json"))), 1)
+        self.assert_game_unchanged()
+
+    def test_case_alias_cannot_register_the_same_existing_directory_twice(self):
+        self.register()
+        alternate = Path(str(self.game).replace("Kingmaker", "KINGMAKER"))
+        if not alternate.exists() or not os.path.samefile(self.game, alternate):
+            self.skipTest("Filesystem is case-sensitive; exact-path duplicate ownership is covered separately.")
+        with self.assertRaises(ModError) as raised:
+            self.service.workspaces.instances.register_local(
+                instance_id="kingmaker-case-alias",
+                game_id="pathfinder-kingmaker",
+                game_dir=alternate,
+                store="steam",
+                build="2.1.7",
+                profile="default",
+                confirmed=True,
+            )
+        self.assertEqual(raised.exception.code, "INSTANCE_PATH_OWNED")
+        self.assertEqual(len(list((self.data / "game-instances").glob("*.json"))), 1)
+        self.assert_game_unchanged()
+
+    def test_support_only_umm_game_can_plan_installed_inspection_without_recipe(self):
+        wrath = self.root / "Wrath"
+        wrath.mkdir()
+        (wrath / "Wrath.exe").write_bytes(b"synthetic wrath executable marker\n")
+        before = self._tree_hash(wrath)
+        result = self.service.workspaces.instances.register_local(
+            instance_id="wrath-main",
+            game_id="pathfinder-wrath-of-the-righteous",
+            game_dir=wrath,
+            store="steam",
+            build="synthetic",
+            profile="default",
+            confirmed=True,
+        )
+        self.assertEqual(result["inventory_summary"]["inventory_status"], "MOD_DIRECTORY_ABSENT")
+        plan = self.planning.goal_plan(
+            "pathfinder-wrath-of-the-righteous",
+            "inspect-installed",
+            instance_id="wrath-main",
+        )
+        self.assertEqual(plan["status"], "READY_FOR_READS")
+        self.assertEqual(plan["blockers"], [])
+        nodes = {row["id"]: row for row in plan["nodes"]}
+        self.assertEqual(nodes["recipe"]["status"], "NOT_APPLICABLE")
+        self.assertEqual(nodes["mod-plan"]["status"], "NOT_APPLICABLE")
+        self.assertEqual(nodes["inventory"]["status"], "READY")
+        self.assertEqual(before, self._tree_hash(wrath))
+
+    def test_direct_planning_rejects_invalid_mode_before_selection(self):
+        with self.assertRaises(ModError) as raised:
+            self.planning.goal_plan(
+                "pathfinder-kingmaker",
+                "review-mods",
+                mode="Bad Mode",
+                selected=["kingmaker-tactics"],
+            )
+        self.assertEqual(raised.exception.code, "MODE")
 
     def test_same_registration_is_idempotent_and_path_cannot_get_two_owners(self):
         self.register()

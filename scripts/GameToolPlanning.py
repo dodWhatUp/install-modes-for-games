@@ -11,6 +11,7 @@ from copy import deepcopy
 from game_mod_ops.safety import ModError, object_hash, require, slug
 from game_mod_ops.recipes import validate_recipe
 from game_mod_ops.managers import compare_installed
+from game_mod_ops.definitions import validate_mode
 
 VERSION = "0.1.0"
 SCHEMA_VERSION = 1
@@ -77,6 +78,7 @@ class PlanningService:
     def _selection(self, recipe, selected=None, mode=None):
         validate_recipe(recipe)
         mode = self._default_mode(recipe, mode)
+        validate_mode(mode)
         by_id = {row["id"]: row for row in recipe["items"]}
         chosen_input = recipe.get("presets", {}).get(mode, []) if selected is None else selected
         require(type(chosen_input) is list and 0 < len(chosen_input) <= 100 and
@@ -143,7 +145,11 @@ class PlanningService:
         require(goal in GOALS, "INVALID_ARGUMENTS", "Choose a supported read-only goal.")
         row = self._row(game_id)
         recipe = self._recipe(game_id)
-        selection = self._selection(recipe, selected, mode) if recipe is not None else None
+        recipe_goal = goal in {"prepare-game", "review-mods", "compare-intended-installed"}
+        if not recipe_goal:
+            require(selected is None and mode is None, "INVALID_ARGUMENTS",
+                    "This goal does not use a mod-recipe mode or item selection.")
+        selection = self._selection(recipe, selected, mode) if recipe is not None and recipe_goal else None
         instance = self.instances.public(instance_id) if instance_id is not None else None
         if instance is not None:
             require(instance["game_id"] == game_id,
@@ -156,19 +162,21 @@ class PlanningService:
         )]
         blockers = []
         if recipe is None:
-            recipe_state = "NOT_APPLICABLE" if goal == "review-keybinds" else "BLOCKED"
-            recipe_blockers = [] if recipe_state == "NOT_APPLICABLE" else ["RECIPE_REQUIRED"]
+            recipe_state = "BLOCKED" if recipe_goal else "NOT_APPLICABLE"
+            recipe_blockers = ["RECIPE_REQUIRED"] if recipe_goal else []
             blockers.extend(recipe_blockers)
             nodes.append(_node(
                 "recipe", "recipe", "RecipeCatalog", recipe_state,
-                "No reviewed mod recipe is registered for this game.",
+                "No reviewed mod recipe is registered; this goal does not require one."
+                if not recipe_goal else "No reviewed mod recipe is registered for this goal.",
                 depends_on=["scope"], blockers=recipe_blockers,
             ))
         else:
             nodes.append(_node(
-                "recipe", "recipe", "RecipeCatalog", "READY",
-                "Read the immutable recipe and dependency/conflict declarations.",
-                depends_on=["scope"], reads=["reviewed recipe"],
+                "recipe", "recipe", "RecipeCatalog", "READY" if recipe_goal else "NOT_APPLICABLE",
+                "Read the immutable recipe and dependency/conflict declarations."
+                if recipe_goal else "This goal reads installation metadata without a mod recipe.",
+                depends_on=["scope"], reads=["reviewed recipe"] if recipe_goal else [],
             ))
 
         if selection is None:
@@ -221,9 +229,12 @@ class PlanningService:
         ))
 
         nodes.append(_node(
-            "ownership", "graph", "GameToolPlanning", "READY" if recipe is not None else "NOT_APPLICABLE",
-            "Resolve declared manager, dependency, identity and alternative-conflict ownership.",
-            depends_on=["recipe"], reads=["recipe ownership declarations"] if recipe else [],
+            "ownership", "graph", "GameToolPlanning",
+            "READY" if recipe is not None and recipe_goal else "NOT_APPLICABLE",
+            "Resolve declared manager, dependency, identity and alternative-conflict ownership."
+            if recipe_goal else "This goal does not compile a recipe ownership graph.",
+            depends_on=["recipe"],
+            reads=["recipe ownership declarations"] if recipe is not None and recipe_goal else [],
         ))
 
         keybind_available = bool(row.get("keybind_pack_available"))
@@ -253,6 +264,11 @@ class PlanningService:
         ))
         _validate_dag(nodes)
         waiting = any(row["status"] == "WAITING_LOCAL_SELECTION" for row in nodes)
+        plan_reads = ["reviewed support definitions"]
+        if recipe is not None and recipe_goal:
+            plan_reads.append("reviewed recipe")
+        if instance is not None:
+            plan_reads.append("registered instance metadata")
         body = {
             "schema_version": SCHEMA_VERSION,
             "kind": "game_tools_goal_plan",
@@ -265,7 +281,7 @@ class PlanningService:
             "nodes": nodes,
             "blockers": sorted(set(blockers)),
             "selection_issues": [] if selection is None else selection["issues"],
-            "effects": {"read": ["registered metadata and reviewed definitions"], "write": [], "network": False},
+            "effects": {"read": plan_reads, "write": [], "network": False},
             "automatic_execution": False,
             "runtime_verified": False,
             "gameplay_verified": False,
