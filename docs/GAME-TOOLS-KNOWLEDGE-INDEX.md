@@ -1,6 +1,6 @@
 # Game tools knowledge and recovery index
 
-## 2026-10-14 — AI Efficiency Foundation source candidate 0.26
+## 2026-10-14 — AI Efficiency Foundation 0.26 adopted source
 
 Read the [AI Efficiency Foundation design](AI-EFFICIENCY-FOUNDATION.md),
 [review](AI-EFFICIENCY-FOUNDATION-REVIEW.md),
@@ -11,7 +11,7 @@ Read the [AI Efficiency Foundation design](AI-EFFICIENCY-FOUNDATION.md),
 dual-era MCP transport, result envelope, manifest-verified search/fetch,
 resources, resume/change cursors, blocker explanations, batch status, catalog
 and explicitly shared report reads. Legacy MCP payloads and local approval
-remain unchanged. Native Windows launcher/Tk and independent external stdio-client acceptance passed on 2026-10-14; see the [sanitized acceptance report](AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.md) and [machine-readable receipt](AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.json). Specific ChatGPT/Codex product-UI connection, production installation, real-game, Git adoption/merge and advanced adapter acceptance remain pending.
+remain unchanged. Native Windows launcher/Tk and independent external stdio-client acceptance passed on 2026-10-14; see the [sanitized acceptance report](AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.md) and [machine-readable receipt](AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.json). PR #7 was reviewed and merged into canonical `main` as `cef163dee0bba0395611b1e3c15be972fa7db175`. Specific ChatGPT/Codex product-UI connection, production installation, real-game/manager/device state and advanced adapter acceptance remain pending.
 
 ## 2026-10-13 — data-driven multi-game support (source preview 0.24)
 

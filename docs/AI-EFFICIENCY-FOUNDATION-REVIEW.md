@@ -3,7 +3,7 @@
 **Date:** 2026-10-14
 **Canonical owner:** `dodWhatUp/install-modes-for-games`
 **Base:** reviewed local R2 source `0.25.0-preview.2`
-**Status:** additive candidate with native Windows/Tk and independent external stdio acceptance; not production-installed or adopted into `main`
+**Status:** adopted into canonical `main` by PR #7 / `cef163dee0bba0395611b1e3c15be972fa7db175` after independent review; not production-installed and no runtime acceptance was expanded by the merge
 
 ## Result
 

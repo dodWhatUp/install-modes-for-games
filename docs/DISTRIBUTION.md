@@ -4,7 +4,7 @@
 
 The sealed source delivery contains 380 authored payloads plus generated manifest metadata. Source archive SHA-256: `ad4bcddbd76845bf35bdb67e1eee529dcab921263a742a596eec93fb6d41afd6`; exact Preview SHA-256: `bf2989da32f197f021283aef06368e7f028cfe7e23619c5d766715f2e242f977`. The Preview later passed the bounded native Windows/Tk and external stdio acceptance recorded in [`AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.md`](AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.md).
 
-A private Drive delivery preserves the immutable ZIP and checksum; the public repository keeps editable source, sanitized receipts and exact hashes rather than archive binaries or machine-local receipts. Canonical reconciliation is documented separately and does not itself prove merge, production installation or game/runtime acceptance.
+A private Drive delivery preserves the immutable ZIP and checksum; the public repository keeps editable source, sanitized receipts and exact hashes rather than archive binaries or machine-local receipts. After independent review, PR #7 merged the reconciled source into canonical `main` as `cef163dee0bba0395611b1e3c15be972fa7db175`. The merge establishes source adoption only; it does not prove production installation or game/runtime/client acceptance.
 
 ## 2026-10-11 — Workflow dry-run source continuation
 

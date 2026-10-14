@@ -7,7 +7,6 @@
 - Production installation or migration from an existing local profile.
 - Real game, manager, RHI, Steam Input, reWASD, Azeron or physical-device state.
 - Installation, upgrade, disable, rollback or runtime/gameplay verification.
-- Adoption into the canonical repository `main` branch. The validated source exists only on a task branch until reviewed and merged.
 
 ## Evidence boundaries
 
@@ -34,6 +33,6 @@ that connection was explicitly proposal-enabled. It cannot approve, execute,
 register arbitrary paths, start a game, inject input, capture, download or publish.
 Unknown effects are never converted into an automatic retry.
 
-## Canonical candidate boundary
+## Canonical adoption boundary
 
-The exact tested product source is commit `42dc939bd37ff37e5af2cb429bce6d0aeb3eb29d`. Its R7 inventory contained 708 payload files and passed the native focused gate. Any later documentation-only receipt commit does not expand runtime acceptance. The branch still requires pull-request review and main-branch adoption.
+The exact tested product source is commit `42dc939bd37ff37e5af2cb429bce6d0aeb3eb29d`. Its R7 inventory contained 708 payload files and passed the native focused gate. Receipt/documentation commit `1b619bd6fd1d3270d6b286edf411dc57d1f01717` does not expand runtime acceptance. PR #7 merged both commits into canonical `main` as `cef163dee0bba0395611b1e3c15be972fa7db175`. That Git adoption does not establish production installation, a specific product client, manager/game/device state, gameplay acceptance or write-capable adapters.
