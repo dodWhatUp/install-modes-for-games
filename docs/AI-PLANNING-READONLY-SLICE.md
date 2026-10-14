@@ -1,5 +1,9 @@
 # Read-only planning and UMM instance slice — 0.27.0-preview.1
 
+**Source status:** tested product commit `cd444009d063b27894bf8e399d517670b30ebc47`
+
+**Acceptance:** bounded synthetic Windows/UMM and external stdio PASS; real-folder and production acceptance remain separate.
+
 ## Purpose
 
 This slice extends the adopted AI Efficiency Foundation with four modern,
@@ -98,10 +102,14 @@ blocker. An unselected alternative remains a real graph node rather than a
 phantom edge. Missing exact manifest identity remains advisory and prevents a
 conclusive installed match.
 
-The current source-level test and boundary receipt is
+The source-level test and boundary receipt is
 [`AI-PLANNING-READONLY-VALIDATION.json`](AI-PLANNING-READONLY-VALIDATION.json).
-It deliberately leaves package, Windows, external-client and real-folder
-acceptance pending until their separate gates complete.
+Candidate R4 then passed the separate [Windows, source-package and external
+stdio acceptance](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.md): 715
+payloads matched, 13 Windows suites ran 370 tests, exported packaging passed
+without skips, and the synthetic UMM directory remained byte-identical. A real
+registered game folder, specific product UI and production transactions remain
+unaccepted.
 
 ## Result and safety boundaries
 

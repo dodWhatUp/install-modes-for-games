@@ -11,10 +11,11 @@ unchanged. AI cannot register a path, and public results omit local filesystem
 paths. Plans create no job or proposal, and inspections write no game, manager,
 profile, save, input or graphics state.
 
-Read the [0.27 design and boundaries](AI-PLANNING-READONLY-SLICE.md). This is a
-local task-branch candidate until its final validation and publication receipt.
-Only synthetic UMM fixtures have passed so far; native Windows and a separately
-authorized real-folder read remain distinct acceptance gates. Install, upgrade,
+Read the [0.27 design and boundaries](AI-PLANNING-READONLY-SLICE.md) and the
+[bounded Windows/source-package/external-stdio acceptance](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.md).
+The exact product source is commit `cd444009d063b27894bf8e399d517670b30ebc47`.
+Candidate R4 passed synthetic UMM and native Windows process-level gates; a
+separately authorized real-folder read remains unperformed. Install, upgrade,
 disable and rollback transactions are still later work.
 
 ## 2026-10-14 — AI Efficiency Foundation implemented

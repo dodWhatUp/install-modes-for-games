@@ -1,0 +1,308 @@
+{
+  "base_commit": "108cb332b874583776c7a9cb1a19ce67c8cc96e5",
+  "branch": "task/ai-plan-readonly-slice2-20261014",
+  "candidate": {
+    "aggregate_sha256": "c3259d56440dc817a7a54c633e5d3b1fba1f2ef7ac12bb787375822c4c69b420",
+    "inventory_sha256": "97017b38275dd600b3ad583745c3b006f9e5a1f80c001eb399acb74e1e7e0bc6",
+    "mismatched": 0,
+    "missing": 0,
+    "payload_files": 715,
+    "revision": "R4",
+    "unexpected": 0
+  },
+  "created_utc": "2026-10-14T20:08:18.995094+00:00",
+  "date": "2026-10-14",
+  "effects": {
+    "capture": false,
+    "execution": false,
+    "game_files": false,
+    "git_main": false,
+    "input": false,
+    "manager_profile": false,
+    "network": false,
+    "private_registry_metadata": true,
+    "production_profile": false,
+    "proposal": false
+  },
+  "environment": {
+    "os": "Windows 11 ARM64",
+    "os_version": "Microsoft Windows NT 10.0.26300.0",
+    "powershell": "5.1.26300.7674",
+    "python": "3.12.10 ARM64",
+    "tk": "8.6",
+    "vm_state_after_gate": "running",
+    "vm_state_at_gate_start": "running"
+  },
+  "exported_package_checks": {
+    "checks": {
+      "host_pins_exact": true,
+      "manifest_files_match": true,
+      "no_timeout": true,
+      "original_verify_only": true,
+      "packaging_7_of_7_no_skips": true,
+      "verify_only_created_no_profile": true,
+      "workbench_verify_only": true
+    },
+    "manifest_files": 394,
+    "manifest_sha256": "7782f1f91c232cafc7d09607c4a674c4d52f9a34598af73ceb92763c117521d5",
+    "packaging_skips": 0,
+    "packaging_tests": 7,
+    "status": "PASS"
+  },
+  "external_stdio_acceptance": {
+    "checks": {
+      "adapter_writes_empty": true,
+      "batch_reads_metadata_only": true,
+      "game_tree_unchanged_after_mcp": true,
+      "game_tree_unchanged_after_registration": true,
+      "goal_plan_no_automatic_execution": true,
+      "goal_plan_preview_only": true,
+      "graph_manifest_match": true,
+      "graph_no_automatic_resolution": true,
+      "instance_list_one": true,
+      "instance_path_hidden": true,
+      "legacy_initialize": true,
+      "legacy_new_tools_absent": true,
+      "legacy_no_registration": true,
+      "modern_discover": true,
+      "modern_tools_sorted": true,
+      "new_tools_present": true,
+      "no_arbitrary_path_arguments": true,
+      "no_job_or_request_store": true,
+      "no_registration_tool": true,
+      "only_registry_metadata_written": true,
+      "output_schemas_present": true,
+      "processes_clean": true,
+      "read_only_connection_has_no_proposal": true,
+      "registration_output_path_free": true,
+      "typed_instance_blocker": true,
+      "umm_inventory_observed": true
+    },
+    "game_unchanged_after_mcp": true,
+    "game_unchanged_after_registration": true,
+    "legacy_tool_count": 24,
+    "modern_tool_count": 38,
+    "new_modern_tools": [
+      "game_tools_instances",
+      "game_tools_instance_inspect",
+      "game_tools_plan_goal",
+      "game_tools_conflicts"
+    ],
+    "private_data_files": [
+      "game-instances/windows-kingmaker-r4.json"
+    ],
+    "protocols": [
+      "2026-07-28",
+      "2025-11-25"
+    ],
+    "status": "PASS",
+    "synthetic_game_files": 4,
+    "synthetic_game_sha256": "b44c883159970e6573b45cc8846e9f5ee41b60ae18db5af1ed06ffd430bc388a"
+  },
+  "focused_windows_validation": {
+    "automatic_retry": false,
+    "environment_skips": [
+      "Two Game Support symlink fixtures: Windows account lacks symlink privilege; product rejection remains tested where link creation is permitted.",
+      "One Automation symlink fixture: same Windows privilege boundary.",
+      "Four source-checkout package checks: generated MANIFEST.json absent before export; rerun below with zero skips."
+    ],
+    "passed": 363,
+    "skipped": 7,
+    "status": "PASS",
+    "suite_count": 13,
+    "suites": [
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameToolPlanning.py",
+        "tests": 15
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameToolAIFoundation.py",
+        "tests": 17
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameToolAIModern.py",
+        "tests": 18
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameToolGameWorkspaces.py",
+        "tests": 41
+      },
+      {
+        "skipped": 2,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameSupport.py",
+        "tests": 56
+      },
+      {
+        "skipped": 1,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameToolAutomation.py",
+        "tests": 52
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameToolKeybindMerge.py",
+        "tests": 7
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameToolUnified.py",
+        "tests": 33
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameToolWorkbenchLauncher.py",
+        "tests": 10
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/keybinds/test_host_integration.py",
+        "tests": 35
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/keybinds/test_schema_contract.py",
+        "tests": 10
+      },
+      {
+        "skipped": 4,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameSupportPackaging.py",
+        "tests": 7
+      },
+      {
+        "skipped": 0,
+        "status": "PASS",
+        "suite": "scripts/tests/Test-GameSourceExport.ps1",
+        "tests": 69
+      }
+    ],
+    "tests_run": 370,
+    "timeouts": 0
+  },
+  "independent_readback": {
+    "checks": {
+      "archive_entries_match": true,
+      "archive_sha_match": true,
+      "candidate_hash_pass": true,
+      "export_pass": true,
+      "focused_pass": true,
+      "mcp_game_unchanged": true,
+      "mcp_no_execution": true,
+      "mcp_pass": true,
+      "package_pass": true
+    },
+    "source_archive": {
+      "bytes": 1342336,
+      "entries": 395,
+      "manifest_files": 394,
+      "name": "Unified-Game-Tools-0.27.0-preview.1-Keybinds-Reviewed-Source-2026-10-14.zip",
+      "sha256": "d843f59e4f148f01f26e29eaaa7895a27aa6bd1ec79403df44ccc82f475ef513"
+    },
+    "status": "PASS"
+  },
+  "kind": "game-tools-ai-planning-readonly-windows-acceptance",
+  "not_established": [
+    "A real registered game directory or live manager profile.",
+    "UMM enabled state, load order, runtime compatibility, gameplay or physical-device acceptance.",
+    "Connection through a specific ChatGPT or Codex product UI.",
+    "Production installation, migration, install, upgrade, disable or rollback transactions.",
+    "Main-branch adoption or merge of this task branch."
+  ],
+  "private_evidence_note": "Machine-local receipts and synthetic fixture paths remain outside Git; this record retains only sanitized identities, counts and hashes.",
+  "receipt_hashes": {
+    "candidate_hash": {
+      "file": "WINDOWS-CANDIDATE-R4-HASH-VERIFICATION.json",
+      "sha256": "672ea0d5b1580a5efd6cbb6baa6831c91d1d25563a7944ad429a723594f1afb9"
+    },
+    "focused": {
+      "file": "WINDOWS-FOCUSED-TESTS-R4.json",
+      "sha256": "578b010516d717312ce562ce1800b0bc3550352c0f24e54a866bd5ad8ba8cd41"
+    },
+    "mcp": {
+      "file": "WINDOWS-PLANNING-MCP-R4.json",
+      "sha256": "8de0a9aeac48d25181c8346b3cabad1f9a07a5a9ba781371c90a857b720d47af"
+    },
+    "package": {
+      "file": "WINDOWS-EXPORTED-PACKAGE-CHECKS-R4.json",
+      "sha256": "f5247e1b027d74516eb0b82e2fa92ebc718296135a64f2738c3e6211d440a701"
+    },
+    "r1": {
+      "file": "WINDOWS-FOCUSED-TESTS-R1-RECONCILIATION.json",
+      "sha256": "16e643ebe457f75c88fc3cba1dcbc425cf624bca202cb47385c2d36f2111f185"
+    },
+    "r2": {
+      "file": "WINDOWS-FOCUSED-TESTS-R2-RECONCILIATION.json",
+      "sha256": "0305d4f4b0b2d571419d40b69e8255da8c2d588e4faa9803c7539f5bed21775d"
+    },
+    "r3": {
+      "file": "WINDOWS-FOCUSED-TESTS-R3-RECONCILIATION.json",
+      "sha256": "5e9c6babe3b6d601601fc3cebe6095d87475ec3933a3d17263145e78a57cc6fa"
+    },
+    "readback": {
+      "file": "R4-INDEPENDENT-READBACK.json",
+      "sha256": "abb1bc08bd07d96e1a821aa4e61ae9ffd854f3b8f446e0d35623ed874900bfd3"
+    },
+    "source_export": {
+      "file": "WINDOWS-SOURCE-EXPORT-R4.json",
+      "sha256": "2d06bf0f60390eb4a9740427ddc9f862e4ffa07c6892ae086d6762cd1e97d222"
+    }
+  },
+  "reconciled_predecessor_candidates": [
+    {
+      "automatic_retry": false,
+      "candidate": "R1",
+      "cause": "The test searched a Windows path in raw JSON text; JSON escaping doubled backslashes. The registry record itself contained the correct path value.",
+      "failure_class": "cross-platform-test-assertion",
+      "product_effects": false,
+      "receipt_sha256": "16e643ebe457f75c88fc3cba1dcbc425cf624bca202cb47385c2d36f2111f185",
+      "status": "RECONCILED_TEST_ASSERTION_FAILURE_NO_PRODUCT_EFFECT"
+    },
+    {
+      "automatic_retry": false,
+      "candidate": "R2",
+      "cause": "Two existing security tests failed before product invocation because the standard Windows test account lacks symlink privilege (WinError 1314). Fifty-four other support tests completed.",
+      "failure_class": "windows-symlink-fixture-privilege",
+      "product_effects": false,
+      "receipt_sha256": "0305d4f4b0b2d571419d40b69e8255da8c2d588e4faa9803c7539f5bed21775d",
+      "status": "RECONCILED_ENVIRONMENT_FIXTURE_PRIVILEGE_NO_PRODUCT_EFFECT"
+    },
+    {
+      "automatic_retry": false,
+      "candidate": "R3",
+      "cause": "The 0.27 runtime_status said the slice required validation but did not explicitly retain the word pending required by the truthful-boundary contract.",
+      "failure_class": "source-export-runtime-status-contract",
+      "product_effects": false,
+      "receipt_sha256": "5e9c6babe3b6d601601fc3cebe6095d87475ec3933a3d17263145e78a57cc6fa",
+      "status": "RECONCILED_EXPORT_METADATA_CONTRACT_NO_PRODUCT_EFFECT"
+    }
+  ],
+  "repository": "dodWhatUp/install-modes-for-games",
+  "schema_version": 1,
+  "source_export": {
+    "archive_bytes": 1342336,
+    "archive_name": "Unified-Game-Tools-0.27.0-preview.1-Keybinds-Reviewed-Source-2026-10-14.zip",
+    "archive_sha256": "d843f59e4f148f01f26e29eaaa7895a27aa6bd1ec79403df44ccc82f475ef513",
+    "files": 394,
+    "integrity": "all_source_and_manifest_zip_entries_verified",
+    "manifest_sha256": "7782f1f91c232cafc7d09607c4a674c4d52f9a34598af73ceb92763c117521d5",
+    "source_current_at_final_hash_check": true,
+    "status": "PASS",
+    "zip_entries": 395
+  },
+  "status": "PASS_BOUNDED_SYNTHETIC_READ_ONLY",
+  "tested_product_commit": "cd444009d063b27894bf8e399d517670b30ebc47"
+}
