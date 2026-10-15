@@ -26,7 +26,8 @@
     "accepted_planned_installed_comparison_adapters": [
       "umm"
     ],
-    "manager_profile_writes": false
+    "manager_profile_writes": false,
+    "host_hash_policy": "utf8_lf"
   },
   "tested_host_dependencies": {
     "scripts/GameToolAutomation.py": "34bffd633608713905f87f3ecdac50653169fbb815415e6a737a6766bad3fccf",

@@ -477,6 +477,14 @@ class ReadOnlyPlanningContracts(unittest.TestCase):
         result = check_host.check(SCRIPTS.parent)
         self.assertEqual(result["status"], "EXACT_DEPENDENCIES_MATCH")
         self.assertEqual(result["host_reference_version"], "0.28.0-preview.1")
+        self.assertEqual(result["hash_policy"], "utf8_lf")
+        source = SCRIPTS / "GameToolMO2Read.py"
+        normalized = source.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+        crlf = self.root / "GameToolMO2Read-crlf.py"
+        crlf.write_bytes(normalized.replace(b"\n", b"\r\n"))
+        self.assertEqual(check_host.source_hash(crlf), check_host.PINS["scripts/GameToolMO2Read.py"])
+        crlf.write_bytes(crlf.read_bytes() + b"# content drift\r\n")
+        self.assertNotEqual(check_host.source_hash(crlf), check_host.PINS["scripts/GameToolMO2Read.py"])
         pinned = {row["path"] for row in result["files"]}
         self.assertTrue({
             "scripts/GameToolInstances.py", "scripts/GameToolPlanning.py",

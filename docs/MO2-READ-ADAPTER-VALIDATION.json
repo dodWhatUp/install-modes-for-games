@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "kind": "game-tools-mo2-read-adapter-validation",
-  "status": "LOCAL_DEPENDENCY_GATE_PARTIAL_WINDOWS_PACKAGE_AND_EXTERNAL_CLIENT_PENDING",
+  "status": "PRODUCT_R2_PORTABILITY_CORRECTIONS_LOCAL_PASS_WINDOWS_R3_PENDING",
   "version": "0.28.0-preview.1",
   "branch": "task/mo2-read-adapter-reconcile-20261015",
   "canonical_base": "290bea7983ccca50073c5f45ce44337cacafc32a",
@@ -21,10 +21,12 @@
     "scripts/GameToolPlanning.py": "f4e891621bb9d9954f7545b284e65294c9410ca3089c9fa9814cde79dddfc41e",
     "schemas/mo2-profile-state.schema.json": "7069a4458acf2c96e54095b3ba6437ccc3f9de6606da5f881c4d728196c5b91f",
     "scripts/tests/Test-GameToolMO2Read.py": "e8f24d69659eba4467ff3b3ef9d95cfe8e36dafde949dd9e29604850a4d570ca",
-    "scripts/Export-GameTools.ps1": "4bae59280a49dcd187e93c9eef38196e0d683ee0699c18fc6f6d9249be34ca3a",
-    "scripts/tests/Test-GameSourceExport.ps1": "aad45b0a2d5229c8bffa9bd2ae168f2e6abfce51d8fe0b50022df9728bdd0f7c",
+    "scripts/Export-GameTools.ps1": "e1216f8e00895bbf001b4372b88fe253079c77f4bb6a90ba3eb1050d9a1abbc1",
+    "scripts/tests/Test-GameSourceExport.ps1": "3c75c09d4387172c8cd715121b11ebf19e8c6d0f1f1450c5e7ef526af2d066ea",
     "scripts/tests/Test-GameSupportPackaging.py": "4412c6a36cb56a71b0d056f16fea66b94c2f6f350aefe11441d043c4760010b7",
-    "scripts/check_host.py": "35ad0f17b2dbc9d891f92347f1944fe6191f466d0817c9fb121efa8b6f9a9aed"
+    "scripts/check_host.py": "99bf140d34ae557cc994714dd9259e7b808f0e6a7329707665456f1e23d8b82a",
+    "scripts/tests/Test-GameToolPlanning.py": "e6b628b5a3cc58ec7096decfd27ab661a5f72d24a26d256df27422c1b4eba097",
+    "docs/keybinds/DEPENDENCY_PINS.json": "547eb36cbf3c36fb4ec5a72d64578504f9659ff9c84c2cd9890eb53d1a6e38db"
   },
   "architecture": {
     "competing_registry_added": false,
@@ -104,7 +106,8 @@
     "json_schema_2020_12": true,
     "host_pins": {
       "matched": 13,
-      "total": 13
+      "total": 13,
+      "hash_policy": "utf8_lf"
     },
     "git_diff_check": true,
     "staged_files": 0,
@@ -124,7 +127,9 @@
     "dynamic goal DAG with MO2 inspection and explicit comparison refusal",
     "manifest, launcher and updater coherent-package requirements",
     "cross-field MO2 source-file schema constraints for role/path and hash exposure",
-    "pre-acceptance source export with optional later Windows receipt inclusion and truthful pending status"
+    "pre-acceptance source export with optional later Windows receipt inclusion and truthful pending status",
+    "cross-platform host dependency identity using UTF-8 LF normalization only",
+    "self-contained source/archive SHA-256 without optional Get-FileHash dependency"
   ],
   "effects": {
     "production": false,
@@ -136,15 +141,15 @@
     "input": false,
     "capture": false,
     "network_by_product": false,
-    "git_push": false,
+    "git_push": true,
     "main": false
   },
   "pending_gates": [
-    "Seal an exact product candidate inventory and commit its tested bytes separately from later acceptance documentation.",
-    "Run all selected suites under supported Python 3.12 with jsonschema, Pillow and Tk on Windows.",
+    "Commit and seal PRODUCT-R2 separately from later acceptance documentation; verify exact Git-clean-filtered candidate bytes.",
+    "Run Windows R3 against PRODUCT-R2 under Python 3.12 with jsonschema, Pillow and Tk.",
     "Run PowerShell source-export contracts, real source export and extracted-package verification with zero packaging skips.",
     "Run an independent modern/legacy stdio fixture covering local register-mo2, inspection, redaction, typed refusal and unchanged synthetic trees.",
-    "Publish a task PR, perform independent exact-head review and adopt only through a separate reviewed merge."
+    "Add acceptance records in a later docs-only commit, open a Draft PR, perform independent exact-head review and adopt only through a separate reviewed merge."
   ],
   "not_established": [
     "A real MO2 installation or live profile.",
@@ -352,6 +357,154 @@
     "reconciled_invocation": {
       "status": "HARNESS_ARGUMENT_MISSING_NO_TESTS_OR_PRODUCT_EFFECT",
       "detail": "The first keybind-host invocation omitted required GAME_TOOLS_HOST_SOURCE and exited before unittest collection. The corrected exact-root invocation ran 35/35 once."
+    }
+  },
+  "product_candidate_history": [
+    {
+      "revision": "PRODUCT-R1",
+      "commit": "3ff5dd922e3f43edb5d5db3856164f4fe0c6df7d",
+      "status": "SEALED_AND_PUBLISHED_SUPERSEDED_BY_PORTABILITY_CORRECTIONS",
+      "candidate_payload_files": 723,
+      "local_candidate_aggregate_sha256": "dcadf7ad08bdfc6d6190c01183f23a9838cb0736339169eadbc48f0335fe189d",
+      "windows_candidate_aggregate_sha256": "fc4679ce99e727d23132372601db0b136f9c74c20c28ff90b700e439d38860d9",
+      "meaning": "MO2 behavior passed its dedicated Windows suite. Exact-head Windows review found platform-sensitive host pins and an optional PowerShell cmdlet dependency in source export; no production, game or manager effect occurred."
+    },
+    {
+      "revision": "PRODUCT-R2",
+      "commit": null,
+      "parent_product_commit": "3ff5dd922e3f43edb5d5db3856164f4fe0c6df7d",
+      "status": "LOCAL_TARGETED_PASS_WINDOWS_R3_PENDING",
+      "corrections": [
+        "Host dependency hashes normalize UTF-8 CRLF/CR to LF and still reject any other content drift.",
+        "Source export and PowerShell contracts use the exporter internal SHA-256 helper instead of Get-FileHash.",
+        "A regression proves LF/CRLF equivalence and rejects modified content."
+      ]
+    }
+  ],
+  "local_product_r2_targeted_gate": {
+    "status": "PASS_WITH_DOCUMENTED_PYTHON39_LAUNCHER_BOUNDARY",
+    "receipt": "private local evidence: local-product-r2-targeted/TARGETED-RECEIPT.json",
+    "passing_suites": [
+      {
+        "suite": "scripts/tests/Test-GameToolPlanning.py",
+        "tests": 31,
+        "passed": 31,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolMO2Read.py",
+        "tests": 19,
+        "passed": 19,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolAIModern.py",
+        "tests": 20,
+        "passed": 20,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameSupportPackaging.py",
+        "tests": 7,
+        "passed": 3,
+        "skipped": 4
+      }
+    ],
+    "host_pins": {
+      "matched": 13,
+      "total": 13,
+      "hash_policy": "utf8_lf"
+    },
+    "environment_boundary": {
+      "suite": "scripts/tests/Test-GameToolWorkbenchLauncher.py",
+      "classification": "PYTHON_VERSION_ENVIRONMENT_BOUNDARY_NO_RETRY",
+      "macos_python": "3.9.6",
+      "passed_before_error": 11,
+      "tests_reported": 12,
+      "windows_r2_evidence": "The unchanged launcher source passed 12/12 under Windows Python 3.12 before PRODUCT-R2; Windows R3 will rerun the whole corrected candidate."
+    },
+    "automatic_retry": false,
+    "effects": {
+      "production": false,
+      "game": false,
+      "manager": false,
+      "input": false,
+      "capture": false
+    }
+  },
+  "windows_predecessor_attempts": [
+    {
+      "revision": "WINDOWS-R1A",
+      "run_id": 38786237237,
+      "harness_commit": "53d76fa6d79f6e33781d46ff96a6e6f9b082170a",
+      "product_commit": "3ff5dd922e3f43edb5d5db3856164f4fe0c6df7d",
+      "status": "FAIL_OR_INCOMPLETE_NO_PRODUCT_EFFECT",
+      "candidate_exact": true,
+      "mo2_suite": "19/19 PASS",
+      "launcher": "12/12 PASS",
+      "keybind_merge": "7/7 PASS",
+      "failures": [
+        "Planning exact-host pins were platform-sensitive.",
+        "Keybind-host harness omitted GAME_TOOLS_HOST_SOURCE and exited before collection.",
+        "Source export depended on unavailable Get-FileHash."
+      ],
+      "artifact_id": 11998237005,
+      "artifact_sha256": "29d0c4724470b2c47c6ac9cc58c99d29895918113afe820126c31f5eecc8b066",
+      "automatic_retry": false
+    },
+    {
+      "revision": "WINDOWS-R1B-DUPLICATE-TRIGGER",
+      "run_id": 38786305790,
+      "product_commit": "3ff5dd922e3f43edb5d5db3856164f4fe0c6df7d",
+      "status": "DUPLICATE_TRIGGER_SAME_R1_HARNESS_RETAINED_NOT_ACCEPTANCE",
+      "meaning": "The connector-created workflow push and later empty trigger both fired after GitHub delay. No rerun action was invoked and no product bytes differed."
+    },
+    {
+      "revision": "WINDOWS-R2-DIAGNOSTIC",
+      "run_id": 38786963114,
+      "harness_commit": "b710e862a65fb45e92d1772ed7a5006151a9356c",
+      "product_commit": "3ff5dd922e3f43edb5d5db3856164f4fe0c6df7d",
+      "status": "DIAGNOSTIC_FAIL_NO_PRODUCT_EFFECT",
+      "candidate_exact": true,
+      "tests_run": 342,
+      "passed": 307,
+      "skipped": 4,
+      "timeouts": 0,
+      "mo2_suite": "19/19 PASS",
+      "keybind_host": "35/35 PASS after harness environment correction",
+      "exact_failures": [
+        "check_host raw-byte SHA differed across LF/CRLF checkout representation.",
+        "Export-GameTools.ps1 invoked Get-FileHash unavailable in the Windows runner environment."
+      ],
+      "artifact_id": 11998437525,
+      "artifact_sha256": "874b51603c8736154f9136ad2299ad5a393da622f9471f148764abeaeae622e1",
+      "automatic_retry": false
+    }
+  ],
+  "publication_state": {
+    "product_r1_branch_pushed": true,
+    "product_r2_commit": null,
+    "draft_pr_created": false,
+    "main_changed": false,
+    "test_branch_is_separate_from_product_pr": true
+  },
+  "local_product_r2_static_gate": {
+    "status": "PASS",
+    "receipt": "private local evidence: STATIC-GATE-PRODUCT-R2.json",
+    "changed_paths_from_product_r1": 8,
+    "python_ast_and_compile": 2,
+    "json_parse": 3,
+    "json_schema_2020_12": true,
+    "git_diff_check": true,
+    "privacy_scan": true,
+    "relative_markdown_targets": true,
+    "future_acceptance_records_absent": true,
+    "staged_files": 0,
+    "effects": {
+      "product_files_written": false,
+      "production": false,
+      "game": false,
+      "manager": false
     }
   }
 }

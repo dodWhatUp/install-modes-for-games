@@ -5,6 +5,8 @@ import hashlib
 import json
 from pathlib import Path
 
+HASH_POLICY = "utf8_lf"
+
 PINS = {
     "scripts/GameToolAutomation.py": "34bffd633608713905f87f3ecdac50653169fbb815415e6a737a6766bad3fccf",
     "scripts/GameToolAI.py": "aa7f29eb7063beb298c4e46399d5a0b78e6752cc0216f787362b590f5efcd87a",
@@ -22,11 +24,27 @@ PINS = {
 }
 
 
+def source_hash(path):
+    """Hash UTF-8 source with line endings normalized to LF.
+
+    Git may materialize authored text as LF or CRLF on different supported
+    platforms.  The policy ignores only that checkout representation; any other
+    byte/content change still produces a different digest.
+    """
+    raw = path.read_bytes()
+    try:
+        text = raw.decode("utf-8")
+    except UnicodeDecodeError:
+        return hashlib.sha256(raw).hexdigest()
+    normalized = text.replace("\r\n", "\n").replace("\r", "\n").encode("utf-8")
+    return hashlib.sha256(normalized).hexdigest()
+
+
 def check(root):
     rows = []
     for relative, expected in PINS.items():
         path = root / relative
-        actual = hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
+        actual = source_hash(path) if path.is_file() else None
         rows.append({
             "path": relative,
             "expected_sha256": expected,
@@ -37,6 +55,7 @@ def check(root):
         "status": "EXACT_DEPENDENCIES_MATCH" if all(row["matches"] for row in rows)
         else "REVIEW_HOST_DIFFERENCES",
         "host_reference_version": "0.28.0-preview.1",
+        "hash_policy": HASH_POLICY,
         "files": rows,
         "installed": False,
         "repinned": False,

@@ -20,6 +20,8 @@ function Write-ExportFixture {
 }
 $testTemp = [IO.Path]::GetFullPath([IO.Path]::GetTempPath()).TrimEnd([IO.Path]::DirectorySeparatorChar)
 $testRoot = Join-Path $testTemp ('GameToolsExportTest-' + [Guid]::NewGuid().ToString('N'))
+$testExporterSource = Get-Content -LiteralPath (Join-Path $PSScriptRoot '..\Export-GameTools.ps1') -Raw
+Assert-ExportTest ($testExporterSource -notmatch '\bGet-FileHash\b') 'source exporter does not depend on the optional Get-FileHash cmdlet'
 $testRepo = Join-Path $testRoot 'repository'
 New-Item -ItemType Directory -Path $testRepo | Out-Null
 try {
@@ -33,7 +35,7 @@ try {
     $testPaths = @('docs/source.md', 'examples/game-input/VALIDATION.json', 'scripts/Game-Tool-Hub.py', 'scripts/Game-Tool-Catalog.py', 'examples/game-input/GameInputModule.ahk')
     $testPlan = @(Get-GameSourcePlan -RepositoryRoot $testRepo -RelativePaths $testPaths)
     Assert-ExportTest ($testPlan.Count -eq 5) 'exact fixture inventory'
-    Assert-ExportTest ($testPlan[0].sha256 -eq (Get-FileHash -LiteralPath (Join-Path $testRepo 'docs/source.md')).Hash) 'source hash matches bytes'
+    Assert-ExportTest ($testPlan[0].sha256 -eq (Get-GameSourceHash -Bytes ([IO.File]::ReadAllBytes((Join-Path $testRepo 'docs/source.md'))))) 'source hash matches bytes'
     Assert-ExportRefusal { Get-GameSourcePlan -RepositoryRoot $testRepo -RelativePaths @('docs/source.md','DOCS/SOURCE.md') } 'duplicate' 'case-insensitive duplicate refusal'
     Assert-ExportRefusal { Get-GameSourcePlan -RepositoryRoot $testRepo -RelativePaths @('missing.md') } 'Missing' 'missing source refusal'
     Assert-ExportRefusal { Get-GameSourcePlan -RepositoryRoot $testRepo -RelativePaths @('game.dll') } 'Unsupported' 'binary extension refusal'
@@ -80,7 +82,7 @@ try {
     [IO.File]::WriteAllBytes((Join-Path $testRepo 'docs/source.md'), $testPlan[0].content)
     $testReceipt = Invoke-GameSourceExport -RepositoryRoot $testRepo -OutputDirectory (Join-Path $testRoot 'export') -Plan $testPlan -Metadata $testMetadata
     Assert-ExportTest ($testReceipt.files -eq 5 -and $testReceipt.integrity -eq 'all_source_and_manifest_zip_entries_verified') 'fixture archive fully verified'
-    Assert-ExportTest ($testReceipt.sha256 -eq (Get-FileHash -LiteralPath $testReceipt.archive).Hash) 'archive receipt hash'
+    Assert-ExportTest ($testReceipt.sha256 -eq (Get-GameSourceHash -Bytes ([IO.File]::ReadAllBytes($testReceipt.archive)))) 'archive receipt hash'
     $testArchive = [IO.Compression.ZipFile]::OpenRead($testReceipt.archive)
     try {
         Assert-ExportTest (@($testArchive.Entries | Where-Object { $_.FullName.Contains('\') }).Count -eq 0 -and
@@ -88,7 +90,7 @@ try {
     } finally { $testArchive.Dispose() }
     Assert-ExportTest $testReceipt.source_current_at_final_hash_check 'final source hash verification reported'
     $testStaged = Join-Path $testRoot 'export\source\docs\source.md'
-    Assert-ExportTest ((Get-FileHash -LiteralPath $testStaged).Hash -eq $testPlan[0].sha256) 'original planned bytes preserved'
+    Assert-ExportTest ((Get-GameSourceHash -Bytes ([IO.File]::ReadAllBytes($testStaged))) -eq $testPlan[0].sha256) 'original planned bytes preserved'
     $testManifest = Get-Content -LiteralPath (Join-Path $testRoot 'export\source\MANIFEST.json') -Raw | ConvertFrom-Json
     Assert-ExportTest ($testManifest.files.Count -eq 5 -and $testManifest.input_declared_runtime.game_receipt -eq 'pending') 'manifest exact sources and pending evidence'
     Assert-ExportRefusal { Invoke-GameSourceExport -RepositoryRoot $testRepo -OutputDirectory (Join-Path $testRoot 'export') -Plan $testPlan -Metadata $testMetadata } 'exists' 'repeat export cannot overwrite'

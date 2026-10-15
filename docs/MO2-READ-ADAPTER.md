@@ -131,6 +131,13 @@ coherent set. The manifest must declare exact versions for `instances`,
 `planning` and `mo2_read`, and those labels must match the exact source bytes.
 A partial package or a mismatched component label is refused before staging.
 
+Cross-platform host pins hash UTF-8 source after normalizing only `CRLF`/`CR`
+to `LF`. This preserves exact source content identity while avoiding a false
+difference caused solely by Git checkout line endings; a content change still
+invalidates the pin. The PowerShell exporter computes source and archive SHA-256
+through its own bounded byte helper and does not depend on the optional
+`Get-FileHash` cmdlet.
+
 Current candidate versions:
 
 ```text
@@ -157,8 +164,13 @@ planning, AI, automation, workspace, support, updater and non-GUI keybind
 contracts. The launcher correctly refused Python 3.9, and the macOS Tk keybind
 lifecycle reached its fixed deadline and remains `TIMEOUT_NO_RETRY`; neither is
 represented as a product failure or a Windows pass. Native Windows Python 3.12,
-PowerShell source export, extracted-package verification and external stdio
-acceptance remain pending. No real game or MO2 profile has been inspected. A
-synthetic pass will not establish real manager state, runtime compatibility or
-gameplay. Real-folder read-only acceptance, if requested, must be another
-explicit scope.
+Windows diagnostic R1/R2 confirmed the MO2 reader 19/19, launcher 12/12,
+keybind merge 7/7 and keybind host 35/35, while identifying two portability
+defects outside MO2 parsing: raw-byte host pins varied with LF/CRLF and the
+exporter called `Get-FileHash`. PRODUCT-R1 commit `3ff5dd9…` is retained as
+historical evidence; PRODUCT-R2 applies the bounded corrections above. Native
+Windows R3, PowerShell source export, extracted-package verification and
+external stdio acceptance for PRODUCT-R2 remain pending. No real game or MO2
+profile has been inspected. A synthetic pass will not establish real manager
+state, runtime compatibility or gameplay. Real-folder read-only acceptance, if
+requested, must be another explicit scope.

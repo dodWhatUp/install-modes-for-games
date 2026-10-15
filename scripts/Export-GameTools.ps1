@@ -447,7 +447,7 @@ function Assert-GameSourceCurrent {
     foreach ($taskEntry in $Plan) {
         $taskSource = Join-Path $RepositoryRoot $taskEntry.path
         if (!(Test-Path -LiteralPath $taskSource -PathType Leaf) -or
-            (Get-FileHash -LiteralPath $taskSource -Algorithm SHA256).Hash -ne $taskEntry.sha256) {
+            (Get-GameSourceHash -Bytes ([IO.File]::ReadAllBytes($taskSource))) -ne $taskEntry.sha256) {
             throw "Source changed since planning: $($taskEntry.path). Retain any partial checkpoint; it is not a current-source export."
         }
     }
@@ -746,7 +746,7 @@ function Invoke-GameSourceExport {
     } finally { $taskArchive.Dispose() }
     Assert-GameSourceCurrent -RepositoryRoot $taskRoot -Plan $Plan
     return [ordered]@{files=$Plan.Count;archive=$taskZip;bytes=(Get-Item -LiteralPath $taskZip).Length
-        sha256=(Get-FileHash -LiteralPath $taskZip -Algorithm SHA256).Hash;manifest_sha256=(Get-GameSourceHash -Bytes $taskManifestBytes)
+        sha256=(Get-GameSourceHash -Bytes ([IO.File]::ReadAllBytes($taskZip)));manifest_sha256=(Get-GameSourceHash -Bytes $taskManifestBytes)
         integrity='all_source_and_manifest_zip_entries_verified';source_current_at_final_hash_check=$true;source_checked_utc=[DateTime]::UtcNow.ToString('o')
         recovery='source_checkpoint_not_full_recovery'}
 }
