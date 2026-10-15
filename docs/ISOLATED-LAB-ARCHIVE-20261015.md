@@ -62,4 +62,10 @@ Parallels documents [app removal](https://kb.parallels.com/en/124255) and [separ
 
 ## Final cleanup receipt
 
-Pending: verified knowledge publication/readback, local deletion, instruction deactivation and exact post-removal inventory/space accounting.
+Knowledge backup: [verified private ZIP](https://drive.google.com/file/d/1EKvbgzW_lIhkou9juhHT_Q8SCilO2u4i/view), 345554 bytes, 47 payload files plus manifest, 66 visible messages. SHA-256: `edbf23e69590d8de9cb78b8d57a2c5e8e8f768a04e864bbc88deb9222a6b5403`. Independent Drive byte equality, ZIP CRC, exact entries/sizes/hashes and file-only extraction/readback passed. Owner-only file permission metadata was verified. The immutable package captures source/guide checkpoint `29548f164f6a65e7fb39b00948feb9b6031483a2`; this receipt and the current Drive records are newer.
+
+Completed locally: normal ACPI shutdown and exact deletion of the sole registered Windows 11 guest, with empty Parallels inventory and absent bundle readback; removal of the stopped enrolled Lima guest, restored disk staging, three owned fresh/restore namespaces, matching hash-verified Ubuntu download/conversion cache, Parallels Windows ISO/installer and user support/preferences/VM launchers. The exact managed global default block and matching installed skill/old bindings were removed while preserving all other global instruction bytes. Global default draft PR19 was closed without merging; its original candidate and audit remain preserved.
+
+Observed free-space increase after these operations: approximately 53.1 GB (49.5 GiB). This is a before/after available-space observation; final accounting is in the machine-local receipt.
+
+Still pending: normal administrator authorization for the root-owned Parallels app/system support removal. Three app CLI wrapper symlinks and a small root-owned log were additionally identified for bounded cleanup. The offline external encrypted image backup also remains physically undeleted until `ssd daniel` is connected. Subscription cancellation was not requested. No automatic reinstall or future wake-up was scheduled.
