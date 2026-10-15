@@ -1,9 +1,9 @@
 # Measurement-tool connections and user control
 
 
-## 2026-10-14 — Read-only planning and UMM instance source candidate 0.27
+## 2026-10-15 — Read-only planning and UMM instance adopted source 0.27
 
-The local `0.27.0-preview.1` candidate adds four modern multi-game read tools:
+The adopted `0.27.0-preview.1` source adds four modern multi-game read tools:
 opaque instance listing, explicit instance inspection, goal-plan DAG compilation
 and ownership/conflict graphs. Registration is deliberately absent from MCP and
 requires the local `Game-Instances.py register --confirm` route. The accepted
@@ -18,7 +18,7 @@ synthetic game fixtures. The same record preserves R8, R5, R4 and the bounded
 R6/R7 attempts as historical evidence. The fixtures stayed byte-identical and no job,
 proposal or execution was created. No specific ChatGPT/Codex product UI,
 production installation, real manager profile, game runtime, gameplay or
-physical-device acceptance is established. See [the 0.27 slice contract](AI-PLANNING-READONLY-SLICE.md).
+physical-device acceptance is established. After independent review, PR #9 merged the tested product and later receipt commit into canonical `main` as `ef38d94be4fb4847cbbeda5f8fe41455b267aeaa`; that publication does not expand the acceptance boundary. See [the 0.27 slice contract](AI-PLANNING-READONLY-SLICE.md).
 
 ## 2026-10-14 — AI Efficiency Foundation 0.26 Windows and stdio acceptance
 
