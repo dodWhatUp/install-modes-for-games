@@ -22,7 +22,7 @@
     "schemas/mo2-profile-state.schema.json": "7069a4458acf2c96e54095b3ba6437ccc3f9de6606da5f881c4d728196c5b91f",
     "scripts/tests/Test-GameToolMO2Read.py": "eeb304f76c276ab58bced89a8f0bd21baa453853135f70d444f75cd883b08993",
     "scripts/Export-GameTools.ps1": "e1216f8e00895bbf001b4372b88fe253079c77f4bb6a90ba3eb1050d9a1abbc1",
-    "scripts/tests/Test-GameSourceExport.ps1": "3c75c09d4387172c8cd715121b11ebf19e8c6d0f1f1450c5e7ef526af2d066ea",
+    "scripts/tests/Test-GameSourceExport.ps1": "5271ebdb7df617f603b4a36050527c1b23c7bb65430a19b241d2b8081a8b6495",
     "scripts/tests/Test-GameSupportPackaging.py": "4412c6a36cb56a71b0d056f16fea66b94c2f6f350aefe11441d043c4760010b7",
     "scripts/check_host.py": "a7eaddcd049c60f8aa24fabb37ea02c8624dfee3d4ac923c68c553d6e1e21b42",
     "scripts/tests/Test-GameToolPlanning.py": "e6b628b5a3cc58ec7096decfd27ab661a5f72d24a26d256df27422c1b4eba097",
@@ -148,7 +148,8 @@
     "main": false
   },
   "pending_gates": [
-    "Commit these acceptance records separately from the tested product commit.",
+    "Commit the source-export contract correction separately from the accepted product and documentation commits.",
+    "Run a fresh DOCS-R2 Windows/source-package gate from the corrected exact head.",
     "Open a Draft PR and perform independent exact-head review.",
     "Adopt only through a separate reviewed merge; publication is not production installation.",
     "Optionally perform a separately authorized real-folder read-only acceptance; do not begin MO2 comparison or write transactions."
@@ -498,7 +499,9 @@
     "windows_workflow_run_id": 38820781313,
     "draft_pr_open": false,
     "main_adopted": false,
-    "production_installed": false
+    "production_installed": false,
+    "documentation_commit": "c9db66871d1464b444657d47d201d377a8de14ca",
+    "documentation_contract_correction": "PENDING_SEPARATE_COMMIT"
   },
   "local_product_r2_static_gate": {
     "status": "PASS",
@@ -776,6 +779,43 @@
       "automatic_retry": false,
       "repository_effect": false,
       "private_validation_receipt_sha256": "d5e2bbed3a9fe84f442bb79e27f21bdcef23bcc26281e0cd565fffe01d39cc12"
+    }
+  ],
+  "documentation_windows_attempts": [
+    {
+      "revision": "DOCS-WINDOWS-R1",
+      "status": "SOURCE_EXPORT_CONTRACTS_FAILED_BEFORE_EXPORT",
+      "harness_head": "ec213b1cd55ac01b3b4762f33c3f17694fd146f3",
+      "workflow_run_id": 38822576280,
+      "artifact_id": 12013432641,
+      "artifact_zip_sha256": "300c080344f44b602d638dc1a513f38f045faa89dc3b6c6dbb3c702efc2dc3a4",
+      "candidate_receipt_sha256": "7dc256c1a3e4827098f4c2c882d3ba6916de21eaa67426608cc710a8ff8c2300",
+      "failure_receipt_sha256": "2aa991701333640c8f52fb9f934c0453d7542dcb639c0f117bc53c0283c4318a",
+      "candidate_identity_passed": true,
+      "failure_stage": "SOURCE_EXPORT_CONTRACTS",
+      "cause": "The source-export test still required the now-committed MO2 acceptance records to be absent from the combined allowlist.",
+      "automatic_retry": false,
+      "source_export_created": false,
+      "product_effect": false
+    }
+  ],
+  "documentation_contract_candidate_attempts": [
+    {
+      "revision": "CORRECTION-R1",
+      "status": "PREWRITE_VALIDATOR_ASSUMPTION_REJECTED_NO_REPOSITORY_EFFECT",
+      "reason": "The candidate changed the intended assertion correctly, but the local static validator assumed 75 Assert-ExportTest call sites; the script has 52 before and after the one-line replacement.",
+      "automatic_retry": false,
+      "repository_effect": false,
+      "private_validation_receipt_sha256": "dadc8a5bb4eaf75473d76853279e998a1102b02d25bfd9ae42444190cff6ae0e"
+    },
+    {
+      "revision": "CORRECTION-R2",
+      "status": "POSTCOPY_ENCODING_REJECTED_BEFORE_COMMIT",
+      "reason": "The semantic correction was right, but the first candidate removed the existing UTF-8 BOM; the worktree was restored before staging or commit.",
+      "automatic_retry": false,
+      "repository_commit_effect": false,
+      "push_effect": false,
+      "private_postcopy_receipt_sha256": "b68b2d359036aa794162784ec4c674d1da4398ccc80fd5b374dd73d8b567e340"
     }
   ]
 }

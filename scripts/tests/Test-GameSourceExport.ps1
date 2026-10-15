@@ -116,7 +116,7 @@ try {
     Assert-ExportTest (@($testPlanningPaths | Where-Object { $testAllPaths -notcontains $_ -or $testInputPaths -contains $_ }).Count -eq 0) 'read-only planning, opaque instances and UMM/MO2 adapters only in combined inventory'
     $testMo2AcceptancePaths = @('docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.md',
         'docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.json')
-    Assert-ExportTest (@($testMo2AcceptancePaths | Where-Object { $testAllPaths -contains $_ }).Count -eq 0) 'future MO2 acceptance records are not required before they exist'
+    Assert-ExportTest (@($testMo2AcceptancePaths | Where-Object { $testAllPaths -notcontains $_ -or $testInputPaths -contains $_ }).Count -eq 0) 'MO2 Windows acceptance records only in combined inventory'
     Assert-ExportTest ($testAllPaths -contains 'scripts/GameToolKeybindIntegration.py' -and $testAllPaths -contains 'scripts/game_keybind_ops/core.py' -and $testAllPaths -contains 'schemas/game-pack.schema.json' -and $testAllPaths -contains 'scripts/tests/Test-GameToolKeybindMerge.py') 'merged keybind source, schema and conflict tests inventory'
     Assert-ExportTest ($testAllPaths -contains 'scripts/GameToolCatalogBridge.py' -and $testAllPaths -contains 'scripts/GameToolCatalogPanel.py' -and $testAllPaths -contains 'scripts/tests/Test-GameToolHubCatalog.py') 'shared catalog GUI integration inventory'
     Assert-ExportTest ($testAllPaths -contains 'scripts/GameFgInspector.py' -and $testAllPaths -contains 'scripts/GameFgPreflight.py' -and $testAllPaths -contains 'scripts/tests/test_game_fg_inspector.py' -and $testAllPaths -contains 'scripts/tests/test_game_fg_preflight.py') 'read-only FG preflight modules and fixture inventory'

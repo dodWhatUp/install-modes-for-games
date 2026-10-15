@@ -15,7 +15,8 @@
     "windows_acceptance": "PASS_R5_SYNTHETIC_READ_ONLY",
     "package_acceptance": "PASS_R5",
     "external_client_acceptance": "PASS_R5",
-    "documentation_commit": "PENDING_SEPARATE_COMMIT"
+    "documentation_commit": "c9db66871d1464b444657d47d201d377a8de14ca",
+    "documentation_contract_correction": "PENDING_SEPARATE_COMMIT"
   },
   "cumulative_comparison": {
     "excluded": [
@@ -66,8 +67,8 @@
         "path": "docs/MO2-READ-ADAPTER-VALIDATION.json",
         "status": "added",
         "category": "documentation_or_receipt",
-        "bytes": 28907,
-        "sha256": "062885b84c1cb838b46394f759e0f4e841944fd3496d8968d4e8400f93adccb4",
+        "bytes": 31133,
+        "sha256": "a16617e25320134872efa687c86eac66a4a504459a425f58fb8319d511111e05",
         "base_bytes": null,
         "base_sha256": null
       },
@@ -561,8 +562,8 @@
         "path": "scripts/tests/Test-GameSourceExport.ps1",
         "status": "modified",
         "category": "test_or_conformance",
-        "bytes": 28282,
-        "sha256": "3c75c09d4387172c8cd715121b11ebf19e8c6d0f1f1450c5e7ef526af2d066ea",
+        "bytes": 28311,
+        "sha256": "5271ebdb7df617f603b4a36050527c1b23c7bb65430a19b241d2b8081a8b6495",
         "base_bytes": 25737,
         "base_sha256": "85538351fec510b2c4301af6afa95d938edf78f6805aa67d408168fac98562e7"
       },
@@ -709,5 +710,13 @@
       "summary": "Suppress raw fingerprints for all unpublished MO2 comments.",
       "acceptance": "WINDOWS_R5_PASS_CURRENT"
     }
-  ]
+  ],
+  "documentation_contract_correction": {
+    "path": "scripts/tests/Test-GameSourceExport.ps1",
+    "sha256": "5271ebdb7df617f603b4a36050527c1b23c7bb65430a19b241d2b8081a8b6495",
+    "reason": "Committed MO2 acceptance records are now required in the combined source inventory and remain excluded from the input-only bundle.",
+    "runtime_source_changed": false,
+    "acceptance": "PENDING_DOCS_R2_WINDOWS_GATE",
+    "encoding_preserved": "UTF-8 with BOM; Git-normalized LF content"
+  }
 }
