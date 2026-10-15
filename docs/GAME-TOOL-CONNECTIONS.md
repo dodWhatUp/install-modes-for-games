@@ -6,19 +6,20 @@
 The `0.28.0-preview.1` task branch reuses the adopted game-instance owner and
 adds one local-only MO2 profile binding. Its read adapter inspects exact registered
 game/manager markers and MO2 declaration files without starting MO2, using its
-API/VFS, reading downloads/archives, or writing the manager/game/profile. Public
-results distinguish declarations from runtime and redact private-looking names
-without exposing raw source hashes for those files.
+API/VFS, reading downloads/archives, or writing the manager/game/profile.
 
-Local selected contracts currently cover UMM v1 compatibility, MO2 v2 records,
-multiple profiles, Windows alias ownership, UTF text, drift, privacy, HMAC state
-revisions, modern MCP envelopes, planning blockers, CLI, capabilities and
-updater/package refusal. Dependency-complete Windows, source export, extracted
-package and independent stdio gates are still pending; see
-[the contract](MO2-READ-ADAPTER.md) and
-[machine-readable status](MO2-READ-ADAPTER-VALIDATION.json). No real game/MO2
-profile, production installation, proposal, execution, input, capture or network
-operation is claimed.
+Exact product commit `c0809f7ac99a776390e131859991105c2f4c88f4` passed the separate
+[Windows/source-package/external-stdio gate](MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.md):
+344 tests, 73 PowerShell export contracts, a verified 400-file source package,
+7/7 extracted-package checks and 29 client checks. Public results redact private
+names and suppress raw fingerprints for any ordinary unpublished comment. A
+known unsupported MO2 conflict comparison is refused before private profile reads.
+
+The synthetic fixtures stayed unchanged and no job, request, proposal or
+execution was created. No real game/MO2 profile, effective VFS deployment,
+production installation, input, capture or product-network operation is claimed.
+See [the contract](MO2-READ-ADAPTER.md) and
+[machine-readable status](MO2-READ-ADAPTER-VALIDATION.json).
 
 ## 2026-10-15 — Read-only planning and UMM instance adopted source 0.27
 

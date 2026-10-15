@@ -1,26 +1,6 @@
 # Game Tool Hub — learning preview / unified workspace
 
-Current source extension: [MO2 registered-profile read adapter — Hub 0.28.0-preview.1](../../docs/MO2-READ-ADAPTER.md), based on the adopted [0.27 UMM planning source](../../docs/AI-PLANNING-READONLY-SLICE.md). Modern multi-game clients reuse the existing opaque instance and inspection tools; registration of exact MO2 roots remains local, and AI receives no path or new authority. MO2 declaration reads do not establish virtual deployment, conflict winners, runtime or gameplay, and planned-versus-installed comparison remains blocked. This task-branch source is not yet Windows/package/client accepted, installed or adopted.
-
-Hub 0.17.0 adds experimental read-only Azeron 2.0.2.442 native-log layer
-following in the existing Overlays page. Fresh events switch registered layer
-assets without changing native profiles; release events return to the base.
-State is Event-tracked, not snapshot-verified. The session toggle retains
-manual selection; Unknown/stale/drift hides the map. See
-[behavior and limits](../../docs/OVERLAY-GROUPS.md#2026-10-12--experimental-automatic-azeron-layer-following).
-Automated fixtures pass; current physical hold/release remains unverified.
-
-Current continuation, 2026-10-12: [Unified Game Tools](../../docs/UNIFIED-GAME-TOOLS.md)
-adds one optional goal/feature-oriented front door, preserved native Studio 2.2,
-explicit in-place source updates/rollback and private data backup/migration.
-The original panels/shortcuts and standalone entry points remain. Shared
-navigation, scoped scrolling, data contracts and source ownership are reusable
-layers, not a new general executor. Native profiles stay unchanged; unknown
-future formats are read-only. Cloud sync, live automation, game input acceptance,
-games, benchmarks and recording remain later work. Older sections below retain
-their dated source/installed acceptance boundaries.
-
-Requested 2026-10-11: focus on connecting and learning existing measurement tools, user control and useful coordination. Benchmarking and recording remain deferred.
+Current source extension: [MO2 registered-profile read adapter — Hub 0.28.0-preview.1](../../docs/MO2-READ-ADAPTER.md), based on the adopted [0.27 UMM planning source](../../docs/AI-PLANNING-READONLY-SLICE.md). Exact product commit `c0809f7ac99a776390e131859991105c2f4c88f4` passed bounded synthetic Windows, source-package and external stdio acceptance. Modern multi-game clients reuse the existing opaque instance and inspection tools; registration of exact MO2 roots remains local, and AI receives no path or new authority. MO2 declaration reads do not establish virtual deployment, conflict winners, runtime or gameplay, and planned-versus-installed comparison remains blocked. The source is not installed or adopted into `main`; see the [acceptance boundary](../../docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.md).
 
 ## Display-only automatic overlay groups — 0.11.0
 

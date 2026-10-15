@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "kind": "game-tools-mo2-windows-acceptance",
+  "date": "2026-10-15",
+  "version": "0.28.0-preview.1",
+  "status": "PASS_BOUNDED_SYNTHETIC_READ_ONLY",
+  "owner": "dodWhatUp/install-modes-for-games",
+  "branch": "task/mo2-read-adapter-reconcile-20261015",
+  "canonical_base": "290bea7983ccca50073c5f45ce44337cacafc32a",
+  "tested_product_commit": "c0809f7ac99a776390e131859991105c2f4c88f4",
+  "product_parent_commit": "f6cda135c7d51913cf2e0dcd9c0fa32c0e6ec315",
+  "harness": {
+    "revision": "R5",
+    "branch": "test/mo2-windows-acceptance-20261016-r5",
+    "commit": "39996aadf983d78b2a05e98015a14414c8a21023",
+    "workflow_run_id": 38820781313,
+    "artifact_id": 12012364625,
+    "artifact_name": "game-tools-mo2-windows-acceptance-r5",
+    "artifact_zip_sha256": "3d0238abe4a37aba4868f3fae5a764e0dd6d190b6f1ea978f3223dc9f7c81fb9",
+    "receipt_sha256": {
+      "WINDOWS-CANDIDATE.json": "1714e6376f37f4e0b89db8e56861eedddc1eaa76e99d1074a9ddd29bd097a2e6",
+      "WINDOWS-EXPORTED-PACKAGE.json": "70a6ee3fe1c28073f073a879dfd1b83a6aa444862856f80b7c61ae301727abdf",
+      "WINDOWS-EXTERNAL-MCP.json": "f64db1cc37404fcee1c7e40b215c4b23770ffd3ca05c0409bfaa0442d27f5e9e",
+      "WINDOWS-FINAL-ACCEPTANCE.json": "66061b20b5c9b62cddfd1a70b392922c390037235615817a063660b461517878",
+      "WINDOWS-SELECTED-GATE.json": "9738ff26acd92c69af0251744ac805e495cb9092624614e685a013891e7043be",
+      "WINDOWS-SOURCE-EXPORT.json": "46a8d91bac59a796a51ae774ee03edd29e5dd317cef2f1e162b39da6838645a8"
+    }
+  },
+  "candidate": {
+    "files": 723,
+    "payload_bytes": 8788283,
+    "aggregate_sha256": "85013aad0c2cd7faf8ad9c093aec7a4eec14a8ee81c042a260ec5d5f670144de"
+  },
+  "windows_gate": {
+    "environment": {
+      "runner": "GitHub-hosted windows-latest",
+      "python": "3.12.10 AMD64"
+    },
+    "automatic_retry": false,
+    "suites": 13,
+    "tests_run": 344,
+    "passed": 340,
+    "skipped": 4,
+    "timeouts": 0,
+    "suites_detail": [
+      {
+        "suite": "scripts/tests/Test-GameToolMO2Read.py",
+        "tests": 21,
+        "passed": 21,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolPlanning.py",
+        "tests": 31,
+        "passed": 31,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolAIFoundation.py",
+        "tests": 17,
+        "passed": 17,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolAIModern.py",
+        "tests": 20,
+        "passed": 20,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolAutomation.py",
+        "tests": 52,
+        "passed": 52,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolGameWorkspaces.py",
+        "tests": 41,
+        "passed": 41,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameSupport.py",
+        "tests": 56,
+        "passed": 56,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolUnified.py",
+        "tests": 35,
+        "passed": 35,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolWorkbenchLauncher.py",
+        "tests": 12,
+        "passed": 12,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolKeybindMerge.py",
+        "tests": 7,
+        "passed": 7,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/keybinds/test_host_integration.py",
+        "tests": 35,
+        "passed": 35,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/keybinds/test_schema_contract.py",
+        "tests": 10,
+        "passed": 10,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameSupportPackaging.py",
+        "tests": 7,
+        "passed": 3,
+        "skipped": 4
+      }
+    ]
+  },
+  "source_export": {
+    "files": 400,
+    "archive_name": "Unified-Game-Tools-0.28.0-preview.1-Keybinds-Reviewed-Source-2026-10-16.zip",
+    "archive_bytes": 1398459,
+    "archive_sha256": "f1be9c0f8b70702faf2ef0c7caca5515f449e4631a364d08ba4fe7931b941076",
+    "manifest_sha256": "12ca755a14e3a2c65581b1dc7ee856cf84b5f533fb8c39445c68a1169b0b7337",
+    "manifest_files": 400,
+    "powershell_contracts": 73
+  },
+  "exported_package": {
+    "status": "PASS",
+    "packaging_tests": 7,
+    "packaging_skips": 0,
+    "workbench_verify_only": true,
+    "original_verify_only": true,
+    "verify_only_created_no_profile": true,
+    "host_pins": {
+      "matched": 13,
+      "total": 13
+    }
+  },
+  "external_stdio": {
+    "protocols": [
+      "2026-07-28",
+      "2025-11-25"
+    ],
+    "checks": 29,
+    "status": "PASS",
+    "valid_instances": 4,
+    "malformed_instances": 1,
+    "private_registry_records": 5,
+    "unpublished_comment_hashes_hidden": true,
+    "conflict_refused_before_malformed_profile_read": true,
+    "private_values_absent": true,
+    "synthetic_trees_unchanged": true,
+    "jobs_or_requests_created": false,
+    "processes_clean": true
+  },
+  "independent_readback": {
+    "artifact_zip_digest_matched": true,
+    "zip_crc": true,
+    "json_receipts": 6,
+    "cross_checks_passed": true,
+    "privacy_scan_clean": true,
+    "receipt_sha256": "8aa5c4dd02216df505f0c06869a44667138f25ff13491409a5fb3ed6114d49f4"
+  },
+  "predecessor_acceptance": {
+    "revision": "R4",
+    "tested_product_commit": "f6cda135c7d51913cf2e0dcd9c0fa32c0e6ec315",
+    "harness_commit": "3a4d0e361018273c20433169d4de0a9acec71f5e",
+    "workflow_run_id": 38820019730,
+    "artifact_zip_sha256": "b77e2522cfa60b498f16e426874ad34137dc85c81537a49f821beac1aa65e3c",
+    "status": "PASS_SUPERSEDED_BY_STRICTER_UNPUBLISHED_COMMENT_FINGERPRINT_POLICY",
+    "product_effect": false
+  },
+  "effects": {
+    "synthetic_private_registry_metadata": true,
+    "production": false,
+    "real_game": false,
+    "real_manager_profile": false,
+    "manager_or_game_write": false,
+    "proposal": false,
+    "execution": false,
+    "input": false,
+    "capture": false,
+    "network_by_product": false,
+    "main": false
+  },
+  "not_established": [
+    "A real Mod Organizer 2 installation or live profile.",
+    "Effective VFS deployment, priority/conflict winners, overwrite order, process state, runtime loading or gameplay.",
+    "MO2 planned-versus-installed comparison or observed conflict graph.",
+    "A specific ChatGPT or Codex product UI connection.",
+    "Production installation, manager mutation, automatic discovery or canonical main adoption."
+  ]
+}

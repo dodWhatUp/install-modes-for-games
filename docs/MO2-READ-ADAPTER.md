@@ -1,6 +1,6 @@
 # Mod Organizer 2 read-only adapter — 0.28.0-preview.1
 
-**Status:** task-branch source candidate; not merged, installed, connected to a real MO2 profile, or accepted on Windows.
+**Status:** product commit `c0809f7ac99a776390e131859991105c2f4c88f4` passed bounded synthetic Windows, source-package and external-client acceptance; not merged, installed or connected to a real MO2 profile.
 
 **Canonical base:** `290bea7983ccca50073c5f45ce44337cacafc32a`
 
@@ -105,12 +105,14 @@ mo2mod:redacted-0000
 The ordinal token is not derived from the hidden value. A redacted list is
 `complete=false` and includes `redacted_name_count` plus a warning.
 
-A raw source SHA-256 is public only when that source contains no redacted name.
-When any name is redacted, the public source record contains `sha256: null` and
-`raw_hash_exposed: false`. The public `state_revision` still changes on private
-same-length source changes by using HMAC-SHA256 keyed by the private instance
-nonce over public and private readback material. This allows stale-result
-detection without publishing a reusable fingerprint of the private bytes.
+A raw source SHA-256 is public only when that source contains no redacted name
+and every omitted comment is the exact reviewed Mod Organizer generated header.
+Any other unpublished comment also produces `sha256: null` and
+`raw_hash_exposed: false`; the comment itself is never returned. The public
+`state_revision` still changes on private same-length source changes by using
+HMAC-SHA256 keyed by the private instance nonce over public and private readback
+material. This allows stale-result detection without publishing a reusable
+fingerprint of hidden names or comments.
 
 ## Planning and AI boundary
 
@@ -152,25 +154,19 @@ Keybinds               0.2.0-preview.1
 
 ## Current validation boundary
 
-The local selected checks cover registration, schema-1 UMM compatibility,
-multiple profiles, alias ownership, marker parsing, UTF-16, drift, row limits,
-private redaction, hidden raw hashes, HMAC revisions, planning blockers, modern
-MCP, local CLI, workspace capabilities and updater/package guards. Exact details
-and environmental limitations are in
-[`MO2-READ-ADAPTER-VALIDATION.json`](MO2-READ-ADAPTER-VALIDATION.json).
+The exact product commit `c0809f7ac99a776390e131859991105c2f4c88f4` passed the separate
+[Windows/source-package/external-stdio acceptance](MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.md):
+13/13 suites, 344 tests, 340 passes and four explicit source-checkout package
+skips; 73 PowerShell export contracts; a 400-file verified source archive;
+7/7 extracted-package checks with zero skips; and 29 external stdio checks.
+The external fixture proves that ordinary unpublished comments suppress raw
+source hashes and that a known unsupported MO2 conflict comparison is refused
+before private instance/profile reads.
 
-A temporary dependency-backed macOS gate passed the MO2 reader, schema,
-planning, AI, automation, workspace, support, updater and non-GUI keybind
-contracts. The launcher correctly refused Python 3.9, and the macOS Tk keybind
-lifecycle reached its fixed deadline and remains `TIMEOUT_NO_RETRY`; neither is
-represented as a product failure or a Windows pass. Native Windows Python 3.12,
-Windows diagnostic R1/R2 confirmed the MO2 reader 19/19, launcher 12/12,
-keybind merge 7/7 and keybind host 35/35, while identifying two portability
-defects outside MO2 parsing: raw-byte host pins varied with LF/CRLF and the
-exporter called `Get-FileHash`. PRODUCT-R1 commit `3ff5dd9…` is retained as
-historical evidence; PRODUCT-R2 applies the bounded corrections above. Native
-Windows R3, PowerShell source export, extracted-package verification and
-external stdio acceptance for PRODUCT-R2 remain pending. No real game or MO2
-profile has been inspected. A synthetic pass will not establish real manager
-state, runtime compatibility or gameplay. Real-folder read-only acceptance, if
-requested, must be another explicit scope.
+R4 remains preserved as valid predecessor evidence but is superseded by the
+stricter comment-fingerprint policy. Local Python 3.9/Tk limitations remain
+supplemental environment evidence only; Windows Python 3.12 owns acceptance.
+No real game or MO2 profile has been inspected. Synthetic acceptance does not
+establish VFS state, runtime compatibility or gameplay. Real-folder read-only
+acceptance, if separately authorized, remains another scope; transactions and
+MO2 comparison remain blocked.

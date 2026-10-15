@@ -3,19 +3,19 @@
 
 ## 2026-10-15 — MO2 read-only adapter source candidate 0.28
 
-Start with the [MO2 read-only adapter contract](MO2-READ-ADAPTER.md), its
-[current validation record](MO2-READ-ADAPTER-VALIDATION.json) and the current
-[`DEPENDENCY_PINS.json`](keybinds/DEPENDENCY_PINS.json). The candidate reuses the
-adopted opaque instance owner, adds a local-only MO2 profile binding, and exposes
-bounded declaration reads through the existing modern inspection tool. It adds
-no MCP registration/path tool, manager write, discovery or comparison authority.
+Start with the [MO2 contract](MO2-READ-ADAPTER.md),
+[validation record](MO2-READ-ADAPTER-VALIDATION.json),
+[Windows acceptance](MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.md) and
+current [`DEPENDENCY_PINS.json`](keybinds/DEPENDENCY_PINS.json). The candidate
+reuses the adopted opaque instance owner, adds a local-only MO2 profile binding,
+and exposes bounded declaration reads through the existing modern inspection tool.
+It adds no MCP registration/path tool, manager write, discovery or comparison authority.
 
-The source is based on canonical main
-`290bea7983ccca50073c5f45ce44337cacafc32a`. Local selected contracts are
-partially complete; Windows, source-package, external-client and real-folder
-acceptance remain pending. Treat MO2 markers as declarations only: effective
-virtual deployment, priority/conflict winners, overwrite state, process/runtime
-and gameplay remain unknown.
+Exact product commit `c0809f7ac99a776390e131859991105c2f4c88f4`, based on canonical main `290bea7983ccca50073c5f45ce44337cacafc32a`, passed R5
+synthetic Windows/source-package/external-client acceptance: 344 tests, 73 export
+contracts, a verified 400-file package and 29 client checks. Ordinary unpublished
+comments suppress reusable raw fingerprints. Real-folder, effective VFS,
+runtime/gameplay, production installation and `main` adoption remain unproven.
 
 ## 2026-10-15 — Read-only planning and UMM instance adopted source 0.27
 

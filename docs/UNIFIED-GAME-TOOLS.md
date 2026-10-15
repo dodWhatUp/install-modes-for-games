@@ -3,21 +3,23 @@
 
 ## MO2 registered-profile inspection — source candidate 0.28.0-preview.1
 
-The current task branch adds a bounded Mod Organizer 2 read adapter without
-changing the installed Hub lineage. A local operator registers one exact game,
-manager and profile through `Game-Instances.py register-mo2 --confirm`; ChatGPT
-and MCP receive only the opaque instance ID. The existing
-`game_tools_instance_inspect` tool can then return declared mod/plugin states,
-source revisions and explicit uncertainty. No manager API, virtual deployment,
-archive/code loading, conflict resolution or write path is introduced.
+The task branch adds a bounded Mod Organizer 2 read adapter without changing the
+installed Hub lineage. A local operator registers one exact game, manager and
+profile through `Game-Instances.py register-mo2 --confirm`; ChatGPT and MCP
+receive only the opaque instance ID. The existing inspection tool returns declared
+mod/plugin states and explicit uncertainty without manager API, VFS access,
+archive/code loading, conflict resolution or writes.
 
-Private-looking names are redacted without publishing a private-derived token or
-raw file hash. UMM schema-1 records and the adopted 0.27 behavior remain intact.
-MO2 comparison is blocked pending a separate contract. See the
-[exact design](MO2-READ-ADAPTER.md) and
-[current validation status](MO2-READ-ADAPTER-VALIDATION.json). This candidate is
-not packaged/Windows/client accepted yet, not merged into `main`, not installed,
-and not tested against a real MO2 profile.
+Product commit `c0809f7ac99a776390e131859991105c2f4c88f4` passed bounded
+[Windows/source-package/external-stdio acceptance](MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.md):
+344 tests, 73 export contracts, a verified 400-file source package, zero-skip
+extracted packaging and 29 client checks. Private names are redacted and ordinary
+unpublished comments suppress raw fingerprints. MO2 comparison remains blocked.
+See the [design](MO2-READ-ADAPTER.md) and
+[validation record](MO2-READ-ADAPTER-VALIDATION.json).
+
+This remains a task-branch source candidate: not merged into `main`, not installed,
+not connected through a specific product UI and not accepted against a real MO2 profile.
 
 ## Read-only planning and UMM instances — adopted source 0.27.0-preview.1
 

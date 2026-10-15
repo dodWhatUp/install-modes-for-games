@@ -8,12 +8,13 @@
 
 ## Current task-branch candidate
 
+- Tested product commit: `c0809f7ac99a776390e131859991105c2f4c88f4`; later acceptance documentation is separate.
 - Unified Game Tools `0.28.0-preview.1`; Workspaces `0.2.2`; Instance Registry and Planning `0.2.0`; MO2 Read `0.2.0`; Unified Updater `0.2.1`.
 - MO2 reuses the adopted `GameToolInstances` owner through an additive private schema-2 binding; UMM schema-1 records remain readable and unchanged.
 - Local `register-mo2 --confirm` is the only path-bearing route. Modern and legacy MCP gain no registration or arbitrary-path argument.
-- `game_tools_instance_inspect` reads exact registered MO2 declarations. MO2 comparison/conflict observation remains blocked by `ADAPTER_COMPARISON_PENDING`.
-- The local selected gate is partially complete; native Windows, source-package and independent external-client acceptance remain pending and are not represented as passes.
-- Read [the exact MO2 contract](MO2-READ-ADAPTER.md) and [current validation record](MO2-READ-ADAPTER-VALIDATION.json).
+- `game_tools_instance_inspect` reads exact registered MO2 declarations. MO2 comparison/conflict observation remains blocked by `ADAPTER_COMPARISON_PENDING` before private profile reads.
+- R5 passed synthetic Windows, source-package and external stdio acceptance: 344 tests, 73 export contracts, 400 source files, 7/7 extracted-package checks and 29 MCP checks.
+- Read [the exact MO2 contract](MO2-READ-ADAPTER.md), [validation record](MO2-READ-ADAPTER-VALIDATION.json) and [Windows acceptance](MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.md).
 
 ## Adopted 0.27 source boundary
 
@@ -35,10 +36,10 @@
 
 ## Next safe stages
 
-1. Seal an exact 0.28 candidate inventory and copy it to the existing isolated Windows environment.
-2. Run the complete dependency-backed Windows gate, real source export, extracted-package checks and external modern/legacy stdio MO2 fixture.
-3. Record the tested product commit separately from any later acceptance/documentation commit and publish only through an independently reviewed task PR.
-4. Optionally perform one separately authorized real-folder **read-only** acceptance after synthetic source acceptance; do not begin transactions or MO2 comparison yet.
+1. Commit the acceptance records separately from tested product commit `c0809f7ac99a776390e131859991105c2f4c88f4`.
+2. Open a Draft PR and perform independent exact-head review before any merge.
+3. Adopt only through a separate reviewed merge; do not treat publication as installation.
+4. Optionally perform one separately authorized real-folder **read-only** acceptance; do not begin MO2 comparison or write transactions.
 
 ## Do not infer
 

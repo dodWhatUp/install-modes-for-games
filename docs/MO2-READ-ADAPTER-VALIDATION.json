@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "kind": "game-tools-mo2-read-adapter-validation",
-  "status": "PRODUCT_R2_PORTABILITY_CORRECTIONS_LOCAL_PASS_WINDOWS_R3_PENDING",
+  "status": "PRODUCT_R5_WINDOWS_ACCEPTED_SYNTHETIC_READ_ONLY",
   "version": "0.28.0-preview.1",
   "branch": "task/mo2-read-adapter-reconcile-20261015",
   "canonical_base": "290bea7983ccca50073c5f45ce44337cacafc32a",
@@ -16,17 +16,20 @@
     "keybinds": "0.2.0-preview.1"
   },
   "source_identity": {
-    "scripts/GameToolMO2Read.py": "0c34dd01d0d8d9afc6b0ef2cef4158d183337bdf9d9c7f5942c0b434a7820d62",
+    "scripts/GameToolMO2Read.py": "d65d4f9cd04430f979433f159979464b3d8ed35dbcfc0b492dc44eed788aed16",
     "scripts/GameToolInstances.py": "af768f4b199ed5ec8da0e19de48a8c733decb8a5a8e99b62cf3e505fa9e08c7e",
-    "scripts/GameToolPlanning.py": "f4e891621bb9d9954f7545b284e65294c9410ca3089c9fa9814cde79dddfc41e",
+    "scripts/GameToolPlanning.py": "461ae02e04448150bc18f5cee73699787f1617b19f714ed56e3a00ff5309b8e6",
     "schemas/mo2-profile-state.schema.json": "7069a4458acf2c96e54095b3ba6437ccc3f9de6606da5f881c4d728196c5b91f",
-    "scripts/tests/Test-GameToolMO2Read.py": "e8f24d69659eba4467ff3b3ef9d95cfe8e36dafde949dd9e29604850a4d570ca",
+    "scripts/tests/Test-GameToolMO2Read.py": "eeb304f76c276ab58bced89a8f0bd21baa453853135f70d444f75cd883b08993",
     "scripts/Export-GameTools.ps1": "e1216f8e00895bbf001b4372b88fe253079c77f4bb6a90ba3eb1050d9a1abbc1",
     "scripts/tests/Test-GameSourceExport.ps1": "3c75c09d4387172c8cd715121b11ebf19e8c6d0f1f1450c5e7ef526af2d066ea",
     "scripts/tests/Test-GameSupportPackaging.py": "4412c6a36cb56a71b0d056f16fea66b94c2f6f350aefe11441d043c4760010b7",
-    "scripts/check_host.py": "99bf140d34ae557cc994714dd9259e7b808f0e6a7329707665456f1e23d8b82a",
+    "scripts/check_host.py": "a7eaddcd049c60f8aa24fabb37ea02c8624dfee3d4ac923c68c553d6e1e21b42",
     "scripts/tests/Test-GameToolPlanning.py": "e6b628b5a3cc58ec7096decfd27ab661a5f72d24a26d256df27422c1b4eba097",
-    "docs/keybinds/DEPENDENCY_PINS.json": "547eb36cbf3c36fb4ec5a72d64578504f9659ff9c84c2cd9890eb53d1a6e38db"
+    "docs/keybinds/DEPENDENCY_PINS.json": "d7373624123d97372b2909c8fb5c71757a125ab7b92a82b3720bd903b6cf6890",
+    "docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.json": "dc611c4e74fb41e66dfa70653e2dd2a448c1840ac93b0a16939974b442326562",
+    "docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.md": "caeb07104dc0437f66c49ced530d50dcbf9b9e061fd42c0563a885f926eeefdf",
+    "docs/MO2-READ-ADAPTER.md": "22ba3049b1da777a64fd9c47ec3ad606c628bd7ff4481b7377cefd419772071f"
   },
   "architecture": {
     "competing_registry_added": false,
@@ -122,7 +125,7 @@
     "local register-mo2 confirmation route with no MCP paths",
     "exact profile declarations with stable double-read and marker checks",
     "MO2 +, -, * and plugin marker semantics from pinned upstream source",
-    "private-name redaction without private-derived token or raw public file hash",
+    "private-name redaction and unpublished-comment suppression without a private-derived token or raw public file hash",
     "nonce-keyed HMAC state revision for private source drift",
     "dynamic goal DAG with MO2 inspection and explicit comparison refusal",
     "manifest, launcher and updater coherent-package requirements",
@@ -145,11 +148,10 @@
     "main": false
   },
   "pending_gates": [
-    "Commit and seal PRODUCT-R2 separately from later acceptance documentation; verify exact Git-clean-filtered candidate bytes.",
-    "Run Windows R3 against PRODUCT-R2 under Python 3.12 with jsonschema, Pillow and Tk.",
-    "Run PowerShell source-export contracts, real source export and extracted-package verification with zero packaging skips.",
-    "Run an independent modern/legacy stdio fixture covering local register-mo2, inspection, redaction, typed refusal and unchanged synthetic trees.",
-    "Add acceptance records in a later docs-only commit, open a Draft PR, perform independent exact-head review and adopt only through a separate reviewed merge."
+    "Commit these acceptance records separately from the tested product commit.",
+    "Open a Draft PR and perform independent exact-head review.",
+    "Adopt only through a separate reviewed merge; publication is not production installation.",
+    "Optionally perform a separately authorized real-folder read-only acceptance; do not begin MO2 comparison or write transactions."
   ],
   "not_established": [
     "A real MO2 installation or live profile.",
@@ -193,6 +195,14 @@
       "automatic_retry": false,
       "product_effect": false,
       "meaning": "Retained as Mac environmental evidence; Windows Python 3.12 remains the acceptance owner."
+    },
+    {
+      "revision": "WINDOWS-R4",
+      "tested_product_commit": "f6cda135c7d51913cf2e0dcd9c0fa32c0e6ec315",
+      "status": "PASS_SUPERSEDED_BY_STRICTER_UNPUBLISHED_COMMENT_FINGERPRINT_POLICY",
+      "artifact_zip_sha256": "b77e2522cfa60b498f16e426874ad34137dc85c81537a49f821beac1aa65e3c",
+      "automatic_retry": false,
+      "product_effect": false
     }
   ],
   "local_dependency_gate_r2": {
@@ -482,11 +492,13 @@
     }
   ],
   "publication_state": {
-    "product_r1_branch_pushed": true,
-    "product_r2_commit": null,
-    "draft_pr_created": false,
-    "main_changed": false,
-    "test_branch_is_separate_from_product_pr": true
+    "task_branch_product_commit": "c0809f7ac99a776390e131859991105c2f4c88f4",
+    "task_branch_pushed": true,
+    "windows_harness_commit": "39996aadf983d78b2a05e98015a14414c8a21023",
+    "windows_workflow_run_id": 38820781313,
+    "draft_pr_open": false,
+    "main_adopted": false,
+    "production_installed": false
   },
   "local_product_r2_static_gate": {
     "status": "PASS",
@@ -506,5 +518,264 @@
       "game": false,
       "manager": false
     }
-  }
+  },
+  "current_tested_product_commit": "c0809f7ac99a776390e131859991105c2f4c88f4",
+  "current_product_parent_commit": "f6cda135c7d51913cf2e0dcd9c0fa32c0e6ec315",
+  "current_acceptance_revision": "R5",
+  "local_product_r5_targeted_gate": {
+    "status": "PASS",
+    "environment": "temporary dependency-backed macOS Python 3.9; supplemental only",
+    "tests": 89,
+    "passed": 89,
+    "skipped": 0,
+    "host_pins": {
+      "matched": 13,
+      "total": 13
+    },
+    "suites": [
+      {
+        "suite": "scripts/tests/Test-GameToolMO2Read.py",
+        "tests": 21
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolPlanning.py",
+        "tests": 31
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolAIFoundation.py",
+        "tests": 17
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolAIModern.py",
+        "tests": 20
+      }
+    ],
+    "meaning": "Focused source review before the supported Windows R5 gate; not a Windows acceptance substitute."
+  },
+  "windows_r5_acceptance": {
+    "schema_version": 1,
+    "kind": "game-tools-mo2-windows-acceptance",
+    "date": "2026-10-15",
+    "version": "0.28.0-preview.1",
+    "status": "PASS_BOUNDED_SYNTHETIC_READ_ONLY",
+    "owner": "dodWhatUp/install-modes-for-games",
+    "branch": "task/mo2-read-adapter-reconcile-20261015",
+    "canonical_base": "290bea7983ccca50073c5f45ce44337cacafc32a",
+    "tested_product_commit": "c0809f7ac99a776390e131859991105c2f4c88f4",
+    "product_parent_commit": "f6cda135c7d51913cf2e0dcd9c0fa32c0e6ec315",
+    "harness": {
+      "revision": "R5",
+      "branch": "test/mo2-windows-acceptance-20261016-r5",
+      "commit": "39996aadf983d78b2a05e98015a14414c8a21023",
+      "workflow_run_id": 38820781313,
+      "artifact_id": 12012364625,
+      "artifact_name": "game-tools-mo2-windows-acceptance-r5",
+      "artifact_zip_sha256": "3d0238abe4a37aba4868f3fae5a764e0dd6d190b6f1ea978f3223dc9f7c81fb9",
+      "receipt_sha256": {
+        "WINDOWS-CANDIDATE.json": "1714e6376f37f4e0b89db8e56861eedddc1eaa76e99d1074a9ddd29bd097a2e6",
+        "WINDOWS-EXPORTED-PACKAGE.json": "70a6ee3fe1c28073f073a879dfd1b83a6aa444862856f80b7c61ae301727abdf",
+        "WINDOWS-EXTERNAL-MCP.json": "f64db1cc37404fcee1c7e40b215c4b23770ffd3ca05c0409bfaa0442d27f5e9e",
+        "WINDOWS-FINAL-ACCEPTANCE.json": "66061b20b5c9b62cddfd1a70b392922c390037235615817a063660b461517878",
+        "WINDOWS-SELECTED-GATE.json": "9738ff26acd92c69af0251744ac805e495cb9092624614e685a013891e7043be",
+        "WINDOWS-SOURCE-EXPORT.json": "46a8d91bac59a796a51ae774ee03edd29e5dd317cef2f1e162b39da6838645a8"
+      }
+    },
+    "candidate": {
+      "files": 723,
+      "payload_bytes": 8788283,
+      "aggregate_sha256": "85013aad0c2cd7faf8ad9c093aec7a4eec14a8ee81c042a260ec5d5f670144de"
+    },
+    "windows_gate": {
+      "environment": {
+        "runner": "GitHub-hosted windows-latest",
+        "python": "3.12.10 AMD64"
+      },
+      "automatic_retry": false,
+      "suites": 13,
+      "tests_run": 344,
+      "passed": 340,
+      "skipped": 4,
+      "timeouts": 0,
+      "suites_detail": [
+        {
+          "suite": "scripts/tests/Test-GameToolMO2Read.py",
+          "tests": 21,
+          "passed": 21,
+          "skipped": 0
+        },
+        {
+          "suite": "scripts/tests/Test-GameToolPlanning.py",
+          "tests": 31,
+          "passed": 31,
+          "skipped": 0
+        },
+        {
+          "suite": "scripts/tests/Test-GameToolAIFoundation.py",
+          "tests": 17,
+          "passed": 17,
+          "skipped": 0
+        },
+        {
+          "suite": "scripts/tests/Test-GameToolAIModern.py",
+          "tests": 20,
+          "passed": 20,
+          "skipped": 0
+        },
+        {
+          "suite": "scripts/tests/Test-GameToolAutomation.py",
+          "tests": 52,
+          "passed": 52,
+          "skipped": 0
+        },
+        {
+          "suite": "scripts/tests/Test-GameToolGameWorkspaces.py",
+          "tests": 41,
+          "passed": 41,
+          "skipped": 0
+        },
+        {
+          "suite": "scripts/tests/Test-GameSupport.py",
+          "tests": 56,
+          "passed": 56,
+          "skipped": 0
+        },
+        {
+          "suite": "scripts/tests/Test-GameToolUnified.py",
+          "tests": 35,
+          "passed": 35,
+          "skipped": 0
+        },
+        {
+          "suite": "scripts/tests/Test-GameToolWorkbenchLauncher.py",
+          "tests": 12,
+          "passed": 12,
+          "skipped": 0
+        },
+        {
+          "suite": "scripts/tests/Test-GameToolKeybindMerge.py",
+          "tests": 7,
+          "passed": 7,
+          "skipped": 0
+        },
+        {
+          "suite": "scripts/tests/keybinds/test_host_integration.py",
+          "tests": 35,
+          "passed": 35,
+          "skipped": 0
+        },
+        {
+          "suite": "scripts/tests/keybinds/test_schema_contract.py",
+          "tests": 10,
+          "passed": 10,
+          "skipped": 0
+        },
+        {
+          "suite": "scripts/tests/Test-GameSupportPackaging.py",
+          "tests": 7,
+          "passed": 3,
+          "skipped": 4
+        }
+      ]
+    },
+    "source_export": {
+      "files": 400,
+      "archive_name": "Unified-Game-Tools-0.28.0-preview.1-Keybinds-Reviewed-Source-2026-10-16.zip",
+      "archive_bytes": 1398459,
+      "archive_sha256": "f1be9c0f8b70702faf2ef0c7caca5515f449e4631a364d08ba4fe7931b941076",
+      "manifest_sha256": "12ca755a14e3a2c65581b1dc7ee856cf84b5f533fb8c39445c68a1169b0b7337",
+      "manifest_files": 400,
+      "powershell_contracts": 73
+    },
+    "exported_package": {
+      "status": "PASS",
+      "packaging_tests": 7,
+      "packaging_skips": 0,
+      "workbench_verify_only": true,
+      "original_verify_only": true,
+      "verify_only_created_no_profile": true,
+      "host_pins": {
+        "matched": 13,
+        "total": 13
+      }
+    },
+    "external_stdio": {
+      "protocols": [
+        "2026-07-28",
+        "2025-11-25"
+      ],
+      "checks": 29,
+      "status": "PASS",
+      "valid_instances": 4,
+      "malformed_instances": 1,
+      "private_registry_records": 5,
+      "unpublished_comment_hashes_hidden": true,
+      "conflict_refused_before_malformed_profile_read": true,
+      "private_values_absent": true,
+      "synthetic_trees_unchanged": true,
+      "jobs_or_requests_created": false,
+      "processes_clean": true
+    },
+    "independent_readback": {
+      "artifact_zip_digest_matched": true,
+      "zip_crc": true,
+      "json_receipts": 6,
+      "cross_checks_passed": true,
+      "privacy_scan_clean": true,
+      "receipt_sha256": "8aa5c4dd02216df505f0c06869a44667138f25ff13491409a5fb3ed6114d49f4"
+    },
+    "predecessor_acceptance": {
+      "revision": "R4",
+      "tested_product_commit": "f6cda135c7d51913cf2e0dcd9c0fa32c0e6ec315",
+      "harness_commit": "3a4d0e361018273c20433169d4de0a9acec71f5e",
+      "workflow_run_id": 38820019730,
+      "artifact_zip_sha256": "b77e2522cfa60b498f16e426874ad34137dc85c81537a49f821beac1aa65e3c",
+      "status": "PASS_SUPERSEDED_BY_STRICTER_UNPUBLISHED_COMMENT_FINGERPRINT_POLICY",
+      "product_effect": false
+    },
+    "effects": {
+      "synthetic_private_registry_metadata": true,
+      "production": false,
+      "real_game": false,
+      "real_manager_profile": false,
+      "manager_or_game_write": false,
+      "proposal": false,
+      "execution": false,
+      "input": false,
+      "capture": false,
+      "network_by_product": false,
+      "main": false
+    },
+    "not_established": [
+      "A real Mod Organizer 2 installation or live profile.",
+      "Effective VFS deployment, priority/conflict winners, overwrite order, process state, runtime loading or gameplay.",
+      "MO2 planned-versus-installed comparison or observed conflict graph.",
+      "A specific ChatGPT or Codex product UI connection.",
+      "Production installation, manager mutation, automatic discovery or canonical main adoption."
+    ]
+  },
+  "post_product_r2_corrections": [
+    {
+      "commit": "f6cda135c7d51913cf2e0dcd9c0fa32c0e6ec315",
+      "summary": "Hide corrupt registry filenames, screen public metadata and refuse MO2 conflict comparison before profile inspection.",
+      "acceptance": "WINDOWS-R4_PASS"
+    },
+    {
+      "commit": "c0809f7ac99a776390e131859991105c2f4c88f4",
+      "summary": "Expose raw source hashes only when omitted comments are reviewed MO2 boilerplate.",
+      "acceptance": "WINDOWS-R5_PASS_CURRENT"
+    }
+  ],
+  "documentation_candidate_attempts": [
+    {
+      "revision": "DOCS-R1",
+      "status": "PREWRITE_REJECTED_NO_REPOSITORY_EFFECT",
+      "reasons": [
+        "Package summary omitted its explicit PASS status field.",
+        "Three Markdown metadata lines used trailing-space hard breaks rejected by the whitespace gate."
+      ],
+      "automatic_retry": false,
+      "repository_effect": false,
+      "private_validation_receipt_sha256": "d5e2bbed3a9fe84f442bb79e27f21bdcef23bcc26281e0cd565fffe01d39cc12"
+    }
+  ]
 }
