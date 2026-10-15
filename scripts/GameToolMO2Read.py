@@ -107,6 +107,13 @@ def _private(value: str) -> bool:
     return any(pattern.search(value) for pattern in _PRIVATE_TEXT)
 
 
+def _source_contains_private_text(raw: bytes | None) -> bool:
+    """Screen every source line, including comments omitted from public rows."""
+    if raw is None:
+        return False
+    return any(_private(line) for line in _decode(raw).splitlines())
+
+
 def _public_identity(kind: str, name: str, file_index: int) -> tuple[str, str, bool]:
     if _private(name):
         # Never expose a stable fingerprint derived from private text.
@@ -281,9 +288,13 @@ def inspect_instance(body: dict[str, Any], instance_revision: str,
 
     source_files = []
     relative_names = {"modlist": "profile/modlist.txt", "plugins": "profile/plugins.txt"}
+    private_source_by_role = {
+        role: _source_contains_private_text(raw_files[role])
+        for role in ("modlist", "plugins")
+    }
     redacted_by_role = {
-        "modlist": modlist["redacted_name_count"] > 0,
-        "plugins": plugins["redacted_name_count"] > 0,
+        "modlist": modlist["redacted_name_count"] > 0 or private_source_by_role["modlist"],
+        "plugins": plugins["redacted_name_count"] > 0 or private_source_by_role["plugins"],
     }
     for role, snapshot in snapshots.items():
         if snapshot is not None:
@@ -299,6 +310,13 @@ def inspect_instance(body: dict[str, Any], instance_revision: str,
     warnings = list(modlist["warnings"])
     if not plugins["complete"]:
         warnings.append("Plugin declarations are partial, redacted or ambiguous.")
+    if any(
+        private_source_by_role[role] and not (
+            (modlist if role == "modlist" else plugins)["redacted_name_count"] > 0
+        )
+        for role in ("modlist", "plugins")
+    ):
+        warnings.append("A raw source fingerprint was hidden because private-looking omitted text was observed.")
     public = {
         "schema_version": SCHEMA_VERSION,
         "kind": "mo2_registered_profile_state",

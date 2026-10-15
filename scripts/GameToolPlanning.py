@@ -339,6 +339,16 @@ class PlanningService:
     def conflict_graph(self, game_id, *, instance_id=None, mode=None, selected=None):
         game_id = slug(game_id)
         row = self._row(game_id)
+        registered_instance = None
+        if instance_id is not None:
+            # Refuse a known unaccepted observed-state adapter from reviewed
+            # game metadata before reading any private instance/profile state.
+            require(self.instances.adapter_for_game(game_id) == "umm",
+                    "ADAPTER_COMPARISON_PENDING",
+                    "Observed ownership comparison is not accepted for this read adapter.")
+            registered_instance = self.instances.public(instance_id)
+            require(registered_instance["game_id"] == game_id,
+                    "GAME_MISMATCH", "Registered instance belongs to another game scope.")
         recipe = self._recipe(game_id)
         require(recipe is not None, "RECIPE_REQUIRED",
                 "A reviewed recipe is required for the ownership/conflict graph.")
@@ -406,13 +416,8 @@ class PlanningService:
                 })
 
         observed = None; comparison = None
-        if instance_id is not None:
+        if registered_instance is not None:
             inspected = self.instances.inspect(instance_id)
-            require(inspected["instance"]["game_id"] == game_id,
-                    "GAME_MISMATCH", "Registered instance belongs to another game scope.")
-            require(inspected["instance"]["adapter"] == "umm",
-                    "ADAPTER_COMPARISON_PENDING",
-                    "Observed ownership comparison is not accepted for this read adapter.")
             observed = inspected["inventory"]
             groups = {}
             observed_rows = [mod for mod in observed.get("mods", []) if mod.get("id")]

@@ -311,6 +311,49 @@ class MO2ReadAdapterContracts(unittest.TestCase):
         self.assertIsNone(next(row for row in second["source_files"] if row["role"] == "modlist")["sha256"])
         self.assert_protected_unchanged()
 
+    def test_private_text_in_omitted_comments_hides_raw_source_hashes(self):
+        secret = "ghp_" + "d" * 24
+        private_path = "C:" + "\\" + "Users" + "\\fixture" + "\\comment-only"
+        (self.profile / "modlist.txt").write_text(
+            "# " + secret + "\n+Normal Mod\n", encoding="utf-8",
+        )
+        (self.profile / "plugins.txt").write_text(
+            "# " + private_path + "\n*Normal.esp\n", encoding="utf-8",
+        )
+        self.before_protected = self._protected_tree()
+        self.register()
+        inventory = self.planning.inspect_instance("skyrim-main")["inventory"]
+        self.assertEqual(inventory["mods"]["redacted_name_count"], 0)
+        self.assertEqual(inventory["plugins"]["redacted_name_count"], 0)
+        self.assertEqual(inventory["mods"]["rows"][0]["name"], "Normal Mod")
+        self.assertEqual(inventory["plugins"]["rows"][0]["name"], "Normal.esp")
+        self.assertTrue(any("fingerprint was hidden" in item for item in inventory["warnings"]))
+        for source in inventory["source_files"]:
+            self.assertIsNone(source["sha256"])
+            self.assertFalse(source["raw_hash_exposed"])
+        public = json.dumps(inventory)
+        self.assertNotIn(secret, public)
+        self.assertNotIn(private_path, public)
+        self.assert_protected_unchanged()
+
+    def test_mo2_conflict_graph_refuses_before_profile_inspection(self):
+        self.register()
+        with mock.patch.object(
+            self.service.workspaces.instances, "public",
+            side_effect=AssertionError("Private instance metadata must not be read for a known unsupported comparison"),
+        ) as public_call, mock.patch.object(
+            self.service.workspaces.instances, "inspect",
+            side_effect=AssertionError("MO2 profile must not be read for a known unsupported comparison"),
+        ) as inspect_call:
+            with self.assertRaises(ModError) as raised:
+                self.planning.conflict_graph(
+                    "skyrim-special-edition", instance_id="skyrim-main",
+                )
+        self.assertEqual(raised.exception.code, "ADAPTER_COMPARISON_PENDING")
+        public_call.assert_not_called()
+        inspect_call.assert_not_called()
+        self.assert_protected_unchanged()
+
     def test_legacy_umm_v1_record_remains_readable(self):
         kingmaker = self.root / "Kingmaker"
         (kingmaker / "Kingmaker_Data" / "Managed" / "UnityModManager").mkdir(parents=True)
