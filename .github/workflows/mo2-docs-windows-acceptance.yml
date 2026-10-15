@@ -1,0 +1,60 @@
+name: MO2 Docs Windows Acceptance
+
+on:
+  push:
+    branches:
+      - test/mo2-docs-windows-acceptance-20261016-r1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-acceptance:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout acceptance harness
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: scripts/tests/requirements.txt
+
+      - name: Prepare exact docs worktree
+        shell: pwsh
+        env:
+          DOCS_COMMIT: c9db66871d1464b444657d47d201d377a8de14ca
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $product = Join-Path $env:RUNNER_TEMP 'mo2-docs-product'
+          if (Test-Path -LiteralPath $product) { throw 'Product worktree already exists.' }
+          git fetch --no-tags origin $env:DOCS_COMMIT
+          git worktree add --detach $product $env:DOCS_COMMIT
+          if ((git -C $product rev-parse HEAD).Trim() -ne $env:DOCS_COMMIT) { throw 'Exact docs commit was not checked out.' }
+          "PRODUCT_ROOT=$product" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Install test-only dependencies
+        run: python -m pip install --disable-pip-version-check -r "$env:PRODUCT_ROOT\scripts\tests\requirements.txt"
+
+      - name: Run bounded docs Windows acceptance R1
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $output = Join-Path $env:RUNNER_TEMP 'mo2-docs-acceptance-r1'
+          python .github/acceptance/run_mo2_docs_windows_acceptance.py --product-root $env:PRODUCT_ROOT --output $output
+          "ACCEPTANCE_OUTPUT=$output" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Upload sanitized acceptance receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game-tools-mo2-docs-windows-acceptance-r1
+          path: ${{ env.ACCEPTANCE_OUTPUT }}/*.json
+          if-no-files-found: error
+          retention-days: 30
