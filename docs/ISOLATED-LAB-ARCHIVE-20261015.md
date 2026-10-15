@@ -10,6 +10,22 @@ The private knowledge package includes the original task, a visible user/assista
 
 The existing private Drive folder is [isolatedLab source and continuation](https://drive.google.com/drive/folders/1SFxsgTctZoJqwzWuWhADNA14poM6f0in). Its current status, continuation and START-HERE records must point to this archive state. Old small immutable source packets remain useful; a VM image backup is not required for reconstruction.
 
+## Consolidated ownership and retrieval
+
+The user's follow-up explicitly requests Git and Drive preservation integrated with earlier knowledge, without duplicate masters. This guide consolidates the decisions, methods, failures and reconstruction route; the dated acceptance report retains detailed historical evidence. The implementation stays in its existing Git directory. No second repository, Drive folder, source master or replacement knowledge ZIP is created for this consolidation.
+
+| Information | Maintained owner or existing retrieval record |
+|---|---|
+| Editable source, methods and reconstruction | This Git guide and `examples/isolated-lab-mac/`; source history and exact manifest remain intact. |
+| One Drive entry point | [START-HERE](https://drive.google.com/file/d/1TxvlnQHmUAvduUv0OroIuVjhWXHZr6Eg/view), updated in place; contains the current artifact map and explicit historical labels. |
+| Actual current cleanup state | [MAC-STATUS](https://drive.google.com/file/d/112-iQf_Ldd34KHWE48rknN4CtJ_1KPd5/view), updated in place; old acceptance is historical, not current readiness. |
+| Precise unfinished boundary | [MAC-CONTINUATION](https://drive.google.com/file/d/1Btb2RYL6Ibw27F-YZTiwYlSZSKlrvb4e/view), updated in place; points to the same source/status and existing OS-auth job. |
+| Immutable private knowledge snapshot | [The verified 2026-10-15 ZIP](https://drive.google.com/file/d/1EKvbgzW_lIhkou9juhHT_Q8SCilO2u4i/view); the hash and coverage below remain unchanged. It also preserves the earlier full status, continuation and index, so the live records can be concise. |
+
+Older base/Windows/Mac source packets, hashes and standalone acceptance records are distinct version/evidence artifacts. They remain explicitly historical and are indexed once, not promoted as additional current installations or editable masters. The separate Windows reference machine's evidence is not this Mac's readiness or cleanup state. The original setup prompts are historical requests; opening one does not authorize installation or restore the removed default.
+
+Git publication remains on the existing candidate task branch/draft PR6; this is not main-branch or fleet adoption. Current Drive records are derived delivery/continuation records. Their in-place updates and independent byte readbacks, rather than additional parallel documents, provide discoverability and continuity.
+
 ## User requirements and working method
 
 - Keep normal Mac mouse, keyboard, focus and display use undisturbed. Use structured guest observations; no screen/video capture or automatic host-input fallback.
