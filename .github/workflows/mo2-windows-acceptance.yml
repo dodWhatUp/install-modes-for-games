@@ -1,0 +1,52 @@
+name: MO2 Windows Acceptance
+
+on:
+  push:
+    branches:
+      - test/mo2-windows-acceptance-20261015-r3
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-acceptance:
+    runs-on: windows-latest
+    timeout-minutes: 35
+    env:
+      PRODUCT_COMMIT: c1c95ec37686f0986d26aad4c16e14053c5b2d27
+    steps:
+      - name: Checkout acceptance harness
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Prepare exact product worktree
+        shell: pwsh
+        run: |
+          $candidate = Join-Path $env:RUNNER_TEMP 'game-tools-mo2-product-r2'
+          git worktree add --detach $candidate $env:PRODUCT_COMMIT
+          if ((git -C $candidate rev-parse HEAD) -ne $env:PRODUCT_COMMIT) { throw 'Product commit mismatch.' }
+          "PRODUCT_CANDIDATE=$candidate" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Install test-only dependencies
+        shell: pwsh
+        run: python -m pip install --disable-pip-version-check -r "$env:PRODUCT_CANDIDATE/scripts/tests/requirements.txt"
+
+      - name: Run bounded Windows acceptance R3
+        shell: pwsh
+        run: python -B .github/acceptance/run_mo2_windows_acceptance.py --candidate "$env:PRODUCT_CANDIDATE" --output acceptance
+
+      - name: Upload sanitized acceptance receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game-tools-mo2-windows-acceptance-r3
+          path: acceptance/*.json
+          if-no-files-found: error
+          retention-days: 30
