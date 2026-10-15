@@ -14,6 +14,7 @@ import time
 import zipfile
 
 PRODUCT_COMMIT = "3ff5dd922e3f43edb5d5db3856164f4fe0c6df7d"
+HARNESS_REVISION = "R2"
 CANONICAL_BASE = "290bea7983ccca50073c5f45ce44337cacafc32a"
 MODERN = "2026-07-28"
 LEGACY = "2025-11-25"
@@ -50,6 +51,19 @@ def sha256_file(path: Path) -> str:
 
 def write_json(path: Path, value: dict) -> None:
     path.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def sanitized_tail(text: str, *roots: Path, limit: int = 8000) -> str:
+    value = text
+    for root in sorted({str(Path(item)) for item in roots if item is not None}, key=len, reverse=True):
+        value = value.replace(root, "[PRIVATE_PATH]")
+        value = value.replace(root.replace("\\", "/"), "[PRIVATE_PATH]")
+    value = re.sub(r"(?i)[A-Z]:[\\/](?:[^\r\n<>:\"|?*]+[\\/])*[^\r\n<>:\"|?*]*", "[WINDOWS_PATH]", value)
+    value = re.sub(r"(?i)\b(?:ghp_|github_pat_)[A-Za-z0-9_]{20,}\b", "[REDACTED_TOKEN]", value)
+    value = re.sub(r"(?i)\bBearer\s+[A-Za-z0-9._-]{25,}", "[REDACTED_TOKEN]", value)
+    value = re.sub(r"\bsk-[A-Za-z0-9_-]{20,}", "[REDACTED_TOKEN]", value)
+    value = re.sub(r"\bAKIA[A-Z0-9]{16}\b", "[REDACTED_TOKEN]", value)
+    return value[-limit:]
 
 
 def run(command: list[str], *, cwd: Path, env: dict | None = None, timeout: int = TIMEOUT) -> dict:
@@ -110,6 +124,7 @@ def candidate_receipt(candidate: Path, output: Path) -> dict:
     receipt = {
         "schema_version": 1,
         "kind": "game-tools-mo2-windows-candidate",
+        "harness_revision": HARNESS_REVISION,
         "status": "PASS" if head == PRODUCT_COMMIT and parent == CANONICAL_BASE and not status else "FAIL",
         "product_commit": head,
         "parent_commit": parent,
@@ -137,7 +152,11 @@ def parse_unittest(text: str) -> tuple[int | None, int]:
 def selected_gate(candidate: Path, output: Path) -> dict:
     rows = []
     for relative, (expected_tests, max_skips) in EXPECTED_SUITES.items():
-        result = run([sys.executable, "-B", str(candidate / relative)], cwd=candidate)
+        result = run(
+            [sys.executable, "-B", str(candidate / relative)],
+            cwd=candidate,
+            env={"GAME_TOOLS_HOST_SOURCE": str(candidate)},
+        )
         text = result["stdout"] + "\n" + result["stderr"]
         tests, skips = parse_unittest(text)
         status = (
@@ -156,12 +175,16 @@ def selected_gate(candidate: Path, output: Path) -> dict:
             "maximum_environment_skips": max_skips,
             "duration_seconds": result["duration_seconds"],
         }
+        if status != "PASS":
+            row["stdout_tail"] = sanitized_tail(result["stdout"], candidate)
+            row["stderr_tail"] = sanitized_tail(result["stderr"], candidate)
         rows.append(row)
         print(json.dumps(row), flush=True)
     passed = all(row["status"] == "PASS" for row in rows)
     receipt = {
         "schema_version": 1,
         "kind": "game-tools-mo2-windows-selected-gate",
+        "harness_revision": HARNESS_REVISION,
         "status": "PASS" if passed else "FAIL_OR_INCOMPLETE",
         "product_commit": PRODUCT_COMMIT,
         "python": sys.version,
@@ -202,13 +225,17 @@ def powershell_contracts(candidate: Path) -> dict:
     )
     text = result["stdout"] + "\n" + result["stderr"]
     match = re.search(r"PASS:\s+(\d+)\s+source-export contracts", text)
-    return {
+    value = {
         "status": "PASS" if result["return_code"] == 0 and not result["timed_out"] and match else "FAIL_OR_INCOMPLETE",
         "return_code": result["return_code"],
         "timed_out": result["timed_out"],
         "contracts": int(match.group(1)) if match else None,
         "duration_seconds": result["duration_seconds"],
     }
+    if value["status"] != "PASS":
+        value["stdout_tail"] = sanitized_tail(result["stdout"], candidate)
+        value["stderr_tail"] = sanitized_tail(result["stderr"], candidate)
+    return value
 
 
 def source_export(candidate: Path, output: Path) -> tuple[dict, Path]:
@@ -238,10 +265,13 @@ def source_export(candidate: Path, output: Path) -> tuple[dict, Path]:
         receipt = {
             "schema_version": 1,
             "kind": "game-tools-mo2-windows-source-export",
+        "harness_revision": HARNESS_REVISION,
             "status": "FAIL_OR_INCOMPLETE",
             "return_code": result["return_code"],
             "timed_out": result["timed_out"],
             "duration_seconds": result["duration_seconds"],
+            "stdout_tail": sanitized_tail(result["stdout"], candidate, export_root),
+            "stderr_tail": sanitized_tail(result["stderr"], candidate, export_root),
         }
         write_json(output / "WINDOWS-SOURCE-EXPORT.json", receipt)
         return receipt, export_root
@@ -367,6 +397,7 @@ def exported_package_checks(export_root: Path, output: Path) -> dict:
     receipt = {
         "schema_version": 1,
         "kind": "game-tools-mo2-windows-exported-package",
+        "harness_revision": HARNESS_REVISION,
         "status": "PASS" if all(checks.values()) else "FAIL_OR_INCOMPLETE",
         "checks": checks,
         "results": rows,
@@ -639,6 +670,7 @@ def external_mcp(source: Path, output: Path) -> dict:
     receipt = {
         "schema_version": 1,
         "kind": "game-tools-mo2-windows-external-mcp",
+        "harness_revision": HARNESS_REVISION,
         "status": "PASS" if all(checks.values()) else "FAIL_OR_INCOMPLETE",
         "product_commit": PRODUCT_COMMIT,
         "protocols": [MODERN, LEGACY],
@@ -694,6 +726,7 @@ def main() -> int:
     final = {
         "schema_version": 1,
         "kind": "game-tools-mo2-windows-final-acceptance",
+        "harness_revision": HARNESS_REVISION,
         "status": "PASS" if all(checks.values()) else "FAIL_OR_INCOMPLETE",
         "product_commit": PRODUCT_COMMIT,
         "canonical_base": CANONICAL_BASE,
