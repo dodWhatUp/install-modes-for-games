@@ -1,5 +1,21 @@
 # Repository and Drive export
 
+## 2026-10-15 — Read-only planning 0.27 adopted source
+
+The exact runtime-tested R9 product source is commit
+`e454433e81e067b1f11267a3cac18081b60512f8`; the later acceptance/documentation
+commit is `ab9c2cdf32dd9d361aa4273aca6e10a168e864d8`. After independent exact-head
+review, PR #9 merged both boundaries into canonical `main` with merge commit
+`ef38d94be4fb4847cbbeda5f8fe41455b267aeaa`.
+
+The reviewed product export contained 394 source files plus generated manifest
+metadata. Archive SHA-256: `369a396b00f845a74fbaa7abfe8c004bf5a0d64becd24ea003cd575e79b6fc30`;
+manifest SHA-256: `8090318a4a9e3acb89ffba636780891c43ff358d7d88009604d67b9b7355c0d0`.
+The public repository remains the editable source owner; private machine receipts and
+synthetic fixture roots remain outside Git. The merge establishes source adoption only,
+not production installation, real-game/manager state, client-UI acceptance, gameplay or
+write-transaction authority. No new Drive archive publication is implied by this record.
+
 ## 2026-10-14 — AI Efficiency Foundation 0.26 source and acceptance
 
 The sealed source delivery contains 380 authored payloads plus generated manifest metadata. Source archive SHA-256: `ad4bcddbd76845bf35bdb67e1eee529dcab921263a742a596eec93fb6d41afd6`; exact Preview SHA-256: `bf2989da32f197f021283aef06368e7f028cfe7e23619c5d766715f2e242f977`. The Preview later passed the bounded native Windows/Tk and external stdio acceptance recorded in [`AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.md`](AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.md).

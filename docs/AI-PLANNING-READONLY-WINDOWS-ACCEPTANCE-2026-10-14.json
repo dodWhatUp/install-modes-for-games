@@ -752,5 +752,18 @@
     "zip_entries": 395
   },
   "status": "PASS_BOUNDED_SYNTHETIC_READ_ONLY",
-  "tested_product_commit": "cd444009d063b27894bf8e399d517670b30ebc47"
+  "tested_product_commit": "cd444009d063b27894bf8e399d517670b30ebc47",
+  "status_scope": "The original status, not_established and post_review fields describe their pre-merge acceptance boundaries. The main_adoption record below is a later source-publication event and does not expand runtime acceptance.",
+  "main_adoption": {
+    "status": "MERGED_TO_CANONICAL_MAIN_AFTER_REVIEW",
+    "pull_request": 9,
+    "base_commit": "108cb332b874583776c7a9cb1a19ce67c8cc96e5",
+    "reviewed_head_commit": "ab9c2cdf32dd9d361aa4273aca6e10a168e864d8",
+    "tested_product_source_commit": "e454433e81e067b1f11267a3cac18081b60512f8",
+    "merge_commit": "ef38d94be4fb4847cbbeda5f8fe41455b267aeaa",
+    "merge_method": "merge_commit",
+    "merged_at_utc": "2026-10-15T07:52:17Z",
+    "runtime_acceptance_expanded": false,
+    "production_or_game_effects": false
+  }
 }

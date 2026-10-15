@@ -1,6 +1,6 @@
 # Read-only planning and UMM instance slice — 0.27.0-preview.1
 
-**Source status:** current tested product commit `e454433e81e067b1f11267a3cac18081b60512f8`; historical R8 product commit `dbed124f40e3d336baf49e7598c16f2d1b57189d`, R5 product commit `f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39` and R4 product commit `cd444009d063b27894bf8e399d517670b30ebc47` remain preserved
+**Source status:** runtime-tested product commit `e454433e81e067b1f11267a3cac18081b60512f8`; acceptance/documentation commit `ab9c2cdf32dd9d361aa4273aca6e10a168e864d8`; adopted into canonical `main` through PR #9 as `ef38d94be4fb4847cbbeda5f8fe41455b267aeaa`. Historical R8, R5 and R4 product commits remain preserved.
 
 **Acceptance:** bounded synthetic Windows/UMM and external stdio PASS; real-folder and production acceptance remain separate.
 
@@ -122,6 +122,17 @@ R5/R4 boundaries and bounded R6/R7 attempts are retained in that acceptance
 record. A real
 registered game folder, specific product UI and production transactions remain
 unaccepted.
+
+## Canonical source adoption
+
+After independent exact-head review, PR #9 was merged with a merge commit so the
+runtime-tested product boundary and the later acceptance/documentation boundary
+remain separately identifiable. The merge commit is
+`ef38d94be4fb4847cbbeda5f8fe41455b267aeaa`; its parents are the prior canonical
+base `108cb332b874583776c7a9cb1a19ce67c8cc96e5` and reviewed head
+`ab9c2cdf32dd9d361aa4273aca6e10a168e864d8`. This changes source publication state
+only. It does not expand Windows/runtime acceptance, install production, inspect a
+real game or manager, or authorize any write transaction.
 
 ## Result and safety boundaries
 

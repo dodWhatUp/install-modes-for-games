@@ -126,8 +126,22 @@ R1, R2 and R3 were retained as immutable evidence and were not overwritten or au
 
 Each reconciliation recorded no product effect. R4 is a new candidate with its own inventory and acceptance.
 
+## Subsequent canonical adoption
+
+After the exact R9 product and receipt commits passed independent exact-head review,
+PR #9 was merged with a merge commit so both boundaries remain visible in history:
+
+- Tested product source: `e454433e81e067b1f11267a3cac18081b60512f8`
+- Reviewed head / acceptance documentation: `ab9c2cdf32dd9d361aa4273aca6e10a168e864d8`
+- Original canonical base: `108cb332b874583776c7a9cb1a19ce67c8cc96e5`
+- Canonical merge commit: `ef38d94be4fb4847cbbeda5f8fe41455b267aeaa`
+
+The merge changed Git publication state only. It did not install production, inspect
+a real game or manager, approve a proposal, execute an operation, or expand the
+recorded Windows/runtime acceptance.
+
 ## Boundaries
 
-This acceptance uses a synthetic UMM directory. It does not establish a real game or manager profile, enabled state, load order, runtime compatibility, gameplay, a specific ChatGPT/Codex product UI, production installation or any install/upgrade/disable/rollback transaction. Task-branch publication and later review do not equal `main` adoption.
+This acceptance uses synthetic UMM directories. It does not establish a real game or manager profile, enabled state, load order, runtime compatibility, gameplay, a specific ChatGPT/Codex product UI, production installation or any install/upgrade/disable/rollback transaction. The later `main` merge establishes source adoption only and does not change those boundaries.
 
 Machine-local receipts are intentionally excluded from Git. The sanitized machine-readable record is [`AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.json`](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.json).

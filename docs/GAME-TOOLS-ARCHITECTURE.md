@@ -3,7 +3,7 @@
 
 ## 2026-10-14 — Read-only planning and UMM instance slice
 
-The current source candidate is `0.27.0-preview.1`. It adds an opaque private
+The canonical adopted source is `0.27.0-preview.1`. It adds an opaque private
 installation registry, one accepted UMM folder/manifest reader, deterministic
 goal-plan DAGs and declared ownership/conflict graphs. The four new modern tools
 are available only on the multi-game endpoint; legacy MCP tool shapes remain
@@ -13,10 +13,12 @@ profile, save, input or graphics state.
 
 Read the [0.27 design and boundaries](AI-PLANNING-READONLY-SLICE.md) and the
 [bounded Windows/source-package/external-stdio acceptance](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.md).
-The current product source is commit `e454433e81e067b1f11267a3cac18081b60512f8`.
-Candidate R9 passed synthetic UMM, embedded-private-metadata, filtered-pagination
-and native Windows process-level gates; the same acceptance record preserves R8,
-R5, R4 and bounded R6/R7 evidence. A
+The runtime-tested product source is commit `e454433e81e067b1f11267a3cac18081b60512f8`;
+PR #9 merged reviewed head `ab9c2cdf32dd9d361aa4273aca6e10a168e864d8` into
+canonical `main` as `ef38d94be4fb4847cbbeda5f8fe41455b267aeaa`. Candidate R9
+passed synthetic UMM, embedded-private-metadata, filtered-pagination and native
+Windows process-level gates; the same acceptance record preserves R8, R5, R4 and
+bounded R6/R7 evidence. A
 separately authorized real-folder read remains unperformed. Install, upgrade,
 disable and rollback transactions are still later work.
 
@@ -24,7 +26,7 @@ disable and rollback transactions are still later work.
 
 The first read-first AI slice is implemented in `0.26.0-preview.1`: protocol framing is separated from deterministic business tools; modern and legacy stdio coexist; modern results expose explicit completion/evidence/effects/privacy; packaged knowledge supports bounded search/fetch/resources; continuation and batch tools inspect without replay; catalog/report reads reuse existing owners. Native Windows/Tk and independent external stdio acceptance passed. Local approval remains the only consequential boundary, and no daemon, arbitrary command/path, automatic execution or cloud credential was added. Read the [design](AI-EFFICIENCY-FOUNDATION.md), [Windows/client acceptance](AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.md) and [canonical reconciliation](AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.md).
 
-The next architecture gate is still read-only: goal-level plan DAG, ownership/conflict graph, bounded game-instance identity and one manager adapter. Write transactions remain later work.
+The next architecture gate remains read-only: separately accept another manager adapter or richer UMM installed-state evidence, then expose a planned-versus-observed diff through the existing owners. Write transactions remain later work.
 
 ## 2026-10-13 — Mods and shared AI source integration
 

@@ -1,7 +1,7 @@
 # Game tools knowledge and recovery index
 
 
-## 2026-10-14 — Read-only planning and UMM instance source candidate 0.27
+## 2026-10-15 — Read-only planning and UMM instance adopted source 0.27
 
 Read [Read-only planning and UMM instance slice](AI-PLANNING-READONLY-SLICE.md)
 and its [source validation record](AI-PLANNING-READONLY-VALIDATION.json)
@@ -13,14 +13,14 @@ operator CLI action; AI receives no arbitrary-path field and public results omit
 the private path. The legacy MCP surface and all approval/execution owners remain
 unchanged.
 
-The current tested source is commit
-`e454433e81e067b1f11267a3cac18081b60512f8` on
-`task/ai-plan-readonly-slice2-20261014`, based on canonical main
-`108cb332b874583776c7a9cb1a19ce67c8cc96e5`. Candidate R9 passed the separate
+The runtime-tested product source is commit
+`e454433e81e067b1f11267a3cac18081b60512f8`; the reviewed acceptance head is
+`ab9c2cdf32dd9d361aa4273aca6e10a168e864d8`. Candidate R9 passed the separate
 [Windows/source-package/external-stdio acceptance](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.md)
 and its [machine-readable record](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.json).
-A real game folder, production installation, manager mutation, runtime/gameplay
-acceptance and `main` adoption remain unproven.
+PR #9 was merged with a merge commit into canonical `main` as
+`ef38d94be4fb4847cbbeda5f8fe41455b267aeaa`. A real game folder, production
+installation, manager mutation and runtime/gameplay acceptance remain unproven.
 
 ## 2026-10-14 — AI Efficiency Foundation 0.26 adopted source
 
