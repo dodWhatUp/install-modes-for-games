@@ -116,7 +116,11 @@ class SupportTests(unittest.TestCase):
   p=self.root/'bad.json';p.write_text('{"kind":"game_support_pack","kind":"something"}')
   with self.assertRaises(ModError):read_pack(p)
  def test_symlink_support_refused(self):
-  path=self.save();link=self.root/'link.json';link.symlink_to(path)
+  path=self.save();link=self.root/'link.json'
+  try:link.symlink_to(path)
+  except OSError as error:
+   if getattr(error,'winerror',None)==1314:self.skipTest('Windows test account lacks symlink privilege; link blocking remains covered where creation is permitted.')
+   raise
   with self.assertRaises(ModError):read_pack(link)
  def test_shipped_coverage_is_honest_and_nonmutating(self):
   w=GameWorkspaces(self.data);rows=w.catalog.game_rows();ready={r['id'] for r in rows if r['recipe_available']}
@@ -207,7 +211,11 @@ class SupportTests(unittest.TestCase):
   root,d=self.installed('external');a=inspect_game(root,d)
   self.assertEqual(a['inventory_status'],'MANAGER_HANDOFF_REQUIRED');self.assertFalse(a['complete'])
  def test_inventory_symlink_refused(self):
-  root,d=self.installed(files={'Mods/a.txt':'x'});(root/'Mods/link').symlink_to(self.root,target_is_directory=True)
+  root,d=self.installed(files={'Mods/a.txt':'x'});link=root/'Mods/link'
+  try:link.symlink_to(self.root,target_is_directory=True)
+  except OSError as error:
+   if getattr(error,'winerror',None)==1314:self.skipTest('Windows test account lacks symlink privilege; inventory link blocking remains covered where creation is permitted.')
+   raise
   with self.assertRaises(ModError):inspect_game(root,d)
  def test_manager_handoff_original_bytes_with_no_install(self):
   q=plan(compose_recipe(self.p),mode='default');j=Job.create(self.data,q);z=self.z({'hello.txt':'original'})

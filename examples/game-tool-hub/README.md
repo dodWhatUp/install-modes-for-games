@@ -1,6 +1,6 @@
 # Game Tool Hub — learning preview / unified workspace
 
-Current source extension: [AI Efficiency Foundation — Hub 0.26.0-preview.1](../../docs/AI-EFFICIENCY-FOUNDATION.md), retaining the Mods/AI, multi-game and Keybinds layers built above the installed 0.20.2 lineage. The exact Preview passed native Windows/Tk and independent external modern/legacy stdio acceptance in an isolated profile; it is not a production installation, specific ChatGPT/Codex product connection, Git main adoption or game acceptance. Read the [sanitized receipt](../../docs/AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.md) before treating older sections as current.
+Current source extension: [read-only planning and UMM instances — Hub 0.27.0-preview.1](../../docs/AI-PLANNING-READONLY-SLICE.md), retaining the adopted 0.26 AI/MCP foundation, Mods, multi-game and Keybinds owners. Modern multi-game clients can list opaque local instances, inspect one accepted UMM folder, compile a goal DAG and review declared ownership/conflicts. Registration stays local; AI receives no path and gains no approval or execution authority. This task-branch source is not a production installation, specific ChatGPT/Codex product connection, real manager/game acceptance or main adoption. The prior exact 0.26 Preview acceptance remains in its [sanitized receipt](../../docs/AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.md).
 
 Hub 0.17.0 adds experimental read-only Azeron 2.0.2.442 native-log layer
 following in the existing Overlays page. Fresh events switch registered layer

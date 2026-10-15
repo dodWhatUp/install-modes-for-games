@@ -75,6 +75,7 @@ class FoundationService:
         self.manifest = _manifest(self.root)
         self.knowledge = KnowledgeIndex(self.root)
         self._catalog = None
+        self._planning = None
 
     def _context(self, game_id=None, known_revisions=None):
         known_revisions = known_revisions or {}
@@ -102,6 +103,15 @@ class FoundationService:
             from GameToolCatalogBridge import CatalogService
             self._catalog = CatalogService()
         return self._catalog
+
+    def _planning_service(self):
+        require(self.multi_game and hasattr(self.service, "workspaces"),
+                "CAPABILITY_UNAVAILABLE",
+                "Read-only game planning requires the multi-game workspace endpoint.")
+        if self._planning is None:
+            from GameToolPlanning import PlanningService
+            self._planning = PlanningService(self.service.workspaces)
+        return self._planning
 
     def _envelope(self, *, result_type="read", status="OK", data=None, game_id=None,
                   revision=None, next_actions=None, effects=None, completion=None,
@@ -323,6 +333,11 @@ class FoundationService:
                     value = next((row for row in rows if row.get("job_id") == ident), None)
                     if value is None:
                         raise FoundationError("HANDLE_NOT_FOUND", "Job handle was not found.")
+                elif kind == "instance":
+                    value = self._planning_service().instances.public(ident)
+                    if game_id is not None:
+                        require(value.get("game_id") == game_id, "GAME_MISMATCH",
+                                "Registered instance belongs to another game scope.")
                 elif kind == "resource":
                     value = self.knowledge.fetch(ident, limit=20)
                 else:
@@ -423,6 +438,86 @@ class FoundationService:
             effects={"read": ["explicitly_shared_report_summaries"], "write": [], "network": False, "unknown": False},
         )
 
+    def instances(self, game_id=None, limit=50):
+        value = self._planning_service().list_instances(game_id, limit)
+        revision = stable_revision(value)
+        return self._envelope(
+            status="INSTANCES_LISTED" if value["instances"] else "NO_REGISTERED_INSTANCES",
+            data=value, game_id=game_id, revision=revision,
+            next_actions=[
+                "Use one existing opaque instance ID, or register a path locally with Game-Instances.py."
+            ] if not value["instances"] else [
+                "Inspect only the exact registered instance needed for the current goal."
+            ],
+            effects={"read": ["private instance metadata without paths"], "write": [],
+                     "network": False, "unknown": False},
+            evidence=[{"id": "instance-registry", "level": "tested", "revision": revision}],
+        )
+
+    def instance_inspect(self, instance_id, game_id=None):
+        value = self._planning_service().inspect_instance(instance_id, game_id)
+        actual_game = value["instance"]["game_id"]
+        completion = completion_matrix(
+            source="verified", tests="partially_verified", package="verified",
+            installation="partially_verified", connection="verified",
+            execution="not_started", runtime="not_started", gameplay="not_started",
+            publication="not_started",
+        )
+        return self._envelope(
+            status="INSTANCE_INSPECTED", data=value, game_id=actual_game,
+            instance_id=instance_id, revision=value["observation_revision"],
+            next_actions=[
+                "Review manifest warnings and ownership conflicts before treating absence as conclusive."
+            ],
+            effects={"read": ["registered game-folder metadata", "UMM manifests"],
+                     "write": [], "network": False, "unknown": False},
+            completion=completion,
+            evidence=[{
+                "id": "umm-read-adapter", "level": "observed",
+                "revision": value["observation_revision"],
+            }],
+        )
+
+    def plan_goal(self, game_id, goal, instance_id=None, mode=None, selected=None):
+        value = self._planning_service().goal_plan(
+            game_id, goal, instance_id=instance_id, mode=mode, selected=selected,
+        )
+        blocked = value["status"] == "BLOCKED"
+        actions = [
+            "Resolve only the listed blockers, then compile a fresh read-only plan."
+        ] if blocked else [
+            "Execute the next read node explicitly; this plan creates no job or proposal."
+        ]
+        return self._envelope(
+            result_type="preview", status=value["status"], data=value,
+            game_id=game_id, instance_id=instance_id, plan_id=value["plan_id"],
+            revision=value["plan_revision"], next_actions=actions,
+            effects={"read": value["effects"]["read"],
+                     "write": [], "network": False, "unknown": False},
+            evidence=[{
+                "id": "goal-plan", "level": "tested", "revision": value["plan_revision"],
+            }],
+        )
+
+    def conflicts(self, game_id, instance_id=None, mode=None, selected=None):
+        value = self._planning_service().conflict_graph(
+            game_id, instance_id=instance_id, mode=mode, selected=selected,
+        )
+        actions = [] if value["status"] == "CLEAR" else [
+            "Review blocker issues first; advisory conflicts do not authorize automatic changes."
+        ]
+        return self._envelope(
+            status=value["status"], data=value, game_id=game_id,
+            instance_id=instance_id, revision=value["graph_revision"],
+            next_actions=actions,
+            effects={"read": value["effects"]["read"], "write": [],
+                     "network": False, "unknown": False},
+            evidence=[{
+                "id": "ownership-graph", "level": "tested",
+                "revision": value["graph_revision"],
+            }],
+        )
+
     def prepare_handoff(self, game_id=None, include=None):
         include = ["status", "resume", "changes", "capabilities", "knowledge"] if include is None else include
         allowed = {"status", "resume", "changes", "capabilities", "knowledge"}
@@ -505,6 +600,14 @@ class FoundationService:
             return self.catalog(**args)
         if name == "game_tools_reports":
             return self.reports(**args)
+        if name == "game_tools_instances":
+            return self.instances(**args)
+        if name == "game_tools_instance_inspect":
+            return self.instance_inspect(**args)
+        if name == "game_tools_plan_goal":
+            return self.plan_goal(**args)
+        if name == "game_tools_conflicts":
+            return self.conflicts(**args)
         if name == "game_tools_prepare_handoff":
             return self.prepare_handoff(**args)
         raise FoundationError("CAPABILITY_UNAVAILABLE", "Unknown foundation tool.")

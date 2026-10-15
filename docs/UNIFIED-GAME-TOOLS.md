@@ -1,5 +1,23 @@
 # Unified Game Tools — Modern workspace / Studio 2.2
 
+
+## Read-only planning and UMM instances — source 0.27.0-preview.1
+
+The current source candidate adds modern multi-game tools for opaque registered
+installations, read-only UMM manifest inspection, deterministic goal DAGs and
+ownership/conflict graphs. It reuses the existing workspaces, recipe catalog,
+approval boundary and keybind owner. Registration is local and explicit;
+ChatGPT/MCP cannot pass a game path. A plan is not a job, proposal, approval or
+execution. An observed `Info.json` is not enabled state, runtime compatibility or
+gameplay verification. See [the exact design and boundaries](AI-PLANNING-READONLY-SLICE.md).
+
+The current tested task-branch source is commit
+`e454433e81e067b1f11267a3cac18081b60512f8`. Candidate R9 passed bounded
+[Windows/source-package/external-stdio acceptance](AI-PLANNING-READONLY-WINDOWS-ACCEPTANCE-2026-10-14.md)
+using synthetic UMM fixtures, embedded private-metadata refusals, accurate filtered pagination and opaque corrupt-record handling; the same record retains R8, R5, R4 and bounded R6/R7 evidence. It remains separate from the installed Hub 0.20.2
+lineage below and has not been installed into production, connected through a
+specific product UI or accepted against a real game folder.
+
 ## AI Efficiency Foundation — source 0.26.0-preview.1
 
 The read-first 0.26 source candidate adds modern/legacy stdio adapters, structured completion/evidence, manifest-verified search/fetch/resources, continuation/change tools, blocker explanations, batch status and read-only catalog/report access. The existing Workbench, approval mailbox, journal, Mods, game support and Keybinds owners remain. The exact Preview passed a separate native Windows/Tk and external stdio acceptance without touching production or a game. See [foundation](AI-EFFICIENCY-FOUNDATION.md), [acceptance](AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.md) and [reconciliation](AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.md). This is not the installed Hub 0.20.2 lineage described below.

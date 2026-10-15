@@ -224,7 +224,14 @@ function Get-GameSourcePaths {
         'docs/AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.json',
         'docs/AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.md',
         'docs/AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.json',
+        'docs/AI-PLANNING-READONLY-SLICE.md',
+        'docs/AI-PLANNING-READONLY-VALIDATION.json',
         'schemas/ai-result-envelope.schema.json',
+        'schemas/game-tools-goal-plan.schema.json',
+        'scripts/GameToolInstances.py',
+        'scripts/GameToolPlanning.py',
+        'scripts/Game-Instances.py',
+        'scripts/tests/Test-GameToolPlanning.py',
         'scripts/GameToolAutomation.py',
         'scripts/GameToolAutomationPanel.py',
         'scripts/GameToolModIntegration.py',
@@ -568,6 +575,8 @@ function Get-GameBundleMetadata {
             @{name='game_workspaces';path='scripts/GameToolGameWorkspaces.py'},
             @{name='workbench';path='scripts/GameToolWorkbench.py'},
             @{name='ai_transport';path='scripts/GameToolAI.py'},
+            @{name='instances';path='scripts/GameToolInstances.py'},
+            @{name='planning';path='scripts/GameToolPlanning.py'},
             @{name='keybinds';path='scripts/GameToolKeybindIntegration.py'})) {
             $taskEntries = @($Plan | Where-Object path -eq $taskComponent.path)
             # Historical/synthetic plans may omit this later optional slice.
@@ -584,12 +593,13 @@ function Get-GameBundleMetadata {
         schema_version=1; bundle=$Bundle; bundle_kind='authored-source-and-sanitized-knowledge-checkpoint'
         client_date=$ClientDate; client_timezone='Asia/Jerusalem'; component_versions=$taskVersions
         archive_name=$taskArchiveName; source='https://github.com/dodWhatUp/install-modes-for-games'
-        source_state='Canonical task-branch reconciliation of the verified 0.26 source against base 043f3c4733788f082da98dfcb43c0972d2794c6a; exact source bytes and sanitized acceptance records; not claimed merged into main.'
-        canonical_reference_revision='043f3c4733788f082da98dfcb43c0972d2794c6a'
-        canonical_reference_meaning='Exact reconciliation base. A later task-branch commit may contain the reviewed candidate without implying main-branch adoption.'
+        source_state='Read-only planning 0.27 task-branch source based on adopted canonical main 108cb332b874583776c7a9cb1a19ce67c8cc96e5; exact source bytes and sanitized evidence; not claimed merged into main.'
+        canonical_reference_revision='108cb332b874583776c7a9cb1a19ce67c8cc96e5'
+        canonical_reference_meaning='Exact adopted-main base for the 0.27 read-only planning slice. A later task-branch commit does not imply main adoption.'
         windows_acceptance_reference='docs/AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.json'
         reconciliation_reference='docs/AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.json'
-        runtime_status='Native Windows 11 ARM64 launcher/Tk and independent external modern/legacy stdio-client acceptance passed in an isolated preview profile. Specific ChatGPT/Codex product UI, production installation, real game/manager/device, gameplay and physical-device acceptance remain pending. Export itself executes no runtime acceptance tests.'
+        planning_contract_reference='docs/AI-PLANNING-READONLY-SLICE.md'
+        runtime_status='The adopted 0.26 foundation passed native Windows/Tk and external stdio acceptance. For the 0.27 read-only planning/UMM slice, package, Windows, external-client and real-folder acceptance remain pending; export itself performs no runtime or real-game acceptance.'
         input_validation_reference='examples/game-input/VALIDATION.json'; input_recorded_date=$taskValidation.recorded_date
         input_declared_runtime=$taskValidation.preview_runtime
         exclusions=@('game/mod/interpreter binaries and archives', 'installed settings and picture assets', 'native/onboard/remapper profiles and device identities', 'Hub private registry, imported reports, private session journals, saved-evidence packets and private workflow recipes/plans', 'saves, credentials, private paths and raw logs/video', 'unlisted sources and third-party SDK headers')

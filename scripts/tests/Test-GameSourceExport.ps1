@@ -106,6 +106,11 @@ try {
     Assert-ExportTest (@($testAIAcceptancePaths | Where-Object { $testAllPaths -notcontains $_ -or $testInputPaths -contains $_ }).Count -eq 0) 'AI Windows acceptance and canonical reconciliation only in combined inventory'
     Assert-ExportTest ($testAllPaths -contains 'scripts/tests/requirements.txt' -and $testInputPaths -notcontains 'scripts/tests/requirements.txt') 'test-only dependency inventory'
     Assert-ExportTest ($testAllPaths -contains 'scripts/tests/GameToolAITestPackage.py' -and $testInputPaths -notcontains 'scripts/tests/GameToolAITestPackage.py') 'AI source-checkout package fixture inventory'
+    $testPlanningPaths = @('docs/AI-PLANNING-READONLY-SLICE.md', 'docs/AI-PLANNING-READONLY-VALIDATION.json',
+        'schemas/game-tools-goal-plan.schema.json',
+        'scripts/GameToolInstances.py', 'scripts/GameToolPlanning.py', 'scripts/Game-Instances.py',
+        'scripts/tests/Test-GameToolPlanning.py')
+    Assert-ExportTest (@($testPlanningPaths | Where-Object { $testAllPaths -notcontains $_ -or $testInputPaths -contains $_ }).Count -eq 0) 'read-only planning, opaque instances and UMM adapter only in combined inventory'
     Assert-ExportTest ($testAllPaths -contains 'scripts/GameToolKeybindIntegration.py' -and $testAllPaths -contains 'scripts/game_keybind_ops/core.py' -and $testAllPaths -contains 'schemas/game-pack.schema.json' -and $testAllPaths -contains 'scripts/tests/Test-GameToolKeybindMerge.py') 'merged keybind source, schema and conflict tests inventory'
     Assert-ExportTest ($testAllPaths -contains 'scripts/GameToolCatalogBridge.py' -and $testAllPaths -contains 'scripts/GameToolCatalogPanel.py' -and $testAllPaths -contains 'scripts/tests/Test-GameToolHubCatalog.py') 'shared catalog GUI integration inventory'
     Assert-ExportTest ($testAllPaths -contains 'scripts/GameFgInspector.py' -and $testAllPaths -contains 'scripts/GameFgPreflight.py' -and $testAllPaths -contains 'scripts/tests/test_game_fg_inspector.py' -and $testAllPaths -contains 'scripts/tests/test_game_fg_preflight.py') 'read-only FG preflight modules and fixture inventory'
@@ -221,6 +226,14 @@ try {
     $testLayerMetadata = Get-GameBundleMetadata -Bundle GameTools -Plan $testUnifiedPlan -ClientDate '2026-10-12'
     Assert-ExportTest ($testLayerMetadata.component_versions.workspace -eq '0.1.0' -and
         $testLayerMetadata.component_versions.user_data -eq '0.1.0' -and $testLayerMetadata.component_versions.user_data_panel -eq '0.1.0') 'layer versions captured separately from data/schema versions'
+    foreach ($testComponentName in @('Instances','Planning')) {
+        $testComponentPath = 'scripts/GameTool' + $testComponentName + '.py'
+        Write-ExportFixture $testComponentPath 'VERSION = "0.1.0"'
+        $testUnifiedPlan += @(Get-GameSourcePlan -RepositoryRoot $testRepo -RelativePaths @($testComponentPath))
+    }
+    $testPlanningMetadata = Get-GameBundleMetadata -Bundle GameTools -Plan $testUnifiedPlan -ClientDate '2026-10-12'
+    Assert-ExportTest ($testPlanningMetadata.component_versions.instances -eq '0.1.0' -and
+        $testPlanningMetadata.component_versions.planning -eq '0.1.0') 'instance and planning versions captured from exact source bytes'
     Assert-ExportTest (@($testAllPaths | Sort-Object -Unique).Count -eq $testAllPaths.Count) 'curated inventory has no duplicates'
     "PASS: $testCount source-export contracts; temporary synthetic fixtures only, no app/game/input/capture or upload."
 } finally {

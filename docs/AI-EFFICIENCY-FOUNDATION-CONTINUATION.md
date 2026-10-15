@@ -1,22 +1,35 @@
-# Continuation checkpoint — AI Efficiency Foundation 0.26.0-preview.1
+# Continuation checkpoint — read-only planning 0.27.0-preview.1
 
-## Current durable result
+## Current durable base
 
-- The read-first AI/MCP foundation is implemented and reconciled onto canonical base `043f3c4733788f082da98dfcb43c0972d2794c6a`.
-- Exact tested product-source commit: `42dc939bd37ff37e5af2cb429bce6d0aeb3eb29d`.
-- Later receipt/documentation commit: `1b619bd6fd1d3270d6b286edf411dc57d1f01717`; it does not expand runtime acceptance.
-- PR #7 was independently reviewed and merged into `main` as merge commit `cef163dee0bba0395611b1e3c15be972fa7db175`.
-- R7 passed native Windows/Tk, independent modern/legacy stdio, 11 focused suites and a real PowerShell 5.1 source export.
-- The proposal mailbox remains local-review-only; no proposal was approved or executed.
-- Production profiles, game files, input profiles, games and devices were not changed by publication.
+- AI Efficiency Foundation 0.26 was independently reviewed and merged into canonical `main` through PR #7, followed by its adoption record.
+- Slice 2 started from exact main commit `108cb332b874583776c7a9cb1a19ce67c8cc96e5` on `task/ai-plan-readonly-slice2-20261014`.
+- The existing proposal mailbox, approval controller, jobs, journal, game-support and keybind owners remain unchanged.
+
+## Accepted task-branch source
+
+- Current tested product commit: `e454433e81e067b1f11267a3cac18081b60512f8`; historical R8 `dbed124f40e3d336baf49e7598c16f2d1b57189d`, R5 `f37a6e4ed6321c2cae6c928bc889d0ab49dc9c39` and R4 `cd444009d063b27894bf8e399d517670b30ebc47` product commits remain preserved.
+- Candidate R9: 715 payload files, aggregate SHA-256 `da3e7f3de4c106cc24ba0b7b3be01ea85898fede9aa348b90d6953f18595d9d1`.
+- Windows gate: 13/13 suites, 388 tests, 381 passes and seven explicit environment/package skips; no timeout or automatic retry.
+- Real source export: 394 files, ZIP SHA-256 `369a396b00f845a74fbaa7abfe8c004bf5a0d64becd24ea003cd575e79b6fc30`; exported packaging reran 7/7 with zero skips.
+- External stdio: modern exposed the four read-only planning tools with exact read effects; legacy remained unchanged. Five synthetic game trees stayed byte-identical, one corrupt filename remained opaque, embedded credential/Windows/short POSIX paths were refused without echo, and filtered cross-game pagination stayed accurate across 34 checks.
+- R1–R8 and the isolated R9 system-context copy remain preserved with their exact boundaries; none was overwritten or presented as the current-user R9 pass.
+
+## Current capability boundary
+
+- Opaque private game-instance identities are registered only through an explicit local operator route.
+- UMM is the first accepted read adapter. It reads reviewed executable/loader markers, `Info.json` and declared assembly presence without loading code or writing the game.
+- Goal-plan DAGs and ownership/conflict graphs are deterministic read-only previews.
+- Four new tools are limited to the modern multi-game MCP surface. The legacy tool list and payload shapes remain unchanged.
+- No install, upgrade, disable, rollback, manager write, production profile or arbitrary discovery was added.
 
 ## Next safe stages
 
-1. Begin the next separate read-first slice: goal-level plan DAG, ownership/conflict graph, bounded game-instance identity and one manager adapter with no writes.
-2. Configure a specific ChatGPT/Codex product client only through its selected local connection route. Independent stdio framing is already accepted and should not be repeated merely to prove protocol parsing.
-3. Add installed-state diffs only after the selected adapter passes synthetic and real read-only acceptance.
-4. Keep install, upgrade, disable and rollback transactions behind a later explicit gate.
+1. Refresh draft PR #9 with the exact R9 product and later documentation commit; keep it draft until an independent exact-head review.
+2. Optionally perform one separately authorized real-folder **read-only** acceptance. Its absence remains visible and does not invalidate the synthetic source acceptance.
+3. After independent review, extend installed-state comparison only through another separately accepted read adapter or richer UMM evidence; do not begin transactions yet.
+4. Keep install, upgrade, disable, rollback and shared-resource leases behind the later transaction state-machine gate.
 
 ## Do not infer
 
-Main-branch adoption is not production installation, product-client UI acceptance, manager/game state, gameplay acceptance or physical-device acceptance. A proposal receipt is not approval or execution. A catalog match is not an installed-state observation.
+A registered instance is not installation health. UMM manifest presence is not enabled state, load order, runtime compatibility or gameplay acceptance. A goal plan is not a durable job, proposal, approval or execution. Task-branch publication is not `main` adoption or production installation.

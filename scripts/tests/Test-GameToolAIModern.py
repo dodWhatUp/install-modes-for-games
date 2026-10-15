@@ -17,6 +17,7 @@ import GameToolAI as host
 from GameToolAIModern import DualEndpoint, MODERN_PROTOCOL
 from GameToolAutomation import AutomationService
 from GameToolAITestPackage import build_ai_test_package
+from game_mod_ops.safety import ModError
 
 
 class ModernProtocolContracts(unittest.TestCase):
@@ -195,6 +196,79 @@ class ModernProtocolContracts(unittest.TestCase):
         self.assertIn("keybinds_context", names)
         self.assertIn("game_tools_resume", names)
         self.assertEqual(len(names), len(set(names)))
+
+    def test_workspace_modern_surface_adds_readonly_planning_without_legacy_registration(self):
+        from GameToolGameWorkspaces import WorkspaceAI
+        service = WorkspaceAI(self.root / "workspace-planning")
+        endpoint = DualEndpoint(service, False, source_root=self.package)
+        tools = endpoint.handle({
+            "jsonrpc": "2.0", "id": 1, "method": "tools/list",
+            "params": {"_meta": self.meta},
+        })["result"]["tools"]
+        names = {item["name"] for item in tools}
+        expected = {
+            "game_tools_instances", "game_tools_instance_inspect",
+            "game_tools_plan_goal", "game_tools_conflicts",
+        }
+        self.assertTrue(expected <= names)
+        self.assertFalse(any("register" in name for name in names))
+        for item in tools:
+            self.assertFalse({"path", "game_dir", "root", "directory"} &
+                             set(item["inputSchema"]["properties"]))
+        planned = endpoint.handle({
+            "jsonrpc": "2.0", "id": 2, "method": "tools/call",
+            "params": {
+                "_meta": self.meta, "name": "game_tools_plan_goal",
+                "arguments": {"game_id": "pathfinder-kingmaker", "goal": "review-mods"},
+            },
+        })["result"]
+        self.assertFalse(planned["isError"])
+        self.assertEqual(planned["structuredContent"]["result_type"], "preview")
+        self.assertEqual(planned["structuredContent"]["effects"]["write"], [])
+        self.assertFalse((self.root / "workspace-planning/game-instances").exists())
+        legacy = host.Endpoint(service)
+        legacy.handle({"jsonrpc": "2.0", "id": 3, "method": "initialize", "params": {}})
+        legacy.handle({"jsonrpc": "2.0", "method": "notifications/initialized"})
+        legacy_names = {item["name"] for item in legacy.handle({
+            "jsonrpc": "2.0", "id": 4, "method": "tools/list", "params": {},
+        })["result"]["tools"]}
+        self.assertFalse(expected & legacy_names)
+
+    def test_modern_domain_moderror_is_typed_and_does_not_echo_private_text(self):
+        private_value = "ghp_" + "z" * 24
+        modern = self.endpoint._modern()
+        with mock.patch.object(modern.foundation, "call",
+                               side_effect=ModError("INSTANCE_PRIVATE_METADATA", private_value)):
+            response = self.tool(73, "game_tools_status")
+        self.assertEqual(response["id"], 73)
+        self.assertNotIn("error", response)
+        result = response["result"]
+        self.assertTrue(result["isError"])
+        value = result["structuredContent"]
+        self.assertEqual(value["status"], "INSTANCE_PRIVATE_METADATA")
+        self.assertFalse(value["effects"]["unknown"])
+        self.assertFalse(value["retry"]["allowed"])
+        self.assertNotIn(private_value, json.dumps(response))
+
+    def test_stdio_fallback_preserves_id_and_never_calls_domain_error_parse_error(self):
+        private_value = "ghp_" + "y" * 24
+        message = {"jsonrpc": "2.0", "id": 74, "method": "server/discover",
+                   "params": {"_meta": self.meta}}
+        output = io.BytesIO()
+        with mock.patch("GameToolAIModern.DualEndpoint.handle",
+                        side_effect=ModError("INSTANCE_PRIVATE_METADATA", private_value)):
+            host.stdio(
+                self.service,
+                input_stream=io.BytesIO(json.dumps(message).encode() + b"\n"),
+                output_stream=output,
+                source_root=self.package,
+            )
+        row = json.loads(output.getvalue())
+        self.assertEqual(row["id"], 74)
+        self.assertEqual(row["error"]["code"], -32030)
+        self.assertEqual(row["error"]["data"]["status"], "INSTANCE_PRIVATE_METADATA")
+        self.assertNotEqual(row["error"]["code"], -32700)
+        self.assertNotIn(private_value, json.dumps(row))
 
     def test_modern_stdio_has_one_json_response_per_request(self):
         messages = [
