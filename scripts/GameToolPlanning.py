@@ -1,8 +1,9 @@
 """Read-only goal plans and ownership/conflict graphs for Game Tools.
 
 The compiler reuses registered support recipes, game-scoped workspaces, the
-private instance registry, and existing UMM manifest inspection.  It creates no
-job, proposal, download, stage, install, profile change, process, or game input.
+private instance registry, accepted UMM manifest inspection and bounded MO2
+profile declarations.  It creates no job, proposal, download, stage, install,
+profile change, process, or game input.
 """
 from __future__ import annotations
 
@@ -13,7 +14,7 @@ from game_mod_ops.recipes import validate_recipe
 from game_mod_ops.managers import compare_installed
 from game_mod_ops.definitions import validate_mode
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 SCHEMA_VERSION = 1
 GOALS = {
     "prepare-game",
@@ -154,6 +155,14 @@ class PlanningService:
         if instance is not None:
             require(instance["game_id"] == game_id,
                     "GAME_MISMATCH", "Registered instance belongs to another game scope.")
+            read_adapter = instance["adapter"]
+        else:
+            try:
+                read_adapter = self.instances.adapter_for_game(game_id)
+            except ModError as error:
+                if error.code != "ADAPTER_ACCEPTANCE_PENDING":
+                    raise
+                read_adapter = None
 
         nodes = [_node(
             "scope", "scope", "GameToolGameWorkspaces", "READY",
@@ -221,10 +230,24 @@ class PlanningService:
         inventory_state = "READY" if instance is not None else (
             "BLOCKED" if needs_instance else ("WAITING_LOCAL_SELECTION" if benefits_from_instance else "NOT_APPLICABLE")
         )
+        if read_adapter == "mo2":
+            inventory_owner = "MO2ReadAdapter"
+            inventory_summary = (
+                "Read exact registered MO2 mod/plugin declarations without manager API, VFS or code loading."
+            )
+            inventory_reads = ["registered MO2 profile declarations"] if instance else []
+        elif read_adapter == "umm":
+            inventory_owner = "UMMReadAdapter"
+            inventory_summary = "Read executable/loader markers and UMM Info.json manifests without loading DLLs."
+            inventory_reads = ["registered game-folder metadata"] if instance else []
+        else:
+            inventory_owner = "RegisteredReadAdapter"
+            inventory_summary = "No installed-state read adapter has passed acceptance for this game scope."
+            inventory_reads = []
         nodes.append(_node(
-            "inventory", "read", "UMMReadAdapter", inventory_state,
-            "Read executable/loader markers and UMM Info.json manifests without loading DLLs.",
-            depends_on=["instance"], reads=["registered game-folder metadata"] if instance else [],
+            "inventory", "read", inventory_owner, inventory_state,
+            inventory_summary,
+            depends_on=["instance"], reads=inventory_reads,
             blockers=["INSTANCE_REQUIRED"] if needs_instance and instance is None else [],
         ))
 
@@ -250,17 +273,40 @@ class PlanningService:
         ))
 
         comparison_needed = goal == "compare-intended-installed"
-        comparison_ready = comparison_needed and instance is not None and recipe is not None and not selection["blocking"]
+        comparison_blockers = set()
+        if comparison_needed:
+            if instance is None:
+                comparison_blockers.add("INSTANCE_REQUIRED")
+            if recipe is None:
+                comparison_blockers.add("RECIPE_REQUIRED")
+            if read_adapter == "mo2":
+                comparison_blockers.add("ADAPTER_COMPARISON_PENDING")
+            elif read_adapter not in {"umm", "mo2"} and instance is not None:
+                comparison_blockers.add("ADAPTER_ACCEPTANCE_PENDING")
+            comparison_blockers.update(
+                issue["code"] for issue in (selection or {}).get("issues", [])
+                if issue["severity"] == "blocker"
+            )
+        comparison_ready = comparison_needed and not comparison_blockers
+        blockers.extend(sorted(comparison_blockers - set(blockers)))
+        if read_adapter == "umm":
+            comparison_owner = "game_mod_ops.managers.compare_installed"
+            comparison_summary = (
+                "Compare intended mod identities with observed UMM manifests; runtime and enablement remain unknown."
+            )
+        elif read_adapter == "mo2":
+            comparison_owner = "MO2ReadAdapter"
+            comparison_summary = "MO2 planned-versus-observed comparison remains a separate unaccepted contract."
+        else:
+            comparison_owner = "RegisteredReadAdapter"
+            comparison_summary = "No comparison adapter has passed acceptance for this game scope."
         nodes.append(_node(
-            "comparison", "read", "game_mod_ops.managers.compare_installed",
+            "comparison", "read", comparison_owner,
             "READY" if comparison_ready else ("BLOCKED" if comparison_needed else "NOT_APPLICABLE"),
-            "Compare intended mod identities with observed UMM manifests; runtime and enablement remain unknown.",
+            comparison_summary,
             depends_on=["inventory", "mod-plan"],
             reads=["observed UMM inventory", "selected plan"] if comparison_ready else [],
-            blockers=[] if comparison_ready or not comparison_needed else
-                     sorted(set(["INSTANCE_REQUIRED"] if instance is None else []) |
-                            set(["RECIPE_REQUIRED"] if recipe is None else []) |
-                            set(issue["code"] for issue in (selection or {}).get("issues", []) if issue["severity"] == "blocker")),
+            blockers=[] if comparison_ready or not comparison_needed else sorted(comparison_blockers),
         ))
         _validate_dag(nodes)
         waiting = any(row["status"] == "WAITING_LOCAL_SELECTION" for row in nodes)
@@ -364,6 +410,9 @@ class PlanningService:
             inspected = self.instances.inspect(instance_id)
             require(inspected["instance"]["game_id"] == game_id,
                     "GAME_MISMATCH", "Registered instance belongs to another game scope.")
+            require(inspected["instance"]["adapter"] == "umm",
+                    "ADAPTER_COMPARISON_PENDING",
+                    "Observed ownership comparison is not accepted for this read adapter.")
             observed = inspected["inventory"]
             groups = {}
             observed_rows = [mod for mod in observed.get("mods", []) if mod.get("id")]

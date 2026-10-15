@@ -19,15 +19,21 @@ class DeliveryTests(unittest.TestCase):
     if v['pack']['recipe'] is not None:self.assertEqual(json.loads(r.recipe_path(gid).read_text()),compose_recipe(v['pack']))
    self.assertFalse((Path(t)/'no-create').exists())
  def test_existing_updater_directory_contract(self):
-  self.package_manifest();out=inspect_directory(ROOT);self.assertEqual(out['manifest']['component_versions']['tool_hub'],'0.27.0-preview.1')
+  self.package_manifest();out=inspect_directory(ROOT);self.assertEqual(out['manifest']['component_versions']['tool_hub'],'0.28.0-preview.1')
  def test_every_authored_member_matches_manifest(self):
   m=self.package_manifest();names=set()
   for row in m['files']:
    p=ROOT/row['path'];self.assertNotIn(row['path'],names);names.add(row['path'])
    self.assertEqual(p.stat().st_size,row['bytes']);self.assertEqual(digest(p),row['sha256'].lower())
   self.assertIn('scripts/game_mod_ops/support.py',names);self.assertIn('templates/GAME-SUPPORT.example.json',names)
-  for required in ('scripts/GameToolKeybindIntegration.py','scripts/game_keybind_ops/core.py','scripts/tests/Test-GameToolKeybindMerge.py','scripts/tests/keybinds/test_schema_contract.py','schemas/game-pack.schema.json','docs/UI-AND-CONTENT-DESIGN.md','docs/keybinds/README.md','docs/keybinds/history/INTEGRATION-HANDOFF-B-0.2.0-preview.1.md','docs/keybinds/history/DEPENDENCY_PINS-B-0.2.0-preview.1.json','docs/KEYBINDS-MERGE-VALIDATION.json','scripts/GameToolInstances.py','scripts/GameToolPlanning.py','scripts/Game-Instances.py','scripts/tests/Test-GameToolPlanning.py','schemas/game-tools-goal-plan.schema.json','docs/AI-PLANNING-READONLY-SLICE.md'):
+  for required in ('scripts/GameToolKeybindIntegration.py','scripts/game_keybind_ops/core.py','scripts/tests/Test-GameToolKeybindMerge.py','scripts/tests/keybinds/test_schema_contract.py','schemas/game-pack.schema.json','docs/UI-AND-CONTENT-DESIGN.md','docs/keybinds/README.md','docs/keybinds/history/INTEGRATION-HANDOFF-B-0.2.0-preview.1.md','docs/keybinds/history/DEPENDENCY_PINS-B-0.2.0-preview.1.json','docs/KEYBINDS-MERGE-VALIDATION.json','scripts/GameToolInstances.py','scripts/GameToolPlanning.py','scripts/GameToolMO2Read.py','scripts/Game-Instances.py','scripts/tests/Test-GameToolPlanning.py','scripts/tests/Test-GameToolMO2Read.py','schemas/game-tools-goal-plan.schema.json','schemas/mo2-profile-state.schema.json','docs/AI-PLANNING-READONLY-SLICE.md','docs/MO2-READ-ADAPTER.md','docs/MO2-READ-ADAPTER-VALIDATION.json','docs/MO2-READ-ADAPTER-SOURCE-DELTA.json'):
    self.assertIn(required,names)
+  optional={'docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.md','docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.json'}
+  references={m.get('mo2_windows_acceptance_reference'),m.get('mo2_windows_acceptance_json_reference')}
+  if references==optional:
+   self.assertTrue(optional<=names);self.assertIn('included',m['runtime_status'])
+  else:
+   self.assertEqual(references,{None});self.assertTrue(optional.isdisjoint(names));self.assertIn('pending',m['runtime_status'])
   actual={p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*') if p.is_file() and p.name!='MANIFEST.json' and '__pycache__' not in p.parts and p.suffix!='.pyc'}
   self.assertEqual(actual,names,'Manifest must be the exact authored payload inventory.')
  def test_original_exporter_inventory_includes_all_pack_members(self):
@@ -39,7 +45,7 @@ class DeliveryTests(unittest.TestCase):
   m=self.package_manifest()['component_versions']
   for key,path in [('tool_hub','Game-Tool-Hub.py'),('mod_ops','game_mod_ops/__init__.py'),('game_workspaces','GameToolGameWorkspaces.py'),
                    ('workbench','GameToolWorkbench.py'),('automation','GameToolAutomation.py'),('ai_transport','GameToolAI.py'),
-                   ('instances','GameToolInstances.py'),('planning','GameToolPlanning.py'),('keybinds','GameToolKeybindIntegration.py')]:
+                   ('instances','GameToolInstances.py'),('planning','GameToolPlanning.py'),('mo2_read','GameToolMO2Read.py'),('keybinds','GameToolKeybindIntegration.py')]:
    a=re.findall(r'^VERSION\s*=\s*"([^"]+)"\s*$',(S/path).read_text(),re.M);self.assertEqual(a,[m[key]])
  def test_cli_schema_is_nonmutating(self):
   with tempfile.TemporaryDirectory() as t:

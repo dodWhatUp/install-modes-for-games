@@ -445,7 +445,7 @@ class FoundationService:
             status="INSTANCES_LISTED" if value["instances"] else "NO_REGISTERED_INSTANCES",
             data=value, game_id=game_id, revision=revision,
             next_actions=[
-                "Use one existing opaque instance ID, or register a path locally with Game-Instances.py."
+                "Use one existing opaque instance ID, or register an exact installation through the local Game-Instances.py route."
             ] if not value["instances"] else [
                 "Inspect only the exact registered instance needed for the current goal."
             ],
@@ -457,23 +457,32 @@ class FoundationService:
     def instance_inspect(self, instance_id, game_id=None):
         value = self._planning_service().inspect_instance(instance_id, game_id)
         actual_game = value["instance"]["game_id"]
+        adapter = value["adapter_contract"]["adapter"]
         completion = completion_matrix(
             source="verified", tests="partially_verified", package="verified",
             installation="partially_verified", connection="verified",
             execution="not_started", runtime="not_started", gameplay="not_started",
             publication="not_started",
         )
+        if adapter == "mo2":
+            next_actions = [
+                "Review declared profile rows and warnings; virtual deployment, runtime loading and conflict winners remain unknown."
+            ]
+            evidence_id = "mo2-read-adapter"
+        else:
+            next_actions = [
+                "Review manifest warnings and ownership conflicts before treating absence as conclusive."
+            ]
+            evidence_id = "umm-read-adapter"
         return self._envelope(
             status="INSTANCE_INSPECTED", data=value, game_id=actual_game,
             instance_id=instance_id, revision=value["observation_revision"],
-            next_actions=[
-                "Review manifest warnings and ownership conflicts before treating absence as conclusive."
-            ],
-            effects={"read": ["registered game-folder metadata", "UMM manifests"],
+            next_actions=next_actions,
+            effects={"read": value["adapter_contract"]["reads"],
                      "write": [], "network": False, "unknown": False},
             completion=completion,
             evidence=[{
-                "id": "umm-read-adapter", "level": "observed",
+                "id": evidence_id, "level": "observed",
                 "revision": value["observation_revision"],
             }],
         )

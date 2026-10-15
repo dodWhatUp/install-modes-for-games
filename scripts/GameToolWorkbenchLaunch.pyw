@@ -7,7 +7,7 @@ import argparse,importlib.machinery,importlib.util,os,sys
 from pathlib import Path
 sys.dont_write_bytecode=True
 ROOT=Path(__file__).resolve().parents[1]
-PROFILE='GameToolHub-Workbench-Preview-0.27.0-preview.1-Planning-Keybinds'
+PROFILE='GameToolHub-Workbench-Preview-0.28.0-preview.1-MO2-Planning-Keybinds'
 
 def load_module(name,path):
     loader=importlib.machinery.SourceFileLoader(name,str(path))
@@ -20,6 +20,7 @@ def verify(root):
     required={'scripts/GameToolWorkbench.py','scripts/GameToolGameWorkspaces.py',
               'scripts/GameToolWorkbenchLaunch.pyw','scripts/GameToolAI.py',
               'scripts/GameToolPlanning.py','scripts/GameToolInstances.py',
+              'scripts/GameToolMO2Read.py','schemas/mo2-profile-state.schema.json',
               'scripts/game_mod_ops/support.py','scripts/game_mod_ops/definitions.py',
               'scripts/game_mod_ops/managers.py','scripts/game_mod_ops/handoff.py',
               'scripts/GameToolKeybindIntegration.py','scripts/GameToolKeybindAI.py',

@@ -71,8 +71,8 @@ def build_ai_test_package(source_root: Path, destination: Path) -> Path:
     manifest = {
         "schema_version": 1,
         "bundle": "game-tools-ai-source-test-fixture",
-        "component_versions": {"tool_hub": "0.27.0-preview.1", "ai_transport": "0.27.0-preview.1"},
-        "canonical_reference_revision": "043f3c4733788f082da98dfcb43c0972d2794c6a",
+        "component_versions": {"tool_hub": "0.28.0-preview.1", "ai_transport": "0.28.0-preview.1"},
+        "canonical_reference_revision": "290bea7983ccca50073c5f45ce44337cacafc32a",
         "files": rows,
         "test_fixture": True,
     }

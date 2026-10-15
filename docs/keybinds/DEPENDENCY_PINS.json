@@ -1,53 +1,91 @@
 {
-  "schema_version": 2,
-  "status": "local_ai_foundation_candidate_not_published_or_installed",
+  "schema_version": 3,
+  "status": "local_mo2_read_adapter_candidate_not_published_installed_or_adopted",
   "canonical_owner": "dodWhatUp/install-modes-for-games",
-  "canonical_owner_head_observed": "043f3c4733788f082da98dfcb43c0972d2794c6a",
-  "host_base": {
-    "version": "0.24.0-preview.1",
-    "archive_sha256": "12f8198536dd9ae442cfa993c71d185e7e727fef813753951cd73aeee5d237a9"
+  "canonical_owner_base": {
+    "revision": "290bea7983ccca50073c5f45ce44337cacafc32a",
+    "meaning": "Canonical main after the reviewed 0.27 read-only planning source and its adoption record.",
+    "host_version": "0.27.0-preview.1",
+    "reviewed_source_archive_sha256": "369a396b00f845a74fbaa7abfe8c004bf5a0d64becd24ea003cd575e79b6fc30"
   },
-  "merged_candidate": {
-    "host_version": "0.26.0-preview.1",
+  "current_candidate": {
+    "host_version": "0.28.0-preview.1",
     "keybind_component_version": "0.2.0-preview.1",
-    "game_workspaces_version": "0.2.1",
+    "game_workspaces_version": "0.2.2",
+    "instance_registry_version": "0.2.0",
+    "planning_version": "0.2.0",
+    "mo2_read_version": "0.2.0",
+    "unified_updater_version": "0.2.1",
     "source_manifest": "../../MANIFEST.json",
-    "reviewed_keybind_merge_host_version": "0.25.0-preview.2"
+    "new_public_tool_names": [],
+    "registration_route": "LOCAL_OPERATOR_ONLY",
+    "accepted_read_adapters": [
+      "umm",
+      "mo2"
+    ],
+    "accepted_planned_installed_comparison_adapters": [
+      "umm"
+    ],
+    "manager_profile_writes": false
   },
   "tested_host_dependencies": {
     "scripts/GameToolAutomation.py": "34bffd633608713905f87f3ecdac50653169fbb815415e6a737a6766bad3fccf",
-    "scripts/GameToolAI.py": "26448c2e5dda9f71f225b340f4ad1dfa7d8f21de3e78a8a2eca4617022cf6efb",
+    "scripts/GameToolAI.py": "aa7f29eb7063beb298c4e46399d5a0b78e6752cc0216f787362b590f5efcd87a",
+    "scripts/GameToolAIContracts.py": "1d1fe821cf0e4a91a00abe1ed48d842f9745a4df136b659661c3516e310c700d",
+    "scripts/GameToolAIFoundation.py": "2fe10b7a1bb9d8969e42ff63b2d8b65edd101fc7628174fbbc680d82533aadac",
+    "scripts/GameToolAITools.py": "b6107df58a18bec2d338e951dc2ac9dbc9817c5ae2d3cdcac6f7024c04c8ce34",
+    "scripts/GameToolAIModern.py": "d0fd6e30b2995c765dc3d84c4e5e8ebda038142de87ff6d88a10b78124e0840b",
     "scripts/GameToolJournal.py": "01e76b93c69adefa742dfcb139756903c2259812c437ec72c508739b2a81657a",
-    "scripts/game_mod_ops/safety.py": "a40f7a172716a02d19c4aef688ee67d45b4e86dcede00702eed766528175598b",
-    "scripts/GameToolGameWorkspaces.py": "a0f68663d86a9eaacad7307fda1066fb8c33eeed566785fc7fa3f808ad76110e",
-    "scripts/GameToolWorkbench.py": "be9b75cc7544b3d6520855b80c342f3d5c3209786e465f027c9ca619f8090b63"
+    "scripts/GameToolGameWorkspaces.py": "bf1c270d7c4c3bab779ffda9ed40335f333b0a3e534ccf38a3f1b4cca753f0a2",
+    "scripts/GameToolInstances.py": "af768f4b199ed5ec8da0e19de48a8c733decb8a5a8e99b62cf3e505fa9e08c7e",
+    "scripts/GameToolPlanning.py": "f4e891621bb9d9954f7545b284e65294c9410ca3089c9fa9814cde79dddfc41e",
+    "scripts/GameToolMO2Read.py": "0c34dd01d0d8d9afc6b0ef2cef4158d183337bdf9d9c7f5942c0b434a7820d62",
+    "scripts/game_mod_ops/managers.py": "8f0f3c41861211ac2fd7665028b123ae532e0fd427826f5017c064656acd53a7",
+    "scripts/game_mod_ops/safety.py": "a40f7a172716a02d19c4aef688ee67d45b4e86dcede00702eed766528175598b"
   },
   "canonical_reference_snapshot": {
-    "revision": "043f3c4733788f082da98dfcb43c0972d2794c6a",
+    "revision": "290bea7983ccca50073c5f45ce44337cacafc32a",
     "path": "docs/UI-AND-CONTENT-DESIGN.md",
     "git_blob_sha1": "db9de4ea51af6a17ea3d49218cd5326a2a16edf8",
     "sha256": "258619c44fe90df09eda947a3240f70c55337df7b0b101689e5755f7b7382b60",
+    "bytes": 7965,
     "byte_verified": true
   },
-  "historical_input_b": {
-    "host_version": "0.23.0-preview.1",
-    "pins": "history/DEPENDENCY_PINS-B-0.2.0-preview.1.json",
-    "handoff": "history/INTEGRATION-HANDOFF-B-0.2.0-preview.1.md",
-    "current_guidance": false
+  "protocols": {
+    "legacy": "2025-11-25",
+    "modern": "2026-07-28",
+    "legacy_tool_surface_changed": false,
+    "modern_registration_or_path_tool_added": false
+  },
+  "historical_boundaries": {
+    "input_b": {
+      "host_version": "0.23.0-preview.1",
+      "pins": "history/DEPENDENCY_PINS-B-0.2.0-preview.1.json",
+      "handoff": "history/INTEGRATION-HANDOFF-B-0.2.0-preview.1.md",
+      "current_guidance": false
+    },
+    "ai_efficiency_foundation_0_26": {
+      "adopted": true,
+      "adoption_merge": "cef163dee0bba0395611b1e3c15be972fa7db175"
+    },
+    "read_only_planning_0_27": {
+      "adopted": true,
+      "tested_product_commit": "e454433e81e067b1f11267a3cac18081b60512f8",
+      "reviewed_head": "ab9c2cdf32dd9d361aa4273aca6e10a168e864d8",
+      "adoption_merge": "ef38d94be4fb4847cbbeda5f8fe41455b267aeaa",
+      "adoption_record_merge": "290bea7983ccca50073c5f45ce44337cacafc32a"
+    },
+    "superseded_mo2_candidate": {
+      "commit": "aee29222892f7beaa252e14f41f2ed4a5e47ecc7",
+      "base": "108cb332b874583776c7a9cb1a19ce67c8cc96e5",
+      "meaning": "Provenance/specification only; not merged because it duplicated planning and registry owners superseded by 0.27."
+    }
   },
   "not_installed_or_adopted": true,
-  "ai_efficiency_foundation": {
-    "version": "0.26.0-preview.1",
-    "legacy_protocol": "2025-11-25",
-    "modern_protocol": "2026-07-28",
-    "code_sha256": {
-      "scripts/GameToolAIContracts.py": "929b83543f952415863dee7903cd3bd8a526a11f089e96d70df51d9b58fc3001",
-      "scripts/GameToolAITools.py": "49de053fc7b50ce3046200b4d495d4c6ab9dc40d6c0733cbe14731627f68f6a9",
-      "scripts/GameToolAIKnowledge.py": "bcc556800910b3ada06767518fabf43f312571380473a0d8225becf3b78eac5c",
-      "scripts/GameToolAIFoundation.py": "114c76abe016efe54cefe12f8d429b69b8348390deba0af93c995d3073acf541",
-      "scripts/GameToolAIModern.py": "0053e2b062aa9420cf8defdc951b904715d541562d1de615e7ecadc7236a19e0"
-    },
-    "validation": "../AI-EFFICIENCY-FOUNDATION-VALIDATION.json",
-    "not_installed_or_client_accepted": true
-  }
+  "not_established": [
+    "A real MO2 installation or live profile was inspected.",
+    "MO2 virtual deployment, conflicts, overwrite order, process state, runtime loading or gameplay.",
+    "Planned-versus-installed comparison for MO2.",
+    "Production installation, manager mutation, automatic discovery or a specific ChatGPT/Codex product UI."
+  ]
 }

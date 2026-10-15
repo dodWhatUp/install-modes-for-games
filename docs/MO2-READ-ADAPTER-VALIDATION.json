@@ -1,0 +1,357 @@
+{
+  "schema_version": 1,
+  "kind": "game-tools-mo2-read-adapter-validation",
+  "status": "LOCAL_DEPENDENCY_GATE_PARTIAL_WINDOWS_PACKAGE_AND_EXTERNAL_CLIENT_PENDING",
+  "version": "0.28.0-preview.1",
+  "branch": "task/mo2-read-adapter-reconcile-20261015",
+  "canonical_base": "290bea7983ccca50073c5f45ce44337cacafc32a",
+  "owner": "dodWhatUp/install-modes-for-games",
+  "candidate_versions": {
+    "tool_hub": "0.28.0-preview.1",
+    "game_workspaces": "0.2.2",
+    "instances": "0.2.0",
+    "planning": "0.2.0",
+    "mo2_read": "0.2.0",
+    "unified_updater": "0.2.1",
+    "keybinds": "0.2.0-preview.1"
+  },
+  "source_identity": {
+    "scripts/GameToolMO2Read.py": "0c34dd01d0d8d9afc6b0ef2cef4158d183337bdf9d9c7f5942c0b434a7820d62",
+    "scripts/GameToolInstances.py": "af768f4b199ed5ec8da0e19de48a8c733decb8a5a8e99b62cf3e505fa9e08c7e",
+    "scripts/GameToolPlanning.py": "f4e891621bb9d9954f7545b284e65294c9410ca3089c9fa9814cde79dddfc41e",
+    "schemas/mo2-profile-state.schema.json": "7069a4458acf2c96e54095b3ba6437ccc3f9de6606da5f881c4d728196c5b91f",
+    "scripts/tests/Test-GameToolMO2Read.py": "e8f24d69659eba4467ff3b3ef9d95cfe8e36dafde949dd9e29604850a4d570ca",
+    "scripts/Export-GameTools.ps1": "4bae59280a49dcd187e93c9eef38196e0d683ee0699c18fc6f6d9249be34ca3a",
+    "scripts/tests/Test-GameSourceExport.ps1": "aad45b0a2d5229c8bffa9bd2ae168f2e6abfce51d8fe0b50022df9728bdd0f7c",
+    "scripts/tests/Test-GameSupportPackaging.py": "4412c6a36cb56a71b0d056f16fea66b94c2f6f350aefe11441d043c4760010b7",
+    "scripts/check_host.py": "35ad0f17b2dbc9d891f92347f1944fe6191f466d0817c9fb121efa8b6f9a9aed"
+  },
+  "architecture": {
+    "competing_registry_added": false,
+    "instance_owner_reused": true,
+    "legacy_umm_schema_1_retained": true,
+    "mo2_private_record_schema": 2,
+    "registration": "LOCAL_OPERATOR_ONLY",
+    "new_mcp_tool_names": [],
+    "manager_writes": false,
+    "planned_installed_comparison": "PENDING_SEPARATE_ACCEPTANCE"
+  },
+  "local_selected_checks": [
+    {
+      "suite": "scripts/tests/Test-GameToolMO2Read.py",
+      "tests": 19,
+      "passed": 18,
+      "skipped": 1,
+      "status": "PASS_WITH_EXPLICIT_ENVIRONMENT_SKIP",
+      "skip": "The macOS system Python lacks jsonschema; native Windows acceptance must run the schema case without a skip."
+    },
+    {
+      "suite": "scripts/tests/Test-GameToolAIModern.py",
+      "tests": 20,
+      "passed": 20,
+      "skipped": 0,
+      "status": "PASS",
+      "environment": "TMPDIR=/private/tmp retained link refusal"
+    },
+    {
+      "suite": "scripts/tests/Test-GameToolGameWorkspaces.py",
+      "tests": 41,
+      "passed": 41,
+      "skipped": 0,
+      "status": "PASS"
+    },
+    {
+      "suite": "scripts/tests/Test-GameSupport.py",
+      "tests": 56,
+      "passed": 56,
+      "skipped": 0,
+      "status": "PASS"
+    },
+    {
+      "suite": "scripts/tests/Test-GameToolUnified.py",
+      "tests": 35,
+      "passed": 35,
+      "skipped": 0,
+      "status": "PASS"
+    },
+    {
+      "suite": "scripts/tests/Test-GameToolWorkbenchLauncher.py",
+      "tests_completed": 11,
+      "passed": 11,
+      "status": "PARTIAL_ENVIRONMENT_BOUNDARY",
+      "limitation": "The final verify-only path requires Python 3.10+; the macOS system interpreter is 3.9.6."
+    },
+    {
+      "suite": "scripts/tests/Test-GameToolAutomation.py",
+      "tests_passed_before_environment_errors": 49,
+      "environment_errors": 3,
+      "status": "INCOMPLETE_ENVIRONMENT_DEPENDENCY",
+      "limitation": "Three cases could not import Pillow in the macOS system interpreter; no product assertion failed."
+    },
+    {
+      "suite": "scripts/tests/Test-GameToolKeybindMerge.py",
+      "tests_passed_before_hang": 6,
+      "status": "TIMEOUT_NO_RETRY",
+      "limitation": "The final Tk workbench lifecycle case remained in a macOS Tk layout loop. The exact task process was sampled and stopped; it is not counted as a pass."
+    }
+  ],
+  "local_static_checks": {
+    "status": "PASS",
+    "receipt": "private local evidence: STATIC-GATE.json",
+    "changed_paths": 34,
+    "python_ast_and_compile": 21,
+    "json_parse": 4,
+    "json_schema_2020_12": true,
+    "host_pins": {
+      "matched": 13,
+      "total": 13
+    },
+    "git_diff_check": true,
+    "staged_files": 0,
+    "privacy_scan": true,
+    "relative_markdown_targets": true,
+    "premature_acceptance_records_absent": true,
+    "removed_files": 0,
+    "source_delta_hash_boundary": "SELF_EXCLUDING_RECORD_NO_CIRCULAR_CROSS_HASH"
+  },
+  "implemented_contracts": [
+    "same InstanceRegistry owner with UMM schema-1 compatibility and MO2 schema-2 binding",
+    "local register-mo2 confirmation route with no MCP paths",
+    "exact profile declarations with stable double-read and marker checks",
+    "MO2 +, -, * and plugin marker semantics from pinned upstream source",
+    "private-name redaction without private-derived token or raw public file hash",
+    "nonce-keyed HMAC state revision for private source drift",
+    "dynamic goal DAG with MO2 inspection and explicit comparison refusal",
+    "manifest, launcher and updater coherent-package requirements",
+    "cross-field MO2 source-file schema constraints for role/path and hash exposure",
+    "pre-acceptance source export with optional later Windows receipt inclusion and truthful pending status"
+  ],
+  "effects": {
+    "production": false,
+    "real_game": false,
+    "real_manager_profile": false,
+    "manager_or_game_write": false,
+    "proposal": false,
+    "execution": false,
+    "input": false,
+    "capture": false,
+    "network_by_product": false,
+    "git_push": false,
+    "main": false
+  },
+  "pending_gates": [
+    "Seal an exact product candidate inventory and commit its tested bytes separately from later acceptance documentation.",
+    "Run all selected suites under supported Python 3.12 with jsonschema, Pillow and Tk on Windows.",
+    "Run PowerShell source-export contracts, real source export and extracted-package verification with zero packaging skips.",
+    "Run an independent modern/legacy stdio fixture covering local register-mo2, inspection, redaction, typed refusal and unchanged synthetic trees.",
+    "Publish a task PR, perform independent exact-head review and adopt only through a separate reviewed merge."
+  ],
+  "not_established": [
+    "A real MO2 installation or live profile.",
+    "Virtual deployment, effective conflict winners, overwrite order, process state, runtime loading or gameplay.",
+    "MO2 planned-versus-installed comparison.",
+    "A specific ChatGPT or Codex product UI.",
+    "Production installation, manager mutation, automatic discovery or main adoption."
+  ],
+  "provenance": {
+    "mo2_upstream_commit": "4ba22f0d8b6f9e08e44008b8395cd774551b4ebe",
+    "mo2_upstream_file": "src/profile.cpp",
+    "superseded_local_candidate_commit": "aee29222892f7beaa252e14f41f2ed4a5e47ecc7",
+    "superseded_candidate_use": "PROVENANCE_AND_SPECIFICATION_ONLY_NOT_MERGED"
+  },
+  "predecessor_candidates": [
+    {
+      "revision": "R1",
+      "candidate_aggregate_sha256": "64741734ad194cc548ff81a94286571e235ede4902589d04ae774f5bd36f85f8",
+      "status": "PYTHON_GATES_PASS_POWERSHELL_FIXTURE_CONTRACT_FAIL_NO_PRODUCT_EFFECT",
+      "python_suites": 13,
+      "python_tests_run": 342,
+      "python_passed": 335,
+      "python_skipped": 7,
+      "failure": "The synthetic manifest-metadata fixture asserted conditional MO2 document references without adding those documents to its plan. The exporter correctly returned null.",
+      "correction": "Add the three synthetic MO2 document fixtures to the test plan; do not weaken conditional exporter behavior.",
+      "automatic_retry": false,
+      "effects": {
+        "production": false,
+        "game": false,
+        "manager": false,
+        "proposal": false,
+        "execution": false,
+        "input": false,
+        "capture": false
+      }
+    },
+    {
+      "revision": "LOCAL-PY39-R2",
+      "status": "DEPENDENCY_BACKED_CORE_PASS_WITH_TWO_ENVIRONMENT_BOUNDARIES",
+      "receipt": "private local evidence: LOCAL-DEPENDENCY-GATE.json",
+      "automatic_retry": false,
+      "product_effect": false,
+      "meaning": "Retained as Mac environmental evidence; Windows Python 3.12 remains the acceptance owner."
+    }
+  ],
+  "local_dependency_gate_r2": {
+    "status": "INCOMPLETE_ENVIRONMENT_BOUNDARY_NOT_A_WINDOWS_PASS",
+    "environment": {
+      "platform": "macOS 26.6.2 arm64",
+      "python": "3.9.6 temporary venv",
+      "tk": "8.5",
+      "jsonschema": "4.23.0",
+      "pillow": "10.4.0",
+      "system_packages_changed": false,
+      "temporary_venv_removal": "PENDING_AFTER_FINAL_LOCAL_RECEIPT"
+    },
+    "automatic_retry": false,
+    "suites_invoked_once": 13,
+    "reported_tests_from_completed_unittest_runs": 335,
+    "passes_in_suites_with_final_PASS_status": 319,
+    "explicit_skips_in_pass_suites": 4,
+    "additional_launcher_assertions_passed_before_environment_refusal": 11,
+    "passed_suites": [
+      {
+        "suite": "scripts/tests/Test-GameToolMO2Read.py",
+        "tests": 19,
+        "passed": 19,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolPlanning.py",
+        "tests": 31,
+        "passed": 31,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolAIFoundation.py",
+        "tests": 17,
+        "passed": 17,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolAIModern.py",
+        "tests": 20,
+        "passed": 20,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolAutomation.py",
+        "tests": 52,
+        "passed": 52,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolGameWorkspaces.py",
+        "tests": 41,
+        "passed": 41,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameSupport.py",
+        "tests": 56,
+        "passed": 56,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolUnified.py",
+        "tests": 35,
+        "passed": 35,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/keybinds/test_host_integration.py",
+        "tests": 35,
+        "passed": 35,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/keybinds/test_schema_contract.py",
+        "tests": 10,
+        "passed": 10,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameSupportPackaging.py",
+        "tests": 7,
+        "passed": 3,
+        "skipped": 4
+      }
+    ],
+    "environment_boundaries": [
+      {
+        "suite": "scripts/tests/Test-GameToolWorkbenchLauncher.py",
+        "tests": 12,
+        "passed_before_error": 11,
+        "errors": 1,
+        "classification": "PYTHON_VERSION_ENVIRONMENT_BOUNDARY",
+        "detail": "The final verify-only case correctly refused Python 3.9 because the product requires Python 3.10+; it must run on the Windows Python 3.12 gate."
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolKeybindMerge.py",
+        "classification": "TIMEOUT_NO_RETRY",
+        "timeout_seconds": 120,
+        "detail": "The macOS Tk lifecycle suite did not produce a final unittest result before the fixed deadline. No automatic retry was made; Windows owns this gate."
+      }
+    ],
+    "meaning": "The MO2 reader, schemas and non-Tk owners passed with dependencies present. This does not replace the supported Python 3.12 Windows, PowerShell export, extracted-package or external-client gates."
+  },
+  "historical_system_python_gate": {
+    "status": "PASS_WITH_EXPLICIT_ENVIRONMENT_SKIPS",
+    "suites": 7,
+    "tests_run": 213,
+    "passed": 208,
+    "skipped": 5,
+    "timeouts": 0,
+    "automatic_retry": false,
+    "suites_detail": [
+      {
+        "suite": "scripts/tests/Test-GameToolMO2Read.py",
+        "tests": 19,
+        "passed": 18,
+        "skipped": 1
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolAIModern.py",
+        "tests": 20,
+        "passed": 20,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolGameWorkspaces.py",
+        "tests": 41,
+        "passed": 41,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameSupport.py",
+        "tests": 56,
+        "passed": 56,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameToolUnified.py",
+        "tests": 35,
+        "passed": 35,
+        "skipped": 0
+      },
+      {
+        "suite": "scripts/tests/Test-GameSupportPackaging.py",
+        "tests": 7,
+        "passed": 3,
+        "skipped": 4
+      },
+      {
+        "suite": "scripts/tests/keybinds/test_host_integration.py",
+        "tests": 35,
+        "passed": 35,
+        "skipped": 0
+      }
+    ],
+    "skip_boundary": [
+      "One MO2 schema-validation case requires jsonschema unavailable in the macOS system Python; Windows must run it without a skip.",
+      "Four source-checkout package tests require a generated MANIFEST.json; they must rerun against the real exported package with zero skips."
+    ],
+    "reconciled_invocation": {
+      "status": "HARNESS_ARGUMENT_MISSING_NO_TESTS_OR_PRODUCT_EFFECT",
+      "detail": "The first keybind-host invocation omitted required GAME_TOOLS_HOST_SOURCE and exited before unittest collection. The corrected exact-root invocation ran 35/35 once."
+    }
+  }
+}

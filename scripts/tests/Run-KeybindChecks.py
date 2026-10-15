@@ -22,7 +22,7 @@ def main():
    raw=(e.stdout or b'')+(e.stderr or b'');status='TIMEOUT_NO_RETRY';rc=None
   (a.output/(name+'.log')).write_bytes(raw);m=re.search(rb'Ran (\d+) tests?',raw)
   results.append({'suite':name,'status':status,'returncode':rc,'tests':int(m.group(1)) if m else None,'passed':status=='EXECUTED' and rc==0,'log':name+'.log'})
- report={'schema_version':1,'source_version':'0.27.0-preview.1','created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+ report={'schema_version':1,'source_version':'0.28.0-preview.1','created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
   'runtime':{'system':platform.system(),'python':platform.python_version()},'suites':results,
   'total_test_methods':sum(r['tests'] or 0 for r in results),'all_passed':all(r['passed'] for r in results),
   'scope':'merged source/headless keybind, host integration, pack integration and widgets',

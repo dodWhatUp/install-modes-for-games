@@ -234,7 +234,7 @@ def foundation_tools(multi_game=False):
             ),
             tool_definition(
                 "game_tools_instance_inspect",
-                "Read one registered UMM installation's markers and manifests; no DLL loading or writes.",
+                "Read one registered accepted installation's bounded declarations and markers; no code loading or writes.",
                 {"instance_id": bounded_id, "game_id": bounded_id},
                 ["instance_id"], output=out,
             ),
@@ -255,7 +255,7 @@ def foundation_tools(multi_game=False):
             ),
             tool_definition(
                 "game_tools_conflicts",
-                "Build declared ownership/dependency/conflict evidence and optionally read one registered UMM instance.",
+                "Build declared ownership/dependency/conflict evidence and optionally read one comparison-accepted UMM instance; MO2 comparison remains pending.",
                 {
                     "game_id": bounded_id,
                     "instance_id": bounded_id,

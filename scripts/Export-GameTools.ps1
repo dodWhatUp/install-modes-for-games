@@ -14,7 +14,10 @@ function Get-GameExportClientDate {
 }
 
 function Get-GameSourcePaths {
-    param([ValidateSet('GameTools', 'GameInput')][string]$Bundle)
+    param(
+        [ValidateSet('GameTools', 'GameInput')][string]$Bundle,
+        [string]$RepositoryRoot = ''
+    )
     $inputPaths = @(
         'docs/AGENT-GAME-INPUT.md',
         'docs/GAME-TOOLS-ARCHITECTURE.md',
@@ -48,7 +51,7 @@ function Get-GameSourcePaths {
         'scripts/tests/Test-GameSourceExport.ps1'
     )
     if ($Bundle -eq 'GameInput') { return $inputPaths }
-    $inputPaths + @(
+    $taskPaths = $inputPaths + @(
         'AGENTS.md',
         'preferences/GENERAL.md',
         'docs/GAME-TOOLS-KNOWLEDGE-INDEX.md',
@@ -226,12 +229,18 @@ function Get-GameSourcePaths {
         'docs/AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.json',
         'docs/AI-PLANNING-READONLY-SLICE.md',
         'docs/AI-PLANNING-READONLY-VALIDATION.json',
+        'docs/MO2-READ-ADAPTER.md',
+        'docs/MO2-READ-ADAPTER-VALIDATION.json',
+        'docs/MO2-READ-ADAPTER-SOURCE-DELTA.json',
         'schemas/ai-result-envelope.schema.json',
         'schemas/game-tools-goal-plan.schema.json',
+        'schemas/mo2-profile-state.schema.json',
         'scripts/GameToolInstances.py',
         'scripts/GameToolPlanning.py',
+        'scripts/GameToolMO2Read.py',
         'scripts/Game-Instances.py',
         'scripts/tests/Test-GameToolPlanning.py',
+        'scripts/tests/Test-GameToolMO2Read.py',
         'scripts/GameToolAutomation.py',
         'scripts/GameToolAutomationPanel.py',
         'scripts/GameToolModIntegration.py',
@@ -414,6 +423,16 @@ function Get-GameSourcePaths {
         'scripts/tests/keybinds/test_pack_panel.py',
         'scripts/tests/keybinds/test_panel.py'
     )
+    if (!$RepositoryRoot) { $RepositoryRoot = Split-Path -Parent $PSScriptRoot }
+    foreach ($taskOptional in @(
+        'docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.md',
+        'docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.json'
+    )) {
+        if (Test-Path -LiteralPath (Join-Path $RepositoryRoot $taskOptional) -PathType Leaf) {
+            $taskPaths += $taskOptional
+        }
+    }
+    return $taskPaths
 }
 
 function Get-GameSourceHash {
@@ -577,6 +596,7 @@ function Get-GameBundleMetadata {
             @{name='ai_transport';path='scripts/GameToolAI.py'},
             @{name='instances';path='scripts/GameToolInstances.py'},
             @{name='planning';path='scripts/GameToolPlanning.py'},
+            @{name='mo2_read';path='scripts/GameToolMO2Read.py'},
             @{name='keybinds';path='scripts/GameToolKeybindIntegration.py'})) {
             $taskEntries = @($Plan | Where-Object path -eq $taskComponent.path)
             # Historical/synthetic plans may omit this later optional slice.
@@ -589,17 +609,29 @@ function Get-GameBundleMetadata {
     }
     $taskArchiveName = if ($Bundle -eq 'GameInput') { "GameInputModule-$taskVersion-$ClientDate.zip" }
         else { "Unified-Game-Tools-$($taskVersions.tool_hub)-Keybinds-Reviewed-Source-$ClientDate.zip" }
+    $taskMo2AcceptanceMd = if (@($Plan | Where-Object path -eq 'docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.md').Count) { 'docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.md' } else { $null }
+    $taskMo2AcceptanceJson = if (@($Plan | Where-Object path -eq 'docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.json').Count) { 'docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.json' } else { $null }
+    $taskMo2RuntimeStatus = if ($taskMo2AcceptanceMd -and $taskMo2AcceptanceJson) {
+        'A separate bounded MO2 Windows/source-package/external-client acceptance record is included. Export itself performs no runtime or real-game acceptance; real-profile, installation and main adoption remain separate.'
+    } else {
+        'MO2 Windows, complete dependency-backed suites, source-package and external-client acceptance remain pending. Export itself performs no runtime or real-game acceptance.'
+    }
     return [ordered]@{
         schema_version=1; bundle=$Bundle; bundle_kind='authored-source-and-sanitized-knowledge-checkpoint'
         client_date=$ClientDate; client_timezone='Asia/Jerusalem'; component_versions=$taskVersions
         archive_name=$taskArchiveName; source='https://github.com/dodWhatUp/install-modes-for-games'
-        source_state='Read-only planning 0.27 task-branch source based on adopted canonical main 108cb332b874583776c7a9cb1a19ce67c8cc96e5; exact source bytes and sanitized evidence; not claimed merged into main.'
-        canonical_reference_revision='108cb332b874583776c7a9cb1a19ce67c8cc96e5'
-        canonical_reference_meaning='Exact adopted-main base for the 0.27 read-only planning slice. A later task-branch commit does not imply main adoption.'
+        source_state='MO2 read-only adapter 0.28 task-branch source based on adopted canonical main 290bea7983ccca50073c5f45ce44337cacafc32a; exact source bytes and sanitized evidence; not claimed merged into main.'
+        canonical_reference_revision='290bea7983ccca50073c5f45ce44337cacafc32a'
+        canonical_reference_meaning='Exact adopted-main base after the 0.27 read-only planning source and its adoption record. This later 0.28 task branch is not main adoption.'
         windows_acceptance_reference='docs/AI-EFFICIENCY-FOUNDATION-WINDOWS-ACCEPTANCE-2026-10-14.json'
         reconciliation_reference='docs/AI-EFFICIENCY-FOUNDATION-RECONCILIATION-2026-10-14.json'
         planning_contract_reference='docs/AI-PLANNING-READONLY-SLICE.md'
-        runtime_status='The adopted 0.26 foundation passed native Windows/Tk and external stdio acceptance. For the 0.27 read-only planning/UMM slice, package, Windows, external-client and real-folder acceptance remain pending; export itself performs no runtime or real-game acceptance.'
+        mo2_contract_reference=if (@($Plan | Where-Object path -eq 'docs/MO2-READ-ADAPTER.md').Count) { 'docs/MO2-READ-ADAPTER.md' } else { $null }
+        mo2_validation_reference=if (@($Plan | Where-Object path -eq 'docs/MO2-READ-ADAPTER-VALIDATION.json').Count) { 'docs/MO2-READ-ADAPTER-VALIDATION.json' } else { $null }
+        mo2_source_delta_reference=if (@($Plan | Where-Object path -eq 'docs/MO2-READ-ADAPTER-SOURCE-DELTA.json').Count) { 'docs/MO2-READ-ADAPTER-SOURCE-DELTA.json' } else { $null }
+        mo2_windows_acceptance_reference=$taskMo2AcceptanceMd
+        mo2_windows_acceptance_json_reference=$taskMo2AcceptanceJson
+        runtime_status=$taskMo2RuntimeStatus
         input_validation_reference='examples/game-input/VALIDATION.json'; input_recorded_date=$taskValidation.recorded_date
         input_declared_runtime=$taskValidation.preview_runtime
         exclusions=@('game/mod/interpreter binaries and archives', 'installed settings and picture assets', 'native/onboard/remapper profiles and device identities', 'Hub private registry, imported reports, private session journals, saved-evidence packets and private workflow recipes/plans', 'saves, credentials, private paths and raw logs/video', 'unlisted sources and third-party SDK headers')
@@ -722,7 +754,7 @@ function Invoke-GameSourceExport {
 if (!$LibraryOnly) {
     $taskRepository = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
     if ($ClientDate -eq '') { $ClientDate = Get-GameExportClientDate }
-    $taskPlan = Get-GameSourcePlan -RepositoryRoot $taskRepository -RelativePaths (Get-GameSourcePaths -Bundle $Bundle)
+    $taskPlan = Get-GameSourcePlan -RepositoryRoot $taskRepository -RelativePaths (Get-GameSourcePaths -Bundle $Bundle -RepositoryRoot $taskRepository)
     $taskMetadata = Get-GameBundleMetadata -Bundle $Bundle -Plan $taskPlan -ClientDate $ClientDate
     Invoke-GameSourceExport -RepositoryRoot $taskRepository -OutputDirectory $OutputDirectory -Plan $taskPlan -Metadata $taskMetadata |
         ConvertTo-Json -Depth 8

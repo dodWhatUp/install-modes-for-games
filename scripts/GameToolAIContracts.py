@@ -13,7 +13,7 @@ import json
 import re
 from typing import Any
 
-VERSION = "0.27.0-preview.1"
+VERSION = "0.28.0-preview.1"
 SCHEMA_VERSION = 1
 CURSOR_VERSION = 1
 MAX_CURSOR_BYTES = 16 * 1024
@@ -272,11 +272,41 @@ _BLOCKERS = {
         "inspection_tool": "game_tools_instances",
         "user_action": "Review the exact manifest locally and remove or separately sanitize the private value.",
     },
+    "MANAGER_BINDING_REQUIRED": {
+        "meaning": "This game needs an exact locally registered manager/profile binding rather than a game folder alone.",
+        "effects_known": True, "retry": False,
+        "inspection_tool": "game_tools_instances",
+        "user_action": "Use the local register-mo2 route with the exact reviewed game, manager and profile directories.",
+    },
+    "MANAGER_STATE_INCOMPLETE": {
+        "meaning": "One required registered manager/profile directory, marker or declaration file is missing.",
+        "effects_known": True, "retry": False,
+        "inspection_tool": "game_tools_instances",
+        "user_action": "Review the same registered instance locally; do not discover or substitute another profile automatically.",
+    },
+    "INVALID_MANAGER_STATE": {
+        "meaning": "The selected manager declaration file is malformed or outside the reviewed text contract.",
+        "effects_known": True, "retry": False,
+        "inspection_tool": "game_tools_instance_inspect",
+        "user_action": "Review the exact manager-owned declaration locally and preserve its original bytes.",
+    },
+    "MANAGER_UNSUPPORTED": {
+        "meaning": "The selected instance is not owned by a read adapter accepted for this slice.",
+        "effects_known": True, "retry": False,
+        "inspection_tool": "game_tools_status",
+        "user_action": "Use an accepted UMM or MO2 instance, or complete a separate adapter acceptance.",
+    },
+    "ADAPTER_COMPARISON_PENDING": {
+        "meaning": "Read-only inspection is accepted, but planned-versus-observed comparison is not yet accepted for this adapter.",
+        "effects_known": True, "retry": False,
+        "inspection_tool": "game_tools_instance_inspect",
+        "user_action": "Review the declaration state only; design and accept a separate comparison contract before calculating differences.",
+    },
     "ADAPTER_ACCEPTANCE_PENDING": {
         "meaning": "The requested manager adapter has not passed this read-only slice's acceptance gate.",
         "effects_known": True, "retry": False,
         "inspection_tool": "game_tools_status",
-        "user_action": "Use the accepted UMM read adapter or complete separate adapter conformance work.",
+        "user_action": "Use an accepted UMM or MO2 read adapter, or complete separate adapter conformance work.",
     },
     "KEYBIND_PACK_REQUIRED": {
         "meaning": "No reviewed keybind data pack owns this game scope.",

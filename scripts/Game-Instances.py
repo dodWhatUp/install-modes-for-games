@@ -1,8 +1,9 @@
-"""Local operator CLI for opaque game-instance metadata and read-only UMM inspection.
+"""Local operator CLI for opaque game-instance metadata and read-only inspection.
 
 AI tools do not expose registration or filesystem paths.  This CLI never writes
-inside a game or manager profile; register writes only one private metadata
-record beneath the selected Game Tools data root.
+inside a game or manager profile; registration writes only one private metadata
+record beneath the selected Game Tools data root.  UMM and MO2 use separate local
+registration routes but the same instance owner and public inspection tools.
 """
 from __future__ import annotations
 
@@ -33,6 +34,17 @@ def main(argv=None):
     register.add_argument("--build", default="unknown")
     register.add_argument("--profile")
     register.add_argument("--confirm", action="store_true")
+
+    register_mo2 = sub.add_parser("register-mo2")
+    register_mo2.add_argument("--instance-id", required=True)
+    register_mo2.add_argument("--game-id", required=True)
+    register_mo2.add_argument("--game-dir", type=Path, required=True)
+    register_mo2.add_argument("--manager-root", type=Path, required=True)
+    register_mo2.add_argument("--profile-root", type=Path, required=True)
+    register_mo2.add_argument("--profile", required=True)
+    register_mo2.add_argument("--store", choices=["steam", "gog", "epic", "microsoft", "other", "unknown"], default="unknown")
+    register_mo2.add_argument("--build", default="unknown")
+    register_mo2.add_argument("--confirm", action="store_true")
 
     inspect = sub.add_parser("inspect")
     inspect.add_argument("--instance-id", required=True)
@@ -65,6 +77,18 @@ def main(argv=None):
                 store=args.store,
                 build=args.build,
                 profile=args.profile,
+                confirmed=args.confirm,
+            )
+        elif args.action == "register-mo2":
+            result = workspaces.instances.register_mo2_local(
+                instance_id=args.instance_id,
+                game_id=args.game_id,
+                game_dir=args.game_dir,
+                manager_root=args.manager_root,
+                profile_root=args.profile_root,
+                profile=args.profile,
+                store=args.store,
+                build=args.build,
                 confirmed=args.confirm,
             )
         elif args.action == "inspect":

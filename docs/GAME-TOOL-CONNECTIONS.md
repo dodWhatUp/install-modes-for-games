@@ -1,6 +1,25 @@
 # Measurement-tool connections and user control
 
 
+## 2026-10-15 — MO2 registered-profile read candidate 0.28
+
+The `0.28.0-preview.1` task branch reuses the adopted game-instance owner and
+adds one local-only MO2 profile binding. Its read adapter inspects exact registered
+game/manager markers and MO2 declaration files without starting MO2, using its
+API/VFS, reading downloads/archives, or writing the manager/game/profile. Public
+results distinguish declarations from runtime and redact private-looking names
+without exposing raw source hashes for those files.
+
+Local selected contracts currently cover UMM v1 compatibility, MO2 v2 records,
+multiple profiles, Windows alias ownership, UTF text, drift, privacy, HMAC state
+revisions, modern MCP envelopes, planning blockers, CLI, capabilities and
+updater/package refusal. Dependency-complete Windows, source export, extracted
+package and independent stdio gates are still pending; see
+[the contract](MO2-READ-ADAPTER.md) and
+[machine-readable status](MO2-READ-ADAPTER-VALIDATION.json). No real game/MO2
+profile, production installation, proposal, execution, input, capture or network
+operation is claimed.
+
 ## 2026-10-15 — Read-only planning and UMM instance adopted source 0.27
 
 The adopted `0.27.0-preview.1` source adds four modern multi-game read tools:

@@ -107,10 +107,14 @@ try {
     Assert-ExportTest ($testAllPaths -contains 'scripts/tests/requirements.txt' -and $testInputPaths -notcontains 'scripts/tests/requirements.txt') 'test-only dependency inventory'
     Assert-ExportTest ($testAllPaths -contains 'scripts/tests/GameToolAITestPackage.py' -and $testInputPaths -notcontains 'scripts/tests/GameToolAITestPackage.py') 'AI source-checkout package fixture inventory'
     $testPlanningPaths = @('docs/AI-PLANNING-READONLY-SLICE.md', 'docs/AI-PLANNING-READONLY-VALIDATION.json',
-        'schemas/game-tools-goal-plan.schema.json',
-        'scripts/GameToolInstances.py', 'scripts/GameToolPlanning.py', 'scripts/Game-Instances.py',
-        'scripts/tests/Test-GameToolPlanning.py')
-    Assert-ExportTest (@($testPlanningPaths | Where-Object { $testAllPaths -notcontains $_ -or $testInputPaths -contains $_ }).Count -eq 0) 'read-only planning, opaque instances and UMM adapter only in combined inventory'
+        'docs/MO2-READ-ADAPTER.md', 'docs/MO2-READ-ADAPTER-VALIDATION.json', 'docs/MO2-READ-ADAPTER-SOURCE-DELTA.json',
+        'schemas/game-tools-goal-plan.schema.json', 'schemas/mo2-profile-state.schema.json',
+        'scripts/GameToolInstances.py', 'scripts/GameToolPlanning.py', 'scripts/GameToolMO2Read.py', 'scripts/Game-Instances.py',
+        'scripts/tests/Test-GameToolPlanning.py', 'scripts/tests/Test-GameToolMO2Read.py')
+    Assert-ExportTest (@($testPlanningPaths | Where-Object { $testAllPaths -notcontains $_ -or $testInputPaths -contains $_ }).Count -eq 0) 'read-only planning, opaque instances and UMM/MO2 adapters only in combined inventory'
+    $testMo2AcceptancePaths = @('docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.md',
+        'docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.json')
+    Assert-ExportTest (@($testMo2AcceptancePaths | Where-Object { $testAllPaths -contains $_ }).Count -eq 0) 'future MO2 acceptance records are not required before they exist'
     Assert-ExportTest ($testAllPaths -contains 'scripts/GameToolKeybindIntegration.py' -and $testAllPaths -contains 'scripts/game_keybind_ops/core.py' -and $testAllPaths -contains 'schemas/game-pack.schema.json' -and $testAllPaths -contains 'scripts/tests/Test-GameToolKeybindMerge.py') 'merged keybind source, schema and conflict tests inventory'
     Assert-ExportTest ($testAllPaths -contains 'scripts/GameToolCatalogBridge.py' -and $testAllPaths -contains 'scripts/GameToolCatalogPanel.py' -and $testAllPaths -contains 'scripts/tests/Test-GameToolHubCatalog.py') 'shared catalog GUI integration inventory'
     Assert-ExportTest ($testAllPaths -contains 'scripts/GameFgInspector.py' -and $testAllPaths -contains 'scripts/GameFgPreflight.py' -and $testAllPaths -contains 'scripts/tests/test_game_fg_inspector.py' -and $testAllPaths -contains 'scripts/tests/test_game_fg_preflight.py') 'read-only FG preflight modules and fixture inventory'
@@ -226,14 +230,27 @@ try {
     $testLayerMetadata = Get-GameBundleMetadata -Bundle GameTools -Plan $testUnifiedPlan -ClientDate '2026-10-12'
     Assert-ExportTest ($testLayerMetadata.component_versions.workspace -eq '0.1.0' -and
         $testLayerMetadata.component_versions.user_data -eq '0.1.0' -and $testLayerMetadata.component_versions.user_data_panel -eq '0.1.0') 'layer versions captured separately from data/schema versions'
-    foreach ($testComponentName in @('Instances','Planning')) {
+    foreach ($testComponentName in @('Instances','Planning','MO2Read')) {
         $testComponentPath = 'scripts/GameTool' + $testComponentName + '.py'
         Write-ExportFixture $testComponentPath 'VERSION = "0.1.0"'
         $testUnifiedPlan += @(Get-GameSourcePlan -RepositoryRoot $testRepo -RelativePaths @($testComponentPath))
     }
+    foreach ($testMo2Document in @('docs/MO2-READ-ADAPTER.md','docs/MO2-READ-ADAPTER-VALIDATION.json','docs/MO2-READ-ADAPTER-SOURCE-DELTA.json','docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.md','docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.json')) {
+        Write-ExportFixture $testMo2Document $(if ($testMo2Document.EndsWith('.json')) { '{}' } else { '# MO2 fixture' })
+        $testUnifiedPlan += @(Get-GameSourcePlan -RepositoryRoot $testRepo -RelativePaths @($testMo2Document))
+    }
+    $testPathsWithAcceptance = @(Get-GameSourcePaths -Bundle GameTools -RepositoryRoot $testRepo)
+    Assert-ExportTest (@($testMo2AcceptancePaths | Where-Object { $testPathsWithAcceptance -notcontains $_ }).Count -eq 0) 'existing MO2 acceptance records become optional source members'
     $testPlanningMetadata = Get-GameBundleMetadata -Bundle GameTools -Plan $testUnifiedPlan -ClientDate '2026-10-12'
     Assert-ExportTest ($testPlanningMetadata.component_versions.instances -eq '0.1.0' -and
-        $testPlanningMetadata.component_versions.planning -eq '0.1.0') 'instance and planning versions captured from exact source bytes'
+        $testPlanningMetadata.component_versions.planning -eq '0.1.0' -and
+        $testPlanningMetadata.component_versions.mo2_read -eq '0.1.0') 'instance, planning and MO2 read versions captured from exact source bytes'
+    Assert-ExportTest ($testPlanningMetadata.mo2_contract_reference -eq 'docs/MO2-READ-ADAPTER.md' -and
+        $testPlanningMetadata.mo2_validation_reference -eq 'docs/MO2-READ-ADAPTER-VALIDATION.json' -and
+        $testPlanningMetadata.mo2_source_delta_reference -eq 'docs/MO2-READ-ADAPTER-SOURCE-DELTA.json' -and
+        $testPlanningMetadata.mo2_windows_acceptance_reference -eq 'docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.md' -and
+        $testPlanningMetadata.mo2_windows_acceptance_json_reference -eq 'docs/MO2-READ-ADAPTER-WINDOWS-ACCEPTANCE-2026-10-15.json' -and
+        $testPlanningMetadata.runtime_status -like '*separate bounded MO2*included*') 'MO2 contract, validation, source-delta and optional Windows acceptance references retained in manifest metadata'
     Assert-ExportTest (@($testAllPaths | Sort-Object -Unique).Count -eq $testAllPaths.Count) 'curated inventory has no duplicates'
     "PASS: $testCount source-export contracts; temporary synthetic fixtures only, no app/game/input/capture or upload."
 } finally {

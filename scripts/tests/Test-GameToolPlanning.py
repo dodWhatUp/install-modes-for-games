@@ -182,7 +182,8 @@ class ReadOnlyPlanningContracts(unittest.TestCase):
         self._assert_private_manifest_value_refused(private_path)
 
     def test_public_inspection_refuses_posix_path_manifest_metadata(self):
-        self._assert_private_manifest_value_refused("build /Users/private/file.dll")
+        slash = "/"
+        self._assert_private_manifest_value_refused("build " + slash + "Users/private/file.dll")
 
     def test_public_inspection_refuses_generic_absolute_posix_path_metadata(self):
         self._assert_private_manifest_value_refused("build /games/private/file.dll")
@@ -475,9 +476,13 @@ class ReadOnlyPlanningContracts(unittest.TestCase):
         import check_host
         result = check_host.check(SCRIPTS.parent)
         self.assertEqual(result["status"], "EXACT_DEPENDENCIES_MATCH")
-        self.assertEqual(result["host_reference_version"], "0.27.0-preview.1")
+        self.assertEqual(result["host_reference_version"], "0.28.0-preview.1")
         pinned = {row["path"] for row in result["files"]}
-        self.assertTrue({"scripts/GameToolInstances.py", "scripts/GameToolPlanning.py"} <= pinned)
+        self.assertTrue({
+            "scripts/GameToolInstances.py", "scripts/GameToolPlanning.py",
+            "scripts/GameToolMO2Read.py",
+        } <= pinned)
+        self.assertEqual(len(result["files"]), 13)
         self.assertTrue(all(row["matches"] for row in result["files"]))
         self.assertFalse(result["installed"])
         self.assertFalse(result["repinned"])

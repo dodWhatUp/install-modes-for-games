@@ -1,9 +1,11 @@
-"""Private game-installation identities and one bounded UMM read adapter.
+"""Private game-installation identities and bounded read-only adapters.
 
 Registration is an explicit local operator action.  Modern AI tools may list or
 inspect only an already registered opaque instance ID; they never receive or
 supply a filesystem path.  This module writes registry metadata only and never
 writes a game, manager profile, loader, mod, save, input profile, or setting.
+Legacy UMM records remain readable; MO2 uses an additive version-2 private
+binding inside the same registry owner rather than a competing registry.
 """
 from __future__ import annotations
 
@@ -19,13 +21,20 @@ from game_mod_ops.safety import (
     read_json, require, slug,
 )
 
-VERSION = "0.1.0"
-SCHEMA_VERSION = 1
+VERSION = "0.2.0"
+SCHEMA_VERSION = 2
+LEGACY_SCHEMA_VERSION = 1
 MAX_INSTANCES = 64
 MAX_RECORD_BYTES = 64 * 1024
 MAX_PUBLIC_VALUES = 4096
-_ACCEPTED_ADAPTERS = {"umm"}
+_ACCEPTED_ADAPTERS = {"umm", "mo2"}
 _STORES = {"steam", "gog", "epic", "microsoft", "other", "unknown"}
+_BASE_BODY_FIELDS = {
+    "instance_id", "game_id", "manager_id", "adapter", "platform",
+    "store", "build", "profile", "definition_revision",
+    "support_revision", "game_dir", "nonce",
+}
+_MANAGER_BINDING_FIELDS = {"kind", "manager_root", "profile_root"}
 _SHORT = re.compile(r"[^\x00-\x1f\x7f]{1,120}\Z")
 _SHA = re.compile(r"[a-f0-9]{64}\Z")
 _PRIVATE_METADATA = (
@@ -126,10 +135,21 @@ class InstanceRegistry:
         else:
             raise ModError("ADAPTER_UNAVAILABLE",
                            "This game has no reviewed folder-identification definition.")
-        require(definition["adapter"] in _ACCEPTED_ADAPTERS,
-                "ADAPTER_ACCEPTANCE_PENDING",
-                "This slice accepts only the reviewed UMM read adapter.")
+        self._read_adapter(definition)
         return definition, support_revision
+
+    def adapter_for_game(self, game_id):
+        definition, _ = self._definition(game_id)
+        return self._read_adapter(definition)
+
+    @staticmethod
+    def _read_adapter(definition):
+        if definition.get("adapter") == "umm":
+            return "umm"
+        if definition.get("adapter") == "external" and definition.get("manager_id") == "mod-organizer-2":
+            return "mo2"
+        raise ModError("ADAPTER_ACCEPTANCE_PENDING",
+                       "This game has no separately accepted installed-state read adapter.")
 
     def _paths(self):
         if not self.root.exists():
@@ -146,22 +166,35 @@ class InstanceRegistry:
     def _validate_record(value):
         require(type(value) is dict and set(value) == {"schema_version", "kind", "body", "revision"},
                 "INSTANCE_CORRUPT", "Unexpected game-instance record fields.")
-        require(value["schema_version"] == SCHEMA_VERSION and value["kind"] == "game-instance",
+        schema_version = value["schema_version"]
+        require(schema_version in {LEGACY_SCHEMA_VERSION, SCHEMA_VERSION} and value["kind"] == "game-instance",
                 "INSTANCE_CORRUPT", "Unsupported game-instance record.")
         body = value["body"]
-        fields = {
-            "instance_id", "game_id", "manager_id", "adapter", "platform",
-            "store", "build", "profile", "definition_revision",
-            "support_revision", "game_dir", "nonce",
-        }
-        require(type(body) is dict and set(body) == fields,
+        expected_fields = (
+            _BASE_BODY_FIELDS if schema_version == LEGACY_SCHEMA_VERSION else
+            _BASE_BODY_FIELDS | {"manager_binding"}
+        )
+        require(type(body) is dict and set(body) == expected_fields,
                 "INSTANCE_CORRUPT", "Unexpected game-instance body fields.")
         slug(body["instance_id"]); slug(body["game_id"]); slug(body["manager_id"])
         require(body["adapter"] in _ACCEPTED_ADAPTERS and body["platform"] in {"windows", "linux", "macos"},
                 "INSTANCE_CORRUPT", "Instance adapter or platform is unsupported.")
+        if schema_version == LEGACY_SCHEMA_VERSION:
+            require(body["adapter"] == "umm",
+                    "INSTANCE_CORRUPT", "Legacy instance records are accepted only for the UMM adapter.")
+        else:
+            require(body["adapter"] == "mo2" and body["manager_id"] == "mod-organizer-2",
+                    "INSTANCE_CORRUPT", "Version-2 instance records require the reviewed MO2 binding.")
+            binding = body["manager_binding"]
+            require(type(binding) is dict and set(binding) == _MANAGER_BINDING_FIELDS and
+                    binding.get("kind") == "mo2-profile",
+                    "INSTANCE_CORRUPT", "The private MO2 manager binding is invalid.")
+            require(all(type(binding[key]) is str and os.path.isabs(binding[key])
+                        for key in ("manager_root", "profile_root")),
+                    "INSTANCE_CORRUPT", "Private MO2 roots must be absolute paths.")
         require(body["store"] in _STORES, "INSTANCE_CORRUPT", "Instance store is unsupported.")
         _text(body["build"], "build")
-        _text(body["profile"], "profile", optional=True)
+        _text(body["profile"], "profile", optional=body["adapter"] != "mo2")
         require(type(body["definition_revision"]) is str and bool(_SHA.fullmatch(body["definition_revision"])),
                 "INSTANCE_CORRUPT", "Definition revision is invalid.")
         require(body["support_revision"] is None or
@@ -211,6 +244,8 @@ class InstanceRegistry:
             "path_included": False,
             "writes_game_files": False,
             "runtime_verified": False,
+            "manager_profile_registered": body["adapter"] == "mo2",
+            "record_schema_version": record["schema_version"],
         }
 
     def list_public(self, game_id=None, limit=50):
@@ -246,6 +281,7 @@ class InstanceRegistry:
             "truncated": matched > len(rows),
             "registration": "LOCAL_OPERATOR_ONLY",
             "accepted_adapter": "umm",
+            "accepted_adapters": ["umm", "mo2"],
             "paths_included": False,
             "writes_game_files": False,
         }
@@ -262,6 +298,9 @@ class InstanceRegistry:
         require(store in _STORES, "INSTANCE_SCHEMA", "Choose a supported store label.")
         build = _text(build, "build"); profile = _text(profile, "profile", optional=True)
         definition, support_revision = self._definition(game_id)
+        require(self._read_adapter(definition) == "umm",
+                "MANAGER_BINDING_REQUIRED",
+                "This game requires the separate local register-mo2 route with exact manager and profile roots.")
         root = no_links(Path(game_dir).expanduser().absolute())
         require(root.is_dir(), "GAME_MISSING", "Choose the exact existing game directory.")
         observation = inspect_game(root, definition)
@@ -310,7 +349,7 @@ class InstanceRegistry:
                         "This game directory already belongs to another registered instance.")
             body = {**body_common, "nonce": uuid.uuid4().hex}
             record = {
-                "schema_version": SCHEMA_VERSION,
+                "schema_version": LEGACY_SCHEMA_VERSION,
                 "kind": "game-instance",
                 "body": body,
                 "revision": object_hash(body),
@@ -329,33 +368,177 @@ class InstanceRegistry:
             "game_files_written": False,
         }
 
+    def register_mo2_local(self, *, instance_id, game_id, game_dir, manager_root,
+                           profile_root, profile, store="unknown", build="unknown",
+                           confirmed=False):
+        """Register one exact MO2 profile binding after explicit local confirmation."""
+        require(confirmed, "LOCAL_APPROVAL_REQUIRED",
+                "Registering an MO2 profile identity requires explicit local confirmation.")
+        instance_id = slug(instance_id); game_id = slug(game_id)
+        require(store in _STORES, "INSTANCE_SCHEMA", "Choose a supported store label.")
+        build = _text(build, "build"); profile = _text(profile, "profile")
+        definition, support_revision = self._definition(game_id)
+        require(self._read_adapter(definition) == "mo2",
+                "MANAGER_UNSUPPORTED", "The selected game is not owned by the reviewed MO2 read adapter.")
+        game = no_links(Path(game_dir).expanduser().absolute())
+        manager = no_links(Path(manager_root).expanduser().absolute())
+        profile_path = no_links(Path(profile_root).expanduser().absolute())
+        require(game.is_dir(), "GAME_MISSING", "Choose the exact existing game directory.")
+        require(manager.is_dir() and profile_path.is_dir(),
+                "MANAGER_STATE_INCOMPLETE", "Choose exact existing MO2 manager and profile directories.")
+        # Validate the reviewed game marker before binding a manager profile.
+        game_before = inspect_game(game, definition)["game_markers"]
+        body_common = {
+            "instance_id": instance_id,
+            "game_id": game_id,
+            "manager_id": definition["manager_id"],
+            "adapter": "mo2",
+            "platform": definition["platform"],
+            "store": store,
+            "build": build,
+            "profile": profile,
+            "definition_revision": object_hash(definition),
+            "support_revision": support_revision,
+            "game_dir": str(game),
+            "manager_binding": {
+                "kind": "mo2-profile",
+                "manager_root": str(manager),
+                "profile_root": str(profile_path),
+            },
+        }
+        from GameToolMO2Read import inspect_instance as inspect_mo2
+        with local_lock(self.root, ".game-instance-registry.lock"):
+            target = contained(self.root, instance_id + ".json")
+            if target.exists():
+                current = self._read_path(target)
+                current_body = current["body"]
+                require(current["schema_version"] == SCHEMA_VERSION and
+                        current_body.get("adapter") == "mo2" and
+                        type(current_body.get("manager_binding")) is dict,
+                        "INSTANCE_CONFLICT",
+                        "This instance ID already belongs to another reviewed adapter or record version.")
+                scalar_keys = set(body_common) - {"game_dir", "manager_binding"}
+                comparable = {key: current_body.get(key) for key in scalar_keys}
+                expected = {key: body_common[key] for key in scalar_keys}
+                current_binding = current_body["manager_binding"]
+                same_roots = (
+                    _same_path(Path(current_body["game_dir"]), game) and
+                    _same_path(Path(current_binding["manager_root"]), manager) and
+                    _same_path(Path(current_binding["profile_root"]), profile_path)
+                )
+                require(comparable == expected and same_roots,
+                        "INSTANCE_CONFLICT",
+                        "This instance ID already describes another reviewed installation or profile.")
+                observation = inspect_mo2(current_body, current["revision"], game_before)
+                require(inspect_game(game, definition)["game_markers"] == game_before,
+                        "SOURCE_CHANGED", "Game marker changed during MO2 inspection.")
+                return {
+                    "instance": self._public(current, status="ALREADY_REGISTERED_READ_ONLY"),
+                    "inventory_summary": {
+                        "declared_mods": observation["mods"]["total_rows"],
+                        "declared_plugins": observation["plugins"]["total_rows"],
+                        "complete": observation["complete"],
+                        "runtime": "NOT_VERIFIED",
+                    },
+                    "metadata_written": False,
+                    "manager_files_written": False,
+                    "game_files_written": False,
+                }
+            require(len(self._paths()) < MAX_INSTANCES, "RECORD_LIMIT",
+                    "At most 64 local game instances are retained.")
+            for path in self._paths():
+                current = self._read_path(path)
+                current_body = current["body"]
+                if current_body["adapter"] == "mo2":
+                    binding = current_body["manager_binding"]
+                    require(not _same_path(Path(binding["profile_root"]), profile_path),
+                            "INSTANCE_PATH_OWNED",
+                            "This MO2 profile directory already belongs to another registered instance.")
+                else:
+                    require(not _same_path(Path(current_body["game_dir"]), game),
+                            "INSTANCE_PATH_OWNED",
+                            "This game directory already belongs to another non-MO2 registered instance.")
+            body = {**body_common, "nonce": uuid.uuid4().hex}
+            record = {
+                "schema_version": SCHEMA_VERSION,
+                "kind": "game-instance",
+                "body": body,
+                "revision": object_hash(body),
+            }
+            # Inspect before committing metadata; a failed or private read leaves no record.
+            observation = inspect_mo2(body, record["revision"], game_before)
+            require(inspect_game(game, definition)["game_markers"] == game_before,
+                    "SOURCE_CHANGED", "Game marker changed during MO2 inspection.")
+            _assert_public_metadata(observation)
+            json_new(target, record)
+            verified = self._read_path(target)
+        return {
+            "instance": self._public(verified),
+            "inventory_summary": {
+                "declared_mods": observation["mods"]["total_rows"],
+                "declared_plugins": observation["plugins"]["total_rows"],
+                "complete": observation["complete"],
+                "runtime": "NOT_VERIFIED",
+            },
+            "metadata_written": True,
+            "manager_files_written": False,
+            "game_files_written": False,
+        }
+
     def inspect(self, instance_id):
         record = self._read(instance_id)
         body = record["body"]
         definition, support_revision = self._definition(body["game_id"])
-        require(object_hash(definition) == body["definition_revision"] and
+        read_adapter = self._read_adapter(definition)
+        require(read_adapter == body["adapter"] and
+                object_hash(definition) == body["definition_revision"] and
                 support_revision == body["support_revision"],
                 "INSTANCE_STALE",
-                "The support definition changed after instance registration; review it locally.")
-        observation = inspect_game(Path(body["game_dir"]), definition)
-        _assert_public_metadata(observation)
-        return {
-            "instance": self._public(record),
-            "inventory": observation,
-            "observation_revision": object_hash(observation),
-            "adapter_contract": {
+                "The support definition or accepted read adapter changed after registration; review it locally.")
+        if read_adapter == "umm":
+            observation = inspect_game(Path(body["game_dir"]), definition)
+            contract = {
                 "adapter": "umm",
                 "version": 1,
                 "reads": ["executable_markers", "loader_markers", "Mods/Info.json", "declared_assemblies"],
                 "writes": [],
                 "manager_profile_read": False,
                 "runtime_verified": False,
-            },
+            }
+        else:
+            from GameToolMO2Read import inspect_instance as inspect_mo2
+            game_before = inspect_game(Path(body["game_dir"]), definition)["game_markers"]
+            observation = inspect_mo2(body, record["revision"], game_before)
+            require(inspect_game(Path(body["game_dir"]), definition)["game_markers"] == game_before,
+                    "SOURCE_CHANGED", "Game marker changed during MO2 inspection.")
+            contract = {
+                "adapter": "mo2",
+                "version": 1,
+                "reads": [
+                    "registered_game_marker", "profile/modlist.txt", "profile/plugins.txt",
+                    "loadorder_presence", "manager_marker_presence",
+                ],
+                "writes": [],
+                "manager_profile_read": True,
+                "runtime_verified": False,
+            }
+        _assert_public_metadata(observation)
+        observation_revision = observation.get("state_revision") or object_hash(observation)
+        return {
+            "instance": self._public(record),
+            "inventory": observation,
+            "observation_revision": observation_revision,
+            "adapter_contract": contract,
             "paths_included": False,
+            "manager_files_written": False,
             "game_files_written": False,
         }
 
     def compare(self, instance_id, operation_plan):
+        record = self._read(instance_id)
+        require(record["body"]["adapter"] == "umm",
+                "ADAPTER_COMPARISON_PENDING",
+                "Planned-versus-observed comparison is not accepted for this read adapter.")
         inspected = self.inspect(instance_id)
         comparison = compare_installed(operation_plan, inspected["inventory"])
         return {

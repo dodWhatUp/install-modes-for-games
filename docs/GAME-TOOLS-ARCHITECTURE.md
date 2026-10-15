@@ -1,6 +1,30 @@
 # Unified game tools architecture and build plan
 
 
+## 2026-10-15 — MO2 read-only adapter candidate 0.28
+
+The current task-branch candidate extends the adopted instance/planning owner
+rather than creating a second registry. An additive private schema-2 instance
+record binds one exact game, MO2 manager and profile after explicit local
+confirmation; existing UMM schema-1 records remain readable. The adapter reads
+only reviewed game/manager markers plus exact `modlist.txt` and optional
+`plugins.txt` declarations, and repeats those reads to refuse drift.
+
+Private-looking names are replaced with neutral ordinal tokens. Raw source hashes
+are not public when a name was redacted; a nonce-keyed HMAC still changes the
+public state revision when private source bytes change. The existing modern
+`game_tools_instance_inspect` tool exposes the result without adding path or
+registration arguments. MO2 comparison, virtual deployment, conflicts, process
+state, runtime and gameplay remain explicitly unaccepted. Read the
+[MO2 contract](MO2-READ-ADAPTER.md) and
+[validation boundary](MO2-READ-ADAPTER-VALIDATION.json).
+
+The combined exporter, Preview launcher and updater require the MO2 module,
+schema, CLI and adopted planning owners together, and cross-check component
+version labels against exact source bytes. Native Windows, package and external
+client acceptance remain pending. No real manager or game has been inspected and
+no write transaction has been added.
+
 ## 2026-10-14 — Read-only planning and UMM instance slice
 
 The canonical adopted source is `0.27.0-preview.1`. It adds an opaque private

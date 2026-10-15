@@ -34,7 +34,7 @@ from game_keybind_ops.packs import list_packs as list_keybind_packs
 from game_keybind_ops.effective import list_instances as list_keybind_instances
 from game_keybind_ops.deps import Error as KeybindError
 
-VERSION = "0.2.1"
+VERSION = "0.2.2"
 BASE = Path(__file__).resolve().parents[1]
 MAX_GAMES = 64
 MAX_JOBS = 128
@@ -281,6 +281,16 @@ class GameWorkspaces:
                 'keybind_pack_revision':None})
             row['keybind_pack_available']=True
             row['keybind_pack_revision']=(pin.get('pin') or {}).get('sha256')
+        for ident,row in rows.items():
+            try:
+                read_adapter=self.instances.adapter_for_game(ident)
+            except ModError as error:
+                if error.code not in {'ADAPTER_ACCEPTANCE_PENDING','ADAPTER_UNAVAILABLE'}:
+                    raise
+                read_adapter=None
+            row['installed_read_adapter']=read_adapter
+            row['instance_registration']='LOCAL_OPERATOR_ONLY' if read_adapter else 'UNAVAILABLE'
+            row['planned_installed_comparison']=read_adapter=='umm'
         return sorted(rows.values(),key=lambda r:(r['id']!='pathfinder-kingmaker',r['name'].casefold()))
 
     def _new_service(self,game_id,row,has_keybind):
@@ -547,6 +557,9 @@ class GameWorkspaces:
                 'recipe_revision':r['recipe_revision'],'installation':'unknown',
                 'support_revision':r.get('support_revision'),
                 'adapter_capabilities':r.get('adapter_capabilities',{}),
+                'installed_read_adapter':r.get('installed_read_adapter'),
+                'instance_registration':r.get('instance_registration','UNAVAILABLE'),
+                'planned_installed_comparison':r.get('planned_installed_comparison',False),
                 'keybind_pack_available':r.get('keybind_pack_available',False),
                 'keybind_pack_revision':r.get('keybind_pack_revision')}
                for r in rows if game_id is None or r['id']==game_id]
@@ -563,6 +576,10 @@ class GameWorkspaces:
                   'capabilities':{'requestable':['mods.create_plan','mods.download','mods.stage',*KEYBIND_OPERATIONS],
                   'local_approval_required':True,'max_local_workers':2,'max_transfers':1,
                   'installed_game_control':False,'automatic_cloud_send':False,
+                  'installed_state_read_adapters':['umm','mo2'],
+                  'instance_registration':'LOCAL_OPERATOR_ONLY',
+                  'planned_installed_comparison_adapters':['umm'],
+                  'manager_profile_writes':False,
                   'keybind_gameplay_verified':False}}
         revisions={k:object_hash(v) for k,v in sections.items()}
         out={'schema_version':1,'kind':'game_workspace_context','game_id':game_id,'revisions':revisions,

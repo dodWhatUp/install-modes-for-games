@@ -18,7 +18,7 @@ import subprocess
 import uuid
 import zipfile
 
-VERSION = "0.2.0"
+VERSION = "0.2.1"
 BOOTSTRAP = "scripts/Start-UnifiedTools.pyw"
 SOURCE_LOCK = ".game-tools-owner.lock"
 STUDIO = {
@@ -30,7 +30,10 @@ STUDIO = {
 REQUIRED = {*STUDIO.values(), "scripts/Game-Tool-Hub.py", "scripts/GameToolUnified.py",
             "scripts/GameToolUnifiedPanel.py", "scripts/Start-UnifiedTools.pyw",
             "scripts/GameToolKeybindIntegration.py", "scripts/game_keybind_ops/core.py",
-            "schemas/game-pack.schema.json"}
+            "schemas/game-pack.schema.json", "scripts/GameToolInstances.py",
+            "scripts/GameToolPlanning.py", "scripts/GameToolMO2Read.py",
+            "scripts/Game-Instances.py", "schemas/game-tools-goal-plan.schema.json",
+            "schemas/mo2-profile-state.schema.json"}
 MAX_BYTES = 32 * 1024 * 1024
 BLOCKED = {"skyrimse.exe", "skyrimvr.exe", "cyberpunk2077.exe", "obs64.exe", "obs32.exe",
            "presentmon.exe", "presentmonconsole.exe", "frameview.exe", "capframex.exe"}
@@ -114,7 +117,7 @@ def check_manifest(manifest, payloads):
     versions = manifest.get("component_versions", {})
     if not isinstance(rows, list) or not 1 <= len(rows) <= 512:
         raise ValueError("Invalid bounded source inventory.")
-    for key in ("tool_hub", "overlay_studio"):
+    for key in ("tool_hub", "overlay_studio", "instances", "planning", "mo2_read"):
         if not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+(?:-[A-Za-z0-9]+(?:\.[A-Za-z0-9]+)*)?", str(versions.get(key, ""))):
             raise ValueError("Invalid component version.")
     seen = set()
@@ -134,7 +137,10 @@ def check_manifest(manifest, payloads):
     # Source version labels must agree with the inventory, without executing it.
     for name, key, expression in (
         ("scripts/Game-Tool-Hub.py", "tool_hub", r'^VERSION = "([^"]+)"'),
-        (STUDIO["AzeronOverlayStudio.ahk"], "overlay_studio", r'\s*this.Version := "([^"]+)"')):
+        (STUDIO["AzeronOverlayStudio.ahk"], "overlay_studio", r'\s*this.Version := "([^"]+)"'),
+        ("scripts/GameToolInstances.py", "instances", r'^VERSION = "([^"]+)"'),
+        ("scripts/GameToolPlanning.py", "planning", r'^VERSION = "([^"]+)"'),
+        ("scripts/GameToolMO2Read.py", "mo2_read", r'^VERSION = "([^"]+)"')):
         labels = re.findall(expression, payloads[name].decode("utf-8-sig"), re.M)
         if labels != [versions[key]]:
             raise ValueError("Source version does not agree with manifest.")

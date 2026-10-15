@@ -19,7 +19,12 @@ def package(revision="0.12.0",suffix="first"):
     payloads={name: ("; fixture "+suffix).encode() for name in api.REQUIRED}
     payloads["scripts/Game-Tool-Hub.py"]=f'VERSION = "{revision}"\n'.encode()
     payloads[api.STUDIO["AzeronOverlayStudio.ahk"]]=b'        this.Version := "2.2.0-unified.1"\n'
-    manifest={"schema_version":1,"bundle":"GameTools","component_versions":{"tool_hub":revision,"overlay_studio":"2.2.0-unified.1"},
+    payloads["scripts/GameToolInstances.py"]=b'VERSION = "0.2.0"\n'
+    payloads["scripts/GameToolPlanning.py"]=b'VERSION = "0.2.0"\n'
+    payloads["scripts/GameToolMO2Read.py"]=b'VERSION = "0.2.0"\n'
+    manifest={"schema_version":1,"bundle":"GameTools","component_versions":{
+        "tool_hub":revision,"overlay_studio":"2.2.0-unified.1",
+        "instances":"0.2.0","planning":"0.2.0","mo2_read":"0.2.0"},
         "files":[{"path":n,"bytes":len(raw),"sha256":api.digest(raw)} for n,raw in sorted(payloads.items())]}
     return {"manifest":manifest,"payloads":payloads,"sha256":api.digest(suffix.encode())}
 
@@ -160,6 +165,36 @@ class Updates(unittest.TestCase):
                 r["payloads"].pop("scripts/GameToolUnifiedPanel.py")
                 r["manifest"]["files"]=[x for x in r["manifest"]["files"] if x["path"]!="scripts/GameToolUnifiedPanel.py"]
             with self.assertRaises(ValueError): api.check_manifest(r["manifest"],r["payloads"])
+
+    def test_mo2_planning_members_are_required_together(self):
+        for missing in (
+            "scripts/GameToolInstances.py", "scripts/GameToolPlanning.py",
+            "scripts/GameToolMO2Read.py", "scripts/Game-Instances.py",
+            "schemas/game-tools-goal-plan.schema.json", "schemas/mo2-profile-state.schema.json",
+        ):
+            with self.subTest(missing=missing):
+                release=package()
+                release["payloads"].pop(missing)
+                release["manifest"]["files"]=[row for row in release["manifest"]["files"] if row["path"]!=missing]
+                with self.assertRaises(ValueError):
+                    api.check_manifest(release["manifest"],release["payloads"])
+
+    def test_mo2_component_versions_match_exact_source_labels(self):
+        for key,path in (
+            ("instances","scripts/GameToolInstances.py"),
+            ("planning","scripts/GameToolPlanning.py"),
+            ("mo2_read","scripts/GameToolMO2Read.py"),
+        ):
+            with self.subTest(key=key):
+                release=package()
+                release["manifest"]["component_versions"][key]="9.9.9"
+                with self.assertRaises(ValueError):
+                    api.check_manifest(release["manifest"],release["payloads"])
+            with self.subTest(key=key,missing=True):
+                release=package()
+                release["manifest"]["component_versions"].pop(key)
+                with self.assertRaises(ValueError):
+                    api.check_manifest(release["manifest"],release["payloads"])
 
     def test_local_paths_refuse_relative_roots(self):
         for path in ("relative",Path(self.base.anchor)):

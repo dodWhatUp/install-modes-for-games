@@ -1,0 +1,482 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/game-tools/mo2-profile-state.schema.json",
+  "title": "Game Tools bounded MO2 profile declaration state",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "instance_id",
+    "game_id",
+    "manager_id",
+    "profile",
+    "instance_revision",
+    "game_markers",
+    "source_files",
+    "mods",
+    "plugins",
+    "loadorder_file_present",
+    "manager_ini_present",
+    "complete",
+    "warnings",
+    "evidence",
+    "virtual_deployment",
+    "manager_process",
+    "runtime",
+    "gameplay",
+    "paths_included",
+    "automatic_discovery",
+    "writes_manager_or_game",
+    "state_revision"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "kind": {
+      "const": "mo2_registered_profile_state"
+    },
+    "instance_id": {
+      "$ref": "#/$defs/id"
+    },
+    "game_id": {
+      "$ref": "#/$defs/id"
+    },
+    "manager_id": {
+      "const": "mod-organizer-2"
+    },
+    "profile": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "instance_revision": {
+      "$ref": "#/$defs/sha256"
+    },
+    "source_files": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 2,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/modlist_source_file"
+        },
+        {
+          "$ref": "#/$defs/plugins_source_file"
+        }
+      ],
+      "items": false
+    },
+    "mods": {
+      "$ref": "#/$defs/mod_list"
+    },
+    "plugins": {
+      "$ref": "#/$defs/plugin_list"
+    },
+    "loadorder_file_present": {
+      "type": "boolean"
+    },
+    "manager_ini_present": {
+      "type": "boolean"
+    },
+    "complete": {
+      "type": "boolean"
+    },
+    "warnings": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 512
+      }
+    },
+    "evidence": {
+      "const": "registered_exact_files_read_only"
+    },
+    "virtual_deployment": {
+      "const": "NOT_READ"
+    },
+    "manager_process": {
+      "const": "NOT_READ"
+    },
+    "runtime": {
+      "const": "NOT_VERIFIED"
+    },
+    "gameplay": {
+      "const": "NOT_VERIFIED"
+    },
+    "paths_included": {
+      "const": false
+    },
+    "automatic_discovery": {
+      "const": false
+    },
+    "writes_manager_or_game": {
+      "const": false
+    },
+    "state_revision": {
+      "$ref": "#/$defs/sha256"
+    },
+    "game_markers": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relative",
+          "bytes"
+        ],
+        "properties": {
+          "relative": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "relative_name",
+        "bytes",
+        "sha256",
+        "raw_hash_exposed"
+      ],
+      "properties": {
+        "role": {
+          "enum": [
+            "modlist",
+            "plugins"
+          ]
+        },
+        "relative_name": {
+          "enum": [
+            "profile/modlist.txt",
+            "profile/plugins.txt"
+          ]
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2097152
+        },
+        "sha256": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/sha256"
+            }
+          ]
+        },
+        "raw_hash_exposed": {
+          "type": "boolean"
+        }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "raw_hash_exposed": {
+              "const": true
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          }
+        },
+        {
+          "properties": {
+            "raw_hash_exposed": {
+              "const": false
+            },
+            "sha256": {
+              "type": "null"
+            }
+          }
+        }
+      ]
+    },
+    "modlist_source_file": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/source_file"
+        },
+        {
+          "properties": {
+            "role": {
+              "const": "modlist"
+            },
+            "relative_name": {
+              "const": "profile/modlist.txt"
+            }
+          }
+        }
+      ]
+    },
+    "plugins_source_file": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/source_file"
+        },
+        {
+          "properties": {
+            "role": {
+              "const": "plugins"
+            },
+            "relative_name": {
+              "const": "profile/plugins.txt"
+            }
+          }
+        }
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "mod_token": {
+      "type": "string",
+      "pattern": "^mo2mod:(?:[a-f0-9]{24}|redacted-[0-9]{4})$"
+    },
+    "plugin_token": {
+      "type": "string",
+      "pattern": "^mo2plugin:(?:[a-f0-9]{24}|redacted-[0-9]{4})$"
+    },
+    "mod": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mod_token",
+        "name",
+        "name_redacted",
+        "source_marker",
+        "declared_state",
+        "file_index",
+        "runtime_loaded"
+      ],
+      "properties": {
+        "mod_token": {
+          "$ref": "#/$defs/mod_token"
+        },
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "name_redacted": {
+          "type": "boolean"
+        },
+        "source_marker": {
+          "enum": [
+            "+",
+            "-",
+            "*",
+            "?"
+          ]
+        },
+        "declared_state": {
+          "enum": [
+            "DECLARED_ENABLED",
+            "DECLARED_DISABLED",
+            "DECLARED_FOREIGN_ENABLED",
+            "UNCLASSIFIED"
+          ]
+        },
+        "file_index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4999
+        },
+        "runtime_loaded": {
+          "const": "UNKNOWN"
+        }
+      }
+    },
+    "plugin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "plugin_token",
+        "name",
+        "name_redacted",
+        "source_marker",
+        "declared_state",
+        "file_index",
+        "runtime_loaded"
+      ],
+      "properties": {
+        "plugin_token": {
+          "$ref": "#/$defs/plugin_token"
+        },
+        "name": {
+          "$ref": "#/$defs/name"
+        },
+        "name_redacted": {
+          "type": "boolean"
+        },
+        "source_marker": {
+          "enum": [
+            "*",
+            ""
+          ]
+        },
+        "declared_state": {
+          "enum": [
+            "DECLARED_ENABLED",
+            "DECLARED_DISABLED"
+          ]
+        },
+        "file_index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4999
+        },
+        "runtime_loaded": {
+          "const": "UNKNOWN"
+        }
+      }
+    },
+    "mod_list": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rows",
+        "total_rows",
+        "truncated",
+        "comments_omitted",
+        "duplicate_name_count",
+        "redacted_name_count",
+        "complete",
+        "warnings",
+        "order_semantics"
+      ],
+      "properties": {
+        "rows": {
+          "type": "array",
+          "maxItems": 1000,
+          "items": {
+            "$ref": "#/$defs/mod"
+          }
+        },
+        "total_rows": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5000
+        },
+        "truncated": {
+          "type": "boolean"
+        },
+        "comments_omitted": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5000
+        },
+        "duplicate_name_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5000
+        },
+        "redacted_name_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5000
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "warnings": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          }
+        },
+        "order_semantics": {
+          "const": "raw_modlist_file_order_only"
+        }
+      }
+    },
+    "plugin_list": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "present",
+        "rows",
+        "total_rows",
+        "truncated",
+        "comments_omitted",
+        "duplicate_name_count",
+        "redacted_name_count",
+        "complete",
+        "order_semantics"
+      ],
+      "properties": {
+        "present": {
+          "type": "boolean"
+        },
+        "rows": {
+          "type": "array",
+          "maxItems": 1000,
+          "items": {
+            "$ref": "#/$defs/plugin"
+          }
+        },
+        "total_rows": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5000
+        },
+        "truncated": {
+          "type": "boolean"
+        },
+        "comments_omitted": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5000
+        },
+        "duplicate_name_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5000
+        },
+        "redacted_name_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5000
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "order_semantics": {
+          "enum": [
+            "raw_plugins_file_order_only",
+            "not_observed"
+          ]
+        }
+      }
+    }
+  }
+}

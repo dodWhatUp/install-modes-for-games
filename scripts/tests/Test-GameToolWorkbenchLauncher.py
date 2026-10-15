@@ -8,12 +8,15 @@ spec=importlib.util.spec_from_loader(loader.name,loader);m=importlib.util.module
 class LauncherTests(unittest.TestCase):
  def setUp(self):
   self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup);self.root=Path(self.tmp.name)
-  paths=['Game-Tool-Hub.py','GameToolFocusUI.py','GameToolFocusPanels.py','GameToolWorkbench.py','GameToolGameWorkspaces.py','GameToolWorkbenchLaunch.pyw','GameToolAI.py','GameToolPlanning.py','GameToolInstances.py','GameToolFocusLaunch.pyw','game_mod_ops/support.py','game_mod_ops/definitions.py','game_mod_ops/managers.py','game_mod_ops/handoff.py','GameToolKeybindIntegration.py','GameToolKeybindAI.py','game_keybind_ops/core.py','game_keybind_ops/panel.py']
+  paths=['Game-Tool-Hub.py','GameToolFocusUI.py','GameToolFocusPanels.py','GameToolWorkbench.py','GameToolGameWorkspaces.py','GameToolWorkbenchLaunch.pyw','GameToolAI.py','GameToolPlanning.py','GameToolInstances.py','GameToolMO2Read.py','GameToolFocusLaunch.pyw','game_mod_ops/support.py','game_mod_ops/definitions.py','game_mod_ops/managers.py','game_mod_ops/handoff.py','GameToolKeybindIntegration.py','GameToolKeybindAI.py','game_keybind_ops/core.py','game_keybind_ops/panel.py']
   self.rows=[]
   for name in paths:
    p=self.root/'scripts'/name;p.parent.mkdir(exist_ok=True,parents=True)
    data=(S/name).read_bytes() if name=='GameToolFocusLaunch.pyw' else b'# harmless source fixture\n';p.write_bytes(data)
    self.rows.append({'path':'scripts/'+name,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
+  schema=self.root/'schemas/mo2-profile-state.schema.json';schema.parent.mkdir(parents=True)
+  schema_data=b'{}\n';schema.write_bytes(schema_data)
+  self.rows.append({'path':'schemas/mo2-profile-state.schema.json','bytes':len(schema_data),'sha256':hashlib.sha256(schema_data).hexdigest()})
   self.save()
  def save(self):(self.root/'MANIFEST.json').write_text(json.dumps({'files':self.rows}))
  def test_complete_package_verified(self):self.assertEqual(m.verify(self.root)[1]['files'],self.rows)
@@ -37,6 +40,12 @@ class LauncherTests(unittest.TestCase):
   with old.PreviewLease(data):pass
  def test_missing_planning_core_refused(self):
   self.rows=[r for r in self.rows if not r['path'].endswith('GameToolPlanning.py')];self.save()
+  with self.assertRaises(ValueError):m.verify(self.root)
+ def test_missing_mo2_core_refused(self):
+  self.rows=[r for r in self.rows if not r['path'].endswith('GameToolMO2Read.py')];self.save()
+  with self.assertRaises(ValueError):m.verify(self.root)
+ def test_missing_mo2_schema_refused(self):
+  self.rows=[r for r in self.rows if r['path']!='schemas/mo2-profile-state.schema.json'];self.save()
   with self.assertRaises(ValueError):m.verify(self.root)
  def test_missing_keybind_core_refused(self):
   self.rows=[r for r in self.rows if not r['path'].endswith('game_keybind_ops/core.py')];self.save()

@@ -1,12 +1,21 @@
-# Continuation checkpoint — read-only planning 0.27.0-preview.1
+# Continuation checkpoint — MO2 read adapter 0.28.0-preview.1
 
 ## Current durable base
 
-- AI Efficiency Foundation 0.26 was independently reviewed and merged into canonical `main` through PR #7, followed by its adoption record.
-- Slice 2 started from exact main commit `108cb332b874583776c7a9cb1a19ce67c8cc96e5` on `task/ai-plan-readonly-slice2-20261014`.
-- The existing proposal mailbox, approval controller, jobs, journal, game-support and keybind owners remain unchanged.
+- AI Efficiency Foundation 0.26 and read-only planning 0.27 were independently reviewed and adopted through their existing PR and adoption records.
+- The MO2 slice starts from exact canonical main `290bea7983ccca50073c5f45ce44337cacafc32a` on `task/mo2-read-adapter-reconcile-20261015`.
+- The existing proposal mailbox, approval controller, jobs, journal, game-support, instance and keybind owners remain unchanged.
 
-## Canonical adopted source
+## Current task-branch candidate
+
+- Unified Game Tools `0.28.0-preview.1`; Workspaces `0.2.2`; Instance Registry and Planning `0.2.0`; MO2 Read `0.2.0`; Unified Updater `0.2.1`.
+- MO2 reuses the adopted `GameToolInstances` owner through an additive private schema-2 binding; UMM schema-1 records remain readable and unchanged.
+- Local `register-mo2 --confirm` is the only path-bearing route. Modern and legacy MCP gain no registration or arbitrary-path argument.
+- `game_tools_instance_inspect` reads exact registered MO2 declarations. MO2 comparison/conflict observation remains blocked by `ADAPTER_COMPARISON_PENDING`.
+- The local selected gate is partially complete; native Windows, source-package and independent external-client acceptance remain pending and are not represented as passes.
+- Read [the exact MO2 contract](MO2-READ-ADAPTER.md) and [current validation record](MO2-READ-ADAPTER-VALIDATION.json).
+
+## Adopted 0.27 source boundary
 
 - Exact runtime-tested product commit: `e454433e81e067b1f11267a3cac18081b60512f8`; later acceptance/documentation commit: `ab9c2cdf32dd9d361aa4273aca6e10a168e864d8`.
 - PR #9 passed independent exact-head review and merged into canonical `main` as merge commit `ef38d94be4fb4847cbbeda5f8fe41455b267aeaa`; historical R8, R5 and R4 product commits remain preserved.
@@ -18,19 +27,19 @@
 
 ## Current capability boundary
 
-- Opaque private game-instance identities are registered only through an explicit local operator route.
-- UMM is the first accepted read adapter. It reads reviewed executable/loader markers, `Info.json` and declared assembly presence without loading code or writing the game.
-- Goal-plan DAGs and ownership/conflict graphs are deterministic read-only previews.
-- Four new tools are limited to the modern multi-game MCP surface. The legacy tool list and payload shapes remain unchanged.
+- Opaque private game-instance identities are registered only through explicit local operator routes.
+- Adopted UMM inspection remains unchanged. The 0.28 candidate additionally reads exact registered MO2 `modlist.txt`/`plugins.txt` declarations and bounded markers without manager API, VFS or code loading.
+- Goal-plan DAGs remain deterministic read-only previews. MO2 inspection is available; MO2 planned-versus-installed comparison is not.
+- The same four planning tools remain limited to the modern multi-game MCP surface. No new public tool name is added, and legacy payload shapes remain unchanged.
 - No install, upgrade, disable, rollback, manager write, production profile or arbitrary discovery was added.
 
 ## Next safe stages
 
-1. Optionally perform one separately authorized real-folder **read-only** acceptance. Its absence remains visible and does not invalidate the synthetic source acceptance.
-2. Continue the separately owned MO2 read-adapter work only after its own source and Windows acceptance; it was not part of PR #9.
-3. Extend installed-state comparison only through a separately accepted adapter or richer UMM evidence; do not begin transactions yet.
-4. Keep install, upgrade, disable, rollback and shared-resource leases behind the later transaction state-machine gate.
+1. Seal an exact 0.28 candidate inventory and copy it to the existing isolated Windows environment.
+2. Run the complete dependency-backed Windows gate, real source export, extracted-package checks and external modern/legacy stdio MO2 fixture.
+3. Record the tested product commit separately from any later acceptance/documentation commit and publish only through an independently reviewed task PR.
+4. Optionally perform one separately authorized real-folder **read-only** acceptance after synthetic source acceptance; do not begin transactions or MO2 comparison yet.
 
 ## Do not infer
 
-A registered instance is not installation health. UMM manifest presence is not enabled state, load order, runtime compatibility or gameplay acceptance. A goal plan is not a durable job, proposal, approval or execution. Canonical `main` adoption is not production installation, product-client acceptance or permission to mutate a game or manager.
+A registered instance is not installation health. UMM manifests and MO2 declaration markers are not effective deployment, conflict winners, overwrite order, runtime compatibility or gameplay acceptance. A goal plan is not a durable job, proposal, approval or execution. A task-branch source candidate is not canonical adoption, production installation, client acceptance or permission to mutate a game or manager.
