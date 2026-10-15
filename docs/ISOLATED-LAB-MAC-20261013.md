@@ -1,6 +1,6 @@
 # isolatedLab on this Mac — 2026-10-13
 
-**Status: selected Arm Linux runtime accepted locally; source distribution remains a candidate task branch.**
+**Current status, 2026-10-15: the user requested knowledge preservation and removal of the local VM installations. See the [archive and reconstruction record](ISOLATED-LAB-ARCHIVE-20261015.md). The acceptance and activation descriptions below are historical.**
 
 The [source README](../examples/isolated-lab-mac/README.md), [sanitized validation](../examples/isolated-lab-mac/VALIDATION.json), [exact source manifest](../examples/isolated-lab-mac/MAC-SOURCE-MANIFEST.json) and [resolved guest dependencies](../examples/isolated-lab-mac/RESOLVED-GUEST-DEPENDENCIES.txt) are the reusable implementation and setup routes. The canonical editable owner remains `dodWhatUp/install-modes-for-games`; private Drive distribution is derived. Earlier Windows reference acceptance and old immutable archives retain their own scope.
 
