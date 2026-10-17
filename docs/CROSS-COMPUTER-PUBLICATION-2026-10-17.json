@@ -45,5 +45,31 @@
     "destination_acceptance_tested": false
   },
   "receipt_postdates_immutable_package": true,
-  "scope": "source/knowledge reconciliation and private transfer; no application installation, game/device/input/graphics/capture/benchmark/scheduler action"
+  "scope": "source/knowledge reconciliation and private transfer; no application installation, game/device/input/graphics/capture/benchmark/scheduler action",
+  "local_SSD_archives": [
+    {
+      "files": 53163,
+      "uncompressed_bytes": 10784042172,
+      "archive_bytes": 6821357235,
+      "sha256": "df9eccf63cb1c3463b782e43b44aafbbcf8df744ddb1d81ef148d0e4384c6900",
+      "every_entry_size_hash_verified": true,
+      "file": "LOCAL_GAME_FILES_AND_RECOVERY_2026-10-17.zip"
+    },
+    {
+      "files": 22643,
+      "uncompressed_bytes": 41687434732,
+      "archive_bytes": 30442245569,
+      "sha256": "c260092068fd55e9407ba65d6008e1043d18173a029b965a33feab089898a2ee",
+      "every_entry_size_hash_verified": true,
+      "file": "EXTERNAL_MOD_TOOLS_AND_RECOVERY_2026-10-17.zip"
+    }
+  ],
+  "all_included_external_files_have_source_hash_readback": true,
+  "local_archive_unreadable_file": {
+    "path": "Local-GameModding/cyberpunk-monthly-20260915/source-v0.8.4/package_release.ps1",
+    "bytes": 6714,
+    "sha256": null,
+    "reason": "Normal byte/text access denied; no permission or security change. Historical third-party packaging script omitted."
+  },
+  "large_mod_program_archives_uploaded": false
 }

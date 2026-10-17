@@ -31,6 +31,17 @@ credentials, browser profiles, whole Codex databases/settings and VM runtimes
 are excluded from the context. Functional application/profile restoration
 remains untested.
 
+The two local SSD archives finished verification: 53,163 project/Documents
+recovery entries in 6,821,357,235 bytes, and 22,643 external recovery entries in
+30,442,245,569 bytes. SHA-256 values are respectively
+`df9eccf63cb1c3463b782e43b44aafbbcf8df744ddb1d81ef148d0e4384c6900`
+and `c260092068fd55e9407ba65d6008e1043d18173a029b965a33feab089898a2ee`.
+The external copy preserved 10,603 entries after an interruption, appended the
+remaining readable files and verified every included payload against source.
+One 6,714-byte historical third-party `package_release.ps1` was unreadable and
+is explicitly omitted in the sidecar coverage/final receipts. No access or
+security settings were changed. Large archives remain local for SSD transfer.
+
 Read [the continuation map](CROSS-COMPUTER-CONTINUATION-2026-10-17.md) and
 [machine-readable publication evidence](CROSS-COMPUTER-PUBLICATION-2026-10-17.json).
 This final receipt is newer than the immutable source/context package. No game,
