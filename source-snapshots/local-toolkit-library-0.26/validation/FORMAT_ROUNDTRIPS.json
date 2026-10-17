@@ -1,0 +1,76 @@
+{
+  "fictional_only": true,
+  "real_game_files_changed": 0,
+  "roundtrips": [
+    {
+      "adapter": "cfg-bind",
+      "data_pack_read": true,
+      "named_preset_applied_to_fixture": true,
+      "exact_rollback": true,
+      "gameplay_tested": false
+    },
+    {
+      "adapter": "colon-lines",
+      "data_pack_read": true,
+      "named_preset_applied_to_fixture": true,
+      "exact_rollback": true,
+      "gameplay_tested": false
+    },
+    {
+      "adapter": "ini",
+      "data_pack_read": true,
+      "named_preset_applied_to_fixture": true,
+      "exact_rollback": true,
+      "gameplay_tested": false
+    },
+    {
+      "adapter": "ini-sparse",
+      "data_pack_read": true,
+      "named_preset_applied_to_fixture": true,
+      "exact_rollback": true,
+      "gameplay_tested": false
+    },
+    {
+      "adapter": "json",
+      "data_pack_read": true,
+      "named_preset_applied_to_fixture": true,
+      "exact_rollback": true,
+      "gameplay_tested": false
+    },
+    {
+      "adapter": "jsonc",
+      "data_pack_read": true,
+      "named_preset_applied_to_fixture": true,
+      "exact_rollback": true,
+      "gameplay_tested": false
+    },
+    {
+      "adapter": "keyvalues",
+      "data_pack_read": true,
+      "named_preset_applied_to_fixture": true,
+      "exact_rollback": true,
+      "gameplay_tested": false
+    },
+    {
+      "adapter": "ue-chord",
+      "data_pack_read": true,
+      "named_preset_applied_to_fixture": true,
+      "exact_rollback": true,
+      "gameplay_tested": false
+    },
+    {
+      "adapter": "ue-ini",
+      "data_pack_read": true,
+      "named_preset_applied_to_fixture": true,
+      "exact_rollback": true,
+      "gameplay_tested": false
+    },
+    {
+      "adapter": "xml",
+      "data_pack_read": true,
+      "named_preset_applied_to_fixture": true,
+      "exact_rollback": true,
+      "gameplay_tested": false
+    }
+  ]
+}

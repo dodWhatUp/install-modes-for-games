@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "record_id": "poe2-chat-preservation-20261012",
+  "status": "preservation_verified",
+  "reviewed_date": "2026-10-12",
+  "archive": {
+    "filename": "POE2-Complete-Chat-Material-and-Future-Development-2026-10-12.zip",
+    "drive_id": "1ZlmC8bWhfiV1291I64Deb9qZaMSk3fOY",
+    "url": "https://drive.google.com/file/d/1ZlmC8bWhfiV1291I64Deb9qZaMSk3fOY/view?usp=drivesdk",
+    "size": 2784307,
+    "sha256": "DED3BD9CF149D133097ED9013EBF4C800FC6F02B3E001174A678A5E2E729BD58",
+    "manifest_sha256": "157dde732f0333a7fe18948b533b549d2aa9c8f5b00258c8df0bc1f81eb69842",
+    "archive_entries_verified": 86,
+    "drive_download_hash_verified": true,
+    "requested_reader_access_verified": true,
+    "public_access_granted": false
+  },
+  "coverage": {
+    "visible_user_messages": 44,
+    "visible_assistant_messages": 138,
+    "local_history_segments": 3,
+    "authored_game_sources_and_assets": 78,
+    "existing_delivery_zips": 2,
+    "future_work_items": 10,
+    "formats": [
+      "Conversation.json",
+      "Conversation.txt",
+      "Conversation.html",
+      "CONTINUATION-AND-DEVELOPMENT.json",
+      "MANIFEST.json"
+    ],
+    "classification": "private checkpoint; sanitized receipt only in repository",
+    "source_coverage": "All unique visible user/assistant message records from three available local segments through the checkpoint; preservation turn was ongoing",
+    "omissions": [
+      "Subsequent preservation commentary/final confirmation",
+      "Tool calls and outputs, raw logs, hidden reasoning, compaction/system/developer content",
+      "Unrelated chats",
+      "External attachment pixels not represented by copied authored assets",
+      "Onboard device and IndexedDB state",
+      "Earlier full native recovery bytes, which remain separately referenced"
+    ],
+    "restore_tested": false
+  },
+  "continuation": "CONTINUATION-AND-DEVELOPMENT.json",
+  "permission": {
+    "resume_development_automatically": false,
+    "send_support_email": false,
+    "schedule_followup": false,
+    "publish_github": false
+  },
+  "receipt_scope": "This receipt and final history entry postdate the immutable package; they do not change its archived source revision",
+  "archive_chat_action": "User requested archiving after preservation verification",
+  "next_boundary": "A later user-requested continuation should read the saved backlog, exact owner-held source, current device/software state and dated evidence before acting."
+}

@@ -1,32 +1,42 @@
 # Cyberpunk 2077 — Preferences
 
+Monthly maintenance reconciliation, 2026-10-14: the existing task retains its monthly schedule and compatible-update authorization for the selected NVIDIA runtime path. Follow the October rebuild and subsequent actual settings; do not reinstall the removed OptiScaler/NR or FrameWarp stack, run obsolete controllers or apply the held September candidate. ReShade owns `dxgi.dll`, CET/Ultra+ owns F12, ReShade uses Delete and native DLSS uses F9. DLSS 310.9.1 and later saved RR/Ultra+ Auto settings were observed during this audit; they were not installed by it. Preserve these choices and archived NR slots. No automatic beta enrollment, unrelated mod/driver upgrade, benchmark or game launch is implied. See the [latest audit](HISTORY.md).
+
 Current work scope, confirmed 2026-10-11: prioritize connecting/learning measurement tools and preparing management/import/user controls. Benchmarking, game launches and capture activation remain deferred. Existing programs provide complex metrics. See [tool connections](../../docs/GAME-TOOL-CONNECTIONS.md); no new lows or latency results are claimed.
 
-## Current selected stack and test scope — 2026-10-10
+## Latest request and live baseline — 2026-10-11 (stack baseline 2026-10-10)
 
-- The user selected a clean ReShade 6.8.0 + game-specific RenoDX HDR + Ultra+ X rc7 installation and subsequently authorized runtime, resource, 1% low and latency tests. This supersedes the historical NR/FrameWarp profiles and installation-only boundary below.
-- Keep native DLSS 310.1/Streamline 2.7.1 and native FG x2 as the sole FG owner. Ultra+ uses PT21/Fast, Vanilla streaming, NRD DLSS, automatic quality off, native PT true and RR false. Preserve the original PT-off settings separately for rollback.
-- Delete opens ReShade/RenoDX; grave/tilde opens CET/Ultra+; F9 is the installed native-DLSS quality cycle; F5/F6 retain Quick Save/Quick Load. Delete and grave were observed. Loaded-save F9/F5/F6 remain pending. Removed NR/OptiScaler controls are unavailable.
-- Preserve raw captures privately and sanitized results in the canonical repository. Report software latency with its actual endpoints and coverage. Keep camera/animation and novel-route/cache testing in the future backlog; no scheduled experiment is implied.
-- Use [runtime validation](RUNTIME-VALIDATION.md) for measurements and remaining limits. One run per layer with different PT workloads does not isolate the cost of Ultra+.
+- User explicitly requested removal of the prior mods and fresh ReShade, Cyberpunk RenoDX HDR and Ultra+ according to the supplied research text, then authorized the proposed installation and requested the in-game shortcuts. This supersedes the FrameWarp installation and earlier neural/modular profiles.
+- Current stack: ReShade 6.8.0 full add-on as sole `dxgi.dll`, RenoDX nightly-20261009 HDR add-on, Ultra+ X rc7 with only required foundations. Keep native DLSS/Streamline and native FG as the only FG owner; leave OptiScaler/NR and FrameWarp absent. The existing GraphicsHotkeys CET adapter is retained for the requested native controls.
+- Restrained Ultra+ profile: Advanced/PT21/Fast, Vanilla streaming, NRD with DLSS while RR is off; auto quality/auto confirm/graphics-menu overrides off. Native PT is seeded true before startup to avoid the observed RR/Clean transition; preserve the original PT-off recovery settings. No extended LOD/fog/Virtual Photography or additional cosmetic ReShade effects. The user subsequently authorized runtime, resource, 1% low and latency tests. Built-in benchmarks completed; differing PT workloads prevent an isolated Ultra+ cost/benefit claim. Loaded-save and per-frame checks remain pending in [runtime evidence](RUNTIME-VALIDATION.md).
+- Follow-up, 2026-10-11: after the user reported very low performance, restored the saved Ultra+ config and native PT flags to the measured PT21/Fast/Vanilla profile. Pre-change RT+ / Low / PT-off settings are preserved in private snapshot `before-benchmarked-ultraplus-restore-20261011-025455`. Static verification only; no new launch or benchmark. The prior run's effective fixed-x2 versus Dynamic MFG mode remains unknown, so its game-reported FPS is not a verified current-performance result.
+- Current mapping, statically read back 2026-10-11: **F12** CET/Ultra+, **Delete** ReShade/RenoDX, **F9** native DLSS quality, **F5** Quick Save, **F6** Quick Load. The installed RenoDX add-on is present and was not replaced. OptiScaler/NR is absent; Home is reserved for its full menu if installed later. F7/F10/F11 NR controls remain unavailable; the experimental F12 OptiScaler candidate conflicts with Ultra+ and must not be combined until that collision is resolved. Recover the game's saved Quick Load override as well as CET bindings during reinstalls.
+- Preserve saves, all other native UserSettings and the distinct known-good/current-state snapshots. Dynamic SR stays off until its FG/engine/manual-override requirements are verified. No device mapper or Steam Input layout change is implied by these direct keyboard graphics controls.
+- RHI may retain Cyberpunk ReShade/RenoDX records, but must not own the removed OptiScaler package or replace protected native/shared files. Old Vortex packages are disabled; new framework/Ultra+ copies use a private manual deployment manifest. Do not resume obsolete switch scripts or updates automatically.
+- Current GPU driver is 617.42; earlier driver values below are historical. See [current guide](CLEAN-REBUILD.md) for the RR-denoiser compatibility limit and recovery boundary.
 
-**Current mapping, 2026-09-13 evening:** F11 recalls personal NR settings slots 0–3, with Save Settings storing the selected slot. F7 toggles NR 25%/100% only. F8/Page Up/Page Down are unbound; user prefers NVIDIA statistics. F6 controls native DLSS separately; F9 remains Quick Load. Slot numbers are independent of the model hints inside them.
+## Historical request and baseline — 2026-10-07
 
-Last confirmed: 2026-09-20
+- Install the best available compatible FrameWarp for Cyberpunk **in addition to** its native features. Installed XPAR 1.8.5 with only its required ReShade 6.8.0 host; preserve native DLSS SR/RR/FG and Reflex. No OptiScaler/NR revival or native runtime replacement is implied.
+- The October 10 clean rebuild supersedes the earlier FrameWarp/XPAR install. Its historical Delete/XPAR panel binding is no longer active; the current ReShade Delete and CET/Ultra+ F12 controls are listed above.
+- Current ReShade already uses Delete. If a future separately approved OptiScaler profile is installed, its full menu uses Home; this preference does not revive the removed stack.
+- Keep the experiment reversible independently, preserving current settings and known-good recovery points. See [FrameWarp guide](FRAMEWARP.md).
 
+**Historical NR mapping, 2026-09-14:** the user moved native Quick Load to F6; Quick Save remains F5. Native DLSS quality cycling moved from F6 to the now-free F9 through the existing GraphicsHotkeys CET adapter. F11 recalls personal NR settings slots 0–3, with Save Settings storing the selected slot. F7 toggles NR 25%/100% only. F8/Page Up/Page Down are unbound; user prefers NVIDIA statistics. Slot numbers are independent of the model hints inside them. Preserve this Cyberpunk-specific exception during upgrades.
 
-## Latest requested direction — 2026-09-20 (late integration update)
+Last confirmed: 2026-10-10. Older sections below are historical or conditional on a future explicitly selected neural profile.
 
-- Use **RHI** as the normal management/orchestration layer whenever a future Cyberpunk graphics installation/update is requested and the exact components are supported. Prefer RHI-managed ReShade/RenoDX/Luma/OptiScaler/DLSS/Streamline deployment/version control over parallel manual copies when equivalent.
-- Treat RHI as the manager, not as a new SR/RR/FG/neural owner. Preserve the existing one-owner and real-engine-input rules and keep exact underlying component versions.
-- Always surface **Ultra+** as a distinct option when Cyberpunk path tracing is being configured or improved. Ultra+ is a game-specific PT/rendering overhaul that changes the underlying PT/lighting/denoising/rendering behavior; do not describe it as a normal graphics preset or generic post-process filter.
-- Current upstream checkpoints recorded for discovery on 2026-09-20: RHI **2.7.4** and Cyberpunk Ultra+ **9.3.7** (released 2026-09-13). Re-check current releases at installation time.
-- RHI's own Ultra+ button/link may be used as the discovery entry point, but Ultra+ remains an independent mod whose CET/RED4ext requirements and overlap with RR/NR/other PT changes must be validated before installation.
-- This update changes future planning defaults only. It does not claim RHI or Ultra+ is installed in the current Cyberpunk profile.
+## Current modular-install direction — 2026-09-20
+
+- The user explicitly selected RHI and Ultra+, delegated selection of a recommended manager and compatible performance/graphics/QoL additions, and requested continuous installation with gameplay tests left to the user at the end. This authorizes the selected foundations, ReShade, the Cyberpunk RenoDX visual profile and focused QoL pair; the earlier ask-before restriction below is superseded for this specific installation.
+- Preserve a checkpoint after each installation as well as the just-in-time before state. Record downloaded/added/replaced files, versions and hashes. Change or remove only the relevant component, preserving unrelated components and later personal settings; do not require reverse-order whole-stack restoration.
+- Use Vortex for ordinary game packages and the separate two-file graphics controller for ReShade/RenoDX. Keep mutable settings persistent and snapshot them separately. Respect actual shared dependencies when removing a framework.
+- Protect the custom OptiScaler host, native NVIDIA runtime set, existing GraphicsHotkeys and personal NR slots from automatic manager replacement. This request does not resume the held unified-host/Dynamic SR update.
+- Ultra+ first-launch profile is Advanced, PT21/Fast, Vanilla denoiser/streaming, automatic quality and automatic menu confirmation off. This intentionally introduces the requested PT tuning layer; runtime quality/performance remain unverified. Keep the saved native DLSS/FG choices and all existing shortcut exceptions.
 
 ## Latest requested direction — 2026-09-14
 
-- Add FPS-targeted Dynamic DLSS SR in F12. The user explicitly selected **30 FPS before frame generation**. Keep the target adjustable, start with supported 50–100% render bounds, preserve SR L and existing NR slots, and use the native engine controller through the existing adapter. Do not conflate this with Dynamic MFG.
+- The prepared Dynamic DLSS SR candidate uses F12 for its OptiScaler panel and is still uninstalled. Installed CET/Ultra+ now owns F12, so do not combine the candidate with the current stack until a collision-free panel key is chosen. The selected experimental target remains **30 rendered FPS before frame generation**, with adjustable target and 50–100% bounds; this is not Dynamic MFG.
 - User explicitly selected a common OptiScaler/ReShade control interface for SR, RR, MFG/Dynamic MFG and NR. Extend the existing OptiScaler installation first. This supersedes the earlier requirement that native MFG controls remain outside OptiScaler, while preserving one underlying FG implementation.
 - Use latest compatible NVIDIA runtimes and documented RR/FG models; explicitly select SR model L. Preserve personal NR slots and the established keyboard mapping.
 - Apply SR resolution and NR changes during gameplay, with no restart/save reload for those settings; show effective dimensions and verify actual engine changes. DLL installation and changes to the FG backend still require a closed game.
@@ -39,7 +49,7 @@ Last confirmed: 2026-09-20
 - Verify the RTX 50 neural runtime by both SHA-256 and a valid NVIDIA signature.
 - Keep the first neural test to one FP8 pass, pre-SR, with captures and secondary experiments off.
 - Preserve the executable directory and `UserSettings.json` before updates or proxy changes.
-- Use Delete full menu, F12 compact NR window, F11 personal slots, F10 neural on/off, F7 NR 25%/100% and F6 native DLSS quality. Keep F8/Page Up/Page Down unbound. CET's own menu uses Insert.
+- Use Delete full menu, F12 compact NR window, F11 personal slots, F10 neural on/off, F7 NR 25%/100% and F9 native DLSS quality. Reserve F6 for the user's Quick Load and F5 for Quick Save. Keep F8/Page Up/Page Down unbound. This describes the older NR candidate only; its CET overlay formerly used grave/tilde. The installed CET/Ultra+ mapping is now F12, and the F12 OptiScaler candidate is not co-installable until its menu collision is resolved.
 - Save each NR slot explicitly and visibly report its number. Do not force direct native game-settings writes. F11 stores user-selected NR settings; native DLSS/FG remains separate.
 
 ## Prefer when compatible

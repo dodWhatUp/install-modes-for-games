@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "kind": "game-keybind-pack",
+  "id": "sample-keyvalues",
+  "version": "1.0.0",
+  "game_id": "sample-keyvalues",
+  "title": "Synthetic format example \u2014 keyvalues",
+  "keymaps": {
+    "keyboard": {
+      "E": "E",
+      "F": "F",
+      "R": "R",
+      "Space": "Space",
+      "Q": "Q",
+      "V": "V",
+      "MouseLeft": "MouseLeft",
+      "MouseRight": "MouseRight",
+      "WheelUp": "WheelUp",
+      "WheelDown": "WheelDown"
+    }
+  },
+  "files": [
+    {
+      "id": "input",
+      "adapter": "keyvalues",
+      "locations": [
+        {
+          "root": "GAME_CONFIG",
+          "pattern": "input.vdf"
+        }
+      ],
+      "fields": [
+        {
+          "id": "use",
+          "selector": {
+            "kv_path": [
+              [
+                "Controls",
+                0
+              ],
+              [
+                "Use",
+                0
+              ]
+            ]
+          },
+          "keymap": "keyboard",
+          "action": "use",
+          "contexts": [
+            "gameplay"
+          ],
+          "modifier_match": "exact",
+          "locked": false
+        },
+        {
+          "id": "reload",
+          "selector": {
+            "kv_path": [
+              [
+                "Controls",
+                0
+              ],
+              [
+                "Reload",
+                0
+              ]
+            ]
+          },
+          "keymap": "keyboard",
+          "action": "reload",
+          "contexts": [
+            "gameplay"
+          ],
+          "modifier_match": "exact",
+          "locked": false
+        },
+        {
+          "id": "fire",
+          "selector": {
+            "kv_path": [
+              [
+                "Controls",
+                0
+              ],
+              [
+                "Fire",
+                0
+              ]
+            ]
+          },
+          "keymap": "keyboard",
+          "action": "fire",
+          "contexts": [
+            "gameplay"
+          ],
+          "modifier_match": "exact",
+          "locked": true
+        }
+      ],
+      "inventory_complete": true,
+      "stopped_processes": [
+        "SyntheticGameNeverInstalled.exe"
+      ],
+      "writable": true,
+      "priority": 100,
+      "fingerprints": []
+    }
+  ],
+  "variants": [
+    {
+      "id": "keyboard",
+      "files": [
+        "input"
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "id": "use-f",
+      "variant": "keyboard",
+      "changes": [
+        {
+          "action": "use",
+          "context": "gameplay",
+          "key": "F"
+        }
+      ]
+    }
+  ],
+  "evidence": {
+    "stage": "fixture-tested",
+    "notes": "Synthetic parser/transaction fixture, not a real game or native acceptance. Review live originals before any reuse.",
+    "sources": [
+      {
+        "url": "source:generated-format-fixture",
+        "note": "Authored harmless text fixture for adapter tests."
+      }
+    ]
+  },
+  "fixtures": [
+    {
+      "file_id": "input",
+      "before": "fixtures/before.vdf",
+      "after": "fixtures/after.vdf",
+      "changes": {
+        "use": "F"
+      }
+    }
+  ]
+}

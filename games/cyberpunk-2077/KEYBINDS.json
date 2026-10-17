@@ -1,0 +1,251 @@
+{
+  "schema_version": 2,
+  "game": {
+    "name": "Cyberpunk 2077",
+    "edition": "Steam with Phantom Liberty",
+    "build": "2.31 / Steam 20383525",
+    "input_mode": "keyboard_mouse",
+    "keyboard_layout": "US keyboard; CET overlay uses Windows VK_F12"
+  },
+  "mapping_revision": "2026-10-11-ultraplus-f12",
+  "last_verified": "2026-10-11",
+  "device": {
+    "alias": "standard-keyboard-binding",
+    "registry_reference": null,
+    "registry_revision": "",
+    "geometry_reference": null,
+    "geometry_revision": "",
+    "baseline_version": "",
+    "recognition_status": "device enrollment not required for this direct CET binding"
+  },
+  "shared_logical_base_version": "",
+  "input_path": [
+    "physical F12 key",
+    "Windows VK_F12 (0x7B)",
+    "CET 1.37.1 bindings.json",
+    "Cyber Engine Tweaks overlay hosting Ultra+"
+  ],
+  "mapper": {
+    "name": "none",
+    "version": "",
+    "config_name": "",
+    "config_revision": "",
+    "native_export_reference": null,
+    "device_group_alias": null,
+    "slot": null,
+    "output_mode": "keyboard",
+    "layers": [],
+    "mute_hide_rules": [],
+    "axis_settings_reference": null,
+    "other_active_transformations": []
+  },
+  "application_selection": {
+    "method": "CET process-local loader",
+    "executable_names": ["Cyberpunk2077.exe"],
+    "private_path_reference": null,
+    "background_agent_required": false,
+    "focus_behavior": "binding is active while CET is loaded in Cyberpunk",
+    "desktop_fallback": "not applicable",
+    "verification": "configuration verified; gameplay pending"
+  },
+  "azeron": {
+    "model": "",
+    "software_version": "",
+    "firmware_version": "",
+    "base_profile_version": "",
+    "orientation": "",
+    "profile_ids": []
+  },
+  "mods": [
+    {"id": "cyber-engine-tweaks", "version": "1.37.1"},
+    {"id": "graphics-hotkeys", "version": "2026-09-14-f9"},
+    {"id": "reshade", "version": "6.8.0-full-addon"},
+    {"id": "renodx-cp2077", "version": "nightly-20261009"},
+    {"id": "ultraplus", "version": "10.0.0-rc7"}
+  ],
+  "steam_input": {
+    "app_id": 1091500,
+    "applicable": "not used for these keyboard mod bindings",
+    "controller_type": null,
+    "layout_name": null,
+    "layout_version": null,
+    "restore_reference": null,
+    "export_reference": null,
+    "steam_cloud_includes_game_keybindings": "unknown"
+  },
+  "sources": [
+    "Live CET bindings.json and ReShade.ini readback on 2026-10-11",
+    "Live UserSettings quickSave/quickLoad readback and single-value hash reversal on 2026-10-10",
+    "UltraPlus onOverlayOpen/onOverlayClose source callbacks",
+    "Cyberpunk 2077 modding history and verified CET baseline"
+  ],
+  "verification": {
+    "configuration": "verified",
+    "gameplay": "pending user launch",
+    "gameplay_prompts": "not applicable to overlay hotkeys"
+  },
+  "bindings": [
+    {
+      "button_id": null,
+      "position_id": "keyboard.f12",
+      "device_control_id": "VK_F12",
+      "baseline_input": {"type": "keyboard", "display": "F12", "codes": [123], "interface_alias": "VK_F12"},
+      "layer": "base",
+      "press_type": "single",
+      "context": "gameplay_and_menus",
+      "output": {"type": "keyboard", "display": "F12", "keys": ["VK_F12"], "raw_encoding": "123 << 48 = 34621422135410688", "macro_steps": [], "timing_ms": {}},
+      "action": {"id": "cet.overlay", "name": "Open/close Cyber Engine Tweaks and UltraPlus windows", "historical_label": "Insert", "origin": "user_changed", "mod_id": "cyber-engine-tweaks"},
+      "game_default": null,
+      "game_effective_binding": "VK_F12",
+      "gameplay_prompt": {"expected": null, "observed": null, "status": "not applicable"},
+      "layer_target": null,
+      "layer_transition": {"activation": null, "threshold_ms": null, "release_behavior": null, "tap_behavior": null, "verification": "not applicable"},
+      "sources": ["CET bindings.json"],
+      "confidence": "high for configuration; gameplay pending",
+      "notes": "F12 opens the CET overlay hosting Ultra+. Configuration was read back after the just-in-time snapshot; physical input and gameplay response remain untested."
+    },
+    {
+      "button_id": null,
+      "position_id": "keyboard.f9",
+      "device_control_id": "VK_F9",
+      "baseline_input": {"type": "keyboard", "display": "F9", "codes": [120], "interface_alias": "VK_F9"},
+      "layer": "base",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {"type": "keyboard", "display": "F9", "keys": ["VK_F9"], "raw_encoding": "120 << 48 = 33776997205278720", "macro_steps": [], "timing_ms": {}},
+      "action": {"id": "graphics_hotkeys.cycle_dlss_quality", "name": "Cycle native DLSS quality", "historical_label": null, "origin": "mod_added", "mod_id": "graphics-hotkeys"},
+      "game_default": null,
+      "game_effective_binding": "F9",
+      "gameplay_prompt": {"expected": null, "observed": null, "status": "not applicable"},
+      "layer_target": null,
+      "layer_transition": {"activation": null, "threshold_ms": null, "release_behavior": null, "tap_behavior": null, "verification": "not applicable"},
+      "sources": ["CET bindings.json"],
+      "confidence": "high for configuration; gameplay pending",
+      "notes": "Close CET and select native DLSS in loaded gameplay. Two-second cooldown; refuses fixed cycling with DRS enabled. Ultra Performance starts at Quality. Live resolution recreation remains unverified."
+    },
+    {
+      "button_id": null,
+      "position_id": "keyboard.delete",
+      "device_control_id": "VK_DELETE",
+      "baseline_input": {"type": "keyboard", "display": "Delete", "codes": [46], "interface_alias": "VK_DELETE"},
+      "layer": "base",
+      "press_type": "single",
+      "context": "gameplay_and_menus",
+      "output": {"type": "keyboard", "display": "Delete", "keys": ["VK_DELETE"], "macro_steps": [], "timing_ms": {}},
+      "action": {"id": "reshade.overlay", "name": "Open/close ReShade; Add-ons > RenoDX HDR controls", "origin": "user_changed", "mod_id": "reshade"},
+      "game_default": null,
+      "game_effective_binding": "KeyOverlay=46,0,0,0",
+      "gameplay_prompt": {"expected": null, "observed": null, "status": "not applicable"},
+      "sources": ["ReShade.ini [INPUT]"],
+      "confidence": "high for configuration; gameplay pending",
+      "notes": "Opens the host panel; RenoDX loads automatically rather than through an effects toggle."
+    },
+    {
+      "button_id": null,
+      "position_id": "keyboard.f5",
+      "device_control_id": "VK_F5",
+      "baseline_input": {"type": "keyboard", "display": "F5", "codes": [116], "interface_alias": "VK_F5"},
+      "layer": "base",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {"type": "keyboard", "display": "F5", "keys": ["VK_F5"], "macro_steps": [], "timing_ms": {}},
+      "action": {"id": "game.quickSave", "name": "Quick Save", "origin": "game_default", "mod_id": null},
+      "game_default": "IK_F5",
+      "game_effective_binding": "IK_F5",
+      "gameplay_prompt": {"expected": null, "observed": null, "status": "not observed"},
+      "sources": ["UserSettings.json quickSave.value", "Stock inputUserMappings.xml"],
+      "confidence": "high for configuration; gameplay pending",
+      "notes": "Existing native saved binding preserved."
+    },
+    {
+      "button_id": null,
+      "position_id": "keyboard.f6",
+      "device_control_id": "VK_F6",
+      "baseline_input": {"type": "keyboard", "display": "F6", "codes": [117], "interface_alias": "VK_F6"},
+      "layer": "base",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {"type": "keyboard", "display": "F6", "keys": ["VK_F6"], "macro_steps": [], "timing_ms": {}},
+      "action": {"id": "game.quickLoad", "name": "Quick Load", "origin": "user_changed", "mod_id": null},
+      "game_default": "IK_F9",
+      "game_effective_binding": "IK_F6",
+      "gameplay_prompt": {"expected": null, "observed": null, "status": "not observed"},
+      "sources": ["UserSettings.json quickLoad.value", "Saved user preference 2026-09-14"],
+      "confidence": "high for configuration; gameplay pending",
+      "notes": "Recovered user override by editing only the saved value. Default F9 and shipped XML unchanged; prevents native Quick Load from colliding with the F9 DLSS adapter."
+    }
+  ],
+  "configuration_changes": [
+    {
+      "file": "bin/x64/plugins/cyber_engine_tweaks/bindings.json",
+      "field": "cet.overlay_key",
+      "before": 12666373951979520,
+      "after": 54043195528445952,
+      "meaning": "Insert to VK_OEM_3 grave/tilde"
+    },
+    {
+      "date": "2026-10-10",
+      "file": "UserSettings.json",
+      "field": "quickLoad.value",
+      "before": "IK_F9",
+      "after": "IK_F6",
+      "meaning": "Recover saved user preference and release F9 for native DLSS quality"
+    },
+    {
+      "date": "2026-10-11",
+      "file": "bin/x64/plugins/cyber_engine_tweaks/bindings.json",
+      "field": "cet.overlay_key",
+      "before": 54043195528445952,
+      "after": 34621422135410688,
+      "meaning": "grave/tilde VK_OEM_3 to F12 VK_F12 for CET/Ultra+"
+    }
+  ],
+  "rollback": {
+    "backup_reference": "private-backups/before-ultraplus-f12-20261011-014556/installed/Cyberpunk-2077/bin/x64/plugins/cyber_engine_tweaks/bindings.json; earlier clean-rebuild and Quick Load snapshots retained",
+    "steps": [
+      "Close Cyberpunk, Steam, RHI, Vortex and shader helpers.",
+      "Preserve current game/mod settings and consult CLEAN-REBUILD.md for the guarded stack rollback.",
+      "To undo only Quick Load recovery, first disable the F9 DLSS shortcut, snapshot current UserSettings, then revert only quickLoad.value to IK_F9.",
+      "Parse and read back the native/mod bindings before launching; preserve all unrelated settings.",
+      "To undo the 2026-10-11 overlay-key change, close Cyberpunk and restore only bindings.json from the recorded private snapshot; parse and read back the file before launching."
+    ]
+  },
+  "reinstall_restore": {
+    "prior_mapping_reference": "private verified CET baseline plus this record",
+    "game_binding_sources": ["CET bindings.json", "ReShade.ini", "UserSettings.json"],
+    "schema_compatibility": "verified for CET 1.37.1",
+    "newer_user_changes": "F12 CET/Ultra+, Delete ReShade, F9 DLSS and F6 Quick Load are current choices; removed NR keys are unavailable",
+    "restore_steps": ["Restore the complete compatible host packages, merge current F12/F9 bindings and reconcile the saved native F6 Quick Load value without replacing unrelated settings."],
+    "last_restore_verified": "2026-10-11"
+  },
+  "device_restore": {
+    "registry_reference": null,
+    "baseline_reference": null,
+    "mapper_export_reference": null,
+    "association_restore_steps": [],
+    "compatibility": "not applicable to direct keyboard binding",
+    "last_verified": null
+  },
+  "diagrams": {
+    "geometry_reference": null,
+    "source_mapping_revision": "2026-10-11-ultraplus-f12",
+    "keys": [],
+    "actions": [],
+    "keys_and_actions": []
+  },
+  "pending_user_actions": [
+    "If runtime verification is later requested, launch Cyberpunk and press physical F12 once to verify the CET/Ultra+ overlay opens.",
+    "Confirm Delete opens ReShade and RenoDX is registered in Add-ons.",
+    "Confirm F9 cycles native DLSS quality with CET closed only after CET/HDR startup are stable; verify Quick Load is F6."
+  ],
+  "exceptions_to_shared_base": [
+    "CET overlay uses F12 for Ultra+; direct game-side keyboard binding, with no mapper changes.",
+    "Direct game/mod keyboard bindings only; physical mapper geometry is unverified and no Azeron/reWASD/Steam Input profile was modified.",
+    "Home and NR F7/F10/F11/F12 are unavailable after the clean rebuild; F8/Page Up/Page Down remain unbound."
+  ],
+  "change_log": [
+    {"date": "2026-10-11", "change": "Applied the user-wide Ultra+ F12 preference to CET after a just-in-time snapshot; preserved F9, ReShade Delete, and the existing RenoDX add-on. Static configuration verified; gameplay input pending."},
+    {"date": "2026-10-10", "change": "Reinstalled compatible hosts, preserved Delete/grave/F9, recovered native Quick Load F6 from saved F9 and recorded removed NR controls."},
+    {"date": "2026-09-22", "change": "Restored CET after RHI removed the shared plugins tree and rebound the overlay from Insert to grave/tilde."}
+  ]
+}

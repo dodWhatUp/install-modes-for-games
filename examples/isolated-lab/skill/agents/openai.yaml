@@ -1,0 +1,5 @@
+interface:
+  display_name: "Isolated Lab"
+  short_description: "Run isolated guest tests without host input"
+policy:
+  allow_implicit_invocation: true

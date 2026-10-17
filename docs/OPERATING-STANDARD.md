@@ -12,6 +12,8 @@ rg -n -i "<game>|<executable>|<feature>|<error>|<dll>" games docs evidence
 
 Read the latest history entry and its confidence. A previous failure can rule out a path; a previous success identifies a baseline, not a guarantee after updates.
 
+For questions about the user's library, read [Current Owned Games](OWNED-GAMES.md), which includes uninstalled entries. Keep ownership evidence separate from installed manifests, executable presence and cached store metadata. Treat absence from a cropped/filtered screenshot as unknown ownership rather than a conclusive exclusion.
+
 ## 2. Inventory the live system
 
 Record:

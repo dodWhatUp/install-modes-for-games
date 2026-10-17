@@ -1,0 +1,88 @@
+# Agent Rules for This Game-Modding Repository
+
+This repository is the durable memory for game-modding work. Apply these rules whenever an agent works in this project or is asked to update this repository.
+
+## Persistent collaboration preferences
+
+- Act on the user's request directly. Before asking the user to do anything, exhaust the available authorized tools and supported UI, keyboard, API, and file-based routes; inspect the state after each attempted change. Ask only when access is unavailable, an important decision is genuinely needed, or the remaining step requires the user's physical action. Never claim an action succeeded without evidence.
+- Write every assistant-authored request, question, or instruction to the user in English only. Do not mix Hebrew and English within a request. Keep technical names, UI labels, and file paths exactly as they appear in the product.
+- Keep user requests concise and specific. If an action must be handed to the user, state the single remaining action and why the agent cannot perform it.
+
+## Read before deciding
+
+For relevant unified-toolkit development, input/overlay/UI work or continuation after chat archival, retrieve `docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md` through the knowledge index and reconcile it with the current request, source masters and latest installed receipt. Preserve stable GT requirement IDs and separate private chat/attachment evidence from sanitized knowledge. Retrieve only relevant records; archiving or reading a plan does not resume games, benchmarks, recording, graphics changes or game-input experiments, create automatic global memory, or authorize messages to another chat.
+
+For software/interface creation, learning materials, presentations or structured explanation files, read `docs/UI-AND-CONTENT-DESIGN.md` and apply the compact selection/search/entry, contextual visibility and progressive-disclosure foundation alongside existing design and accessibility guidance. Use its creation/review protocol, adapt to the delivery format, and preserve user choices and source masters. Deeper research/integration is a future improvement, not a prerequisite or authorization to redesign unrelated work.
+
+For cross-tool research, PC/game assistance or automation development, start with `docs/GAME-TOOLS-KNOWLEDGE-INDEX.md` and `docs/AUTOMATION-OPERATING-PROCEDURES.md`, then read the task-specific records they route to. For tool/feature CPU/GPU/RAM/VRAM comparisons, use `docs/TOOL-RESOURCE-OVERHEAD.md`; separate external process usage, injected in-game feature cost and dependency-preserving combination effects. Prepared recipes and knowledge links are not permission to launch, capture, change settings or resume deferred work. Keep source bundles separate from private recovery exports and preserve existing code masters.
+
+For chat review, knowledge reuse, backup or cross-repository handoffs, follow `docs/KNOWLEDGE-MAINTENANCE.md` and `templates/KNOWLEDGE-RECORD.example.json`. Preserve source owners and exact revisions, distinguish observation from inference, reconcile concurrent edits, and declare copied/referenced/byte-verified/restore-tested coverage. Do not request already-received material again or treat a summary as current runtime acceptance or automatic global memory.
+
+1. Read `preferences/GENERAL.md`.
+2. Read `docs/OPERATING-STANDARD.md` and `docs/FEATURE-DECISION.md`.
+3. Search `games/` for the exact game, executable, renderer, tool, feature, error, and DLL name.
+4. Read that game's overview, `HISTORY.md`, `PREFERENCES.md`, `MOD-CATALOG.md`, and `RECOMMENDATIONS.md` when present.
+5. Treat local logs and tested history as stronger evidence than a generic guide. Treat old results as historical, not automatically current.
+
+## Before changing a game
+
+- Identify the real rendering executable, bitness, API, store build, game build, GPU/driver, display mode, native DLSS/FSR/XeSS/HDR features, anti-cheat, mod loader, and all existing hooks.
+- Refresh upstream information when the game/tool changed, an experimental-tool review is over 30 days old, a normal mod review is over 90 days old, or the user asks for the latest state.
+- Unless the user already selected one exact action, present a short numbered option list. Each option must name its goal, stack, expected benefit, important conflicts, difficulty, confidence, and rollback. Mark the recommended option; do not silently choose a materially different path.
+- Prefer official in-game or driver overrides when they expose the desired feature. Use a bridge only when the game supplies the required inputs, and use a feeder only when its supported API and input requirements are met.
+- For DLSS installs/extensions, follow the 2026-09-14 defaults in `preferences/GENERAL.md`: establish the minimum path using real engine inputs, research a supported game-specific input adapter if necessary, then add the missing dependencies for each useful compatible feature. Reuse existing capabilities and minimize programs/hooks without discarding essential dependencies or desired features. OptiScaler is a candidate, not a mandatory product.
+- Dynamic DLSS SR targets 30 base rendered FPS only with supported, enabled native/mod FG and a verified engine-resolution controller. Otherwise use fixed/manual SR. Provide dynamic On/Off and manual DLSS resolution controls; preserve the user's manual override. This is not a hard FPS cap. Follow `docs/DYNAMIC-DLSS-SR.md` for FG transitions and validation.
+- Include ReShade and a compatible game-specific RenoDX visual profile as a separate stage of requested graphics installs, then validate the combined stack. Distinguish HDR/shader profiles from neural consumers, share supported hosts, resolve overlapping hooks/tonemapping, and record any reason the combined stage cannot be used.
+- Make a just-in-time snapshot immediately before mutation. Preserve both the last known-good baseline and the current state if they differ. Record hashes, versions, settings, launch options, and external configuration—not just the game directory.
+
+An explicit emergency rollback may skip the option menu, but it must still preserve a resumable current-state snapshot when safe.
+
+## During installation and testing
+
+- Before rendering-performance or injected-feature cost comparisons, follow the mandatory FG/memory preflight in `docs/GAME-PERFORMANCE-MEASUREMENT.md`. Verify Dynamic MFG is inactive and effective FG is Off or one matched fixed multiplier; active, suspected or unverified adaptive FG/unknown effective mode blocks the comparison. Preserve rendered/displayed metric definitions and distinct memory scopes; suspend on memory warnings. Explicit adaptive-FG experience tests are a separately requested/labeled experiment, not ordinary cost attribution. This instruction does not authorize settings changes or resume deferred tests.
+- Change one layer, or one tightly related setting group, at a time.
+- Apply the user-selected graphics hotkeys in `preferences/GENERAL.md` and `docs/GRAPHICS-CONTROLS.md` as part of every requested compatible graphics add-on installation, regardless of tool. Configure supported actions without asking for the same preference again; record unavailable actions and game-specific exceptions.
+- When the selected installation uses or requires a supported game-specific engine-integrated mod interface/menu, bind that interface to F12. If it hosts Ultra+ (as CET does in Cyberpunk), share the host's single F12 menu/binding rather than adding a second owner. Inspect native and mod conflicts first; record any unsupported binding or game-specific exception.
+- Never allow two components to own the same proxy, swapchain, frame-generation path, or neural consumer unless the upstream projects explicitly support that chain.
+- Prefer reversible profiles and validated switch scripts over repeated installation. Never switch loaded DLLs while the game, launcher, store client, helper, or shader compiler is running.
+- If verification is in scope, test stock first, then each layer, then a repeatable gameplay scene. Check startup, menu transition, motion, UI, HDR, performance, resolution recreation, alt-tab, and clean shutdown in proportion to risk.
+- A loaded overlay is not proof. Require component-specific creation, evaluation, delivery, presentation, and stability evidence.
+- Stop an unstable test before risking saves, global configuration, or other games. Separate observation from inference and record uncertainty.
+
+## After work
+
+- Update the game history with what was attempted, what happened, why that conclusion is justified, the exact rollback, and a resumable next boundary.
+- Promote a lesson to general documentation only when it is reusable. Keep game-specific exceptions in that game's folder.
+- When asked to update or upload this repository, search the relevant game history and include newly discovered conflicts, failures, solutions, and preference changes automatically.
+- For GitHub publishing in this game-modding context, use only the canonical repository `https://github.com/dodWhatUp/install-modes-for-games.git` and follow `docs/GITHUB-PUBLISHING.md`. Verify that the authenticated account is `dodWhatUp`. Do not create a duplicate repository, publish through another connected account, replace a different existing remote silently, or force-push.
+- Keep catalogs separate from recommendations. Recommendations must be grouped for first playthrough, later play, and post-game/experimental use.
+- Never commit proprietary game files, third-party binaries, archives, saves, private paths, credentials, full raw logs, or personal identifiers.
+- Do not schedule reminders or resume a paused experiment unless the user explicitly asks.
+
+Use the templates in `templates/` for new games and experiments.
+
+## Agent-operated in-game checks
+
+For authorized mod/menu/result tests, read `docs/AGENT-GAME-INPUT.md` and use its observed Windows-control plus guarded AHK route when appropriate. Reuse `examples/game-input/GameInputModule.ahk` as the optional integration base; preserve the host's tray, shortcuts, profiles, input ownership and privacy. Distinguish the live-tested v0.3.1 baseline from unverified text/Enter/Escape/hold and refactored-host acceptance. Do not claim universal game control, bypass tool/security/anti-cheat guards, load saves or change graphics outside the requested scope. Defaults are not permission for unattended control, new launches or resuming deferred MFG/FrameWarp tests. Stop the module after the authorized task.
+
+## Azeron and controls defaults
+
+For any game-control, keypad-profile, input-mod, keybinding or control-diagram task, read `docs/AZERON-GAME-CONTROLS.md` and use `templates/GAME-KEYBINDS.example.json`. Apply these defaults to every game: one shared layered base setup, archived old game profiles, verified sources and effective game/mod bindings, offline configuration edits where supported, and separate keys/actions/combined diagrams. Preserve recovery exports in Drive and sanitized instructions/history in the canonical GitHub repository. Distinguish configuration verification from observed gameplay prompts and behavior.
+
+For a reinstall or renewed keybinding setup of a previously configured game, recovering and reconciling the game's own saved bindings is a default step. Include its personal Steam Input layout when applicable; do not assume Steam Cloud backs up its keybinding files. Follow the reinstall sequence in `docs/AZERON-GAME-CONTROLS.md`.
+
+These control defaults also apply to reWASD, Azeron through reWASD, and other supported keyboards/keypads. Read `docs/INPUT-DEVICE-REGISTRY.md` and use `templates/INPUT-DEVICE.example.json` for first identification and later recognition. Preserve the user's preconfigured baseline, map verified physical positions to actual outputs, reuse one logical layered base, and create the same keys/actions/combined diagrams for the actual device shape. At the start of requested control work, match connected devices to saved records; ask only when identity or mapping is unknown, ambiguous or materially changed. Give precise instructions for physical actions or UI-only verification the user must perform. Do not claim background device monitoring or successful enrollment without evidence.
+
+
+## Multi-game support extension — source preview 0.24
+
+For a new game or reusable mod-manager/file-format capability, start with
+`docs/GAME-SUPPORT-PACKS.md` and the existing `GameToolGameWorkspaces` services.
+Create a reviewed data-only support pack under the existing game-support owner
+instead of rebuilding the app or hardcoding a new game into the UI. Use known
+adapters first; unknown executable adapter code needs separate source review/tests.
+The local support importer versions metadata, never installs games or loaders.
+Generated legacy-compatible recipes are derived from support packs, not duplicate
+editable masters. Preserve old jobs, exact local approvals, game-scoped context and
+all native settings. Continue to distinguish source tests, publication, installation
+and live acceptance. Do not retry earlier blocked Git/remote/browser effects.

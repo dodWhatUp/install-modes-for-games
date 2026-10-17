@@ -1,5 +1,12 @@
 # Hogwarts Legacy — History
 
+## 2026-10-07 — Residual OptiScaler menu binding moved to Home
+
+- The rendering executable remains absent, so this is still a residual folder rather than a current runnable installation. The remaining `OptiScaler.ini` and proxy were inventoried; no game process could be active from that folder.
+- Private snapshot `20261007-110500-before-reshade-delete-optiscaler-home` preserved the prior INI and Steam library metadata. Changed exactly `[Menu] ShortcutKey = 0x22` (Page Down) to `ShortcutKey = 0x24` (Home), following the user's new all-installations rule.
+- Static readback/diff passed. Hash `2BE87F769ED8DA47526E08D61706B5E9DF0C7DBDF5275720C8283B4E7846BE62` → `B8D93578EE87F58A201003FC0D57865644425B0C50FD761994BD44B441D26510`. No runtime claim is possible until a compatible game reinstall preserves or reapplies this config.
+- Rollback: restore the residual INI from the named snapshot. A future reinstall must still reapply the general Home default because an installer may replace the file.
+
 ## 2026-09-14 — Current installation status
 
 The library review found a residual folder but no rendering executable. The working results below describe an earlier installation and are retained as historical evidence. No reinstall, experiment or reminder was started. See the [installed-library guide](../../docs/INSTALLED-GAMES-MOD-GUIDE.md).

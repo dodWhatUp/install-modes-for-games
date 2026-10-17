@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "game": "Example Game",
+  "profile": "graphics-safe",
+  "gameBuild": "record exact build",
+  "reviewed": "YYYY-MM-DD",
+  "requiredStoppedProcesses": [
+    "ExampleGame",
+    "ExampleLauncher"
+  ],
+  "featureOwnership": {
+    "sr": "native",
+    "rr": "none",
+    "fg": "native",
+    "neural": "none",
+    "hdr": "game",
+    "swapchain": "game"
+  },
+  "files": [
+    {
+      "destination": "Binaries\\Win64\\example.ini",
+      "action": "add",
+      "sourceLabel": "user-authored profile",
+      "sourceUrl": "",
+      "sha256": "",
+      "conflictsWith": []
+    }
+  ],
+  "configuration": [
+    {
+      "file": "Saved\\Config\\GameUserSettings.ini",
+      "section": "Graphics",
+      "key": "Example",
+      "original": "0",
+      "profileValue": "1"
+    }
+  ],
+  "rollback": "Remove owned added files and restore replaced/configured values from the just-in-time snapshot."
+}

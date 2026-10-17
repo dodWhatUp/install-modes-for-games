@@ -1,0 +1,421 @@
+{
+  "schema_version": 1,
+  "record_id": "poe2-ban-pattern-inference-20261012",
+  "record_kind": "research",
+  "status": "public_pattern_analysis_not_detector_validation",
+  "owner": {
+    "workstream": "Path of Exile 2 controls and enforcement research",
+    "master_locator": "games/path-of-exile-2/evidence/SWITCH-BAN-PATTERN-ANALYSIS-2026-10-12.json"
+  },
+  "applicability": {
+    "game_id": "path-of-exile-2",
+    "tool_id": "Azeron; native weapon sets; software/hardware input helpers",
+    "versions": [],
+    "context": "User requests inference from ban patterns, shared factors and unshared factors; protection of the current PC remains the priority"
+  },
+  "symptom": "Public ban reports conflate identity linkage, detection signals and restriction type; the exact detector and hardware enforcement are unknown",
+  "method": {
+    "reviewed_date": "2026-10-12",
+    "additional_targeted_search_queries": 16,
+    "prior_records": [
+      "SWITCH-RISK-DEEP-REVIEW-2026-10-12.json",
+      "SWITCH-RISK-UNOFFICIAL-ADDENDUM-2026-10-12.json"
+    ],
+    "approach": [
+      "Trace summaries to original posts and staff replies",
+      "Separate account bans, account locks, input-rate kicks, warnings, website failures and product-license HWID errors",
+      "Compare shared and unshared factors without treating correlation as causation",
+      "Mark PoE1 history, early PoE2 incidents and current policy distinctly",
+      "Do not count the same incident repeated by a relative, Reddit summary and forum opening as independent cases"
+    ],
+    "limitations": [
+      "Search-selected reports with unknown setups and missing denominators",
+      "No controlled counterfactual or authenticated account/enforcement records",
+      "Steam repeated-level-40 case remains indexed-search-only; direct open showed a content-preference gate",
+      "No original video watched, private Discord records accessed or game/software inspection",
+      "No timing threshold, blacklist key, detector signature or individual risk probability established"
+    ]
+  },
+  "sources": [
+    {
+      "id": "P01",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3606916/filter-account-type/staff",
+      "revision": "Jarod_GGG reply 2024-12-12; reviewed 2026-10-12",
+      "coverage": "Staff posts read",
+      "evidence_state": "upstream-supported",
+      "observation": "Staff acknowledge reports of potentially incorrect restrictions and efforts to fix/prevent recurrence.",
+      "limit": "No cause, exact level trigger, algorithm or hardware link disclosed."
+    },
+    {
+      "id": "P02",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3606916/filter-account-type/staff/page/2",
+      "revision": "Jacob_GGG replies 2024-12-15; reviewed 2026-10-12",
+      "coverage": "IP-issue acknowledgement and resolution replies read",
+      "evidence_state": "upstream-supported",
+      "observation": "Staff identify an IP-banning issue as separate from the opening account-ban issue and later report it should be resolved.",
+      "limit": "Historical incident, not proof of current routine punitive IP bans or hardware enforcement."
+    },
+    {
+      "id": "P03",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3606916/page/1",
+      "revision": "2024-12-09 to 2024-12-10 opening and replies",
+      "coverage": "Original reports and author's account-state update read",
+      "evidence_state": "community-reported",
+      "observation": "Reports cluster around the Act 3 generator boss at levels 38 and 40. Opening author later says two accounts show different ban states but is confused about their linking and which account was used.",
+      "limit": "Not an exact universal level-40 trigger or clean same-PC control. One referenced player's incident also appears in P04."
+    },
+    {
+      "id": "P04",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3611942",
+      "revision": "2024-12-10 to 2024-12-11",
+      "coverage": "Opening, staff reply and author/another user's restoration reports read",
+      "evidence_state": "community-reported",
+      "observation": "Author explicitly says the PC account is banned and posts using PSN. The author and another participant subsequently report being unbanned.",
+      "limit": "A Reddit summary labels this a console ban incorrectly; exclude it as console enforcement evidence. Forum access through PSN is not observed PS5 gameplay."
+    },
+    {
+      "id": "P05",
+      "locator": "https://steamcommunity.com/app/2694490/discussions/0/562533390397533526/?l=german",
+      "revision": "Indexed post/replies displayed June 10; exact year not verified",
+      "coverage": "Indexed original text read; direct opening returned content-preference gate",
+      "evidence_state": "indexed-community-report",
+      "observation": "Player reports two different accounts banned near level 40 in Act 3 and mentions a VPN. They quote support permitting a new account.",
+      "limit": "PC/network/client/platform linking, behavior and timing were not independently controlled or verified; repeated bans do not isolate hardware."
+    },
+    {
+      "id": "P06",
+      "locator": "https://www.reddit.com/r/pathofexile/comments/1f7v33y/",
+      "revision": "Relevant posts 2024-09-03 and 2024-12-03",
+      "coverage": "Same-PC and main/alt outcome text read; attachments not authenticated",
+      "evidence_state": "community-reported",
+      "observation": "Historical PoE1 reports describe an alt banned while a main on the same PC remained usable.",
+      "limit": "Weakens an unconditional all-accounts-on-PC explanation for those reports; does not exclude selective hardware correlation or establish current PoE2 protection."
+    },
+    {
+      "id": "P07",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3756001",
+      "revision": "PoE2 opening 2025-04-11; reviewed 2026-10-12",
+      "coverage": "Opening and listed companion applications read",
+      "evidence_state": "community-reported",
+      "observation": "Player suspects G HUB after a third-party-software ban but also lists several other applications and a network-routing tool.",
+      "limit": "Title is a causal suspicion; no authenticated cause, isolated change or audited comparison population."
+    },
+    {
+      "id": "P08",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3887219",
+      "revision": "December 2025 opening and recovery replies",
+      "coverage": "Original and recovery posts read",
+      "evidence_state": "community-reported",
+      "observation": "Warning persisted after companion-tool removal but reportedly disappeared after old filter/custom-sound files were removed. Game login remained possible.",
+      "limit": "Warning is a different outcome from a ban; removing multiple files does not isolate an exact signature or confirmed false-positive cause."
+    },
+    {
+      "id": "P09",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3756616",
+      "revision": "2025-04-11 to 2025-04-26",
+      "coverage": "Opening, gem-combination recovery claims and contrary later reports read",
+      "evidence_state": "community-reported",
+      "observation": "Players report action-rate kicks, immediate relogin and gem/build-related recovery. Some later reports say crashes persist without the suspected combination.",
+      "limit": "Kick is not an account ban or proof of macro use. Reported fixes are historical and not recommended as current configuration."
+    },
+    {
+      "id": "P10",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3586288",
+      "revision": "2024-11-13 account-system announcement; current served FAQ reviewed 2026-10-12",
+      "coverage": "Linking/sub-account and ban FAQ read",
+      "evidence_state": "upstream-supported",
+      "observation": "Explicitly linked/associated sub-accounts share ban consequences under the published policy.",
+      "limit": "Do not extend to every independent account sharing a PC or IP; historical user confusion is not an exemption."
+    },
+    {
+      "id": "P11",
+      "locator": "https://www.pathofexile.com/legal/terms-of-use-and-privacy-policy",
+      "revision": "Current served policy reviewed 2026-10-12",
+      "coverage": "Automatically collected gameplay data, anti-cheat/security data and platform identifiers read",
+      "evidence_state": "upstream-supported",
+      "observation": "Discloses account/platform IDs, IP, hardware/install/machine IDs, OS data, processes, memory/drivers, gameplay activity, quest timing, item acquisition and inventories.",
+      "limit": "Collection/purpose disclosure is not a verified implementation, scoring rule, component list or evidence that every signal automatically propagates bans."
+    },
+    {
+      "id": "P12",
+      "locator": "https://learn.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-kbdllhookstruct",
+      "revision": "Documentation updated 2021-04-02; reviewed 2026-10-12",
+      "coverage": "Keyboard-event flag and timestamp fields read",
+      "evidence_state": "upstream-supported-general-platform-capability",
+      "observation": "Windows exposes injected-event flags for low-level keyboard events.",
+      "limit": "Does not prove GGG observes these flags, treats them as violations or cannot identify externally generated gameplay behavior."
+    },
+    {
+      "id": "P13",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3610245",
+      "revision": "Mark_GGG posts 2024-12-09 and 2024-12-10; reviewed 2026-10-12",
+      "coverage": "Native skill/weapon-set assignment explanation read",
+      "evidence_state": "upstream-supported",
+      "observation": "Native skill use can select an assigned equipped weapon set before using the skill.",
+      "limit": "A weapon-change/cast result alone is not proof of an external multi-input macro. Does not cover arbitrary inventory/gem loadouts."
+    },
+    {
+      "id": "P14",
+      "locator": "https://communityclassic.exiled-bot.net/profile/46382-jotd/content/?type=forums_topic_post",
+      "revision": "Personal opinion guide dated 2025-11-15; reviewed 2026-10-12",
+      "coverage": "Author disclaimer and categorical no-IP-ban assertion read; no software used",
+      "evidence_state": "community-opinion",
+      "observation": "Botting-community poster explicitly calls the guide personal opinion, declines safety guarantees and nevertheless asserts studios never IP-ban.",
+      "limit": "Categorical assertion is inconsistent with P02's documented historical IP-restriction incident. PoE1 botting opinion is not PoE2 detector evidence; evasion advice not adopted."
+    }
+  ],
+  "case_comparisons": [
+    {
+      "id": "C01",
+      "sources": [
+        "P03",
+        "P04",
+        "P01"
+      ],
+      "outcome": "Historical PoE2 account bans clustered around Act 3; restoration reports and staff acknowledgement of possible incorrect restrictions",
+      "shared_factors": [
+        "Game progression event/area",
+        "Early Access launch period"
+      ],
+      "unknown_factors": [
+        "Original flags",
+        "Account history",
+        "Exact client/software state"
+      ],
+      "inference": "Progression-linked processing or a historical error is compatible; exact universal level-40 enforcement is unsupported because levels 38 are also reported.",
+      "confidence": "Moderate for a reported cluster; low for its mechanism"
+    },
+    {
+      "id": "C02",
+      "sources": [
+        "P05"
+      ],
+      "outcome": "Two accounts reportedly banned near the same progression stage",
+      "shared_factors": [
+        "Same player/class/progression described",
+        "VPN mentioned"
+      ],
+      "unknown_factors": [
+        "Actual same machine/network state",
+        "Platform/account relations",
+        "Repeated behavior/software",
+        "Cause of either ban"
+      ],
+      "inference": "Both renewed account/progression checks and persistent shared environment could explain it; hardware is not uniquely selected.",
+      "confidence": "Low; search-only anecdote"
+    },
+    {
+      "id": "C03",
+      "sources": [
+        "P06"
+      ],
+      "outcome": "PoE1 alt banned while main reportedly usable on same PC",
+      "shared_factors": [
+        "PC",
+        "Software environment claimed"
+      ],
+      "unshared_factors": [
+        "Account",
+        "Age/history/activity"
+      ],
+      "inference": "An unconditional immediate machine-wide blacklist is a poor fit for those reported outcomes. Account-specific decisions or selective linkage remain possible.",
+      "confidence": "Moderate conditional inference; low for current PoE2"
+    },
+    {
+      "id": "C04",
+      "sources": [
+        "P02"
+      ],
+      "outcome": "Separate historical IP restriction acknowledged and reported resolved",
+      "inference": "Network restrictions can produce access loss independently of an account-ban incident; no hardware blacklist is required to explain this example.",
+      "confidence": "High for distinction; cause/architecture unknown"
+    },
+    {
+      "id": "C05",
+      "sources": [
+        "P07",
+        "P08"
+      ],
+      "outcome": "Peripheral-software suspicion and separate warning recovery after file removal",
+      "inference": "Local state is a candidate signal, but program name alone is not an established ban cause and warning recovery cannot be counted as a ban reversal.",
+      "confidence": "Low for detector cause"
+    },
+    {
+      "id": "C06",
+      "sources": [
+        "P09",
+        "P13"
+      ],
+      "outcome": "Gameplay-related kicks with immediate relogin; native use can also trigger weapon switching",
+      "inference": "Action sequences/rates require game context. Fast output or multiple visible effects do not identify how many physical inputs occurred or prove prohibited automation.",
+      "confidence": "Moderate engineering inference; actual server input telemetry unknown"
+    }
+  ],
+  "linkage_matrix": [
+    {
+      "factor": "Explicit account/platform/sub-account relationship",
+      "evidence": "P10; P11",
+      "assessment": "Published direct relationship and consequence; strongest documented linkage",
+      "unknown": "How every independent-account case is handled"
+    },
+    {
+      "factor": "Hardware/install/machine identifiers",
+      "evidence": "P11",
+      "assessment": "Disclosed information could correlate devices/installations",
+      "unknown": "Identifier derivation, exact components, persistence, blacklist use and restriction scope"
+    },
+    {
+      "factor": "IP address",
+      "evidence": "P02; P11",
+      "assessment": "Disclosed security signal with one distinct historical restriction incident; shared IP alone does not uniquely identify a person or PC",
+      "unknown": "Routine enforcement criteria and combinations"
+    },
+    {
+      "factor": "OS version, hardware model or peripheral brand",
+      "evidence": "P07; P11",
+      "assessment": "Environment descriptions are shared by many unrelated users; no case establishes them alone as a unique identifier or sufficient cause",
+      "unknown": "Specific versions/configurations involved in any confirmed detector rule"
+    },
+    {
+      "factor": "Gameplay/progression/activity relationships",
+      "evidence": "P03; P05; P11",
+      "assessment": "Gameplay data is disclosed; pattern-based classification is technically compatible with reported outcomes",
+      "unknown": "Features, thresholds, automation versus review, exact causation"
+    },
+    {
+      "factor": "Injected keyboard-event marker",
+      "evidence": "P12",
+      "assessment": "General Windows capability affecting some input paths",
+      "unknown": "Whether GGG uses it and how it distinguishes permitted remapping from prohibited automation"
+    }
+  ],
+  "mechanism_hypotheses": [
+    {
+      "id": "H01",
+      "claim": "Account state and explicit platform linking",
+      "state": "Documented identity/policy relationship",
+      "sources": [
+        "P10",
+        "P11"
+      ]
+    },
+    {
+      "id": "H02",
+      "claim": "Local software/integrity or input-origin checks",
+      "state": "Plausible from disclosed data and OS capability; exact GGG checks unknown",
+      "sources": [
+        "P07",
+        "P08",
+        "P11",
+        "P12"
+      ]
+    },
+    {
+      "id": "H03",
+      "claim": "Server/gameplay pattern analysis",
+      "state": "Plausible from disclosed gameplay records; implementation and thresholds unknown",
+      "sources": [
+        "P03",
+        "P05",
+        "P09",
+        "P11"
+      ]
+    },
+    {
+      "id": "H04",
+      "claim": "Device correlation or selective device restrictions",
+      "state": "Collection confirmed; specific enforcement unverified",
+      "sources": [
+        "P06",
+        "P11"
+      ]
+    },
+    {
+      "id": "H05",
+      "claim": "Separate network/access restrictions",
+      "state": "Historical IP incident confirmed; current general rule unknown",
+      "sources": [
+        "P02"
+      ]
+    },
+    {
+      "id": "H06",
+      "claim": "Progression-triggered review or historical restriction bug",
+      "state": "Fits historical cluster; neither exact trigger nor detector established",
+      "sources": [
+        "P01",
+        "P03",
+        "P04",
+        "P05"
+      ]
+    }
+  ],
+  "observation": {
+    "claim": "Original sources reveal several distinct restriction outcomes, near-38/40 Act 3 reports, restoration reports, documented linked-account policy and a separately acknowledged IP issue. Public accounts omit enough variables to prevent isolating a hardware cause.",
+    "evidence_state": "mixed_primary_and_community_sources",
+    "evidence_locator": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P10",
+      "P11"
+    ]
+  },
+  "inference": {
+    "claim": "A model with separate account, local-client, gameplay and network checks fits the evidence better than attributing all outcomes to a universal hardware blacklist. Device correlation remains technically possible. Recognition, evidence of a violation and choice of restriction are separate decisions; none gives a validated safe path for the proposed multi-input macro.",
+    "confidence": "Moderate for the explanatory model; unknown for GGG's architecture and any individual's ban probability",
+    "alternatives": [
+      "Historical bugs",
+      "Deferred account-state processing",
+      "Client software signatures",
+      "Account linking/history",
+      "Gameplay-pattern review",
+      "Selective device/network restrictions",
+      "Misreported or incomplete cases"
+    ]
+  },
+  "supported_next_action": {
+    "capability": "Continue evidence-based native weapon-set and manual-input/display helper design",
+    "adapter_version": null,
+    "success_evidence": [
+      "Native weapon/skill assignment is already documented",
+      "Use actual character readback before any game configuration change"
+    ]
+  },
+  "permission": {
+    "execution_authorized": false,
+    "current_request_reference": "Pattern research and public-source analysis only; email remains an unsent draft"
+  },
+  "stop_conditions": [
+    "Do not infer a safe delay or hardware immunity from surviving users",
+    "Do not use game bans, community bans, kicks, warnings and license errors interchangeably",
+    "Do not treat new account/Windows changes as a controlled isolated experiment"
+  ],
+  "recovery": {
+    "artifact_alias": "Existing R2 profiles and v0.1 offline lab retained",
+    "coverage": [
+      "Additive JSON pattern record",
+      "Game history entry"
+    ],
+    "restore_tested": false,
+    "rollback_procedure": "Remove only this new record and its corresponding history entry; no runtime change"
+  },
+  "freshness": {
+    "reviewed_date": "2026-10-12",
+    "change_triggers": [
+      "Original case outcome or cause verified",
+      "GGG data/policy change",
+      "Actual helper implementation changes",
+      "New controlled public comparison with independent outcome verification"
+    ]
+  },
+  "privacy": {
+    "classification": "sanitized_research",
+    "payload_logging": false,
+    "automatic_upload": false
+  },
+  "next_boundary": "Patterns identify plausible mechanisms and confounders, not stealth settings or protected hardware. No live anti-cheat/account test or email performed."
+}

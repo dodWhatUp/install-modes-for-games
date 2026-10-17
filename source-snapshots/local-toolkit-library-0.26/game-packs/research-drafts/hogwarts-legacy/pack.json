@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "kind": "game-keybind-pack",
+  "id": "hogwarts-legacy",
+  "version": "0.1.0",
+  "game_id": "hogwarts-legacy",
+  "title": "Hogwarts Legacy",
+  "keymaps": {
+    "keyboard": {
+      "Space": "Space",
+      "F": "F",
+      "E": "E",
+      "R": "R",
+      "MouseLeft": "MouseLeft",
+      "MouseRight": "MouseRight",
+      "WheelUp": "WheelUp",
+      "WheelDown": "WheelDown"
+    }
+  },
+  "files": [
+    {
+      "id": "input",
+      "adapter": "unresolved-native",
+      "locations": [
+        {
+          "root": "LOCAL",
+          "pattern": "Hogwarts Legacy/Saved/Config/WindowsNoEditor/Input.ini"
+        }
+      ],
+      "fields": [],
+      "inventory_complete": false,
+      "stopped_processes": [],
+      "writable": true,
+      "priority": 100,
+      "fingerprints": []
+    }
+  ],
+  "variants": [
+    {
+      "id": "keyboard",
+      "files": [
+        "input"
+      ]
+    }
+  ],
+  "presets": [],
+  "evidence": {
+    "stage": "draft",
+    "notes": "Location-research draft only: original_and_schema_review",
+    "sources": []
+  },
+  "fixtures": []
+}

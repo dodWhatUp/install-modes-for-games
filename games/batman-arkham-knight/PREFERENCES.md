@@ -2,7 +2,7 @@
 
 **Current selection, 2026-09-13:** the user requested every DLSS feature that can work well together, including interoperability between add-ons. This authorized the reversible Luma + OptiScaler trial. Keep one owner per feature; installing RenoDX as a second neural consumer would not add a missing feature. Preserve the user-confirmed working stock baseline.
 
-**Current mapping:** Delete full menu, F12 compact menu, F11 numeric NR preset cycle, F10 NR on/off, F8 real before/after SR, F7 NR dimensions 25% ↔ 100%, F9 reserved. These OptiScaler actions passed live checks. F6 is unavailable because there is no live engine-resolution adapter. Home is configured for ReShade but its automated opening check was unsuccessful. F7's inherited profiling binding remains removed through UserInput.ini. See [controls](CONTROLS.md).
+**Current mapping, 2026-10-07:** Delete opens ReShade/Luma and Home opens the full OptiScaler menu. F12 compact menu, F11 numeric NR preset cycle, F10 NR on/off, F8 real before/after SR, F7 NR dimensions 25% ↔ 100%, and F9 reserved are unchanged. The new Delete/Home owner swap passed static configuration checks; earlier live checks apply to the preceding opposite full-menu bindings. F6 is unavailable because there is no live engine-resolution adapter. F7's inherited profiling binding remains removed through UserInput.ini. See [controls](CONTROLS.md).
 
 **Practical default:** keep DLAA with 25% NR, preset 0, one pass after SR; full 4K NR cost about 28 FPS in the tested scene. Do not add FG/MFG while the active FP16/scRGB output remains incompatible with the selected Streamline runtime. Do not invent SR/RR modes. No FPS-cap change selected or applied.
 

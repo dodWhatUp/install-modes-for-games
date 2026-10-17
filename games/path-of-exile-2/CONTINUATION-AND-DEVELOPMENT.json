@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "record_id": "poe2-controls-continuation-20261012",
+  "record_kind": "continuation",
+  "status": "saved_for_future_user_requested_work",
+  "reviewed_date": "2026-10-12",
+  "owner": {
+    "workstream": "Path of Exile 2 controls, overlays and switch research",
+    "master_locator": "games/path-of-exile-2/CONTINUATION-AND-DEVELOPMENT.json"
+  },
+  "request_scope": "Preserve this chat's requests, research, authored material and future development boundaries, then archive the chat",
+  "preferences": [
+    "Use a build-independent layout; keep all skill inputs together in adjacent physical clusters",
+    "One combat layer contains all main combat actions; use a temporary menu layer with fingers and preserve convenient thumb shortcuts",
+    "Finger-right control should expose the map/menu overlay and return correctly with the layer; the actual connected device mapping is authoritative",
+    "Provide keys-only, actions-only and combined diagrams, plus plain and icon/emoji overlay variants",
+    "Use clear full game/profile names and one organized ZIP; provide a direct local download when Drive download fails",
+    "Prefer supported offline/native profile-file configuration; preserve current device baseline and avoid taking over the PC unnecessarily",
+    "New Drive files should grant Reader to the previously designated mailbox automatically; keep exact mailbox in private preservation material",
+    "Preserve canonical GitHub history only after an explicit publishing request; raw correspondence and private recovery remain separate",
+    "Protect this PC from possible hardware enforcement; willingness to accept risk is not evidence of safety",
+    "Support-policy question must remain an unsent draft; do not send without new authorization"
+  ],
+  "current_state": {
+    "authoritative_mapping": "grouped-r2/KEYBINDS-GROUPED-R2.json",
+    "combat_profile": "PATH OF EXILE 2 - GROUPED R2 COMBAT",
+    "menu_profile": "PATH OF EXILE 2 - GROUPED R2 MENU",
+    "layer_control": {
+      "primary_button": 6,
+      "tap": "V on release",
+      "hold_ms": 150,
+      "hold_layer": "MENU",
+      "release_layer": "COMBAT",
+      "alternate_button": 1,
+      "alternate_hold": "MENU",
+      "alternate_release": "COMBAT"
+    },
+    "manual_weapon_swap": {
+      "button": 37,
+      "key": "X"
+    },
+    "skills": "13 configured skill inputs in COMBAT; each Ctrl chord has its own button; no multi-cast sequence",
+    "profile_evidence": "Native files/configuration verified historically; earlier profile visibility was user-confirmed after a full Task Manager exit. R2 active selection, physical transitions and current gameplay remain unobserved.",
+    "overlay_evidence": "Plain/icon images and keys/actions/combined sources exist; overlay-handoff.json is descriptive and not a validated/imported Hub manifest",
+    "offline_lab": "switch-lab prototype and standalone HTML exist. Historical 20 model and 14 observed browser checks passed; no live game or anti-cheat acceptance.",
+    "research": "Four dated records under evidence distinguish official policy, independent anecdotes, ban-pattern inference and self-hosting/solo scope",
+    "support_email": "switch-lab/GGG-SUPPORT-QUESTION.txt — LOCAL_DRAFT_NOT_SENT",
+    "recovery": "grouped-r2/DELIVERY-RECEIPT.json references earlier 31-profile/global-JSON recovery export; IndexedDB/onboard state excluded"
+  },
+  "future_work": [
+    {
+      "id": "D01",
+      "goal": "Recover/reconcile effective game bindings and current physical device state",
+      "next_boundary": "Read saved registry, actual device outputs and native game bindings before proposing changes",
+      "status": "pending_user_requested_resume",
+      "acceptance": "Correct physical prompts, 13 skill access, movement, Ctrl combinations, quick taps and held-layer return"
+    },
+    {
+      "id": "D02",
+      "goal": "Integrate overlays and automatic layer display into the unified script software",
+      "source_owner": "Existing unified script software workstream",
+      "dependency": "User originally requested waiting until that software is finished and installed",
+      "next_boundary": "Read current owner source/version and supported manifest contract; adapt grouped-r2 handoff without replacing unrelated profiles or shortcuts",
+      "status": "pending_dependency_and_user_resume",
+      "acceptance": "COMBAT/MENU view agrees with actual profile/layer, safe game focus, correct hold/release, startup/cancellation/reload behavior"
+    },
+    {
+      "id": "D03",
+      "goal": "Improve intuitive icon/navigation overlays",
+      "next_boundary": "Keep skills grouped, adjacent related controls, clear active state, compact contextual menus and optional Show/Hide detail",
+      "status": "assets_prepared_runtime_pending"
+    },
+    {
+      "id": "D04",
+      "goal": "Fast weapon-and-skill use through native equipped sets I/II",
+      "next_boundary": "Assign supported skills to the appropriate set; preserve innate-weapon and crossbow distinctions",
+      "status": "upstream_supported_not_live_configured",
+      "limit": "Does not equip arbitrary inventory gear or replace skill gems"
+    },
+    {
+      "id": "D05",
+      "goal": "Continue arbitrary equipment/gem loadout design in the offline prototype",
+      "next_boundary": "Review schema, partial cancellation, item conservation and a manual guided workflow",
+      "status": "offline_prototype_prepared",
+      "limit": "External multi-action game macros exceed current published rules; no anti-cheat evasion implementation or immunity claim"
+    },
+    {
+      "id": "D06",
+      "goal": "Continue independent enforcement research",
+      "next_boundary": "Original-source follow-up, confidence/contradictory outcomes and account/network/device/behavior confounders",
+      "status": "research_saved",
+      "limit": "No verified timing threshold, hardware immunity, Windows isolation or individual ban probability"
+    },
+    {
+      "id": "D07",
+      "goal": "Review proposed new-account experiment",
+      "source": "switch-lab/NEW-ACCOUNT-TEST-PLAN.json",
+      "status": "PREPARED_NOT_RUN",
+      "next_boundary": "Reassess current access, scope and protection assumptions before any separately authorized live test",
+      "limit": "A new account is not guaranteed hardware/account isolation; short success would verify function only"
+    },
+    {
+      "id": "D08",
+      "goal": "Maintain usable delivery and sharing",
+      "next_boundary": "Reuse saved private mailbox preference, verify Reader permission and downloadable bytes; preserve exact native profile filenames",
+      "status": "continuing_preference"
+    },
+    {
+      "id": "D09",
+      "goal": "Revisit self-hosting/mod freedom if supported options change",
+      "next_boundary": "Refresh current original announcements",
+      "status": "no_supported_self_hosting_route_verified",
+      "limit": "Official Private League is GGG-hosted; solo/SSF/private leagues have no published macro exemption"
+    },
+    {
+      "id": "D10",
+      "goal": "Keep optional repository and Drive integration improvements in development backlog",
+      "next_boundary": "Use existing knowledge/index/source ownership rules; specify capabilities before implementation",
+      "status": "future_review",
+      "limit": "This record is not a running synchronizer, cross-chat messenger or scheduled task"
+    }
+  ],
+  "permission": {
+    "current_action": "Preservation and chat archiving",
+    "execute_development": false,
+    "send_support_email": false,
+    "schedule_followup": false,
+    "launch_game": false,
+    "publish_github": false
+  },
+  "sources": [
+    "HISTORY.md",
+    "grouped-r2/README.md",
+    "grouped-r2/overlay-handoff.json",
+    "grouped-r2/DELIVERY-RECEIPT.json",
+    "SWITCH-LAB-DELIVERY.json",
+    "evidence/SWITCH-RISK-DEEP-REVIEW-2026-10-12.json",
+    "evidence/SWITCH-RISK-UNOFFICIAL-ADDENDUM-2026-10-12.json",
+    "evidence/SWITCH-BAN-PATTERN-ANALYSIS-2026-10-12.json",
+    "evidence/SELF-HOSTING-AND-SOLO-MACROS-2026-10-12.json"
+  ],
+  "next_boundary": "Resume only after a new user request. Read this record and the current owning software/device state; do not treat historical tests or requests as automatic present execution authority."
+}

@@ -1,0 +1,11 @@
+{
+  "report": {
+    "path": "",
+    "provider": "PresentMon 2.6.0",
+    "definition": "https://github.com/GameTechDev/PresentMon/blob/v2.6.0/README-ConsoleApplication.md"
+  },
+  "tool": {
+    "path": "",
+    "name": ""
+  }
+}

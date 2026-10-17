@@ -1,0 +1,29 @@
+{
+  "scope": "SYNTHETIC_FIXTURE_ONLY",
+  "preview_left_original_unchanged": true,
+  "apply": "APPLIED_FILES_RUNTIME_UNVERIFIED",
+  "selective_undo": "APPLIED_FILES_RUNTIME_UNVERIFIED",
+  "later_graphics_setting_preserved": true,
+  "original_sha256": "585f324aff983d113cb2771d3dfd3577773414240a4f78b4cc9970626fc3632d",
+  "final_sha256": "a9ca0689e404dfc1e1acdb5be5ce9549ab0bf632bcfa7af69ff70de5e646199b",
+  "history": [
+    {
+      "plan_id": "demo-apply",
+      "plan_sha256": "98d5df697487de24b40a7f86c89247ebb8088a0104dca11456242817f29bbfc4",
+      "parent_plan": null,
+      "status": "APPLIED_FILES_RUNTIME_UNVERIFIED",
+      "gameplay_verified": false,
+      "automatic_replay": false
+    },
+    {
+      "plan_id": "demo-selective-undo",
+      "plan_sha256": "0c61869256a14e8250758f948438f09f2db1f2f75ebbe76aa023341321c9dc45",
+      "parent_plan": "demo-apply",
+      "status": "APPLIED_FILES_RUNTIME_UNVERIFIED",
+      "gameplay_verified": false,
+      "automatic_replay": false
+    }
+  ],
+  "real_games_touched": 0,
+  "gameplay_verified": false
+}

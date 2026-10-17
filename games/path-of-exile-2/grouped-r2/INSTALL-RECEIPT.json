@@ -1,0 +1,19 @@
+{
+  "revision": "2026-10-12-poe2-grouped-r2",
+  "profile_ids": {
+    "COMBAT": "0ca7e8e3-131e-5f6b-8a8d-9a0dd78c0b17",
+    "MENU": "4943b051-848c-5389-aa4d-e835b6dfd1e2"
+  },
+  "profile_names": {
+    "COMBAT": "PATH OF EXILE 2 - GROUPED R2 COMBAT",
+    "MENU": "PATH OF EXILE 2 - GROUPED R2 MENU"
+  },
+  "source_profile_sha256": {
+    "COMBAT": "B6B21FF19273655B099323CDD31353BD8A74E74A5887FC12009605E8DFF38614",
+    "MENU": "310FECCDEDE55401C9FD2D122C134391044D11C0050E857ABDECE57F9273A019"
+  },
+  "backup_name": "Azeron-before-POE2-grouped-R2-20261012-032427.zip",
+  "backup_sha256": "F62398311358E7A124BE2112CF12E44C7822F302FAA9DEA92D0442C8CE89A790",
+  "library_status": "Added alongside current profiles; active session unchanged",
+  "gameplay": "unverified"
+}

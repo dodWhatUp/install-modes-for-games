@@ -2,6 +2,8 @@
 
 Status: **working baseline**, with aggressive forced-MFG settings recorded as unstable experiments.
 
+**Residual controls update, 2026-10-07:** the old executable is absent, but its remaining OptiScaler INI now explicitly reserves **Home** for the full menu (`ShortcutKey=0x24`). This is a static residual-folder migration, not evidence of a current working installation or runtime input.
+
 Supporting records:
 
 - [History](hogwarts-legacy/HISTORY.md)

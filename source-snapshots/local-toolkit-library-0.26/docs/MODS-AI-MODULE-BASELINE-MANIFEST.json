@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "component_id": "game-mod-workflows",
+  "version": "0.1.0",
+  "status": "source-candidate-not-integrated",
+  "intended_git_owner": "dodWhatUp/install-modes-for-games",
+  "base_commit": "b6a460f073e763a57a6d988bf5fbffa34e2e8946",
+  "git_publication": "blocked; no alternate write route attempted",
+  "payload_file_count": 25,
+  "archive_entry_count": 26,
+  "excludes": [
+    "third-party binaries",
+    "original mod archives",
+    "API keys",
+    "signed NXM URLs",
+    "game saves",
+    "personal profiles",
+    "existing Hub source",
+    "SPARSE6 assets",
+    "Python bytecode"
+  ],
+  "files": [
+    {
+      "path": "00_START_HERE.html",
+      "bytes": 4166,
+      "sha256": "a40b4131001f32c7e8612b95fbe07b4e64cc30426f012a84726b42089581f495",
+      "git_blob_sha1": "969c8c67bba0382810ba15b984178c3d20ff2ad3"
+    },
+    {
+      "path": "00_START_HERE.md",
+      "bytes": 3444,
+      "sha256": "1823eac29aa20f3b787c54013ff675a92484470d4204c76e9684aeb3fb6d05b8",
+      "git_blob_sha1": "e788ee9aa37fb16041206c06e6a7a60a9230aeb6"
+    },
+    {
+      "path": "01_START_MOD_PANEL.cmd",
+      "bytes": 314,
+      "sha256": "219855543fc3f0af8e64e0da975091224fb508a27914d0a378216efb3b57c822",
+      "git_blob_sha1": "a4a6aac02d374dc9db9fcdd4b7c79878000a5e74"
+    },
+    {
+      "path": "02_RUN_TESTS.cmd",
+      "bytes": 178,
+      "sha256": "26623f778463513b52395698d91caba325bb53e385a22a178599fcb9d569c6e2",
+      "git_blob_sha1": "3193f765d45d612b4762e1bf46b235bcd32f4cca"
+    },
+    {
+      "path": "docs/MOD-WORKFLOWS-INTEGRATION.md",
+      "bytes": 6551,
+      "sha256": "c1863f296ca1473fd1e270dafa023ce1893e55a17f6f4ff998ce01cd663b614c",
+      "git_blob_sha1": "f1b6dfcd8a17c83e4235e81236b70ff4d16e5153"
+    },
+    {
+      "path": "docs/MOD-WORKFLOWS.md",
+      "bytes": 9724,
+      "sha256": "a895da12f120e9ac8bc5fc024bfc6172f16fbe876fa72bbdfbb3414fe30f89e1",
+      "git_blob_sha1": "5fc4d582e4a7118936a8d16152681cfef98cb970"
+    },
+    {
+      "path": "evidence/MOD-WORKFLOWS-SOURCE-RESOLUTION.json",
+      "bytes": 2179,
+      "sha256": "2260523420c64c106c5dbcc02de70e3f98ac1df3e2656f1c3a4698e49083766b",
+      "git_blob_sha1": "eb1cfb45a2430ade024ca1eb03221be2c926faa6"
+    },
+    {
+      "path": "evidence/MOD-WORKFLOWS-TEST-RESULTS.txt",
+      "bytes": 6340,
+      "sha256": "812f99e426d789d629069a12f8045b709333f2a385a4ab63f29d9d22e3ece6dd",
+      "git_blob_sha1": "0035f671ce1dd67b4afe38927a59004283cc6b85"
+    },
+    {
+      "path": "evidence/MOD-WORKFLOWS-VALIDATION.json",
+      "bytes": 2139,
+      "sha256": "5efdb2f1236e5ce70fa4cac5a37a37d022b69c624dd50cd43950b50a3ff051e1",
+      "git_blob_sha1": "d730a2422044c111b842f8c97ecf2a3848656cc1"
+    },
+    {
+      "path": "examples/game-tool-hub/MOD-WORKFLOWS-CAPABILITIES.json",
+      "bytes": 1515,
+      "sha256": "dc114c4bc9dfb564432ecfe74fd6da97b6db3c951cf0ced3ae6c6af94950c881",
+      "git_blob_sha1": "fdbefcb173f4f0fff4bbc28601c819cad8fcb4f2"
+    },
+    {
+      "path": "games/pathfinder-kingmaker/MOD-WORKFLOW.json",
+      "bytes": 6416,
+      "sha256": "6b2d9df9d12031b4ee629875ce21c618aa16fe660344a7937a1199653c51ab8a",
+      "git_blob_sha1": "a28349e643a0925a7c40f8dbf0ecbc4e7ecedd73"
+    },
+    {
+      "path": "scripts/Game-Mod-Ops.py",
+      "bytes": 354,
+      "sha256": "b9c7038c34da58212a08541f15953e6946ad2f23087e75b1efc01470d81c3e78",
+      "git_blob_sha1": "e95d45b5808d44a2a03188669f9b80127df09eaf"
+    },
+    {
+      "path": "scripts/Game-Mod-Panel.py",
+      "bytes": 239,
+      "sha256": "0a598e4be8adede14ab2b707fd2d78f07fb1cf000ef750ebae92f66728d62cc6",
+      "git_blob_sha1": "d7bb74c3e01d83b6c3e169ede15aa9784da8eb2c"
+    },
+    {
+      "path": "scripts/game_mod_ops/__init__.py",
+      "bytes": 93,
+      "sha256": "0a2211f582a597624020f629c38e36999b536d19f4dbfd5f6dddf28b2cb0d5b0",
+      "git_blob_sha1": "b189f20b0232c4b5d4b42c60b13e449001041f08"
+    },
+    {
+      "path": "scripts/game_mod_ops/archive.py",
+      "bytes": 8855,
+      "sha256": "5e907b990c3cb3f756163b832f5dac36d8c2b94dbf959b286aa500426de72ed0",
+      "git_blob_sha1": "32d26bb44bcd277f4d7e411944277df888db3451"
+    },
+    {
+      "path": "scripts/game_mod_ops/cli.py",
+      "bytes": 7771,
+      "sha256": "92d137754c55ec81b16f6b74798d49be64918b68d695f3b25ab697d84728a0c2",
+      "git_blob_sha1": "3ec37e2689b185e8825f83787e1c111eb4656cd8"
+    },
+    {
+      "path": "scripts/game_mod_ops/network.py",
+      "bytes": 13333,
+      "sha256": "5f7af16eebb2818c013cd425a5605c936f1cda6a6081e9c2559a719c930d5e6d",
+      "git_blob_sha1": "f0428597456d1b2815fac4daace89a0bf9c07fde"
+    },
+    {
+      "path": "scripts/game_mod_ops/panel.py",
+      "bytes": 10870,
+      "sha256": "3983dd65ce89ebcb8320a8c404c2f138dc43fdf33e62265ba8cab7203b10474d",
+      "git_blob_sha1": "1e7c1f691f5237a51f597b87a3dbaa4d2e97b361"
+    },
+    {
+      "path": "scripts/game_mod_ops/recipes.py",
+      "bytes": 8153,
+      "sha256": "f59284ade07f995b412048d3e10fee3a695bc452c48bd2431c71063807236b2f",
+      "git_blob_sha1": "ab4e1cf411717421f8216da2dec9b90400bc6158"
+    },
+    {
+      "path": "scripts/game_mod_ops/safety.py",
+      "bytes": 6278,
+      "sha256": "a40f7a172716a02d19c4aef688ee67d45b4e86dcede00702eed766528175598b",
+      "git_blob_sha1": "42ab28ced0279245f8657b865923f580c9d4ee1e"
+    },
+    {
+      "path": "scripts/game_mod_ops/umm.py",
+      "bytes": 16238,
+      "sha256": "236aa00595bb223bdd3832a38b95af5c42bf858efebd1be656d52a70a42c5662",
+      "git_blob_sha1": "5b81500c1998bf71d142b1b63ea9cbe274b50e4d"
+    },
+    {
+      "path": "scripts/game_mod_ops/workflow.py",
+      "bytes": 11677,
+      "sha256": "e8f574f1196cbafe538a641b32742ffbdbedbafd263be7ebfbd716dbde860096",
+      "git_blob_sha1": "2dd4053019c01cc61cf34db23e5785e6e6e0e3f1"
+    },
+    {
+      "path": "scripts/tests/Test-GameModOps.py",
+      "bytes": 20545,
+      "sha256": "5610abe13223212360f0c341bff2c71db04fb7cb784cebb809d1d2cd8825adbf",
+      "git_blob_sha1": "6db3b92ee22f74cf70c8551bc1e21ebfa4c21a03"
+    },
+    {
+      "path": "scripts/tests/Test-GameModPanel.py",
+      "bytes": 2413,
+      "sha256": "e3da472fc59d25a64681b5a28961c3ad9bcd2c4311b0da096382507d72c6381d",
+      "git_blob_sha1": "1a944b1a73b08c43b17ecd9ba6fee8fc94425242"
+    },
+    {
+      "path": "templates/MOD-WORKFLOW.example.json",
+      "bytes": 824,
+      "sha256": "750b4d49997f1edab7730f21476794d23a1f63aefea151414d00751284946a6b",
+      "git_blob_sha1": "1cc13fb81c4fbd483a62a5609d6085abc8e40837"
+    }
+  ]
+}

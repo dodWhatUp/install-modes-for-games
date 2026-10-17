@@ -1,10 +1,14 @@
 # Unified Cyberpunk graphics controls
 
+**2026-09-15 maintenance hold:** [the latest compatibility audit](UPDATE-READINESS.md) supersedes the earlier process-availability boundary. v0.8.4 source is staged, but the earlier dynamic-control adapter fails the newer FG/manual-restore requirements. The guarded installer refuses installation until those requirements and runtime compatibility are addressed. Preserve the current F9 native-quality binding; earlier F6 captions below are historical.
+
+**Required binding override, 2026-09-14:** the installed GraphicsHotkeys shortcut moved from F6 to **F9** after the user assigned Quick Load to F6. Preserve CET `cycle_dlss_quality=33776997205278720` and the current save/load bindings on any future upgrade. This earlier prepared package and its compiled/source F6 captions are historical; reconcile its Lua/UI labels, candidate manifest and installation baseline before deployment. This binding-only task did not rebuild or deploy the unified host.
+
 Prepared 2026-09-14 for Cyberpunk 2077 2.31, RTX 5070 Ti and driver 616.56. Installation and gameplay verification must be checked against the latest game history; preparation alone is not a working-game claim.
 
-Final prepared proxy SHA-256: `121D0D5D86A94D04A3DDC1C5C819BBF25554E8824982ECB0E130F1C74CEAA27F` (26,374,144 bytes). The final fourteen-file candidate was regenerated after the UI build. All fourteen installed originals still match the pre-installation validation snapshot; no game or driver mutation occurred. Installation is waiting for Batman/Steam to close.
+Final prepared proxy SHA-256 after the 30-FPS Dynamic SR extension: `A1927158FC3642B8E57F0BF54686DFB99DC603EC1492CDFAF3C479560586E479` (26,376,192 bytes). The fourteen-file candidate was regenerated after the UI build. All fourteen installed originals still match the pre-installation validation snapshot; no game or driver mutation occurred. Installation is waiting for Batman/Steam to close. The preceding prepared package remains in a separate private source/candidate backup.
 
-The locally built host is based on [OptiScaler NR v0.8.3](https://github.com/wilsjo2/OptiScaler-DLSSNR-PreSR-Multipass/releases/tag/v0.8.3), commit `47e134cb`, with the user's existing personal NR slots and keyboard controls ported to the newer source. F12 opens a common SR/RR/FG/NR panel. Delete retains the full upstream menu. The existing CET 1.37.1 loader handles the narrow native-settings requests; it does not generate frames.
+The locally built host is based on [OptiScaler NR v0.8.3](https://github.com/wilsjo2/OptiScaler-DLSSNR-PreSR-Multipass/releases/tag/v0.8.3), commit `47e134cb`, with the user's existing personal NR slots and keyboard controls ported to the newer source. F12 opens a common SR/RR/FG/NR panel in this **uninstalled candidate**. Cyberpunk currently assigns F12 to CET/Ultra+, so do not install the candidate alongside the current profile until the menu-key collision has a separate, collision-free solution. Home opens the full OptiScaler menu and Delete remains available to ReShade. The existing CET 1.37.1 loader handles the narrow native-settings requests; it does not generate frames.
 
 ## Controls
 

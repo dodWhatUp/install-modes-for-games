@@ -6,13 +6,13 @@
 |---|---|---|---|---|
 | [Luma Batman, build 649](https://github.com/Filoppi/Luma-Framework/releases/tag/latest-649) | Engine motion/depth/color and jitter for DLAA | Exact Batman build; bundled ReShade; no Feeder; upstream WIP | Installed, alone and with OptiScaler NR tested in a loaded scene | High for input path; medium for short runtime, low for sustained play |
 | [OptiScaler DLSS-NR](https://github.com/wilsjo2/OptiScaler-DLSSNR-PreSR-Multipass), custom v0.7.7 | D3D11-to-D3D12 DLAA + one NR consumer | Owns dxgi.dll; LoadReshade, Luma D3D12 workaround and shared-resource settings; no second NR owner | Installed, evaluated/composed real inputs; live controls passed | Medium for exact tested chain |
-| Luma bundled ReShade 6.8.0.1 | Luma host | ReShade64.dll loaded by OptiScaler | Installed, addon registered and cleanly unregistered | High for loading; Home opening unverified |
+| Luma bundled ReShade 6.8.0.1 | Luma host | ReShade64.dll loaded by OptiScaler | Installed, addon registered and cleanly unregistered; overlay moved to Delete on 2026-10-07 | High for loading; new Delete opening unverified |
 | Signed NVIDIA SR/NR runtimes | DLAA reconstruction and neural inference | Package SR 310.6, actual cached SR 310.9; NR 310.8 and matching forwarder | Loaded/evaluated in game | High for runtime identity |
 | DLSS FG/MFG via Streamline 2.14.1 | Generated frames | Current FP16/scRGB output is unsupported; requires another validated presentation path | Disabled, FG payload not installed | High for documented format restriction; Batman FG untested |
 | RenoDX-derived NR consumer | Alternative neural owner | Would replace OptiScaler NR, not coexist as another consumer | Not installed; unnecessary for the working OptiScaler route | No Batman comparison |
 | [120 fps mode](https://www.nexusmods.com/batmanarkhamknight/mods/3269) / direct MaxFPS edit | Raises cap to 120/144 or a chosen limit | INI-only; replacing author's whole file may overwrite unrelated settings | Local MaxFPS remains 90; no edit | High for setting existence; runtime untested |
 
-**Current controls:** custom v0.7.7 supports the verified Delete/F12/F11/F10/F8/F7 actions; F6 remains unavailable. See [controls](CONTROLS.md). The following rows describe the older disabled Feeder profile.
+**Current controls:** custom v0.7.7 retains F12/F11/F10/F8/F7; Home now owns its full menu and Delete owns ReShade. The new full-menu mapping is statically verified, while the earlier opposite mapping has the historical live evidence. F6 remains unavailable. See [controls](CONTROLS.md). The following rows describe the older disabled Feeder profile.
 
 Last reviewed: 2026-09-13. This was a targeted installation review, not a complete mod survey.
 

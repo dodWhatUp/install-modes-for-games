@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "record_id": "poe2-self-hosting-solo-macros-20261012",
+  "record_kind": "research",
+  "status": "public_source_review_not_runtime_validation",
+  "owner": {
+    "workstream": "Path of Exile 2 controls and enforcement research",
+    "master_locator": "games/path-of-exile-2/evidence/SELF-HOSTING-AND-SOLO-MACROS-2026-10-12.json"
+  },
+  "applicability": {
+    "game_id": "path-of-exile-2",
+    "tool_id": "Private leagues; SSF; Azeron; native weapon sets",
+    "versions": [],
+    "context": "User asks whether a personally hosted server enables unrestricted mods and whether solo play on GGG servers changes macro permission"
+  },
+  "symptom": "Private leagues, remotely hosted game clients and independent game servers are different capabilities",
+  "method": {
+    "reviewed_date": "2026-10-12",
+    "targeted_search_queries": 14,
+    "approach": [
+      "Review current official developer policy, terms and private-league creation page",
+      "Check original director interview on offline support",
+      "Separate documented capability from absence found in public search"
+    ],
+    "limitations": [
+      "No server package or playable emulator downloaded or validated",
+      "The no-offline director statement is historical (November 2024); current store still requires broadband",
+      "Private-league page text describes optional modifiers but does not enumerate an authenticated current PoE2 modifier list",
+      "No direct controlled comparison of SSF and trade-league enforcement"
+    ]
+  },
+  "sources": [
+    {
+      "id": "H01",
+      "locator": "https://www.rpgsite.net/news/16579-path-exile-2-steam-deck-playable-offline-support-console-cross-progression-jonathan-rogers-group-interview",
+      "revision": "Original interview 2024-11-22",
+      "reviewed_date": "2026-10-12",
+      "coverage": "Director answer on offline support read",
+      "observation": "Director describes PoE2 as an online game requiring online play; no offline support"
+    },
+    {
+      "id": "H02",
+      "locator": "https://store.steampowered.com/app/2694490/Path_of_Exile_2/",
+      "revision": "Current retrieved publisher store listing",
+      "reviewed_date": "2026-10-12",
+      "coverage": "Minimum and recommended network requirements read",
+      "observation": "Both require a broadband Internet connection"
+    },
+    {
+      "id": "H03",
+      "locator": "https://www.pathofexile.com/private-leagues/create/poe2",
+      "revision": "Current retrieved creation page",
+      "reviewed_date": "2026-10-12",
+      "coverage": "Public description and fields read; no submission",
+      "observation": "Paid custom temporary league based on an existing league; capacity/duration controls and generic optional difficulty-modifier text"
+    },
+    {
+      "id": "H04",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3781218",
+      "revision": "Natalia_GGG announcement 2025-05-14",
+      "reviewed_date": "2026-10-12",
+      "coverage": "Official PoE2 introduction and FAQ read",
+      "observation": "Private leagues use official character selection, trade/ladder and migration services; owner/officer powers are league administration",
+      "limit": "Launch-era absence of extra modifiers is not treated as current fact"
+    },
+    {
+      "id": "H05",
+      "locator": "https://www.pathofexile.com/developer/docs",
+      "revision": "Current retrieved official developer policy",
+      "reviewed_date": "2026-10-12",
+      "coverage": "Independent app and macro requirements read",
+      "observation": "Manual invocation, fixed function and one game-interacting action; independent apps may be permitted subject to requirements; no solo/SSF/private-league exception stated"
+    },
+    {
+      "id": "H06",
+      "locator": "https://www.pathofexile.com/legal/terms-of-use-and-privacy-policy",
+      "revision": "Current retrieved terms covering PoE1 and PoE2",
+      "reviewed_date": "2026-10-12",
+      "coverage": "Applicability and restrictions 7b/7c/7i read",
+      "observation": "Terms apply to both games; restrict unauthorized client/data modification, automation and reverse engineering"
+    },
+    {
+      "id": "H07",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3610245",
+      "revision": "Mark_GGG explanation 2024-12-09/10",
+      "reviewed_date": "2026-10-12",
+      "coverage": "Native skill weapon-set selection and innate-skill distinction read",
+      "observation": "Enabling a gem skill only on the intended equipped weapon set causes native swapping before skill use; innate weapon skills remain tied to their weapon",
+      "limit": "Not arbitrary inventory equipment swapping, gem replacement or crossbow load-and-fire automation"
+    }
+  ],
+  "observation": {
+    "claim": "Official private leagues provide hosted league administration, not a downloadable independent server or arbitrary mod SDK. Published macro rules contain no solo exception.",
+    "evidence_state": "upstream-supported",
+    "evidence_locator": [
+      "H03",
+      "H04",
+      "H05",
+      "H06"
+    ]
+  },
+  "inference": {
+    "claim": "No supported self-hosting/offline route or verified playable public emulator was established in this review. Installing only the game client on a personal remote machine would still use GGG services. Solo/SSF/private-league play does not establish different macro permission or hardware-ban protection.",
+    "confidence": "High for published rules and private-league distinction; search-limited for all possible unofficial emulators",
+    "alternatives": [
+      "GGG could release a future hosting package or grant explicit written permission",
+      "Unverified projects or future developments may exist outside reviewed sources"
+    ]
+  },
+  "supported_next_action": {
+    "capability": "Use native equipped I/II weapon-set skill selection; design manual single-action bindings and independent display helpers within published requirements",
+    "adapter_version": null,
+    "success_evidence": [
+      "Native mechanism documented by Mark_GGG; no current local gameplay acceptance performed"
+    ]
+  },
+  "permission": {
+    "execution_authorized": false,
+    "current_request_reference": "Questions and source research only; no game launch, league purchase, server deployment or live macro test authorized by this turn"
+  },
+  "stop_conditions": [
+    "Do not infer solo-mode detector exemption or machine safety",
+    "Do not treat private-league ownership as arbitrary code/mod permission"
+  ],
+  "recovery": {
+    "artifact_alias": null,
+    "coverage": [
+      "Additive sanitized research record and game history only"
+    ],
+    "restore_tested": false,
+    "rollback_procedure": "Remove this additive record and its dated history entry if needed; existing profiles and prototype unchanged"
+  },
+  "freshness": {
+    "reviewed_date": "2026-10-12",
+    "change_triggers": [
+      "GGG announces offline/server/mod support",
+      "Macro policy changes",
+      "Private league capabilities change",
+      "Native skill/weapon-set behavior changes"
+    ]
+  },
+  "privacy": {
+    "classification": "sanitized_research",
+    "payload_logging": false,
+    "automatic_upload": false
+  },
+  "next_boundary": "Research complete. Existing offline prototype and unsent support draft remain unchanged; no live implementation or enforcement test."
+}

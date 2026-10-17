@@ -1,0 +1,16 @@
+Draft only — not sent.
+
+Subject: PoE2 manual control helper and hardware-ban policy clarification
+
+Hello,
+
+I use an Azeron keypad and want fast access to two prepared weapon sets and their relevant skills. The intended low-risk version would send one manually triggered, fixed skill input at a time and rely on PoE2's native weapon-set assignment. A separate overlay would display the loadout and manual inventory/gem steps without reading game memory or sending actions automatically.
+
+Could you please clarify:
+1. Is this native switching plus display-only helper consistent with the current Third-Party Policy, including solo/SSF?
+2. For a manually triggered inventory shortcut, does one equipment/gem change involving several menu clicks count as multiple actions? I will not assume it is approved.
+3. Are violations handled only at account level, or can they also result in hardware/machine restrictions or affect other accounts used on the same PC? Protecting my existing PC is essential.
+
+I am requesting policy guidance, not details of detection methods or an exemption to bypass anti-cheat.
+
+Thank you.

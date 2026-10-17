@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "record_id": "poe2-switching-hardware-ban-public-evidence-20261012",
+  "record_kind": "research",
+  "status": "research_not_runtime_acceptance",
+  "owner": {
+    "workstream": "Path of Exile 2 controls and switching",
+    "master_locator": "games/path-of-exile-2/evidence/SWITCH-RISK-DEEP-REVIEW-2026-10-12.json"
+  },
+  "applicability": {
+    "game_id": "path-of-exile-2",
+    "tool_id": "native weapon sets; Azeron; input helpers",
+    "versions": [],
+    "context": "Public research requested after the user declined sending the GGG policy question; protecting the existing PC remains the priority"
+  },
+  "symptom": "Uncertainty about macro enforcement, machine identification, hardware bans and whether a new account isolates a live test",
+  "method": {
+    "reviewed_date": "2026-10-12",
+    "targeted_search_queries": 32,
+    "surfaces": ["GGG forums and policy documents", "Reddit firsthand reports", "Steam discussions", "original developer README", "Microsoft documentation", "journalist correspondence", "commercial advertisements"],
+    "limitations": [
+      "Search-selected public material, not a representative sample or complete internet archive",
+      "Public report counts cannot produce ban probabilities without the number of users, verified setups and follow-up outcomes",
+      "PoE1 history is not current PoE2 acceptance",
+      "User-posted emails and videos were not authenticated against GGG's private investigation records",
+      "One Steam discussion was accessible only through indexed search text; direct open returned a content-preference gate",
+      "No private Discord access, downloaded third-party software, game process inspection or live anti-cheat test",
+      "No detection thresholds or evasion procedure validated"
+    ]
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3586288",
+      "owner": "GGG Community Team",
+      "revision": "Announcement dated 2024-11-13; current served FAQ reviewed 2026-10-12",
+      "coverage": "read relevant FAQ and linking context",
+      "evidence_state": "upstream-supported",
+      "observation": "Bans/mutes affect associated sub-accounts. A permanently banned PoE1 account cannot be used in PoE2; the FAQ directs players to create a new account.",
+      "limit": "This concerns linked/merged sub-accounts, not every independent account using the PC; it provides no hardware guarantee."
+    },
+    {
+      "id": "S02",
+      "locator": "https://www.pathofexile.com/legal/terms-of-use-and-privacy-policy",
+      "owner": "Grinding Gear Games",
+      "revision": "Current served policy reviewed 2026-10-12",
+      "coverage": "read anti-cheat/security collection and purpose clauses",
+      "evidence_state": "upstream-supported",
+      "observation": "Discloses hardware/install/machine identifiers, OS information, process lists, account/platform identifiers and gameplay data for security and cheating investigations.",
+      "limit": "Disclosed collection does not identify the exact hardware-ban implementation, component list or enforcement probability."
+    },
+    {
+      "id": "S03",
+      "locator": "https://www.pathofexile.com/developer/docs",
+      "owner": "Grinding Gear Games",
+      "revision": "Current served Third-Party Policy reviewed 2026-10-12",
+      "coverage": "read macro and independent-app clauses",
+      "evidence_state": "upstream-supported",
+      "observation": "Macros must be manually invoked, have a fixed non-cycling function and perform one game-interacting action. Breaches can terminate developer and user accounts.",
+      "limit": "Defines permission, not a detector, ban frequency or hardware-only exemption. No solo/SSF exception identified."
+    },
+    {
+      "id": "S04",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3436325",
+      "owner": "Player report; staff reply separately identified",
+      "revision": "Thread dated 2023-09-26",
+      "coverage": "read original report and replies",
+      "evidence_state": "community-reported",
+      "observation": "A player quotes an unsuccessful appeal response permitting a new account. A staff post directs account disputes to support without authenticating that quotation.",
+      "limit": "Historical PoE1 and unverified email; does not establish which software triggered the ban."
+    },
+    {
+      "id": "S05",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3458270",
+      "owner": "Player report; GGG support reply",
+      "revision": "Thread dated 2023-12-13",
+      "coverage": "read opening and staff response",
+      "evidence_state": "community-reported",
+      "observation": "A player says a banned friend was invited to create another account. Staff decline to discuss another player's case and request direct contact.",
+      "limit": "Secondhand account of an email, not a published machine-ban rule."
+    },
+    {
+      "id": "S06",
+      "locator": "https://www.reddit.com/user/ChemicalHoneydew6460/comments/1tj84x0/ggg_support_turned_into_mordor_a_warning_for/",
+      "owner": "Player who reports a compromised PoE2 account",
+      "revision": "Served post reviewed 2026-10-12; exact publication date not verified",
+      "coverage": "read post text; no email headers or private records reviewed",
+      "evidence_state": "community-reported",
+      "observation": "The poster quotes support declining detection evidence while permitting a new account after a PoE2 ban.",
+      "limit": "Unverified support quotation and compromise narrative; no new-account outcome or same-PC control test supplied."
+    },
+    {
+      "id": "S07",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3522234",
+      "owner": "Community forum participants",
+      "revision": "Thread dated 2024-05-10, edited 2024-05-11",
+      "coverage": "read opening, recovery edit and no-HWID claim",
+      "evidence_state": "community-reported",
+      "observation": "The author initially calls a VPN-related trade-site failure a hardware ban, then says access works again. Another nonstaff participant says GGG does not hardware/MAC ban.",
+      "limit": "Trade-site incident and nonstaff assertion; not a verified PoE2 hardware ban or assurance."
+    },
+    {
+      "id": "S08",
+      "locator": "https://steamcommunity.com/app/2694490/discussions/0/562533390397533526/?l=german",
+      "owner": "Steam player and commenters",
+      "revision": "Indexed discussion text reviewed 2026-10-12; exact publication date not verified",
+      "coverage": "indexed search text only; direct open returned content-preference gate",
+      "evidence_state": "community-reported",
+      "observation": "The author reports two accounts banned around level 40. A commenter proposes Steam linkage as an explanation.",
+      "limit": "Neither hardware enforcement, linkage nor continued prohibited software is established; no controlled test."
+    },
+    {
+      "id": "S09",
+      "locator": "https://www.reddit.com/r/pathofexile/comments/1hbgsjd/automated_ban_system_targeting_innocent_players/",
+      "owner": "Multiple player reports",
+      "revision": "December 2024 thread; later player edits reviewed 2026-10-12",
+      "coverage": "read opening and relevant ban/unban comments; linked recordings not played",
+      "evidence_state": "community-reported",
+      "observation": "Multiple posters report bans near level 40 and later restoration after appeals, including reported 24-72 hour outcomes.",
+      "limit": "Reversal reports do not establish original cause, a current bug, hardware bans or a macro-safe threshold."
+    },
+    {
+      "id": "S10",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3756001",
+      "owner": "PoE2 player report",
+      "revision": "Opening dated 2025-04-11; replies through 2025-05-24",
+      "coverage": "read opening and all visible first-page replies",
+      "evidence_state": "community-reported",
+      "observation": "The author suspects Logitech G HUB after a third-party-software ban and describes Ctrl chords. Other software was also running. No confirmed cause or resolution was visible.",
+      "limit": "Title attribution is the player's suspicion; does not prove G HUB, ordinary remapping or a hardware device caused the ban."
+    },
+    {
+      "id": "S11",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3036305",
+      "owner": "Community participant",
+      "revision": "Thread dated 2021-02-01",
+      "coverage": "read hardware-macro account and reversal claim",
+      "evidence_state": "community-reported",
+      "observation": "A participant says publicly acknowledging G600 hardware macros resulted in a ban, then a same-day reversal through support.",
+      "limit": "Historical self-report; no detector telemetry, hardware-ban claim or current PoE2 acceptance."
+    },
+    {
+      "id": "S12",
+      "locator": "https://www.reddit.com/r/PathOfExile2/comments/1wuwdts/i_have_painful_issues_with_my_hands_is_there_a/",
+      "owner": "Community players discussing accessibility",
+      "revision": "October 2026 thread; current served discussion reviewed 2026-10-12",
+      "coverage": "read relevant experience claims and contrary policy interpretations",
+      "evidence_state": "community-reported",
+      "observation": "Some participants report repeated/multiple-action macros without trouble, including multi-year PoE use. Others acknowledge those functions breach the rules. Several examples expressly concern PoE1.",
+      "limit": "No audited ban history, verified setup, population denominator or comparable inventory-switching trial. Undetected use is not policy approval."
+    },
+    {
+      "id": "S13",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3887219",
+      "owner": "PoE2 player report",
+      "revision": "Opening dated 2025-12-14; served thread reviewed 2026-10-12",
+      "coverage": "read warning report and alleged support responses",
+      "evidence_state": "community-reported",
+      "prior_observation": "A player reports a cheating-software warning while still able to play, and says removing two companion tools did not resolve it.",
+      "observation": "The initial report says removing companion tools did not resolve the warning. December follow-ups by the author and two other users report warning recovery after removing old loot-filter/custom-sound files while game access remained possible.",
+      "review_correction": "2026-10-12 unofficial-source follow-up read the recovery replies omitted from the earlier summary; see SWITCH-RISK-UNOFFICIAL-ADDENDUM-2026-10-12.json, U07. Recovery is community-reported, not a confirmed detector cause.",
+      "limit": "Not a confirmed false positive, ban cause or permission to ignore warnings."
+    },
+    {
+      "id": "S14",
+      "locator": "https://www.pcgamer.com/how-a-reckless-lie-caused-huge-internet-drama-for-path-of-exiles-developer/",
+      "owner": "PC Gamer journalist reporting his correspondence with Chris Wilson",
+      "revision": "Article dated 2021-04-16",
+      "coverage": "read reported investigation, founder response and hoax account",
+      "evidence_state": "historical_reported_correspondence",
+      "observation": "The reporter says a widely circulated disabled-player macro-ban story was fabricated. Chris Wilson reportedly said banning for that alleged case did not match internal policy and no matching case was found.",
+      "limit": "Historical specific accessibility scenario, not general current PoE2 macro approval or a no-hardware-ban promise. Deleted admission was not independently recovered."
+    },
+    {
+      "id": "S15",
+      "locator": "https://www.pathofexile.com/forum/view-thread/1618439/filter-account-type/staff",
+      "owner": "GGG support staff",
+      "revision": "Staff post dated 2016-03-14",
+      "coverage": "read staff-only macro ruling",
+      "evidence_state": "historical_upstream-supported",
+      "observation": "Staff restrict macros to one action per command, no triggering/repetition, and warn the proposed multi-skill delayed macro could lead to a permanent account ban.",
+      "limit": "Historical PoE1 ruling, corroborated in principle by the current developer policy; not hardware-enforcement evidence."
+    },
+    {
+      "id": "S16",
+      "locator": "https://github.com/nidark/Poe-Companion",
+      "owner": "Original macro-project developer",
+      "revision": "Repository README as served 2026-10-12; commit not pinned",
+      "coverage": "read feature and policy/identification claims; no code downloaded or executed",
+      "evidence_state": "author-reported",
+      "observation": "The original author describes gem-switching macros, explicitly labels multiple-action functions prohibited, and asserts timing variation makes them unidentifiable.",
+      "limit": "The last assertion lacks validation in the reviewed material. This is an older PoE1 implementation, not a proven current PoE2 addon or enforcement-safety result."
+    },
+    {
+      "id": "S17",
+      "locator": "https://learn.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-kbdllhookstruct",
+      "owner": "Microsoft",
+      "revision": "Documentation dated 2021-04-02; current served page reviewed 2026-10-12",
+      "coverage": "read keyboard event flags",
+      "evidence_state": "upstream-supported",
+      "observation": "Windows low-level keyboard events can contain injected-event flags.",
+      "limit": "Establishes a Windows capability, not which path GGG observes or whether any specific peripheral/macro is detected."
+    },
+    {
+      "id": "S18",
+      "locator": "https://sync.top/blog/poe2-hwid-ban-fix",
+      "owner": "Commercial spoofer vendor",
+      "revision": "Vendor page dated 2026-02-04; current served page reviewed 2026-10-12",
+      "coverage": "read hardware-ban assertions, anti-cheat attribution and sales context",
+      "evidence_state": "unverified_commercial_claim",
+      "observation": "Advertises PoE2 hardware-ban bypass and attributes enforcement to Easy Anti-Cheat. Its visible references route to its own commercial material rather than a GGG technical disclosure or reproducible case.",
+      "limit": "Excluded as proof of the claimed game implementation, hardware bans or protection. No purchase, download or bypass attempted."
+    },
+    {
+      "id": "S19",
+      "locator": "https://orlazens.com/cronus-zen-path-of-exile-2-script-2026",
+      "owner": "Commercial controller-script vendor",
+      "revision": "Current served page reviewed 2026-10-12; exact publication date not verified",
+      "coverage": "read current FAQ and sales context; indexed older wording distinguished",
+      "evidence_state": "unverified_commercial_claim",
+      "observation": "Claims controller macro chains have no detection heuristic and that the game does not know the device exists. Indexed search text also advertised zero confirmed hardware bans; that numeric assurance was absent from the opened page.",
+      "limit": "No independently validated GGG detector knowledge or protection test. Commercial assertions and changing indexed text are not safety evidence."
+    },
+    {
+      "id": "S20",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3694761/page/1",
+      "owner": "Player quoting peers on Discord; separate support response",
+      "revision": "Thread dated 2025-01-15",
+      "coverage": "read staff reply and hardware/IP rumor context",
+      "evidence_state": "community-reported",
+      "observation": "A participant repeats a Discord rumor that a refund ban blocks hardware/IP permanently. The visible staff reply concerns support backlog, not confirmation of that rumor.",
+      "limit": "Secondhand rumor about a payment dispute, not a documented macro hardware-ban case."
+    }
+  ],
+  "observation": {
+    "claim": "Current public documents explicitly describe account/sub-account consequences and both hardware and OS data collection. Player accounts include restoration reports and new-account invitations. No reviewed case establishes a reproducible ordinary-macro PoE2 hardware ban.",
+    "evidence_state": "mixed_public_sources",
+    "evidence_locator": ["S01", "S02", "S03", "S06", "S09", "S10", "S11"]
+  },
+  "inference": {
+    "claim": "Public evidence more clearly supports account-level restrictions than universal permanent machine bans. Routine hardware-ban enforcement for an ordinary switching macro remains unconfirmed, not disproven or quantifiably low-risk.",
+    "confidence": "moderate for the evidence comparison; unknown for an individual's hardware-ban probability",
+    "alternatives": ["Selective machine-level enforcement", "Account linking", "Repeated prohibited behavior or software", "Account compromise", "Mistaken classification", "Website/rate-limit/network failures confused with game bans"]
+  },
+  "supported_next_action": {
+    "capability": "Native weapon-set skill assignments and manually invoked fixed single-action inputs; offline helper development",
+    "adapter_version": "Existing R2 reference and separate switch-lab v0.1",
+    "success_evidence": ["Inspect actual equipped weapons and available skills before configuring", "Observe native set changes and intended ability individually", "Keep selected overlay state distinct from observed game state"]
+  },
+  "permission": {
+    "execution_authorized": false,
+    "current_request_reference": "Deep public internet search only",
+    "email_send_authorized": false,
+    "support_question_status": "KEEP_AS_UNSENT_LOCAL_DRAFT"
+  },
+  "stop_conditions": ["Unknown input or account ownership", "No verified recovery for a proposed change", "Client/account warning during any separately authorized test", "No evidence of hardware isolation for a proposed prohibited-sequence trial"],
+  "recovery": {
+    "artifact_alias": "Existing v0.1 lab and R2 profiles preserved",
+    "coverage": ["reference-only public research", "new additive evidence record", "history entry"],
+    "restore_tested": false,
+    "rollback_procedure": "Remove only this additive research record and its history entry; no runtime configuration changed"
+  },
+  "freshness": {
+    "reviewed_date": "2026-10-12",
+    "change_triggers": ["New verified PoE2 enforcement case", "GGG account/macro/privacy policy change", "Game build/input behavior change", "Actual helper implementation or account-linking state change"]
+  },
+  "privacy": {"classification": "sanitized_research", "payload_logging": false, "automatic_upload": false},
+  "next_boundary": "Research cannot certify protection. Existing native switching route and offline lab remain available; no live macro, account creation, email, identity change or new test performed."
+}

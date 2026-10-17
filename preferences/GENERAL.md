@@ -1,5 +1,7 @@
 # General User Preferences
 
+Game-library navigation, requested 2026-10-14: keep game-oriented navigation as the default and offer a compact, clearly labeled global switch to goals/functions. Preserve launcher filters, tags and distinct last-played, last-used-in-toolkit and last-changed-in-toolkit fields; unavailable history stays unknown. The independent local 0.26 candidate is preserved in `source-snapshots/`; it has not been adopted into 0.27 or deployed by this transfer.
+
 Response language, confirmed 2026-10-10: always answer in English, including when the user writes in Hebrew.
 
 
@@ -27,7 +29,7 @@ Gameplay-control and overlay preference, confirmed 2026-10-10: the user normally
 
 Performance evidence, requested 2026-10-10: preserve raw resource/frame data for future analysis, with explicit memory definitions, sample-size limits, latency endpoints and cache state. See [measurement procedure](../docs/GAME-PERFORMANCE-MEASUREMENT.md) and [future tool plan](../docs/GAME-TELEMETRY-TOOL-PLAN.md).
 
-Last confirmed: 2026-09-14
+Graphics defaults first confirmed: 2026-09-14; later dated preferences below/above remain authoritative.
 
 Library catalog request, 2026-09-14: cover all actually installed games and compare manager/foundations, performance, QoL, configuration/UI, graphics/DLSS, animation/movement, enemy behaviour, unique abilities/perks, magic/tools, new mechanics and added playable content. Keep curated first-playthrough, later-play and replay combinations separate from the full catalog. Upload dated information/configuration exports to Google Drive with original download links. Skyrim's basic setup is explicitly authorized for installation; the other games are research-only for this request.
 
@@ -122,13 +124,13 @@ User confirmed on 2026-10-11: Ultra+ menu uses F12, OptiScaler full menu uses Ho
 | Page Up | Unbound; user does not want the add-on FPS overlay shortcut |
 | Page Down | Unbound; user does not want the add-on FPS information shortcut |
 
-- Preserve these action meanings across tools. F7 affects only NR model dimensions; F6 changes the selected upscaler's real quality mode. Keep F9 available for game actions, including Cyberpunk Quick Load. Numeric model hints belong inside a personal settings slot and are not the slot itself. Do not invent quality labels for undocumented models.
+- Preserve these action meanings across tools. F7 affects only NR model dimensions; F6 changes the selected upscaler's real quality mode. Preserve game-specific overrides: Cyberpunk Quick Load is F6 and its native DLSS quality cycle is F9, as selected on 2026-09-14. Numeric model hints belong inside a personal settings slot and are not the slot itself. Do not invent quality labels for undocumented models.
 - Latest feedback on 2026-09-13: the user confirmed that F11 should save and recall their own settings per number, removed F8/Page Up/Page Down, reaffirmed F7 25%/100% only, and prefers NVIDIA statistics. Implemented in Cyberpunk first; existing Requiem/Batman/Hogwarts installations were not migrated in this Cyberpunk repair.
 - Prefer existing bindings/settings; otherwise use a compatible implementation or a validated adapter for the exact game/build. An INI alone cannot add missing code, engine inputs, a compact menu, or native SR modes. Cyberpunk's CET adapter remains game-specific.
 - Bind one owner per action and resolve key collisions with the game and other overlays. If an action cannot be implemented for that stack, leave it unbound, record why, and report it clearly; do not silently assign a different effect.
 - Prefer a visible value/mode notification, key-release handling, protection against rapid model recreation, and a documented way to save selections in the responsible component's settings/profile. OptiScaler uses **Save Settings**; ReShade preset saving does not automatically persist another add-on's configuration.
 - Apply this default to new installations and requested control updates. Preserve existing game-specific forks, ownership, and known-good profiles; this preference update does not migrate every installed game or make one DLL universal. See [installation procedure](../docs/GRAPHICS-CONTROLS.md).
-- Latest 2026-09-13 request supersedes both earlier F9 cycles (100/75/50/25% and 100/75/67/50%): F7 must toggle only 25% and 100%. This update was installed in Cyberpunk, Requiem and Batman. Older histories/patches keep their original evidence. F6 for separate live SR is the collision-avoiding implementation choice because F9 is Cyberpunk Quick Load; the user explicitly selected F7 for NR, not F6 for SR. See each game's verification boundary.
+- Latest 2026-09-13 request supersedes both earlier F9 cycles (100/75/50/25% and 100/75/67/50%): F7 must toggle only 25% and 100%. This update was installed in Cyberpunk, Requiem and Batman. Older histories/patches keep their original evidence. F6 is the general implementation choice for separate live SR; Cyberpunk uses its documented F9 override because Quick Load is F6. The user explicitly selected F7 for NR. See each game's verification boundary.
 
 ## Mod discovery preferences
 

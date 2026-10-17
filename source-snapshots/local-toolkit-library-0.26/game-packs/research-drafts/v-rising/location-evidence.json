@@ -1,0 +1,23 @@
+{
+  "id": "v-rising",
+  "name": "V Rising",
+  "schema_status": "original_and_schema_review",
+  "locations": [
+    {
+      "root": "locallow",
+      "pattern": "Stunlock Studios/VRising/Settings/v*/InputSettings.json"
+    }
+  ],
+  "format": "JSON input settings in a versioned per-user settings directory",
+  "limitations": [
+    "The publisher documents v3; this is not a claim that your currently installed build necessarily still uses v3. The original file and directory evidence determine that.",
+    "Do not replace the shipped StreamingAssets settings or server configuration. Preserve existing mouse, alternate mappings and unrelated JSON properties."
+  ],
+  "source_urls": [
+    "https://guides.playvrising.com/hc/en-us/articles/18722243500189-Known-Issues-V-Rising-1-0",
+    "https://steamcommunity.com/app/1604030/discussions/0/4358998752032193630/"
+  ],
+  "discovery_only": true,
+  "native_recipe_bundled": false,
+  "source_review_date": "2026-10-13"
+}

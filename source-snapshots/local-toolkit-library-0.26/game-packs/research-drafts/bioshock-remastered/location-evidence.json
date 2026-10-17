@@ -1,0 +1,23 @@
+{
+  "id": "bioshock-remastered",
+  "name": "BioShock Remastered",
+  "schema_status": "original_and_schema_review",
+  "locations": [
+    {
+      "root": "roaming",
+      "pattern": "BioshockHD/Bioshock/User.ini"
+    }
+  ],
+  "format": "INI key-to-command bindings in User.ini",
+  "limitations": [
+    "Preserve section-specific commands, mouse fire/mode switching/scrolling and non-binding preferences.",
+    "The planner partly cites a Mac-port manual. The actual Windows file must establish command identifiers and available actions."
+  ],
+  "source_urls": [
+    "https://www.flickr.com/photos/ipg_igor-poberezhets/29690005526",
+    "https://www.feralinteractive.com/en/manuals/bioshockremastered/latest/steam/"
+  ],
+  "discovery_only": true,
+  "native_recipe_bundled": false,
+  "source_review_date": "2026-10-13"
+}

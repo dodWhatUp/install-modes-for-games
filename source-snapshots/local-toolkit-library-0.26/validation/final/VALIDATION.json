@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "module": "Game Tools Keybinds",
+  "version": "0.2.0-preview.1",
+  "utc": "2026-10-13T16:54:06.112811+00:00",
+  "runtime": {
+    "system": "Linux",
+    "python": "3.13.5"
+  },
+  "suites": [
+    {
+      "suite": "core",
+      "returncode": 0,
+      "tests": 109,
+      "passed": true,
+      "log": "core.log"
+    },
+    {
+      "suite": "extended",
+      "returncode": 0,
+      "tests": 22,
+      "passed": true,
+      "log": "extended.log"
+    },
+    {
+      "suite": "extensibility",
+      "returncode": 0,
+      "tests": 78,
+      "passed": true,
+      "log": "extensibility.log"
+    },
+    {
+      "suite": "effective",
+      "returncode": 0,
+      "tests": 31,
+      "passed": true,
+      "log": "effective.log"
+    },
+    {
+      "suite": "panel",
+      "returncode": 0,
+      "tests": 9,
+      "passed": true,
+      "log": "panel.log"
+    },
+    {
+      "suite": "pack-panel",
+      "returncode": 0,
+      "tests": 9,
+      "passed": true,
+      "log": "pack-panel.log"
+    },
+    {
+      "suite": "host-integration",
+      "returncode": 0,
+      "tests": 35,
+      "passed": true,
+      "log": "host-integration.log"
+    },
+    {
+      "suite": "pack-integration",
+      "returncode": 0,
+      "tests": 27,
+      "passed": true,
+      "log": "pack-integration.log"
+    },
+    {
+      "suite": "host-workspaces-regression",
+      "returncode": 0,
+      "tests": 41,
+      "passed": true,
+      "log": "host-workspaces-regression.log"
+    },
+    {
+      "suite": "host-automation-regression",
+      "returncode": 0,
+      "tests": 52,
+      "passed": true,
+      "log": "host-automation-regression.log"
+    },
+    {
+      "suite": "host-journal-regression",
+      "returncode": 0,
+      "tests": 59,
+      "passed": true,
+      "log": "host-journal-regression.log"
+    }
+  ],
+  "total_test_methods": 472,
+  "all_executed_suites_passed": true,
+  "scope": "ten built-in synthetic formats, extensible packs/SDK, effective multi-file owners, sparse overrides, controls, JSON-RPC stdio, draft deltas, own child interruption, headless widgets and unchanged host regression services",
+  "excluded": [
+    "native Windows API/ACL/launcher tests",
+    "real game configuration schemas",
+    "installed Hub integration",
+    "real MCP client or ChatGPT connection",
+    "in-game/physical Azeron acceptance",
+    "screenshots/video/recording/benchmarks"
+  ],
+  "headless_panel_executed": true,
+  "host_reference": "0.23.0-preview.1",
+  "native_game_files_changed": 0,
+  "profile_files_changed": 0,
+  "host_files_modified": false,
+  "new_services_installed": false,
+  "notes": [
+    "Nested subtest iterations are not counted as separate test methods.",
+    "Original host regression suites were run unmodified; this is not the entire application regression suite."
+  ]
+}

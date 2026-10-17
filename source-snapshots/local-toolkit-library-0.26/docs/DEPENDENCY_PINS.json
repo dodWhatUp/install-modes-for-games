@@ -1,0 +1,38 @@
+{
+  "host_archive_sha256": "bc7ea76ba5379b83dddc9a7f78e80710e46a5227eca073db131e3257dc0c8d37",
+  "host_version": "0.25.0-preview.1",
+  "copies": {
+    "scripts/GameToolJournal.py": {
+      "source_sha256": "01e76b93c69adefa742dfcb139756903c2259812c437ec72c508739b2a81657a",
+      "derived_copy": "compat/GameToolJournal.py"
+    },
+    "scripts/game_mod_ops/safety.py": {
+      "source_sha256": "a40f7a172716a02d19c4aef688ee67d45b4e86dcede00702eed766528175598b",
+      "derived_copy": "compat/game_mod_ops/safety.py"
+    },
+    "prior-V3-package/tools/collect_originals.py": {
+      "source_sha256": "7ccdf77c578de2aadccdfdcfc360a1b5a6c77320c948fbe7940f3a4b800cf052",
+      "derived_copy": "scripts/game_keybind_ops/known_folders_reference.py"
+    }
+  },
+  "mode": "Use host imports first; compatibility copies are byte-preserved derivatives, never installed over host modules.",
+  "previous_host_archive_sha256": "38fba39fe3ec18c6ca3fc5a0a1a5351be72f7f02444ddf11b26583e53c643755",
+  "tested_host_dependencies": {
+    "scripts/GameToolAutomation.py": "34bffd633608713905f87f3ecdac50653169fbb815415e6a737a6766bad3fccf",
+    "scripts/GameToolAI.py": "2bb619d85ee3b90ef13168ad4b6ebde4a88e82c6353bdc4cdf0a09d82e75f0ff",
+    "scripts/GameToolJournal.py": "01e76b93c69adefa742dfcb139756903c2259812c437ec72c508739b2a81657a",
+    "scripts/game_mod_ops/safety.py": "a40f7a172716a02d19c4aef688ee67d45b4e86dcede00702eed766528175598b",
+    "scripts/GameToolGameWorkspaces.py": "414bae3f71bc34f51b7043ac51cd49eb32b07213a2aeaf60403ae123aa5b442e"
+  },
+  "not_installed_or_adopted": true,
+  "ancestry_reference_version": "0.23.0-preview.1",
+  "ancestry_dependencies": {
+    "scripts/GameToolAutomation.py": "7c8a3e00761d42721a95b88aedc0eae6f7f3025417e7b448aeafe177d5c4601e",
+    "scripts/GameToolAI.py": "4e47d377b6168a4d06c2a421d092ca3e93d5e83259409cda93bb9289b16cd07a",
+    "scripts/GameToolJournal.py": "01e76b93c69adefa742dfcb139756903c2259812c437ec72c508739b2a81657a",
+    "scripts/game_mod_ops/safety.py": "a40f7a172716a02d19c4aef688ee67d45b4e86dcede00702eed766528175598b",
+    "scripts/GameToolGameWorkspaces.py": "b2ac5a668ad371df9ea442f47b16a55417e8777fa43f9bab837c2e672cb2ad60"
+  },
+  "compatibility_copies_in_merged_package": false,
+  "semantic_rebase": "GameToolMerged composition; tests in current merger receipt"
+}

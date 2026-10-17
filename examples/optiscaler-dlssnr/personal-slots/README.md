@@ -5,10 +5,10 @@ Cyberpunk-specific installation on 2026-09-13, built over the existing wilsjo2 v
 ## Controls and saving
 
 - F11 recalls settings slots **0 → 1 → 2 → 3**.
-- Open **F12**, choose **My NR settings**, edit the NR settings, then press **Save Settings**. Save each slot separately. The full Delete menu saves the same selected slot.
+- In this candidate build, open **F12**, choose **My NR settings**, edit the NR settings, then press **Save Settings**. Save each slot separately. The full OptiScaler menu uses Home. Keep the compact F12 menu only in games without Ultra+; Cyberpunk's installed Ultra+ owns F12, so this old Cyberpunk candidate must not be co-installed there.
 - All four slots initially share the current configuration. They become different only after the user saves different settings in them. Unsaved changes are marked; switching recalls the target slot's saved settings.
 - **Model preset** remains an independent model hint inside each slot. The former F11 model-hint cycle did not provide per-number personal settings.
-- F7 retains **25% ↔ 100% only**. F10 toggles NR, F12 controls the compact menu, Delete controls the full menu.
+- F7 retains **25% ↔ 100% only**. F10 toggles NR; the full OptiScaler menu uses Home, and ReShade uses Delete. F12 controls this candidate's compact menu only where Ultra+ is absent.
 - F8, Page Up and Page Down are unbound (`-1`); the OptiScaler FPS overlay starts off. Manual placement controls remain available.
 - F6 remains Cyberpunk's separate native DLSS control, with [corrected CET notifications](../../cyberpunk-2077/GraphicsHotkeys/README.md).
 

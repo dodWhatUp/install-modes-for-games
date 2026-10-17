@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "time_utc": "2026-10-12T09:46:26.187Z",
+  "scope": "Observed offline browser UI",
+  "checks": [
+    {
+      "name": "Click E selects II",
+      "observed": "Weapon set II",
+      "status": "PASS"
+    },
+    {
+      "name": "Click Q returns to I",
+      "observed": "Weapon set I",
+      "status": "PASS"
+    },
+    {
+      "name": "Ctrl+Q invokes slot 9",
+      "observed": "Last: Skill 9",
+      "status": "PASS"
+    },
+    {
+      "name": "Focused X toggles weapon set",
+      "observed": "Weapon set II",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancel discards assignment draft",
+      "observed": "I",
+      "status": "PASS"
+    },
+    {
+      "name": "Unavailable skill card disabled",
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "name": "Names display as text",
+      "observed": "Q · #12\n<b>Primary</b>\nSet I",
+      "status": "PASS"
+    },
+    {
+      "name": "First inventory step changes only weapon",
+      "observed": {
+        "equipped": "Weapon: Demo weapon B | Gem: Demo skill A",
+        "binding": "Assigned skill: Demo skill A"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "Stop cancels remaining steps",
+      "observed": "cancelled · 1/3 simulated changes completed",
+      "status": "PASS"
+    },
+    {
+      "name": "Offline automatic inventory sequence completes",
+      "observed": {
+        "phase": "complete · 3/3 simulated changes completed",
+        "binding": "Assigned skill: Demo skill B"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "Changing mode cancels active sequence",
+      "observed": "Offline sequence stopped: mode changed. Completed demo changes remain.",
+      "status": "PASS"
+    },
+    {
+      "name": "Setup JSON download event completes",
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "name": "Exported JSON imports successfully",
+      "observed": "Setup loaded into the lab only.",
+      "status": "PASS"
+    },
+    {
+      "name": "390px long-label layout",
+      "observed": {
+        "buttons": 13,
+        "clientWidth": 375,
+        "scrollWidth": 375
+      },
+      "status": "PASS"
+    }
+  ],
+  "game_runtime": "NOT_RUN",
+  "physical_device": "NOT_TESTED",
+  "hardware_ban_safety": "NOT_ESTABLISHED",
+  "notes": [
+    "Completion polling hit a tool deadline; fresh accessibility readback confirmed the completed three-step state.",
+    "JSON export and re-import were observed. A 390px long-label layout check and desktop preview were performed.",
+    "Viewport override reset after the check."
+  ],
+  "passed": 14,
+  "failed": 0,
+  "html_sha256": "ae7bc2885f8060bb9cc807bd6b9e73dcd3d36846befaedb0bf368350a7d0b8f1"
+}

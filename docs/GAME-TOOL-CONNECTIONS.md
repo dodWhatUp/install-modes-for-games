@@ -1,6 +1,127 @@
 # Measurement-tool connections and user control
 
 
+## 2026-10-14 — Supplied A/B inputs merged and Unified Game Tools reinstalled
+
+The user's later request selected the supplied A/B merger archive, continuation,
+installation and convenient access. It supersedes the earlier removal state.
+The original transport ZIP remains byte-identical, SHA-256
+`fd3cb621c83220f15c7fa5d51efe2916bba9ced70d8505d57f404300b498a4b2`.
+Outer CRC/manifest checks, A's 62 package members and B's 40 package members
+passed. The selected A 0.24 source verified all 221 payloads; B Keybinds 0.2
+verified all 171. Ancestry and compatibility copies were retained as evidence,
+not substituted for current host services.
+
+Installed **Hub 0.25.0-preview.1 / Workbench 0.3.0 / Keybinds 0.2.0-preview.1**,
+retaining Studio 2.2.0-unified.10 and Game Input 0.5-preview.3. The original 0.24
+GameWorkspaces owns game identity, support revisions, activity and request history.
+`GameToolMerged` composes keybind capabilities without replacing it with B's old
+workspace implementation. Separate support/keybind records share only game IDs.
+The existing approval controller/journal remain authoritative; one stdio endpoint
+offers both tool families and cannot approve or execute its own proposals.
+
+The Workbench adds one Keybinds tab tied to its existing game selector. Busy
+guards prevent changing its target during a binding operation; shared Stop and
+normal shutdown handle the owned worker. Stage/apply/undo precede report details,
+the report follows the selected theme, and the retained complex native pane has
+horizontal/vertical scrolling. Original tools remain available through More;
+that optional interface retains the Studio, reports, overlays and update controls.
+The new primary Workbench does not start AHK/Game Input on opening.
+
+The final **376-payload** source package passed updater checks, SHA-256
+`f5462cff08e1e32c7c4a75d710c46bef11dc4d58426c25994d0a5fdf7a90583d`.
+Current pointer: `hub-0.25.0-preview.1-f5462cff08e1`; previous points to the initial
+merged layout `hub-0.25.0-preview.1-2f85d9e3eb0f`. The bounded updater/source layout
+now includes keybind schemas/packs and a maximum of 512 source payloads while
+preserving the 32 MiB budget, path checks and legacy launch behavior. The static
+source exporter includes the merged inventory. Before replacing code, a fresh
+private checkpoint copied/hash-verified all 150 current saved-data files.
+After installation and real startup, all 150 remain byte-identical in place.
+The earlier removal backup, source masters, native profiles/images and original
+input ZIP remain retained; no remapper/profile or game configuration was applied.
+
+Validation is scoped: the first Linux guest sweep timed out after 45 suites, with
+1,094 checks in passing suites. Pillow was missing in that guest and was added
+there only. Several suites exceeded the emulated guest's short deadlines; the
+focused transition probe completed. Targeted final suites passed **21 Workbench,
+12 merger and 7 package methods**; the final display adjustment reran the 12 merger
+methods. The overlay suite subsequently passed 54 methods with one skip. Host
+headless checks established 872 methods in passing suites, including effective
+bindings, host/pack integration and original workspace services; coverage overlaps
+and is not added as independent totals. Windows physical-symlink creation lacked
+privilege, and a case-collision fixture requires a case-sensitive filesystem.
+The packaging test's Windows default-encoding issue was corrected; all seven
+package contracts passed on the host. The exporter parsed without errors.
+Three actual guest UI views and a final themed/action-order view were captured
+and inspected. This is not a full all-platform regression PASS.
+
+Desktop and Start Menu **Unified Game Tools** shortcuts, plus the Documents
+**Open Unified Game Tools.cmd**, were created and read back against the physical
+installed pointer/runtime. The Desktop shortcut launched the real titled
+**Unified Game Tools 0.25 — Mods and Keybinds** window; no AHK process started.
+The host app was left open at that checkpoint. The owned Linux guest stopped normally without force.
+Live AI-client connection, native game adapters (zero certified games), device
+outputs, game input, gameplay, captures and benchmarks remain unverified/deferred.
+No Git/Drive publication, scheduler or game launch occurred.
+
+Current local source owner:
+`local-development/game-tools-merged-0.25/` in this project; it is a local merged
+candidate, not adopted Git main. Immutable original inputs and exact private
+install/access/current-data receipts use alias **GAME-TOOLS-MERGER-20261014**.
+Rollback requires normal app closure, fresh source/owner checks and the guarded
+pointer rollback for the prior merged layout, or removal of this new installation
+and its access files to return to the earlier uninstalled state. Preserve current
+user data and the separate historical removal archive. No functional restoration
+of old programs or activation of native profiles was performed.
+
+## 2026-10-14 — Custom game helpers removed; profiles and backups preserved
+
+The user explicitly selected removal of **all custom game helpers, including
+Unified Game Tools and the Focus preview**, while keeping profiles and backups.
+This supersedes the historical installed-state descriptions below; it does not
+authorize automatic restoration or a replacement installation.
+
+Removed the deployed **Unified Game Tools Hub 0.20.2 / Studio
+2.2.0-unified.10 / Game Input 0.5-preview.3**, the separate **Focus/Original UI
+0.22.0-preview.1** package, standalone Studio deployment, older MIC Hold and
+Layer Pictures helper scripts, Documents/Downloads launchers, Desktop shortcuts,
+the standalone Hub shortcut and the Focus Start Menu shortcut. Eleven exact
+locations were moved into a new private local recovery folder. All **2,769
+archived files** passed size/SHA-256 verification; existing recovery files nested
+inside the unified installation remain in that archive. Source ZIPs and prior
+backups remain retained.
+
+The one recorded Unified bootstrap process had no targetable window, main-window
+handle or child process. After checkpointing, only that exact process was stopped
+with executable/command-line identity rechecked; its exit was verified. No AHK
+host was running. Final scoped process and access-link checks found no remaining
+custom-helper owner or active Desktop/Start Menu/Startup/legacy Hub shortcut.
+The alternate logical installation path was also absent after removal.
+
+All **150 protected saved-data files** remain byte-identical at their existing
+locations and have additional verified recovery copies: Hub reports/registry/view
+data, Studio settings, preview settings, **33 native Azeron storage files** and
+three external Multi Image Canvas configuration/session files. Native profiles,
+overlay images, remapping software, runtimes, third-party utilities and game mods
+were not removed or reset. All **102 checked authored source files** and **six
+checked existing ZIP archives** remained byte-identical. The repository remains
+the source master; retained source/backup packages are not deployed installations.
+
+Private recovery alias: **CUSTOM-GAME-HELPERS-REMOVED-20261014-1AED814E**. Its
+BEFORE, per-target removal, protected-data, source/archive preservation and final
+receipts retain exact original/recovery paths and hashes outside Git. Recovery
+requires a separately requested restore, fresh owner checks, verified archived
+bytes and inspection of captured stale ownership locks before restoring the exact
+original paths. Do not overwrite newer settings or activate native profiles.
+Archive/copy verification passed; functional restoration was not tested.
+
+No game, benchmark, capture, device-input test, replacement installation,
+Drive/GitHub publication or scheduler action occurred. Earlier installed and
+desktop acceptance entries retain their original historical evidence.
+
+
+
+
 ## 2026-10-15 — Read-only planning and UMM instance adopted source 0.27
 
 The adopted `0.27.0-preview.1` source adds four modern multi-game read tools:

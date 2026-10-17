@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "counts": {
+    "files": 582,
+    "python": 186,
+    "json": 140,
+    "snapshot": 369
+  },
+  "issues": [],
+  "missing_relative_links": [],
+  "checks": {
+    "source_export_contracts": 69,
+    "component_management_checks": 50,
+    "poe_offline_checks": 20,
+    "lab_safety_tests": 11
+  },
+  "runtime_tests_performed": false
+}

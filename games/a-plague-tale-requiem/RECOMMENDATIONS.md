@@ -1,6 +1,6 @@
 # A Plague Tale: Requiem Recommendations
 
-**Controls update, 2026-09-13:** use F7 for NR 25%/100%; native live SR is not implemented. The revised binaries are installed and statically verified; interactive testing remains pending. Treat earlier F9/F7 instructions below as the previous build. Restore this revision with private Restore-F7.ps1 before invoking the earlier rollback chain. [Dynamic SR feasibility](../../docs/DYNAMIC-DLSS-SR.md) is research, not an enabled FPS controller.
+**Controls update, 2026-10-07:** Home opens the full OptiScaler menu; static configuration verification passed and runtime Home input remains pending. Use F7 for NR 25%/100%; native live SR is not implemented. The revised binaries are installed and statically verified; interactive testing remains pending. Treat earlier Delete and F9/F7 instructions below as previous-state evidence. Restore the Home change from the named hotkey snapshot before using older rollback chains. [Dynamic SR feasibility](../../docs/DYNAMIC-DLSS-SR.md) is research, not an enabled FPS controller.
 
 Reviewed 2026-09-13. These recommendations distinguish observed title-scene success from untested gameplay.
 

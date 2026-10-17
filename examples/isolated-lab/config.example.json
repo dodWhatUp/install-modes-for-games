@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "root": "D:/CodexLab",
+  "qemu": "D:/CodexLab/tools/qemu/qemu-system-x86_64.exe",
+  "qemu_img": "D:/CodexLab/tools/qemu/qemu-img.exe",
+  "vbox": "C:/Program Files/Oracle/VirtualBox/VBoxManage.exe",
+  "guests": {
+    "linux": {
+      "backend": "qemu",
+      "disk": "D:/CodexLab/vms/linux/disk.qcow2",
+      "seed": "D:/CodexLab/vms/linux/seed.iso",
+      "memory_mb": 4096,
+      "cpus": 2,
+      "accelerator": "tcg",
+      "ssh_port": 22241,
+      "qmp_port": 22441,
+      "vnc_display": 41,
+      "user": "lab",
+      "key": "D:/CodexLab/private/linux_ed25519",
+      "known_hosts": "D:/CodexLab/private/known_hosts"
+    },
+    "windows": {
+      "backend": "vbox",
+      "name": "CodexLab-Windows",
+      "user": "lab",
+      "password_file": "D:/CodexLab/private/windows-password.txt",
+      "memory_mb": 8192,
+      "cpus": 4,
+      "disk": "D:/CodexLab/vms/windows/disk.vdi",
+      "license": "pending_selected_media_and_license"
+    }
+  }
+}

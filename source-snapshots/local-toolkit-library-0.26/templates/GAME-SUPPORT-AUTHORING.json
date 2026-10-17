@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "kind": "game_support_authoring_contract",
+  "pack_fields": [
+    "definition",
+    "kind",
+    "notes",
+    "pack_version",
+    "recipe",
+    "schema_version",
+    "sources"
+  ],
+  "definition_example": {
+    "game_id": "example-game",
+    "name": "Example Game",
+    "manager_id": "manual",
+    "adapter": "directory",
+    "platform": "windows",
+    "executable_any": [
+      "Game.exe"
+    ],
+    "mods_relative": "Mods",
+    "loader_markers": [],
+    "scan_depth": 3,
+    "review_note": "Template only. Verify exact build, paths, loader and author instructions before using real mods."
+  },
+  "adapter_ids": [
+    "umm",
+    "smapi",
+    "bepinex",
+    "directory",
+    "external"
+  ],
+  "archive_layouts": [
+    "umm",
+    "smapi",
+    "generic"
+  ],
+  "recipe_required_fields": [
+    "schema_version",
+    "kind",
+    "game_id",
+    "manager_id",
+    "items"
+  ],
+  "item_example": {
+    "id": "author-mod",
+    "name": "Author Mod",
+    "kind": "mod",
+    "display_version": "choose compatible version",
+    "source": {
+      "kind": "manual"
+    },
+    "download_page": "https://example.invalid/author-mod",
+    "max_download_bytes": 16777216,
+    "sha256": null,
+    "archive_layout": "generic",
+    "required_files": [],
+    "requires": [],
+    "conflicts": []
+  },
+  "recipe_presets_example": {
+    "default": [
+      "author-mod"
+    ]
+  },
+  "optional_item_fields": [
+    "mod_id",
+    "archive_root",
+    "required_files",
+    "expected_version"
+  ],
+  "validation": "All unknown top-level pack/definition fields rejected; no commands or secrets; paths stay relative.",
+  "installation_authority": false,
+  "automatic_network": false,
+  "next": "Validate the data, review the diff, then import with the exact reviewed digest. Adding an unknown adapter requires a separately tested code module."
+}

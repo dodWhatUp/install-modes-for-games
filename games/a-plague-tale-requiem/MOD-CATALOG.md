@@ -1,6 +1,6 @@
 # A Plague Tale: Requiem Mod Catalog
 
-**Current controls revision, 2026-09-13:** [F7 two-scale customization](../../examples/optiscaler-dlssnr/f7-two-scale/README.md) installed on the same consumer fork. F7 toggles NR 25%/100%. Native live SR remains unavailable in this installed chain. Old F9/F7 descriptions below record the preceding package/review. No additional graphics consumer was installed.
+**Current controls revision, 2026-10-07:** Home now opens the full OptiScaler menu. The [F7 two-scale customization](../../examples/optiscaler-dlssnr/f7-two-scale/README.md) remains installed on the same consumer fork; F7 toggles NR 25%/100%. Native live SR remains unavailable in this installed chain. Old F9/F7 and Delete descriptions record preceding packages/reviews. No additional graphics consumer was installed.
 
 Last reviewed: 2026-09-13. Focused on the requested graphics installation; this is not a comprehensive mod survey.
 

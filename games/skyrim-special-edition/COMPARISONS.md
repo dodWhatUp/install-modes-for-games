@@ -63,7 +63,7 @@ Do not install superseded standalone Light Limit Fix/Dynamic Cubemaps features w
 | [Wheeler](https://www.nexusmods.com/skyrimspecialedition/mods/97345) | Radial equipment/spell selection | Compare with SkyUI favourites; more dependencies/input overlap, especially controllers | Optional, runtime-gated |
 | [Immersive Equipment Displays](https://www.nexusmods.com/skyrimspecialedition/mods/62001) | Display carried equipment on characters | Cosmetic utility; not new weapon mechanics; needs matching plugin and skeleton requirements | Optional |
 
-Do not assign graphics F6/F7/F10–F12 to spell wheels or combat by default. The full graphics menu preference is Delete where supported; CS's documented default is End. No custom NR slots or live SR shortcut is claimed installed by adding an INI alone. ReShade Home remains its own menu.
+Do not assign graphics F6/F7/F10–F12 to spell wheels or combat by default. ReShade uses Delete and a future compatible OptiScaler full menu uses Home; CS's documented default is End unless separately changed. No custom NR slots or live SR shortcut is claimed installed by adding an INI alone.
 
 ## Animation and movement
 

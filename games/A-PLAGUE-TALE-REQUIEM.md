@@ -1,5 +1,7 @@
 # A Plague Tale: Requiem
 
+**Latest control change (2026-10-07):** the full OptiScaler menu is now explicitly bound to **Home** (`ShortcutKey=0x24`) under the user's new cross-game rule. The game was closed, the prior INI was preserved in the shared private hotkey snapshot, and static readback/diff passed. Runtime Home input remains untested; older Delete results below are historical evidence for the preceding binding.
+
 **Latest change (2026-09-13):** the rebuilt `e237f89+f7-25-100` controls are installed: F7 = NR 25%/100%, F8 = placement. Native SR switching remains unavailable and is shown as such in the compact menu. Current build/export checks passed. The title-scene runtime evidence below applies to the preceding build; new F7 input is untested.
 
 Status: **OptiScaler-DLSSNR installed; neural creation/evaluation and live resolution/placement changes confirmed in the animated title scene. Full gameplay validation pending.**
@@ -33,7 +35,7 @@ Based on [v0.7.7](https://github.com/wilsjo2/OptiScaler-DLSSNR-PreSR-Multipass/r
 
 | Key | Function |
 |---|---|
-| Delete | Full OptiScaler menu |
+| Home | Full OptiScaler menu; configured 2026-10-07, runtime input pending |
 | F12 | Compact Neural Rendering-only window |
 | F11 | Cycle numeric NR model hints 0, 1, 2, 3 |
 | F10 | Enable/disable NR |
@@ -52,7 +54,7 @@ The separate live SR shortcut would need a Requiem-specific engine/menu integrat
 
 Stock first launch reached the animated title scene and exited normally. The modded title run created the DLSS and NR features, recorded readiness after submission, composition, repeated GPU timing, and successful model recreation after F9/F8. This proves a functioning neural path in that scene, not a full gameplay stability result.
 
-Delete and F8–F12 were verified, including the full preset-hint cycle, NR off/on, mutually exclusive menus and closing the compact window. Mouse Save Settings persisted the tested default combination; default values serialize as `auto` and match this custom build's source defaults. Modded Alt+F4 released the feature and unloaded OptiScaler normally. After exit, all 22 original root files and 64 immutable mod files matched their recorded hashes.
+The preceding Delete binding and F8–F12 were verified, including the full preset-hint cycle, NR off/on, mutually exclusive menus and closing the compact window. Only the 2026-10-07 Home replacement is new and statically verified. Mouse Save Settings persisted the tested default combination; default values serialize as `auto` and match this custom build's source defaults. Modded Alt+F4 released the feature and unloaded OptiScaler normally. After exit, all 22 original root files and 64 immutable mod files matched their recorded hashes.
 
 Gameplay motion, HUD, native FG delivery, alt-tab/resolution recreation, output HDR, and long-run image quality still need testing. First-run telemetry selection was left to the user. No campaign save was created by the agent.
 

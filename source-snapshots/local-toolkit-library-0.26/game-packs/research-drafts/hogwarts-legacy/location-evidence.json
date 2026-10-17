@@ -1,0 +1,24 @@
+{
+  "id": "hogwarts-legacy",
+  "name": "Hogwarts Legacy",
+  "schema_status": "original_and_schema_review",
+  "locations": [
+    {
+      "root": "local",
+      "pattern": "Hogwarts Legacy/Saved/Config/WindowsNoEditor/Input.ini"
+    }
+  ],
+  "format": "Unreal-style Input.ini ActionMappings, with modifier flags and game-specific fields",
+  "limitations": [
+    "Action names, groups and the existing press/hold/chord configuration must come from this file/build, not from another Unreal game.",
+    "Preserve controller/mouse mappings and all non-target lines. Treat mod-added and Photo Mode controls as version-dependent.",
+    "All 41 source placements are extracted, including secondary spell/panel and contextual placements."
+  ],
+  "source_urls": [
+    "https://www.curseforge.com/hogwarts-legacy/mods/ifonly-skipmerlintrials",
+    "https://www.nexusmods.com/hogwartslegacy/articles/140"
+  ],
+  "discovery_only": true,
+  "native_recipe_bundled": false,
+  "source_review_date": "2026-10-13"
+}

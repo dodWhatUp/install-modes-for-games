@@ -83,3 +83,5 @@ instead of rebuilding the app or hardcoding a new game into the UI. Use known
 adapters first; unknown executable adapter code needs separate source review and
 conformance tests. A named research draft, file-location hint or successful
 parser fixture is not certified game support or permission to mutate a game.
+
+For continuation on another computer or transfer reconciliation, read `docs/CROSS-COMPUTER-CONTINUATION-2026-10-17.md` and the knowledge index. Treat source, installed state, private chat/settings recovery and destination acceptance as separate evidence.

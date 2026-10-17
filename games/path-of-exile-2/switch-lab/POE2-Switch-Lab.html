@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>PoE2 Weapon & Skill Switch Lab</title>
+<style>
+:root{color-scheme:dark;--bg:#10151d;--panel:#19212d;--line:#354355;--text:#eef3fa;--muted:#b3c2d4;--cyan:#75e4ce;--gold:#ffc676;--purple:#bea5ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 system-ui,sans-serif}main{max-width:1100px;margin:auto;padding:24px}h1{font-size:clamp(24px,4vw,34px);margin:0 0 5px}h2{font-size:20px;margin:0 0 10px}h3{font-size:17px}p{margin:6px 0 12px}.muted{color:var(--muted)}.badge{display:inline-block;border:1px solid var(--cyan);color:var(--cyan);padding:3px 9px;border-radius:20px;font-size:13px}.notice{border-left:3px solid var(--gold);padding:9px 13px;background:#29231c;margin:14px 0}.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:17px;margin-top:16px}.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.bar>label{display:flex;gap:7px;align-items:center}.split{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(230px,1fr);gap:16px}.split>.card{min-width:0}.status{font-weight:700;color:var(--cyan);font-size:22px}.keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.key{min-height:68px;text-align:left;padding:11px;display:flex;flex-direction:column;gap:5px}.key b{color:var(--cyan);font-size:19px}.key small{color:var(--muted)}.key[data-set="II"] b{color:var(--purple)}.key.selected{outline:2px solid var(--cyan)}button,input,select{font:inherit;color:var(--text);background:#243143;border:1px solid #60728a;border-radius:7px;padding:8px 11px}button{cursor:pointer}button:hover{background:#304259}button:disabled{opacity:.5;cursor:default}input[type="checkbox"]{accent-color:var(--cyan);width:19px;height:19px}input[type="range"]{padding:0;width:170px}input[type="text"]{width:100%;min-width:100px}a{color:var(--cyan)}:focus-visible{outline:3px solid var(--gold);outline-offset:3px}details{margin-top:15px}summary{cursor:pointer;font-weight:650;padding:8px 0}.scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}td,th{text-align:left;border-bottom:1px solid var(--line);padding:8px;vertical-align:middle}th{color:var(--muted)}.pad{padding:12px;border:2px dashed #6a849c;border-radius:8px;margin:12px 0;background:#111a25}.pad:focus{border-color:var(--gold)}.log{padding-left:24px;max-height:250px;overflow:auto;font-size:14px}.log li{padding:4px 0}.inventory{display:grid;grid-template-columns:1fr 1fr;gap:12px}.inventory div{background:#111a25;border-radius:7px;padding:11px}.pill{padding:5px 10px;border:1px solid var(--line);border-radius:7px}.pill.active{border-color:var(--cyan);color:var(--cyan)}#feedback{min-height:1.5em;color:var(--gold)}[hidden]{display:none!important}footer{color:var(--muted);font-size:13px;margin-top:20px}pre{white-space:pre-wrap;overflow-wrap:anywhere}#run-phase{color:var(--gold)}@media(max-width:750px){main{padding:15px}.split{grid-template-columns:1fr}.keys{grid-template-columns:repeat(2,minmax(0,1fr))}.inventory{grid-template-columns:1fr}td,th{padding:6px}.card{padding:13px}}
+.bar>label{max-width:100%;flex-wrap:wrap}.bar input[type=file]{max-width:100%;min-width:0;width:250px}select{max-width:100%}.keys>div{min-width:0}.key{min-width:0;width:100%;overflow-wrap:anywhere}
+</style>
+</head>
+<body><main>
+<header><span class="badge">Offline prototype · v0.1</span><h1>Weapon & skill switching</h1><p class="muted">Try the switching logic with your GROUPED R2 keys. This page changes its own demo state.</p></header>
+<div class="notice"><strong>PC protection:</strong> no game input, client hooks, account login or device identity collection. These tests cannot establish whether GGG uses hardware bans.</div>
+<div class="bar"><label for="mode">Test</label><select id="mode"><option value="native">Native weapon sets + prepared skills</option><option value="inventory">Inventory equipment + gem simulation</option></select><button id="export">Save setup JSON</button><label>Load setup <input id="import" type="file" accept="application/json,.json"></label></div>
+<p id="feedback" role="status" aria-live="polite"></p>
+<section id="native-view">
+<div class="split"><section class="card"><h2>Skills stay together</h2><p class="muted">Demo: Q belongs to set I; E belongs to set II. Other slots start enabled in both. Edit the prepared assignments below.</p><div id="skills" class="keys"></div>
+<div id="test-pad" class="pad" tabindex="0" role="group" aria-label="Keyboard test pad">Click here, then press Q / E / R / T / F, their Ctrl combinations, or X. Mouse skills use the labelled cards. Keyboard capture stops when this box loses focus.</div>
+<div class="bar"><button id="swap">X · #37 · swap weapon set</button><button id="reset-native">Reset demo state</button></div>
+</section><section class="card"><h2>Current demo state</h2><div class="bar"><span id="set-I" class="pill active">Set I ⚔</span><span id="set-II" class="pill">Set II 🏹</span></div><p id="active-set" class="status" aria-live="polite">Weapon set I</p><p id="last-skill">No skill used yet.</p><p><span id="request-count">0</span> manual requests in this model.</p><p class="muted">Using a set-specific skill models one skill request; the game handles its native weapon switch. Actual game timing, requirements and animation are not reproduced.</p><ol id="native-log" class="log" aria-label="Native switching event history"></ol></section></div>
+<details class="card"><summary>Edit skill names and weapon-set assignments</summary><p class="muted">Names are examples, not a readback of your character. Saving here does not change PoE2 or Azeron. Available means the skill is already equipped/usable in the model.</p><form id="editor"><div class="scroll"><table><thead><tr><th>Skill / Azeron</th><th>Fixed R2 key</th><th>Ability name</th><th>Weapon set</th><th>Available</th></tr></thead><tbody id="editor-rows"></tbody></table></div><div class="bar" style="margin-top:12px"><button type="submit">Apply edits to demo</button><button type="button" id="cancel-edits">Cancel edits</button></div></form></details>
+</section>
+<section id="inventory-view" class="card" hidden><h2>Inventory loadout: offline engineering model</h2><p>This demonstrates a three-step replacement: weapon, skill gem, then skill assignment. It is not a PoE2 inventory adapter.</p><div class="notice"><strong>A single button running this sequence in the live game exceeds the published macro limit.</strong> Slower timing is shown for UI reliability only; it has no measured relationship to ban risk.</div>
+<div class="inventory"><div><h3>Equipped in the model</h3><p id="inv-equipped"></p><p id="inv-binding"></p></div><div><h3>Inventory in the model</h3><p id="inv-bag"></p></div></div>
+<p id="run-phase" role="status">Ready.</p><div class="bar"><button id="next-step">Simulate one step</button><button id="run-sequence">Run offline sequence</button><button id="stop-sequence" disabled>Stop sequence</button><button id="reset-inventory">Restore initial demo</button><label for="delay">Demo delay <input id="delay" type="range" min="100" max="1000" step="100" value="400"><output id="delay-label">400 ms</output></label></div><p class="muted">Stop, page focus loss or a mode change cancels pending steps. Completed changes stay visible, showing the partial-loadout problem.</p><ol id="inventory-log" class="log" aria-label="Inventory simulation history"></ol></section>
+<details class="card"><summary>New-account test plan and hardware findings</summary><h2>What is known</h2><ul><li>GGG discloses collecting hardware identifiers and operating-system information.</li><li>Collecting identity is not proof of hardware-ban enforcement. A current official confirmation of that enforcement was not found.</li><li>A different Windows version, VM or account is not a proven guarantee of hardware isolation.</li><li>Solo/SSF still uses the online service. No solo exemption appears in the macro policy.</li></ul><h2>Live test status: not run</h2><p>A fresh account would need its own game access. A successful session would show function, not ban safety. The attached test plan covers native weapon-set assignment and individually triggered skills; its prohibited-sequence stage is blocked by the PC-protection requirement.</p><p>The included GGG support question is ready for review and has not been sent.</p><h3>Development path</h3><ol><li>Keep skill gems prepared and enable each skill for set I, II or both.</li><li>Keep the 13 fixed Azeron skill slots grouped and retain X on #37.</li><li>Use a display-only loadout checklist for inventory-only gear/gems.</li><li>Connect the display to the existing overlay host after its supported integration and actual game assignments are confirmed.</li></ol><p>Actual equipped skills, compatibility and Spirit/passive changes require character-specific inspection before applying the prepared plan.</p></details>
+<details class="card"><summary>Sources and evidence limits</summary><ul><li><a href="https://www.pathofexile.com/forum/view-thread/3610245" target="_blank" rel="noopener noreferrer">GGG: native skill-to-weapon-set assignment</a></li><li><a href="https://www.pathofexile.com/developer/docs" target="_blank" rel="noopener noreferrer">GGG: current Third-Party Policy</a></li><li><a href="https://www.pathofexile.com/legal/terms-of-use-and-privacy-policy" target="_blank" rel="noopener noreferrer">GGG: hardware, OS and anti-cheat information</a></li><li><a href="https://store.steampowered.com/app/2694490/Path_of_Exile_2/" target="_blank" rel="noopener noreferrer">Current game access and network requirements</a></li></ul><p>Research reviewed 2026-10-12. No detection threshold or safe delay was established. Local model tests are separate from browser usability and live game acceptance.</p></details>
+<footer id="source">R2 source mapping loaded at build time. No new Azeron profile has been installed.</footer>
+</main>
+<script>(function (root, factory) {
+  const api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  else root.PoeSwitchLab = api;
+})(typeof globalThis === 'object' ? globalThis : this, function () {
+  'use strict';
+  const clone = value => JSON.parse(JSON.stringify(value));
+  const sets = ['I', 'II', 'both'];
+  function validatePlan(plan, baseline) {
+    if (!plan || plan.schema_version !== 1 || !Array.isArray(plan.skills) || plan.skills.length !== 13)
+      throw new Error('This lab needs schema 1 and exactly 13 skill slots.');
+    const seen = new Set();
+    const skills = baseline.skills.map(base => {
+      const row = plan.skills.find(skill => skill && skill.id === base.id);
+      if (!row || seen.has(row.id)) throw new Error('Missing or duplicate skill slot.');
+      seen.add(row.id);
+      if (plan.skills.filter(skill => skill && skill.id === row.id).length !== 1)
+        throw new Error('Duplicate skill slot.');
+      if (row.key !== base.key || row.button !== base.button || row.code !== base.code || row.ctrl !== base.ctrl)
+        throw new Error('The saved R2 keys and physical positions must be preserved.');
+      if (typeof row.name !== 'string' || !row.name.trim() || row.name.length > 100)
+        throw new Error('Skill names must contain 1–100 characters.');
+      if (!sets.includes(row.set) || typeof row.available !== 'boolean')
+        throw new Error('Choose I, II or both and a valid available state.');
+      return {...base, name: row.name.trim(), set: row.set, available: row.available};
+    });
+    return {schema_version: 1, source: clone(baseline.source), skills};
+  }
+  function nativeState() { return {activeSet: 'I', requests: 0, lastSkill: null, events: []}; }
+  function useSkill(state, plan, id) {
+    const skill = plan.skills.find(row => row.id === id);
+    if (!skill) throw new Error('Unknown skill slot.');
+    const next = clone(state);
+    if (!skill.available) {
+      next.events.push({type: 'blocked', skill: skill.name, reason: 'Skill is not available/equipped in the demo.'});
+      return next;
+    }
+    const effects = [];
+    if (skill.set !== 'both' && skill.set !== state.activeSet) {
+      next.activeSet = skill.set;
+      effects.push('Native game selects weapon set ' + skill.set);
+    }
+    next.requests += 1;
+    next.lastSkill = id;
+    effects.push('Use ' + skill.name);
+    next.events.push({type: 'skill', requests: 1, skill: skill.name, key: skill.key, effects});
+    return next;
+  }
+  function swapWeapon(state) {
+    const next = clone(state);
+    next.activeSet = state.activeSet === 'I' ? 'II' : 'I';
+    next.requests += 1;
+    next.events.push({type: 'manual_swap', requests: 1, effects: ['Select weapon set ' + next.activeSet]});
+    return next;
+  }
+  function keyToSkill(event, plan) {
+    if (event.repeat || event.altKey || event.metaKey || event.shiftKey) return null;
+    return plan.skills.find(skill => skill.code === event.code && skill.ctrl === !!event.ctrlKey)?.id || null;
+  }
+  function inventoryState() {
+    return {
+      equipped: {weapon: 'Demo weapon A', gem: 'Demo skill A'},
+      bag: {'Demo weapon B': 'weapon', 'Demo skill B': 'gem'},
+      binding: 'Demo skill A'
+    };
+  }
+  function inventoryStep(state, step) {
+    const next = clone(state);
+    if (step.kind === 'equip') {
+      if (!['weapon', 'gem'].includes(step.slot) || next.bag[step.item] !== step.slot)
+        throw new Error('The required demo item is missing or incompatible.');
+      const previous = next.equipped[step.slot];
+      delete next.bag[step.item];
+      next.bag[previous] = step.slot;
+      next.equipped[step.slot] = step.item;
+    } else if (step.kind === 'bind') {
+      if (next.equipped.gem !== step.item) throw new Error('The skill gem must be equipped before assignment.');
+      next.binding = step.item;
+    } else throw new Error('Unknown simulation step.');
+    return next;
+  }
+  function prepareInventory(state, target) {
+    const steps = [
+      {kind: 'equip', slot: 'weapon', item: target.weapon},
+      {kind: 'equip', slot: 'gem', item: target.gem},
+      {kind: 'bind', item: target.gem}
+    ];
+    let preview = clone(state);
+    for (const step of steps) preview = inventoryStep(preview, step);
+    return {state: clone(state), before: clone(state), steps, cursor: 0, phase: 'ready', completed: []};
+  }
+  function advanceInventory(run) {
+    if (!['ready', 'running'].includes(run.phase)) return clone(run);
+    const next = clone(run);
+    next.state = inventoryStep(next.state, next.steps[next.cursor]);
+    next.completed.push(next.steps[next.cursor]);
+    next.cursor += 1;
+    next.phase = next.cursor === next.steps.length ? 'complete' : 'running';
+    return next;
+  }
+  function cancelInventory(run) {
+    const next = clone(run);
+    if (['ready', 'running'].includes(next.phase)) next.phase = 'cancelled';
+    return next;
+  }
+  return {clone, validatePlan, nativeState, useSkill, swapWeapon, keyToSkill,
+    inventoryState, inventoryStep, prepareInventory, advanceInventory, cancelInventory};
+});
+</script>
+<script>const BASELINE = {"schema_version":1,"source":{"revision":"2026-10-12-poe2-grouped-r2","sha256":"61bfeaf8fe5cb8bbdaa9f9c0de88d0de85377a0cd417a8147f7572772b3e0403","note":"Keys from saved R2. Skill names, assignments and availability are demo values."},"skills":[{"id":"use_bound_skill1","number":1,"button":8,"key":"LMB","code":null,"ctrl":false,"name":"Skill 1","set":"both","available":true},{"id":"use_bound_skill2","number":2,"button":7,"key":"MMB","code":null,"ctrl":false,"name":"Skill 2","set":"both","available":true},{"id":"use_bound_skill3","number":3,"button":5,"key":"RMB","code":null,"ctrl":false,"name":"Skill 3","set":"both","available":true},{"id":"use_bound_skill4","number":4,"button":12,"key":"Q","code":"KeyQ","ctrl":false,"name":"Skill 4","set":"I","available":true},{"id":"use_bound_skill5","number":5,"button":11,"key":"E","code":"KeyE","ctrl":false,"name":"Skill 5","set":"II","available":true},{"id":"use_bound_skill6","number":6,"button":10,"key":"R","code":"KeyR","ctrl":false,"name":"Skill 6","set":"both","available":true},{"id":"use_bound_skill7","number":7,"button":9,"key":"T","code":"KeyT","ctrl":false,"name":"Skill 7","set":"both","available":true},{"id":"use_bound_skill8","number":8,"button":13,"key":"F","code":"KeyF","ctrl":false,"name":"Skill 8","set":"both","available":true},{"id":"use_bound_skill9","number":9,"button":17,"key":"Ctrl+Q","code":"KeyQ","ctrl":true,"name":"Skill 9","set":"both","available":true},{"id":"use_bound_skill10","number":10,"button":16,"key":"Ctrl+E","code":"KeyE","ctrl":true,"name":"Skill 10","set":"both","available":true},{"id":"use_bound_skill11","number":11,"button":15,"key":"Ctrl+R","code":"KeyR","ctrl":true,"name":"Skill 11","set":"both","available":true},{"id":"use_bound_skill12","number":12,"button":38,"key":"Ctrl+T","code":"KeyT","ctrl":true,"name":"Skill 12","set":"both","available":true},{"id":"use_bound_skill13","number":13,"button":18,"key":"Ctrl+F","code":"KeyF","ctrl":true,"name":"Skill 13","set":"both","available":true}]};</script>
+<script>'use strict';
+(() => {
+  const L = PoeSwitchLab;
+  const $ = id => document.getElementById(id);
+  let plan = L.clone(BASELINE), native = L.nativeState(), run = freshRun(), timer = null;
+  function freshRun() {
+    return L.prepareInventory(L.inventoryState(), {weapon: 'Demo weapon B', gem: 'Demo skill B'});
+  }
+  function announce(message) { $('feedback').textContent = message; }
+  function item(tag, text, parent) {
+    const element = document.createElement(tag);
+    element.textContent = text;
+    parent.appendChild(element);
+    return element;
+  }
+  function renderNative() {
+    $('skills').replaceChildren();
+    // Visual groups mirror R2's mouse/main/extra towers; no new key outputs are generated.
+    for (const group of [plan.skills.slice(0, 3), plan.skills.slice(3, 8), plan.skills.slice(8)]) {
+      const column = document.createElement('div');
+      column.className = 'bar'; column.style.display = 'grid'; column.style.alignContent = 'start';
+      for (const skill of group) {
+        const button = document.createElement('button');
+        button.className = 'key' + (native.lastSkill === skill.id ? ' selected' : '');
+        button.dataset.set = skill.set;
+        button.disabled = !skill.available;
+        item('b', skill.key + ' · #' + skill.button, button);
+        item('span', skill.name, button);
+        item('small', skill.available ? 'Set ' + skill.set : 'Unavailable in demo', button);
+        button.addEventListener('click', () => cast(skill.id));
+        column.appendChild(button);
+      }
+      $('skills').appendChild(column);
+    }
+    $('active-set').textContent = 'Weapon set ' + native.activeSet;
+    $('set-I').classList.toggle('active', native.activeSet === 'I');
+    $('set-II').classList.toggle('active', native.activeSet === 'II');
+    $('request-count').textContent = native.requests;
+    $('last-skill').textContent = native.lastSkill ? 'Last: ' + plan.skills.find(s => s.id === native.lastSkill).name : 'No skill used yet.';
+    $('native-log').replaceChildren();
+    for (const event of native.events.slice(-20)) item('li', event.effects?.join(' → ') || event.reason, $('native-log'));
+  }
+  function cast(id) { native = L.useSkill(native, plan, id); renderNative(); }
+  function editor() {
+    $('editor-rows').replaceChildren();
+    for (const skill of plan.skills) {
+      const row = document.createElement('tr'); row.dataset.id = skill.id;
+      item('td', 'Slot ' + skill.number + ' / #' + skill.button, row);
+      item('td', skill.key, row);
+      const cell = item('td', '', row), name = document.createElement('input');
+      name.type = 'text'; name.maxLength = 100; name.required = true; name.value = skill.name;
+      name.setAttribute('aria-label', 'Ability name for slot ' + skill.number); cell.appendChild(name);
+      const setCell = item('td', '', row), select = document.createElement('select');
+      select.setAttribute('aria-label', 'Weapon set for slot ' + skill.number);
+      for (const value of ['I', 'II', 'both']) { const option = item('option', value, select); option.value = value; }
+      select.value = skill.set; setCell.appendChild(select);
+      const availableCell = item('td', '', row), available = document.createElement('input');
+      available.type = 'checkbox'; available.checked = skill.available;
+      available.setAttribute('aria-label', 'Skill slot ' + skill.number + ' is available'); availableCell.appendChild(available);
+      $('editor-rows').appendChild(row);
+    }
+  }
+  function renderInventory() {
+    $('inv-equipped').textContent = 'Weapon: ' + run.state.equipped.weapon + ' | Gem: ' + run.state.equipped.gem;
+    $('inv-binding').textContent = 'Assigned skill: ' + run.state.binding;
+    $('inv-bag').textContent = Object.keys(run.state.bag).join(' · ');
+    $('run-phase').textContent = run.phase + ' · ' + run.cursor + '/' + run.steps.length + ' simulated changes completed';
+    $('inventory-log').replaceChildren();
+    for (const step of run.completed) item('li', (step.kind === 'equip' ? 'Equip ' + step.slot + ': ' : 'Assign skill: ') + step.item, $('inventory-log'));
+    const done = ['complete', 'cancelled'].includes(run.phase);
+    $('next-step').disabled = done || timer !== null;
+    $('run-sequence').disabled = done || timer !== null;
+    $('stop-sequence').disabled = timer === null;
+  }
+  function stop(reason) {
+    if (timer !== null) {
+      clearTimeout(timer); timer = null; run = L.cancelInventory(run);
+      announce('Offline sequence stopped: ' + reason + '. Completed demo changes remain.');
+      renderInventory();
+    }
+  }
+  function advance() { run = L.advanceInventory(run); renderInventory(); }
+  function schedule() {
+    timer = setTimeout(() => {
+      timer = null;
+      if (document.hidden || $('mode').value !== 'inventory') { run = L.cancelInventory(run); renderInventory(); return; }
+      advance();
+      if (run.phase !== 'complete') schedule(); else announce('Offline sequence complete. No inputs were sent to any game.');
+      renderInventory();
+    }, Number($('delay').value));
+    renderInventory();
+  }
+  $('mode').addEventListener('change', () => {
+    stop('mode changed');
+    $('native-view').hidden = $('mode').value !== 'native';
+    $('inventory-view').hidden = $('mode').value !== 'inventory';
+  });
+  $('swap').addEventListener('click', () => { native = L.swapWeapon(native); renderNative(); });
+  $('reset-native').addEventListener('click', () => { native = L.nativeState(); renderNative(); });
+  $('test-pad').addEventListener('keydown', event => {
+    if (event.repeat) return;
+    if (event.code === 'KeyX' && !event.ctrlKey && !event.altKey && !event.metaKey && !event.shiftKey) {
+      event.preventDefault(); native = L.swapWeapon(native); renderNative(); return;
+    }
+    const id = L.keyToSkill(event, plan);
+    if (id) { event.preventDefault(); cast(id); }
+  });
+  $('editor').addEventListener('submit', event => {
+    event.preventDefault();
+    try {
+      const draft = L.clone(plan);
+      for (const row of $('editor-rows').children) {
+        const skill = draft.skills.find(s => s.id === row.dataset.id);
+        skill.name = row.querySelector('input[type=text]').value;
+        skill.set = row.querySelector('select').value;
+        skill.available = row.querySelector('input[type=checkbox]').checked;
+      }
+      plan = L.validatePlan(draft, BASELINE); renderNative(); editor();
+      announce('Edits applied to this demo only. Save setup JSON to keep them.');
+    } catch (error) { announce(error.message); }
+  });
+  $('cancel-edits').addEventListener('click', () => { editor(); announce('Unsaved edits discarded.'); });
+  $('export').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(plan, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob), link = document.createElement('a');
+    link.href = url; link.download = 'POE2-Switch-Setup-v1.json'; link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    announce('Export requested. This JSON is a lab setup, not an Azeron import.');
+  });
+  $('import').addEventListener('change', async event => {
+    const file = event.target.files[0]; if (!file) return;
+    try {
+      if (file.size > 100000) throw new Error('Setup file is too large.');
+      const imported = L.validatePlan(JSON.parse(await file.text()), BASELINE);
+      plan = imported; native = L.nativeState(); renderNative(); editor(); announce('Setup loaded into the lab only.');
+    } catch (error) { announce('Import rejected: ' + error.message); }
+    event.target.value = '';
+  });
+  $('next-step').addEventListener('click', advance);
+  $('run-sequence').addEventListener('click', () => { announce('Running a local inventory model.'); schedule(); });
+  $('stop-sequence').addEventListener('click', () => stop('Stop pressed'));
+  $('reset-inventory').addEventListener('click', () => { stop('reset'); run = freshRun(); renderInventory(); });
+  $('delay').addEventListener('input', () => { $('delay-label').textContent = $('delay').value + ' ms'; });
+  window.addEventListener('blur', () => stop('page lost focus'));
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stop('page hidden'); });
+  window.addEventListener('pagehide', () => stop('page closed'));
+  $('source').textContent = 'Source: ' + BASELINE.source.revision + ' · fixed R2 keys · no installed-profile changes.';
+  renderNative(); editor(); renderInventory();
+})();
+</script>
+</body></html>

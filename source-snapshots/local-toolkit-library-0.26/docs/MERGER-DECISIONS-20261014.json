@@ -1,0 +1,37 @@
+{
+  "base_owner": "INPUT_A_0.24",
+  "component_owner": "INPUT_B_0.2",
+  "canonical_owner": "dodWhatUp/install-modes-for-games",
+  "decisions": [
+    {
+      "component": "GameWorkspaces",
+      "owner": "A_0.24",
+      "resolution": "Compose keybind capability with preserved support revisions and request history; no B workspace replacement"
+    },
+    {
+      "component": "Automation and journal",
+      "owner": "A",
+      "resolution": "Use existing approval controller, cancellation and journal; exclude B compat copies"
+    },
+    {
+      "component": "Schemas",
+      "resolution": "Separate game_support_pack and game-keybind-pack records; shared game_id only"
+    },
+    {
+      "component": "AI endpoint",
+      "resolution": "One stdio endpoint with both tool families; proposals never execute"
+    },
+    {
+      "component": "Workbench",
+      "resolution": "One game selector and Keybinds tab; shared cancellation and worker ownership"
+    },
+    {
+      "component": "Manifest",
+      "resolution": "Regenerate merged payload inventory; immutable inputs retained"
+    },
+    {
+      "component": "Deployment",
+      "resolution": "Fresh installation, existing saved data reused; no native game profile activation"
+    }
+  ]
+}

@@ -1,5 +1,10 @@
 # Game tools knowledge and recovery index
 
+## 2026-10-17 — Cross-computer reconciliation
+
+Start with [the continuation and coverage map](CROSS-COMPUTER-CONTINUATION-2026-10-17.md) and the [private continuation folder](https://drive.google.com/drive/folders/1YlSh6Y3tBFgWehfjrpfFPgBnw3vz8dUn). The adopted 0.27 source is preserved; the observed installed pointer remains 0.25, and the independent 0.26 library candidate is retained as a [separate source snapshot](../source-snapshots/README.md). Local game histories, controls, lab records and dated deployment receipts are reconciled below. Chat projections, native profiles and original settings stay private; downloaded mods/programs stay in local SSD ZIPs.
+
+
 
 ## 2026-10-15 — Read-only planning and UMM instance adopted source 0.27
 

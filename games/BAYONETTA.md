@@ -2,6 +2,8 @@
 
 Status: **working**.
 
+**Controls, 2026-10-07:** Delete opens ReShade in both the x86 game process and the x64 neural helper. Both `ReShade.ini` files were migrated from Home under a private just-in-time snapshot and statically verified; runtime Delete input has not been retested.
+
 Supporting records:
 
 - [History](bayonetta/HISTORY.md)

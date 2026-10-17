@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "record_id": "poe2-unofficial-switch-risk-addendum-20261012",
+  "record_kind": "research",
+  "status": "research_not_runtime_acceptance",
+  "owner": {
+    "workstream": "Path of Exile 2 controls and switching",
+    "master_locator": "games/path-of-exile-2/evidence/SWITCH-RISK-UNOFFICIAL-ADDENDUM-2026-10-12.json"
+  },
+  "applicability": {
+    "game_id": "path-of-exile-2",
+    "tool_id": "Azeron; native weapon sets; input helpers",
+    "versions": [],
+    "context": "Additional unofficial-source research requested; protecting the current PC remains the user's priority"
+  },
+  "symptom": "Whether community experience establishes macro hardware bans, external-input immunity, Windows/account isolation or reduced enforcement in SSF",
+  "method": {
+    "reviewed_date": "2026-10-12",
+    "additional_targeted_search_queries": 28,
+    "previous_record": "games/path-of-exile-2/evidence/SWITCH-RISK-DEEP-REVIEW-2026-10-12.json",
+    "surfaces": [
+      "Reddit firsthand accounts and older rumor threads",
+      "Elitepvpers product threads and user replies",
+      "d2jsp firsthand comments",
+      "Original GitHub project documentation and issue listing",
+      "Commercial developer/reseller claims",
+      "Steam indexed discussions"
+    ],
+    "limitations": [
+      "Search-selected public reports; no representative population or risk denominator",
+      "PoE1 historical reports are labelled and do not establish PoE2 enforcement",
+      "User identity, email authenticity, setups and claimed outcomes are not independently audited",
+      "OwnedCore original GameHelper2 thread failed to fetch; GitHub mirror read instead",
+      "No useful original UnknownCheats case retrieved in the targeted searches",
+      "YouTube search titles were not treated as watched videos or verified outcomes",
+      "No private Discord access, tool downloads, game launches or live enforcement test"
+    ]
+  },
+  "sources": [
+    {
+      "id": "U01",
+      "locator": "https://www.reddit.com/r/pathofexile/comments/1f7v33y/",
+      "owner": "Player and commenters",
+      "revision": "2024-09-03 post; later comment dated 2024-12-03; served thread reviewed 2026-10-12",
+      "coverage": "Opening and relevant same-PC/account-status comments read; linked image/email attachments not authenticated",
+      "evidence_state": "community-reported",
+      "observation": "PoE1 author says their alt was banned while their main remained usable on the same PC. A later commenter independently describes an alt ban with their main unaffected. Another commenter reports an auto-clicker ban reversed after agreeing to stop.",
+      "limit": "Historical PoE1; not a controlled experiment, verified false positive or isolation guarantee."
+    },
+    {
+      "id": "U02",
+      "locator": "https://www.elitepvpers.com/forum/path-exile-2-trading/5366390-noddpilot-external-read-only-poe2-assistant-auto-combat-ingame-radar.html",
+      "owner": "Tool author; user feedback separately identified",
+      "revision": "Thread started 2026-07-07; visible updates through 2026-09-19",
+      "coverage": "Author description, risk disclaimer, license description and visible replies read",
+      "evidence_state": "developer-claim-and-community-reported",
+      "observation": "Author advertises external input and read-only game-memory access while explicitly declining detection immunity. A user reports unwanted automatic movement. A one-machine HWID license restriction is also stated.",
+      "limit": "No independently audited detection data or hardware-ban case. A license restriction is not GGG enforcement. Author's blanket statement about all third-party tools is not adopted as GGG policy."
+    },
+    {
+      "id": "U03",
+      "locator": "https://www.elitepvpers.com/forum/path-exile-2-trading/5329362-phoenix-path-exile-ii-premium-script-pack-automation.html",
+      "owner": "Commercial reseller and forum users",
+      "revision": "Opening dated 2025-11-19; visible replies through 2026-05-31",
+      "coverage": "Product claims and user replies read",
+      "evidence_state": "commercial-claim-and-community-reported",
+      "observation": "Reseller advertises hardware-ban protection. One user reports a month of use without bans; another says only a nonfunctional updater was received.",
+      "limit": "Single unaudited survival report with no verified configuration or later outcome. Similar reseller descriptions do not constitute independent confirmations."
+    },
+    {
+      "id": "U04",
+      "locator": "https://forums.d2jsp.org/topic.php?f=160&t=88490336",
+      "owner": "Community participants",
+      "revision": "2021-10-26 to 2021-10-27",
+      "coverage": "All ten visible posts read",
+      "evidence_state": "community-reported",
+      "observation": "PoE1 opening assumes a motherboard change may be required after a third-party-software ban but supplies no hardware-ban test. Another participant claims an auto-clicker ban was reversed after promising to stop.",
+      "limit": "Question/presumption is not an observed hardware restriction. No original-poster recovery or new-account outcome supplied."
+    },
+    {
+      "id": "U05",
+      "locator": "https://www.reddit.com/r/pathofexile/comments/wxuphh/",
+      "owner": "Community discussing Path of Matth",
+      "revision": "2022-08-26 relevant comments; reviewed 2026-10-12",
+      "coverage": "Relevant new-account and ID-ban discussion read; original email/tweet not authenticated",
+      "evidence_state": "community-reported",
+      "observation": "Comments initially say another account is permitted, then amend this to say a later email prohibited creating one. Participants call this an ID ban.",
+      "limit": "Person-level exclusion and a technical hardware blacklist are distinct claims. The discussion does not isolate the enforcement mechanism; PoE1 staff-abuse case is not ordinary PoE2 macro evidence."
+    },
+    {
+      "id": "U06",
+      "locator": "https://www.reddit.com/r/pathofexile/comments/1h6qo1c/terms_of_use_update_in_3253c/",
+      "owner": "Community policy discussion",
+      "revision": "2024-12-04 to 2024-12-05 relevant comments",
+      "coverage": "Relevant hardware-collection and Path of Matth comments read",
+      "evidence_state": "community-reported",
+      "observation": "One commenter claims to have seen Path of Matth blocked before logging in, inferring hardware or IP enforcement.",
+      "limit": "No original recording or controlled comparison verified. Even the comment names alternative mechanisms; its inference does not prove a hardware blacklist."
+    },
+    {
+      "id": "U07",
+      "locator": "https://www.pathofexile.com/forum/view-thread/3887219",
+      "owner": "PoE2 players; unofficial reports on a publisher-hosted forum",
+      "revision": "December 2025 opening and recovery replies; both pages reviewed 2026-10-12",
+      "coverage": "Opening and December recovery replies read; page 2 checked; later promotional reply not treated as technical corroboration",
+      "evidence_state": "community-reported",
+      "observation": "Original poster initially says removing companion tools did not stop a cheating-software warning. They later report it disappeared after removing old loot-filter/custom-sound files; two other users report similar recovery. Users say they could still log in before recovery.",
+      "limit": "Reported warning recovery, not an observed account/hardware ban, confirmed detector cause or permission to ignore warnings. This corrects the earlier review's incomplete reading of S13."
+    },
+    {
+      "id": "U08",
+      "locator": "https://github.com/derekShaheen/GameHelper2",
+      "owner": "Project maintainers",
+      "revision": "Served README and open issue listing reviewed 2026-10-12; no commit SHA pinned",
+      "coverage": "README read, original OwnedCore locator recovered, two visible open issue titles inspected",
+      "evidence_state": "developer-claim",
+      "observation": "Project describes an external PoE2 automation overlay and warns of account-ban risk. The visible open issue listing contains patch-update requests, not an audited ban outcome.",
+      "limit": "Author's proposed risk mitigation is not validated or endorsed; no original thread acceptance or hardware isolation established. No code downloaded or executed."
+    },
+    {
+      "id": "U09",
+      "locator": "https://procheat.pro/en/baza-znaniy?game=path-of-exile-2-cheats",
+      "owner": "Commercial vendor",
+      "revision": "Current served FAQ reviewed 2026-10-12",
+      "coverage": "Guarantee and license-HWID clauses read",
+      "evidence_state": "commercial-claim",
+      "observation": "FAQ declines a full hardware-protection guarantee and separately explains that some HWID errors arise from the vendor's license binding. Marketing elsewhere claims invisibility to hardware-ban systems.",
+      "limit": "Vendor wording is internally inconsistent; license-lock errors are not proof of a game hardware ban. No independently verified customer cases or detector evidence."
+    },
+    {
+      "id": "U10",
+      "locator": "https://www.kizarmenu.com/blog-is-it-safe-to-cheat-poe2.html",
+      "owner": "Commercial tool seller",
+      "revision": "Page dated 2026-08-09; indexed full article text reviewed 2026-10-12",
+      "coverage": "Indexed article text read; claims not independently verified",
+      "evidence_state": "commercial-claim",
+      "observation": "Seller asserts materially lower SSF enforcement and hardware protection but supplies no case-level data or comparison population in the reviewed text.",
+      "limit": "Advertising inference does not establish an SSF exemption, risk estimate or protection for this PC."
+    }
+  ],
+  "observation": {
+    "claim": "Unofficial accounts include bans reversed, one account unaffected while another on the same PC is banned, month-long survival claims and warning recovery. External-input developers still acknowledge ban risk. No selected source provides a verified ordinary-macro PoE2 hardware-ban case.",
+    "evidence_state": "mixed_unofficial_reports",
+    "evidence_locator": [
+      "U01",
+      "U02",
+      "U03",
+      "U04",
+      "U07"
+    ]
+  },
+  "inference": {
+    "claim": "The reviewed unofficial material does not justify treating a hardware ban as an automatic established outcome of the proposed macro. It also does not establish hardware safety, a safe delay, Windows/account isolation or lower SSF enforcement. Person bans, product license locks and website access failures must not be counted as confirmed game hardware bans.",
+    "confidence": "High for these distinctions in the cited text; unknown for individual enforcement probability",
+    "alternatives": [
+      "Account-specific or linked-account enforcement",
+      "Selective person/device/network enforcement",
+      "Repeated prohibited behavior",
+      "Account compromise",
+      "Warning or site-access error mislabelled as a ban"
+    ]
+  },
+  "supported_next_action": {
+    "capability": "Continue native skill-to-weapon-set setup and display-only helper design if requested",
+    "adapter_version": null,
+    "success_evidence": [
+      "Existing native-switch source and offline-lab records remain reference masters",
+      "Actual character bindings and equipped sets must be read before configuration changes"
+    ]
+  },
+  "permission": {
+    "execution_authorized": false,
+    "current_request_reference": "Additional unofficial-source research; GGG email remains an unsent draft"
+  },
+  "stop_conditions": [
+    "Research reports alone cannot authorize live prohibited-input testing or establish protected hardware"
+  ],
+  "recovery": {
+    "artifact_alias": "Existing R2 profiles and v0.1 lab preserved",
+    "coverage": [
+      "Additive research record",
+      "Existing S13 correction",
+      "History entry"
+    ],
+    "restore_tested": false,
+    "rollback_procedure": "Remove this addendum/history entry and restore S13's prior_observation if reverting only this review; no runtime state changed"
+  },
+  "freshness": {
+    "reviewed_date": "2026-10-12",
+    "change_triggers": [
+      "Verified PoE2 hardware-enforcement case",
+      "Original support correspondence or recording verified",
+      "Policy/build changes",
+      "Actual input-helper implementation changes"
+    ]
+  },
+  "privacy": {
+    "classification": "sanitized_research",
+    "payload_logging": false,
+    "automatic_upload": false
+  },
+  "next_boundary": "Public evidence remains insufficient to guarantee protection of the current PC. No live account test or email was performed."
+}

@@ -1,0 +1,2860 @@
+{
+  "owner": "local-development/game-tools-library-0.26",
+  "status": "preserved-unadopted-local-candidate",
+  "date": "2026-10-17",
+  "not_a_replacement_for": "canonical 0.27 source",
+  "original_files_preserved_privately": true,
+  "test_results": "historical only; interrupted library work needs its own completion/acceptance",
+  "files": [
+    {
+      "path": "00_START_HERE.html",
+      "original_sha256": "1bb1d4bebec7a5a0ec259066dbeb660f3766ac899b0099f558ec5b9fa5275a50",
+      "published_sha256": "1bb1d4bebec7a5a0ec259066dbeb660f3766ac899b0099f558ec5b9fa5275a50",
+      "size": 6020,
+      "sanitized": false
+    },
+    {
+      "path": "AGENTS.md",
+      "original_sha256": "01acf4dc4a93033a1d9da2046d3a85fe871cf5a41e99619136a7484a88886f68",
+      "published_sha256": "f94745cfd37e16ea1ca39e71353efedf4f08279c6325eac640ee805595d92e8f",
+      "size": 13214,
+      "sanitized": true
+    },
+    {
+      "path": "CHECKPOINT.md",
+      "original_sha256": "cb1fa3c3cfb6107c2449d2a1499e8e4359bae8e881b6f9e6791e63d95accbb2b",
+      "published_sha256": "b498082e1fbf098eae1a6f1fb85bdab4abf53b95685e633ba4f3ca17ae872570",
+      "size": 548,
+      "sanitized": true
+    },
+    {
+      "path": "docs/AGENT-GAME-INPUT.md",
+      "original_sha256": "11a7f2afa8425a04bad4fb0c90da44f1a94533617089457958f31a92e0c83833",
+      "published_sha256": "9a39b541f02c24c844b0e97a18d787366dda1a4753f254e8b7914fa6c5057bcc",
+      "size": 16736,
+      "sanitized": true
+    },
+    {
+      "path": "docs/AUTOMATION-OPERATING-PROCEDURES.md",
+      "original_sha256": "cfc72ece544ed6ceb05a46b5c5aff996820e65b2ee8b563bed3ae63dc515dfea",
+      "published_sha256": "fd0a2b0cd27f1f8936d6f1c53858049ac5874107308e05010b8a7169b5fe5dcb",
+      "size": 17158,
+      "sanitized": true
+    },
+    {
+      "path": "docs/AZERON-GAME-CONTROLS.md",
+      "original_sha256": "1cad83986b339bf3e397a6601d4b812d541482dfe8863e3de8898e806cd871cd",
+      "published_sha256": "b309ce7a5d5324734f7ae96ab87e29f55544fb16daca54e7802480ec14e0b313",
+      "size": 21082,
+      "sanitized": true
+    },
+    {
+      "path": "docs/DEPENDENCY_PINS.json",
+      "original_sha256": "cf86b4f8dfa21a4ccce22c2c325b5762bd6aed608ae773b2455fdd7b7e70b5d3",
+      "published_sha256": "063da514f6e13f9e22f99db1656979132bf1e0ca655fef391fc0ffddee52a058",
+      "size": 2312,
+      "sanitized": true
+    },
+    {
+      "path": "docs/DISTRIBUTION.md",
+      "original_sha256": "303652e2b4c1a67cf1d1ee00e5501ec4eab030353d7fa06e50441a3051050bb5",
+      "published_sha256": "3cb8b01965413b5ac5a197f8500fe4cc416404cae3b3c761c5c9ecd69b35040e",
+      "size": 30930,
+      "sanitized": true
+    },
+    {
+      "path": "docs/EXTENSION_GUIDE.md",
+      "original_sha256": "6ba04409a7629bb3ce3168f0c729675c5e8d92231d4497028335f4918028b5cb",
+      "published_sha256": "f557c4f57f89116b9a185b978082a18f330b9cffccb19e079c952b14753e1f84",
+      "size": 10648,
+      "sanitized": true
+    },
+    {
+      "path": "docs/FEATURE-DECISION.md",
+      "original_sha256": "b67b403e4672ea24fb16e17688a4cfb4257b45b0050bcb206ef753730a6e7a59",
+      "published_sha256": "6b2e929614705b7359edf0b90f7cfb5c04ece6d056c866ed754ea025f6f6b90a",
+      "size": 13049,
+      "sanitized": true
+    },
+    {
+      "path": "docs/FOCUS-UI-PRIOR-ARTIFACTS.json",
+      "original_sha256": "01a7421eebef754a1814b9106443289c0c14616ee4b84c74dcf81fa626a0ab1f",
+      "published_sha256": "01a7421eebef754a1814b9106443289c0c14616ee4b84c74dcf81fa626a0ab1f",
+      "size": 7737,
+      "sanitized": false
+    },
+    {
+      "path": "docs/FOCUS-UI-REVIEW.md",
+      "original_sha256": "4fc374a809677ef6b640ac99f01eacc553d6dbe7ba0970b569befcf74f0987e6",
+      "published_sha256": "055e95e342341c5fc54b17fb55e680cec06ca224d7b1f15f80a762fa53f8c0dd",
+      "size": 17326,
+      "sanitized": true
+    },
+    {
+      "path": "docs/FOCUS-UI-SOURCE-DELTA.json",
+      "original_sha256": "8f7ff443bd568304a78d72f610992edaad0ecc39c644727a6ddb3a0b4f58f48d",
+      "published_sha256": "8f7ff443bd568304a78d72f610992edaad0ecc39c644727a6ddb3a0b4f58f48d",
+      "size": 1369,
+      "sanitized": false
+    },
+    {
+      "path": "docs/FOCUS-UI-VALIDATION.json",
+      "original_sha256": "25453d6e0dec840e6e85418034e820ba6334c391ff240f12c56a362e389a6b63",
+      "published_sha256": "25453d6e0dec840e6e85418034e820ba6334c391ff240f12c56a362e389a6b63",
+      "size": 23321,
+      "sanitized": false
+    },
+    {
+      "path": "docs/GAME-PERFORMANCE-MEASUREMENT.md",
+      "original_sha256": "aa65a47cd13bfd4f52e8b25501a5d6df18f26b9c41b1f8b1257d54e7fcd88a6a",
+      "published_sha256": "992863e53d3cccfe03d34a06c74187bbd18438677f6d39c7ae61a6bb23558509",
+      "size": 15089,
+      "sanitized": true
+    },
+    {
+      "path": "docs/GAME-SUPPORT-PACKS.md",
+      "original_sha256": "36cacf2211bf65e98f33b4c125b133fc41e9ad3dde059d2e21cb7b0243b0b68c",
+      "published_sha256": "a856dca892d6e86eaf83a49d3c7a27dd95f5884bba8b540490ecd3c0f5e3aa74",
+      "size": 15572,
+      "sanitized": true
+    },
+    {
+      "path": "docs/GAME-SUPPORT-SOURCE-DELTA.json",
+      "original_sha256": "611778117fa2f8821327845a976b4f29bbd315e58baa75f0daae55cb1691fd34",
+      "published_sha256": "611778117fa2f8821327845a976b4f29bbd315e58baa75f0daae55cb1691fd34",
+      "size": 10735,
+      "sanitized": false
+    },
+    {
+      "path": "docs/GAME-SUPPORT-VALIDATION.json",
+      "original_sha256": "e4fd2ff3a3da3b5015913b76e1bad1ccc81994a25bbd3bd8f48886b289ba8921",
+      "published_sha256": "e4fd2ff3a3da3b5015913b76e1bad1ccc81994a25bbd3bd8f48886b289ba8921",
+      "size": 5451,
+      "sanitized": false
+    },
+    {
+      "path": "docs/GAME-TELEMETRY-TOOL-PLAN.md",
+      "original_sha256": "b07b3b6a3bf438cf641f673c62735cb957b031c1ce68ff40693d322a9fde904f",
+      "published_sha256": "25f7bbb2cd4a9e2882b84c02cbee779db425961755336eddf6cc0a3f55298639",
+      "size": 15231,
+      "sanitized": true
+    },
+    {
+      "path": "docs/GAME-TOOL-CONNECTIONS.md",
+      "original_sha256": "ec1bcb1670ced3671465d428f98d761c4fda9d34eda88ee8e2333b80dd59b9d5",
+      "published_sha256": "bb4aae2d731eef345b2cbdb2e761036048e1398d19097c468e7cf11a69d722ae",
+      "size": 95502,
+      "sanitized": true
+    },
+    {
+      "path": "docs/GAME-TOOLS-ARCHITECTURE.md",
+      "original_sha256": "2890cff95dcbce53b6ef1f07c3bbc368b06091bebbe661d11ef212a108d45c30",
+      "published_sha256": "6792ba133a73b8f3edbd91e7d019c4d0ce55b91c67673ca319c1c9364ab4ace7",
+      "size": 34576,
+      "sanitized": true
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "original_sha256": "f31cb1a3c074925a60731fb9001713b9d3188972e19762f6ee33aeb90dbe0915",
+      "published_sha256": "9b6207ae1df31a8b968b5c3b04753e8b276e0b484f20f0dccc01b411425410f0",
+      "size": 39189,
+      "sanitized": true
+    },
+    {
+      "path": "docs/GAME-TOOLS-MASTER-CHECKLIST.md",
+      "original_sha256": "268f40a473a60256398927fc9e95851c6bbf4bd2818c69c1542e155a3165564d",
+      "published_sha256": "842bd0544c09e1fa4d75042e7645182e986ccbc506dd367a7d681dc505e6a6dc",
+      "size": 58078,
+      "sanitized": true
+    },
+    {
+      "path": "docs/GAME_COVERAGE.md",
+      "original_sha256": "fee77aab1f840bcec072b96172def6d0cb800161d1a190931c1588899ded49f1",
+      "published_sha256": "38f564d4ad256f596499b55af0cdb53173d6fd1984d4aa18a99da06b467d6437",
+      "size": 1066,
+      "sanitized": true
+    },
+    {
+      "path": "docs/GAP_AUDIT.md",
+      "original_sha256": "47c3df93b039e3d08120526f39c1cdffa124ff808ae76f79f3ea4752c7d51160",
+      "published_sha256": "e7275afc720937e84439dfa4d57586590374a2e2c6c67af4c3fb932cbda3d60a",
+      "size": 2920,
+      "sanitized": true
+    },
+    {
+      "path": "docs/GITHUB-PUBLISHING.md",
+      "original_sha256": "f0425b41eaf518bde01d104296e9068fa6df68baad2ebd49257c6792946107ed",
+      "published_sha256": "ed8f1e754314ca1e4527654f7e169d5c41f08db963d308379b8d8422e3224c12",
+      "size": 2201,
+      "sanitized": true
+    },
+    {
+      "path": "docs/INPUT-DEVICE-REGISTRY.md",
+      "original_sha256": "f71b6ca3e1290f6ed0c90685c764555fa4eb639c419c687cd7cb4b89215fe8cb",
+      "published_sha256": "f71b6ca3e1290f6ed0c90685c764555fa4eb639c419c687cd7cb4b89215fe8cb",
+      "size": 9237,
+      "sanitized": false
+    },
+    {
+      "path": "docs/INTEGRATION.md",
+      "original_sha256": "3b64d72cf329385f523db55c13c24c3a4301231d759a0afec2d6d6ad70d3056b",
+      "published_sha256": "5baf4fb087195e3218181f748c0cdc75195a06abcc583822d10cc10d972597c8",
+      "size": 176,
+      "sanitized": true
+    },
+    {
+      "path": "docs/KNOWLEDGE-MAINTENANCE.md",
+      "original_sha256": "03157801187e7eba3c5bfa501f9a3c376e23601435c138f49187be283d269f70",
+      "published_sha256": "73f9ba758e730062713f2521b181b600a2e909734b695ff44b81b5591e54db65",
+      "size": 7777,
+      "sanitized": true
+    },
+    {
+      "path": "docs/MERGER-DECISIONS-20261014.json",
+      "original_sha256": "cd4aca9f6455b59a96aa6d44bc2470667986117579ed455caca4f9b39a7378ba",
+      "published_sha256": "7893091d779ddc03b25bc61808b17633e03b6d5dd3f344c3eac7e34ec4f8f690",
+      "size": 1242,
+      "sanitized": true
+    },
+    {
+      "path": "docs/MOD-WORKFLOWS-INTEGRATION.md",
+      "original_sha256": "5f83b069d7ff630cdbf7c85d41dc14c6637df4d84130bdab9a539b55c33d20ab",
+      "published_sha256": "68734f75e88576d330e3d1722d3b5e62c42823c26c52c568b4dfb49974939c07",
+      "size": 7016,
+      "sanitized": true
+    },
+    {
+      "path": "docs/MOD-WORKFLOWS.md",
+      "original_sha256": "a895da12f120e9ac8bc5fc024bfc6172f16fbe876fa72bbdfbb3414fe30f89e1",
+      "published_sha256": "3c8445581d1223e828c3c2aaf85fd4de29f12f71afb99ae630c1a6175debd936",
+      "size": 9885,
+      "sanitized": true
+    },
+    {
+      "path": "docs/MODS-AI-BASELINE-MANIFEST.json",
+      "original_sha256": "9e61f2b065d2e896b489107dd6cda9a2094f3a8dc993d9406fb2ddc06781e1f6",
+      "published_sha256": "84855ffd6da50f93286897d3d2cf9474be32d7e8a65c727938028f5a5a263243",
+      "size": 52215,
+      "sanitized": true
+    },
+    {
+      "path": "docs/MODS-AI-INTEGRATION.md",
+      "original_sha256": "179afd0a2f611efa58c3f91873d4d2d6a80bd3d50c229ce937e896f3b84e500b",
+      "published_sha256": "4e115bdba9ec474c1c524fe1106d543a122da39ad0fa293a24efbc6a1a232760",
+      "size": 12598,
+      "sanitized": true
+    },
+    {
+      "path": "docs/MODS-AI-MODULE-BASELINE-MANIFEST.json",
+      "original_sha256": "9e444f58c6eb13b7a6449971033d63b2b5aacb5212af1fc3b55e1976f7d456f9",
+      "published_sha256": "9e444f58c6eb13b7a6449971033d63b2b5aacb5212af1fc3b55e1976f7d456f9",
+      "size": 6443,
+      "sanitized": false
+    },
+    {
+      "path": "docs/MODS-AI-SOURCE-DELTA.json",
+      "original_sha256": "83792bd375d35a91c1ac42b2c1492f9c603bf17a0a72e565dbfd0cff44f8c1a2",
+      "published_sha256": "83792bd375d35a91c1ac42b2c1492f9c603bf17a0a72e565dbfd0cff44f8c1a2",
+      "size": 17217,
+      "sanitized": false
+    },
+    {
+      "path": "docs/MODS-AI-START-HERE.html",
+      "original_sha256": "4f7b4f92be4802777e1f00daf3658bc0e8e897d1f530b4f563f6f283434cb964",
+      "published_sha256": "4f7b4f92be4802777e1f00daf3658bc0e8e897d1f530b4f563f6f283434cb964",
+      "size": 3924,
+      "sanitized": false
+    },
+    {
+      "path": "docs/MODS-AI-VALIDATION.json",
+      "original_sha256": "05292ebefd84fa53ff5822ad88e2cd92e08b30ebbff000a4a88b39e24c9e5818",
+      "published_sha256": "05292ebefd84fa53ff5822ad88e2cd92e08b30ebbff000a4a88b39e24c9e5818",
+      "size": 26912,
+      "sanitized": false
+    },
+    {
+      "path": "docs/OFFLINE-COMPARISON-REPORTS.md",
+      "original_sha256": "1450f83f1a272118066f51a61a05ccdab6f557c5a75d054e7c39620004a7efb2",
+      "published_sha256": "96705bb3f822eaac7a945f5644359167a7c7b2cc82288bb84ade6f4dbc2e725b",
+      "size": 14459,
+      "sanitized": true
+    },
+    {
+      "path": "docs/OPERATING-STANDARD.md",
+      "original_sha256": "6853fc6e7211df25fe6a3fccb7254eade7e667a15ca34a20ff1c9365e9a9c19e",
+      "published_sha256": "85f05027bd91cd91842402b08a7a5deea1f09da0034e58575399e5915c72608a",
+      "size": 9537,
+      "sanitized": true
+    },
+    {
+      "path": "docs/OVERLAY-GROUPS.md",
+      "original_sha256": "638b3c989429b586270167638e349b738453a72d9ef1ddfb622a2642d04066d0",
+      "published_sha256": "7658e375f48e27bc852c61a9a35bdd067f49f60a09bb8a9bd15bb4b5b7333a6b",
+      "size": 18442,
+      "sanitized": true
+    },
+    {
+      "path": "docs/PUBLIC_SOURCES.json",
+      "original_sha256": "da75ad210ead5d103f99e0af51cbf2e0b841113307d3656b1845efb490e75115",
+      "published_sha256": "da75ad210ead5d103f99e0af51cbf2e0b841113307d3656b1845efb490e75115",
+      "size": 1699,
+      "sanitized": false
+    },
+    {
+      "path": "docs/RECIPES.md",
+      "original_sha256": "19bc1068352345dbc315d1189c7766a782dea2c68c4c3ba64269acd1702b16f4",
+      "published_sha256": "b8b641fa77f6d06ee4f15592f684a368e5eb4fbf36aab3c227813cccdc97cd46",
+      "size": 276,
+      "sanitized": true
+    },
+    {
+      "path": "docs/RECOVERY.md",
+      "original_sha256": "c1db8ffce5e0113d080d886875158451f6851e26913e35859d244754f5c70ee3",
+      "published_sha256": "25b81fcf888e8431b1325c89fdf320d087f654f14840b08175d20875fc190a78",
+      "size": 1895,
+      "sanitized": true
+    },
+    {
+      "path": "docs/REVIEW_NOTES.md",
+      "original_sha256": "fa8614be8e54d7dfa984be9bc6575a45ffcf682267322d827950757039abdb17",
+      "published_sha256": "9d8d05e592ae2d4834401f941d8d8e79cb3f90f4f1924ca5b19b155f89031cbe",
+      "size": 694,
+      "sanitized": true
+    },
+    {
+      "path": "docs/TOOL-RESOURCE-OVERHEAD.md",
+      "original_sha256": "e46148fdac830c82df1162e7ebf525d480ce09fef0fef2eb5fa18df1723dde2d",
+      "published_sha256": "fe4fae8e893a38098648b4bb3aec04f672ad1468b97d964ecca96b04ecd56231",
+      "size": 11452,
+      "sanitized": true
+    },
+    {
+      "path": "docs/UNIFIED-GAME-TOOLS.md",
+      "original_sha256": "272e05cf551223187121851e8185a7125ca490d8502deb79dd8109ae9cfa049c",
+      "published_sha256": "45948f380d7160f5db766d6e9889915afcafe537717e21b93c81ef323f61ceb3",
+      "size": 19764,
+      "sanitized": true
+    },
+    {
+      "path": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.json",
+      "original_sha256": "cee505522dc4e365fb27532a5cd5b165c6ef4c06a6daa62ef8301b03dd79b2b3",
+      "published_sha256": "cee505522dc4e365fb27532a5cd5b165c6ef4c06a6daa62ef8301b03dd79b2b3",
+      "size": 4786,
+      "sanitized": false
+    },
+    {
+      "path": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md",
+      "original_sha256": "1e427f83890a51cfe96684b87c630edf688da769640045120ae5930f14d8406a",
+      "published_sha256": "01f0270e86d339398ae6f2b9470a5e5e683852910ae609b3f90d81971341de81",
+      "size": 14368,
+      "sanitized": true
+    },
+    {
+      "path": "docs/UNIFIED-UI-DESIGN.md",
+      "original_sha256": "8aa13c1ab1dad0176cd8eb0ccb75577d9bcb46fc6a1172fd0616ed38c47ae334",
+      "published_sha256": "1ca6bf016daf56bececc84386a7a415bdf4ba17317d8151fd2b7d2ecf6221971",
+      "size": 24862,
+      "sanitized": true
+    },
+    {
+      "path": "docs/WORKBENCH-REVIEW.md",
+      "original_sha256": "3f6d52911e455817972996919bea50d435b36112082df1c23a2055bdf600626b",
+      "published_sha256": "2a19a600cc04bf9d3c18c078a0559f5117fe1bbb5711c64339b87829a6e46f90",
+      "size": 12540,
+      "sanitized": true
+    },
+    {
+      "path": "docs/WORKBENCH-SOURCE-DELTA.json",
+      "original_sha256": "20fdcc19260dd0c76550687c74454a894cf79d8b1e3a95dcf1e3b1e5b0990745",
+      "published_sha256": "20fdcc19260dd0c76550687c74454a894cf79d8b1e3a95dcf1e3b1e5b0990745",
+      "size": 10231,
+      "sanitized": false
+    },
+    {
+      "path": "docs/WORKBENCH-VALIDATION.json",
+      "original_sha256": "559124ece3d32d220e288353cb521b18f6e6ba85d4f6bcfc2cbdec45e7b0edcd",
+      "published_sha256": "559124ece3d32d220e288353cb521b18f6e6ba85d4f6bcfc2cbdec45e7b0edcd",
+      "size": 12625,
+      "sanitized": false
+    },
+    {
+      "path": "docs/WORKSTREAM-AUDIT-2026-10-13.json",
+      "original_sha256": "4fbc63d2e9f615dddf16563af147594a54f86956ea172c2ecabfb02edc0d46c0",
+      "published_sha256": "4fbc63d2e9f615dddf16563af147594a54f86956ea172c2ecabfb02edc0d46c0",
+      "size": 7520,
+      "sanitized": false
+    },
+    {
+      "path": "examples/adapter-sdk/named_tokens.py",
+      "original_sha256": "0f1a7dbd744cbffe59a164d2181f73a0f02f33fcc187de0703c6ec36dc13ab32",
+      "published_sha256": "0f1a7dbd744cbffe59a164d2181f73a0f02f33fcc187de0703c6ec36dc13ab32",
+      "size": 1368,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-input/AzeronOverlayStudio.integrated.ahk",
+      "original_sha256": "75619ff81854d7c34821b95f0f9b674911e477195a59a685d122d04788c9d0fb",
+      "published_sha256": "75619ff81854d7c34821b95f0f9b674911e477195a59a685d122d04788c9d0fb",
+      "size": 51772,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-input/baseline/ControlHelper-v031.ahk",
+      "original_sha256": "eafd9509dc8b7c579915668648ad20f000d377b5018b5ece9d4cd9b43f7a46d8",
+      "published_sha256": "eafd9509dc8b7c579915668648ad20f000d377b5018b5ece9d4cd9b43f7a46d8",
+      "size": 13276,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-input/GameInputModule.ahk",
+      "original_sha256": "aa68e104f3d65283745abb16e6f65ae1863c1736b1e86b70e81c2c944a9a2164",
+      "published_sha256": "aa68e104f3d65283745abb16e6f65ae1863c1736b1e86b70e81c2c944a9a2164",
+      "size": 29017,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-input/HostIntegration.example.ahk",
+      "original_sha256": "7bc562890cfa63536f0c894da3f4fbc95edd590f0e5ab0824d8cf113241fb785",
+      "published_sha256": "7bc562890cfa63536f0c894da3f4fbc95edd590f0e5ab0824d8cf113241fb785",
+      "size": 1414,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-input/OTHER-CHAT-HANDOFF.txt",
+      "original_sha256": "955aa830e4f0c9870e57f72546da77307290c801a931631c4359a4836e412066",
+      "published_sha256": "955aa830e4f0c9870e57f72546da77307290c801a931631c4359a4836e412066",
+      "size": 8631,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-input/OVERLAY-STUDIO-INTEGRATION.md",
+      "original_sha256": "f8d69f15b0cf8e2cbb1d40c8068543b8a1b5a76f819298d25ebfbeb510bab2b7",
+      "published_sha256": "d5598621427e716a9c779747c0d01bc6bfdab648a3e47f45a15719b6de4ecb0b",
+      "size": 6761,
+      "sanitized": true
+    },
+    {
+      "path": "examples/game-input/OverlayStudioGameInput.ahk",
+      "original_sha256": "0fbdacc8ff8f17d9440a73d1f09d19d0015471380ac3c8de08aae2c810197f60",
+      "published_sha256": "0fbdacc8ff8f17d9440a73d1f09d19d0015471380ac3c8de08aae2c810197f60",
+      "size": 10966,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-input/PICTURE-BUTTONS.md",
+      "original_sha256": "57824ce89f41174da5405eaaf1fda68b466b1d9de805fd62b6c3e928a06dca4e",
+      "published_sha256": "aac642ebd60bd7495572a83be3d21299b7dc40b917a847724423a1d3ad8f865b",
+      "size": 6014,
+      "sanitized": true
+    },
+    {
+      "path": "examples/game-input/README.md",
+      "original_sha256": "8ab487a723886b5d7532759a990b613286c84e99d48011a064078c47d4d9fe67",
+      "published_sha256": "ddff6bd94b21e706ef0f0af0468caaf98bb837612df3d1da40b72e5fa43518a6",
+      "size": 7859,
+      "sanitized": true
+    },
+    {
+      "path": "examples/game-input/Start-GameInput.ahk",
+      "original_sha256": "8da454efd23e135ee0c6ac8ca333d719d651bd204cd093f26018c2005aec86b4",
+      "published_sha256": "8da454efd23e135ee0c6ac8ca333d719d651bd204cd093f26018c2005aec86b4",
+      "size": 1536,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-input/StudioHubBridge.ahk",
+      "original_sha256": "5208d10e275abf232287c04491a31a9fbf4cfb78fc3660a7caf1ae03f5179cd0",
+      "published_sha256": "5208d10e275abf232287c04491a31a9fbf4cfb78fc3660a7caf1ae03f5179cd0",
+      "size": 13506,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-input/StudioOverlayGroups.ahk",
+      "original_sha256": "cda7525bad2c0441f45e30b31265afaf9d1f4c7efe429d729b60d98e8e3a7f00",
+      "published_sha256": "cda7525bad2c0441f45e30b31265afaf9d1f4c7efe429d729b60d98e8e3a7f00",
+      "size": 7224,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-input/StudioPictureModule.ahk",
+      "original_sha256": "56ab02a30e5e045d8ae31af5e3c9dc803320134be7d4b1eeb48bbb8ecbbe3beb",
+      "published_sha256": "56ab02a30e5e045d8ae31af5e3c9dc803320134be7d4b1eeb48bbb8ecbbe3beb",
+      "size": 85365,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-input/tests/Test-MicEditor.ahk",
+      "original_sha256": "cbc25f379855cd5eb5423a593a2bd09a906c27318cde38ecc25e0872ea5fce30",
+      "published_sha256": "cbc25f379855cd5eb5423a593a2bd09a906c27318cde38ecc25e0872ea5fce30",
+      "size": 7864,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-input/tests/Test-OverlayGroups.ahk",
+      "original_sha256": "71c73558027fd3d56883f412d6b58c264f55feb72068680f868da9cd4c0e37a8",
+      "published_sha256": "71c73558027fd3d56883f412d6b58c264f55feb72068680f868da9cd4c0e37a8",
+      "size": 1205,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-input/tests/Test-PictureEditor.ahk",
+      "original_sha256": "8cb07de666fb03e16a1c6779f15b44e298c19af32c1a27f46d1c6ec090af263c",
+      "published_sha256": "8cb07de666fb03e16a1c6779f15b44e298c19af32c1a27f46d1c6ec090af263c",
+      "size": 6384,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-input/tests/Test-PictureModule.ahk",
+      "original_sha256": "3f1a306879af9ac18926d617e0932af5fe26ee3313c5f7b0bd8791a7821eb541",
+      "published_sha256": "3f1a306879af9ac18926d617e0932af5fe26ee3313c5f7b0bd8791a7821eb541",
+      "size": 33086,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-input/tests/Test-UIFeedback.ahk",
+      "original_sha256": "cdbb6e03354c6387f200fba35e9a5b1fc9cb0cdf8825e990a32cf4a278b2fb29",
+      "published_sha256": "cdbb6e03354c6387f200fba35e9a5b1fc9cb0cdf8825e990a32cf4a278b2fb29",
+      "size": 5002,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-input/VALIDATION.json",
+      "original_sha256": "bd2394a9e25f5844c2c30db075e4faf69605386122a7f73b8cafd9feaf12623c",
+      "published_sha256": "bd2394a9e25f5844c2c30db075e4faf69605386122a7f73b8cafd9feaf12623c",
+      "size": 3921,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/ai-plan-request.example.json",
+      "original_sha256": "3bb40bb10478c5dcef8d4419e91900681b3ca76eb59394a34f222efcf5f451c1",
+      "published_sha256": "3bb40bb10478c5dcef8d4419e91900681b3ca76eb59394a34f222efcf5f451c1",
+      "size": 206,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/catalog.example.json",
+      "original_sha256": "604f42da71a1f0e4719f9adc1479717d041822e60c1674fddb144ebb51f3ac0a",
+      "published_sha256": "604f42da71a1f0e4719f9adc1479717d041822e60c1674fddb144ebb51f3ac0a",
+      "size": 31726,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/COMPARISON-DATASET.md",
+      "original_sha256": "b05385c7106709abad932ff448a90996daeefbae3d8de15d105a18a44d75c524",
+      "published_sha256": "51347ad9367f23f27113a9a779500fa590eca3e434d309c770a6877f3c4f7348",
+      "size": 9835,
+      "sanitized": true
+    },
+    {
+      "path": "examples/game-tool-hub/comparison-fixture.example.json",
+      "original_sha256": "2ab6c658e0c9e517e0b2591e942d0cba1c412bd3f630ea716c63c5e543409c8c",
+      "published_sha256": "2ab6c658e0c9e517e0b2591e942d0cba1c412bd3f630ea716c63c5e543409c8c",
+      "size": 13109,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/form-draft.example.json",
+      "original_sha256": "3058055f09c51db6c0c6a82d6844ab825886ec86e788b043c5573d79938d9cb5",
+      "published_sha256": "3058055f09c51db6c0c6a82d6844ab825886ec86e788b043c5573d79938d9cb5",
+      "size": 225,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/game-support/cyberpunk-2077.json",
+      "original_sha256": "1f3595741611b49d143190f0efb032d934a3aef69212e74e08528f0b48472768",
+      "published_sha256": "1f3595741611b49d143190f0efb032d934a3aef69212e74e08528f0b48472768",
+      "size": 928,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/game-support/pathfinder-kingmaker.json",
+      "original_sha256": "e4828131b28d956bd9b6b7538caac0754c900c2d8a6ad30040c36fc2403ff079",
+      "published_sha256": "e4828131b28d956bd9b6b7538caac0754c900c2d8a6ad30040c36fc2403ff079",
+      "size": 7743,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/game-support/pathfinder-wrath-of-the-righteous.json",
+      "original_sha256": "30412ae2c7065f62fc85fa1145946665cbf30e004b0f8c0c8d09370d95cbb1bc",
+      "published_sha256": "30412ae2c7065f62fc85fa1145946665cbf30e004b0f8c0c8d09370d95cbb1bc",
+      "size": 994,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/game-support/skyrim-special-edition.json",
+      "original_sha256": "91ae622ebf4ddf9a06a8ecf6f1315f034d72e2532394b7281868c1183718b4b3",
+      "published_sha256": "91ae622ebf4ddf9a06a8ecf6f1315f034d72e2532394b7281868c1183718b4b3",
+      "size": 973,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/game-support/stardew-valley.json",
+      "original_sha256": "fbb2e390fd50e971f747227ec24db26b91d466488f3a1d3b532f8eddea3ea990",
+      "published_sha256": "fbb2e390fd50e971f747227ec24db26b91d466488f3a1d3b532f8eddea3ea990",
+      "size": 2724,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/game-support/valheim.json",
+      "original_sha256": "0d8c8aa15638090b381cddf3332dfd8f3ef403808605de7b3b8e57583c8bad27",
+      "published_sha256": "0d8c8aa15638090b381cddf3332dfd8f3ef403808605de7b3b8e57583c8bad27",
+      "size": 955,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/import-fixtures/cyberpunk-summary.example.json",
+      "original_sha256": "2f94c236367df23c31c273135a4476af434555cfd7308a93394c6a1f4b6ee032",
+      "published_sha256": "2f94c236367df23c31c273135a4476af434555cfd7308a93394c6a1f4b6ee032",
+      "size": 502,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/import-fixtures/presentmon-no-animation-stats.example.csv",
+      "original_sha256": "e977a7c9f70fc1092214a47392edaf75771422c211e9afa7721039cbc85b0879",
+      "published_sha256": "e977a7c9f70fc1092214a47392edaf75771422c211e9afa7721039cbc85b0879",
+      "size": 193,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/import-fixtures/presentmon-stats.example.csv",
+      "original_sha256": "3e0c0d304b20ada86f58cbac10759539d2de92f11605fd5405311670ef3b0946",
+      "published_sha256": "3e0c0d304b20ada86f58cbac10759539d2de92f11605fd5405311670ef3b0946",
+      "size": 202,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/import-fixtures/presentmon-zero-stats.example.csv",
+      "original_sha256": "e35d3f2eb9fe892e4dd7c288c2a1f0f372ca06a5a325313734f2e79e4493d9ee",
+      "published_sha256": "e35d3f2eb9fe892e4dd7c288c2a1f0f372ca06a5a325313734f2e79e4493d9ee",
+      "size": 159,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/mod-recipes/pathfinder-kingmaker.json",
+      "original_sha256": "9e76668d35403537ce74d15c1828a0be8b77bc4137fdf43e70fbde6d8a5476ed",
+      "published_sha256": "9e76668d35403537ce74d15c1828a0be8b77bc4137fdf43e70fbde6d8a5476ed",
+      "size": 7023,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/mod-recipes/stardew-valley.json",
+      "original_sha256": "5cb5fb2e7bcc767d26b9d4eeb4ae00557fdd206c416eddfb94035877b899625d",
+      "published_sha256": "5cb5fb2e7bcc767d26b9d4eeb4ae00557fdd206c416eddfb94035877b899625d",
+      "size": 2000,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/MOD-WORKFLOWS-CAPABILITIES.json",
+      "original_sha256": "4de6caa9ac1521b2afbf2d4ec7a3699c483ad331b9fa0fadac5a6dd33676091b",
+      "published_sha256": "4de6caa9ac1521b2afbf2d4ec7a3699c483ad331b9fa0fadac5a6dd33676091b",
+      "size": 1701,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/overlay-manifest.example.json",
+      "original_sha256": "c324efb0e191946d2073f80a2da59d4547229fa75e81fe04738881fc078018c2",
+      "published_sha256": "c324efb0e191946d2073f80a2da59d4547229fa75e81fe04738881fc078018c2",
+      "size": 4928,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/provider-health.example.json",
+      "original_sha256": "70382669293a3cf9bc7112cae575ccf6ad512ce7f1c4e4db254cdf346330ad47",
+      "published_sha256": "70382669293a3cf9bc7112cae575ccf6ad512ce7f1c4e4db254cdf346330ad47",
+      "size": 1068,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/README.md",
+      "original_sha256": "8f6aa4d9a501e6fb6f3e2c1a56aed1d8ab692f0cc97e48c06cab8a43011de20d",
+      "published_sha256": "dcc21efcac007964256da35501d3926a6a87306c2f39ffad4b1f393f3e1ec6a4",
+      "size": 45591,
+      "sanitized": true
+    },
+    {
+      "path": "examples/game-tool-hub/scenario.example.json",
+      "original_sha256": "88dd98e77b1693623b35117fcf15f5b1268cf0a302892772f88ed1cbf9a6a2f4",
+      "published_sha256": "88dd98e77b1693623b35117fcf15f5b1268cf0a302892772f88ed1cbf9a6a2f4",
+      "size": 1452,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/Start-GameToolHub.ps1",
+      "original_sha256": "f7c775aeae04e975793881e2555fdad993e15adcb53dc34620edae17c75a05cc",
+      "published_sha256": "f7c775aeae04e975793881e2555fdad993e15adcb53dc34620edae17c75a05cc",
+      "size": 973,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/workflow-diagnostic.example.json",
+      "original_sha256": "49ed0093a5f6bf86c9731f486aa9e3a9c1a9d5796305ec16b0e3cfc79b227605",
+      "published_sha256": "49ed0093a5f6bf86c9731f486aa9e3a9c1a9d5796305ec16b0e3cfc79b227605",
+      "size": 903,
+      "sanitized": false
+    },
+    {
+      "path": "examples/game-tool-hub/workflow-installation.example.json",
+      "original_sha256": "10697193146b0151de1ddb490a071ed322f84e0767a22ec7e9beb0e6afdb6f5f",
+      "published_sha256": "10697193146b0151de1ddb490a071ed322f84e0767a22ec7e9beb0e6afdb6f5f",
+      "size": 1383,
+      "sanitized": false
+    },
+    {
+      "path": "examples/keybinds/game-locations.json",
+      "original_sha256": "f7211f0fe44d01047dc52a01a96807fd8247871ef6c375e22a2fb5ca869cbcd2",
+      "published_sha256": "f7211f0fe44d01047dc52a01a96807fd8247871ef6c375e22a2fb5ca869cbcd2",
+      "size": 21043,
+      "sanitized": false
+    },
+    {
+      "path": "examples/skyrim-special-edition/README.md",
+      "original_sha256": "a6cac5ee6e8775c41a1d8dfac0e0e322aa3cea27c7afdf4c3552fc9377098f36",
+      "published_sha256": "804977c7e191fbb9772cc868328145e3659b350a940bd3c23dd8d2a34c059bef",
+      "size": 1141,
+      "sanitized": true
+    },
+    {
+      "path": "examples/skyrim-special-edition/Skyrim-F12-Test.ahk",
+      "original_sha256": "24cc841f7ccb3386b5fce78a86ae58ba29ed649a563cbd5c4a38e04809155a3f",
+      "published_sha256": "24cc841f7ccb3386b5fce78a86ae58ba29ed649a563cbd5c4a38e04809155a3f",
+      "size": 274,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-cfg-bind/pack.json",
+      "original_sha256": "dea6e3c6515979d4eb9f3122827efe2e2ebabbfc24c60ca51d11a8aa79d4099a",
+      "published_sha256": "dea6e3c6515979d4eb9f3122827efe2e2ebabbfc24c60ca51d11a8aa79d4099a",
+      "size": 2683,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-colon-lines/fixtures/after.txt",
+      "original_sha256": "804c98aa64902f0329d1cac08ea5788ffdab81f5e30c93408be37a0266271673",
+      "published_sha256": "804c98aa64902f0329d1cac08ea5788ffdab81f5e30c93408be37a0266271673",
+      "size": 65,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-colon-lines/fixtures/before.txt",
+      "original_sha256": "84633f85dee5d30e9ab0bc2ea833ad074df11316061b9a66315c364d48cd936b",
+      "published_sha256": "84633f85dee5d30e9ab0bc2ea833ad074df11316061b9a66315c364d48cd936b",
+      "size": 65,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-colon-lines/pack.json",
+      "original_sha256": "0b59446c919046a5ac48113f37fccaea501cd67fae03bc594b5c9bd49b62bf31",
+      "published_sha256": "0b59446c919046a5ac48113f37fccaea501cd67fae03bc594b5c9bd49b62bf31",
+      "size": 2692,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-ini/fixtures/after.ini",
+      "original_sha256": "0cfae69c888182a1e6addd28292c88e184a688d686af3b757151b0d779d58315",
+      "published_sha256": "5057ed6aaee9ba31f06a02eeed88d4866d1677185442e85e1e0d3b45fab2db10",
+      "size": 86,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/format-examples/sample-ini/fixtures/before.ini",
+      "original_sha256": "f1d4d6eb2faab0a434f4d65a22d139946529795f8255ecaccc39bef19f2d1f6c",
+      "published_sha256": "a7981f662378e170a77d611774c96c9c81e530f4e016ee92b87680542e5f8764",
+      "size": 86,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/format-examples/sample-ini/pack.json",
+      "original_sha256": "01877590cb456f5eb6039c5383b586dd25ee6330d1a2ee2d9f6a882ff79f37c0",
+      "published_sha256": "01877590cb456f5eb6039c5383b586dd25ee6330d1a2ee2d9f6a882ff79f37c0",
+      "size": 2826,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-ini-sparse/fixtures/after.ini",
+      "original_sha256": "b3112fd48e5bdd102ce79adfeffd9c533ea20e7a130390f8428ed22570895fb3",
+      "published_sha256": "b3112fd48e5bdd102ce79adfeffd9c533ea20e7a130390f8428ed22570895fb3",
+      "size": 119,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-ini-sparse/fixtures/before.ini",
+      "original_sha256": "dc6a9cf973bb8e911fd79990ec2aa54845e0583a11a54f3bfd207f37040f6749",
+      "published_sha256": "dc6a9cf973bb8e911fd79990ec2aa54845e0583a11a54f3bfd207f37040f6749",
+      "size": 111,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-ini-sparse/pack.json",
+      "original_sha256": "eb2b0d3eb475c6c0bf3c2d61c7f65c71273e0bbcc138c2e0239c92e78cede7e7",
+      "published_sha256": "eb2b0d3eb475c6c0bf3c2d61c7f65c71273e0bbcc138c2e0239c92e78cede7e7",
+      "size": 2950,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-json/fixtures/after.json",
+      "original_sha256": "87f44727f4d476a50705d4a8dfd1af7bb82c847bec4097f95e8468ee60a1de38",
+      "published_sha256": "87f44727f4d476a50705d4a8dfd1af7bb82c847bec4097f95e8468ee60a1de38",
+      "size": 83,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-json/fixtures/before.json",
+      "original_sha256": "fd09803d5b659c2030b05ccd75b62254e55e8eb19a11f378d77507373185d060",
+      "published_sha256": "fd09803d5b659c2030b05ccd75b62254e55e8eb19a11f378d77507373185d060",
+      "size": 83,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-json/pack.json",
+      "original_sha256": "7d0f00359e9d9d14ce8d50099d69fd743e768b99a8628c3f89d9a73f31be6b06",
+      "published_sha256": "7d0f00359e9d9d14ce8d50099d69fd743e768b99a8628c3f89d9a73f31be6b06",
+      "size": 2608,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-jsonc/pack.json",
+      "original_sha256": "2e7f2177678dddde11aa56fe8213fac3c9cbaae058ffd8a29fa9546f4be7d2ab",
+      "published_sha256": "2e7f2177678dddde11aa56fe8213fac3c9cbaae058ffd8a29fa9546f4be7d2ab",
+      "size": 2615,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-keyvalues/pack.json",
+      "original_sha256": "15c4b480ad10a1f7924ee75929708c745de395549db683212aa204556374dade",
+      "published_sha256": "15c4b480ad10a1f7924ee75929708c745de395549db683212aa204556374dade",
+      "size": 3081,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-ue-chord/fixtures/after.ini",
+      "original_sha256": "c460196e1dc280e5a4fb68d2607662e16cf262be8e3440f723867e72b0a9e0a3",
+      "published_sha256": "c460196e1dc280e5a4fb68d2607662e16cf262be8e3440f723867e72b0a9e0a3",
+      "size": 307,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-ue-chord/fixtures/before.ini",
+      "original_sha256": "668a0311cc322aafba77246bc17259e96db61f2344a27b2af5bb4a04f685ca60",
+      "published_sha256": "668a0311cc322aafba77246bc17259e96db61f2344a27b2af5bb4a04f685ca60",
+      "size": 307,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-ue-chord/pack.json",
+      "original_sha256": "7667a7eba8da750f15816f31e0e1540c277af94e70fb9c4f89ae6053a775e56f",
+      "published_sha256": "7667a7eba8da750f15816f31e0e1540c277af94e70fb9c4f89ae6053a775e56f",
+      "size": 6870,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-ue-ini/fixtures/after.ini",
+      "original_sha256": "c460196e1dc280e5a4fb68d2607662e16cf262be8e3440f723867e72b0a9e0a3",
+      "published_sha256": "c460196e1dc280e5a4fb68d2607662e16cf262be8e3440f723867e72b0a9e0a3",
+      "size": 307,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-ue-ini/fixtures/before.ini",
+      "original_sha256": "668a0311cc322aafba77246bc17259e96db61f2344a27b2af5bb4a04f685ca60",
+      "published_sha256": "668a0311cc322aafba77246bc17259e96db61f2344a27b2af5bb4a04f685ca60",
+      "size": 307,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-ue-ini/pack.json",
+      "original_sha256": "25915bda9a0ff47167afb211c5762adb511fd87abf54b43e0bcc68937e34d7d3",
+      "published_sha256": "25915bda9a0ff47167afb211c5762adb511fd87abf54b43e0bcc68937e34d7d3",
+      "size": 2832,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-xml/pack.json",
+      "original_sha256": "ae327762b85d2775a7ebed440765ce77b2c5396cb2d762ff8c1ccd2904e42bf8",
+      "published_sha256": "ae327762b85d2775a7ebed440765ce77b2c5396cb2d762ff8c1ccd2904e42bf8",
+      "size": 3009,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/bayonetta-pc/AUTHORING.md",
+      "original_sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31",
+      "published_sha256": "f26e70a571b46a9ea26aec817d26e9d71ffccf9e10a7036548ec0192fba0239d",
+      "size": 726,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/research-drafts/bayonetta-pc/location-evidence.json",
+      "original_sha256": "ecd491f23e2e108529fd6ec50570b82bbffc99c695767a4cf38879363d9b7889",
+      "published_sha256": "ecd491f23e2e108529fd6ec50570b82bbffc99c695767a4cf38879363d9b7889",
+      "size": 1192,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/bayonetta-pc/pack.json",
+      "original_sha256": "3d0f96dd30496b07c901d539bf8d11e477c9e27ddfe7edb5bd2d840131b818b4",
+      "published_sha256": "3d0f96dd30496b07c901d539bf8d11e477c9e27ddfe7edb5bd2d840131b818b4",
+      "size": 1134,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-2-remastered/AUTHORING.md",
+      "original_sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31",
+      "published_sha256": "f26e70a571b46a9ea26aec817d26e9d71ffccf9e10a7036548ec0192fba0239d",
+      "size": 726,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-2-remastered/location-evidence.json",
+      "original_sha256": "4690bd8347d9f42b17bac5e276efdd1af7e9a32d0e60928ca60693c80d276bca",
+      "published_sha256": "4690bd8347d9f42b17bac5e276efdd1af7e9a32d0e60928ca60693c80d276bca",
+      "size": 1012,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-2-remastered/pack.json",
+      "original_sha256": "5049df937ec1f6c8e61b850af90919198cc1e9dab67036c2efea9dc0dcb8b359",
+      "published_sha256": "5049df937ec1f6c8e61b850af90919198cc1e9dab67036c2efea9dc0dcb8b359",
+      "size": 1191,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-infinite/AUTHORING.md",
+      "original_sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31",
+      "published_sha256": "f26e70a571b46a9ea26aec817d26e9d71ffccf9e10a7036548ec0192fba0239d",
+      "size": 726,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-infinite/location-evidence.json",
+      "original_sha256": "479e31f4122893543322ab5f1b1ecca2eb0fee84ba09c66d5e3f23b0bcb7b92c",
+      "published_sha256": "479e31f4122893543322ab5f1b1ecca2eb0fee84ba09c66d5e3f23b0bcb7b92c",
+      "size": 860,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-infinite/pack.json",
+      "original_sha256": "5f686187b24e78575b471387719ff96ed79681241658cc1cbd0569908075a1d7",
+      "published_sha256": "5f686187b24e78575b471387719ff96ed79681241658cc1cbd0569908075a1d7",
+      "size": 1089,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-remastered/AUTHORING.md",
+      "original_sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31",
+      "published_sha256": "f26e70a571b46a9ea26aec817d26e9d71ffccf9e10a7036548ec0192fba0239d",
+      "size": 726,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-remastered/location-evidence.json",
+      "original_sha256": "6a46a5ac19e441e5248c95698a12163bd92e4b93aeeb11a3392ee636b80bb912",
+      "published_sha256": "6a46a5ac19e441e5248c95698a12163bd92e4b93aeeb11a3392ee636b80bb912",
+      "size": 817,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/bioshock-remastered/pack.json",
+      "original_sha256": "63c965076b5ec0b1c605c6c512ab2f3c2350e8de46ecedba3c2d81dae7f720dd",
+      "published_sha256": "63c965076b5ec0b1c605c6c512ab2f3c2350e8de46ecedba3c2d81dae7f720dd",
+      "size": 1066,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/control/AUTHORING.md",
+      "original_sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31",
+      "published_sha256": "f26e70a571b46a9ea26aec817d26e9d71ffccf9e10a7036548ec0192fba0239d",
+      "size": 726,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/research-drafts/control/location-evidence.json",
+      "original_sha256": "dff065fdfbac62e1a46523e3e52faa927e20ebdb348d529aa960adb9bcfd0a69",
+      "published_sha256": "dff065fdfbac62e1a46523e3e52faa927e20ebdb348d529aa960adb9bcfd0a69",
+      "size": 1412,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/control/pack.json",
+      "original_sha256": "0b906ae2d40edbd75c525ad8e9a196a6b18d0e4e7fa87d6552cfd22bc8794828",
+      "published_sha256": "0b906ae2d40edbd75c525ad8e9a196a6b18d0e4e7fa87d6552cfd22bc8794828",
+      "size": 1405,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/cyberpunk-2077/AUTHORING.md",
+      "original_sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31",
+      "published_sha256": "f26e70a571b46a9ea26aec817d26e9d71ffccf9e10a7036548ec0192fba0239d",
+      "size": 726,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/research-drafts/cyberpunk-2077/location-evidence.json",
+      "original_sha256": "2aeca91b4dfa04891c931f221cf4f3fef3b8718b578f9c1824516f5e7196c90f",
+      "published_sha256": "2aeca91b4dfa04891c931f221cf4f3fef3b8718b578f9c1824516f5e7196c90f",
+      "size": 1797,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/cyberpunk-2077/pack.json",
+      "original_sha256": "e8fc7e1f12b54c172e7ddbf7fcd79fbe1b7378762a8edb4bdc8626abadebc419",
+      "published_sha256": "e8fc7e1f12b54c172e7ddbf7fcd79fbe1b7378762a8edb4bdc8626abadebc419",
+      "size": 1695,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/devil-may-cry-5/AUTHORING.md",
+      "original_sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31",
+      "published_sha256": "f26e70a571b46a9ea26aec817d26e9d71ffccf9e10a7036548ec0192fba0239d",
+      "size": 726,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/research-drafts/devil-may-cry-5/location-evidence.json",
+      "original_sha256": "591d6e267b9d8578c2851d6139d2d691035ce91c540a23a46bfea12fbb918c05",
+      "published_sha256": "591d6e267b9d8578c2851d6139d2d691035ce91c540a23a46bfea12fbb918c05",
+      "size": 942,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/devil-may-cry-5/pack.json",
+      "original_sha256": "6f909e1828d9e909190bcbca364764503a8133e270a71caf9e579dc3035cef8e",
+      "published_sha256": "6f909e1828d9e909190bcbca364764503a8133e270a71caf9e579dc3035cef8e",
+      "size": 1029,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/doom-the-dark-ages/AUTHORING.md",
+      "original_sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31",
+      "published_sha256": "f26e70a571b46a9ea26aec817d26e9d71ffccf9e10a7036548ec0192fba0239d",
+      "size": 726,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/research-drafts/doom-the-dark-ages/location-evidence.json",
+      "original_sha256": "19117b410fb0984d58d5891de645c33448c4b1dbcdc064c113fbda043fec5c1b",
+      "published_sha256": "19117b410fb0984d58d5891de645c33448c4b1dbcdc064c113fbda043fec5c1b",
+      "size": 1374,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/doom-the-dark-ages/pack.json",
+      "original_sha256": "b1e8d4e7eeda21f628556f988a5bdc0b6058acf3753e8a47b1a366b38a5e3c90",
+      "published_sha256": "b1e8d4e7eeda21f628556f988a5bdc0b6058acf3753e8a47b1a366b38a5e3c90",
+      "size": 1235,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/god-of-war-ragnarok/AUTHORING.md",
+      "original_sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31",
+      "published_sha256": "f26e70a571b46a9ea26aec817d26e9d71ffccf9e10a7036548ec0192fba0239d",
+      "size": 726,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/research-drafts/god-of-war-ragnarok/location-evidence.json",
+      "original_sha256": "da667a7bb9b7ec13125467249c33c600bece7e1df6883df171b8a6e2d529be77",
+      "published_sha256": "da667a7bb9b7ec13125467249c33c600bece7e1df6883df171b8a6e2d529be77",
+      "size": 1074,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/god-of-war-ragnarok/pack.json",
+      "original_sha256": "87bba9377c4a205fb2bae6aa17f4eab083d733039411ca9627e609b736180464",
+      "published_sha256": "87bba9377c4a205fb2bae6aa17f4eab083d733039411ca9627e609b736180464",
+      "size": 1193,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/gta-v-enhanced/AUTHORING.md",
+      "original_sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31",
+      "published_sha256": "f26e70a571b46a9ea26aec817d26e9d71ffccf9e10a7036548ec0192fba0239d",
+      "size": 726,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/research-drafts/gta-v-enhanced/location-evidence.json",
+      "original_sha256": "6efd07527ac11bcaee8462c903487d965d54b68a8c98ac1962f6909c71b82674",
+      "published_sha256": "6efd07527ac11bcaee8462c903487d965d54b68a8c98ac1962f6909c71b82674",
+      "size": 1154,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/gta-v-enhanced/pack.json",
+      "original_sha256": "4a04fe48e82030438c3d7091d03d7548f046a035068ca9b1b09cd3cf7e939a0f",
+      "published_sha256": "4a04fe48e82030438c3d7091d03d7548f046a035068ca9b1b09cd3cf7e939a0f",
+      "size": 1218,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/hogwarts-legacy/AUTHORING.md",
+      "original_sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31",
+      "published_sha256": "f26e70a571b46a9ea26aec817d26e9d71ffccf9e10a7036548ec0192fba0239d",
+      "size": 726,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/research-drafts/hogwarts-legacy/location-evidence.json",
+      "original_sha256": "a600a93f32e3876db5837ef3abca29db95dc2c9da5bac6893ecf57416524cbdf",
+      "published_sha256": "a600a93f32e3876db5837ef3abca29db95dc2c9da5bac6893ecf57416524cbdf",
+      "size": 996,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/hogwarts-legacy/pack.json",
+      "original_sha256": "17851411e6be3e19ea15dc8eaa2caaf03adceaab0fae137089eee358728278c6",
+      "published_sha256": "17851411e6be3e19ea15dc8eaa2caaf03adceaab0fae137089eee358728278c6",
+      "size": 1078,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/middle-earth-shadow-of-war/AUTHORING.md",
+      "original_sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31",
+      "published_sha256": "f26e70a571b46a9ea26aec817d26e9d71ffccf9e10a7036548ec0192fba0239d",
+      "size": 726,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/research-drafts/middle-earth-shadow-of-war/location-evidence.json",
+      "original_sha256": "6eac106cbf92f30dabcf73b5a0632b7c96d33f9ca1b8bb38e4ac67cd2a814bfb",
+      "published_sha256": "6eac106cbf92f30dabcf73b5a0632b7c96d33f9ca1b8bb38e4ac67cd2a814bfb",
+      "size": 895,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/middle-earth-shadow-of-war/pack.json",
+      "original_sha256": "fbacecce190111e624e9389648c9153c8a82631ef537f5a375e2c12e80049e73",
+      "published_sha256": "fbacecce190111e624e9389648c9153c8a82631ef537f5a375e2c12e80049e73",
+      "size": 1089,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/nier-automata/AUTHORING.md",
+      "original_sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31",
+      "published_sha256": "f26e70a571b46a9ea26aec817d26e9d71ffccf9e10a7036548ec0192fba0239d",
+      "size": 726,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/research-drafts/nier-automata/location-evidence.json",
+      "original_sha256": "d04a0234769219ef23b2733bac419ca6080b8e7078c65ee16c1e160266d59fff",
+      "published_sha256": "d04a0234769219ef23b2733bac419ca6080b8e7078c65ee16c1e160266d59fff",
+      "size": 1122,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/nier-automata/pack.json",
+      "original_sha256": "9d44921476740581e27fae019701ac758a997e217d16632f882af43d6c6c743f",
+      "published_sha256": "9d44921476740581e27fae019701ac758a997e217d16632f882af43d6c6c743f",
+      "size": 1063,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/path-of-exile-2/AUTHORING.md",
+      "original_sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31",
+      "published_sha256": "f26e70a571b46a9ea26aec817d26e9d71ffccf9e10a7036548ec0192fba0239d",
+      "size": 726,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/research-drafts/path-of-exile-2/location-evidence.json",
+      "original_sha256": "eb5d17a7b45fc18ad9e266be28754ca125c4a86f6e33296b330ff7934a47382b",
+      "published_sha256": "eb5d17a7b45fc18ad9e266be28754ca125c4a86f6e33296b330ff7934a47382b",
+      "size": 1259,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/path-of-exile-2/pack.json",
+      "original_sha256": "8115536f711310c521d092e522d2fc8b61a5303eeb5c340c3904f2c92325daf0",
+      "published_sha256": "8115536f711310c521d092e522d2fc8b61a5303eeb5c340c3904f2c92325daf0",
+      "size": 1080,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/pathfinder-kingmaker/AUTHORING.md",
+      "original_sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31",
+      "published_sha256": "f26e70a571b46a9ea26aec817d26e9d71ffccf9e10a7036548ec0192fba0239d",
+      "size": 726,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/research-drafts/pathfinder-kingmaker/location-evidence.json",
+      "original_sha256": "78a323221dce26dc03d33f1fbb484310fcc008a93ec57f1fc8e273de3f785d08",
+      "published_sha256": "78a323221dce26dc03d33f1fbb484310fcc008a93ec57f1fc8e273de3f785d08",
+      "size": 1031,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/pathfinder-kingmaker/pack.json",
+      "original_sha256": "33a5587a74c9b600fe7e6605f29a15596eef61ffb28e8528531731977f78d904",
+      "published_sha256": "33a5587a74c9b600fe7e6605f29a15596eef61ffb28e8528531731977f78d904",
+      "size": 1056,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/red-dead-redemption-2/AUTHORING.md",
+      "original_sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31",
+      "published_sha256": "f26e70a571b46a9ea26aec817d26e9d71ffccf9e10a7036548ec0192fba0239d",
+      "size": 726,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/research-drafts/red-dead-redemption-2/location-evidence.json",
+      "original_sha256": "bf34b31691c1495ae296f81ca353222299fc685185c15898d18c6e9de979f57b",
+      "published_sha256": "bf34b31691c1495ae296f81ca353222299fc685185c15898d18c6e9de979f57b",
+      "size": 1102,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/red-dead-redemption-2/pack.json",
+      "original_sha256": "61471c5821ed9b374b760ff56dcd84a8d90a88ff09a7ca464b95e88c9d099878",
+      "published_sha256": "61471c5821ed9b374b760ff56dcd84a8d90a88ff09a7ca464b95e88c9d099878",
+      "size": 1100,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/v-rising/AUTHORING.md",
+      "original_sha256": "a097c2363c79e840009f5d00ae026ea9616a1291cf964486ee7c2ecb4ce7bc31",
+      "published_sha256": "f26e70a571b46a9ea26aec817d26e9d71ffccf9e10a7036548ec0192fba0239d",
+      "size": 726,
+      "sanitized": true
+    },
+    {
+      "path": "game-packs/research-drafts/v-rising/location-evidence.json",
+      "original_sha256": "197eaa432ba06545b1284e257545b8b85709ef2612ed9537920163320e925251",
+      "published_sha256": "197eaa432ba06545b1284e257545b8b85709ef2612ed9537920163320e925251",
+      "size": 963,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/research-drafts/v-rising/pack.json",
+      "original_sha256": "7701765534899de924c5bad1630f1f8c5d1540063f86ed936bddbdded151f04b",
+      "published_sha256": "7701765534899de924c5bad1630f1f8c5d1540063f86ed936bddbdded151f04b",
+      "size": 1061,
+      "sanitized": false
+    },
+    {
+      "path": "KEYBIND_INTEGRATION_HANDOFF.md",
+      "original_sha256": "3f549a81b71d5c494c60b9e52a0b7cc63eb95249d476b2b73ac76420ec1dd3e2",
+      "published_sha256": "afc3322483b5cfb4c0c8b41147230f888604fd613f1a3b5d2abdebfa6950f9ca",
+      "size": 7958,
+      "sanitized": true
+    },
+    {
+      "path": "preferences/GENERAL.md",
+      "original_sha256": "4131cdec71b4d49afb1965199bd9d753a75fee0bcde6e05f263eb4f3ab7ba719",
+      "published_sha256": "25c5a412644b196504fff88af83b6c26047942626dabeb2b3b535f4402796bfe",
+      "size": 30232,
+      "sanitized": true
+    },
+    {
+      "path": "README.md",
+      "original_sha256": "deb30cf3159db93c69b46772e5d1a7a0ead0c76d6f648041334886598b574f9c",
+      "published_sha256": "7f2af4379e8739a37478cf5501c581b1e2c4f277ca46fa639e53890054fe168e",
+      "size": 4079,
+      "sanitized": true
+    },
+    {
+      "path": "schemas/game-pack.schema.json",
+      "original_sha256": "e169ad9cef54e27ef6f83201b9293010ecc75d02fddc6946e9a891c8a9b5e26f",
+      "published_sha256": "e169ad9cef54e27ef6f83201b9293010ecc75d02fddc6946e9a891c8a9b5e26f",
+      "size": 11357,
+      "sanitized": false
+    },
+    {
+      "path": "schemas/semantic-intent.schema.json",
+      "original_sha256": "43fb896fd603a6ab7ba9d19879095432711527a5a28aeba71d06fb6a605aa00e",
+      "published_sha256": "43fb896fd603a6ab7ba9d19879095432711527a5a28aeba71d06fb6a605aa00e",
+      "size": 968,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/Backup-UnifiedTools.ps1",
+      "original_sha256": "398dbd7851fd91a65238beab15c0ffcc07bdacfbfbd62e37192dd8401444783c",
+      "published_sha256": "398dbd7851fd91a65238beab15c0ffcc07bdacfbfbd62e37192dd8401444783c",
+      "size": 3055,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/Build-MergedRelease.py",
+      "original_sha256": "ea39509465570c0058abac395a29e35f0c782d70effd8670948b1b771f4451ac",
+      "published_sha256": "ea39509465570c0058abac395a29e35f0c782d70effd8670948b1b771f4451ac",
+      "size": 2431,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/Build-OverlayContract.py",
+      "original_sha256": "63513f81c972fcfb56240c762f8e9e91b974c1ba1a20246233c0a5102368aa8a",
+      "published_sha256": "63513f81c972fcfb56240c762f8e9e91b974c1ba1a20246233c0a5102368aa8a",
+      "size": 2818,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/check_host.py",
+      "original_sha256": "d94c4d6762e0c238cf8ca4d104622574ab27a0445547d1ca276b82a46748b0a5",
+      "published_sha256": "d09665bf08c550743f8159309552ed72745269ff8f2af348a28a1c6b7a40a79f",
+      "size": 1433,
+      "sanitized": true
+    },
+    {
+      "path": "scripts/Create-UnifiedToolsLaunchers.py",
+      "original_sha256": "790e05f100d854277ae57b9bf8f3c88a1dd40096963056d32433ccfcdc1dfe08",
+      "published_sha256": "790e05f100d854277ae57b9bf8f3c88a1dd40096963056d32433ccfcdc1dfe08",
+      "size": 9663,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/Create-UnifiedToolsShortcut.ps1",
+      "original_sha256": "4b710f8f37a05cef081a41027176cb1080ae8627aaf52007569945b1576a2e90",
+      "published_sha256": "4b710f8f37a05cef081a41027176cb1080ae8627aaf52007569945b1576a2e90",
+      "size": 3199,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/Export-GameInput.ps1",
+      "original_sha256": "7c9dc923c98937359fea910bb2020a5ef0abb772bab7d76d765443b9616aab56",
+      "published_sha256": "7c9dc923c98937359fea910bb2020a5ef0abb772bab7d76d765443b9616aab56",
+      "size": 874,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/Export-GameTools.ps1",
+      "original_sha256": "376dce45331aabb1dee204db9b94a9d5b39498a8ae781be6be4bf65ea66c3b98",
+      "published_sha256": "b0ff4ff7f6d774025ccf4105f2841bc7578c2678ed98e1eb8e3d6fa61dc4ae4c",
+      "size": 42978,
+      "sanitized": true
+    },
+    {
+      "path": "scripts/Game-Keybinds.py",
+      "original_sha256": "55afd29cfdf44781684e2418ac6b08addbac25ee9342dd8301dce563e2aea45c",
+      "published_sha256": "55afd29cfdf44781684e2418ac6b08addbac25ee9342dd8301dce563e2aea45c",
+      "size": 7370,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/Game-Mod-Ops.py",
+      "original_sha256": "b9c7038c34da58212a08541f15953e6946ad2f23087e75b1efc01470d81c3e78",
+      "published_sha256": "b9c7038c34da58212a08541f15953e6946ad2f23087e75b1efc01470d81c3e78",
+      "size": 354,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/Game-Mod-Panel.py",
+      "original_sha256": "0a598e4be8adede14ab2b707fd2d78f07fb1cf000ef750ebae92f66728d62cc6",
+      "published_sha256": "0a598e4be8adede14ab2b707fd2d78f07fb1cf000ef750ebae92f66728d62cc6",
+      "size": 239,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/Game-Support.py",
+      "original_sha256": "dbc5146b3c65f4d9899aecac97667c6d61d95a760ab4914bae7035c8337f64bb",
+      "published_sha256": "dbc5146b3c65f4d9899aecac97667c6d61d95a760ab4914bae7035c8337f64bb",
+      "size": 3208,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/Game-Tool-Catalog.py",
+      "original_sha256": "91f748656fda7856a1c481ee042379a542e23ca5f6b23e9501618b4020bf0d42",
+      "published_sha256": "91f748656fda7856a1c481ee042379a542e23ca5f6b23e9501618b4020bf0d42",
+      "size": 19111,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/Game-Tool-Hub.py",
+      "original_sha256": "1bcaf8c7f3b0ea10d0a210eca3a7209bc1d0fea454a1e788a99376fc6bee0b15",
+      "published_sha256": "578846b857c6ea079c20ba4238f14f4990c7d885a622eb6b9e16c49c6c0700b3",
+      "size": 90081,
+      "sanitized": true
+    },
+    {
+      "path": "scripts/game_keybind_ops/__init__.py",
+      "original_sha256": "7d9ca3cb02eda52397459189cd40a8b53f363b1c88159cd3d11874a55b851ad2",
+      "published_sha256": "7d9ca3cb02eda52397459189cd40a8b53f363b1c88159cd3d11874a55b851ad2",
+      "size": 106,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/adapter_registry.py",
+      "original_sha256": "ef1c2af47c5e9a410ce42ff1d6356b233f813ba5462de187362cbc19a0eda0e4",
+      "published_sha256": "ef1c2af47c5e9a410ce42ff1d6356b233f813ba5462de187362cbc19a0eda0e4",
+      "size": 3040,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/authoring.py",
+      "original_sha256": "cfb70dfb70879cb78ccb4e2165609f5963d8677cf1531c3e70fc494dbc4900ab",
+      "published_sha256": "cfb70dfb70879cb78ccb4e2165609f5963d8677cf1531c3e70fc494dbc4900ab",
+      "size": 15222,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/core.py",
+      "original_sha256": "5891f7cc5e7d24b424af754bdc4acf245eb73466403bea337031c68970f30fca",
+      "published_sha256": "5891f7cc5e7d24b424af754bdc4acf245eb73466403bea337031c68970f30fca",
+      "size": 35798,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/deps.py",
+      "original_sha256": "77a692f13f2efcc0b8b2641e3248d956ab89bdf4891ece782dbd8a971db0ae2b",
+      "published_sha256": "77a692f13f2efcc0b8b2641e3248d956ab89bdf4891ece782dbd8a971db0ae2b",
+      "size": 1055,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/discovery.py",
+      "original_sha256": "475b6f85b1344d8acb751e3a05f0711f4beb66cffe748deda4fdb595e2f4a34d",
+      "published_sha256": "475b6f85b1344d8acb751e3a05f0711f4beb66cffe748deda4fdb595e2f4a34d",
+      "size": 4681,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/documents.py",
+      "original_sha256": "2126ac0be5020be56bbf31dbfab852676973f133b0cb6bc7193f808fd9571104",
+      "published_sha256": "2126ac0be5020be56bbf31dbfab852676973f133b0cb6bc7193f808fd9571104",
+      "size": 13137,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/effective.py",
+      "original_sha256": "0ec3aee6632f62be6163717e5acd4253fb9c5912b4f6afbc874b112434deeea5",
+      "published_sha256": "0ec3aee6632f62be6163717e5acd4253fb9c5912b4f6afbc874b112434deeea5",
+      "size": 14682,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/format_extensions.py",
+      "original_sha256": "e314279b1a1e5acec9a0075e1be8da4cc25a3e736cf03e4356c1b6cbb00e2c26",
+      "published_sha256": "e314279b1a1e5acec9a0075e1be8da4cc25a3e736cf03e4356c1b6cbb00e2c26",
+      "size": 12197,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/key_codec.py",
+      "original_sha256": "0373bd3744a1c54b560a5b5f0e276a6007f6962f8da9d86750bcb98df520a975",
+      "published_sha256": "0373bd3744a1c54b560a5b5f0e276a6007f6962f8da9d86750bcb98df520a975",
+      "size": 1924,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/known_folders_reference.py",
+      "original_sha256": "7ccdf77c578de2aadccdfdcfc360a1b5a6c77320c948fbe7940f3a4b800cf052",
+      "published_sha256": "7ccdf77c578de2aadccdfdcfc360a1b5a6c77320c948fbe7940f3a4b800cf052",
+      "size": 20422,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/pack_cli.py",
+      "original_sha256": "adcb15b154c945c51dc6dcc10173c2f6535b8db17069d49d864b92d22de46a8f",
+      "published_sha256": "adcb15b154c945c51dc6dcc10173c2f6535b8db17069d49d864b92d22de46a8f",
+      "size": 6107,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/pack_panel.py",
+      "original_sha256": "14a02b2037d9f760505e0714300d224296cb07ce65366a4f92b079807c071506",
+      "published_sha256": "14a02b2037d9f760505e0714300d224296cb07ce65366a4f92b079807c071506",
+      "size": 9308,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/pack_transport.py",
+      "original_sha256": "607668887e598cc4248cbe78b6204e7498be11da7c76de47117750210d3f4e9b",
+      "published_sha256": "607668887e598cc4248cbe78b6204e7498be11da7c76de47117750210d3f4e9b",
+      "size": 4523,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/packs.py",
+      "original_sha256": "699525e687205d705c858882720f9870c201591d8ae58010c95b39afc87f1b70",
+      "published_sha256": "699525e687205d705c858882720f9870c201591d8ae58010c95b39afc87f1b70",
+      "size": 24915,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/panel.py",
+      "original_sha256": "2d076f939435d39b474994a6e6c3bccaef25a4200bc9571f91e6594a6bb84259",
+      "published_sha256": "2d076f939435d39b474994a6e6c3bccaef25a4200bc9571f91e6594a6bb84259",
+      "size": 9866,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/planner.py",
+      "original_sha256": "ea1b6fff5124967b2345ed3621eb90303a5c79de383fdf9ffb20879f78cfaae3",
+      "published_sha256": "ea1b6fff5124967b2345ed3621eb90303a5c79de383fdf9ffb20879f78cfaae3",
+      "size": 4309,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/recovery.py",
+      "original_sha256": "3e8a0447c2788cd3a3df9ed1f99596003b1848dbd02d6b76371e83cc52b5e5de",
+      "published_sha256": "3e8a0447c2788cd3a3df9ed1f99596003b1848dbd02d6b76371e83cc52b5e5de",
+      "size": 4975,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_keybind_ops/store_discovery.py",
+      "original_sha256": "b74baa050bcec883a103d104d2daee7e01d872e5b93018b2809a6932d1b296d1",
+      "published_sha256": "b74baa050bcec883a103d104d2daee7e01d872e5b93018b2809a6932d1b296d1",
+      "size": 3900,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_mod_ops/__init__.py",
+      "original_sha256": "d9c8ea2df880fe837f320a43fc2bc23970a9d0003548360872ab57c9fcba7114",
+      "published_sha256": "d9c8ea2df880fe837f320a43fc2bc23970a9d0003548360872ab57c9fcba7114",
+      "size": 102,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_mod_ops/archive.py",
+      "original_sha256": "5e907b990c3cb3f756163b832f5dac36d8c2b94dbf959b286aa500426de72ed0",
+      "published_sha256": "5e907b990c3cb3f756163b832f5dac36d8c2b94dbf959b286aa500426de72ed0",
+      "size": 8855,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_mod_ops/cli.py",
+      "original_sha256": "6dd8b2accbc789b1fd6e8c9e52759c0195f382490621e54b576fe4f97f9a205b",
+      "published_sha256": "6dd8b2accbc789b1fd6e8c9e52759c0195f382490621e54b576fe4f97f9a205b",
+      "size": 7750,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_mod_ops/definitions.py",
+      "original_sha256": "7ab13adf3fcf5a8eb8d44b4d5d7fe7eb046ee857a9315612ff70f5720d5915d8",
+      "published_sha256": "7ab13adf3fcf5a8eb8d44b4d5d7fe7eb046ee857a9315612ff70f5720d5915d8",
+      "size": 5149,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_mod_ops/handoff.py",
+      "original_sha256": "c2cf0a0ddebebf6ca7d5df09bd7a6ba883c59bed0975a81f280ddd2292c2434e",
+      "published_sha256": "c2cf0a0ddebebf6ca7d5df09bd7a6ba883c59bed0975a81f280ddd2292c2434e",
+      "size": 5439,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_mod_ops/managers.py",
+      "original_sha256": "9acf6654e5bab8b434e27362c0d73c547e94e338eb62f751301507533fcd7ec0",
+      "published_sha256": "9acf6654e5bab8b434e27362c0d73c547e94e338eb62f751301507533fcd7ec0",
+      "size": 13283,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_mod_ops/network.py",
+      "original_sha256": "5f7af16eebb2818c013cd425a5605c936f1cda6a6081e9c2559a719c930d5e6d",
+      "published_sha256": "5f7af16eebb2818c013cd425a5605c936f1cda6a6081e9c2559a719c930d5e6d",
+      "size": 13333,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_mod_ops/panel.py",
+      "original_sha256": "0ce57e0fd5bcaeb81f8fea1b21cb45d139f22056a57e8d57f47c9359db843b01",
+      "published_sha256": "0ce57e0fd5bcaeb81f8fea1b21cb45d139f22056a57e8d57f47c9359db843b01",
+      "size": 11375,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_mod_ops/recipes.py",
+      "original_sha256": "68ce28f52b43e5c9df7ea3a884e9a4ba95e91f69d3292f664a5d928136081d7d",
+      "published_sha256": "68ce28f52b43e5c9df7ea3a884e9a4ba95e91f69d3292f664a5d928136081d7d",
+      "size": 9751,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_mod_ops/safety.py",
+      "original_sha256": "a40f7a172716a02d19c4aef688ee67d45b4e86dcede00702eed766528175598b",
+      "published_sha256": "a40f7a172716a02d19c4aef688ee67d45b4e86dcede00702eed766528175598b",
+      "size": 6278,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_mod_ops/support.py",
+      "original_sha256": "945e71713804c832423d764971ee0c069d1d9c12f74957d0d4f509d9dddf1b27",
+      "published_sha256": "945e71713804c832423d764971ee0c069d1d9c12f74957d0d4f509d9dddf1b27",
+      "size": 15848,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_mod_ops/umm.py",
+      "original_sha256": "236aa00595bb223bdd3832a38b95af5c42bf858efebd1be656d52a70a42c5662",
+      "published_sha256": "236aa00595bb223bdd3832a38b95af5c42bf858efebd1be656d52a70a42c5662",
+      "size": 16238,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/game_mod_ops/workflow.py",
+      "original_sha256": "28cded7b8570d01feb352b71cd54e0b42b350757aab63cf06599bf717ba128c7",
+      "published_sha256": "28cded7b8570d01feb352b71cd54e0b42b350757aab63cf06599bf717ba128c7",
+      "size": 11515,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameFgInspector.py",
+      "original_sha256": "171b8f12860a39805ad8b7e6b18ac895dd84289920e653a5b13836924bd6c81e",
+      "published_sha256": "171b8f12860a39805ad8b7e6b18ac895dd84289920e653a5b13836924bd6c81e",
+      "size": 23086,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameFgPreflight.py",
+      "original_sha256": "d3d1abd99f6200ac832166541b4effcb8876aedcefa94236b922a025431663e9",
+      "published_sha256": "d3d1abd99f6200ac832166541b4effcb8876aedcefa94236b922a025431663e9",
+      "size": 19419,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolAI.py",
+      "original_sha256": "2bb619d85ee3b90ef13168ad4b6ebde4a88e82c6353bdc4cdf0a09d82e75f0ff",
+      "published_sha256": "2bb619d85ee3b90ef13168ad4b6ebde4a88e82c6353bdc4cdf0a09d82e75f0ff",
+      "size": 11276,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolAppearance.py",
+      "original_sha256": "6fd245ee6c3ba1fa7441f6c9856f032386db962dbcfda2ba3ef472698cb32672",
+      "published_sha256": "6fd245ee6c3ba1fa7441f6c9856f032386db962dbcfda2ba3ef472698cb32672",
+      "size": 33032,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolAutomation.py",
+      "original_sha256": "34bffd633608713905f87f3ecdac50653169fbb815415e6a737a6766bad3fccf",
+      "published_sha256": "34bffd633608713905f87f3ecdac50653169fbb815415e6a737a6766bad3fccf",
+      "size": 24886,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolAutomationPanel.py",
+      "original_sha256": "23d485b30562bd0811244f87efc5a0c7464edbaf34dc7b8cac0a24f04a31ee8c",
+      "published_sha256": "23d485b30562bd0811244f87efc5a0c7464edbaf34dc7b8cac0a24f04a31ee8c",
+      "size": 11837,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolAzeronLayer.py",
+      "original_sha256": "5408daf74b534d23a9b9ff56ea80dc01faf67ae6416a3061ea64a07356a1edca",
+      "published_sha256": "5408daf74b534d23a9b9ff56ea80dc01faf67ae6416a3061ea64a07356a1edca",
+      "size": 12630,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolCatalogBridge.py",
+      "original_sha256": "f1906b4dca76963a9a3e6faa6ffcd971bd79af8cbc1ed3f28d7de65d3e92a113",
+      "published_sha256": "f1906b4dca76963a9a3e6faa6ffcd971bd79af8cbc1ed3f28d7de65d3e92a113",
+      "size": 15153,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolCatalogPanel.py",
+      "original_sha256": "69e75a7525bed52a12d8481a440a714232d3902ea1ef9b9810ccef067e6e5a4b",
+      "published_sha256": "69e75a7525bed52a12d8481a440a714232d3902ea1ef9b9810ccef067e6e5a4b",
+      "size": 17053,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolCompactUI.py",
+      "original_sha256": "9e06805a30d5a4b157a8a28196ad8df5c74fef58f8b1da6f467610283d755c6b",
+      "published_sha256": "9e06805a30d5a4b157a8a28196ad8df5c74fef58f8b1da6f467610283d755c6b",
+      "size": 17079,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolComparison.py",
+      "original_sha256": "c1cbb82fcb58c5e9cd56afad5882113e11ef65b13af580a694b8f57401612fcf",
+      "published_sha256": "c1cbb82fcb58c5e9cd56afad5882113e11ef65b13af580a694b8f57401612fcf",
+      "size": 35502,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolComparisonPanel.py",
+      "original_sha256": "92cb8c500ad78fcb9d56a4ba02ca6e9bcfbf66a9454f1ebec69aadd3e469b03c",
+      "published_sha256": "92cb8c500ad78fcb9d56a4ba02ca6e9bcfbf66a9454f1ebec69aadd3e469b03c",
+      "size": 34903,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolCoordinator.py",
+      "original_sha256": "21f99eb28053ce36139c9e623b1af484d75b5122f51db43525a059a82f2fc7c8",
+      "published_sha256": "21f99eb28053ce36139c9e623b1af484d75b5122f51db43525a059a82f2fc7c8",
+      "size": 28539,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolCrashEvidence.py",
+      "original_sha256": "52bd8988da7a9bee130f12473cb21830a9bff0b11e29b2aeacd87fcb88efef8c",
+      "published_sha256": "52bd8988da7a9bee130f12473cb21830a9bff0b11e29b2aeacd87fcb88efef8c",
+      "size": 20816,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolEvidencePanel.py",
+      "original_sha256": "5595e159d7e7153667ba50cf25c2fe11624d31504785a4edc8286de89f735199",
+      "published_sha256": "5595e159d7e7153667ba50cf25c2fe11624d31504785a4edc8286de89f735199",
+      "size": 7668,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolFocusLaunch.pyw",
+      "original_sha256": "b3963a97e3e4b8de8b4855dbe2e07501a2c60f38c2e3f5a4b58ecd6258424574",
+      "published_sha256": "b3963a97e3e4b8de8b4855dbe2e07501a2c60f38c2e3f5a4b58ecd6258424574",
+      "size": 3832,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolFocusPanels.py",
+      "original_sha256": "37117e01f739b0215413751185254a10b44631ec9cf2bf908cef77aadc46f0c3",
+      "published_sha256": "37117e01f739b0215413751185254a10b44631ec9cf2bf908cef77aadc46f0c3",
+      "size": 17466,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolFocusUI.py",
+      "original_sha256": "7235af98032dd7c4287ef6f5c93bac61662775d04db6cbafdf496b2c935e83fb",
+      "published_sha256": "7235af98032dd7c4287ef6f5c93bac61662775d04db6cbafdf496b2c935e83fb",
+      "size": 22865,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolGameWorkspaces.py",
+      "original_sha256": "7eaedd56c96986b0055723bb4d48c13ff07981853c01109c38a0531bf0b8d7af",
+      "published_sha256": "7eaedd56c96986b0055723bb4d48c13ff07981853c01109c38a0531bf0b8d7af",
+      "size": 34658,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolJournal.py",
+      "original_sha256": "01e76b93c69adefa742dfcb139756903c2259812c437ec72c508739b2a81657a",
+      "published_sha256": "01e76b93c69adefa742dfcb139756903c2259812c437ec72c508739b2a81657a",
+      "size": 21469,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolKeybindAI.py",
+      "original_sha256": "5c5b897ea1d9017c59effc778c0668e6a644a380218d1da5d41e8401a9104aef",
+      "published_sha256": "5c5b897ea1d9017c59effc778c0668e6a644a380218d1da5d41e8401a9104aef",
+      "size": 12264,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolKeybindIntegration.py",
+      "original_sha256": "06dfa12350ef4d991156ca6549ec22582ee3fb398c390ae78f170ff1d92b2eba",
+      "published_sha256": "06dfa12350ef4d991156ca6549ec22582ee3fb398c390ae78f170ff1d92b2eba",
+      "size": 9230,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolKeybindWorkspaces.py",
+      "original_sha256": "27bfff9711977807ee4f7cb89da00930a9abe6f28a59243e0ed40d920a1225e5",
+      "published_sha256": "27bfff9711977807ee4f7cb89da00930a9abe6f28a59243e0ed40d920a1225e5",
+      "size": 5213,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolLibrary.py",
+      "original_sha256": "9e6317a40ae4009b0e5c5877dffebd4094776a8bce7b0198be3b059c3cc90754",
+      "published_sha256": "9e6317a40ae4009b0e5c5877dffebd4094776a8bce7b0198be3b059c3cc90754",
+      "size": 23348,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolLibraryPanel.py",
+      "original_sha256": "61f9d0c172162a506b080b2efb956a7eb87d3e7d26886905958c0de8cae494a6",
+      "published_sha256": "61f9d0c172162a506b080b2efb956a7eb87d3e7d26886905958c0de8cae494a6",
+      "size": 20334,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolMerged.py",
+      "original_sha256": "5678f3ca3ee4a410743823b914ef62dfa55de8d7fdb7fea1a8ec1ac506428c11",
+      "published_sha256": "5678f3ca3ee4a410743823b914ef62dfa55de8d7fdb7fea1a8ec1ac506428c11",
+      "size": 13281,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolModernUI.py",
+      "original_sha256": "3f8583339ee9ca9a1359c0c716266bb9ecc1b712357c8f776016c083cb3259fb",
+      "published_sha256": "3f8583339ee9ca9a1359c0c716266bb9ecc1b712357c8f776016c083cb3259fb",
+      "size": 22311,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolModIntegration.py",
+      "original_sha256": "041abb9b36ab66b5ac8a0eaafa29e6f1acc049b5fed29aa61099c27ad81c261e",
+      "published_sha256": "041abb9b36ab66b5ac8a0eaafa29e6f1acc049b5fed29aa61099c27ad81c261e",
+      "size": 3199,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolOverlay.py",
+      "original_sha256": "595f37f0786b835d90f6817064b40dbf37a576f7efcf027faf7b54d70a1fae8f",
+      "published_sha256": "595f37f0786b835d90f6817064b40dbf37a576f7efcf027faf7b54d70a1fae8f",
+      "size": 37232,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolOverlayPanel.py",
+      "original_sha256": "b82d417113cbc63754badca9b8a90fba3bfc940cd286b610751b2212d16f211a",
+      "published_sha256": "b82d417113cbc63754badca9b8a90fba3bfc940cd286b610751b2212d16f211a",
+      "size": 29400,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolReadiness.py",
+      "original_sha256": "3dc9b37b18a0ad6bac20b196343feca18e9b54543e7dc97cc9c94447412876b1",
+      "published_sha256": "3dc9b37b18a0ad6bac20b196343feca18e9b54543e7dc97cc9c94447412876b1",
+      "size": 15145,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolReadinessPanel.py",
+      "original_sha256": "d011e2dbb0e4be4a3a7ff1348f8b1477b4fe928109ef7799c90ba567cf92c3e9",
+      "published_sha256": "d011e2dbb0e4be4a3a7ff1348f8b1477b4fe928109ef7799c90ba567cf92c3e9",
+      "size": 8355,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolReportImport.py",
+      "original_sha256": "3d11da98f9643bd77cb1f80bea76ac5aa77eb2b5b0329dfdf938fa0a42c11099",
+      "published_sha256": "3d11da98f9643bd77cb1f80bea76ac5aa77eb2b5b0329dfdf938fa0a42c11099",
+      "size": 29651,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolSessionPanel.py",
+      "original_sha256": "00005242c6e3ba4e10c9206c3c92481494965a026a146490eb36e679b933a608",
+      "published_sha256": "00005242c6e3ba4e10c9206c3c92481494965a026a146490eb36e679b933a608",
+      "size": 28617,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolUnified.py",
+      "original_sha256": "765571443bcf5d2c1312aa9387e01ae4f1eb237fae62d5c2e125276da66ea193",
+      "published_sha256": "765571443bcf5d2c1312aa9387e01ae4f1eb237fae62d5c2e125276da66ea193",
+      "size": 20914,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolUnifiedPanel.py",
+      "original_sha256": "44a6d8dbc042bc3ebcba9900a5549a467a251269843345ba2d8b71647d3af5ab",
+      "published_sha256": "44a6d8dbc042bc3ebcba9900a5549a467a251269843345ba2d8b71647d3af5ab",
+      "size": 20994,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolUserData.py",
+      "original_sha256": "3af955524a1a83361f75db2f393788ae692ae1d741d1aaac513399b1c6fbbda0",
+      "published_sha256": "3af955524a1a83361f75db2f393788ae692ae1d741d1aaac513399b1c6fbbda0",
+      "size": 24398,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolUserDataPanel.py",
+      "original_sha256": "cb9803a6146f8bf1244bffabc59b92f63ed70f0d75c282c47f54622d63947bb6",
+      "published_sha256": "cb9803a6146f8bf1244bffabc59b92f63ed70f0d75c282c47f54622d63947bb6",
+      "size": 11687,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolWorkbench.py",
+      "original_sha256": "98d55798c78b41b530611aba423cc9d57ef1491b6df115873db920b96abc2b5b",
+      "published_sha256": "98d55798c78b41b530611aba423cc9d57ef1491b6df115873db920b96abc2b5b",
+      "size": 67170,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolWorkbenchLaunch.pyw",
+      "original_sha256": "5a3d44003bbc3378c6ce9607db3a26a86df2809a3a71a6f31e0672b5c98b550b",
+      "published_sha256": "5a3d44003bbc3378c6ce9607db3a26a86df2809a3a71a6f31e0672b5c98b550b",
+      "size": 3500,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolWorkflow.py",
+      "original_sha256": "ec98d51bada3d1ed0e930c5ad0f9be9ea6e059adb03f64e439bb7839176671bd",
+      "published_sha256": "ec98d51bada3d1ed0e930c5ad0f9be9ea6e059adb03f64e439bb7839176671bd",
+      "size": 23134,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolWorkflowPanel.py",
+      "original_sha256": "a9051755d41b54fab546b0fd944b5c5e20ad0deb27f2439be4347ec9d7ccca04",
+      "published_sha256": "a9051755d41b54fab546b0fd944b5c5e20ad0deb27f2439be4347ec9d7ccca04",
+      "size": 8312,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/GameToolWorkspace.py",
+      "original_sha256": "af437cbadb93851102a7729592ed99d5ecfb82ee98893fee2a3c9e1e3b29e511",
+      "published_sha256": "af437cbadb93851102a7729592ed99d5ecfb82ee98893fee2a3c9e1e3b29e511",
+      "size": 38840,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/Install-GameToolsRelease.ps1",
+      "original_sha256": "582cc63626c98f395529a3915485c5d6598350e024dc4640c8b7abab96db285e",
+      "published_sha256": "582cc63626c98f395529a3915485c5d6598350e024dc4640c8b7abab96db285e",
+      "size": 6955,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/Install-UnifiedTools.py",
+      "original_sha256": "6e9cbf34b8faa0427159887f6c1c021662afddefb5ad018741397f4f28328654",
+      "published_sha256": "6e9cbf34b8faa0427159887f6c1c021662afddefb5ad018741397f4f28328654",
+      "size": 2039,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/keybind_demo.py",
+      "original_sha256": "22effa8493cbb031b745add1bc345f424f5290b11491b01b3399f99a4e74ccf7",
+      "published_sha256": "22effa8493cbb031b745add1bc345f424f5290b11491b01b3399f99a4e74ccf7",
+      "size": 2802,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/run_checks.py",
+      "original_sha256": "004c2d3aa43775a0d1f68dc584b1c1920176295cee1a72c1c8a4aeb287e87a96",
+      "published_sha256": "004c2d3aa43775a0d1f68dc584b1c1920176295cee1a72c1c8a4aeb287e87a96",
+      "size": 4170,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/Start-UnifiedTools.pyw",
+      "original_sha256": "0f7915dfb972242bf1e19b8755e1106196947bd0c24156dbd4f4e6d56d301eda",
+      "published_sha256": "0f7915dfb972242bf1e19b8755e1106196947bd0c24156dbd4f4e6d56d301eda",
+      "size": 2739,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Render-GameToolModernUI.py",
+      "original_sha256": "040160cf7b81956d0dd89d5ccf7e0a69317e47a7ec1d140d021c94c3f67b1b22",
+      "published_sha256": "040160cf7b81956d0dd89d5ccf7e0a69317e47a7ec1d140d021c94c3f67b1b22",
+      "size": 4327,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Run-NativePictureDesktop.py",
+      "original_sha256": "929fdde2995b09d4dcf63d95267243db5514c9df64a582603108a2565b49aba2",
+      "published_sha256": "929fdde2995b09d4dcf63d95267243db5514c9df64a582603108a2565b49aba2",
+      "size": 2285,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameModOps.py",
+      "original_sha256": "283c17daa374e477a04946654061417fcf219f3d65ae54e59efaa9ff841f8835",
+      "published_sha256": "283c17daa374e477a04946654061417fcf219f3d65ae54e59efaa9ff841f8835",
+      "size": 20561,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameModPanel.py",
+      "original_sha256": "e3da472fc59d25a64681b5a28961c3ad9bcd2c4311b0da096382507d72c6381d",
+      "published_sha256": "e3da472fc59d25a64681b5a28961c3ad9bcd2c4311b0da096382507d72c6381d",
+      "size": 2413,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameSourceExport.ps1",
+      "original_sha256": "b9750a6c85f64b88bbb58706e9503370bd3eaaf4b220e010143f91e8a4daeeb5",
+      "published_sha256": "b9750a6c85f64b88bbb58706e9503370bd3eaaf4b220e010143f91e8a4daeeb5",
+      "size": 22610,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameSupport.py",
+      "original_sha256": "15cf118546c9f83aa35ac3988e0620c19e2812d2bfc4ebb789d8de1e4134c148",
+      "published_sha256": "15cf118546c9f83aa35ac3988e0620c19e2812d2bfc4ebb789d8de1e4134c148",
+      "size": 22011,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameSupportPackaging.py",
+      "original_sha256": "bc5ed0b47a3a6f9152aec0126a4f854eea3e675469fb1e8042c7d43e32db3df6",
+      "published_sha256": "bc5ed0b47a3a6f9152aec0126a4f854eea3e675469fb1e8042c7d43e32db3df6",
+      "size": 3822,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameSupportPanel.py",
+      "original_sha256": "383eb3d9b8ea49e756783be91b4d8da78088c6a20287c1605ae9c1b2e4b6a7ad",
+      "published_sha256": "383eb3d9b8ea49e756783be91b4d8da78088c6a20287c1605ae9c1b2e4b6a7ad",
+      "size": 7986,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolAppearance.py",
+      "original_sha256": "e0d325bed812f02527214129f831e9a20ccb7106e726af1525ba2ce4ba08720f",
+      "published_sha256": "e0d325bed812f02527214129f831e9a20ccb7106e726af1525ba2ce4ba08720f",
+      "size": 24468,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolAutomation.py",
+      "original_sha256": "564edc1cbdea054f2b06282cac33c50cb550449e5c21726bd9916adb62f1860d",
+      "published_sha256": "564edc1cbdea054f2b06282cac33c50cb550449e5c21726bd9916adb62f1860d",
+      "size": 16471,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolAutomationPanel.py",
+      "original_sha256": "7d701fc101e18076e06a7d1c933de6ab1a9218f5d7c16a43f1e2959723930887",
+      "published_sha256": "7d701fc101e18076e06a7d1c933de6ab1a9218f5d7c16a43f1e2959723930887",
+      "size": 8709,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolAzeronLayer.py",
+      "original_sha256": "8adbc000b445dcc1fa5328609ca940b8793c8add58aa3478793a2f757fd1c700",
+      "published_sha256": "8adbc000b445dcc1fa5328609ca940b8793c8add58aa3478793a2f757fd1c700",
+      "size": 11587,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolCatalog.py",
+      "original_sha256": "c3bd1391b64dc53f401fcd42739674f73749b5507839c725bc6b3f51d8478654",
+      "published_sha256": "c3bd1391b64dc53f401fcd42739674f73749b5507839c725bc6b3f51d8478654",
+      "size": 12015,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolCatalogBridge.py",
+      "original_sha256": "81bd3f74772785d32d1b543ba76af40aaeef4d1bc0feb3a6b2d5c1f369c02217",
+      "published_sha256": "81bd3f74772785d32d1b543ba76af40aaeef4d1bc0feb3a6b2d5c1f369c02217",
+      "size": 20096,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolCompactUI.py",
+      "original_sha256": "c9c4ce15fd7451f124c3b2328049fe34d011d3b50a67ce74ea767be190f235e6",
+      "published_sha256": "c9c4ce15fd7451f124c3b2328049fe34d011d3b50a67ce74ea767be190f235e6",
+      "size": 20295,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolComparison.py",
+      "original_sha256": "1c70ada4af5c76d54eccdad1d74955240ac3ae095e392478ee07a7016e0e5a21",
+      "published_sha256": "1c70ada4af5c76d54eccdad1d74955240ac3ae095e392478ee07a7016e0e5a21",
+      "size": 26108,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolComparisonCLI.py",
+      "original_sha256": "5b4293f94670aaeafb55d70dfa47de3f9c991293e81a87fdc9a7790941e3835b",
+      "published_sha256": "5b4293f94670aaeafb55d70dfa47de3f9c991293e81a87fdc9a7790941e3835b",
+      "size": 6037,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolComparisonPanel.py",
+      "original_sha256": "2670de14e44cae5ffcb8f4991e0b3ad0c90af70393a8373fc787ad0f9ba867d0",
+      "published_sha256": "2670de14e44cae5ffcb8f4991e0b3ad0c90af70393a8373fc787ad0f9ba867d0",
+      "size": 27542,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolCoordinator.py",
+      "original_sha256": "81efdffa556018e70430e661969646ec26ef004c8bd044781e692d9015698dee",
+      "published_sha256": "81efdffa556018e70430e661969646ec26ef004c8bd044781e692d9015698dee",
+      "size": 28643,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolCrashEvidence.py",
+      "original_sha256": "efb5ad8b15034d3e679de9572b0253e7875e554be09fd8fd6e55dbd12951da75",
+      "published_sha256": "efb5ad8b15034d3e679de9572b0253e7875e554be09fd8fd6e55dbd12951da75",
+      "size": 23792,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolEvidenceCLI.py",
+      "original_sha256": "a19b0b61722b352bf5820b9dcea518f8b1b00f2e2a0d1677a99b790027ebdff4",
+      "published_sha256": "a19b0b61722b352bf5820b9dcea518f8b1b00f2e2a0d1677a99b790027ebdff4",
+      "size": 6153,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolEvidencePanel.py",
+      "original_sha256": "08c846fd94e61867f98b53070c5c76a51343b12b6b8d27b3e1ff7e7994f2c2cc",
+      "published_sha256": "08c846fd94e61867f98b53070c5c76a51343b12b6b8d27b3e1ff7e7994f2c2cc",
+      "size": 9904,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolFocus.py",
+      "original_sha256": "9d48bbeb754de102151df34f4de98545460707996cd0a1e5a5366c054ee233ea",
+      "published_sha256": "9d48bbeb754de102151df34f4de98545460707996cd0a1e5a5366c054ee233ea",
+      "size": 10657,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolFocusHost.py",
+      "original_sha256": "1a5633c71a9b6eff5be1506bf5e10c98935471f26a71d274c1edb8db4e8a2072",
+      "published_sha256": "1a5633c71a9b6eff5be1506bf5e10c98935471f26a71d274c1edb8db4e8a2072",
+      "size": 4480,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolFocusLauncher.py",
+      "original_sha256": "f5b2d7872f34399c9b2fa4cd4a32cef6e436844db063d32a5cc0bfc9815b4540",
+      "published_sha256": "f5b2d7872f34399c9b2fa4cd4a32cef6e436844db063d32a5cc0bfc9815b4540",
+      "size": 3021,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolGameWorkspaces.py",
+      "original_sha256": "550b5edddd6065fd7e47bece512dd999ffca45bc39458d5149a9efb60f48f006",
+      "published_sha256": "550b5edddd6065fd7e47bece512dd999ffca45bc39458d5149a9efb60f48f006",
+      "size": 12860,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolHub.py",
+      "original_sha256": "013822044c6467ff3ab3e6799300ea7e7f03053af63e319a4ea1c1018ca34a36",
+      "published_sha256": "013822044c6467ff3ab3e6799300ea7e7f03053af63e319a4ea1c1018ca34a36",
+      "size": 11435,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolHubCatalog.py",
+      "original_sha256": "a9b2bb90ccbc679d41ceb429442ed5310e993b48575e46af67af7895ac195109",
+      "published_sha256": "a9b2bb90ccbc679d41ceb429442ed5310e993b48575e46af67af7895ac195109",
+      "size": 34312,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolJournal.py",
+      "original_sha256": "9cacdbf2f0be7109d04224a988c30a8c64df06d3157b3be036d7a395d93749fe",
+      "published_sha256": "9cacdbf2f0be7109d04224a988c30a8c64df06d3157b3be036d7a395d93749fe",
+      "size": 31682,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolMerged.py",
+      "original_sha256": "5f1c14d0b254a3907b10343e31c931a526f5f615c8d11d1a53e74b509553d03d",
+      "published_sha256": "5f1c14d0b254a3907b10343e31c931a526f5f615c8d11d1a53e74b509553d03d",
+      "size": 8351,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolModernUI.py",
+      "original_sha256": "ffa73d8b31a9fce4ded590499024a992986a771ff3284da947d5cbabc398fa16",
+      "published_sha256": "ffa73d8b31a9fce4ded590499024a992986a771ff3284da947d5cbabc398fa16",
+      "size": 12730,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolOverlay.py",
+      "original_sha256": "8bf59620d4af6b88a3cdce90fdb51435828d7ce711edfa31e145ab2583958148",
+      "published_sha256": "8bf59620d4af6b88a3cdce90fdb51435828d7ce711edfa31e145ab2583958148",
+      "size": 24080,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolReadiness.py",
+      "original_sha256": "7c16a073eaf6d563dfb6970f47a798d1094f5909a311c03d7fdbef69c9cda957",
+      "published_sha256": "7c16a073eaf6d563dfb6970f47a798d1094f5909a311c03d7fdbef69c9cda957",
+      "size": 15825,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolReadinessCLI.py",
+      "original_sha256": "33fe0552099987fd6dfe4a7e8df6e8bac2e834b3e5da2d8287ac55bc8318bbe8",
+      "published_sha256": "33fe0552099987fd6dfe4a7e8df6e8bac2e834b3e5da2d8287ac55bc8318bbe8",
+      "size": 4072,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolReadinessPanel.py",
+      "original_sha256": "653beb84f30d2036deafb0c16bfd29df8048bd19887f98b907f8397edc8901ef",
+      "published_sha256": "653beb84f30d2036deafb0c16bfd29df8048bd19887f98b907f8397edc8901ef",
+      "size": 8879,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolReportImport.py",
+      "original_sha256": "e03da257119df4d4021c26a38b47bea4dbbc886951f2078d6b708b54cec3a6c6",
+      "published_sha256": "e03da257119df4d4021c26a38b47bea4dbbc886951f2078d6b708b54cec3a6c6",
+      "size": 21277,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolReportImportCLI.py",
+      "original_sha256": "c24aef82ef89da2701a63bbd2213e4bc24c1bdffe6fdcf5b1b0efd9a2a7a6504",
+      "published_sha256": "c24aef82ef89da2701a63bbd2213e4bc24c1bdffe6fdcf5b1b0efd9a2a7a6504",
+      "size": 10387,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolReportImportPanel.py",
+      "original_sha256": "1d58199c3e3829faa6a7508dbffb6ed8e4722a38af111ec60becf345d754fe78",
+      "published_sha256": "1d58199c3e3829faa6a7508dbffb6ed8e4722a38af111ec60becf345d754fe78",
+      "size": 31330,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolSessionCLI.py",
+      "original_sha256": "31cf20891ae08d3f8c4de7de0c748dd70785ef66b9bcb0f859a2ef323d84598a",
+      "published_sha256": "31cf20891ae08d3f8c4de7de0c748dd70785ef66b9bcb0f859a2ef323d84598a",
+      "size": 8249,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolSessionPanel.py",
+      "original_sha256": "b7f05a929e107624c59df079a744f04f35a8eec2c3e51b0465c7ede2ab5f6cc5",
+      "published_sha256": "b7f05a929e107624c59df079a744f04f35a8eec2c3e51b0465c7ede2ab5f6cc5",
+      "size": 37059,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolsInstaller.py",
+      "original_sha256": "ff941819bf314f321494a91128c1315c380b52092210e29f710dfebb4b71243b",
+      "published_sha256": "ff941819bf314f321494a91128c1315c380b52092210e29f710dfebb4b71243b",
+      "size": 5332,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolUnified.py",
+      "original_sha256": "5665d74d8857f14349337fc9b6796eb1c59d1190950c19797134b82d701c1afc",
+      "published_sha256": "5665d74d8857f14349337fc9b6796eb1c59d1190950c19797134b82d701c1afc",
+      "size": 25318,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolUserData.py",
+      "original_sha256": "e7d8923e2657653c7a619a9bbcddeef18373f15f205793f42926b18bf2615084",
+      "published_sha256": "e7d8923e2657653c7a619a9bbcddeef18373f15f205793f42926b18bf2615084",
+      "size": 21323,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolUserDataPanel.py",
+      "original_sha256": "8f7c57c0c7ba4944f1d9baf3eb01d664b3cc60748b871bc292fe30e7f81826e2",
+      "published_sha256": "8f7c57c0c7ba4944f1d9baf3eb01d664b3cc60748b871bc292fe30e7f81826e2",
+      "size": 21143,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolWorkbench.py",
+      "original_sha256": "ec0ffae512b298afa11127434bc873d4acde7f6a089f1c359b9d3daf0d58884a",
+      "published_sha256": "ec0ffae512b298afa11127434bc873d4acde7f6a089f1c359b9d3daf0d58884a",
+      "size": 9475,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolWorkbenchLauncher.py",
+      "original_sha256": "a37a30104731c5e1d3554acbee9fa0d74fb23c72d3f3df1cc892de6ff39269d6",
+      "published_sha256": "a37a30104731c5e1d3554acbee9fa0d74fb23c72d3f3df1cc892de6ff39269d6",
+      "size": 2730,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolWorkflow.py",
+      "original_sha256": "65a9bffa4874925cc9d78e4f12b18f929cbce38684caac69dcb9011d015d1e53",
+      "published_sha256": "65a9bffa4874925cc9d78e4f12b18f929cbce38684caac69dcb9011d015d1e53",
+      "size": 19525,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolWorkflowCLI.py",
+      "original_sha256": "d918e85fa2f029d8f7b5cc2335622d36f02602fde5e6f38a2b098dfabca2b2e3",
+      "published_sha256": "d918e85fa2f029d8f7b5cc2335622d36f02602fde5e6f38a2b098dfabca2b2e3",
+      "size": 5224,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolWorkflowPanel.py",
+      "original_sha256": "072e70d7f00d9ecd30bbdfdd0dc6645a1387773eba87c371d15f99854d7049bb",
+      "published_sha256": "072e70d7f00d9ecd30bbdfdd0dc6645a1387773eba87c371d15f99854d7049bb",
+      "size": 10387,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-GameToolWorkspace.py",
+      "original_sha256": "eddd55ab6a9aedc8287eefd4744afd6bbea861085e9dbc76e0074852b53f4956",
+      "published_sha256": "eddd55ab6a9aedc8287eefd4744afd6bbea861085e9dbc76e0074852b53f4956",
+      "size": 22344,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-ModernStartup.py",
+      "original_sha256": "9b6c7a4ccf6b0304db4ecc2ba90661e6ebf67c6ba9c62f4f7143c468f97cb6bb",
+      "published_sha256": "9b6c7a4ccf6b0304db4ecc2ba90661e6ebf67c6ba9c62f4f7143c468f97cb6bb",
+      "size": 3134,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-NativePictureLayout.py",
+      "original_sha256": "ff9acb1f8db85c54b905f8eab0401b6abe730ab42a3497ea03ccfd5d0710003e",
+      "published_sha256": "ff9acb1f8db85c54b905f8eab0401b6abe730ab42a3497ea03ccfd5d0710003e",
+      "size": 946,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-PictureHost.py",
+      "original_sha256": "681ffd033d9da704de773a8e55659cf0b0a0d78e17ce5addb0d1e2094aed0c56",
+      "published_sha256": "681ffd033d9da704de773a8e55659cf0b0a0d78e17ce5addb0d1e2094aed0c56",
+      "size": 4717,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/Test-UnifiedToolsLaunchers.py",
+      "original_sha256": "07f6abee19b3231d2fea2e1fd011ea6adebcfbe7b52a99131d1a9f0422406cf8",
+      "published_sha256": "07f6abee19b3231d2fea2e1fd011ea6adebcfbe7b52a99131d1a9f0422406cf8",
+      "size": 6542,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/test_effective.py",
+      "original_sha256": "a25e522fa2b36a8d9ce870d9c03294800e902a5567438abc7901a4a374a8f82d",
+      "published_sha256": "a25e522fa2b36a8d9ce870d9c03294800e902a5567438abc7901a4a374a8f82d",
+      "size": 16390,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/test_extended.py",
+      "original_sha256": "5a104ee008e70e85746162ce92335defccf23bf1bd339870105e9b265a8e5373",
+      "published_sha256": "5a104ee008e70e85746162ce92335defccf23bf1bd339870105e9b265a8e5373",
+      "size": 10314,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/test_extensibility.py",
+      "original_sha256": "125a10c3ea5af1519300533581dfe638beb315d48470ee01fe2987593fd33e62",
+      "published_sha256": "125a10c3ea5af1519300533581dfe638beb315d48470ee01fe2987593fd33e62",
+      "size": 23451,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/test_game_fg_inspector.py",
+      "original_sha256": "bf78624543a91cdb387e5578c28193726016524386fca636380b2452dd787bc8",
+      "published_sha256": "bf78624543a91cdb387e5578c28193726016524386fca636380b2452dd787bc8",
+      "size": 18704,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/test_game_fg_preflight.py",
+      "original_sha256": "4aaeeeb400bbb9d50f6cd60f3fec730689489954bbb53baa771b0be2dce3c8d9",
+      "published_sha256": "4aaeeeb400bbb9d50f6cd60f3fec730689489954bbb53baa771b0be2dce3c8d9",
+      "size": 28855,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/test_host_integration.py",
+      "original_sha256": "270cf1b69de142cb81227d912f34e37dfaf389cbcb8a419797c560a2d8e5f464",
+      "published_sha256": "270cf1b69de142cb81227d912f34e37dfaf389cbcb8a419797c560a2d8e5f464",
+      "size": 11111,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/test_keybinds.py",
+      "original_sha256": "9080f60216b2fc8daf32201f4f9987179b5359112bad3fa133fac00ffb341bb5",
+      "published_sha256": "9080f60216b2fc8daf32201f4f9987179b5359112bad3fa133fac00ffb341bb5",
+      "size": 26749,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/test_pack_integration.py",
+      "original_sha256": "d799ec84f84f2418ad5568a687cc2d6c16d1ac11b5735d773f87241c5689dbc0",
+      "published_sha256": "d799ec84f84f2418ad5568a687cc2d6c16d1ac11b5735d773f87241c5689dbc0",
+      "size": 10629,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/test_pack_panel.py",
+      "original_sha256": "082145899307f3667429ba8a0552c1d4af719d03e3373cadacdfefe14dd6a61f",
+      "published_sha256": "082145899307f3667429ba8a0552c1d4af719d03e3373cadacdfefe14dd6a61f",
+      "size": 4842,
+      "sanitized": false
+    },
+    {
+      "path": "scripts/tests/test_panel.py",
+      "original_sha256": "5a391773cec50c51263dcf2958a1e3b4f3699ce7bd412ec85147dcbc86685765",
+      "published_sha256": "5a391773cec50c51263dcf2958a1e3b4f3699ce7bd412ec85147dcbc86685765",
+      "size": 3383,
+      "sanitized": false
+    },
+    {
+      "path": "templates/AUTOMATION-TASK.example.json",
+      "original_sha256": "88e142f585b29d86ef3a1a19ef4ba3d07830507a6b156832cfb465e22d264caa",
+      "published_sha256": "88e142f585b29d86ef3a1a19ef4ba3d07830507a6b156832cfb465e22d264caa",
+      "size": 1220,
+      "sanitized": false
+    },
+    {
+      "path": "templates/EXPERIMENT-LOG.md",
+      "original_sha256": "6ef407fe812d4c726c223df8ad61cc9bfa2132eae2f0205699762034ac06db1c",
+      "published_sha256": "69fc94308ea025e8c9a4f6ad06b2bd13fdfb3d8d32b8d4d675a5d03541c10fe2",
+      "size": 1866,
+      "sanitized": true
+    },
+    {
+      "path": "templates/GAME-HISTORY.md",
+      "original_sha256": "a60ef56b900c8d20f6dc46bed3410aa197226f0193692647d0aed196300940c6",
+      "published_sha256": "1227b121843b91137089d6439919bbea7c708714fd3ba32f1cf32e6d995a77b5",
+      "size": 382,
+      "sanitized": true
+    },
+    {
+      "path": "templates/GAME-KEYBINDS.example.json",
+      "original_sha256": "554b2095744135265080310ba1f9a4504de7e20c665477d83ecd8841223f56f0",
+      "published_sha256": "5fcb63971004b5946a5317b9b63bae27ca636cc0556580cfea1e141a5c1eb233",
+      "size": 3116,
+      "sanitized": true
+    },
+    {
+      "path": "templates/GAME-SUPPORT-AUTHORING.json",
+      "original_sha256": "b6ffb75ab258c170a47e433d511642be61dcd2b16575404d65c8e5c2dbc6a58e",
+      "published_sha256": "b6ffb75ab258c170a47e433d511642be61dcd2b16575404d65c8e5c2dbc6a58e",
+      "size": 1838,
+      "sanitized": false
+    },
+    {
+      "path": "templates/GAME-SUPPORT.example.json",
+      "original_sha256": "4ca389168dd31e0a201ab51c763fd1ae0b4329f567d18c752293a4f3fd45e827",
+      "published_sha256": "4ca389168dd31e0a201ab51c763fd1ae0b4329f567d18c752293a4f3fd45e827",
+      "size": 828,
+      "sanitized": false
+    },
+    {
+      "path": "templates/INPUT-DEVICE.example.json",
+      "original_sha256": "9dc197fc251e65b19aabd4cd1ab87a0eae7a458dbeb1c85013835169d6274800",
+      "published_sha256": "ca4cb1f7e88bc4134c2bddac3c5d82ab8e429ddfe943a8e5ba288af455c51c6e",
+      "size": 2244,
+      "sanitized": true
+    },
+    {
+      "path": "templates/KNOWLEDGE-RECORD.example.json",
+      "original_sha256": "73f0d42102eb1c316e1e881af1cd4e5d4bccba0c3447e3c43af0e49695b6debd",
+      "published_sha256": "73f0d42102eb1c316e1e881af1cd4e5d4bccba0c3447e3c43af0e49695b6debd",
+      "size": 1190,
+      "sanitized": false
+    },
+    {
+      "path": "templates/MOD-CATALOG.md",
+      "original_sha256": "55a045e680d29fecf4e8c7d98a0096c9458feb767226926e89d9ec606705d1f8",
+      "published_sha256": "795c2f8631f5b4100467618e21f99db3bf262039d9d9ff1c2a40439dfa5d55a3",
+      "size": 834,
+      "sanitized": true
+    },
+    {
+      "path": "templates/MOD-WORKFLOW.example.json",
+      "original_sha256": "750b4d49997f1edab7730f21476794d23a1f63aefea151414d00751284946a6b",
+      "published_sha256": "750b4d49997f1edab7730f21476794d23a1f63aefea151414d00751284946a6b",
+      "size": 824,
+      "sanitized": false
+    },
+    {
+      "path": "templates/OPTION-MENU.md",
+      "original_sha256": "366bfa837686623d6422b660845242feff76524eff1dfb70bbd947a2cc0b2d04",
+      "published_sha256": "3d72347eb5267e0b8c370b2213972645f515443413cf2449eb1254ea2514293d",
+      "size": 890,
+      "sanitized": true
+    },
+    {
+      "path": "templates/PREFERENCE-PROFILE.md",
+      "original_sha256": "22a6ab3f6e9dd904d298766ab5682047fd3ed494bbc0ebdbbcdf76dc385b4882",
+      "published_sha256": "226946750d0335f7bba8d2aa354bf5e184a27b6c1cf56392cf9f68d44e40edbf",
+      "size": 1979,
+      "sanitized": true
+    },
+    {
+      "path": "templates/PROFILE-MANIFEST.example.json",
+      "original_sha256": "84bcaffbfffd4b0035fb0aa20a8a12a02a981d898cbfc4230a2588a05e20996b",
+      "published_sha256": "84bcaffbfffd4b0035fb0aa20a8a12a02a981d898cbfc4230a2588a05e20996b",
+      "size": 903,
+      "sanitized": false
+    },
+    {
+      "path": "validation/final/VALIDATION.json",
+      "original_sha256": "066a9ab6720329d400332d1b8f48b6796563451b089aed1b28bd4da4bc074068",
+      "published_sha256": "066a9ab6720329d400332d1b8f48b6796563451b089aed1b28bd4da4bc074068",
+      "size": 2791,
+      "sanitized": false
+    },
+    {
+      "path": "validation/FORMAT_ROUNDTRIPS.json",
+      "original_sha256": "13dbca4da1c268d58c5f6b1531c7245666e6486f299ff9c827efe09519c2f4e4",
+      "published_sha256": "13dbca4da1c268d58c5f6b1531c7245666e6486f299ff9c827efe09519c2f4e4",
+      "size": 1870,
+      "sanitized": false
+    },
+    {
+      "path": "validation/HOST_DEPENDENCIES.json",
+      "original_sha256": "f135d1e339ec63de3093e09a0f2938aed9a2e49dd8882b5bddb323d6646a339f",
+      "published_sha256": "f135d1e339ec63de3093e09a0f2938aed9a2e49dd8882b5bddb323d6646a339f",
+      "size": 1475,
+      "sanitized": false
+    },
+    {
+      "path": "validation/PACK_COVERAGE.json",
+      "original_sha256": "0247930737595326f640c0b1f6b9b7348b84466a666d5c374149bb7092a10ccb",
+      "published_sha256": "0247930737595326f640c0b1f6b9b7348b84466a666d5c374149bb7092a10ccb",
+      "size": 1310,
+      "sanitized": false
+    },
+    {
+      "path": "validation/PLANNER_REUSE.json",
+      "original_sha256": "80a3072df235f8103ebe361ca023cd815c0bb60d89be5f146087d3540325cfbd",
+      "published_sha256": "80a3072df235f8103ebe361ca023cd815c0bb60d89be5f146087d3540325cfbd",
+      "size": 219,
+      "sanitized": false
+    },
+    {
+      "path": "validation/previous-0.1/DEMO_RESULT.json",
+      "original_sha256": "b46ed0eeae3c460bb58e7721fc5f64651fb1c649c07912487bc88eeb8398d27f",
+      "published_sha256": "b46ed0eeae3c460bb58e7721fc5f64651fb1c649c07912487bc88eeb8398d27f",
+      "size": 1053,
+      "sanitized": false
+    },
+    {
+      "path": "validation/previous-0.1/HOST_DEPENDENCIES.json",
+      "original_sha256": "8c22e450a7bdb1fc48beae202e49a46771a6fe75887ab95557d6a52dc8b1a7cc",
+      "published_sha256": "8c22e450a7bdb1fc48beae202e49a46771a6fe75887ab95557d6a52dc8b1a7cc",
+      "size": 1205,
+      "sanitized": false
+    },
+    {
+      "path": "validation/previous-0.1/PLANNER_REUSE.json",
+      "original_sha256": "5e1d1c9f8d1f19eb85b714dae916449d3d3ad64e9a227340adf759f5b89ef83c",
+      "published_sha256": "5e1d1c9f8d1f19eb85b714dae916449d3d3ad64e9a227340adf759f5b89ef83c",
+      "size": 450,
+      "sanitized": false
+    },
+    {
+      "path": "validation/previous-0.1/PUBLICATION_STATUS.json",
+      "original_sha256": "2e1fb609df089efed626b779fee91b2f8a3d7998268d039add9dd9e680d0af45",
+      "published_sha256": "2e1fb609df089efed626b779fee91b2f8a3d7998268d039add9dd9e680d0af45",
+      "size": 742,
+      "sanitized": false
+    },
+    {
+      "path": "validation/previous-0.1/SOURCE_PRESERVATION.json",
+      "original_sha256": "d74687e6e88d00356d0937fd1046d85521bf0b38b3235ebdd1c32df15efa4f76",
+      "published_sha256": "d74687e6e88d00356d0937fd1046d85521bf0b38b3235ebdd1c32df15efa4f76",
+      "size": 32657,
+      "sanitized": false
+    },
+    {
+      "path": "validation/previous-0.1/STATIC_CHECKS.json",
+      "original_sha256": "483908fca5f5e772cd823d77c5970383cc3f65d361ad130827d4d673fcc6a324",
+      "published_sha256": "483908fca5f5e772cd823d77c5970383cc3f65d361ad130827d4d673fcc6a324",
+      "size": 817,
+      "sanitized": false
+    },
+    {
+      "path": "validation/previous-0.1/VALIDATION.json",
+      "original_sha256": "7033298095a3538d39a689ac93a2972636190a17fcf3b0c2e32d021bc91fe290",
+      "published_sha256": "7033298095a3538d39a689ac93a2972636190a17fcf3b0c2e32d021bc91fe290",
+      "size": 1901,
+      "sanitized": false
+    },
+    {
+      "path": "validation/PUBLICATION_STATUS.json",
+      "original_sha256": "68a5fd8ea885cf0e42a2f8c2a67021d11639458dde986b0660ff6b77d0e5ed87",
+      "published_sha256": "68a5fd8ea885cf0e42a2f8c2a67021d11639458dde986b0660ff6b77d0e5ed87",
+      "size": 266,
+      "sanitized": false
+    },
+    {
+      "path": "validation/SOURCE_DELTA.json",
+      "original_sha256": "834accec82d3f61d36342327d82647bec4a91e92e03852b9fed4e6c9a6dfc9d8",
+      "published_sha256": "834accec82d3f61d36342327d82647bec4a91e92e03852b9fed4e6c9a6dfc9d8",
+      "size": 7809,
+      "sanitized": false
+    },
+    {
+      "path": "validation/SOURCE_PRESERVATION.json",
+      "original_sha256": "791c3dae410391a90fff8f00166670cc9235b69cdc17494a02f99a045e758b0b",
+      "published_sha256": "791c3dae410391a90fff8f00166670cc9235b69cdc17494a02f99a045e758b0b",
+      "size": 878,
+      "sanitized": false
+    },
+    {
+      "path": "validation/STATIC_CHECKS.json",
+      "original_sha256": "02682ff287d4069770c8eab50de001ff4d996a52a9b2083e7fdda97420639bed",
+      "published_sha256": "02682ff287d4069770c8eab50de001ff4d996a52a9b2083e7fdda97420639bed",
+      "size": 333,
+      "sanitized": false
+    },
+    {
+      "path": "validation/VALIDATION.json",
+      "original_sha256": "066a9ab6720329d400332d1b8f48b6796563451b089aed1b28bd4da4bc074068",
+      "published_sha256": "066a9ab6720329d400332d1b8f48b6796563451b089aed1b28bd4da4bc074068",
+      "size": 2791,
+      "sanitized": false
+    },
+    {
+      "path": "Open-Keybinds.cmd",
+      "original_sha256": "9b95ad986cd8cc59054a240e1171802536cfb2959aba7f482f82fc3bf4f3f6f9",
+      "published_sha256": "9b95ad986cd8cc59054a240e1171802536cfb2959aba7f482f82fc3bf4f3f6f9",
+      "size": 1064,
+      "sanitized": false
+    }
+  ],
+  "documentation_links_routed_to_canonical_owner": [
+    {
+      "path": "docs/AUTOMATION-OPERATING-PROCEDURES.md",
+      "from": "UI-AND-CONTENT-DESIGN.md#creation-and-review-protocol",
+      "to": "../../../docs/UI-AND-CONTENT-DESIGN.md#creation-and-review-protocol"
+    },
+    {
+      "path": "docs/AUTOMATION-OPERATING-PROCEDURES.md",
+      "from": "../games/cyberpunk-2077/HISTORY.md",
+      "to": "../../../games/cyberpunk-2077/HISTORY.md"
+    },
+    {
+      "path": "docs/AZERON-GAME-CONTROLS.md",
+      "from": "SPARSE6-OVERLAY-ASSETS-2026-10-11.md",
+      "to": "../../../docs/SPARSE6-OVERLAY-ASSETS-2026-10-11.md"
+    },
+    {
+      "path": "docs/DISTRIBUTION.md",
+      "from": "INSTALLED-GAMES-MOD-GUIDE.md",
+      "to": "../../../docs/INSTALLED-GAMES-MOD-GUIDE.md"
+    },
+    {
+      "path": "docs/DISTRIBUTION.md",
+      "from": "../games/skyrim-special-edition/HISTORY.md",
+      "to": "../../../games/skyrim-special-edition/HISTORY.md"
+    },
+    {
+      "path": "docs/DISTRIBUTION.md",
+      "from": "PUREDARK-ARCHIVE-2026-10-07.md",
+      "to": "../../../docs/PUREDARK-ARCHIVE-2026-10-07.md"
+    },
+    {
+      "path": "docs/FEATURE-DECISION.md",
+      "from": "COMPONENTS.md",
+      "to": "../../../docs/COMPONENTS.md"
+    },
+    {
+      "path": "docs/FEATURE-DECISION.md",
+      "from": "DYNAMIC-DLSS-SR.md",
+      "to": "../../../docs/DYNAMIC-DLSS-SR.md"
+    },
+    {
+      "path": "docs/FEATURE-DECISION.md",
+      "from": "GRAPHICS-CONTROLS.md",
+      "to": "../../../docs/GRAPHICS-CONTROLS.md"
+    },
+    {
+      "path": "docs/FEATURE-DECISION.md",
+      "from": "../games/batman-arkham-knight/HISTORY.md",
+      "to": "../../../games/batman-arkham-knight/HISTORY.md"
+    },
+    {
+      "path": "docs/FEATURE-DECISION.md",
+      "from": "../games/BATMAN-ARKHAM-KNIGHT.md",
+      "to": "../../../games/BATMAN-ARKHAM-KNIGHT.md"
+    },
+    {
+      "path": "docs/GAME-PERFORMANCE-MEASUREMENT.md",
+      "from": "../games/cyberpunk-2077/RUNTIME-VALIDATION.md#2026-10-11-interpretation-audit--effective-fg-mode-remains-unverified",
+      "to": "../../../games/cyberpunk-2077/RUNTIME-VALIDATION.md#2026-10-11-interpretation-audit--effective-fg-mode-remains-unverified"
+    },
+    {
+      "path": "docs/GAME-PERFORMANCE-MEASUREMENT.md",
+      "from": "../games/cyberpunk-2077/HISTORY.md",
+      "to": "../../../games/cyberpunk-2077/HISTORY.md"
+    },
+    {
+      "path": "docs/GAME-PERFORMANCE-MEASUREMENT.md",
+      "from": "../games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "to": "../../../games/cyberpunk-2077/RUNTIME-VALIDATION.md"
+    },
+    {
+      "path": "docs/GAME-TELEMETRY-TOOL-PLAN.md",
+      "from": "../games/cyberpunk-2077/RUNTIME-VALIDATION.md#2026-10-11-interpretation-audit--effective-fg-mode-remains-unverified",
+      "to": "../../../games/cyberpunk-2077/RUNTIME-VALIDATION.md#2026-10-11-interpretation-audit--effective-fg-mode-remains-unverified"
+    },
+    {
+      "path": "docs/GAME-TELEMETRY-TOOL-PLAN.md",
+      "from": "../games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "to": "../../../games/cyberpunk-2077/RUNTIME-VALIDATION.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-ARCHITECTURE.md",
+      "from": "UI-AND-CONTENT-DESIGN.md",
+      "to": "../../../docs/UI-AND-CONTENT-DESIGN.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "from": "SPARSE6-ADDITIONAL-GAME-MAPS-2026-10-12.md",
+      "to": "../../../docs/SPARSE6-ADDITIONAL-GAME-MAPS-2026-10-12.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "from": "../games/path-of-exile-2/CONTINUATION-AND-DEVELOPMENT.json",
+      "to": "../../../games/path-of-exile-2/CONTINUATION-AND-DEVELOPMENT.json"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "from": "../games/path-of-exile-2/HISTORY.md",
+      "to": "../../../games/path-of-exile-2/HISTORY.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "from": "AZERON-DECISION-CHAT-REVIEW-2026-10-12.md",
+      "to": "../../../docs/AZERON-DECISION-CHAT-REVIEW-2026-10-12.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "from": "SPARSE6-OVERLAY-ASSETS-2026-10-11.md",
+      "to": "../../../docs/SPARSE6-OVERLAY-ASSETS-2026-10-11.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "from": "UI-AND-CONTENT-DESIGN.md",
+      "to": "../../../docs/UI-AND-CONTENT-DESIGN.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "from": "ISOLATED-LAB-HANDOFF-2026-10-12.md",
+      "to": "../../../docs/ISOLATED-LAB-HANDOFF-2026-10-12.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "from": "ISOLATED-DEVELOPMENT-LAB.md",
+      "to": "../../../docs/ISOLATED-DEVELOPMENT-LAB.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "from": "ISOLATED-LAB-GUEST-TOOLS.md",
+      "to": "../../../docs/ISOLATED-LAB-GUEST-TOOLS.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "from": "ISOLATED-LAB-PORTABILITY.md",
+      "to": "../../../docs/ISOLATED-LAB-PORTABILITY.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "from": "ISOLATED-LAB-WEB-CONNECTION.md",
+      "to": "../../../docs/ISOLATED-LAB-WEB-CONNECTION.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "from": "../games/CYBERPUNK-2077.md",
+      "to": "../../../games/CYBERPUNK-2077.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "from": "../games/cyberpunk-2077/HISTORY.md",
+      "to": "../../../games/cyberpunk-2077/HISTORY.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "from": "../games/cyberpunk-2077/HISTORY.md",
+      "to": "../../../games/cyberpunk-2077/HISTORY.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "from": "../games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "to": "../../../games/cyberpunk-2077/RUNTIME-VALIDATION.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "from": "GRAPHICS-CONTROLS.md",
+      "to": "../../../docs/GRAPHICS-CONTROLS.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "from": "PUREDARK-ARCHIVE-2026-10-07.md",
+      "to": "../../../docs/PUREDARK-ARCHIVE-2026-10-07.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-MASTER-CHECKLIST.md",
+      "from": "AZERON-GAME-KEYMAP-VIEWER-WISHLIST.md",
+      "to": "../../../docs/AZERON-GAME-KEYMAP-VIEWER-WISHLIST.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-MASTER-CHECKLIST.md",
+      "from": "../games/cyberpunk-2077/HISTORY.md",
+      "to": "../../../games/cyberpunk-2077/HISTORY.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-MASTER-CHECKLIST.md",
+      "from": "../games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "to": "../../../games/cyberpunk-2077/RUNTIME-VALIDATION.md"
+    },
+    {
+      "path": "docs/GAME-TOOLS-MASTER-CHECKLIST.md",
+      "from": "GRAPHICS-CONTROLS.md",
+      "to": "../../../docs/GRAPHICS-CONTROLS.md"
+    },
+    {
+      "path": "docs/KNOWLEDGE-MAINTENANCE.md",
+      "from": "UI-AND-CONTENT-DESIGN.md",
+      "to": "../../../docs/UI-AND-CONTENT-DESIGN.md"
+    },
+    {
+      "path": "docs/OPERATING-STANDARD.md",
+      "from": "OWNED-GAMES.md",
+      "to": "../../../docs/OWNED-GAMES.md"
+    },
+    {
+      "path": "docs/OPERATING-STANDARD.md",
+      "from": "GRAPHICS-CONTROLS.md",
+      "to": "../../../docs/GRAPHICS-CONTROLS.md"
+    },
+    {
+      "path": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md",
+      "from": "../games/cyberpunk-2077/RUNTIME-VALIDATION.md",
+      "to": "../../../games/cyberpunk-2077/RUNTIME-VALIDATION.md"
+    },
+    {
+      "path": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md",
+      "from": "SPARSE6-OVERLAY-ASSETS-2026-10-11.md",
+      "to": "../../../docs/SPARSE6-OVERLAY-ASSETS-2026-10-11.md"
+    },
+    {
+      "path": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md",
+      "from": "AZERON-DECISION-CHAT-REVIEW-2026-10-12.md",
+      "to": "../../../docs/AZERON-DECISION-CHAT-REVIEW-2026-10-12.md"
+    },
+    {
+      "path": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md",
+      "from": "UI-AND-CONTENT-DESIGN.md",
+      "to": "../../../docs/UI-AND-CONTENT-DESIGN.md"
+    },
+    {
+      "path": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md",
+      "from": "../games/skyrim-special-edition/HISTORY.md",
+      "to": "../../../games/skyrim-special-edition/HISTORY.md"
+    },
+    {
+      "path": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md",
+      "from": "PUREDARK-ARCHIVE-2026-10-07.md",
+      "to": "../../../docs/PUREDARK-ARCHIVE-2026-10-07.md"
+    },
+    {
+      "path": "docs/UNIFIED-UI-DESIGN.md",
+      "from": "UI-AND-CONTENT-DESIGN.md",
+      "to": "../../../docs/UI-AND-CONTENT-DESIGN.md"
+    },
+    {
+      "path": "preferences/GENERAL.md",
+      "from": "../docs/UI-AND-CONTENT-DESIGN.md",
+      "to": "../../../docs/UI-AND-CONTENT-DESIGN.md"
+    },
+    {
+      "path": "preferences/GENERAL.md",
+      "from": "../docs/OWNED-GAMES.md",
+      "to": "../../../docs/OWNED-GAMES.md"
+    },
+    {
+      "path": "preferences/GENERAL.md",
+      "from": "../docs/DYNAMIC-DLSS-SR.md",
+      "to": "../../../docs/DYNAMIC-DLSS-SR.md"
+    },
+    {
+      "path": "preferences/GENERAL.md",
+      "from": "../docs/GRAPHICS-CONTROLS.md",
+      "to": "../../../docs/GRAPHICS-CONTROLS.md"
+    },
+    {
+      "path": "templates/PREFERENCE-PROFILE.md",
+      "from": "../docs/GRAPHICS-CONTROLS.md",
+      "to": "../../../docs/GRAPHICS-CONTROLS.md"
+    }
+  ]
+}

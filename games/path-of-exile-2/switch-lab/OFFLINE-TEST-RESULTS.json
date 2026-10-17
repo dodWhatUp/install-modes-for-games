@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "time_utc": "2026-10-17T00:30:43.718Z",
+  "scope": "Offline model and artifact contracts only",
+  "passed": 20,
+  "failed": 0,
+  "browser_ui": "SEE_SEPARATE_BROWSER_REVIEW",
+  "game_runtime": "NOT_RUN",
+  "account_created": false,
+  "html_sha256": "ae7bc2885f8060bb9cc807bd6b9e73dcd3d36846befaedb0bf368350a7d0b8f1",
+  "hardware_ban_safety": "NOT_ESTABLISHED",
+  "results": [
+    {
+      "name": "13 fixed R2 slots including Ctrl combinations",
+      "status": "PASS"
+    },
+    {
+      "name": "Set II skill selects II in one manual model request",
+      "status": "PASS"
+    },
+    {
+      "name": "Set I skill returns from II",
+      "status": "PASS"
+    },
+    {
+      "name": "Both-enabled skill keeps active set",
+      "status": "PASS"
+    },
+    {
+      "name": "Unavailable skill neither swaps nor casts",
+      "status": "PASS"
+    },
+    {
+      "name": "Native operations preserve source and previous state",
+      "status": "PASS"
+    },
+    {
+      "name": "Manual X toggles I and II",
+      "status": "PASS"
+    },
+    {
+      "name": "Q and Ctrl+Q remain distinct",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeats and unrelated modifiers are ignored",
+      "status": "PASS"
+    },
+    {
+      "name": "Every keyboard skill has its exact model input",
+      "status": "PASS"
+    },
+    {
+      "name": "Plan round trip retains only supported source fields",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid, missing and duplicate slots are rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Changed keys and invalid assignments are rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Names remain text and empty/long names are rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Inventory preflight rejects missing item without partial mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "Full inventory model equips weapon, gem, then assigns skill",
+      "status": "PASS"
+    },
+    {
+      "name": "Inventory items are conserved and cancellation preserves completed steps",
+      "status": "PASS"
+    },
+    {
+      "name": "Completed model is idempotent; binding unavailable gem is rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Production page contains no external input or network adapter",
+      "status": "PASS"
+    },
+    {
+      "name": "Live-account plan retains hardware-protection block",
+      "status": "PASS"
+    }
+  ]
+}

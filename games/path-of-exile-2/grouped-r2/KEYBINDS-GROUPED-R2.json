@@ -1,0 +1,2414 @@
+{
+  "schema_version": 2,
+  "game": {
+    "name": "Path of Exile 2",
+    "edition": "Steam",
+    "build": "Current saved configuration",
+    "input_mode": "WASD selected; use_wasd_to_move=false remains a runtime uncertainty",
+    "keyboard_layout": "unrecorded"
+  },
+  "mapping_revision": "2026-10-12-poe2-grouped-r2",
+  "last_verified": "2026-10-12T00:24:26.889354+00:00",
+  "device": {
+    "alias": "azeron-cyborg-ii-left",
+    "registry_reference": null,
+    "registry_revision": "",
+    "geometry_reference": "../KEYBINDS.json",
+    "geometry_revision": "SHARED R5 numbered Cyborg II geometry",
+    "baseline_version": "Current user-edited PoE2 R1 pair; preserved separately",
+    "recognition_status": "Connected HID interface signature matches saved Cyborg II; physical outputs pending",
+    "geometry_layout": [
+      {
+        "button_id": 4,
+        "position_id": "R1C1",
+        "grid": {
+          "row": 3,
+          "column": 2
+        }
+      },
+      {
+        "button_id": 8,
+        "position_id": "R1C2",
+        "grid": {
+          "row": 3,
+          "column": 3
+        }
+      },
+      {
+        "button_id": 12,
+        "position_id": "R1C3",
+        "grid": {
+          "row": 3,
+          "column": 4
+        }
+      },
+      {
+        "button_id": 17,
+        "position_id": "R1C4",
+        "grid": {
+          "row": 3,
+          "column": 5
+        }
+      },
+      {
+        "button_id": 3,
+        "position_id": "R2C1",
+        "grid": {
+          "row": 4,
+          "column": 2
+        }
+      },
+      {
+        "button_id": 7,
+        "position_id": "R2C2",
+        "grid": {
+          "row": 4,
+          "column": 3
+        }
+      },
+      {
+        "button_id": 11,
+        "position_id": "R2C3",
+        "grid": {
+          "row": 4,
+          "column": 4
+        }
+      },
+      {
+        "button_id": 16,
+        "position_id": "R2C4",
+        "grid": {
+          "row": 4,
+          "column": 5
+        }
+      },
+      {
+        "button_id": 2,
+        "position_id": "R3C1",
+        "grid": {
+          "row": 5,
+          "column": 2
+        }
+      },
+      {
+        "button_id": 6,
+        "position_id": "R3C2",
+        "grid": {
+          "row": 5,
+          "column": 3
+        }
+      },
+      {
+        "button_id": 10,
+        "position_id": "R3C3",
+        "grid": {
+          "row": 5,
+          "column": 4
+        }
+      },
+      {
+        "button_id": 15,
+        "position_id": "R3C4",
+        "grid": {
+          "row": 5,
+          "column": 5
+        }
+      },
+      {
+        "button_id": 1,
+        "position_id": "R4C1",
+        "grid": {
+          "row": 6,
+          "column": 2
+        }
+      },
+      {
+        "button_id": 5,
+        "position_id": "R4C2",
+        "grid": {
+          "row": 6,
+          "column": 3
+        }
+      },
+      {
+        "button_id": 9,
+        "position_id": "R4C3",
+        "grid": {
+          "row": 6,
+          "column": 4
+        }
+      },
+      {
+        "button_id": 14,
+        "position_id": "R4C4",
+        "grid": {
+          "row": 6,
+          "column": 5
+        }
+      },
+      {
+        "button_id": 37,
+        "position_id": "R5C1",
+        "grid": {
+          "row": 7,
+          "column": 2
+        }
+      },
+      {
+        "button_id": 38,
+        "position_id": "R5C2",
+        "grid": {
+          "row": 7,
+          "column": 3
+        }
+      },
+      {
+        "button_id": 13,
+        "position_id": "R5C3",
+        "grid": {
+          "row": 7,
+          "column": 4
+        }
+      },
+      {
+        "button_id": 18,
+        "position_id": "R5C4",
+        "grid": {
+          "row": 7,
+          "column": 5
+        }
+      },
+      {
+        "button_id": 36,
+        "position_id": "L3",
+        "grid": {
+          "row": 5,
+          "column": 1
+        }
+      },
+      {
+        "button_id": 19,
+        "position_id": "R3",
+        "grid": {
+          "row": 5,
+          "column": 6
+        }
+      },
+      {
+        "button_id": 28,
+        "position_id": "TH_U",
+        "grid": {
+          "row": 2,
+          "column": 8
+        }
+      },
+      {
+        "button_id": 29,
+        "position_id": "TH_L",
+        "grid": {
+          "row": 3,
+          "column": 7
+        }
+      },
+      {
+        "button_id": 22,
+        "position_id": "TH_C",
+        "grid": {
+          "row": 3,
+          "column": 8
+        }
+      },
+      {
+        "button_id": 31,
+        "position_id": "TH_R",
+        "grid": {
+          "row": 3,
+          "column": 9
+        }
+      },
+      {
+        "button_id": 30,
+        "position_id": "TH_D",
+        "grid": {
+          "row": 4,
+          "column": 8
+        }
+      },
+      {
+        "button_id": 41,
+        "position_id": "ST_RU",
+        "grid": {
+          "row": 5,
+          "column": 9
+        }
+      },
+      {
+        "button_id": 20,
+        "position_id": "ST_RD",
+        "grid": {
+          "row": 6,
+          "column": 9
+        }
+      },
+      {
+        "button_id": 23,
+        "position_id": "ST_D",
+        "grid": {
+          "row": 7,
+          "column": 7
+        }
+      },
+      {
+        "button_id": 24,
+        "position_id": "stick",
+        "kind": "analog_stick",
+        "grid": {
+          "row": 5,
+          "column": 7,
+          "row_span": 2,
+          "column_span": 2
+        }
+      }
+    ]
+  },
+  "shared_logical_base_version": "PoE2 grouped R2; explicit game-specific ergonomics revision",
+  "input_path": [],
+  "mapper": {
+    "name": "Azeron Software",
+    "version": "2.0.2",
+    "config_name": "PoE2 GROUPED R2",
+    "config_revision": "2026-10-12-poe2-grouped-r2",
+    "native_export_reference": "native-profiles/",
+    "device_group_alias": null,
+    "slot": null,
+    "output_mode": "software",
+    "layers": [
+      "COMBAT",
+      "MENU"
+    ],
+    "mute_hide_rules": [],
+    "axis_settings_reference": null,
+    "other_active_transformations": [],
+    "library_status": "Two new profile JSONs added; UI recognition after full reload pending"
+  },
+  "application_selection": {
+    "method": "unconfigured",
+    "executable_names": [],
+    "private_path_reference": null,
+    "background_agent_required": null,
+    "focus_behavior": "unknown",
+    "desktop_fallback": "unknown",
+    "verification": "unverified"
+  },
+  "azeron": {
+    "model": "Cyborg II",
+    "software_version": "2.0.2",
+    "firmware_version": "",
+    "base_profile_version": "",
+    "orientation": "left hand",
+    "profile_ids": [
+      "0ca7e8e3-131e-5f6b-8a8d-9a0dd78c0b17",
+      "4943b051-848c-5389-aa4d-e835b6dfd1e2"
+    ]
+  },
+  "mods": [],
+  "steam_input": {
+    "app_id": null,
+    "applicable": "unknown",
+    "controller_type": null,
+    "layout_name": null,
+    "layout_version": null,
+    "restore_reference": null,
+    "export_reference": null,
+    "steam_cloud_includes_game_keybindings": "unknown"
+  },
+  "sources": [
+    "Current poe2_production_Config.ini SHA-256 D422E0F170E9EA383E5A968870F7DA3A4B838DBDC630F97A16C5CD4D9FF721BA; WASD_ACTION_KEYS read",
+    "Current native PoE2 profiles: #1 single hold MENU and #6 V retained as source observations",
+    "Installed Azeron 2.0.2 renderer enums: KeyboardKey=1, MouseButton=15, SwitchProfile=24; L/M/R=1/2/3",
+    "https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes",
+    "User correction: all builds use one grouped skill layout; class-specific customization unnecessary"
+  ],
+  "verification": {
+    "configuration": "Generated from saved inputs; native files read back after preparation",
+    "gameplay": "unverified",
+    "gameplay_prompts": "unverified"
+  },
+  "bindings": [
+    {
+      "button_id": 8,
+      "position_id": "R1C2",
+      "device_control_id": 8,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "mouse",
+        "display": "LMB",
+        "keys": [],
+        "native_code": "1",
+        "raw_encoding": "1"
+      },
+      "action": {
+        "id": "use_bound_skill1",
+        "name": "Skill 1",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "1",
+      "group": "mouse_skills",
+      "short_name": "Skill 1",
+      "gameplay_prompt": {
+        "expected": "LMB",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": "Ability names intentionally remain generic skill-slot labels for all builds."
+    },
+    {
+      "button_id": 7,
+      "position_id": "R2C2",
+      "device_control_id": 7,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "mouse",
+        "display": "MMB",
+        "keys": [],
+        "native_code": "2",
+        "raw_encoding": "4"
+      },
+      "action": {
+        "id": "use_bound_skill2",
+        "name": "Skill 2",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "4",
+      "group": "mouse_skills",
+      "short_name": "Skill 2",
+      "gameplay_prompt": {
+        "expected": "MMB",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": "Ability names intentionally remain generic skill-slot labels for all builds."
+    },
+    {
+      "button_id": 5,
+      "position_id": "R4C2",
+      "device_control_id": 5,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "mouse",
+        "display": "RMB",
+        "keys": [],
+        "native_code": "3",
+        "raw_encoding": "2"
+      },
+      "action": {
+        "id": "use_bound_skill3",
+        "name": "Skill 3",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "2",
+      "group": "mouse_skills",
+      "short_name": "Skill 3",
+      "gameplay_prompt": {
+        "expected": "RMB",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": "Ability names intentionally remain generic skill-slot labels for all builds."
+    },
+    {
+      "button_id": 12,
+      "position_id": "R1C3",
+      "device_control_id": 12,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "Q",
+        "keys": [
+          "KeyQ"
+        ],
+        "native_code": "KeyQ",
+        "modifiers": [],
+        "raw_encoding": "81"
+      },
+      "action": {
+        "id": "use_bound_skill4",
+        "name": "Skill 4",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "81",
+      "group": "main_skills",
+      "short_name": "Skill 4",
+      "gameplay_prompt": {
+        "expected": "Q",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": "Ability names intentionally remain generic skill-slot labels for all builds."
+    },
+    {
+      "button_id": 11,
+      "position_id": "R2C3",
+      "device_control_id": 11,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "E",
+        "keys": [
+          "KeyE"
+        ],
+        "native_code": "KeyE",
+        "modifiers": [],
+        "raw_encoding": "69"
+      },
+      "action": {
+        "id": "use_bound_skill5",
+        "name": "Skill 5",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "69",
+      "group": "main_skills",
+      "short_name": "Skill 5",
+      "gameplay_prompt": {
+        "expected": "E",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": "Ability names intentionally remain generic skill-slot labels for all builds."
+    },
+    {
+      "button_id": 10,
+      "position_id": "R3C3",
+      "device_control_id": 10,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "R",
+        "keys": [
+          "KeyR"
+        ],
+        "native_code": "KeyR",
+        "modifiers": [],
+        "raw_encoding": "82"
+      },
+      "action": {
+        "id": "use_bound_skill6",
+        "name": "Skill 6",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "82",
+      "group": "main_skills",
+      "short_name": "Skill 6",
+      "gameplay_prompt": {
+        "expected": "R",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": "Ability names intentionally remain generic skill-slot labels for all builds."
+    },
+    {
+      "button_id": 9,
+      "position_id": "R4C3",
+      "device_control_id": 9,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "T",
+        "keys": [
+          "KeyT"
+        ],
+        "native_code": "KeyT",
+        "modifiers": [],
+        "raw_encoding": "84"
+      },
+      "action": {
+        "id": "use_bound_skill7",
+        "name": "Skill 7",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "84",
+      "group": "main_skills",
+      "short_name": "Skill 7",
+      "gameplay_prompt": {
+        "expected": "T",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": "Ability names intentionally remain generic skill-slot labels for all builds."
+    },
+    {
+      "button_id": 13,
+      "position_id": "R5C3",
+      "device_control_id": 13,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "F",
+        "keys": [
+          "KeyF"
+        ],
+        "native_code": "KeyF",
+        "modifiers": [],
+        "raw_encoding": "70"
+      },
+      "action": {
+        "id": "use_bound_skill8",
+        "name": "Skill 8",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "70",
+      "group": "main_skills",
+      "short_name": "Skill 8",
+      "gameplay_prompt": {
+        "expected": "F",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": "Ability names intentionally remain generic skill-slot labels for all builds."
+    },
+    {
+      "button_id": 17,
+      "position_id": "R1C4",
+      "device_control_id": 17,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "Ctrl+Q",
+        "keys": [
+          "KeyQ",
+          "ControlLeft"
+        ],
+        "native_code": "KeyQ",
+        "modifiers": [
+          "ControlLeft"
+        ],
+        "raw_encoding": "81 2"
+      },
+      "action": {
+        "id": "use_bound_skill9",
+        "name": "Skill 9",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "81 2",
+      "group": "extra_skills",
+      "short_name": "Skill 9",
+      "gameplay_prompt": {
+        "expected": "Ctrl+Q",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": "Ability names intentionally remain generic skill-slot labels for all builds."
+    },
+    {
+      "button_id": 16,
+      "position_id": "R2C4",
+      "device_control_id": 16,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "Ctrl+E",
+        "keys": [
+          "KeyE",
+          "ControlLeft"
+        ],
+        "native_code": "KeyE",
+        "modifiers": [
+          "ControlLeft"
+        ],
+        "raw_encoding": "69 2"
+      },
+      "action": {
+        "id": "use_bound_skill10",
+        "name": "Skill 10",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "69 2",
+      "group": "extra_skills",
+      "short_name": "Skill 10",
+      "gameplay_prompt": {
+        "expected": "Ctrl+E",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": "Ability names intentionally remain generic skill-slot labels for all builds."
+    },
+    {
+      "button_id": 15,
+      "position_id": "R3C4",
+      "device_control_id": 15,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "Ctrl+R",
+        "keys": [
+          "KeyR",
+          "ControlLeft"
+        ],
+        "native_code": "KeyR",
+        "modifiers": [
+          "ControlLeft"
+        ],
+        "raw_encoding": "82 2"
+      },
+      "action": {
+        "id": "use_bound_skill11",
+        "name": "Skill 11",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "82 2",
+      "group": "extra_skills",
+      "short_name": "Skill 11",
+      "gameplay_prompt": {
+        "expected": "Ctrl+R",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": "Ability names intentionally remain generic skill-slot labels for all builds."
+    },
+    {
+      "button_id": 38,
+      "position_id": "R5C2",
+      "device_control_id": 38,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "Ctrl+T",
+        "keys": [
+          "KeyT",
+          "ControlLeft"
+        ],
+        "native_code": "KeyT",
+        "modifiers": [
+          "ControlLeft"
+        ],
+        "raw_encoding": "84 2"
+      },
+      "action": {
+        "id": "use_bound_skill12",
+        "name": "Skill 12",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "84 2",
+      "group": "extra_skills",
+      "short_name": "Skill 12",
+      "gameplay_prompt": {
+        "expected": "Ctrl+T",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": "Ability names intentionally remain generic skill-slot labels for all builds."
+    },
+    {
+      "button_id": 18,
+      "position_id": "R5C4",
+      "device_control_id": 18,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "Ctrl+F",
+        "keys": [
+          "KeyF",
+          "ControlLeft"
+        ],
+        "native_code": "KeyF",
+        "modifiers": [
+          "ControlLeft"
+        ],
+        "raw_encoding": "70 2"
+      },
+      "action": {
+        "id": "use_bound_skill13",
+        "name": "Skill 13",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "70 2",
+      "group": "extra_skills",
+      "short_name": "Skill 13",
+      "gameplay_prompt": {
+        "expected": "Ctrl+F",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": "Ability names intentionally remain generic skill-slot labels for all builds."
+    },
+    {
+      "button_id": 4,
+      "position_id": "R1C1",
+      "device_control_id": 4,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "1",
+        "keys": [
+          "Digit1"
+        ],
+        "native_code": "Digit1",
+        "modifiers": [],
+        "raw_encoding": "49"
+      },
+      "action": {
+        "id": "use_flask_in_slot1",
+        "name": "Flask 1",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "49",
+      "group": "flasks",
+      "short_name": "Flask 1",
+      "gameplay_prompt": {
+        "expected": "1",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 3,
+      "position_id": "R2C1",
+      "device_control_id": 3,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "2",
+        "keys": [
+          "Digit2"
+        ],
+        "native_code": "Digit2",
+        "modifiers": [],
+        "raw_encoding": "50"
+      },
+      "action": {
+        "id": "use_flask_in_slot2",
+        "name": "Flask 2",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "50",
+      "group": "flasks",
+      "short_name": "Flask 2",
+      "gameplay_prompt": {
+        "expected": "2",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 2,
+      "position_id": "R3C1",
+      "device_control_id": 2,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "6",
+        "keys": [
+          "Digit6"
+        ],
+        "native_code": "Digit6",
+        "modifiers": [],
+        "raw_encoding": "54"
+      },
+      "action": {
+        "id": "use_temporary_skill1",
+        "name": "Temp skill 1",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "54",
+      "group": "temporary",
+      "short_name": "Temp skill 1",
+      "gameplay_prompt": {
+        "expected": "6",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 36,
+      "position_id": "L3",
+      "device_control_id": 36,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "7",
+        "keys": [
+          "Digit7"
+        ],
+        "native_code": "Digit7",
+        "modifiers": [],
+        "raw_encoding": "55"
+      },
+      "action": {
+        "id": "use_temporary_skill2",
+        "name": "Temp skill 2",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "55",
+      "group": "temporary",
+      "short_name": "Temp skill 2",
+      "gameplay_prompt": {
+        "expected": "7",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 14,
+      "position_id": "R4C4",
+      "device_control_id": 14,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "Space",
+        "keys": [
+          "Space"
+        ],
+        "native_code": "Space",
+        "modifiers": [],
+        "raw_encoding": "32"
+      },
+      "action": {
+        "id": "use_dodge_roll",
+        "name": "Dodge",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "32",
+      "group": "defense",
+      "short_name": "Dodge",
+      "gameplay_prompt": {
+        "expected": "Space",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 37,
+      "position_id": "R5C1",
+      "device_control_id": 37,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "X",
+        "keys": [
+          "KeyX"
+        ],
+        "native_code": "KeyX",
+        "modifiers": [],
+        "raw_encoding": "88"
+      },
+      "action": {
+        "id": "weapon_swap",
+        "name": "Weapon swap",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "88",
+      "group": "utility",
+      "short_name": "Weapon swap",
+      "gameplay_prompt": {
+        "expected": "X",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 19,
+      "position_id": "R3",
+      "device_control_id": 19,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "Alt",
+        "keys": [
+          "AltLeft"
+        ],
+        "native_code": "0",
+        "modifiers": [
+          "AltLeft"
+        ],
+        "raw_encoding": "18"
+      },
+      "action": {
+        "id": "highlight",
+        "name": "Hold item labels",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "18",
+      "group": "utility",
+      "short_name": "Hold item labels",
+      "gameplay_prompt": {
+        "expected": "Alt",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 12,
+      "position_id": "R1C3",
+      "device_control_id": 12,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "G",
+        "keys": [
+          "KeyG"
+        ],
+        "native_code": "KeyG",
+        "modifiers": [],
+        "raw_encoding": "71"
+      },
+      "action": {
+        "id": "open_skill_panel",
+        "name": "Skills",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "71",
+      "group": "character",
+      "short_name": "Skills",
+      "gameplay_prompt": {
+        "expected": "G",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 11,
+      "position_id": "R2C3",
+      "device_control_id": 11,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "P",
+        "keys": [
+          "KeyP"
+        ],
+        "native_code": "KeyP",
+        "modifiers": [],
+        "raw_encoding": "80"
+      },
+      "action": {
+        "id": "open_passive_skills_panel",
+        "name": "Passives",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "80",
+      "group": "character",
+      "short_name": "Passives",
+      "gameplay_prompt": {
+        "expected": "P",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 10,
+      "position_id": "R3C3",
+      "device_control_id": 10,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "C",
+        "keys": [
+          "KeyC"
+        ],
+        "native_code": "KeyC",
+        "modifiers": [],
+        "raw_encoding": "67"
+      },
+      "action": {
+        "id": "open_character_panel",
+        "name": "Character",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "67",
+      "group": "character",
+      "short_name": "Character",
+      "gameplay_prompt": {
+        "expected": "C",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 9,
+      "position_id": "R4C3",
+      "device_control_id": 9,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "I",
+        "keys": [
+          "KeyI"
+        ],
+        "native_code": "KeyI",
+        "modifiers": [],
+        "raw_encoding": "73"
+      },
+      "action": {
+        "id": "open_inventory_panel",
+        "name": "Inventory",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "73",
+      "group": "character",
+      "short_name": "Inventory",
+      "gameplay_prompt": {
+        "expected": "I",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 13,
+      "position_id": "R5C3",
+      "device_control_id": 13,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "K",
+        "keys": [
+          "KeyK"
+        ],
+        "native_code": "KeyK",
+        "modifiers": [],
+        "raw_encoding": "75"
+      },
+      "action": {
+        "id": "open_cosmetics_inventory",
+        "name": "Cosmetics",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "75",
+      "group": "character",
+      "short_name": "Cosmetics",
+      "gameplay_prompt": {
+        "expected": "K",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 17,
+      "position_id": "R1C4",
+      "device_control_id": 17,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "Tab",
+        "keys": [
+          "Tab"
+        ],
+        "native_code": "Tab",
+        "modifiers": [],
+        "raw_encoding": "9"
+      },
+      "action": {
+        "id": "open_map",
+        "name": "Area map",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "9",
+      "group": "maps",
+      "short_name": "Area map",
+      "gameplay_prompt": {
+        "expected": "Tab",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 16,
+      "position_id": "R2C4",
+      "device_control_id": 16,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "U",
+        "keys": [
+          "KeyU"
+        ],
+        "native_code": "KeyU",
+        "modifiers": [],
+        "raw_encoding": "85"
+      },
+      "action": {
+        "id": "open_world_panel",
+        "name": "World / Atlas",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "85",
+      "group": "maps",
+      "short_name": "World / Atlas",
+      "gameplay_prompt": {
+        "expected": "U",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 15,
+      "position_id": "R3C4",
+      "device_control_id": 15,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "Ctrl+U",
+        "keys": [
+          "KeyU",
+          "ControlLeft"
+        ],
+        "native_code": "KeyU",
+        "modifiers": [
+          "ControlLeft"
+        ],
+        "raw_encoding": "85 2"
+      },
+      "action": {
+        "id": "open_atlas_passives_screen",
+        "name": "Atlas passives",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "85 2",
+      "group": "maps",
+      "short_name": "Atlas passives",
+      "gameplay_prompt": {
+        "expected": "Ctrl+U",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 14,
+      "position_id": "R4C4",
+      "device_control_id": 14,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "Space",
+        "keys": [
+          "Space"
+        ],
+        "native_code": "Space",
+        "modifiers": [],
+        "raw_encoding": "32"
+      },
+      "action": {
+        "id": "close_panels",
+        "name": "Close panels",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "32",
+      "group": "navigation",
+      "short_name": "Close panels",
+      "gameplay_prompt": {
+        "expected": "Space",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 18,
+      "position_id": "R5C4",
+      "device_control_id": 18,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "Enter",
+        "keys": [
+          "Enter"
+        ],
+        "native_code": "Enter",
+        "modifiers": [],
+        "raw_encoding": "13"
+      },
+      "action": {
+        "id": "chat",
+        "name": "Chat",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "13",
+      "group": "navigation",
+      "short_name": "Chat",
+      "gameplay_prompt": {
+        "expected": "Enter",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 2,
+      "position_id": "R3C1",
+      "device_control_id": 2,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "H",
+        "keys": [
+          "KeyH"
+        ],
+        "native_code": "KeyH",
+        "modifiers": [],
+        "raw_encoding": "72"
+      },
+      "action": {
+        "id": "open_challenges_panel",
+        "name": "Challenges",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "72",
+      "group": "utility",
+      "short_name": "Challenges",
+      "gameplay_prompt": {
+        "expected": "H",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 36,
+      "position_id": "L3",
+      "device_control_id": 36,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "J",
+        "keys": [
+          "KeyJ"
+        ],
+        "native_code": "KeyJ",
+        "modifiers": [],
+        "raw_encoding": "74"
+      },
+      "action": {
+        "id": "open_social_panel",
+        "name": "Social",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "74",
+      "group": "utility",
+      "short_name": "Social",
+      "gameplay_prompt": {
+        "expected": "J",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 37,
+      "position_id": "R5C1",
+      "device_control_id": 37,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "'",
+        "keys": [
+          "Quote"
+        ],
+        "native_code": "Quote",
+        "modifiers": [],
+        "raw_encoding": "222"
+      },
+      "action": {
+        "id": "generic_league_panel_key",
+        "name": "League panel",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "222",
+      "group": "utility",
+      "short_name": "League panel",
+      "gameplay_prompt": {
+        "expected": "'",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 38,
+      "position_id": "R5C2",
+      "device_control_id": 38,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "Z",
+        "keys": [
+          "KeyZ"
+        ],
+        "native_code": "KeyZ",
+        "modifiers": [],
+        "raw_encoding": "90"
+      },
+      "action": {
+        "id": "highlight_toggle",
+        "name": "Toggle item labels",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "90",
+      "group": "utility",
+      "short_name": "Toggle item labels",
+      "gameplay_prompt": {
+        "expected": "Z",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 4,
+      "position_id": "R1C1",
+      "device_control_id": 4,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "1",
+        "keys": [
+          "Digit1"
+        ],
+        "native_code": "Digit1",
+        "modifiers": [],
+        "raw_encoding": "49"
+      },
+      "action": {
+        "id": "use_flask_in_slot1",
+        "name": "Flask 1",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "49",
+      "group": "flasks",
+      "short_name": "Flask 1",
+      "gameplay_prompt": {
+        "expected": "1",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 3,
+      "position_id": "R2C1",
+      "device_control_id": 3,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "2",
+        "keys": [
+          "Digit2"
+        ],
+        "native_code": "Digit2",
+        "modifiers": [],
+        "raw_encoding": "50"
+      },
+      "action": {
+        "id": "use_flask_in_slot2",
+        "name": "Flask 2",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "50",
+      "group": "flasks",
+      "short_name": "Flask 2",
+      "gameplay_prompt": {
+        "expected": "2",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 8,
+      "position_id": "R1C2",
+      "device_control_id": 8,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "mouse",
+        "display": "LMB",
+        "keys": [],
+        "native_code": "1",
+        "raw_encoding": "1"
+      },
+      "action": {
+        "id": "use_bound_skill1",
+        "name": "Left click",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "1",
+      "group": "pointer",
+      "short_name": "Left click",
+      "gameplay_prompt": {
+        "expected": "LMB",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": "Ability names intentionally remain generic skill-slot labels for all builds."
+    },
+    {
+      "button_id": 7,
+      "position_id": "R2C2",
+      "device_control_id": 7,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "mouse",
+        "display": "MMB",
+        "keys": [],
+        "native_code": "2",
+        "raw_encoding": "4"
+      },
+      "action": {
+        "id": "use_bound_skill2",
+        "name": "Middle click",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "4",
+      "group": "pointer",
+      "short_name": "Middle click",
+      "gameplay_prompt": {
+        "expected": "MMB",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": "Ability names intentionally remain generic skill-slot labels for all builds."
+    },
+    {
+      "button_id": 5,
+      "position_id": "R4C2",
+      "device_control_id": 5,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "mouse",
+        "display": "RMB",
+        "keys": [],
+        "native_code": "3",
+        "raw_encoding": "2"
+      },
+      "action": {
+        "id": "use_bound_skill3",
+        "name": "Right click",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "2",
+      "group": "pointer",
+      "short_name": "Right click",
+      "gameplay_prompt": {
+        "expected": "RMB",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": "Ability names intentionally remain generic skill-slot labels for all builds."
+    },
+    {
+      "button_id": 19,
+      "position_id": "R3",
+      "device_control_id": 19,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "Home",
+        "keys": [
+          "Home"
+        ],
+        "native_code": "Home",
+        "modifiers": []
+      },
+      "action": {
+        "id": "",
+        "name": "OptiScaler menu",
+        "origin": "native_profile"
+      },
+      "game_effective_binding": null,
+      "group": "tools",
+      "short_name": "OptiScaler menu",
+      "gameplay_prompt": {
+        "expected": "Home",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 28,
+      "position_id": "TH_U",
+      "device_control_id": 28,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "Tab",
+        "keys": [
+          "Tab"
+        ],
+        "native_code": "Tab",
+        "modifiers": [],
+        "raw_encoding": "9"
+      },
+      "action": {
+        "id": "open_map",
+        "name": "Area map",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "9",
+      "group": "thumb",
+      "short_name": "Area map",
+      "gameplay_prompt": {
+        "expected": "Tab",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 29,
+      "position_id": "TH_L",
+      "device_control_id": 29,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "I",
+        "keys": [
+          "KeyI"
+        ],
+        "native_code": "KeyI",
+        "modifiers": [],
+        "raw_encoding": "73"
+      },
+      "action": {
+        "id": "open_inventory_panel",
+        "name": "Inventory",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "73",
+      "group": "thumb",
+      "short_name": "Inventory",
+      "gameplay_prompt": {
+        "expected": "I",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 22,
+      "position_id": "TH_C",
+      "device_control_id": 22,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "C",
+        "keys": [
+          "KeyC"
+        ],
+        "native_code": "KeyC",
+        "modifiers": [],
+        "raw_encoding": "67"
+      },
+      "action": {
+        "id": "open_character_panel",
+        "name": "Character",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "67",
+      "group": "thumb",
+      "short_name": "Character",
+      "gameplay_prompt": {
+        "expected": "C",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 31,
+      "position_id": "TH_R",
+      "device_control_id": 31,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "G",
+        "keys": [
+          "KeyG"
+        ],
+        "native_code": "KeyG",
+        "modifiers": [],
+        "raw_encoding": "71"
+      },
+      "action": {
+        "id": "open_skill_panel",
+        "name": "Skills",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "71",
+      "group": "thumb",
+      "short_name": "Skills",
+      "gameplay_prompt": {
+        "expected": "G",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 30,
+      "position_id": "TH_D",
+      "device_control_id": 30,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "P",
+        "keys": [
+          "KeyP"
+        ],
+        "native_code": "KeyP",
+        "modifiers": [],
+        "raw_encoding": "80"
+      },
+      "action": {
+        "id": "open_passive_skills_panel",
+        "name": "Passives",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "80",
+      "group": "thumb",
+      "short_name": "Passives",
+      "gameplay_prompt": {
+        "expected": "P",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 41,
+      "position_id": "ST_RU",
+      "device_control_id": 41,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "Enter",
+        "keys": [
+          "Enter"
+        ],
+        "native_code": "Enter",
+        "modifiers": [],
+        "raw_encoding": "13"
+      },
+      "action": {
+        "id": "chat",
+        "name": "Chat",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "13",
+      "group": "thumb",
+      "short_name": "Chat",
+      "gameplay_prompt": {
+        "expected": "Enter",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 23,
+      "position_id": "ST_D",
+      "device_control_id": 23,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "K",
+        "keys": [
+          "KeyK"
+        ],
+        "native_code": "KeyK",
+        "modifiers": [],
+        "raw_encoding": "75"
+      },
+      "action": {
+        "id": "open_cosmetics_inventory",
+        "name": "Cosmetics",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "75",
+      "group": "thumb",
+      "short_name": "Cosmetics",
+      "gameplay_prompt": {
+        "expected": "K",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 20,
+      "position_id": "ST_RD",
+      "device_control_id": 20,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "keyboard",
+        "display": "Esc",
+        "keys": [
+          "Escape"
+        ],
+        "native_code": "Escape",
+        "modifiers": []
+      },
+      "action": {
+        "id": "",
+        "name": "Back / Esc",
+        "origin": "native_profile"
+      },
+      "game_effective_binding": null,
+      "group": "thumb",
+      "short_name": "Back / Esc",
+      "gameplay_prompt": {
+        "expected": "Esc",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 24,
+      "position_id": "stick",
+      "device_control_id": 24,
+      "layer": "COMBAT",
+      "press_type": "single",
+      "context": "gameplay",
+      "output": {
+        "type": "preserved_analog",
+        "display": "W / A / S / D",
+        "keys": [
+          "KeyW",
+          "KeyA",
+          "KeyS",
+          "KeyD"
+        ]
+      },
+      "action": {
+        "id": "",
+        "name": "Movement",
+        "origin": "native_profile"
+      },
+      "game_effective_binding": null,
+      "group": "movement",
+      "short_name": "Movement",
+      "gameplay_prompt": {
+        "expected": "W / A / S / D",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 1,
+      "position_id": "R4C1",
+      "layer": "COMBAT",
+      "press_type": "single_hold",
+      "context": "layer",
+      "output": {
+        "type": "layer_selector",
+        "display": "Hold MENU"
+      },
+      "action": {
+        "id": "momentary_menu",
+        "name": "Release returns to COMBAT",
+        "origin": "user_preference"
+      },
+      "short_name": "MENU layer",
+      "group": "layer",
+      "layer_target": "MENU",
+      "layer_transition": {
+        "activation": "single hold",
+        "threshold_ms": 0,
+        "release_behavior": "return to COMBAT",
+        "tap_behavior": null,
+        "verification": "configured; physical behavior pending"
+      }
+    },
+    {
+      "button_id": 6,
+      "position_id": "R3C2",
+      "layer": "COMBAT",
+      "press_type": "tap_long_hold",
+      "context": "layer",
+      "output": {
+        "type": "layer_selector",
+        "display": "V TAP"
+      },
+      "action": {
+        "id": "momentary_menu",
+        "name": "Release returns to COMBAT",
+        "origin": "user_preference"
+      },
+      "short_name": "MENU layer",
+      "group": "layer",
+      "layer_target": "MENU",
+      "layer_transition": {
+        "activation": "long press",
+        "threshold_ms": 150,
+        "release_behavior": "return to COMBAT",
+        "tap_behavior": "V on short release",
+        "verification": "configured; physical behavior pending"
+      }
+    },
+    {
+      "button_id": 28,
+      "position_id": "TH_U",
+      "device_control_id": 28,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "Tab",
+        "keys": [
+          "Tab"
+        ],
+        "native_code": "Tab",
+        "modifiers": [],
+        "raw_encoding": "9"
+      },
+      "action": {
+        "id": "open_map",
+        "name": "Area map",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "9",
+      "group": "thumb",
+      "short_name": "Area map",
+      "gameplay_prompt": {
+        "expected": "Tab",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 29,
+      "position_id": "TH_L",
+      "device_control_id": 29,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "I",
+        "keys": [
+          "KeyI"
+        ],
+        "native_code": "KeyI",
+        "modifiers": [],
+        "raw_encoding": "73"
+      },
+      "action": {
+        "id": "open_inventory_panel",
+        "name": "Inventory",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "73",
+      "group": "thumb",
+      "short_name": "Inventory",
+      "gameplay_prompt": {
+        "expected": "I",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 22,
+      "position_id": "TH_C",
+      "device_control_id": 22,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "C",
+        "keys": [
+          "KeyC"
+        ],
+        "native_code": "KeyC",
+        "modifiers": [],
+        "raw_encoding": "67"
+      },
+      "action": {
+        "id": "open_character_panel",
+        "name": "Character",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "67",
+      "group": "thumb",
+      "short_name": "Character",
+      "gameplay_prompt": {
+        "expected": "C",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 31,
+      "position_id": "TH_R",
+      "device_control_id": 31,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "G",
+        "keys": [
+          "KeyG"
+        ],
+        "native_code": "KeyG",
+        "modifiers": [],
+        "raw_encoding": "71"
+      },
+      "action": {
+        "id": "open_skill_panel",
+        "name": "Skills",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "71",
+      "group": "thumb",
+      "short_name": "Skills",
+      "gameplay_prompt": {
+        "expected": "G",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 30,
+      "position_id": "TH_D",
+      "device_control_id": 30,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "P",
+        "keys": [
+          "KeyP"
+        ],
+        "native_code": "KeyP",
+        "modifiers": [],
+        "raw_encoding": "80"
+      },
+      "action": {
+        "id": "open_passive_skills_panel",
+        "name": "Passives",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "80",
+      "group": "thumb",
+      "short_name": "Passives",
+      "gameplay_prompt": {
+        "expected": "P",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 41,
+      "position_id": "ST_RU",
+      "device_control_id": 41,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "Enter",
+        "keys": [
+          "Enter"
+        ],
+        "native_code": "Enter",
+        "modifiers": [],
+        "raw_encoding": "13"
+      },
+      "action": {
+        "id": "chat",
+        "name": "Chat",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "13",
+      "group": "thumb",
+      "short_name": "Chat",
+      "gameplay_prompt": {
+        "expected": "Enter",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 23,
+      "position_id": "ST_D",
+      "device_control_id": 23,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "K",
+        "keys": [
+          "KeyK"
+        ],
+        "native_code": "KeyK",
+        "modifiers": [],
+        "raw_encoding": "75"
+      },
+      "action": {
+        "id": "open_cosmetics_inventory",
+        "name": "Cosmetics",
+        "origin": "game_configured"
+      },
+      "game_effective_binding": "75",
+      "group": "thumb",
+      "short_name": "Cosmetics",
+      "gameplay_prompt": {
+        "expected": "K",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 20,
+      "position_id": "ST_RD",
+      "device_control_id": 20,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "keyboard",
+        "display": "Esc",
+        "keys": [
+          "Escape"
+        ],
+        "native_code": "Escape",
+        "modifiers": []
+      },
+      "action": {
+        "id": "",
+        "name": "Back / Esc",
+        "origin": "native_profile"
+      },
+      "game_effective_binding": null,
+      "group": "thumb",
+      "short_name": "Back / Esc",
+      "gameplay_prompt": {
+        "expected": "Esc",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 24,
+      "position_id": "stick",
+      "device_control_id": 24,
+      "layer": "MENU",
+      "press_type": "single",
+      "context": "menu",
+      "output": {
+        "type": "preserved_analog",
+        "display": "W / A / S / D",
+        "keys": [
+          "KeyW",
+          "KeyA",
+          "KeyS",
+          "KeyD"
+        ]
+      },
+      "action": {
+        "id": "",
+        "name": "Movement",
+        "origin": "native_profile"
+      },
+      "game_effective_binding": null,
+      "group": "movement",
+      "short_name": "Movement",
+      "gameplay_prompt": {
+        "expected": "W / A / S / D",
+        "observed": null,
+        "status": "unverified"
+      },
+      "confidence": "configuration",
+      "notes": ""
+    },
+    {
+      "button_id": 1,
+      "position_id": "R4C1",
+      "layer": "MENU",
+      "press_type": "single_hold",
+      "context": "layer",
+      "output": {
+        "type": "layer_selector",
+        "display": "Hold MENU"
+      },
+      "action": {
+        "id": "momentary_menu",
+        "name": "Release returns to COMBAT",
+        "origin": "user_preference"
+      },
+      "short_name": "MENU layer",
+      "group": "layer",
+      "layer_target": "COMBAT",
+      "layer_transition": {
+        "activation": "single hold",
+        "threshold_ms": 0,
+        "release_behavior": "return to COMBAT",
+        "tap_behavior": null,
+        "verification": "configured; physical behavior pending"
+      }
+    },
+    {
+      "button_id": 6,
+      "position_id": "R3C2",
+      "layer": "MENU",
+      "press_type": "tap_long_hold",
+      "context": "layer",
+      "output": {
+        "type": "layer_selector",
+        "display": "Hold MENU"
+      },
+      "action": {
+        "id": "momentary_menu",
+        "name": "Release returns to COMBAT",
+        "origin": "user_preference"
+      },
+      "short_name": "MENU layer",
+      "group": "layer",
+      "layer_target": "COMBAT",
+      "layer_transition": {
+        "activation": "long press",
+        "threshold_ms": 150,
+        "release_behavior": "return to COMBAT",
+        "tap_behavior": null,
+        "verification": "configured; physical behavior pending"
+      }
+    }
+  ],
+  "configuration_changes": [],
+  "rollback": {
+    "backup_reference": "Azeron-before-POE2-grouped-R2-20261012-032427.zip",
+    "steps": [
+      "Fully close Azeron Software, remove only the two GROUPED R2 profile IDs, then reopen.",
+      "Original PoE2/R8 files remain preserved."
+    ]
+  },
+  "reinstall_restore": {
+    "prior_mapping_reference": null,
+    "game_binding_sources": [],
+    "schema_compatibility": "unchecked",
+    "newer_user_changes": "unchecked",
+    "restore_steps": [],
+    "last_restore_verified": null
+  },
+  "device_restore": {
+    "registry_reference": null,
+    "baseline_reference": null,
+    "mapper_export_reference": null,
+    "association_restore_steps": [],
+    "compatibility": "unchecked",
+    "last_verified": null
+  },
+  "diagrams": {
+    "geometry_reference": "../KEYBINDS.json",
+    "source_mapping_revision": "2026-10-12-poe2-grouped-r2",
+    "keys": [
+      "combat-keys.svg",
+      "menu-keys.svg"
+    ],
+    "actions": [
+      "combat-actions.svg",
+      "menu-actions.svg"
+    ],
+    "keys_and_actions": [
+      "combat-combined.svg",
+      "menu-combined.svg",
+      "combat-icons.png",
+      "menu-icons.png"
+    ]
+  },
+  "pending_user_actions": [
+    "Fully exit Azeron Software after the session, reopen it and select the GROUPED R2 COMBAT profile.",
+    "Physical layer transitions and gameplay recognition remain unobserved."
+  ],
+  "exceptions_to_shared_base": [
+    "User requested a grouped PoE2 combat layout for all builds; shared R8 and existing PoE2 profiles preserved.",
+    "Skill 12 is at #38 because #14 remains Dodge; all 13 skills occupy the same three adjacent towers.",
+    "Shift attack-in-place remains on the external keyboard; no unassigned flask 3/4 buttons occupy the skill block.",
+    "#1 retains the user's newer immediate hold-layer shortcut; #6 restores V tap / 150 ms MENU hold using type 24."
+  ],
+  "change_log": [
+    {
+      "date": "2026-10-12",
+      "change": "Regrouped all 13 skills, paired main/extra keys, grouped flasks and temporary skills, grouped menu categories; native layer enum and mouse labels corrected."
+    }
+  ]
+}

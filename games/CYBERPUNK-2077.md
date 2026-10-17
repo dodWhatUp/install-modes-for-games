@@ -1,15 +1,30 @@
 # Cyberpunk 2077
 
-**Runtime update, 2026-10-10:** the user-selected clean ReShade 6.8.0 + Cyberpunk RenoDX + Ultra+ X rc7 stack supersedes earlier proposed NR/FrameWarp profiles. PT21/Fast/Vanilla streaming with NRD DLSS and native PT seeded true keeps RR off. The combined built-in scene completed at 148.68 average game-reported FPS; adapter use peaked at 14228 MiB in the captured window. Delete/RenoDX and grave/CET controls were observed, but live F9/save/load and per-frame pacing/latency remain pending. See [current stack](cyberpunk-2077/CLEAN-REBUILD.md), [runtime evidence](cyberpunk-2077/RUNTIME-VALIDATION.md) and [future telemetry task](../docs/GAME-TELEMETRY-TOOL-PLAN.md).
+**Latest inspection, 2026-10-14:** ReShade/RenoDX/Ultra+ remains installed and OptiScaler/NR remains absent. Installed DLSS SR/RR/FG is already **310.9.1**, with Streamline **2.7.1**; all eleven NVIDIA signatures are valid and the three DLSS files match the verified official production SDK. Saved RR is now on; Ultra+ records PT21, Auto quality/streaming, RR Clean and auto quality targeting 30. These intervening changes were observed, not installed or runtime-validated by the monthly task. Steam was running, so no game files/settings were changed. The monthly automation now follows the current stack and cannot revive the removed NR package. See the [October 14 audit](cyberpunk-2077/HISTORY.md#2026-10-14--monthly-audit-reconciled-with-the-current-nativereshade-stack) for scope and uncertainty. The dated receipts below describe their original checkpoints.
 
+**Current saved state, 2026-10-11 (stack last verified 2026-10-10):** the user-selected clean rebuild is installed: **ReShade 6.8.0 full add-on + Cyberpunk RenoDX nightly-20261009 + Ultra+ X 10.0.0 rc7**, with only the required CET/RED4ext/redscript/ArchiveXL/AudioPoolFix foundations and the existing F9 native-DLSS adapter. After a report of very low performance, the saved Ultra+ profile was restored to the previously measured Advanced/PT21/Fast, Vanilla streaming, NRD-DLSS configuration; native path tracing is on and conventional ray tracing is off. The saved DLSS Ultra Performance/Legacy, native FG x2, 4K HDR10 PQ and DRS-off choices were retained. The edit is statically verified; the next game launch and current performance are not yet validated. OptiScaler/NR, FrameWarp, old visual/QoL mods and duplicate hooks remain absent. Native DLSS 310.1/Streamline 2.7.1 remains in place. The prior combined run reported 148.68 game-reported average FPS and 14228 MiB peak adapter use; it did not separate base/generated frames, and the run's effective fixed-x2 versus Dynamic MFG mode is unknown. See [current guide and recovery](cyberpunk-2077/CLEAN-REBUILD.md), [runtime evidence](cyberpunk-2077/RUNTIME-VALIDATION.md) and [restore history](cyberpunk-2077/HISTORY.md).
 
-**Late graphics-workflow update, 2026-09-20:** RHI is now the preferred management/orchestration layer for future Cyberpunk graphics installs/updates when the selected components are supported. Ultra+ is recorded separately as a game-specific **path-tracing/rendering overhaul**, not a generic preset; whenever PT work is planned it should be surfaced as an explicit option and compatibility-tested against the selected native DLSS/RR/MFG/NR/ReShade stack. This is a knowledge/preference update only; it does not claim Ultra+ or RHI changed the currently installed game state. See [preferences](cyberpunk-2077/PREFERENCES.md), [catalog](cyberpunk-2077/MOD-CATALOG.md), [recommendations](cyberpunk-2077/RECOMMENDATIONS.md), and [history](cyberpunk-2077/HISTORY.md).
+**Current controls, statically configured 2026-10-11:** F12 is configured for the CET/Ultra+ overlay; Delete opens ReShade → Add-ons → RenoDX; Home is the user-wide OptiScaler menu default, but OptiScaler is not installed in Cyberpunk. F9 cycles native DLSS quality with CET closed; F5 Quick Save and F6 Quick Load. The CET F12 binding was read back after a just-in-time snapshot; runtime key response remains untested. Old NR shortcuts and private FrameWarp/graphics switch scripts are inactive.
+
+**Current environment:** Cyberpunk 2.31 / Steam build `20383525`, Phantom Liberty, x64 D3D12, RTX 5070 Ti 16 GB, driver 617.42. Saved profile is 4K borderless HDR10 PQ, saturation 0, DLSS Ultra Performance/Legacy, native path tracing on, RR off in the measured run, conventional RT off, native FG x2 and DRS off. Ultra+ runtime effects and per-game driver HDR overrides need validation after settings restoration. Earlier records below are historical and do not describe the current file ownership.
+
+**Historical state, 2026-10-07:** native-only DLSS restoration was preserved; experimental [FrameWarp/XPAR 1.8.5](cyberpunk-2077/FRAMEWARP.md) was added with ReShade 6.8.0 as its host. That experiment was removed by the October 10 rebuild.
+
+**RHI recovery, 2026-09-22:** RHI's OptiScaler install/update path recursively removed Cyberpunk's shared `bin/x64/plugins` tree, deleting CET, GraphicsHotkeys, Ultra+ and Better Loot Markers, while also replacing the protected proxy/native NVIDIA runtime set and removing RenoDX. The complete RHI attempt was preserved, the verified personal-slots 0.7.7 host/native runtimes/CET/Vortex payload/RenoDX stack was restored, and ReShade/Lilium settings were preserved byte-for-byte. RHI still tracks Cyberpunk ReShade/RenoDX but no longer claims its OptiScaler host; do not use RHI to install, update or uninstall OptiScaler for this profile until its shared-folder cleanup is fixed. CET now opens with the grave/tilde (` / ~) key instead of Insert. Static verification passed; user runtime validation is pending.
+
+**Modular installation, 2026-09-20:** Vortex 2.6.3/Cyberpunk support 0.13.0 manages RED4ext 1.30.0, redscript 0.5.31, ArchiveXL 1.27.3, Ultra+ 9.3.7, Better Loot Markers 1.4.0 and Real Vendor Names 2.1.0. ReShade 6.8.0 and the Cyberpunk RenoDX visual profile are installed through the existing OptiScaler plugin route with independent file toggles. Per-layer hashes/snapshots and a selective graphics rollback test passed; combined gameplay remains untested. RHI 2.7.5 manual installation is pending after automatic installer execution was blocked; .NET 8.0.31 is installed. See [modular setup](cyberpunk-2077/MODULAR-SETUP.md) and [history](cyberpunk-2077/HISTORY.md). The existing host/native runtimes and controls remain protected; the update hold below remains in force.
+
+**Monthly check, 2026-09-15:** NR v0.8.4 prerelease downloaded/checksum-verified and custom source port staged. **Installation held:** the prepared dynamic controls fail the newer FG/manual-resolution restoration requirements, and engine integration is unverified. The game/store are closed; process availability is no longer the blocker. Current installed v0.7.7/F9 setup remains unchanged. See [readiness](../examples/cyberpunk-2077/UnifiedControls/UPDATE-READINESS.md).
+
+**Current shortcut override, 2026-09-14:** the user changed Quick Load to **F6**; Quick Save remains **F5**. The existing native DLSS quality shortcut is now **F9**, configured and read back in CET with its Lua labels updated. Other graphics keys are unchanged. This supersedes earlier F6/Quick Load descriptions below. The next user-initiated launch loads this binding; live F9 validation remains pending. See [history](cyberpunk-2077/HISTORY.md).
+
+**Historical Dynamic SR extension, 2026-09-14:** the uninstalled OptiScaler/CET candidate includes a **30 rendered FPS** Dynamic DLSS target and 50–100% bounds through native DRS. The candidate uses F12, which the current CET/Ultra+ profile owns; do not co-install until its menu key is changed. Actual dynamic input sizes and NR/FG stability remain unverified.
 
 **Prepared update, 2026-09-14:** [Unified OptiScaler controls](../examples/cyberpunk-2077/UnifiedControls/README.md) on NR v0.8.3 with production Streamline 2.14.1 / DLSS 310.9.1, SR L and RR F. Build/isolated checks passed. **Not installed:** Batman/Steam were running; the guarded installer made no game/driver changes. Live scale/MFG/NR verification remains pending. Monthly updates are active on the 14th at noon. The installed state below is the preceding revision.
 
 **Latest change (2026-09-13, evening):** F11 now recalls four personal NR settings slots; Save Settings stores the selected slot. F8/Page Up/Page Down are unbound and the OptiScaler FPS overlay starts off. F7 retains its confirmed 25%/100% toggle. F6 notification calls were moved into CET's drawing event. NVIDIA App's disabled overlay was re-enabled and its FPS statistics appeared at Cyberpunk startup. See [history](cyberpunk-2077/HISTORY.md) for the test boundary.
 
-Status: **Personal NR slots and F6 notification repair installed; build/export/C++/Lua tests passed; new build starts and evaluates NR. Interactive slot save/recall and F6 render-size verification pending**.
+Historical September status: **Personal NR slots and F6 notification repair were installed; build/export/C++/Lua checks passed. Those consumers are absent after the October 10 rebuild**.
 
 Supporting records:
 
@@ -19,7 +34,7 @@ Supporting records:
 - [Curated recommendations](cyberpunk-2077/RECOMMENDATIONS.md)
 - [Sanitized evidence](../evidence/CYBERPUNK-2077.txt)
 
-## Current environment
+## Historical environment — September 2026
 
 Evening snapshot supersedes the original graphics settings below: native DLSS **Performance**, saved native MFG **x4**, native **HDR10 PQ**, and native DRS off. NVIDIA App **11.0.9.251** shows a per-game **Dynamic MFG, up to 6x** override, native SR override set to use the game setting, Smooth Motion off, and global RTX HDR on. These are observed settings, not proof of every path being active. The repair did not change the game's native graphics options or driver overrides.
 
@@ -34,7 +49,7 @@ Evening snapshot supersedes the original graphics settings below: native DLSS **
 
 The captured configuration had the global ray-tracing switch off even though path tracing and RR sub-options were saved as enabled. Those sub-options are not evidence that RT/RR was active in the last scene.
 
-## Installed ownership map
+## Historical installed ownership map — September 2026
 
 | Layer | Owner | Input source | Current evidence |
 |---|---|---|---|
@@ -46,7 +61,7 @@ The captured configuration had the global ray-tracing switch off even though pat
 | Proxy/swapchain injection | OptiScaler `dxgi.dll` | D3D12 process-local hook | Current personal-slots build loaded and evaluated NR |
 | Native quality hotkey | CET 1.37.1 `version.dll` + GraphicsHotkeys Lua | Cyberpunk native settings API; no separate SR/FG implementation | F6 bound; Lua and panel-protocol mock tests passed; engine/overlay compatibility untested |
 
-## Directory layout
+## Historical directory layout — September 2026
 
 ```text
 <Steam>\steamapps\common\Cyberpunk 2077\bin\x64\
@@ -111,7 +126,7 @@ Static installation is not proof that DLSS Neural Rendering evaluates. The next 
 
 1. Start Cyberpunk and load a repeatable moving gameplay scene, not only the settings menu.
 2. Confirm `OptiScaler.log` names `Cyberpunk2077.exe`, `dxgi.dll`, the RTX 5070 Ti, and the expected native DLSS paths.
-3. Open the full overlay with `Delete` or the compact neural window with `F12`, and confirm one neural pass becomes ready and evaluates repeatedly.
+3. In this archived, uninstalled NR candidate, open the full OptiScaler menu with `Home` or the compact window with `F12` only in a game without Ultra+; confirm one neural pass becomes ready and evaluates repeatedly.
 4. Compare the same scene with NR on/off without rapidly toggling while native FG is active.
 5. Record base rendered FPS separately from displayed x2 FG FPS, frame pacing, latency, VRAM, HUD/motion artifacts, loading, alt-tab, and shutdown.
 6. Test native FG off before investigating an NR/FG crash. Test RT/RR only as a later, separate setting group because global RT was off in the captured baseline.
@@ -128,9 +143,9 @@ The original fork has community reports of Cyberpunk device removal when NR or r
 | F10 | Enable/disable Neural Rendering, with a notification |
 | F7 | Toggle NR working scale 25% ↔ 100% only |
 | F8 | Request NR before/after SR, or combined RR+SR when active |
-| F6 | Cycle native DLSS: DLAA → Quality → Balanced → Performance; also available beside NR settings in F12 |
-| F9 | Native Quick Load, preserved |
-| Insert | CET overlay (separate from both OptiScaler menus) |
+| F9 | Cycle native DLSS: DLAA → Quality → Balanced → Performance; also available beside NR settings in F12 |
+| F6 | Native Quick Load, selected by the user on 2026-09-14 |
+| Grave / tilde (` / ~) | Historical CET overlay key for the September 2026 NR-era configuration (`VK_OEM_3`) |
 | Page Up | Show/hide the FPS overlay |
 | Page Down | Cycle information modes while the FPS overlay is visible |
 

@@ -61,6 +61,20 @@ The Bayonetta 67% work-resolution experiment produced black captures; the verifi
 
 If the game works after disabling an overlay, re-enable overlays one at a time. “All overlays off” is a diagnostic state, not necessarily a permanent requirement.
 
+## A manager update removes unrelated loader or mod files
+
+Inspect directory ownership, not only individual DLL ownership. A package may deploy one helper into a shared directory such as `plugins` and then record the entire directory as its own. If its update or uninstall path recursively cleans every recorded/staged subdirectory, it can remove unrelated loaders, scripts and manager hardlinks before redeploying only its own helper.
+
+- Preserve the broken state, manager manifest, staging layout and manager tracking before redeploying anything.
+- Compare the missing files with every manager's directory-level ownership and cleanup implementation.
+- Restore each component from its actual owner: loader snapshot for the framework, manager staging for registered hardlinks, and component storage for independent add-ons.
+- Remove only the stale tracking record for the component whose ownership was transferred; retain unrelated ReShade/RenoDX or manager records.
+- Do not run the same update/uninstall path again until its cleanup is narrowed to exact owned files or the shared helper is isolated in a supported private directory.
+
+Cyberpunk's 2026-09-22 RHI incident followed this pattern: the local OptiScaler service always recorded `plugins` for `OptiPatcher.asi`, while its update/uninstall code recursively cleaned the shared directory. CET, GraphicsHotkeys, Ultra+ and Better Loot Markers were collateral files, not failed installations.
+
+The same RHI build also has a dangerous missing-manifest fallback: when `rhi_install.txt` is absent, its OptiScaler uninstall scans the staged package names and deletes matching files from the game directory. In Cyberpunk it deleted the stock `nvngx_dlss.dll`, `nvngx_dlssd.dll` and `nvngx_dlssg.dll`, removing native DLSS from the game's menu. Before using a fallback uninstall, classify every matching runtime as stock, shared or tool-owned and restore stock runtimes from a verified signed source rather than treating package-name overlap as ownership.
+
 ## Feeder says `SuperSampling.Available=0`
 
 NGX initialized, but DLSS Super Resolution was unavailable to the device/session. Verify:

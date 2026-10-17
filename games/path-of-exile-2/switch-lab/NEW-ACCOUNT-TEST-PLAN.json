@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "name": "PoE2 native weapon and skill switching on a fresh account",
+  "status": "PREPARED_NOT_RUN",
+  "priority": "Protect the user's current PC from an unquantified hardware-ban risk",
+  "account_created": false,
+  "account_entitlement_verified": false,
+  "game_launched": false,
+  "live_macro_adapter": false,
+  "hardware_identity_collection": "DISCLOSED_BY_GGG",
+  "operating_system_information_collection": "DISCLOSED_BY_GGG",
+  "hardware_ban_enforcement": "UNKNOWN",
+  "guaranteed_hardware_isolation": false,
+  "solo_mode_policy_exemption": "NONE_IDENTIFIED",
+  "prerequisites": [
+    "Fresh account with its own verified PoE2 entitlement; no purchase made by this package",
+    "A suitable character with two equipped weapon sets and two already-available compatible skills",
+    "Recovery of that test character's current game bindings before any changes",
+    "Confirmed use of individually triggered inputs and the native game UI",
+    "No account passwords, raw hardware identifiers or private account details in public records"
+  ],
+  "native_test_cases": [
+    {"id": "N01", "action": "Use the native Skills panel to assign skill A to weapon set I and skill B to II", "expect": "Assignments persist in the game UI"},
+    {"id": "N02", "action": "Manually press the key for skill B while set I is active", "expect": "The game selects II and uses skill B if its normal requirements are met"},
+    {"id": "N03", "action": "Manually press the key for skill A while II is active", "expect": "The game selects I and uses skill A"},
+    {"id": "N04", "action": "Manually use a skill enabled for both sets", "expect": "No unnecessary weapon-set change"},
+    {"id": "N05", "action": "Manually use X / R2 COMBAT button 37", "expect": "Weapon-set toggle without a scripted cast"},
+    {"id": "N06", "action": "Check one main skill and its Ctrl partner individually", "expect": "Distinct intended abilities; no duplicate or unintended output"},
+    {"id": "N07", "action": "Check the UI after a normal area transition and later relog", "expect": "Prepared bindings and assignments persist; record any game-specific bug"}
+  ],
+  "prohibited_sequence_test": {
+    "status": "BLOCKED_BY_PC_PROTECTION_REQUIREMENT",
+    "reason": "A fresh account on this PC does not prove hardware isolation or establish enforcement safety",
+    "offline_coverage": "Weapon equip, gem replacement, assignment, preflight, partial cancellation and item conservation in a self-contained model",
+    "online_execution": false
+  },
+  "stop_conditions": ["Unexpected binding or equipment change", "Input or focus ownership uncertainty", "Client/security warning", "Account restriction", "No clear recovery for a change"],
+  "interpretation": "Passing native tests would verify function only. No ban during a test is not proof that any prohibited macro is safe.",
+  "sources": ["https://www.pathofexile.com/developer/docs", "https://www.pathofexile.com/legal/terms-of-use-and-privacy-policy", "https://www.pathofexile.com/forum/view-thread/3610245"]
+}

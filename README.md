@@ -8,9 +8,13 @@ This repository records both the method and the outcome. A feature is not marked
 
 The permanent GitHub destination for this project is [`dodWhatUp/install-modes-for-games`](https://github.com/dodWhatUp/install-modes-for-games). When game-modding history is connected, uploaded, or updated through GitHub, use this repository rather than creating a duplicate or publishing through another account. Follow [GitHub Connection and Publishing](docs/GITHUB-PUBLISHING.md) before changing a remote or pushing.
 
+## Current owned library
+
+The [current Steam ownership list](docs/OWNED-GAMES.md) is the user-confirmed **7 October 2026** snapshot, with six preserved screenshots and a searchable transcription. It includes uninstalled games and is separate from the dated installed-game inventory. Cropped labels and omitted entries remain explicitly unresolved.
+
 ## Tested games
 
-For the current library, start with the [14-game mod guide and comparisons](docs/INSTALLED-GAMES-MOD-GUIDE.md). It includes manager choices, basic fixes, graphics/DLSS, UI, gameplay systems and real content expansions. [Skyrim's installation record](games/skyrim-special-edition/HISTORY.md) distinguishes installed components from pending downloads and compatibility gates.
+For the historical installed-library review, start with the [14-game mod guide and comparisons](docs/INSTALLED-GAMES-MOD-GUIDE.md). It includes manager choices, basic fixes, graphics/DLSS, UI, gameplay systems and real content expansions. [Skyrim's installation record](games/skyrim-special-edition/HISTORY.md) distinguishes installed components from pending downloads and compatibility gates.
 
 See the [game index](games/README.md) for detailed history, catalogs, and recommendations.
 
@@ -23,7 +27,7 @@ See the [game index](games/README.md) for detailed history, catalogs, and recomm
 
 ## Read this first
 
-For connected tools, automation, input assistance and resource-overhead research, start with the [game-tools knowledge and recovery index](docs/GAME-TOOLS-KNOWLEDGE-INDEX.md). It links source masters, private recovery receipts, reusable procedures and unfinished acceptance; it is not automatic cross-chat memory or permission to execute a deferred test.
+For reusable PC/game automation and cross-tool work, start with the [game-tools knowledge and recovery index](docs/GAME-TOOLS-KNOWLEDGE-INDEX.md). It links source masters, private recovery references, practical procedures and the [per-tool/per-feature resource-overhead protocol](docs/TOOL-RESOURCE-OVERHEAD.md). The [unified architecture](docs/GAME-TOOLS-ARCHITECTURE.md) distinguishes implemented foundations from future runtime capabilities.
 
 Use [knowledge maintenance](docs/KNOWLEDGE-MAINTENANCE.md) to retrieve a small task packet, preserve lessons from chats, reconcile source revisions and record exact backup coverage. Links and prepared recipes do not start computer/game actions or synchronize every chat automatically.
 
@@ -64,3 +68,7 @@ NVIDIA announced DLSS 5 as a neural-rendering model. Some experiments in this re
 ## Sources
 
 See [Sources and Downloads](docs/SOURCES.md). ReShade specifically asks users to link to its official site instead of redistributing its binaries or shader files.
+
+## Cross-computer continuation
+
+For the 2026-10-17 reconciliation, private message/settings coverage and SSD transfer, start with [the continuation map](docs/CROSS-COMPUTER-CONTINUATION-2026-10-17.md). Keep the adopted 0.27 source, installed 0.25 reference and preserved local 0.26 library candidate distinct.

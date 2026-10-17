@@ -1,0 +1,120 @@
+{
+  "schema": 1,
+  "version": "0.3.0",
+  "review_date": "2026-10-12",
+  "overall": "PARTIAL_WINDOWS_AND_ACCELERATION_BLOCKED",
+  "host": {
+    "os": "Windows 11 Home",
+    "firmware_virtualization": false,
+    "administrator_session": false
+  },
+  "fixtures": {
+    "passed": 21,
+    "failed": 0,
+    "scope": "controller safeguards, UTF-8/binary transport, guest protocol/session/file guards and MCP failure boundaries"
+  },
+  "guest_tools": {
+    "live_asserted_requests": 35,
+    "outcome": "PASS_LINUX_STRUCTURED_TOOLS",
+    "system_and_process_data": "PASS actual Linux OS, memory, process names/states; host metrics excluded",
+    "files": "PASS Unicode create/readback/list, overwrite refusal and escaping-path rejection",
+    "process_control": "PASS nonzero exit 17, timeout termination, child-group cleanup, bounded output and next request",
+    "browser": "PASS Chromium headless shell 153.0.8010.12 with Playwright 1.63.0 inside guest",
+    "browser_semantics": "PASS URL/title/text/ARIA snapshot, exact role/name fill/check/click/read; result Agent test: PASS",
+    "browser_lifetime": "PASS persistent session across requests, rejected duplicate open preserves session, stale token/missing selector rejection, timeout declares lost state, reopen and worker restart",
+    "browser_visual": "PASS retrieved guest screenshot and inspected actual checked field/result layout",
+    "cold_boot": "PASS 10 checks after booting a newly restored 0.3.0 checkpoint copy: no automatic worker start, exact helper/provider/demo source hashes, on-demand worker, guest OS, browser HTTPS DOM/accessibility and real GTK AT-SPI tree/text",
+    "mcp": "PASS real stdio initialization, tool listing, status, mutation rejection in inspection tool, and live guest OS result",
+    "mcp_registration": "PASS registered isolatedLab through Codex CLI; exact command/args and 240-second tool limit read back; other configuration semantics preserved. Active-chat catalog reload is a separate client step",
+    "foreground_sample": "Historical 0.2.0 sample CHANGED with unknown cause. Current unattended workload invokes no host input/display-control API; human concurrent-work observation deferred because another chat controls host",
+    "checkpoint": "PASS powered-off 0.3.0 disk copy/hash, restore into a new disk preserving the prior disk, cold boot and source/browser/native acceptance. Final selected restored guest cleanly stopped; SSH/QMP/VNC listeners zero",
+    "native_linux_accessibility": "PASS 25 real GTK/AT-SPI checks: tree/text/states/actions, Unicode entry, checked state, exact button result, stale-state rejection, private display screenshot, frozen-app and unexpected-provider-exit recovery, owned-group cleanup",
+    "codex_client": "PASS actual Codex app-server MCP discovery: 0.3.0 server, five tools, native inspection schema; local isolated-lab skill discovered enabled. No AI turn or new chat created",
+    "active_chat_mcp": "NOT_LOADED; supported control socket unavailable. Documented MCP Restart remains a client action; tested local CLI fallback works without it",
+    "background_endurance": "PASS 1819.28 seconds, 73 complete cycles, 742 structured requests, no failed requests/assertions or cleanup failures. Persistent browser/native sessions and C compile/run verified each cycle. Minimum host available memory 31902 MiB. Human concurrent-work observation remains pending",
+    "host_resources": {"scope": "QEMU process only; separate from total lab/host workload", "observation_seconds": 1200.02, "samples": 121, "logical_processors": 16, "average_cpu_percent_of_host": 7.21, "peak_observed_resident_bytes": 2949947392, "min_host_available_mib": 32239},
+    "windows": "UNAVAILABLE; guest has not been provisioned"
+  },
+  "live": {
+    "linux_bootstrap": "PASS cloud-init done; NoCloud seed over virtio",
+    "linux_build": "PASS compile/run C and Python in guest",
+    "linux_gui": "PASS xterm text and Enter inside guest Xvfb; result readback and screenshot",
+    "headless": "PASS no host viewer opened",
+    "network_bindings": "PASS SSH/QMP/VNC loopback only",
+    "host_foreground_sample": "PASS unchanged sampled HWND during an accepted guest GUI input/screenshot test; guest-only X input",
+    "intentional_nonzero": "PASS guest exit 17 retained",
+    "intentional_timeout": "PASS guest exit 124; next normal job passed",
+    "restart": "PASS clean shutdown and cold boot without user login",
+    "restore": "PASS stopped disk copied and hash verified; restored new disk booted; marker and GUI passed; original disk preserved",
+    "short_repeated_jobs": "PASS 12 checks over about 66 seconds",
+    "final_guest_state": "PASS cleanly stopped; no remaining SSH/QMP/VNC listeners observed"
+  },
+  "unverified": [
+    "Windows installation",
+    "Windows activation/license",
+    "Windows interactive GUI session and input",
+    "Native Linux apps beyond the accepted GTK slice",
+    "Fresh reinstallation of the final combined browser fallback recipe",
+    "Loaded tools in the current Codex chat after MCP registration",
+    "Permanent accelerated Linux migration",
+    "Both guests while user performs real work",
+    "Multi-chat independent concurrent workflows in one shared guest",
+    "Host GPU/HDR/driver/game/device behavior"
+  ],
+  "failures_and_resolutions": [
+    {
+      "observation": "GI exposes both Accessible.get_text and Text.get_text with different signatures; the initial native tree read selected the wrong bound method",
+      "resolution": "Use explicit Atspi.Text, Action and EditableText interface methods. All 25 final live native checks passed; initial failed receipt retained"
+    },
+    {
+      "observation": "Codex's shared control socket was unavailable for supported MCP refresh",
+      "resolution": "Verified the registered server with a separate real Codex MCP client and discovered the local skill. No current-chat tool loading is inferred; use the shell fallback until the documented MCP Restart action"
+    },
+    {
+      "observation": "Guest UTF-8 installation output triggered a Windows cp1252 decoder error in the original SSH capture path",
+      "resolution": "Explicit UTF-8 decoding with replacement for malformed bytes; real emoji-output regression passed. Missing browser was then established by guest state inspection rather than assumed installation success"
+    },
+    {
+      "observation": "Playwright Node browser download timed out; Python HTTPS access to the same official CDN succeeded",
+      "resolution": "Downloaded only the installed registry's exact headless shell through guest Python with TLS validation; checked archive length, safe paths and local SHA256. Real browser/session tests passed",
+      "cause_certainty": "Different transport outcomes observed; underlying Node downloader cause not established. TLS verification was preserved"
+    },
+    {
+      "observation": "Bridge live test was started while the browser acceptance held the guest lock",
+      "resolution": "Operation rejected; bridge retested sequentially after the active job. Runtime transport failures return MCP tool errors; no automatic replay"
+    },
+    {
+      "observation": "Cold-boot test assumed a removed heading on a public example page; title, multilingual text and ARIA were returned correctly",
+      "resolution": "Exact-content assertions remain in the owned local fixture; external HTTPS check asserts URL and nonempty title/text/ARIA. Corrected cold-boot check passed; failed receipt preserved"
+    },
+    {
+      "observation": "Seed attached as SATA CD-ROM was not discovered by this minimal Ubuntu guest",
+      "resolution": "Preserved first disk; prepared new disk and attached CIDATA filesystem as read-only virtio block device",
+      "cause_certainty": "Discovery fixed; missing SATA/CD driver was an inference, not independently proven"
+    },
+    {
+      "observation": "PowerShell quoting encrypted the initial SSH key",
+      "resolution": "Preserved encrypted original and removed the unintended passphrase; tested direct argument-list generation produces an unencrypted dedicated key",
+      "cause_certainty": "Verified key cipher and successful authentication"
+    },
+    {
+      "observation": "Host text-mode stdin changed LF to CRLF",
+      "resolution": "Binary SSH script transfer; regression case and actual C build passed"
+    },
+    {
+      "observation": "Xterm search found a window before it was visible",
+      "resolution": "Wait for only-visible guest window; verify typed command result and screenshot"
+    },
+    {
+      "observation": "Exited process could fail image query during shutdown",
+      "resolution": "Check Windows process exit state before identity query; clean shutdown passed"
+    },
+    {
+      "observation": "ACPI shutdown sent during early boot did not stop guest within deadline",
+      "resolution": "Timeout retained guest and refused live checkpoint/restore; after command readiness, normal shutdown passed",
+      "remaining_limit": "Wait for readiness before normal lifecycle tests; no promise of boot-time ACPI delivery"
+    }
+  ],
+  "archive_coverage": "38 allowlisted authored source/skill/sanitized knowledge files; copied source and ZIP entries byte verified; private disks/keys/logs/binaries excluded. Private 0.3.0 disk checkpoint separately restore boot tested",
+  "publication": "none"
+}

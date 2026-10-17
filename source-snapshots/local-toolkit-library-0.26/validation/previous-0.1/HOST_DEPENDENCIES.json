@@ -1,0 +1,32 @@
+{
+  "status": "EXACT_DEPENDENCIES_MATCH",
+  "host_reference_version": "0.21.0-preview.1",
+  "files": [
+    {
+      "path": "scripts/GameToolAutomation.py",
+      "expected_sha256": "7c8a3e00761d42721a95b88aedc0eae6f7f3025417e7b448aeafe177d5c4601e",
+      "actual_sha256": "7c8a3e00761d42721a95b88aedc0eae6f7f3025417e7b448aeafe177d5c4601e",
+      "matches": true
+    },
+    {
+      "path": "scripts/GameToolAI.py",
+      "expected_sha256": "c47098cd1d763e69bb35f5a06d1279929948cbd5c3b70974b70dd90538fe133a",
+      "actual_sha256": "c47098cd1d763e69bb35f5a06d1279929948cbd5c3b70974b70dd90538fe133a",
+      "matches": true
+    },
+    {
+      "path": "scripts/GameToolJournal.py",
+      "expected_sha256": "01e76b93c69adefa742dfcb139756903c2259812c437ec72c508739b2a81657a",
+      "actual_sha256": "01e76b93c69adefa742dfcb139756903c2259812c437ec72c508739b2a81657a",
+      "matches": true
+    },
+    {
+      "path": "scripts/game_mod_ops/safety.py",
+      "expected_sha256": "a40f7a172716a02d19c4aef688ee67d45b4e86dcede00702eed766528175598b",
+      "actual_sha256": "a40f7a172716a02d19c4aef688ee67d45b4e86dcede00702eed766528175598b",
+      "matches": true
+    }
+  ],
+  "installed": false,
+  "repinned": false
+}

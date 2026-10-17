@@ -1,0 +1,34 @@
+{
+  "syntax_compile_passed": true,
+  "python_source_files": 22,
+  "json_files_parsed": 9,
+  "local_html_links_verified": [
+    {
+      "source": "00_START_HERE.html",
+      "target": "KEYBIND_INTEGRATION_HANDOFF.md"
+    },
+    {
+      "source": "00_START_HERE.html",
+      "target": "OPENING_MESSAGE_HE.txt"
+    },
+    {
+      "source": "00_START_HERE.html",
+      "target": "validation/VALIDATION.json"
+    },
+    {
+      "source": "00_START_HERE.html",
+      "target": "README.md"
+    },
+    {
+      "source": "00_START_HERE.html",
+      "target": "docs/GAME_COVERAGE.md"
+    },
+    {
+      "source": "00_START_HERE.html",
+      "target": "docs/RECOVERY.md"
+    }
+  ],
+  "browser_render_test": false,
+  "screenshots_taken": 0,
+  "note": "Static link/data checks, not browser or native-user usability acceptance."
+}

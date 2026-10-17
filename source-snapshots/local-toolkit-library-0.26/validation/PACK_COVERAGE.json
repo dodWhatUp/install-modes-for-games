@@ -1,0 +1,75 @@
+{
+  "research_game_drafts": [
+    {
+      "id": "bioshock-infinite",
+      "eligible": false
+    },
+    {
+      "id": "doom-the-dark-ages",
+      "eligible": false
+    },
+    {
+      "id": "v-rising",
+      "eligible": false
+    },
+    {
+      "id": "bioshock-2-remastered",
+      "eligible": false
+    },
+    {
+      "id": "nier-automata",
+      "eligible": false
+    },
+    {
+      "id": "god-of-war-ragnarok",
+      "eligible": false
+    },
+    {
+      "id": "gta-v-enhanced",
+      "eligible": false
+    },
+    {
+      "id": "control",
+      "eligible": false
+    },
+    {
+      "id": "middle-earth-shadow-of-war",
+      "eligible": false
+    },
+    {
+      "id": "bioshock-remastered",
+      "eligible": false
+    },
+    {
+      "id": "pathfinder-kingmaker",
+      "eligible": false
+    },
+    {
+      "id": "bayonetta-pc",
+      "eligible": false
+    },
+    {
+      "id": "hogwarts-legacy",
+      "eligible": false
+    },
+    {
+      "id": "path-of-exile-2",
+      "eligible": false
+    },
+    {
+      "id": "cyberpunk-2077",
+      "eligible": false
+    },
+    {
+      "id": "devil-may-cry-5",
+      "eligible": false
+    },
+    {
+      "id": "red-dead-redemption-2",
+      "eligible": false
+    }
+  ],
+  "synthetic_format_packs": 10,
+  "certified_native_games": 0,
+  "editor_schema_checked_packs": 27
+}

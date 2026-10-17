@@ -1,0 +1,23 @@
+{
+  "scope": "source-byte preservation, not an installed-host snapshot",
+  "sources": [
+    {
+      "id": "keybinds-v0.1",
+      "sha256": "1106d7746af4572c9948a98e9f27c11a490c8fe644426a2c537e3e5552f601b1",
+      "unchanged": true
+    },
+    {
+      "id": "workbench-v0.23",
+      "sha256": "bc7ea76ba5379b83dddc9a7f78e80710e46a5227eca073db131e3257dc0c8d37",
+      "unchanged": true
+    }
+  ],
+  "original_addon_payloads_verified": 49,
+  "current_host_payloads_verified": 201,
+  "planner_sha256": "d71b64e3634f1530a4c2ace6a6a442732c9785fc0fd88df6888d0195072815cb",
+  "azeron_corrupt_zip": "not opened, repaired, reconstructed, imported or modified",
+  "native_game_files_changed": 0,
+  "installed_host_modified": false,
+  "host_source_payloads_modified": false,
+  "note": "Python tests may create bytecode caches; those are not source payload changes or distributed content."
+}

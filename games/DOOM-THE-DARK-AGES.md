@@ -171,7 +171,7 @@ The final long run's center motion-vector probe reported almost zero motion whil
 Controls in the tested build:
 
 - `F6`: toggle RenoDX neural rendering.
-- `Home`: open ReShade.
+- `Delete`: open ReShade. Reserve `Home` for OptiScaler if a compatible OptiScaler profile is later installed.
 
 ## What failed and what it taught us
 

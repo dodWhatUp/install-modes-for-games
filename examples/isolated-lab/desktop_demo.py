@@ -1,0 +1,28 @@
+"""Owned GTK acceptance app. Runs only inside the guest accessibility session."""
+import gi
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk
+
+window = Gtk.Window(title="Isolated Lab application test")
+window.set_default_size(520, 280)
+window.connect("destroy", Gtk.main_quit)
+box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12, margin=20)
+window.add(box)
+box.pack_start(Gtk.Label(label="Guest application test", xalign=0), False, False, 0)
+box.pack_start(Gtk.Label(label="Project", xalign=0), False, False, 0)
+entry = Gtk.Entry(text="Baseline")
+entry.get_accessible().set_name("Project")
+box.pack_start(entry, False, False, 0)
+enabled = Gtk.CheckButton(label="Enable report")
+box.pack_start(enabled, False, False, 0)
+run = Gtk.Button(label="Run test")
+box.pack_start(run, False, False, 0)
+result = Gtk.Label(label="Waiting", xalign=0)
+result.get_accessible().set_name("Result")
+box.pack_start(result, False, False, 0)
+run.connect("clicked", lambda _: result.set_text(entry.get_text() + ": " + ("PASS" if enabled.get_active() else "DISABLED")))
+details = Gtk.Expander(label="Test details")
+details.add(Gtk.Label(label="This application and its controls stay inside the Linux guest.", wrap=True))
+box.pack_start(details, False, False, 0)
+window.show_all()
+Gtk.main()

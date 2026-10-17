@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "source_version": "0.24.0-preview.1",
+  "baseline_source_sha256": "bc7ea76ba5379b83dddc9a7f78e80710e46a5227eca073db131e3257dc0c8d37",
+  "environment": {
+    "os": "Linux",
+    "python": "3.13.5",
+    "ui": "Headless Tk/Xvfb; no screenshots"
+  },
+  "suites": [
+    {
+      "suite": "Test-GameSupport.py",
+      "tests": 56,
+      "passed": 56,
+      "skipped": 0,
+      "log_sha256": "3eff5113e1552410dff7f97d4a24fb08d6f617d53bb985f15ff2ffcfbfee5063",
+      "scope": "new extension"
+    },
+    {
+      "suite": "Test-GameSupportPanel.py",
+      "tests": 14,
+      "passed": 14,
+      "skipped": 0,
+      "log_sha256": "8dbed10a8313154a6a0bc2249699626a430312c2e21c20b74eccda8721de83b1",
+      "scope": "new extension"
+    },
+    {
+      "suite": "Test-GameSupportPackaging.py",
+      "tests": 7,
+      "passed": 7,
+      "skipped": 0,
+      "log_sha256": "dca18828e7b8599c6571c326236150c2d922aa824647ae3217189e3cf1747530",
+      "scope": "new extension"
+    },
+    {
+      "suite": "Test-GameModOps.py",
+      "tests": 63,
+      "passed": 63,
+      "skipped": 0,
+      "log_sha256": "4b2cbb83c7fab1de00167eb26e39c555a63aeeaca2626197af08d728753e9826",
+      "scope": "regression"
+    },
+    {
+      "suite": "Test-GameToolGameWorkspaces.py",
+      "tests": 41,
+      "passed": 41,
+      "skipped": 0,
+      "log_sha256": "b9443c8799de1863c1fffacecf51bbd022d40d5acfbcdd7238685dad7673946f",
+      "scope": "regression"
+    },
+    {
+      "suite": "Test-GameToolWorkbench.py",
+      "tests": 21,
+      "passed": 21,
+      "skipped": 0,
+      "log_sha256": "dce3783041903925b1fe647956f5b44c6de500433ee4bc79e6d907cc846d9e13",
+      "scope": "regression"
+    },
+    {
+      "suite": "Test-GameToolAutomation.py",
+      "tests": 52,
+      "passed": 52,
+      "skipped": 0,
+      "log_sha256": "bd01c9ff9f5b57d2f6aa3bea81ae113f1e6dc37505471a3278e68c24ac8ddd5d",
+      "scope": "regression"
+    },
+    {
+      "suite": "Test-GameToolAutomationPanel.py",
+      "tests": 22,
+      "passed": 22,
+      "skipped": 0,
+      "log_sha256": "8484f497c9cd0f1330ce004b4211705f211c27370a6253ae736359afea54a6bf",
+      "scope": "regression"
+    },
+    {
+      "suite": "Test-GameModPanel.py",
+      "tests": 8,
+      "passed": 8,
+      "skipped": 0,
+      "log_sha256": "db6b002b4c6fa77d82784edd36afe8a509627f5275472a3d3a3731d824cb38fc",
+      "scope": "regression"
+    },
+    {
+      "suite": "Test-GameToolFocusHost.py",
+      "tests": 10,
+      "passed": 10,
+      "skipped": 0,
+      "log_sha256": "e28fd320eeb3bee795c688140967727e0cc883099aa9d5e7ad18df35d12096bb",
+      "scope": "regression"
+    },
+    {
+      "suite": "Test-GameToolWorkbenchLauncher.py",
+      "tests": 7,
+      "passed": 7,
+      "skipped": 0,
+      "log_sha256": "80388e2c53a03dcaffd463bd65232d114c71023842cfa47a8e1b3d9ff0d2ee28",
+      "scope": "regression (includes one new launcher check)"
+    },
+    {
+      "suite": "Test-GameToolUnified.py",
+      "tests": 33,
+      "passed": 33,
+      "skipped": 0,
+      "log_sha256": "6309782ca4c89ed9479c2c7373334e096cc62d8845f1d0ffb6f3352b434af335",
+      "scope": "regression"
+    },
+    {
+      "suite": "Test-GameToolHub.py",
+      "tests": 22,
+      "passed": 22,
+      "skipped": 0,
+      "log_sha256": "17debf7c0c0ce942705ba249a95ab2c49bc1ac8c428113ce8fe871c9018182d1",
+      "scope": "regression"
+    }
+  ],
+  "tests_passed": 356,
+  "skipped": 0,
+  "new_tests_passed": 78,
+  "key_acceptance": "Three unknown games using UMM, SMAPI and generic ZIPs registered/planned/imported/prepared through data-only packs without editing the app source.",
+  "privacy_acceptance": "No provider downloads, real game folders, secrets, native deployment, screenshots or actual cloud AI connections used.",
+  "guard_acceptance": [
+    "Changed support selection stops import without overwriting concurrent work.",
+    "Old plan retains exact old game definition after a pack update.",
+    "Stale/removed-item AI requests stay readable but cannot be approved.",
+    "Original manager handoff bytes match accepted archives; no game file changes.",
+    "Unknown adapter IDs cannot load code from JSON."
+  ],
+  "corrections_during_testing": [
+    "A test harness called an absent UI/helper method and was corrected to the actual public control.",
+    "A stale-source AI proposal could not be read after its item was removed; read-only historical parsing was added without relaxing approval hashes.",
+    "The existing source exporter parses double-quoted VERSION fields; changed components now match that format.",
+    "Corrupt support ZIPs now produce a bounded INVALID_SUPPORT_ZIP refusal rather than escaping the user interface error handler.",
+    "A display-dependent updater UI test was initially run without Xvfb and failed before UI effects; the same isolated test passed with its required virtual display."
+  ],
+  "not_tested": [
+    "Native Windows UI/shortcuts or installation",
+    "PowerShell exporter/installer execution",
+    "Live Nexus/GitHub binary download route",
+    "Live AI-client connection",
+    "Actual game or loader runtime",
+    "Generalized existing-mod upgrade or manager mutation"
+  ],
+  "production_modified": false,
+  "git_publication_attempted": false,
+  "prior_blocks": "Earlier game-Git, remote-workspace and browser-file-policy effects remain stopped; no bypass or resubmission.",
+  "scope_limit": "Source/in-process and synthetic-file tests do not establish live compatibility, trust or deployment."
+}

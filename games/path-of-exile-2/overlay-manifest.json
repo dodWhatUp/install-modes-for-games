@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "asset_set_id": "poe2-cyborg-ii-combat-menu-r1",
+  "mapping_revision": "2026-10-11-poe2-combat-menu-r1",
+  "status": "proposal_only_not_installed",
+  "game": {
+    "name": "Path of Exile 2",
+    "store": "Steam",
+    "executable": "PathOfExileSteam.exe",
+    "build_reference": "Steam build 25379396"
+  },
+  "device": {
+    "model": "Azeron Cyborg II",
+    "geometry_source": "Saved SHARED R5 numbered map, 2026-10-10",
+    "profile_baseline": "SHARED R5; preserved unchanged"
+  },
+  "layer_control": {
+    "button_id": 6,
+    "tap_output": "V",
+    "hold_threshold_ms_candidate": 150,
+    "hold_layer": "MENU",
+    "release_layer": "COMBAT",
+    "verification": "proposal only; device-side transition and gameplay response not currently verified"
+  },
+  "views": [
+    {
+      "layer": "COMBAT",
+      "png": "azeron-keymap/overlay/poe2-proposal-combat-icons.png",
+      "svg": "azeron-keymap/overlay/poe2-proposal-combat-icons.svg"
+    },
+    {
+      "layer": "MENU",
+      "png": "azeron-keymap/overlay/poe2-proposal-menu-icons.png",
+      "svg": "azeron-keymap/overlay/poe2-proposal-menu-icons.svg"
+    }
+  ],
+  "shared_controls": {
+    "thumb_menu_actions_visible_on_both_layers": true,
+    "profile_changes_made": false,
+    "game_settings_changed": false
+  },
+  "selection_contract_proposal": {
+    "match_fields": ["game.executable", "mapping_revision", "active_layer"],
+    "default_layer": "COMBAT",
+    "manual_override": true,
+    "return_to_auto": true,
+    "host_integration": "pending script-merging task completion and user installation"
+  },
+  "verification": {
+    "source_geometry": "matched to saved SHARED R5 geometry",
+    "saved_game_bindings": "read from current local config; some proposal outputs differ and are tagged PROPOSED",
+    "gameplay_prompts": "not observed",
+    "layer_auto_detection": "not verified",
+    "profile_pair": "not installed"
+  }
+}

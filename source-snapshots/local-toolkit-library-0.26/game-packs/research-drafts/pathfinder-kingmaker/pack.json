@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "kind": "game-keybind-pack",
+  "id": "pathfinder-kingmaker",
+  "version": "0.1.0",
+  "game_id": "pathfinder-kingmaker",
+  "title": "Pathfinder Kingmaker",
+  "keymaps": {
+    "keyboard": {
+      "Space": "Space",
+      "F": "F",
+      "E": "E",
+      "R": "R",
+      "MouseLeft": "MouseLeft",
+      "MouseRight": "MouseRight",
+      "WheelUp": "WheelUp",
+      "WheelDown": "WheelDown"
+    }
+  },
+  "files": [
+    {
+      "id": "input",
+      "adapter": "unresolved-native",
+      "locations": [
+        {
+          "root": "GAME_CONFIG",
+          "pattern": "UNRESOLVED.json"
+        }
+      ],
+      "fields": [],
+      "inventory_complete": false,
+      "stopped_processes": [],
+      "writable": true,
+      "priority": 100,
+      "fingerprints": []
+    }
+  ],
+  "variants": [
+    {
+      "id": "keyboard",
+      "files": [
+        "input"
+      ]
+    }
+  ],
+  "presets": [],
+  "evidence": {
+    "stage": "draft",
+    "notes": "Location-research draft only: registry_schema_review",
+    "sources": []
+  },
+  "fixtures": []
+}

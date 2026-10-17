@@ -1,13 +1,13 @@
 # A Plague Tale: Requiem Preferences
 
-**Current mapping, 2026-09-13:** F7 toggles NR model dimensions 25% ↔ 100%, with no intermediate shortcut values; this supersedes the earlier F9/F7 allocation below. F8 retains before/after SR; a native live-SR F6 adapter remains unavailable. Save the NR scale with OptiScaler Save Settings. New mapping installed/static-checked; in-game hotkey testing pending.
+**Current mapping, 2026-10-07:** Home opens the full OptiScaler menu. F7 toggles NR model dimensions 25% ↔ 100%, with no intermediate shortcut values; this supersedes the earlier F9/F7 allocation below. F8 retains before/after SR; a native live-SR F6 adapter remains unavailable. Save the NR scale with OptiScaler Save Settings. The Home binding and F7 mapping are installed/static-checked; current in-game hotkey testing remains pending.
 
 Last confirmed: 2026-09-13.
 
 ## Always prefer
 
 - User-selected OptiScaler with DLSS Neural Rendering, using the native temporal input contract.
-- Delete full menu, F12 compact NR window, F11 numeric NR preset hint cycle, F10 NR toggle.
+- Home full OptiScaler menu, F12 compact NR window, F11 numeric NR preset hint cycle, F10 NR toggle.
 - Requested F9 NR working resolution and F8 before/after SR controls; supported and installed in the custom build.
 - Keep the original game files and a reversible installation manifest.
 

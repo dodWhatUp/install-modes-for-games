@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "kind": "scoped_workstream_audit",
+  "date": "2026-10-13",
+  "owner": "dodWhatUp/install-modes-for-games",
+  "coverage": "This conversation, seven mounted delivery archives, exact app source, current owner and PR metadata. Not all unseen chats or the live Windows filesystem.",
+  "game_git_head": "d44f9cee6782d1228d20610a08b404ee44a3aff8",
+  "global_git_head": "56d8b6d72a2c7dbd91ad51fbe72f3326e7023a27",
+  "items": [
+    {
+      "id": "A01",
+      "area": "Kingmaker spell help",
+      "state": "Research complete; feature gap remains",
+      "done": "Relevant mods, limitations and provider sources were recorded.",
+      "remaining": "No verified full spell-description simplifier, enemy weakness dashboard or spell recommendation engine was delivered.",
+      "evidence": "Prior chat and game comparison record; this turn does not claim an exhaustive new mod search."
+    },
+    {
+      "id": "A02",
+      "area": "Ordered download kit",
+      "state": "Delivered",
+      "done": "The 13-entry archive exists and passes ZIP CRC validation. It organizes official download links and a personal packaging helper.",
+      "remaining": "It is not a bundle of all mod binaries and is not a game installer.",
+      "evidence": "validation/prior-artifacts.json; no new third-party downloads."
+    },
+    {
+      "id": "A03",
+      "area": "Reusable mod engine",
+      "state": "Source tested",
+      "done": "The 0.1.0 package has recipes, plan/dependency checks, providers, imports, staging and a guarded new-folder UMM adapter. It is reused in 0.21.",
+      "remaining": "Live provider acceptance, UMM loader setup, existing-mod upgrades and other manager execution are not established.",
+      "evidence": "game_mod_ops source; original 63+8 tests are included in later suite totals, not additional passes."
+    },
+    {
+      "id": "A04",
+      "area": "Integration into newest app",
+      "state": "Source integrated",
+      "done": "0.21.0 is based on the exact 0.20.2 source export. The earlier missing-source issue is resolved. All 181 prior payload hashes matched.",
+      "remaining": "An update installed on the gaming PC is not evidenced; historical installed baseline is 0.20.2.",
+      "evidence": "0.21 source manifest and reproduced 1,381 passes; continuation note."
+    },
+    {
+      "id": "A05",
+      "area": "AI control and sharing",
+      "state": "Source tested; connection pending",
+      "done": "Named context/proposal methods, local approval, expiry, revision checks, no-replay handling and optional shared summaries exist.",
+      "remaining": "This chat is not automatically connected. AI cannot approve itself or install/rollback game files through this interface.",
+      "evidence": "GameToolAutomation, panel and stdio adapter; original approval method is reused by Focus."
+    },
+    {
+      "id": "A06",
+      "area": "Easy app launching",
+      "state": "Delivered; Windows unverified",
+      "done": "The game-specific launcher ZIP and global reusable generator exist. Global pref-global-041 is published on main.",
+      "remaining": "Actual Windows shortcuts, trust prompts, interpreter availability and macOS launch acceptance were not tested.",
+      "evidence": "Global main 56d8b6d; 24 generator tests in source. Earlier 19/24 descriptions refer to revisions, not two cumulative suites."
+    },
+    {
+      "id": "A07",
+      "area": "Proactive tool-building default",
+      "state": "Draft adoption pending",
+      "done": "The current explicit preference applies here. Its reusable skill and event are preserved in Global PR 20 and in the game continuation.",
+      "remaining": "PR 20 is still draft, open and unmerged. Global ACTIVE/MATRIX reconciliation and receiving-client adoption are not complete.",
+      "evidence": "Fresh native GitHub read of PR20, head 12b17733."
+    },
+    {
+      "id": "A08",
+      "area": "GitHub / Drive continuity",
+      "state": "Drive current; Git app source behind",
+      "done": "Seven prior archives were reopened and ZIP-checked; the existing owner folder and continuation were found.",
+      "remaining": "Game Git main is now d44f9cee due unrelated hardware work, but its Hub source still declares 0.2.0. The earlier blocked game-source publication was not retried.",
+      "evidence": "Fresh native connector reads; later unrelated work must be preserved."
+    },
+    {
+      "id": "A09",
+      "area": "Overlays and native input",
+      "state": "Existing implementation preserved",
+      "done": "Picture Buttons, MIC connection, overlay groups and native source remain with existing owners. All 15 original AHK files are unchanged by Focus.",
+      "remaining": "No new physical-device, native Studio, game, hold/release or all-DPI acceptance was performed. MIC remains a separate external app.",
+      "evidence": "Source comparison against 0.21; earlier native receipts are historical, not re-tested here."
+    },
+    {
+      "id": "A10",
+      "area": "Performance / benchmarks",
+      "state": "Existing preparation only",
+      "done": "Provider-defined saved-report imports, comparison and read-only tool interfaces remain.",
+      "remaining": "No new measurements, 1% lows, latency, VRAM results, benchmark runs or recording were produced.",
+      "evidence": "Original 42 portable suites rerun; no capture or game launch."
+    },
+    {
+      "id": "A11",
+      "area": "Focus alternative UI",
+      "state": "Implemented in source preview",
+      "done": "New shell, compact Mods/AI panels, independent 80\u2013200% zoom and density, contextual detail, table filters/columns and original-view fallback.",
+      "remaining": "Native Windows rendering, screen-reader behavior, full-page DPI coverage and user acceptance remain. The native AHK editor has not been redesigned.",
+      "evidence": "Focused widget, full-host and launcher tests plus non-capture geometry probes."
+    },
+    {
+      "id": "A12",
+      "area": "One source, two opening files",
+      "state": "Prepared for review",
+      "done": "OPEN Focus UI.cmd and OPEN Original UI.cmd use the same packaged source and the same separate preview data directory. A local OS lease prevents simultaneous preview writers.",
+      "remaining": "These open a preview, not an installed update. Native Studio/Updates/User data pages require the existing verified Windows installation route and are not launched in this preview.",
+      "evidence": "Launcher code and fixtures; no existing production data is copied or migrated."
+    }
+  ],
+  "sources": {
+    "design_owner": "https://github.com/dodWhatUp/install-modes-for-games/blob/d44f9cee6782d1228d20610a08b404ee44a3aff8/docs/UI-AND-CONTENT-DESIGN.md",
+    "global": "https://github.com/dodWhatUp/global-chat-instructions/commit/56d8b6d72a2c7dbd91ad51fbe72f3326e7023a27",
+    "draft": "https://github.com/dodWhatUp/global-chat-instructions/pull/20",
+    "continuation": "https://drive.google.com/file/d/1sbAoFn3o2SYfOhphZccMn9S2VGbpPdVA/view",
+    "microsoft": "https://learn.microsoft.com/en-us/windows/apps/develop/ui/controls/compact-sizing",
+    "jetbrains": "https://www.jetbrains.com/help/idea/settings-appearance.html",
+    "vscode": "https://code.visualstudio.com/docs/configure/custom-layout",
+    "w3c": "https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html"
+  },
+  "critical_boundary": "Prior blocked game Git writes and remote workspace effects remain stopped. No device installation, game, recording, benchmark, new AI connection or global adoption is claimed."
+}

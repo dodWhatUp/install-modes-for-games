@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1100" viewBox="0 0 1536 1100">
+<rect width="1536" height="1100" fill="#f8fafc"/>
+<style>text{font-family:"Segoe UI",Arial,sans-serif}</style>
+<text x="48" y="54" font-size="29" font-weight="750" fill="#172033">Path of Exile 2 · GROUPED R2 · COMBAT</text>
+<text x="48" y="84" font-size="17" font-weight="500" fill="#172033">Azeron Cyborg II · one layout for every build · Keys</text>
+<text x="48" y="113" font-size="16" font-weight="650" fill="#7041a6">#6 tap V / hold 150 ms MENU / release COMBAT    ·    #1 immediate hold MENU retained</text>
+<rect x="350" y="240" width="443" height="710" rx="17" fill="#f0f2fc" stroke="#7886ae" stroke-width="2"/>
+<text x="370" y="224" font-size="20" font-weight="750" fill="#435782">ALL 13 SKILLS TOGETHER</text>
+<text x="54" y="182" font-size="16" font-weight="650" fill="#172033">Four same-row pairs: Q / Ctrl+Q · E / Ctrl+E · R / Ctrl+R · F / Ctrl+F</text>
+<text x="54" y="208" font-size="15" font-weight="500" fill="#172033">T is #9; Ctrl+T is #38. Dodge stays at #14. Both flask keys are adjacent.</text>
+<text x="218" y="279" font-size="13" font-weight="750" fill="#435782">FLASKS / TEMP</text>
+<text x="365" y="279" font-size="13" font-weight="750" fill="#435782">MOUSE SKILLS</text>
+<text x="512" y="279" font-size="13" font-weight="750" fill="#435782">MAIN SKILLS</text>
+<text x="659" y="279" font-size="13" font-weight="750" fill="#435782">EXTRA / DODGE</text>
+<text x="1097" y="151" font-size="15" font-weight="750" fill="#47717b">THUMB SHORTCUTS</text>
+<rect x="213" y="294" width="128" height="120" rx="12" fill="#ffebe9" stroke="#ac4545" stroke-width="2"/>
+<text x="221" y="313" font-size="12" font-weight="700" fill="#ac4545">#4 · R1C1</text>
+<text x="221" y="342" font-size="18" font-weight="750" fill="#172033">1</text>
+<rect x="360" y="294" width="128" height="120" rx="12" fill="#eeeaff" stroke="#6447aa" stroke-width="2"/>
+<text x="368" y="313" font-size="12" font-weight="700" fill="#6447aa">#8 · R1C2</text>
+<text x="368" y="342" font-size="18" font-weight="750" fill="#172033">LMB</text>
+<rect x="507" y="294" width="128" height="120" rx="12" fill="#e5f5ef" stroke="#137360" stroke-width="2"/>
+<text x="515" y="313" font-size="12" font-weight="700" fill="#137360">#12 · R1C3</text>
+<text x="515" y="342" font-size="18" font-weight="750" fill="#172033">Q</text>
+<rect x="654" y="294" width="128" height="120" rx="12" fill="#e8efff" stroke="#3e5fa3" stroke-width="2"/>
+<text x="662" y="313" font-size="12" font-weight="700" fill="#3e5fa3">#17 · R1C4</text>
+<text x="662" y="342" font-size="18" font-weight="750" fill="#172033">Ctrl+Q</text>
+<rect x="213" y="426" width="128" height="120" rx="12" fill="#ffebe9" stroke="#ac4545" stroke-width="2"/>
+<text x="221" y="445" font-size="12" font-weight="700" fill="#ac4545">#3 · R2C1</text>
+<text x="221" y="474" font-size="18" font-weight="750" fill="#172033">2</text>
+<rect x="360" y="426" width="128" height="120" rx="12" fill="#eeeaff" stroke="#6447aa" stroke-width="2"/>
+<text x="368" y="445" font-size="12" font-weight="700" fill="#6447aa">#7 · R2C2</text>
+<text x="368" y="474" font-size="18" font-weight="750" fill="#172033">MMB</text>
+<rect x="507" y="426" width="128" height="120" rx="12" fill="#e5f5ef" stroke="#137360" stroke-width="2"/>
+<text x="515" y="445" font-size="12" font-weight="700" fill="#137360">#11 · R2C3</text>
+<text x="515" y="474" font-size="18" font-weight="750" fill="#172033">E</text>
+<rect x="654" y="426" width="128" height="120" rx="12" fill="#e8efff" stroke="#3e5fa3" stroke-width="2"/>
+<text x="662" y="445" font-size="12" font-weight="700" fill="#3e5fa3">#16 · R2C4</text>
+<text x="662" y="474" font-size="18" font-weight="750" fill="#172033">Ctrl+E</text>
+<rect x="213" y="558" width="128" height="120" rx="12" fill="#fff3e1" stroke="#93631f" stroke-width="2"/>
+<text x="221" y="577" font-size="12" font-weight="700" fill="#93631f">#2 · R3C1</text>
+<text x="221" y="606" font-size="18" font-weight="750" fill="#172033">6</text>
+<rect x="360" y="558" width="128" height="120" rx="12" fill="#f5edff" stroke="#7041a6" stroke-width="2"/>
+<text x="368" y="577" font-size="12" font-weight="700" fill="#7041a6">#6 · R3C2</text>
+<text x="368" y="606" font-size="15" font-weight="750" fill="#172033">V TAP</text>
+<text x="368" y="647" font-size="11" font-weight="600" fill="#7041a6">150 ms</text>
+<text x="368" y="666" font-size="10" font-weight="650" fill="#7041a6">Release → COMBAT</text>
+<rect x="507" y="558" width="128" height="120" rx="12" fill="#e5f5ef" stroke="#137360" stroke-width="2"/>
+<text x="515" y="577" font-size="12" font-weight="700" fill="#137360">#10 · R3C3</text>
+<text x="515" y="606" font-size="18" font-weight="750" fill="#172033">R</text>
+<rect x="654" y="558" width="128" height="120" rx="12" fill="#e8efff" stroke="#3e5fa3" stroke-width="2"/>
+<text x="662" y="577" font-size="12" font-weight="700" fill="#3e5fa3">#15 · R3C4</text>
+<text x="662" y="606" font-size="18" font-weight="750" fill="#172033">Ctrl+R</text>
+<rect x="213" y="690" width="128" height="120" rx="12" fill="#f5edff" stroke="#7041a6" stroke-width="2"/>
+<text x="221" y="709" font-size="12" font-weight="700" fill="#7041a6">#1 · R4C1</text>
+<text x="221" y="738" font-size="15" font-weight="750" fill="#172033">Hold MENU</text>
+<text x="221" y="798" font-size="10" font-weight="650" fill="#7041a6">Release → COMBAT</text>
+<rect x="360" y="690" width="128" height="120" rx="12" fill="#eeeaff" stroke="#6447aa" stroke-width="2"/>
+<text x="368" y="709" font-size="12" font-weight="700" fill="#6447aa">#5 · R4C2</text>
+<text x="368" y="738" font-size="18" font-weight="750" fill="#172033">RMB</text>
+<rect x="507" y="690" width="128" height="120" rx="12" fill="#e5f5ef" stroke="#137360" stroke-width="2"/>
+<text x="515" y="709" font-size="12" font-weight="700" fill="#137360">#9 · R4C3</text>
+<text x="515" y="738" font-size="18" font-weight="750" fill="#172033">T</text>
+<rect x="654" y="690" width="128" height="120" rx="12" fill="#ffe9d2" stroke="#ad570c" stroke-width="2"/>
+<text x="662" y="709" font-size="12" font-weight="700" fill="#ad570c">#14 · R4C4</text>
+<text x="662" y="738" font-size="18" font-weight="750" fill="#172033">Space</text>
+<rect x="213" y="822" width="128" height="120" rx="12" fill="#f1f4f7" stroke="#69788b" stroke-width="2"/>
+<text x="221" y="841" font-size="12" font-weight="700" fill="#69788b">#37 · R5C1</text>
+<text x="221" y="870" font-size="18" font-weight="750" fill="#172033">X</text>
+<rect x="360" y="822" width="128" height="120" rx="12" fill="#e8efff" stroke="#3e5fa3" stroke-width="2"/>
+<text x="368" y="841" font-size="12" font-weight="700" fill="#3e5fa3">#38 · R5C2</text>
+<text x="368" y="870" font-size="18" font-weight="750" fill="#172033">Ctrl+T</text>
+<rect x="507" y="822" width="128" height="120" rx="12" fill="#e5f5ef" stroke="#137360" stroke-width="2"/>
+<text x="515" y="841" font-size="12" font-weight="700" fill="#137360">#13 · R5C3</text>
+<text x="515" y="870" font-size="18" font-weight="750" fill="#172033">F</text>
+<rect x="654" y="822" width="128" height="120" rx="12" fill="#e8efff" stroke="#3e5fa3" stroke-width="2"/>
+<text x="662" y="841" font-size="12" font-weight="700" fill="#3e5fa3">#18 · R5C4</text>
+<text x="662" y="870" font-size="18" font-weight="750" fill="#172033">Ctrl+F</text>
+<rect x="66" y="558" width="128" height="120" rx="12" fill="#fff3e1" stroke="#93631f" stroke-width="2"/>
+<text x="74" y="577" font-size="12" font-weight="700" fill="#93631f">#36 · L3</text>
+<text x="74" y="606" font-size="18" font-weight="750" fill="#172033">7</text>
+<rect x="801" y="558" width="128" height="120" rx="12" fill="#f1f4f7" stroke="#69788b" stroke-width="2"/>
+<text x="809" y="577" font-size="12" font-weight="700" fill="#69788b">#19 · R3</text>
+<text x="809" y="606" font-size="18" font-weight="750" fill="#172033">Alt</text>
+<rect x="1095" y="162" width="128" height="120" rx="12" fill="#edf4f6" stroke="#47717b" stroke-width="2"/>
+<text x="1103" y="181" font-size="12" font-weight="700" fill="#47717b">#28 · TH_U</text>
+<text x="1103" y="210" font-size="18" font-weight="750" fill="#172033">Tab</text>
+<rect x="948" y="294" width="128" height="120" rx="12" fill="#edf4f6" stroke="#47717b" stroke-width="2"/>
+<text x="956" y="313" font-size="12" font-weight="700" fill="#47717b">#29 · TH_L</text>
+<text x="956" y="342" font-size="18" font-weight="750" fill="#172033">I</text>
+<rect x="1095" y="294" width="128" height="120" rx="12" fill="#edf4f6" stroke="#47717b" stroke-width="2"/>
+<text x="1103" y="313" font-size="12" font-weight="700" fill="#47717b">#22 · TH_C</text>
+<text x="1103" y="342" font-size="18" font-weight="750" fill="#172033">C</text>
+<rect x="1242" y="294" width="128" height="120" rx="12" fill="#edf4f6" stroke="#47717b" stroke-width="2"/>
+<text x="1250" y="313" font-size="12" font-weight="700" fill="#47717b">#31 · TH_R</text>
+<text x="1250" y="342" font-size="18" font-weight="750" fill="#172033">G</text>
+<rect x="1095" y="426" width="128" height="120" rx="12" fill="#edf4f6" stroke="#47717b" stroke-width="2"/>
+<text x="1103" y="445" font-size="12" font-weight="700" fill="#47717b">#30 · TH_D</text>
+<text x="1103" y="474" font-size="18" font-weight="750" fill="#172033">P</text>
+<rect x="1242" y="558" width="128" height="120" rx="12" fill="#edf4f6" stroke="#47717b" stroke-width="2"/>
+<text x="1250" y="577" font-size="12" font-weight="700" fill="#47717b">#41 · ST_RU</text>
+<text x="1250" y="606" font-size="18" font-weight="750" fill="#172033">Enter</text>
+<rect x="1242" y="690" width="128" height="120" rx="12" fill="#edf4f6" stroke="#47717b" stroke-width="2"/>
+<text x="1250" y="709" font-size="12" font-weight="700" fill="#47717b">#20 · ST_RD</text>
+<text x="1250" y="738" font-size="18" font-weight="750" fill="#172033">Esc</text>
+<rect x="948" y="822" width="128" height="120" rx="12" fill="#edf4f6" stroke="#47717b" stroke-width="2"/>
+<text x="956" y="841" font-size="12" font-weight="700" fill="#47717b">#23 · ST_D</text>
+<text x="956" y="870" font-size="18" font-weight="750" fill="#172033">K</text>
+<rect x="948" y="558" width="282" height="252" rx="12" fill="#f1f4f7" stroke="#69788b" stroke-width="2"/>
+<text x="956" y="577" font-size="12" font-weight="700" fill="#69788b">#24 · stick</text>
+<text x="956" y="606" font-size="18" font-weight="750" fill="#172033">W / A / S / D</text>
+<text x="960" y="708" font-size="16" font-weight="600" fill="#172033">Stick settings preserved</text>
+<text x="960" y="738" font-size="14" font-weight="500" fill="#172033">Active movement mode pending</text>
+<rect x="40" y="970" width="1456" height="96" rx="12" fill="#eaf0f6"/>
+<text x="58" y="996" font-size="17" font-weight="650" fill="#172033">R2 files prepared · active selection and physical/game behavior pending</text>
+<text x="58" y="1021" font-size="14" font-weight="500" fill="#172033">Direct chords are single simultaneous key combinations. Mouse outputs retain the game&#x27;s configured LMB / MMB / RMB inputs.</text>
+<text x="58" y="1045" font-size="14" font-weight="500" fill="#172033">Ctrl also toggles the skill bar in the saved game config. Ability names are generic slots; no class-specific assignments are needed.</text>
+</svg>

@@ -1,0 +1,13 @@
+{
+  "source_sha256": "d71b64e3634f1530a4c2ace6a6a442732c9785fc0fd88df6888d0195072815cb",
+  "source_bytes": 1559028,
+  "games": 17,
+  "variants": 23,
+  "assignments": 600,
+  "cache_second_read_hit": true,
+  "source_unchanged": true,
+  "summary_json_bytes": 341,
+  "all_variant_json_bytes": 166657,
+  "largest_variant_json_bytes": 13961,
+  "note": "Serialized transfer sizes only; not model token charges, runtime memory or measured model stability."
+}

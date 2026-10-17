@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1100" viewBox="0 0 1536 1100">
+<rect width="1536" height="1100" fill="#f8fafc"/>
+<style>text{font-family:"Segoe UI",Arial,sans-serif}</style>
+<text x="48" y="54" font-size="29" font-weight="750" fill="#172033">Path of Exile 2 · GROUPED R2 · MENU</text>
+<text x="48" y="84" font-size="17" font-weight="500" fill="#172033">Azeron Cyborg II · one layout for every build · Keys + actions</text>
+<text x="48" y="113" font-size="16" font-weight="650" fill="#7041a6">#6 tap V / hold 150 ms MENU / release COMBAT    ·    #1 immediate hold MENU retained</text>
+<text x="54" y="184" font-size="18" font-weight="650" fill="#172033">Character panels together · maps together · all main menus use fingers while #6 is held</text>
+<text x="218" y="279" font-size="13" font-weight="750" fill="#435782">FLASKS / UTILITY</text>
+<text x="365" y="279" font-size="13" font-weight="750" fill="#435782">POINTER</text>
+<text x="512" y="279" font-size="13" font-weight="750" fill="#435782">CHARACTER</text>
+<text x="659" y="279" font-size="13" font-weight="750" fill="#435782">MAPS / NAVIGATE</text>
+<text x="1097" y="151" font-size="15" font-weight="750" fill="#47717b">THUMB SHORTCUTS</text>
+<rect x="213" y="294" width="128" height="120" rx="12" fill="#ffebe9" stroke="#ac4545" stroke-width="2"/>
+<text x="221" y="313" font-size="12" font-weight="700" fill="#ac4545">#4 · R1C1</text>
+<g transform="translate(312.0,323.0) scale(.78)" fill="none" stroke="#ac4545" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6M10 2v6l-5 9.3A3.1 3.1 0 0 0 7.7 22h8.6a3.1 3.1 0 0 0 2.7-4.7L14 8V2M7.4 16h9.2"/></g>
+<text x="221" y="342" font-size="18" font-weight="750" fill="#172033">1</text>
+<text x="221" y="364" font-size="15" font-weight="650" fill="#172033">Flask 1</text>
+<rect x="360" y="294" width="128" height="120" rx="12" fill="#f1f4f7" stroke="#69788b" stroke-width="2"/>
+<text x="368" y="313" font-size="12" font-weight="700" fill="#69788b">#8 · R1C2</text>
+<g transform="translate(459.0,323.0) scale(.78)" fill="none" stroke="#69788b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 14.5 9l7 .4-5.4 4.4 1.8 6.8L12 16.8l-5.9 3.8 1.8-6.8-5.4-4.4 7-.4z"/></g>
+<text x="368" y="342" font-size="18" font-weight="750" fill="#172033">LMB</text>
+<text x="368" y="364" font-size="15" font-weight="650" fill="#172033">Left click</text>
+<rect x="507" y="294" width="128" height="120" rx="12" fill="#e5f5ef" stroke="#137360" stroke-width="2"/>
+<text x="515" y="313" font-size="12" font-weight="700" fill="#137360">#12 · R1C3</text>
+<g transform="translate(606.0,323.0) scale(.78)" fill="none" stroke="#137360" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></g>
+<text x="515" y="342" font-size="18" font-weight="750" fill="#172033">G</text>
+<text x="515" y="364" font-size="15" font-weight="650" fill="#172033">Skills</text>
+<rect x="654" y="294" width="128" height="120" rx="12" fill="#e8efff" stroke="#3e5fa3" stroke-width="2"/>
+<text x="662" y="313" font-size="12" font-weight="700" fill="#3e5fa3">#17 · R1C4</text>
+<g transform="translate(753.0,323.0) scale(.78)" fill="none" stroke="#3e5fa3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2zM9 3v16m6-14v16"/></g>
+<text x="662" y="342" font-size="18" font-weight="750" fill="#172033">Tab</text>
+<text x="662" y="364" font-size="15" font-weight="650" fill="#172033">Area map</text>
+<rect x="213" y="426" width="128" height="120" rx="12" fill="#ffebe9" stroke="#ac4545" stroke-width="2"/>
+<text x="221" y="445" font-size="12" font-weight="700" fill="#ac4545">#3 · R2C1</text>
+<g transform="translate(312.0,455.0) scale(.78)" fill="none" stroke="#ac4545" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6M10 2v6l-5 9.3A3.1 3.1 0 0 0 7.7 22h8.6a3.1 3.1 0 0 0 2.7-4.7L14 8V2M7.4 16h9.2"/></g>
+<text x="221" y="474" font-size="18" font-weight="750" fill="#172033">2</text>
+<text x="221" y="496" font-size="15" font-weight="650" fill="#172033">Flask 2</text>
+<rect x="360" y="426" width="128" height="120" rx="12" fill="#f1f4f7" stroke="#69788b" stroke-width="2"/>
+<text x="368" y="445" font-size="12" font-weight="700" fill="#69788b">#7 · R2C2</text>
+<g transform="translate(459.0,455.0) scale(.78)" fill="none" stroke="#69788b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 14.5 9l7 .4-5.4 4.4 1.8 6.8L12 16.8l-5.9 3.8 1.8-6.8-5.4-4.4 7-.4z"/></g>
+<text x="368" y="474" font-size="18" font-weight="750" fill="#172033">MMB</text>
+<text x="368" y="496" font-size="15" font-weight="650" fill="#172033">Middle click</text>
+<rect x="507" y="426" width="128" height="120" rx="12" fill="#e5f5ef" stroke="#137360" stroke-width="2"/>
+<text x="515" y="445" font-size="12" font-weight="700" fill="#137360">#11 · R2C3</text>
+<g transform="translate(606.0,455.0) scale(.78)" fill="none" stroke="#137360" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v17M5 7l7 4 7-4M5 16l7-5 7 5"/><circle cx="12" cy="3" r="2"/><circle cx="5" cy="7" r="2"/><circle cx="19" cy="7" r="2"/><circle cx="5" cy="16" r="2"/><circle cx="19" cy="16" r="2"/></g>
+<text x="515" y="474" font-size="18" font-weight="750" fill="#172033">P</text>
+<text x="515" y="496" font-size="15" font-weight="650" fill="#172033">Passives</text>
+<rect x="654" y="426" width="128" height="120" rx="12" fill="#e8efff" stroke="#3e5fa3" stroke-width="2"/>
+<text x="662" y="445" font-size="12" font-weight="700" fill="#3e5fa3">#16 · R2C4</text>
+<g transform="translate(753.0,455.0) scale(.78)" fill="none" stroke="#3e5fa3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.8 8.2-2.5 5.1-5.1 2.5 2.5-5.1z"/></g>
+<text x="662" y="474" font-size="18" font-weight="750" fill="#172033">U</text>
+<text x="662" y="496" font-size="15" font-weight="650" fill="#172033">World / Atlas</text>
+<rect x="213" y="558" width="128" height="120" rx="12" fill="#f1f4f7" stroke="#69788b" stroke-width="2"/>
+<text x="221" y="577" font-size="12" font-weight="700" fill="#69788b">#2 · R3C1</text>
+<g transform="translate(312.0,587.0) scale(.78)" fill="none" stroke="#69788b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></g>
+<text x="221" y="606" font-size="18" font-weight="750" fill="#172033">H</text>
+<text x="221" y="628" font-size="15" font-weight="650" fill="#172033">Challenges</text>
+<rect x="360" y="558" width="128" height="120" rx="12" fill="#f5edff" stroke="#7041a6" stroke-width="2"/>
+<text x="368" y="577" font-size="12" font-weight="700" fill="#7041a6">#6 · R3C2</text>
+<text x="368" y="606" font-size="15" font-weight="750" fill="#172033">Hold MENU</text>
+<text x="368" y="628" font-size="15" font-weight="650" fill="#172033">Hold MENU</text>
+<text x="368" y="647" font-size="11" font-weight="600" fill="#7041a6">150 ms</text>
+<text x="368" y="666" font-size="10" font-weight="650" fill="#7041a6">Release → COMBAT</text>
+<rect x="507" y="558" width="128" height="120" rx="12" fill="#e5f5ef" stroke="#137360" stroke-width="2"/>
+<text x="515" y="577" font-size="12" font-weight="700" fill="#137360">#10 · R3C3</text>
+<g transform="translate(606.0,587.0) scale(.78)" fill="none" stroke="#137360" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3.5"/><path d="M4 21a8 8 0 0 1 16 0"/></g>
+<text x="515" y="606" font-size="18" font-weight="750" fill="#172033">C</text>
+<text x="515" y="628" font-size="15" font-weight="650" fill="#172033">Character</text>
+<rect x="654" y="558" width="128" height="120" rx="12" fill="#e8efff" stroke="#3e5fa3" stroke-width="2"/>
+<text x="662" y="577" font-size="12" font-weight="700" fill="#3e5fa3">#15 · R3C4</text>
+<g transform="translate(753.0,587.0) scale(.78)" fill="none" stroke="#3e5fa3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v17M5 7l7 4 7-4M5 16l7-5 7 5"/><circle cx="12" cy="3" r="2"/><circle cx="5" cy="7" r="2"/><circle cx="19" cy="7" r="2"/><circle cx="5" cy="16" r="2"/><circle cx="19" cy="16" r="2"/></g>
+<text x="662" y="606" font-size="18" font-weight="750" fill="#172033">Ctrl+U</text>
+<text x="662" y="628" font-size="15" font-weight="650" fill="#172033">Atlas passives</text>
+<rect x="213" y="690" width="128" height="120" rx="12" fill="#f5edff" stroke="#7041a6" stroke-width="2"/>
+<text x="221" y="709" font-size="12" font-weight="700" fill="#7041a6">#1 · R4C1</text>
+<text x="221" y="738" font-size="15" font-weight="750" fill="#172033">Hold MENU</text>
+<text x="221" y="760" font-size="15" font-weight="650" fill="#172033">MENU layer</text>
+<text x="221" y="798" font-size="10" font-weight="650" fill="#7041a6">Release → COMBAT</text>
+<rect x="360" y="690" width="128" height="120" rx="12" fill="#f1f4f7" stroke="#69788b" stroke-width="2"/>
+<text x="368" y="709" font-size="12" font-weight="700" fill="#69788b">#5 · R4C2</text>
+<g transform="translate(459.0,719.0) scale(.78)" fill="none" stroke="#69788b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 14.5 9l7 .4-5.4 4.4 1.8 6.8L12 16.8l-5.9 3.8 1.8-6.8-5.4-4.4 7-.4z"/></g>
+<text x="368" y="738" font-size="18" font-weight="750" fill="#172033">RMB</text>
+<text x="368" y="760" font-size="15" font-weight="650" fill="#172033">Right click</text>
+<rect x="507" y="690" width="128" height="120" rx="12" fill="#e5f5ef" stroke="#137360" stroke-width="2"/>
+<text x="515" y="709" font-size="12" font-weight="700" fill="#137360">#9 · R4C3</text>
+<g transform="translate(606.0,719.0) scale(.78)" fill="none" stroke="#137360" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l1 13H4L5 8ZM8 8V6a4 4 0 0 1 8 0v2M9 12h6"/></g>
+<text x="515" y="738" font-size="18" font-weight="750" fill="#172033">I</text>
+<text x="515" y="760" font-size="15" font-weight="650" fill="#172033">Inventory</text>
+<rect x="654" y="690" width="128" height="120" rx="12" fill="#f1f4f7" stroke="#69788b" stroke-width="2"/>
+<text x="662" y="709" font-size="12" font-weight="700" fill="#69788b">#14 · R4C4</text>
+<g transform="translate(753.0,719.0) scale(.78)" fill="none" stroke="#69788b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5m0 0 6-6m-6 6 6 6"/></g>
+<text x="662" y="738" font-size="18" font-weight="750" fill="#172033">Space</text>
+<text x="662" y="760" font-size="15" font-weight="650" fill="#172033">Close panels</text>
+<rect x="213" y="822" width="128" height="120" rx="12" fill="#f1f4f7" stroke="#69788b" stroke-width="2"/>
+<text x="221" y="841" font-size="12" font-weight="700" fill="#69788b">#37 · R5C1</text>
+<g transform="translate(312.0,851.0) scale(.78)" fill="none" stroke="#69788b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10v5a5 5 0 0 1-10 0V3ZM7 5H3v2a5 5 0 0 0 5 5m9-7h4v2a5 5 0 0 1-5 5m-4 1v4m-4 2h8m-10 3h12"/></g>
+<text x="221" y="870" font-size="18" font-weight="750" fill="#172033">&#x27;</text>
+<text x="221" y="892" font-size="15" font-weight="650" fill="#172033">League panel</text>
+<rect x="360" y="822" width="128" height="120" rx="12" fill="#f1f4f7" stroke="#69788b" stroke-width="2"/>
+<text x="368" y="841" font-size="12" font-weight="700" fill="#69788b">#38 · R5C2</text>
+<g transform="translate(459.0,851.0) scale(.78)" fill="none" stroke="#69788b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></g>
+<text x="368" y="870" font-size="18" font-weight="750" fill="#172033">Z</text>
+<text x="368" y="892" font-size="14" font-weight="600" fill="#172033">Toggle item</text>
+<text x="368" y="914" font-size="14" font-weight="600" fill="#172033">labels</text>
+<rect x="507" y="822" width="128" height="120" rx="12" fill="#e5f5ef" stroke="#137360" stroke-width="2"/>
+<text x="515" y="841" font-size="12" font-weight="700" fill="#137360">#13 · R5C3</text>
+<g transform="translate(606.0,851.0) scale(.78)" fill="none" stroke="#137360" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c2-5 6-7 9-7s7 2 9 7c-2 5-6 7-9 7s-7-2-9-7Z"/><path d="M8 11h2m4 0h2M9 16h6"/></g>
+<text x="515" y="870" font-size="18" font-weight="750" fill="#172033">K</text>
+<text x="515" y="892" font-size="15" font-weight="650" fill="#172033">Cosmetics</text>
+<rect x="654" y="822" width="128" height="120" rx="12" fill="#f1f4f7" stroke="#69788b" stroke-width="2"/>
+<text x="662" y="841" font-size="12" font-weight="700" fill="#69788b">#18 · R5C4</text>
+<g transform="translate(753.0,851.0) scale(.78)" fill="none" stroke="#69788b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v13H9l-5 4z"/><circle cx="8" cy="10.5" r=".8"/><circle cx="12" cy="10.5" r=".8"/><circle cx="16" cy="10.5" r=".8"/></g>
+<text x="662" y="870" font-size="18" font-weight="750" fill="#172033">Enter</text>
+<text x="662" y="892" font-size="15" font-weight="650" fill="#172033">Chat</text>
+<rect x="66" y="558" width="128" height="120" rx="12" fill="#f1f4f7" stroke="#69788b" stroke-width="2"/>
+<text x="74" y="577" font-size="12" font-weight="700" fill="#69788b">#36 · L3</text>
+<g transform="translate(165.0,587.0) scale(.78)" fill="none" stroke="#69788b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></g>
+<text x="74" y="606" font-size="18" font-weight="750" fill="#172033">J</text>
+<text x="74" y="628" font-size="15" font-weight="650" fill="#172033">Social</text>
+<rect x="801" y="558" width="128" height="120" rx="12" fill="#f1f4f7" stroke="#69788b" stroke-width="2"/>
+<text x="809" y="577" font-size="12" font-weight="700" fill="#69788b">#19 · R3</text>
+<g transform="translate(900.0,587.0) scale(.78)" fill="none" stroke="#69788b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2" fill="#fff"/><circle cx="15" cy="12" r="2" fill="#fff"/><circle cx="7" cy="18" r="2" fill="#fff"/></g>
+<text x="809" y="606" font-size="18" font-weight="750" fill="#172033">Home</text>
+<text x="809" y="628" font-size="15" font-weight="650" fill="#172033">OptiScaler menu</text>
+<rect x="1095" y="162" width="128" height="120" rx="12" fill="#edf4f6" stroke="#47717b" stroke-width="2"/>
+<text x="1103" y="181" font-size="12" font-weight="700" fill="#47717b">#28 · TH_U</text>
+<g transform="translate(1194.0,191.0) scale(.78)" fill="none" stroke="#47717b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2zM9 3v16m6-14v16"/></g>
+<text x="1103" y="210" font-size="18" font-weight="750" fill="#172033">Tab</text>
+<text x="1103" y="232" font-size="15" font-weight="650" fill="#172033">Area map</text>
+<rect x="948" y="294" width="128" height="120" rx="12" fill="#edf4f6" stroke="#47717b" stroke-width="2"/>
+<text x="956" y="313" font-size="12" font-weight="700" fill="#47717b">#29 · TH_L</text>
+<g transform="translate(1047.0,323.0) scale(.78)" fill="none" stroke="#47717b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l1 13H4L5 8ZM8 8V6a4 4 0 0 1 8 0v2M9 12h6"/></g>
+<text x="956" y="342" font-size="18" font-weight="750" fill="#172033">I</text>
+<text x="956" y="364" font-size="15" font-weight="650" fill="#172033">Inventory</text>
+<rect x="1095" y="294" width="128" height="120" rx="12" fill="#edf4f6" stroke="#47717b" stroke-width="2"/>
+<text x="1103" y="313" font-size="12" font-weight="700" fill="#47717b">#22 · TH_C</text>
+<g transform="translate(1194.0,323.0) scale(.78)" fill="none" stroke="#47717b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3.5"/><path d="M4 21a8 8 0 0 1 16 0"/></g>
+<text x="1103" y="342" font-size="18" font-weight="750" fill="#172033">C</text>
+<text x="1103" y="364" font-size="15" font-weight="650" fill="#172033">Character</text>
+<rect x="1242" y="294" width="128" height="120" rx="12" fill="#edf4f6" stroke="#47717b" stroke-width="2"/>
+<text x="1250" y="313" font-size="12" font-weight="700" fill="#47717b">#31 · TH_R</text>
+<g transform="translate(1341.0,323.0) scale(.78)" fill="none" stroke="#47717b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></g>
+<text x="1250" y="342" font-size="18" font-weight="750" fill="#172033">G</text>
+<text x="1250" y="364" font-size="15" font-weight="650" fill="#172033">Skills</text>
+<rect x="1095" y="426" width="128" height="120" rx="12" fill="#edf4f6" stroke="#47717b" stroke-width="2"/>
+<text x="1103" y="445" font-size="12" font-weight="700" fill="#47717b">#30 · TH_D</text>
+<g transform="translate(1194.0,455.0) scale(.78)" fill="none" stroke="#47717b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v17M5 7l7 4 7-4M5 16l7-5 7 5"/><circle cx="12" cy="3" r="2"/><circle cx="5" cy="7" r="2"/><circle cx="19" cy="7" r="2"/><circle cx="5" cy="16" r="2"/><circle cx="19" cy="16" r="2"/></g>
+<text x="1103" y="474" font-size="18" font-weight="750" fill="#172033">P</text>
+<text x="1103" y="496" font-size="15" font-weight="650" fill="#172033">Passives</text>
+<rect x="1242" y="558" width="128" height="120" rx="12" fill="#edf4f6" stroke="#47717b" stroke-width="2"/>
+<text x="1250" y="577" font-size="12" font-weight="700" fill="#47717b">#41 · ST_RU</text>
+<g transform="translate(1341.0,587.0) scale(.78)" fill="none" stroke="#47717b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v13H9l-5 4z"/><circle cx="8" cy="10.5" r=".8"/><circle cx="12" cy="10.5" r=".8"/><circle cx="16" cy="10.5" r=".8"/></g>
+<text x="1250" y="606" font-size="18" font-weight="750" fill="#172033">Enter</text>
+<text x="1250" y="628" font-size="15" font-weight="650" fill="#172033">Chat</text>
+<rect x="1242" y="690" width="128" height="120" rx="12" fill="#edf4f6" stroke="#47717b" stroke-width="2"/>
+<text x="1250" y="709" font-size="12" font-weight="700" fill="#47717b">#20 · ST_RD</text>
+<g transform="translate(1341.0,719.0) scale(.78)" fill="none" stroke="#47717b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5m0 0 6-6m-6 6 6 6"/></g>
+<text x="1250" y="738" font-size="18" font-weight="750" fill="#172033">Esc</text>
+<text x="1250" y="760" font-size="15" font-weight="650" fill="#172033">Back / Esc</text>
+<rect x="948" y="822" width="128" height="120" rx="12" fill="#edf4f6" stroke="#47717b" stroke-width="2"/>
+<text x="956" y="841" font-size="12" font-weight="700" fill="#47717b">#23 · ST_D</text>
+<g transform="translate(1047.0,851.0) scale(.78)" fill="none" stroke="#47717b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c2-5 6-7 9-7s7 2 9 7c-2 5-6 7-9 7s-7-2-9-7Z"/><path d="M8 11h2m4 0h2M9 16h6"/></g>
+<text x="956" y="870" font-size="18" font-weight="750" fill="#172033">K</text>
+<text x="956" y="892" font-size="15" font-weight="650" fill="#172033">Cosmetics</text>
+<rect x="948" y="558" width="282" height="252" rx="12" fill="#f1f4f7" stroke="#69788b" stroke-width="2"/>
+<text x="956" y="577" font-size="12" font-weight="700" fill="#69788b">#24 · stick</text>
+<g transform="translate(1201.0,587.0) scale(.78)" fill="none" stroke="#69788b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16a7 4 0 1 0 14 0 7 4 0 1 0-14 0ZM12 15V6m0 0 4 3m-4-3L9 4"/><circle cx="12" cy="5" r="2"/></g>
+<text x="956" y="606" font-size="18" font-weight="750" fill="#172033">W / A / S / D</text>
+<text x="956" y="628" font-size="15" font-weight="650" fill="#172033">Movement</text>
+<text x="960" y="708" font-size="16" font-weight="600" fill="#172033">Stick settings preserved</text>
+<text x="960" y="738" font-size="14" font-weight="500" fill="#172033">Active movement mode pending</text>
+<rect x="40" y="970" width="1456" height="96" rx="12" fill="#eaf0f6"/>
+<text x="58" y="996" font-size="17" font-weight="650" fill="#172033">R2 files prepared · active selection and physical/game behavior pending</text>
+<text x="58" y="1021" font-size="14" font-weight="500" fill="#172033">Direct chords are single simultaneous key combinations. Mouse outputs retain the game&#x27;s configured LMB / MMB / RMB inputs.</text>
+<text x="58" y="1045" font-size="14" font-weight="500" fill="#172033">Ctrl also toggles the skill bar in the saved game config. Ability names are generic slots; no class-specific assignments are needed.</text>
+</svg>

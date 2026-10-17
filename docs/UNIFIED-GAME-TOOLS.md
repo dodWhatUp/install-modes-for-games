@@ -1,6 +1,31 @@
 # Unified Game Tools — Modern workspace / Studio 2.2
 
 
+Installed again at the user's later request, **2026-10-14**: **Unified Game Tools
+0.25.0-preview.1 — Mods and Keybinds**. Double-click **Unified Game Tools** on the
+Desktop or Start Menu, or **Documents → Unified Game Tools → Open Unified Game
+Tools.cmd**. The shortcut opened the actual installed window and the app was left
+open at that checkpoint. Existing profiles, settings and images are preserved; Game Input is inactive.
+
+The main Workbench now has **Mods**, **AI requests**, **Manual checks** and
+**Keybinds** under the same selected game. **More → Open original tools** exposes
+the retained original Hub/Studio interfaces. Real game keybinding adapters and a
+live AI-client connection still need separate scoped acceptance. The earlier
+removal and installed-version sections are historical; see the
+[current installation receipt](GAME-TOOL-CONNECTIONS.md#2026-10-14--supplied-ab-inputs-merged-and-unified-game-tools-reinstalled).
+
+Current local status, **2026-10-14**: all deployed custom game helpers, including
+this unified installation and the separate Focus/Original UI preview, were
+removed at the user's request. Profiles, settings, pictures, source masters and
+backups are preserved. The Desktop, Start Menu and double-click entry files were
+removed. The opening/installed-version sections below document the former
+installation; they are not current access instructions. See the
+[removal and recovery receipt](GAME-TOOL-CONNECTIONS.md#2026-10-14--custom-game-helpers-removed-profiles-and-backups-preserved).
+Restoration or reinstallation requires a new request.
+
+
+
+
 ## Read-only planning and UMM instances — adopted source 0.27.0-preview.1
 
 The adopted source adds modern multi-game tools for opaque registered

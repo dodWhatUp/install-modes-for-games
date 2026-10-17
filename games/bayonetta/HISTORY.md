@@ -1,5 +1,13 @@
 # Bayonetta — History
 
+## 2026-10-07 — Both ReShade overlays moved to Delete
+
+- User set ReShade = Delete and OptiScaler = Home as the cross-game rule. Bayonetta's proven chain has two ReShade hosts and no OptiScaler, so both the x86 game and x64 helper overlay bindings were migrated.
+- Bayonetta and its helper were closed; both INIs were exclusively writable. Private snapshot `20261007-110500-before-reshade-delete-optiscaler-home` preserved the prior files and Steam metadata without replacing the known-good graphics baseline.
+- Changed exactly `KeyOverlay=36,0,0,0` to `KeyOverlay=46,0,0,0` in each file. Game-host hash `795CF34002DD0F0EA68CBCF825BFB60666A5F0F6436E80655ACE00EE7BBC202F` → `5DD69F5A510252208344A4D3E4AC2347FB374B99E356A712CDC5C46B549C73FE`; helper hash `DDE9E846F94F6D2A525616E2674518378E894231F95BF50E375F54D26D750CDE` → `2591C77E30C83CC9B586BDB9598F939E8BB53A8350865CE878D8305B26C36E4A`.
+- Byte-preserving comparison and static readback passed. No proxy, feeder, helper, NGX, preset, save or renderer setting changed. Runtime Delete handling remains pending.
+- Rollback: with both processes closed, restore each matching INI from the named snapshot; do not interchange the x86 game and x64 helper configurations.
+
 ## Current documented baseline
 
 - The Steam PC executable was locally confirmed as 32-bit D3D9.

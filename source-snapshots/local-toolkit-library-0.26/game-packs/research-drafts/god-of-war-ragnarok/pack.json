@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "kind": "game-keybind-pack",
+  "id": "god-of-war-ragnarok",
+  "version": "0.1.0",
+  "game_id": "god-of-war-ragnarok",
+  "title": "God of War Ragnarok",
+  "keymaps": {
+    "keyboard": {
+      "Space": "Space",
+      "F": "F",
+      "E": "E",
+      "R": "R",
+      "MouseLeft": "MouseLeft",
+      "MouseRight": "MouseRight",
+      "WheelUp": "WheelUp",
+      "WheelDown": "WheelDown"
+    }
+  },
+  "files": [
+    {
+      "id": "input",
+      "adapter": "unresolved-native",
+      "locations": [
+        {
+          "root": "SAVED_GAMES",
+          "pattern": "God of War Ragnarök/*/userpreferences"
+        },
+        {
+          "root": "SAVED_GAMES",
+          "pattern": "God of War Ragnarok/*/userpreferences"
+        }
+      ],
+      "fields": [],
+      "inventory_complete": false,
+      "stopped_processes": [],
+      "writable": true,
+      "priority": 100,
+      "fingerprints": []
+    }
+  ],
+  "variants": [
+    {
+      "id": "keyboard",
+      "files": [
+        "input"
+      ]
+    }
+  ],
+  "presets": [],
+  "evidence": {
+    "stage": "draft",
+    "notes": "Location-research draft only: binary_schema_unresolved",
+    "sources": []
+  },
+  "fixtures": []
+}

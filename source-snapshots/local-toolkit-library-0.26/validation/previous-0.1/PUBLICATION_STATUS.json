@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-13",
+  "artifact_state": "ADD_ON_SOURCE_CANDIDATE",
+  "conversation_download": "created and locally verified",
+  "drive_upload_performed": false,
+  "github_write_performed": false,
+  "installed_on_gaming_pc": false,
+  "reason": "The current Google Drive tool inventory exposes read actions but not upload/create/update; no replacement storage provider was introduced. Prior Git/remote safety blocks remain stopped.",
+  "owner": "dodWhatUp/install-modes-for-games",
+  "existing_owner_drive_folder": "1uQuBbrDS0bSVibb-1kj2arZfjVfnrFLy",
+  "next_owner_action": "Receive this additive source package with its handoff, reconcile current app source, and integrate through the existing owner workflow."
+}

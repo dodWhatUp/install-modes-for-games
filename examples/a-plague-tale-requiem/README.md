@@ -10,6 +10,6 @@ The compact menu uses the same input capture and setting values as the full menu
 
 F11 only cycles numeric model hints; it is not a saved whole-profile selector. Save Settings persists the combined current choices. F7 is deliberately absent because a generic INI override cannot ensure the game changes its rendering resolution live.
 
-Save Settings serializes values equal to this custom build's defaults as `auto`. This is expected: Delete/F8–F12, scale 1.0, preset 0 and disabled internal FG retain their source-defined values. The example spells them out for review and initial installation.
+Save Settings serializes values equal to this custom build's defaults as `auto`. Historically that meant Delete/F8–F12, scale 1.0, preset 0 and disabled internal FG retained their source-defined values. The current [INI delta](Controls.ini) explicitly overrides the full OptiScaler menu to Home (`0x24`) under the 2026-10-07 cross-game rule; the other controls retain their recorded behavior.
 
 See the [game record](../../games/A-PLAGUE-TALE-REQUIEM.md) for current runtime evidence and rollback. Do not copy this game-filtered INI to a different game.

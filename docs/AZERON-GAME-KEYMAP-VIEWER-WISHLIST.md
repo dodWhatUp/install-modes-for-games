@@ -1,5 +1,50 @@
 # Azeron game-specific keymap labels — requested tool
 
+## 2026-10-12: map planning and future HTML overlay tasks
+
+Planner revision 4.0 adds the standalone strategic V3 requested by the user:
+occupied-key relocation plans, per-game rationale, priority/relationship ratings,
+searchable action review, mouse exclusions and strategy JSON. Existing personal
+V3 maps remain separate; new personal copies start at V4. Catalog completeness,
+exact current-game menus, rebinding acceptance and gameplay remain limited as
+described in the delivery record. Installed Overlay integration remains future
+work under the existing requirement IDs; this is not an app installation.
+
+Later standalone planner revision 3.0 implements named independent personal
+copies, V3/V4 and later, with all layers/contexts, explicit per-key action/note
+editing, restore/clear, built-in icon choices, JSON import/export and a portable
+editable HTML document. Native profiles and installed Overlay behavior remain
+unchanged. MAP-ICON-01's built-in per-button choice is implemented in personal
+HTML maps; importing external icon artwork and installed-app integration remain
+future work. See the delivery record for exact acceptance and rollback.
+
+The user requested per-game V1 source-action maps and separate V2 suggestions,
+copy-ready action lookup on key selection, reversible appearance settings and
+current-layer exports. The standalone Cyborg 2 planner implements these as
+presentation/planning behavior; suggestions never write Azeron or game bindings.
+Unresolved action documentation must not be interpreted as a confirmed free key.
+Retain verified default corrections separately from proposals and personal-game
+acceptance, with game/version/family/layer/context in exported artifacts.
+
+Backlog under GT-052 and the existing GT-044–050 overlay requirements:
+
+- **HTML-OVERLAY-01 — future, not installed:** support self-contained single-layer
+  HTML and complex game/version/layer HTML pages in the Overlay application.
+  Reconcile the latest installed/source owner before implementation. Preserve PNG
+  import, managed library IDs, native remapping ownership, passive Peek versus
+  interactive Explore and settings. Define local content/script/resource policy,
+  state selection, no-focus-steal behavior, sizing/DPI, offline dependencies,
+  lifecycle cleanup and export compatibility, then test the selected real host.
+  The current image contract does not execute HTML. This record schedules no
+  job, starts no app and authorizes no cross-chat message.
+- **MAP-ICON-01 — future:** let the user replace a button's schematic action icon
+  with a validated icon choice, restore inherited defaults and retain those
+  presentation overrides separately from action names, sources and bindings.
+  Global icon color is already a reversible planner option.
+
+The standalone planner's implementation/verification scope is recorded in
+[the map delivery record](SPARSE6-ADDITIONAL-GAME-MAPS-2026-10-12.md).
+
 ## Goal
 
 Keep one canonical Azeron physical map and its emitted key outputs, then show game-specific action names on the same button geometry. Switching the selected game changes the labels only; it must not silently change the Azeron profile, layer, or emitted keys.

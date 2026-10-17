@@ -1,5 +1,5 @@
 -- Native DLSS quality cycling for Cyberpunk 2077 2.31 / CET 1.37.1.
--- F6 is prebound in CET bindings.json; F7 belongs to OptiScaler; F9 remains Quick Load.
+-- F9 is prebound in CET bindings.json; F7 belongs to OptiScaler; F6 is the user-selected Quick Load key.
 local modes = { "DLAA", "Quality", "Balanced", "Performance" }
 local queued = false
 local verification = nil
@@ -30,7 +30,7 @@ registerForEvent("onDraw", function()
         local ok, reason = pcall(function()
             local kind = item.isError and ImGui.ToastType.Warning or ImGui.ToastType.Info
             local toast = ImGui.Toast.new(kind, 4000, item.message)
-            toast:SetTitle("DLSS Super Resolution (F6)")
+            toast:SetTitle("DLSS Super Resolution (F9)")
             ImGui.ShowToast(toast)
         end)
         if not ok then print("[GraphicsHotkeys] Notification failed: " .. tostring(reason)) end
@@ -54,7 +54,7 @@ local function readControls()
     local quality = settings:GetVar("/graphics/presets", "DLSS")
     if not scaling or not quality then error("Native DLSS controls are unavailable") end
     if tostring(scaling:GetValue()) ~= "DLSS" then
-        error("Select DLSS in the game's graphics settings before using F6")
+        error("Select DLSS in the game's graphics settings before using F9")
     end
     local dynamic = settings:GetVar("/graphics/presets", "DynamicResolutionScaling")
     if dynamic and dynamic:GetValue() == true then
@@ -64,16 +64,16 @@ local function readControls()
 end
 
 local function requestCycle()
-    if overlayOpen then notify("Close the CET overlay before using F6", true); return end
+    if overlayOpen then notify("Close the CET overlay before using F9", true); return end
     if cooldown > 0 or queued or verification then return end
     queued = true
 end
 
-registerHotkey("cycle_dlss_quality", "Cycle native DLSS quality (F6)", requestCycle)
+registerHotkey("cycle_dlss_quality", "Cycle native DLSS quality (F9)", requestCycle)
 
 registerForEvent("onInit", function()
     clearRequest() -- Never replay a request from an earlier session.
-    print("[GraphicsHotkeys] Ready: F6 or the NR compact panel cycles native DLSS quality.")
+    print("[GraphicsHotkeys] Ready: F9 or the NR compact panel cycles native DLSS quality.")
 end)
 
 registerForEvent("onOverlayOpen", function() overlayOpen = true end)

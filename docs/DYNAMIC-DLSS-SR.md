@@ -1,12 +1,35 @@
 # Dynamic DLSS Super Resolution with a target frame rate
 
-Reviewed 2026-09-14. The user selected **30 base rendered FPS** for Cyberpunk. A target/bounds control has been added to the prepared OptiScaler F12 + CET package; it is **not installed or gameplay-verified** while Batman/Steam are running. It delegates per-frame adjustment to Cyberpunk's native DRS. The earlier research below did not activate it.
+## User default — clarified 2026-09-14
+
+The user explicitly selected a **dynamic-resolution target of 30 base rendered FPS**, before frame generation. Apply it only with supported, enabled native or mod-provided FG/MFG. This is an SR render-workload target, not a hard cap on the game or on generated/display FPS. It does not change NR dimensions or the Dynamic MFG display-FPS target.
+
+| Current conditions | Default SR behavior |
+|---|---|
+| FG/MFG supported and enabled; engine dynamic SR controller verified | Dynamic DLSS SR targeting 30 rendered FPS within the game's supported bounds, unless the user has selected manual mode |
+| FG unavailable, disabled or state unverified | Dynamic SR off; fixed/manual DLSS quality or render scale |
+| FG enabled but no verified dynamic SR controller | Fixed/manual DLSS; show that dynamic SR is unavailable |
+| User disables dynamic mode or selects manual DLSS quality/scale | Restore/apply the saved manual choice; keep automatic SR off until explicitly enabled again |
+
+Do not force a 30-FPS limiter, install FG to qualify, invent a no-FG target, or silently choose a lower manual quality. These are defaults for future requested installs/control updates, not evidence that existing packages implement the policy.
+
+### Required controls and transitions
+
+- Use a supported existing panel for **Dynamic DLSS SR On/Off**, the target and valid bounds, manual quality/render scale, FG status and actual DLSS input/output dimensions. F12 is reserved for Ultra+ in games where it is installed. Keep requested settings and observed results distinct.
+- Save the last manual SR choice before enabling dynamic mode. Turning dynamic mode off restores that choice and leaves DLSS enabled. A manual selection or F6 quality cycle exits dynamic mode before applying the selection.
+- If FG is disabled during dynamic SR, stop the 30-FPS mode and restore manual SR. Keep explicit manual selection across launches and FG toggles; enabling FG alone must not undo the user's Off choice.
+- Change the engine's real DLSS input resolution through a supported controller. Keep the game's output resolution separate; preserve NR settings and the single FG owner. Do not simulate dynamic SR through post-process downsampling.
+- Verify FG on/off transitions, dynamic On/Off, F6/manual selection, persistence, actual render dimensions under changing load, base FPS versus displayed FPS, and motion/UI/recreation stability. Record configured, verified and unsupported states separately. If the adapter cannot reliably enforce the FG condition, keep this automatic mode off and report the limitation.
+
+## Cyberpunk implementation status at the 2026-09-14 review
+
+The earlier Cyberpunk target/bounds control was added to a prepared OptiScaler F12 + CET package, delegating per-frame adjustment to native DRS. It remains **uninstalled and gameplay-unverified**. The current Cyberpunk installation assigns F12 to CET/Ultra+, so this candidate has a menu-key collision and must not be installed until a separate collision-free access path is resolved. The general FG condition and persistent manual override above are additional acceptance requirements; the prepared-package record does not prove they are implemented.
 
 ## Current interceptor decision
 
 | Route | What it actually supplies | Decision |
 |---|---|---|
-| Cyberpunk native DRS, controlled through the existing CET adapter and OptiScaler NR v0.8.3 F12 panel | Native target FPS and minimum/maximum engine render percentages; engine DLSS inputs remain native | Selected for this prepared package. Start at 30 FPS, 50–100%; keep SR model L. Verify real subrect dimensions under changing scene load before calling it working. |
+| Cyberpunk native DRS, controlled through the existing CET adapter and an **uninstalled** OptiScaler NR v0.8.3 F12 panel | Native target FPS and minimum/maximum engine render percentages; engine DLSS inputs remain native | Prepared at 30 FPS, 50–100%; keep SR model L. F12 now belongs to installed CET/Ultra+, so resolve the collision before considering this candidate. Verify real subrect dimensions under changing scene load before calling it working. |
 | Standard OptiScaler / the inspected NR fork alone | DLSS interception and DRS min/max-query overrides; its documented FPS-target control is Dynamic MFG | No verified generic SR target-FPS controller. Existing engine DRS can operate through an interceptor, but the interceptor does not create engine DRS support. |
 | DLSSTweaks | DLAA, model and per-quality scale overrides, dynamic-resolution compatibility offsets | No documented generic SR FPS-target loop in the inspected configuration. Do not add it alongside the existing interceptor for this feature. |
 | DLSS Enabler | Upscaler routing and adaptive/dynamic frame-generation controls | Its documented FramerateLimit/FrameGenerationMode is about generated frames, not a native render-resolution FPS controller. |
@@ -14,7 +37,7 @@ Reviewed 2026-09-14. The user selected **30 base rendered FPS** for Cyberpunk. A
 
 Sources checked: [OptiScaler configuration](https://github.com/optiscaler/OptiScaler/blob/master/OptiScaler.ini), [open SR target-FPS request](https://github.com/optiscaler/OptiScaler/discussions/584), [DLSSTweaks configuration](https://github.com/emoose/DLSSTweaks/blob/master/dlsstweaks.ini), [DLSS Enabler configuration](https://github.com/artur-graniszewski/DLSS-Enabler/blob/main/Dll%20version/nvngx.ini). The open request alone does not establish absence; the inspected configuration/source and lack of a demonstrated engine controller are the relevant limit.
 
-The new [Cyberpunk control](../examples/cyberpunk-2077/UnifiedControls/README.md) sends one validated native-settings transaction. It does not estimate base FPS from generated FPS or repeatedly recreate DLSS quality modes in a Lua loop. Target and bounds are editable in F12; F6 exits DRS. The native target/bounds readback and real render-size observations are separate. At 4K, the selected 50–100% per-axis bounds request 1920×1080 through 3840×2160 input, subject to native/runtime limits. A 30-FPS target is not a guaranteed minimum when CPU, NR or other fixed costs dominate.
+The new [Cyberpunk control](../examples/cyberpunk-2077/UnifiedControls/README.md) sends one validated native-settings transaction. It does not estimate base FPS from generated FPS or repeatedly recreate DLSS quality modes in a Lua loop. Target and bounds in this uninstalled candidate use F12; that conflicts with the currently installed CET/Ultra+ F12 overlay. Do not install the candidate until the collision is resolved. F6 exits DRS. The native target/bounds readback and real render-size observations are separate. At 4K, the selected 50–100% per-axis bounds request 1920×1080 through 3840×2160 input, subject to native/runtime limits. A 30-FPS target is not a guaranteed minimum when CPU, NR or other fixed costs dominate.
 
 ## Feasibility
 
@@ -47,4 +70,4 @@ Use **base rendered FPS** for evaluating rendering workload, measuring generated
 
 The technology is established. Evidence for a universal target-FPS controller in the installed OptiScaler forks is weak: reviewed source exposes DRS min/max query overrides, while its FPS target control belongs to **Dynamic Multi Frame Generation**, a different feature. A generic bridge cannot by itself make an engine render different-sized buffers correctly.
 
-Future activation should first select the target base FPS and bounds, preserve the stable profile, then verify changing render dimensions, frame times, motion/UI and recreation. No such experiment was scheduled or started here.
+Future activation should first verify the FG condition, use the selected 30-base-FPS default unless explicitly changed, query valid bounds, preserve the stable profile, then verify the controls and transitions above. No new experiment was scheduled or started by this policy update.

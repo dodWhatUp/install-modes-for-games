@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "kind": "game_support_pack",
+  "pack_version": "1.0.0",
+  "definition": {
+    "game_id": "pathfinder-wrath-of-the-righteous",
+    "name": "Pathfinder: Wrath of the Righteous",
+    "manager_id": "unity-mod-manager",
+    "adapter": "umm",
+    "platform": "windows",
+    "executable_any": [
+      "Wrath.exe"
+    ],
+    "mods_relative": "Mods",
+    "loader_markers": [],
+    "scan_depth": 3,
+    "review_note": "Filesystem metadata only. Build/runtime compatibility and installation must be reviewed independently."
+  },
+  "recipe": null,
+  "sources": [
+    {
+      "url": "https://github.com/Shadowy-Ranger/WoTR_DialogueViewer",
+      "checked_on": "2026-10-13",
+      "evidence": "upstream-documented"
+    }
+  ],
+  "notes": [
+    "Layout/identification only, not a selected or tested mod list. Import a reviewed recipe for this game; do not reuse Kingmaker mods.",
+    "No loader marker is assumed; UMM installation and exact game version still require review."
+  ]
+}

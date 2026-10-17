@@ -1,0 +1,11 @@
+{
+  "python_files_syntax_checked": 38,
+  "guide_links_checked": 8,
+  "missing_guide_links": [],
+  "pack_schemas_validated": 27,
+  "html_visual_render_tested": false,
+  "user_screen_capture": false,
+  "notes": [
+    "No browser/remote gate was retried or bypassed. Headless Tk callback tests are in the main validation report."
+  ]
+}

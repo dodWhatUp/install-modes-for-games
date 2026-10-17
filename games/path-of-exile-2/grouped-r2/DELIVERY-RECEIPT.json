@@ -1,0 +1,33 @@
+{
+  "revision": "2026-10-12-poe2-grouped-r2",
+  "receipt_scope": "Post-package delivery receipt; this file is newer than the delivered ZIP",
+  "package": {
+    "drive_id": "13nvYI7YjNm1pK4Dxo4e_fMpqjzLDVGje",
+    "url": "https://drive.google.com/file/d/13nvYI7YjNm1pK4Dxo4e_fMpqjzLDVGje/view?usp=drivesdk",
+    "size": 1150333,
+    "sha256": "3396E2B3A32623DE9705C3611C460BE12726F3CA63869C6DFD47DD95E22EFD71",
+    "members": 61,
+    "drive_download_hash_verified": true,
+    "requested_reader_access_verified": true
+  },
+  "recovery": {
+    "drive_id": "1MPHDD_tXLyJu5i7OoJ_9Qm85RpR6VYAn",
+    "url": "https://drive.google.com/file/d/1MPHDD_tXLyJu5i7OoJ_9Qm85RpR6VYAn/view?usp=drivesdk",
+    "size": 129793,
+    "sha256": "F62398311358E7A124BE2112CF12E44C7822F302FAA9DEA92D0442C8CE89A790",
+    "drive_download_hash_verified": true,
+    "requested_reader_access_verified": true,
+    "coverage": "31 earlier native software profile JSONs and available global JSONs; IndexedDB and onboard state excluded"
+  },
+  "configuration": {
+    "earlier_profile_files_byte_preserved": 31,
+    "new_native_profile_files": 2,
+    "native_library_file_count": 33,
+    "native_export_matches_library_files": true,
+    "game_configuration_changed": false,
+    "ui_recognition": "pending full reload",
+    "active_selection": "not changed by this task",
+    "physical_gameplay_acceptance": "unverified",
+    "overlay_host_activation": "pending"
+  }
+}

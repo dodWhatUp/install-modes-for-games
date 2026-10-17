@@ -1,0 +1,25 @@
+{
+  "id": "path-of-exile-2",
+  "name": "Path of Exile 2",
+  "schema_status": "original_and_context_review",
+  "locations": [
+    {
+      "root": "documents",
+      "pattern": "My Games/Path of Exile 2/poe2_production_Config.ini"
+    }
+  ],
+  "format": "INI sections ACTION_KEYS and WASD_ACTION_KEYS; numeric key codes and optional modifier fields",
+  "limitations": [
+    "The primary requested SPARSE6 family has 46 placements per preset. GROUPED R2 is retained as a separate alternative with 33 placements per preset and 13 capacity-deferred actions per preset.",
+    "Installing both family alternatives into one active game map would conflict. No change to the active movement mode, skill loadout, mouse controls or Azeron profiles is authorized.",
+    "Current game field names must confirm new actions such as Market. The 2024 firsthand config dump does not establish every 2026 option.",
+    "GROUPED R2 can displace capacity-deferred actions (for example inventory). Those actions cannot silently be cleared."
+  ],
+  "source_urls": [
+    "https://github.com/doitsujin/dxvk/issues/4530",
+    "https://www.pathofexile.com/forum/view-thread/3708664"
+  ],
+  "discovery_only": true,
+  "native_recipe_bundled": false,
+  "source_review_date": "2026-10-13"
+}

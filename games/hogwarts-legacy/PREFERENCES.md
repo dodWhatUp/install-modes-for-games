@@ -1,7 +1,8 @@
 # Hogwarts Legacy — Preferences
 
-Last confirmed: 2026-09-02
+Last confirmed: 2026-10-07
 
+- Use Home for the full OptiScaler menu. If a separate ReShade/RenoDX profile is later installed, use Delete for ReShade.
 - Favor high visual quality at 4K with native DLSS and native FG/MFG ownership.
 - Keep OptiScaler FG disabled when native Streamline FG is enabled.
 - Prefer Ultra Plus as the integrated graphics/performance baseline; do not layer Ascendio, Cinematic Ultra, SLPF, or arbitrary Engine.ini packs over it without an explicit compatibility review.

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "purpose": "Task-selected application setup record. Data only; importing it does not execute a job.",
+  "project": "SELECT_PROJECT",
+  "guest_os": "linux",
+  "source_revision": null,
+  "source_archive_sha256": null,
+  "dependency_manifests": [],
+  "guest_setup_script": null,
+  "guest_start_argv": [],
+  "configuration_files": [],
+  "acceptance": {"build": null, "browser": null, "native_app": null, "clean_shutdown": null},
+  "excluded": ["credentials", "personal host profiles", "license activation", "unrelated project data"],
+  "runtime_evidence": "Each target machine records its own observed results. Do not copy PASS from another host."
+}

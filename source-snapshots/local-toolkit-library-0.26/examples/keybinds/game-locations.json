@@ -1,0 +1,461 @@
+{
+  "schema_version": 1,
+  "source_archive_sha256": "e3fd70787f2bf69a9807c4a0fad9f412c6dcdf50b9ea4641af0055c73c7dc81e",
+  "status": "derived_location_index_not_native_schema_certification",
+  "games": [
+    {
+      "id": "bayonetta-pc",
+      "name": "Bayonetta PC",
+      "schema_status": "storage_unresolved",
+      "locations": [
+        {
+          "root": "documents",
+          "pattern": "Bayonetta/system_data"
+        },
+        {
+          "root": "steam_user",
+          "pattern": "460790/remote/system_data"
+        }
+      ],
+      "format": "Opaque system-data candidates; authoritative keyboard-binding storage/decoder unresolved",
+      "limitations": [
+        "Firsthand reports disagree about which copy stores which settings. Documents system_data may chiefly contain graphics settings; resetting it did not consistently reset keybindings.",
+        "No verified current binary schema or keybinding record layout. No replacement file or repair of the invalid Azeron ZIP is attempted.",
+        "V3 gameplay and menus are separate; Punch/Kick and weapon scrolling remain mouse-owned."
+      ],
+      "source_urls": [
+        "https://steamcommunity.com/app/460790/discussions/0/1319961618835302733/",
+        "https://steamcommunity.com/app/460790/discussions/0/1734333281939610244/",
+        "https://steamcommunity.com/app/460790/discussions/0/135514507322469998/"
+      ],
+      "discovery_only": true,
+      "native_recipe_bundled": false,
+      "source_review_date": "2026-10-13"
+    },
+    {
+      "id": "bioshock-2-remastered",
+      "name": "BioShock 2 Remastered",
+      "schema_status": "original_and_schema_review",
+      "locations": [
+        {
+          "root": "roaming",
+          "pattern": "BioshockHD/Bioshock2/User.ini"
+        },
+        {
+          "root": "roaming",
+          "pattern": "My Games/Bioshock Epic HD/Bioshock2/User.ini"
+        }
+      ],
+      "format": "INI key-to-command mappings, with multiple sections/contexts",
+      "limitations": [
+        "Map the actual command strings and their aliases, including contextual Use/Interact. Preserve mouse keys and all unrelated INI lines.",
+        "The V3 Exit Scout Mode -> Tab placement needs a console/context collision audit on the installed build."
+      ],
+      "source_urls": [
+        "https://steamcommunity.com/app/409720/discussions/0/343786745999791557/",
+        "https://steamcommunity.com/app/409720/discussions/0/1645418344568208939/",
+        "https://www.nexusmods.com/bioshock2/mods/13"
+      ],
+      "discovery_only": true,
+      "native_recipe_bundled": false,
+      "source_review_date": "2026-10-13"
+    },
+    {
+      "id": "bioshock-infinite",
+      "name": "BioShock Infinite",
+      "schema_status": "encoded_schema_unresolved",
+      "locations": [
+        {
+          "root": "documents",
+          "pattern": "My Games/BioShock Infinite/XGame/Config/XUserOptions.ini"
+        }
+      ],
+      "format": "XUserOptions.ini contains an encoded UserKeyMappings value, not a simple action table",
+      "limitations": [
+        "A firsthand edit-and-diff investigation identifies UserKeyMappings as an encoded blob. Ordinary Unreal Bindings lines are not an established substitute.",
+        "The 20 requested assignments remain a source-derived plan; all other preferences and the mouse controls must remain intact."
+      ],
+      "source_urls": [
+        "https://steamcommunity.com/app/8870/discussions/0/828935672950243443"
+      ],
+      "discovery_only": true,
+      "native_recipe_bundled": false,
+      "source_review_date": "2026-10-13"
+    },
+    {
+      "id": "bioshock-remastered",
+      "name": "BioShock Remastered",
+      "schema_status": "original_and_schema_review",
+      "locations": [
+        {
+          "root": "roaming",
+          "pattern": "BioshockHD/Bioshock/User.ini"
+        }
+      ],
+      "format": "INI key-to-command bindings in User.ini",
+      "limitations": [
+        "Preserve section-specific commands, mouse fire/mode switching/scrolling and non-binding preferences.",
+        "The planner partly cites a Mac-port manual. The actual Windows file must establish command identifiers and available actions."
+      ],
+      "source_urls": [
+        "https://www.flickr.com/photos/ipg_igor-poberezhets/29690005526",
+        "https://www.feralinteractive.com/en/manuals/bioshockremastered/latest/steam/"
+      ],
+      "discovery_only": true,
+      "native_recipe_bundled": false,
+      "source_review_date": "2026-10-13"
+    },
+    {
+      "id": "control",
+      "name": "Control",
+      "schema_status": "binary_schema_unresolved",
+      "locations": [
+        {
+          "root": "steam_user",
+          "pattern": "870780/remote/preferences_data"
+        },
+        {
+          "root": "documents",
+          "pattern": "My Games/Control/Saves/preferences_data"
+        },
+        {
+          "root": "local",
+          "pattern": "Remedy/Control/Default-Epic-User/preferences/data.chunk"
+        },
+        {
+          "root": "local",
+          "pattern": "Remedy/Control/Default-Generic-User/preferences/data.chunk"
+        }
+      ],
+      "format": "Opaque binary preferences; storefront-dependent filenames",
+      "limitations": [
+        "A binary preferences file is not renderer.ini. Renderer settings must not be fabricated as keyboard bindings.",
+        "The current keyboard-record schema and any integrity fields remain unresolved. Microsoft Store/WGS variants are not assigned an invented container filename.",
+        "V3 Switch Weapon shares a documented context/hold relationship with Use/Seize; the actual file must establish whether the bindings are separable."
+      ],
+      "source_urls": [
+        "https://www.gog.com/forum/control/control_save_game_files/page2",
+        "https://community.pcgamingwiki.com/files/file/2581-control-hdrultrawidedlssrt-patch/page/6/",
+        "https://rutube.ru/video/dd6260e728040ec5246fa2c64e6d5226/"
+      ],
+      "discovery_only": true,
+      "native_recipe_bundled": false,
+      "source_review_date": "2026-10-13"
+    },
+    {
+      "id": "cyberpunk-2077",
+      "name": "Cyberpunk 2077",
+      "schema_status": "original_and_context_review",
+      "locations": [
+        {
+          "root": "local",
+          "pattern": "CD Projekt Red/Cyberpunk 2077/UserSettings.json"
+        },
+        {
+          "root": "cyberpunk",
+          "pattern": "r6/config/inputUserMappings.xml"
+        },
+        {
+          "root": "cyberpunk",
+          "pattern": "r6/config/inputContexts.xml"
+        },
+        {
+          "root": "cyberpunk",
+          "pattern": "engine/config/platform/pc/input_loader.ini"
+        },
+        {
+          "root": "cyberpunk",
+          "pattern": "r6/cache/inputUserMappings.xml"
+        },
+        {
+          "root": "cyberpunk",
+          "pattern": "r6/cache/inputContexts.xml"
+        },
+        {
+          "root": "cyberpunk",
+          "pattern": "r6/input/*.xml"
+        }
+      ],
+      "format": "JSON user-setting entries with IK_* keycodes; XML mapping/context definitions",
+      "limitations": [
+        "V3 specifies 28 placements but defers 30 contextual actions. Call vehicle, vehicle controls and braindance functions cannot be moved by a global text replacement.",
+        "The retained evidence distinguishes right Ctrl/Shift hold bindings from left Ctrl/Shift dash/toggle bindings. The generic planner labels do not prove they are the same physical key.",
+        "Preserve graphics hotkeys and CET/UltraPlus/ReShade settings. Existing input mods may redirect the effective XML, so their files must be audited without enabling or replacing mods."
+      ],
+      "source_urls": [
+        "https://support.cdprojektred.com/en/cyberpunk/pc/gameplay/issue/2407/i-am-experiencing-issues-with-controls",
+        "https://github.com/steliosc/Cyberpunk-2077-Custom-Controls-Guide",
+        "https://github.com/jackhumbert/cyberpunk2077-input-loader"
+      ],
+      "discovery_only": true,
+      "native_recipe_bundled": false,
+      "source_review_date": "2026-10-13"
+    },
+    {
+      "id": "devil-may-cry-5",
+      "name": "Devil May Cry 5",
+      "schema_status": "storage_unresolved",
+      "locations": [
+        {
+          "root": "dmc5",
+          "pattern": "dmc5config.ini"
+        }
+      ],
+      "format": "dmc5config.ini exists, but keyboard-binding ownership and system-save record schema are not established",
+      "limitations": [
+        "Capcom identifies the configuration and save directory, but does not identify an editable keyboard section in the cited FAQ.",
+        "No invented [KEYBOARD] section and no borrowed system-save offsets. The exact storage/record format remains a blocker even after the initial inspection samples.",
+        "All three source characters (Nero, Dante, V) are included. The planner contains no Vergil V3 variant."
+      ],
+      "source_urls": [
+        "https://steamcommunity.com/app/601150/discussions/0/1839063537789550470/"
+      ],
+      "discovery_only": true,
+      "native_recipe_bundled": false,
+      "source_review_date": "2026-10-13"
+    },
+    {
+      "id": "doom-the-dark-ages",
+      "name": "DOOM The Dark Ages",
+      "schema_status": "original_and_schema_review",
+      "locations": [
+        {
+          "root": "saved_games",
+          "pattern": "id Software/DOOMTheDarkAges/base/DOOMTheDarkAgesConfig.cfg"
+        },
+        {
+          "root": "saved_games",
+          "pattern": "id Software/DOOMTheDarkAges/base/DOOMTheDarkAgesConfig.local"
+        }
+      ],
+      "format": "Native .cfg / .local settings; installed action identifiers and bind-set ownership require inspection",
+      "limitations": [
+        "Do not borrow DOOM Eternal impulse numbers or assume the local renderer/cvar file is a complete binding map.",
+        "Confirm Slayer, Atlan and dragon/context action ownership where the source labels involve those actions. Preserve renderer, HDR, DLSS, performance and all unrelated settings.",
+        "The project records the game as previously uninstalled and a graphics experiment as paused; this package does not reinstall or resume it."
+      ],
+      "source_urls": [
+        "https://steamcommunity.com/app/3017860/discussions/0/599653207707285077/",
+        "https://steamcommunity.com/app/3017860/discussions/0/599654293341000813/",
+        "https://help.bethesda.net/app/answers/detail/a_id/70057/~/where-are-the-save-files-located-on-pc-for-doom%3A-the-dark-ages%3F"
+      ],
+      "discovery_only": true,
+      "native_recipe_bundled": false,
+      "source_review_date": "2026-10-13"
+    },
+    {
+      "id": "god-of-war-ragnarok",
+      "name": "God of War Ragnarok",
+      "schema_status": "binary_schema_unresolved",
+      "locations": [
+        {
+          "root": "saved_games",
+          "pattern": "God of War Ragnarök/*/userpreferences"
+        },
+        {
+          "root": "saved_games",
+          "pattern": "God of War Ragnarok/*/userpreferences"
+        }
+      ],
+      "format": "Extensionless userpreferences container; keyboard schema not verified",
+      "limitations": [
+        "The Unicode ö in the folder name matters. The collector also checks the plain-o spelling as a fallback candidate and labels it as such.",
+        "The current keyboard-record representation and integrity rules have not been verified; no fabricated INI/JSON is supplied.",
+        "No PSN-related mod, bypass or preference reset is part of this work."
+      ],
+      "source_urls": [
+        "https://steamcommunity.com/app/2322010/discussions/0/4843148117770530553/",
+        "https://steamcommunity.com/app/2322010/discussions/1/568164991158572163/"
+      ],
+      "discovery_only": true,
+      "native_recipe_bundled": false,
+      "source_review_date": "2026-10-13"
+    },
+    {
+      "id": "gta-v-enhanced",
+      "name": "GTA V Enhanced",
+      "schema_status": "original_and_schema_review",
+      "locations": [
+        {
+          "root": "documents",
+          "pattern": "Rockstar Games/GTAV Enhanced/Profiles/*/control/user.xml"
+        },
+        {
+          "root": "documents",
+          "pattern": "Rockstar Games/GTAV Enhanced/Profiles/*/control/user.autosave"
+        }
+      ],
+      "format": "XML control mappings with action, source-device and parameter entries; sparse overrides",
+      "limitations": [
+        "Use Enhanced, not a Legacy GTA V configuration. Firsthand XML examples identify Input/Source/Parameters and KEY_* keyboard tokens.",
+        "Mouse/wheel XML records must remain byte-preserved. A sparse override cannot safely be replaced by an invented full default table.",
+        "Reconcile on-foot, vehicle and menu contexts and the V3 camera binding against the installed build."
+      ],
+      "source_urls": [
+        "https://steamcommunity.com/app/3240220/discussions/0/597394435107464246/",
+        "https://steamcommunity.com/app/3240220/discussions/0/573795107743050651/"
+      ],
+      "discovery_only": true,
+      "native_recipe_bundled": false,
+      "source_review_date": "2026-10-13"
+    },
+    {
+      "id": "hogwarts-legacy",
+      "name": "Hogwarts Legacy",
+      "schema_status": "original_and_schema_review",
+      "locations": [
+        {
+          "root": "local",
+          "pattern": "Hogwarts Legacy/Saved/Config/WindowsNoEditor/Input.ini"
+        }
+      ],
+      "format": "Unreal-style Input.ini ActionMappings, with modifier flags and game-specific fields",
+      "limitations": [
+        "Action names, groups and the existing press/hold/chord configuration must come from this file/build, not from another Unreal game.",
+        "Preserve controller/mouse mappings and all non-target lines. Treat mod-added and Photo Mode controls as version-dependent.",
+        "All 41 source placements are extracted, including secondary spell/panel and contextual placements."
+      ],
+      "source_urls": [
+        "https://www.curseforge.com/hogwarts-legacy/mods/ifonly-skipmerlintrials",
+        "https://www.nexusmods.com/hogwartslegacy/articles/140"
+      ],
+      "discovery_only": true,
+      "native_recipe_bundled": false,
+      "source_review_date": "2026-10-13"
+    },
+    {
+      "id": "middle-earth-shadow-of-war",
+      "name": "Middle-earth Shadow of War",
+      "schema_status": "storage_and_action_support_unresolved",
+      "locations": [],
+      "format": "Native keyboard-binding file/decoder not verified; known .cfg files are graphics-related",
+      "limitations": [
+        "A firsthand investigation found graphics.cfg and render.cfg but did not establish a keyboard-binding file. Its suggestion that saves own bindings remains speculation.",
+        "V3 Map: M -> N is additionally unresolved because users report that map cannot be rebound through the normal controls menu.",
+        "No external remapper or device-output change is substituted for an unsupported native mapping."
+      ],
+      "source_urls": [
+        "https://steamcommunity.com/app/356190/discussions/0/2946998508808164641/"
+      ],
+      "discovery_only": true,
+      "native_recipe_bundled": false,
+      "source_review_date": "2026-10-13"
+    },
+    {
+      "id": "nier-automata",
+      "name": "NieR Automata",
+      "schema_status": "binary_schema_and_mouse_review",
+      "locations": [
+        {
+          "root": "documents",
+          "pattern": "My Games/NieR_Automata/SystemData.dat"
+        }
+      ],
+      "format": "Per-slot binary saves contain a binding block in a documented older implementation; global SystemData is separate",
+      "limitations": [
+        "A published save-tool implementation locates a binding block in SlotData. Its old offsets/lengths are evidence of storage, not authorization to patch a current save at assumed offsets.",
+        "Current slot layout, key-code representation and integrity checks must be verified. Steam/account identity and progression must remain untouched.",
+        "V3 explicitly defers Fire, Light Attack and Heavy Attack for mouse-ownership checking. Those are not missing placements to invent."
+      ],
+      "source_urls": [
+        "https://github.com/RisingFog/NierAutomataSaveImporter",
+        "https://steamcommunity.com/app/524220/discussions/0/135511913387958505/"
+      ],
+      "discovery_only": true,
+      "native_recipe_bundled": false,
+      "source_review_date": "2026-10-13"
+    },
+    {
+      "id": "path-of-exile-2",
+      "name": "Path of Exile 2",
+      "schema_status": "original_and_context_review",
+      "locations": [
+        {
+          "root": "documents",
+          "pattern": "My Games/Path of Exile 2/poe2_production_Config.ini"
+        }
+      ],
+      "format": "INI sections ACTION_KEYS and WASD_ACTION_KEYS; numeric key codes and optional modifier fields",
+      "limitations": [
+        "The primary requested SPARSE6 family has 46 placements per preset. GROUPED R2 is retained as a separate alternative with 33 placements per preset and 13 capacity-deferred actions per preset.",
+        "Installing both family alternatives into one active game map would conflict. No change to the active movement mode, skill loadout, mouse controls or Azeron profiles is authorized.",
+        "Current game field names must confirm new actions such as Market. The 2024 firsthand config dump does not establish every 2026 option.",
+        "GROUPED R2 can displace capacity-deferred actions (for example inventory). Those actions cannot silently be cleared."
+      ],
+      "source_urls": [
+        "https://github.com/doitsujin/dxvk/issues/4530",
+        "https://www.pathofexile.com/forum/view-thread/3708664"
+      ],
+      "discovery_only": true,
+      "native_recipe_bundled": false,
+      "source_review_date": "2026-10-13"
+    },
+    {
+      "id": "pathfinder-kingmaker",
+      "name": "Pathfinder Kingmaker",
+      "schema_status": "registry_schema_review",
+      "locations": [],
+      "format": "Unity preferences in Windows Registry; exact binding value types/payload need inspection",
+      "limitations": [
+        "A native keybinding file analogous to Wrath of the Righteous settings.json has not been established for Kingmaker.",
+        "A future deliverable should change only verified binding values and preserve value types, unrelated preferences and exact rollback. A whole-branch overwrite is not an acceptable shortcut.",
+        "A registry export may contain non-binding preferences; the bundle remains private."
+      ],
+      "source_urls": [
+        "https://steamcommunity.com/app/640820/discussions/0/1734339901253520870/",
+        "https://steamcommunity.com/app/640820/discussions/0/1842440600621279126/",
+        "https://www.gog.com/forum/pathfinder_kingmaker/game_stuck_at_loading_screen"
+      ],
+      "discovery_only": true,
+      "native_recipe_bundled": false,
+      "source_review_date": "2026-10-13"
+    },
+    {
+      "id": "red-dead-redemption-2",
+      "name": "Red Dead Redemption 2",
+      "schema_status": "encoded_schema_review",
+      "locations": [
+        {
+          "root": "documents",
+          "pattern": "Rockstar Games/Red Dead Redemption 2/Profiles/*/KeyMappings"
+        }
+      ],
+      "format": "Extensionless KeyMappings file; safe encoding/record round-trip must be established from the original",
+      "limitations": [
+        "The binding-mod author describes editing with a binary editor; ordinary Notepad editing is not established as safe. Do not treat a copied XML-shaped fragment as a valid native replacement.",
+        "Confirm record encoding, IDs, duplicated/contextual actions and all relevant on-foot/mounted/vehicle/menu contexts. Preserve L/R mouse and scrolling.",
+        "No downloaded third-party complete keymap is substituted for your current settings."
+      ],
+      "source_urls": [
+        "https://www.nexusmods.com/reddeadredemption2/mods/205",
+        "https://steamcommunity.com/app/1174180/discussions/0/3191360735182412182/"
+      ],
+      "discovery_only": true,
+      "native_recipe_bundled": false,
+      "source_review_date": "2026-10-13"
+    },
+    {
+      "id": "v-rising",
+      "name": "V Rising",
+      "schema_status": "original_and_schema_review",
+      "locations": [
+        {
+          "root": "locallow",
+          "pattern": "Stunlock Studios/VRising/Settings/v*/InputSettings.json"
+        }
+      ],
+      "format": "JSON input settings in a versioned per-user settings directory",
+      "limitations": [
+        "The publisher documents v3; this is not a claim that your currently installed build necessarily still uses v3. The original file and directory evidence determine that.",
+        "Do not replace the shipped StreamingAssets settings or server configuration. Preserve existing mouse, alternate mappings and unrelated JSON properties."
+      ],
+      "source_urls": [
+        "https://guides.playvrising.com/hc/en-us/articles/18722243500189-Known-Issues-V-Rising-1-0",
+        "https://steamcommunity.com/app/1604030/discussions/0/4358998752032193630/"
+      ],
+      "discovery_only": true,
+      "native_recipe_bundled": false,
+      "source_review_date": "2026-10-13"
+    }
+  ]
+}

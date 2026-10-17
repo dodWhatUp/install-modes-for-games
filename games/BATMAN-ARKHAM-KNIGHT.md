@@ -1,5 +1,7 @@
 # Batman: Arkham Knight
 
+**2026-10-07 control migration:** ReShade/Luma now opens with **Delete** (`KeyOverlay=46,0,0,0`) and the full OptiScaler menu opens with **Home** (`ShortcutKey=0x24`). The game/helpers were closed, both prior INIs were preserved in a private just-in-time snapshot, and static one-setting diffs passed. Runtime input remains pending. Earlier Home/ReShade and Delete/OptiScaler observations below are historical.
+
 **2026-09-14 activation check:** the already-running game again confirmed 3840×2160 DLAA and 960×540 NR evaluation/composition. The Home/Luma menu showed Auto and preset L. The old Feeder and Lumenite shader techniques have been enabled in the preset, but the Feeder add-on remains disabled; those effects are not the current neural activation controls. No graphics settings changed during diagnosis. See the [live activation findings](batman-arkham-knight/HISTORY.md).
 
 **Current state, 2026-09-13 late evening:** ReShade + Luma build 649 + custom OptiScaler DLSS-NR v0.7.7 are installed and have passed a short gameplay test. Luma supplies engine motion/depth/color and jitter; OptiScaler performs native-resolution DLAA and one NR pass. The old crashing Feeder chain remains disabled. See the [current history](batman-arkham-knight/HISTORY.md), [controls](batman-arkham-knight/CONTROLS.md) and [sanitized evidence](../evidence/BATMAN-ARKHAM-KNIGHT.txt).

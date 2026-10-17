@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "kind": "game_mod_recipe",
+  "game_id": "pathfinder-kingmaker",
+  "name": "Pathfinder: Kingmaker",
+  "game_exe": "Kingmaker.exe",
+  "store_ids": {
+    "steam": "640820"
+  },
+  "manager_id": "unity-mod-manager",
+  "manager_reason": "Author-documented loader and Mods/Info.json import format for the selected Kingmaker mods. RHI is a separate graphics manager, not this gameplay-mod loader.",
+  "reviewed": "2026-10-13",
+  "game_version_floor": "2.1.7",
+  "umm_version_floor": "0.23.0",
+  "presets": {
+    "real-time": [
+      "unity-mod-manager",
+      "kingmaker-tactics",
+      "buff-bot"
+    ],
+    "turn-based": [
+      "unity-mod-manager",
+      "buff-bot"
+    ]
+  },
+  "items": [
+    {
+      "id": "unity-mod-manager",
+      "name": "Unity Mod Manager",
+      "kind": "manager",
+      "display_version": "0.33.2 (author listing; mirror must be checked)",
+      "max_download_bytes": 16777216,
+      "sha256": null,
+      "download_page": "https://www.nexusmods.com/site/mods/21?tab=files",
+      "source": {
+        "kind": "author_https",
+        "url": "https://www.dropbox.com/s/wz8x8e4onjdfdbm/UnityModManager.zip?dl=1",
+        "author_reference": "https://github.com/newman55/unity-mod-manager/blob/master/README.md"
+      },
+      "requires": [],
+      "warnings": [
+        "Loader installation remains with UMM; do not put its program archive in the game Mods folder.",
+        "The author mirror is mutable. A local hash alone does not prove the manager version."
+      ],
+      "install_adapter": "manual-loader",
+      "redistribution": "author_allows_with_credit; not_bundled_by_this_project"
+    },
+    {
+      "id": "kingmaker-tactics",
+      "name": "Kingmaker Tactics",
+      "kind": "mod",
+      "display_version": "1.0.1",
+      "umm_id": "KingmakerTactics",
+      "max_download_bytes": 16777216,
+      "sha256": "84f1bd8d9173fb0dbb9a988d71ef85c6feba79bbe13bc8a09d3a2010962be930",
+      "download_page": "https://www.nexusmods.com/pathfinderkingmaker/mods/420?tab=files",
+      "source": {
+        "kind": "github_release",
+        "repository": "Gh05d/kingmaker-tactics",
+        "tag": "v1.0.1",
+        "asset": "KingmakerTactics-1.0.1.zip"
+      },
+      "requires": [
+        "unity-mod-manager"
+      ],
+      "warnings": [
+        "Real-time only. No automatic area attacks in the conservative setup.",
+        "Enemy-stat targeting can use undiscovered statistics. This installer does not configure or enable tactics rules."
+      ],
+      "redistribution": "not_included; original downloads stay private",
+      "install_adapter": "umm-new-only",
+      "unsupported_modes": [
+        "turn-based"
+      ]
+    },
+    {
+      "id": "buff-bot",
+      "name": "Kingmaker Buff Bot",
+      "kind": "mod",
+      "display_version": "King2.0",
+      "umm_id": null,
+      "max_download_bytes": 16777216,
+      "sha256": null,
+      "download_page": "https://www.nexusmods.com/pathfinderkingmaker/mods/119?tab=files",
+      "source": {
+        "kind": "nexus",
+        "game": "pathfinderkingmaker",
+        "mod_id": 119,
+        "file_id": null
+      },
+      "requires": [
+        "unity-mod-manager"
+      ],
+      "warnings": [
+        "Avoid duplicate combat-start buff routines when Tactics is used too."
+      ],
+      "redistribution": "not_included; original downloads stay private",
+      "install_adapter": "umm-review-id-before-install",
+      "conflicts": [
+        "autobuff"
+      ]
+    },
+    {
+      "id": "ui-extensions",
+      "name": "UI Extensions",
+      "kind": "mod",
+      "display_version": "1.2.3",
+      "umm_id": null,
+      "max_download_bytes": 16777216,
+      "sha256": null,
+      "download_page": "https://www.nexusmods.com/pathfinderkingmaker/mods/99?tab=files",
+      "source": {
+        "kind": "nexus",
+        "game": "pathfinderkingmaker",
+        "mod_id": 99,
+        "file_id": null
+      },
+      "requires": [
+        "unity-mod-manager"
+      ],
+      "warnings": [
+        "Optional older mod: documented 2.0.x testing does not verify current-build compatibility."
+      ],
+      "redistribution": "not_included; original downloads stay private",
+      "install_adapter": "umm-review-id-before-install"
+    },
+    {
+      "id": "bag-of-tricks",
+      "name": "Bag of Tricks",
+      "kind": "mod",
+      "display_version": null,
+      "umm_id": null,
+      "max_download_bytes": 16777216,
+      "sha256": null,
+      "download_page": "https://www.nexusmods.com/pathfinderkingmaker/mods/26?tab=files",
+      "source": {
+        "kind": "nexus",
+        "game": "pathfinderkingmaker",
+        "mod_id": 26,
+        "file_id": null
+      },
+      "requires": [
+        "unity-mod-manager"
+      ],
+      "warnings": [
+        "Optional broad cheat/editor tool. Do not change abilities, money, difficulty, quests or undiscovered information."
+      ],
+      "redistribution": "not_included; original downloads stay private",
+      "install_adapter": "umm-review-id-before-install"
+    },
+    {
+      "id": "autobuff",
+      "name": "PathfinderAutoBuff — Kingmaker",
+      "kind": "mod",
+      "display_version": "0.2.0",
+      "umm_id": null,
+      "max_download_bytes": 16777216,
+      "sha256": null,
+      "download_page": "https://www.nexusmods.com/pathfinderkingmaker/mods/231?tab=files",
+      "source": {
+        "kind": "nexus",
+        "game": "pathfinderkingmaker",
+        "mod_id": 231,
+        "file_id": null
+      },
+      "requires": [
+        "unity-mod-manager"
+      ],
+      "warnings": [
+        "Alternative to Buff Bot, primarily for recorded preparation. Do not assume reliable in-combat execution."
+      ],
+      "redistribution": "not_included; original downloads stay private",
+      "install_adapter": "umm-review-id-before-install",
+      "conflicts": [
+        "buff-bot"
+      ]
+    }
+  ],
+  "warnings": [
+    "No game, save, keybinding, overlay, graphics setting, benchmark, or recording is changed by a plan or download.",
+    "Back up saves and establish the current game/build and loader before any installation. No current runtime compatibility is claimed."
+  ],
+  "sources": [
+    "https://www.nexusmods.com/site/mods/21",
+    "https://github.com/Gh05d/kingmaker-tactics/releases/tag/v1.0.1",
+    "https://www.nexusmods.com/pathfinderkingmaker/mods/119",
+    "https://www.nexusmods.com/pathfinderkingmaker/mods/99",
+    "https://www.nexusmods.com/pathfinderkingmaker/mods/231"
+  ],
+  "game_definition": {
+    "game_id": "pathfinder-kingmaker",
+    "name": "Pathfinder: Kingmaker",
+    "manager_id": "unity-mod-manager",
+    "adapter": "umm",
+    "platform": "windows",
+    "executable_any": [
+      "Kingmaker.exe"
+    ],
+    "mods_relative": "Mods",
+    "loader_markers": [
+      "Kingmaker_Data/Managed/UnityModManager/UnityModManager.dll"
+    ],
+    "scan_depth": 3,
+    "review_note": "Filesystem metadata only. Build/runtime compatibility and installation must be reviewed independently."
+  },
+  "support_revision": "9311e7378a0621064e87b2a0573598b09663d5233e8f8f36dc6cf56a1e22a710"
+}

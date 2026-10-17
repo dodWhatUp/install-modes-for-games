@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "kind": "game_mod_recipe",
+  "game_id": "stardew-valley",
+  "name": "Stardew Valley",
+  "manager_id": "smapi",
+  "game_exe": "Stardew Valley.exe",
+  "presets": {
+    "default": [
+      "content-patcher"
+    ]
+  },
+  "warnings": [
+    "SMAPI and Content Patcher are foundations, not a complete visual/gameplay mod collection.",
+    "Select matching released versions from the official pages. No native game validation is claimed."
+  ],
+  "items": [
+    {
+      "id": "smapi",
+      "name": "SMAPI (official installer)",
+      "kind": "manager",
+      "display_version": "Choose compatible stable release",
+      "source": {
+        "kind": "manual"
+      },
+      "download_page": "https://smapi.io/",
+      "max_download_bytes": 67108864,
+      "sha256": null,
+      "archive_layout": "generic",
+      "requires": [],
+      "conflicts": []
+    },
+    {
+      "id": "content-patcher",
+      "name": "Content Patcher",
+      "kind": "mod",
+      "display_version": "Choose compatible release",
+      "source": {
+        "kind": "nexus",
+        "game": "stardewvalley",
+        "mod_id": 1915
+      },
+      "download_page": "https://www.nexusmods.com/stardewvalley/mods/1915",
+      "max_download_bytes": 33554432,
+      "sha256": null,
+      "archive_layout": "smapi",
+      "mod_id": "Pathoschild.ContentPatcher",
+      "requires": [
+        "smapi"
+      ],
+      "conflicts": []
+    }
+  ],
+  "game_definition": {
+    "game_id": "stardew-valley",
+    "name": "Stardew Valley",
+    "manager_id": "smapi",
+    "adapter": "smapi",
+    "platform": "windows",
+    "executable_any": [
+      "Stardew Valley.exe",
+      "StardewValley.exe"
+    ],
+    "mods_relative": "Mods",
+    "loader_markers": [
+      "StardewModdingAPI.exe"
+    ],
+    "scan_depth": 3,
+    "review_note": "Filesystem metadata only. Build/runtime compatibility and installation must be reviewed independently."
+  },
+  "support_revision": "5f6c6668437e4211af0b53bf1d2a1057acf4474845531fea0520377b0f778f15"
+}

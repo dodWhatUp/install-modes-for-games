@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "kind": "game-keybind-pack",
+  "id": "bayonetta-pc",
+  "version": "0.1.0",
+  "game_id": "bayonetta-pc",
+  "title": "Bayonetta PC",
+  "keymaps": {
+    "keyboard": {
+      "Space": "Space",
+      "F": "F",
+      "E": "E",
+      "R": "R",
+      "MouseLeft": "MouseLeft",
+      "MouseRight": "MouseRight",
+      "WheelUp": "WheelUp",
+      "WheelDown": "WheelDown"
+    }
+  },
+  "files": [
+    {
+      "id": "input",
+      "adapter": "unresolved-native",
+      "locations": [
+        {
+          "root": "DOCUMENTS",
+          "pattern": "Bayonetta/system_data"
+        },
+        {
+          "root": "STEAM_USER",
+          "pattern": "460790/remote/system_data"
+        }
+      ],
+      "fields": [],
+      "inventory_complete": false,
+      "stopped_processes": [],
+      "writable": true,
+      "priority": 100,
+      "fingerprints": []
+    }
+  ],
+  "variants": [
+    {
+      "id": "keyboard",
+      "files": [
+        "input"
+      ]
+    }
+  ],
+  "presets": [],
+  "evidence": {
+    "stage": "draft",
+    "notes": "Location-research draft only: storage_unresolved",
+    "sources": []
+  },
+  "fixtures": []
+}

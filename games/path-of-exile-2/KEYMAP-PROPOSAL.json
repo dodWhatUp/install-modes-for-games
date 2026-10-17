@@ -1,0 +1,355 @@
+{
+  "proposal_revision": "2026-10-11-poe2-combat-menu-r1",
+  "status": "historical_r1_pair_user_reported_visible_after_full_task_manager_exit",
+  "device": "Azeron Cyborg II, native profile structure cloned from current SHARED R8 SPARSE6 - BASIC; action layout comes from the saved PoE 2 proposal and numbered Cyborg II geometry.",
+  "source_record": "KEYBINDS.json",
+  "design_goal": "Create an additive PoE 2 profile pair using the saved R5-numbered action map and current SHARED R8 SPARSE6 native profile structure; preserve the shared R8 family and keep thumb menu outputs available in both layers.",
+  "layer_control": {
+    "button_id": 6,
+    "position_id": "R3C2",
+    "tap_output": "V",
+    "tap_action": "Generic league action",
+    "hold_ms_candidate": 150,
+    "hold_target": "MENU",
+    "release_target": "COMBAT",
+    "basis": "The current SHARED R8 profile maps #6 to V; the saved user preference specifies a 150 ms long hold for a momentary MENU layer and automatic return on release.",
+    "verification": "The two new software profile JSONs encode this behavior and their reciprocal target references were read back. Azeron UI recognition, onboard state, and physical tap/hold behavior are pending.",
+    "hold_ms_configured": 150,
+    "encoding": "Single press V plus Long Press -> Layering with Toggle on hold; MENU uses reciprocal Long Press -> Layering, both with 150 ms delay."
+  },
+  "shared_thumb_controls": [
+    {
+      "button_id": 28,
+      "position_id": "TH_U",
+      "output": "Tab",
+      "action": "Open map overlay",
+      "state": "proposed_game_binding"
+    },
+    {
+      "button_id": 29,
+      "position_id": "TH_L",
+      "output": "I",
+      "action": "Open inventory",
+      "state": "proposed_game_binding"
+    },
+    {
+      "button_id": 22,
+      "position_id": "TH_C",
+      "output": "C",
+      "action": "Open character panel",
+      "state": "proposed_game_binding"
+    },
+    {
+      "button_id": 31,
+      "position_id": "TH_R",
+      "output": "G",
+      "action": "Open skill panel",
+      "state": "proposed_game_binding"
+    },
+    {
+      "button_id": 30,
+      "position_id": "TH_D",
+      "output": "P",
+      "action": "Open passive skills panel",
+      "state": "proposed_game_binding"
+    },
+    {
+      "button_id": 41,
+      "position_id": "ST_RU",
+      "output": "Enter",
+      "action": "Open chat",
+      "state": "saved_and_game_configured"
+    },
+    {
+      "button_id": 20,
+      "position_id": "ST_RD",
+      "output": "Esc",
+      "action": "Back/close behavior not found in the inspected game config",
+      "state": "saved_output_action_unverified"
+    },
+    {
+      "button_id": 23,
+      "position_id": "ST_D",
+      "output": "K",
+      "action": "Open cosmetics inventory",
+      "state": "proposed_game_binding"
+    }
+  ],
+  "shared_non_thumb_controls": [
+    {
+      "button_id": 5,
+      "position_id": "R4C2",
+      "output": "Ctrl",
+      "action": "Modifier; also configured as skill-bar toggle",
+      "state": "saved_and_game_configured_overlap"
+    },
+    {
+      "button_id": 9,
+      "position_id": "R4C3",
+      "output": "Shift",
+      "action": "No matching game action identified",
+      "state": "saved_output_action_unverified"
+    },
+    {
+      "button_id": 14,
+      "position_id": "R4C4",
+      "output": "Space",
+      "action": "Dodge roll",
+      "state": "saved_and_game_configured"
+    },
+    {
+      "button_id": 19,
+      "position_id": "R3",
+      "output": "Alt",
+      "action": "Hold to highlight items",
+      "state": "saved_and_game_configured"
+    },
+    {
+      "button_id": 24,
+      "position_id": "stick",
+      "output": "W/A/S/D",
+      "action": "Move; input mode fields conflict",
+      "state": "saved_configured_mode_unverified"
+    },
+    {
+      "button_id": 37,
+      "position_id": "R5C1",
+      "output": "Z",
+      "action": "Toggle item highlight; Ctrl+Z enables key pickup",
+      "state": "saved_and_game_configured"
+    },
+    {
+      "button_id": 38,
+      "position_id": "R5C2",
+      "output": "X",
+      "action": "Weapon swap",
+      "state": "saved_and_game_configured"
+    }
+  ],
+  "layers": {
+    "COMBAT": [
+      {
+        "button_id": 2,
+        "output": "6",
+        "action": "Temporary skill 1",
+        "state": "proposed_game_binding"
+      },
+      {
+        "button_id": 3,
+        "output": "T",
+        "action": "Use bound skill slot 7",
+        "state": "configured"
+      },
+      {
+        "button_id": 4,
+        "output": "7",
+        "action": "Temporary skill 2",
+        "state": "proposed_game_binding"
+      },
+      {
+        "button_id": 6,
+        "output": "V (tap) / MENU (hold)",
+        "action": "Tap: generic league action; hold: enter MENU; release: return COMBAT",
+        "state": "layer"
+      },
+      {
+        "button_id": 7,
+        "output": "3",
+        "action": "Flask slot 3 is unbound in the current game config",
+        "state": "unbound"
+      },
+      {
+        "button_id": 8,
+        "output": "1",
+        "action": "Use flask slot 1",
+        "state": "configured"
+      },
+      {
+        "button_id": 10,
+        "output": "4",
+        "action": "Flask slot 4 is unbound in the current game config",
+        "state": "unbound"
+      },
+      {
+        "button_id": 11,
+        "output": "Q",
+        "action": "Skill slot 4; Ctrl+Q reaches slot 9",
+        "state": "configured"
+      },
+      {
+        "button_id": 12,
+        "output": "2",
+        "action": "Use flask slot 2",
+        "state": "configured"
+      },
+      {
+        "button_id": 13,
+        "output": "C",
+        "action": "Open character panel",
+        "state": "configured"
+      },
+      {
+        "button_id": 15,
+        "output": "F",
+        "action": "Skill slot 8; Ctrl+F reaches slot 13",
+        "state": "configured"
+      },
+      {
+        "button_id": 16,
+        "output": "E",
+        "action": "Skill slot 5; Ctrl+E reaches slot 10",
+        "state": "configured"
+      },
+      {
+        "button_id": 17,
+        "output": "G",
+        "action": "Open skill panel",
+        "state": "configured"
+      },
+      {
+        "button_id": 18,
+        "output": "R",
+        "action": "Skill slot 6; Ctrl+R reaches slot 11",
+        "state": "configured"
+      }
+    ],
+    "MENU": [
+      {
+        "button_id": 2,
+        "output": "6",
+        "action": "Temporary skill 1 remains available",
+        "state": "proposed_game_binding"
+      },
+      {
+        "button_id": 3,
+        "output": "Tab",
+        "action": "Open map overlay",
+        "state": "proposed_game_binding"
+      },
+      {
+        "button_id": 4,
+        "output": "I",
+        "action": "Open inventory",
+        "state": "proposed_game_binding"
+      },
+      {
+        "button_id": 6,
+        "output": "Hold MENU",
+        "action": "Layer active while held; release returns to COMBAT",
+        "state": "layer"
+      },
+      {
+        "button_id": 7,
+        "output": "C",
+        "action": "Open character panel",
+        "state": "proposed_game_binding"
+      },
+      {
+        "button_id": 8,
+        "output": "G",
+        "action": "Open skill panel",
+        "state": "proposed_game_binding"
+      },
+      {
+        "button_id": 10,
+        "output": "P",
+        "action": "Open passive skills panel",
+        "state": "proposed_game_binding"
+      },
+      {
+        "button_id": 11,
+        "output": "U",
+        "action": "With Ctrl #5: open Atlas passives screen",
+        "state": "configured_modifier"
+      },
+      {
+        "button_id": 12,
+        "output": "K",
+        "action": "Open cosmetics inventory",
+        "state": "proposed_game_binding"
+      },
+      {
+        "button_id": 13,
+        "output": "'",
+        "action": "Open generic league panel",
+        "state": "proposed_game_binding"
+      },
+      {
+        "button_id": 15,
+        "output": "V",
+        "action": "Generic league action",
+        "state": "proposed_game_binding"
+      },
+      {
+        "button_id": 16,
+        "output": "Home",
+        "action": "OptiScaler menu; static setting exists, runtime input pending",
+        "state": "mod_configured_runtime_pending"
+      },
+      {
+        "button_id": 17,
+        "output": "Enter",
+        "action": "Open chat",
+        "state": "proposed_game_binding"
+      },
+      {
+        "button_id": 18,
+        "output": "Esc",
+        "action": "Back/close behavior not found in the inspected game config",
+        "state": "action_unverified"
+      }
+    ]
+  },
+  "external_controls_not_moved": [
+    {
+      "input": "Mouse 1",
+      "action": "Skill slot 1"
+    },
+    {
+      "input": "Mouse 2",
+      "action": "Skill slot 2"
+    },
+    {
+      "input": "Mouse 3",
+      "action": "Skill slot 3"
+    }
+  ],
+  "known_conflicts_and_limits": [
+    "Ctrl is both a modifier for skill slots 9-13 and a configured skill-bar toggle; gameplay behavior is unverified.",
+    "The game config selects WASD but also has use_wasd_to_move=false; movement mode is unverified.",
+    "Game skill names are not stored in the binding config; skill slots are identified by number only.",
+    "Flask slots 3-5 are unbound in the inspected config; key outputs 3 and 4 are not treated as configured flasks.",
+    "Create a PoE 2-specific pair; within it #2 becomes key 6, #1 and #36 are freed, and #6 becomes the V tap / MENU hold control. Leave the shared R5 family unchanged."
+  ],
+  "implementation_boundary": "User confirmed R1 pair visible after ending Azeron Software through Task Manager. Current R1 edits are preserved in the R2 recovery snapshot. See grouped R2 for the requested ergonomic revision.",
+  "diagram_files": [
+    "azeron-keymap/proposal/proposal-combat-keys.svg",
+    "azeron-keymap/proposal/proposal-combat-actions.svg",
+    "azeron-keymap/proposal/proposal-combat-combined.svg",
+    "azeron-keymap/proposal/proposal-menu-keys.svg",
+    "azeron-keymap/proposal/proposal-menu-actions.svg",
+    "azeron-keymap/proposal/proposal-menu-combined.svg"
+  ],
+  "implementation": {
+    "profile_names": [
+      "PATH OF EXILE 2 - COMBAT",
+      "PATH OF EXILE 2 - MENU"
+    ],
+    "source_profile": "SHARED R8 SPARSE6 - BASIC",
+    "layer_switch": {
+      "button_id": 6,
+      "tap_output": "V",
+      "long_press_ms": 150,
+      "hold_target": "PATH OF EXILE 2 - MENU",
+      "release_target": "PATH OF EXILE 2 - COMBAT",
+      "encoding_basis": "Existing GENERAL 1 / GENERAL 2 native profile pattern in Azeron Software 2.0.2."
+    },
+    "status": "R1 UI visibility user-confirmed; current user edits preserved; physical/game behavior unverified.",
+    "verification": "Both JSON files parsed after write; 43 inputs each; reciprocal #6 long-press layer links and 150 ms settings matched; analog stick block matches R8 source; source R8 profile hash unchanged against the just-in-time snapshot.",
+    "not_verified": [
+      "on-device layer transition",
+      "gameplay prompts and action behavior"
+    ]
+  },
+  "latest_revision_reference": "grouped-r2/KEYBINDS-GROUPED-R2.json"
+}

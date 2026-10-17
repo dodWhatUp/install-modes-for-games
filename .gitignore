@@ -64,3 +64,12 @@
 *.zip
 *.bak
 *.dmp
+
+# Preserved authored source candidates; never cache or native personal exports.
+!source-snapshots/
+!source-snapshots/**
+__pycache__/
+*.pyc
+*.zip.new*
+games/path-of-exile-2/azeron-profile-pair/import-folder/
+games/path-of-exile-2/grouped-r2/native-profiles/

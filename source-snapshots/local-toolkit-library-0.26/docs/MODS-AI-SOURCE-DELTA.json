@@ -1,0 +1,429 @@
+{
+  "schema_version": 1,
+  "kind": "source_delta",
+  "source_owner": "dodWhatUp/install-modes-for-games",
+  "new_hub_version": "0.21.0-preview.1",
+  "baseline": {
+    "archive": "Unified-Game-Tools-0.20.2-Source-and-Continuation-2026-10-13.zip",
+    "sha256": "c4c8eafc63731f822611e51fa532eca3873d3d5d8c73afd17388a45e97fd942e",
+    "manifest_sha256": "9e61f2b065d2e896b489107dd6cda9a2094f3a8dc993d9406fb2ddc06781e1f6",
+    "payload_count": 150
+  },
+  "module_baseline": {
+    "archive": "GameToolHub_ModWorkflows_0.1.0_2026-10-13.zip",
+    "sha256": "459635fa4c8266ce78cf0a452df89be18decacc79c0e1e7d7026d59d967a0c8d",
+    "version": "0.1.0"
+  },
+  "counts": {
+    "original_unchanged": 138,
+    "original_modified": 12,
+    "added": 31,
+    "removed": 0,
+    "payload_count": 181
+  },
+  "modified": [
+    {
+      "path": "docs/GAME-TOOLS-ARCHITECTURE.md",
+      "before_sha256": "cef2701cba05d24da683b5a0c3f9c7d9d3cea2be8b8f3a7619329e295375b763",
+      "after_sha256": "2890cff95dcbce53b6ef1f07c3bbc368b06091bebbe661d11ef212a108d45c30",
+      "before_bytes": 33333,
+      "after_bytes": 34377
+    },
+    {
+      "path": "scripts/Export-GameTools.ps1",
+      "before_sha256": "9d5e0c4257f3d3d25e8123a48309efbd0ea4f408bb1a63239043f0fabd3188dd",
+      "after_sha256": "84914b4a6566692e34670bce84c09274f71075542bc2cc0ba762a5af4ff4c432",
+      "before_bytes": 28530,
+      "after_bytes": 30306
+    },
+    {
+      "path": "docs/GAME-TOOLS-KNOWLEDGE-INDEX.md",
+      "before_sha256": "6545d3a2dfa88aee7c668a6084f64e4794d58605e241bbcb13949cda3585f0b1",
+      "after_sha256": "11b9e1ac1fbe9d5e2aa9af0e942d5f8830d0dc7b41504e304f43a721879026dc",
+      "before_bytes": 35559,
+      "after_bytes": 36603
+    },
+    {
+      "path": "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.md",
+      "before_sha256": "2be106a9efe32e2e22b745923b4a2201f5e430f35f120165d524bd63493d2cae",
+      "after_sha256": "1e427f83890a51cfe96684b87c630edf688da769640045120ae5930f14d8406a",
+      "before_bytes": 13104,
+      "after_bytes": 14148
+    },
+    {
+      "path": "docs/GAME-TOOLS-MASTER-CHECKLIST.md",
+      "before_sha256": "150f79a2d529f1d06f99e48cc7264e840dc81f79fffbf6d89da031b7e5a5fb62",
+      "after_sha256": "2b66ac4d98266f2a1ee5e543ade06fe2f99dc7f101d93c09e59dd0ccbf22e1ec",
+      "before_bytes": 54547,
+      "after_bytes": 55591
+    },
+    {
+      "path": "docs/GAME-TOOL-CONNECTIONS.md",
+      "before_sha256": "ff2ce53ae0063a0db8c05c0678c841fd503d1e5e43ee1877a11242babcba0131",
+      "after_sha256": "ec1bcb1670ced3671465d428f98d761c4fda9d34eda88ee8e2333b80dd59b9d5",
+      "before_bytes": 93592,
+      "after_bytes": 94636
+    },
+    {
+      "path": "examples/game-tool-hub/README.md",
+      "before_sha256": "4d4a4a8e973f723f4edf8026eda84f9b4662a77e80d55643950c3efd4376c8c0",
+      "after_sha256": "8f6aa4d9a501e6fb6f3e2c1a56aed1d8ab692f0cc97e48c06cab8a43011de20d",
+      "before_bytes": 45036,
+      "after_bytes": 45328
+    },
+    {
+      "path": "scripts/Game-Tool-Hub.py",
+      "before_sha256": "701da42deb0fd9ef68c978b1697095a0850b04293cf833a1d991028d6b6b910a",
+      "after_sha256": "8710294fd60b4002d6b36741bcd81271f4566486f7320b193cdbef6b9f75cd80",
+      "before_bytes": 87124,
+      "after_bytes": 89106
+    },
+    {
+      "path": "scripts/GameToolAppearance.py",
+      "before_sha256": "7d49cdc508d0a18cd5d85056d8b7131da891327e0bcf5d62290074093634e7b2",
+      "after_sha256": "6fd245ee6c3ba1fa7441f6c9856f032386db962dbcfda2ba3ef472698cb32672",
+      "before_bytes": 32893,
+      "after_bytes": 33032
+    },
+    {
+      "path": "scripts/tests/Test-GameToolWorkspace.py",
+      "before_sha256": "09edaae54f0a5313f088455b1dae8dd8614681a5cf96db8c9a72a19666b0cf9f",
+      "after_sha256": "eddd55ab6a9aedc8287eefd4744afd6bbea861085e9dbc76e0074852b53f4956",
+      "before_bytes": 22323,
+      "after_bytes": 22344
+    },
+    {
+      "path": "scripts/tests/Test-GameToolUnified.py",
+      "before_sha256": "e9d15002c20e0922ede79cf4768e6a6844d40c267df0cd9ce6bb7dc41697bbe8",
+      "after_sha256": "5665d74d8857f14349337fc9b6796eb1c59d1190950c19797134b82d701c1afc",
+      "before_bytes": 25187,
+      "after_bytes": 25318
+    },
+    {
+      "path": "scripts/tests/Test-GameToolHubCatalog.py",
+      "before_sha256": "9d88bc0153d45f566fb983fd4599b90503fa14966f69096e7089c918700d6d31",
+      "after_sha256": "a9b2bb90ccbc679d41ceb429442ed5310e993b48575e46af67af7895ac195109",
+      "before_bytes": 33778,
+      "after_bytes": 34312
+    }
+  ],
+  "unchanged": [
+    "docs/AGENT-GAME-INPUT.md",
+    "examples/game-input/README.md",
+    "examples/game-input/GameInputModule.ahk",
+    "examples/game-input/Start-GameInput.ahk",
+    "examples/game-input/HostIntegration.example.ahk",
+    "examples/game-input/AzeronOverlayStudio.integrated.ahk",
+    "examples/game-input/OverlayStudioGameInput.ahk",
+    "examples/game-input/StudioPictureModule.ahk",
+    "examples/game-input/StudioOverlayGroups.ahk",
+    "examples/game-input/StudioHubBridge.ahk",
+    "examples/game-input/tests/Test-OverlayGroups.ahk",
+    "examples/game-input/tests/Test-UIFeedback.ahk",
+    "examples/game-input/tests/Test-PictureModule.ahk",
+    "examples/game-input/tests/Test-PictureEditor.ahk",
+    "examples/game-input/tests/Test-MicEditor.ahk",
+    "scripts/tests/Test-PictureHost.py",
+    "scripts/tests/Run-NativePictureDesktop.py",
+    "scripts/tests/Test-NativePictureLayout.py",
+    "scripts/tests/Test-ModernStartup.py",
+    "examples/game-input/PICTURE-BUTTONS.md",
+    "examples/game-input/OVERLAY-STUDIO-INTEGRATION.md",
+    "examples/game-input/OTHER-CHAT-HANDOFF.txt",
+    "examples/game-input/VALIDATION.json",
+    "examples/game-input/baseline/ControlHelper-v031.ahk",
+    "examples/skyrim-special-edition/Skyrim-F12-Test.ahk",
+    "examples/skyrim-special-edition/README.md",
+    "scripts/Export-GameInput.ps1",
+    "scripts/tests/Test-GameSourceExport.ps1",
+    "AGENTS.md",
+    "preferences/GENERAL.md",
+    "docs/UNIFIED-TOOLKIT-CONTINUATION-2026-10-12.json",
+    "docs/GAME-TELEMETRY-TOOL-PLAN.md",
+    "docs/OFFLINE-COMPARISON-REPORTS.md",
+    "docs/KNOWLEDGE-MAINTENANCE.md",
+    "docs/AUTOMATION-OPERATING-PROCEDURES.md",
+    "docs/TOOL-RESOURCE-OVERHEAD.md",
+    "docs/GAME-PERFORMANCE-MEASUREMENT.md",
+    "docs/OPERATING-STANDARD.md",
+    "docs/FEATURE-DECISION.md",
+    "docs/AZERON-GAME-CONTROLS.md",
+    "docs/INPUT-DEVICE-REGISTRY.md",
+    "docs/GITHUB-PUBLISHING.md",
+    "docs/DISTRIBUTION.md",
+    "examples/game-tool-hub/Start-GameToolHub.ps1",
+    "examples/game-tool-hub/form-draft.example.json",
+    "examples/game-tool-hub/catalog.example.json",
+    "examples/game-tool-hub/comparison-fixture.example.json",
+    "examples/game-tool-hub/COMPARISON-DATASET.md",
+    "scripts/GameToolCatalogBridge.py",
+    "scripts/GameToolCatalogPanel.py",
+    "scripts/GameToolComparison.py",
+    "scripts/GameToolComparisonPanel.py",
+    "scripts/GameToolReportImport.py",
+    "scripts/GameToolJournal.py",
+    "scripts/GameToolCoordinator.py",
+    "scripts/GameToolSessionPanel.py",
+    "scripts/GameToolCrashEvidence.py",
+    "scripts/GameToolEvidencePanel.py",
+    "scripts/GameToolWorkflow.py",
+    "scripts/GameToolWorkflowPanel.py",
+    "scripts/GameToolReadiness.py",
+    "scripts/GameToolReadinessPanel.py",
+    "scripts/GameToolOverlay.py",
+    "scripts/GameToolOverlayPanel.py",
+    "scripts/GameToolAzeronLayer.py",
+    "scripts/tests/Test-GameToolAzeronLayer.py",
+    "scripts/GameToolCompactUI.py",
+    "scripts/GameToolModernUI.py",
+    "scripts/tests/Test-GameToolModernUI.py",
+    "scripts/tests/Render-GameToolModernUI.py",
+    "scripts/tests/Test-GameToolAppearance.py",
+    "docs/UNIFIED-UI-DESIGN.md",
+    "scripts/tests/Test-GameToolCompactUI.py",
+    "scripts/Build-OverlayContract.py",
+    "scripts/Install-GameToolsRelease.ps1",
+    "scripts/GameToolUnified.py",
+    "scripts/GameToolUnifiedPanel.py",
+    "scripts/GameToolWorkspace.py",
+    "scripts/GameToolUserData.py",
+    "scripts/GameToolUserDataPanel.py",
+    "scripts/tests/Test-GameToolUserData.py",
+    "scripts/tests/Test-GameToolUserDataPanel.py",
+    "scripts/Start-UnifiedTools.pyw",
+    "scripts/Install-UnifiedTools.py",
+    "scripts/Create-UnifiedToolsLaunchers.py",
+    "scripts/Create-UnifiedToolsShortcut.ps1",
+    "scripts/tests/Test-UnifiedToolsLaunchers.py",
+    "scripts/Backup-UnifiedTools.ps1",
+    "docs/UNIFIED-GAME-TOOLS.md",
+    "scripts/tests/Test-GameToolOverlay.py",
+    "scripts/tests/Test-GameToolsInstaller.py",
+    "docs/OVERLAY-GROUPS.md",
+    "examples/game-tool-hub/overlay-manifest.example.json",
+    "scripts/tests/Test-GameToolReadiness.py",
+    "scripts/tests/Test-GameToolReadinessPanel.py",
+    "scripts/tests/Test-GameToolReadinessCLI.py",
+    "examples/game-tool-hub/provider-health.example.json",
+    "examples/game-tool-hub/scenario.example.json",
+    "scripts/tests/Test-GameToolWorkflow.py",
+    "scripts/tests/Test-GameToolWorkflowPanel.py",
+    "scripts/tests/Test-GameToolWorkflowCLI.py",
+    "examples/game-tool-hub/workflow-installation.example.json",
+    "examples/game-tool-hub/workflow-diagnostic.example.json",
+    "scripts/tests/Test-GameToolCrashEvidence.py",
+    "scripts/tests/Test-GameToolEvidencePanel.py",
+    "scripts/tests/Test-GameToolEvidenceCLI.py",
+    "scripts/tests/Test-GameToolJournal.py",
+    "scripts/tests/Test-GameToolCoordinator.py",
+    "scripts/tests/Test-GameToolSessionPanel.py",
+    "scripts/tests/Test-GameToolSessionCLI.py",
+    "scripts/GameFgInspector.py",
+    "scripts/GameFgPreflight.py",
+    "scripts/Game-Tool-Catalog.py",
+    "scripts/tests/Test-GameToolHub.py",
+    "scripts/tests/Test-GameToolCatalogBridge.py",
+    "scripts/tests/Test-GameToolComparison.py",
+    "scripts/tests/Test-GameToolComparisonPanel.py",
+    "scripts/tests/Test-GameToolComparisonCLI.py",
+    "scripts/tests/Test-GameToolReportImport.py",
+    "scripts/tests/Test-GameToolReportImportPanel.py",
+    "scripts/tests/Test-GameToolReportImportCLI.py",
+    "examples/game-tool-hub/import-fixtures/cyberpunk-summary.example.json",
+    "examples/game-tool-hub/import-fixtures/presentmon-stats.example.csv",
+    "examples/game-tool-hub/import-fixtures/presentmon-no-animation-stats.example.csv",
+    "examples/game-tool-hub/import-fixtures/presentmon-zero-stats.example.csv",
+    "scripts/tests/test_game_fg_inspector.py",
+    "scripts/tests/test_game_fg_preflight.py",
+    "scripts/tests/Test-GameToolCatalog.py",
+    "templates/AUTOMATION-TASK.example.json",
+    "templates/KNOWLEDGE-RECORD.example.json",
+    "templates/GAME-KEYBINDS.example.json",
+    "templates/INPUT-DEVICE.example.json",
+    "templates/PROFILE-MANIFEST.example.json",
+    "templates/EXPERIMENT-LOG.md",
+    "templates/GAME-HISTORY.md",
+    "templates/MOD-CATALOG.md",
+    "templates/OPTION-MENU.md",
+    "templates/PREFERENCE-PROFILE.md"
+  ],
+  "added": [
+    {
+      "path": "docs/MOD-WORKFLOWS-INTEGRATION.md",
+      "sha256": "5f83b069d7ff630cdbf7c85d41dc14c6637df4d84130bdab9a539b55c33d20ab",
+      "bytes": 6901
+    },
+    {
+      "path": "docs/MOD-WORKFLOWS.md",
+      "sha256": "a895da12f120e9ac8bc5fc024bfc6172f16fbe876fa72bbdfbb3414fe30f89e1",
+      "bytes": 9724
+    },
+    {
+      "path": "docs/MODS-AI-BASELINE-MANIFEST.json",
+      "sha256": "9e61f2b065d2e896b489107dd6cda9a2094f3a8dc993d9406fb2ddc06781e1f6",
+      "bytes": 53452
+    },
+    {
+      "path": "docs/MODS-AI-INTEGRATION.md",
+      "sha256": "179afd0a2f611efa58c3f91873d4d2d6a80bd3d50c229ce937e896f3b84e500b",
+      "bytes": 12415
+    },
+    {
+      "path": "docs/MODS-AI-MODULE-BASELINE-MANIFEST.json",
+      "sha256": "9e444f58c6eb13b7a6449971033d63b2b5aacb5212af1fc3b55e1976f7d456f9",
+      "bytes": 6443
+    },
+    {
+      "path": "docs/MODS-AI-SOURCE-DELTA.json",
+      "hash_location": "root MANIFEST.json; self-reference omitted"
+    },
+    {
+      "path": "docs/MODS-AI-START-HERE.html",
+      "sha256": "4f7b4f92be4802777e1f00daf3658bc0e8e897d1f530b4f563f6f283434cb964",
+      "bytes": 3924
+    },
+    {
+      "path": "docs/MODS-AI-VALIDATION.json",
+      "sha256": "05292ebefd84fa53ff5822ad88e2cd92e08b30ebbff000a4a88b39e24c9e5818",
+      "bytes": 26912
+    },
+    {
+      "path": "examples/game-tool-hub/MOD-WORKFLOWS-CAPABILITIES.json",
+      "sha256": "4de6caa9ac1521b2afbf2d4ec7a3699c483ad331b9fa0fadac5a6dd33676091b",
+      "bytes": 1701
+    },
+    {
+      "path": "examples/game-tool-hub/ai-plan-request.example.json",
+      "sha256": "3bb40bb10478c5dcef8d4419e91900681b3ca76eb59394a34f222efcf5f451c1",
+      "bytes": 206
+    },
+    {
+      "path": "examples/game-tool-hub/mod-recipes/pathfinder-kingmaker.json",
+      "sha256": "6b2d9df9d12031b4ee629875ce21c618aa16fe660344a7937a1199653c51ab8a",
+      "bytes": 6416
+    },
+    {
+      "path": "scripts/Game-Mod-Ops.py",
+      "sha256": "b9c7038c34da58212a08541f15953e6946ad2f23087e75b1efc01470d81c3e78",
+      "bytes": 354
+    },
+    {
+      "path": "scripts/Game-Mod-Panel.py",
+      "sha256": "0a598e4be8adede14ab2b707fd2d78f07fb1cf000ef750ebae92f66728d62cc6",
+      "bytes": 239
+    },
+    {
+      "path": "scripts/GameToolAI.py",
+      "sha256": "c47098cd1d763e69bb35f5a06d1279929948cbd5c3b70974b70dd90538fe133a",
+      "bytes": 8082
+    },
+    {
+      "path": "scripts/GameToolAutomation.py",
+      "sha256": "7c8a3e00761d42721a95b88aedc0eae6f7f3025417e7b448aeafe177d5c4601e",
+      "bytes": 24009
+    },
+    {
+      "path": "scripts/GameToolAutomationPanel.py",
+      "sha256": "23d485b30562bd0811244f87efc5a0c7464edbaf34dc7b8cac0a24f04a31ee8c",
+      "bytes": 11837
+    },
+    {
+      "path": "scripts/GameToolModIntegration.py",
+      "sha256": "8cdad3bb3be250f16142c8d28cd1cc73c24af4ffb588b0a1a674cd3b79e31cf0",
+      "bytes": 2981
+    },
+    {
+      "path": "scripts/game_mod_ops/__init__.py",
+      "sha256": "6dd548dad2b8a77640b9669d6cfdfba21796166d7abe6fbc34f74dd9199b828b",
+      "bytes": 102
+    },
+    {
+      "path": "scripts/game_mod_ops/archive.py",
+      "sha256": "5e907b990c3cb3f756163b832f5dac36d8c2b94dbf959b286aa500426de72ed0",
+      "bytes": 8855
+    },
+    {
+      "path": "scripts/game_mod_ops/cli.py",
+      "sha256": "972ece55a804b685890362b6fed74a713728e3ef4173fdb9400f81274c276e42",
+      "bytes": 7787
+    },
+    {
+      "path": "scripts/game_mod_ops/network.py",
+      "sha256": "5f7af16eebb2818c013cd425a5605c936f1cda6a6081e9c2559a719c930d5e6d",
+      "bytes": 13333
+    },
+    {
+      "path": "scripts/game_mod_ops/panel.py",
+      "sha256": "0ce57e0fd5bcaeb81f8fea1b21cb45d139f22056a57e8d57f47c9359db843b01",
+      "bytes": 11375
+    },
+    {
+      "path": "scripts/game_mod_ops/recipes.py",
+      "sha256": "f59284ade07f995b412048d3e10fee3a695bc452c48bd2431c71063807236b2f",
+      "bytes": 8153
+    },
+    {
+      "path": "scripts/game_mod_ops/safety.py",
+      "sha256": "a40f7a172716a02d19c4aef688ee67d45b4e86dcede00702eed766528175598b",
+      "bytes": 6278
+    },
+    {
+      "path": "scripts/game_mod_ops/umm.py",
+      "sha256": "236aa00595bb223bdd3832a38b95af5c42bf858efebd1be656d52a70a42c5662",
+      "bytes": 16238
+    },
+    {
+      "path": "scripts/game_mod_ops/workflow.py",
+      "sha256": "e8f574f1196cbafe538a641b32742ffbdbedbafd263be7ebfbd716dbde860096",
+      "bytes": 11677
+    },
+    {
+      "path": "scripts/tests/Test-GameModOps.py",
+      "sha256": "283c17daa374e477a04946654061417fcf219f3d65ae54e59efaa9ff841f8835",
+      "bytes": 20561
+    },
+    {
+      "path": "scripts/tests/Test-GameModPanel.py",
+      "sha256": "e3da472fc59d25a64681b5a28961c3ad9bcd2c4311b0da096382507d72c6381d",
+      "bytes": 2413
+    },
+    {
+      "path": "scripts/tests/Test-GameToolAutomation.py",
+      "sha256": "564edc1cbdea054f2b06282cac33c50cb550449e5c21726bd9916adb62f1860d",
+      "bytes": 16471
+    },
+    {
+      "path": "scripts/tests/Test-GameToolAutomationPanel.py",
+      "sha256": "7d701fc101e18076e06a7d1c933de6ab1a9218f5d7c16a43f1e2959723930887",
+      "bytes": 8709
+    },
+    {
+      "path": "templates/MOD-WORKFLOW.example.json",
+      "sha256": "750b4d49997f1edab7730f21476794d23a1f63aefea151414d00751284946a6b",
+      "bytes": 824
+    }
+  ],
+  "original_ahk_files_preserved": [
+    "examples/game-input/GameInputModule.ahk",
+    "examples/game-input/Start-GameInput.ahk",
+    "examples/game-input/HostIntegration.example.ahk",
+    "examples/game-input/AzeronOverlayStudio.integrated.ahk",
+    "examples/game-input/OverlayStudioGameInput.ahk",
+    "examples/game-input/StudioPictureModule.ahk",
+    "examples/game-input/StudioOverlayGroups.ahk",
+    "examples/game-input/StudioHubBridge.ahk",
+    "examples/game-input/tests/Test-OverlayGroups.ahk",
+    "examples/game-input/tests/Test-UIFeedback.ahk",
+    "examples/game-input/tests/Test-PictureModule.ahk",
+    "examples/game-input/tests/Test-PictureEditor.ahk",
+    "examples/game-input/tests/Test-MicEditor.ahk",
+    "examples/game-input/baseline/ControlHelper-v031.ahk",
+    "examples/skyrim-special-edition/Skyrim-F12-Test.ahk"
+  ],
+  "recipe_owner_note": "One runtime recipe at examples/game-tool-hub/mod-recipes/pathfinder-kingmaker.json; old module games/ recipe location is historical, not copied as a second master.",
+  "boundaries": [
+    "Does not replace the newer local Windows source master automatically.",
+    "Prior blocked Git/remote effects remain stopped.",
+    "Private snapshots do not establish Git adoption, app installation, or live acceptance."
+  ]
+}

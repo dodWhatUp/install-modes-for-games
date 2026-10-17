@@ -1,12 +1,12 @@
 # Cyberpunk native DLSS quality controls
 
-Local adapter for Cyberpunk **2.31** and [CET 1.37.1](https://github.com/maximegmd/CyberEngineTweaks/releases/tag/v1.37.1), updated 2026-09-13. **F6** cycles native DLAA → Quality → Balanced → Performance; Auto/unfamiliar modes start at Quality. The same control is beside NR settings in the F12 compact window of the [matching OptiScaler build](../../optiscaler-dlssnr/f7-two-scale/README.md).
+Local adapter for Cyberpunk **2.31** and [CET 1.37.1](https://github.com/maximegmd/CyberEngineTweaks/releases/tag/v1.37.1), updated 2026-09-14. **F9** cycles native DLAA → Quality → Balanced → Performance; Auto/unfamiliar modes start at Quality. The experimental OptiScaler candidate also places F9 beside NR settings in its F12 compact window, but that candidate is uninstalled and conflicts with the current CET/Ultra+ F12 binding. Older compiled captions may still say F6; the active shortcut is owned by CET bindings, not that caption.
 
-F7 belongs to NR 25%/100%; F8 is now unbound, and F9 remains Quick Load. Insert opens CET; Delete opens full OptiScaler controls.
+F7 belongs to NR 25%/100%; F8 is unbound. The user assigned Quick Load to F6, so native DLSS quality moved to the now-free F9. F5 remains Quick Save. The current installed CET overlay, which hosts Ultra+, is configured to use F12. The user-wide defaults are F12 for Ultra+, Home for the full OptiScaler menu and Delete for ReShade; Cyberpunk currently has no OptiScaler installation.
 
 Latest repair: the user's game log recorded `Tried to call ImGui from invalid event!` when the adapter tried to notify from onUpdate. Notifications now queue and render only in onDraw, with the selected native mode and confirmation result. `sr-last-result.txt` preserves the most recent result for diagnosis. This fixes feedback delivery; actual render-target changes still require runtime verification.
 
-Install `init.lua` under `bin/x64/plugins/cyber_engine_tweaks/mods/GraphicsHotkeys/`. Merge `bindings.json` into CET's bindings, preserving other mods. F6 is `117 << 48`; Insert is `45 << 48`. CET owns `version.dll`; OptiScaler owns `dxgi.dll`. File separation is not proof of runtime compatibility.
+Install `init.lua` under `bin/x64/plugins/cyber_engine_tweaks/mods/GraphicsHotkeys/`. Merge `bindings.json` into CET's bindings, preserving other mods. F9 is `120 << 48` = `33776997205278720`; F12 uses Windows `VK_F12`, encoded as `123 << 48` = `34621422135410688`. CET owns `version.dll`; OptiScaler owns `dxgi.dll`. File separation is not proof of runtime compatibility.
 
 The key and panel request use one adapter. Changes queue for onUpdate, require a loaded player and native DLSS, and refuse to compete with active dynamic resolution. Requests have a two-second cooldown and are blocked by CET's overlay. Native values are confirmed and read back after 0.5 seconds; rejected/apply failures attempt to restore the previous setting.
 

@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "version": "0.4.0",
+  "guest_helper_version": "0.3.0",
+  "review_date": "2026-10-12",
+  "outcome": "PASS_PORTABLE_SOURCE_SETUP_ON_REFERENCE_WINDOWS_HOST",
+  "fixtures": {
+    "portability_passed": 26,
+    "existing_controller_and_protocol_passed": 21,
+    "failed": 0,
+    "scope": "relocated binding, checksum/manifest/path/privacy guards, preserved local edits, source upgrade and conditional rollback, running-guest and occupied-lock refusal, skill-only update, free port selection, private cache verification"
+  },
+  "live_relocated_setup": {
+    "source_bundle": "PASS exact entry size/hash readback; 49 allowlisted source/skill/doc files plus manifest",
+    "installation": "PASS 59 deployed files including local generated binding/runtime metadata; VM not started",
+    "dependencies": "PASS exact hashes for QEMU 11.1.0 installer, 7-Zip 26.04, 7zr, Ubuntu 24.04 minimal 20261008 and pycdlib 1.14.0 wheel",
+    "network": "PASS selected official HTTPS dependency endpoints; cached locked artifacts plus live pinned wheel fetch",
+    "extraction": "PASS portable tools extracted to private relocated root; no host software installation",
+    "fresh_identity": "PASS newly generated restricted SSH key differs from reference; NoCloud seed contains selected new public key",
+    "configuration": "PASS all lab paths rebound; free loopback ports selected around active reference guest; unique Windows VM name",
+    "disk": "PASS new qcow2 disk and seed; backing file belongs to selected private root",
+    "runtime": "PREPARED_NOT_RUNTIME_ACCEPTED; new guest was not started; no PASS inherited from another host"
+  },
+  "shared_runtime": {
+    "active_owner": "Observed another local Codex chat launching and using the existing lab for portable application checks through its CLI bridge",
+    "source_upgrade_guard": "PASS real attempted replacement refused while guest active; existing runtime/source preserved",
+    "workflow_update": "PASS skill-only installation/binding with source/VM lifecycle preserved; enabled user skill checked with actual Codex client"
+  },
+  "recovery": {
+    "source_upgrade_rollback": "PASS restored source and installation receipt bytes in temporary fixture; private config retained",
+    "later_edit_refusal": "PASS rollback refused to overwrite a later edit",
+    "guest_backup": "Reference 0.3.0 stopped checkpoint and restored cold-boot acceptance retained separately; this release changes no guest provider",
+    "coverage": "source/docs/skill copied and byte-verified; guest disk/credentials not part of portable packet"
+  },
+  "unverified": [
+    "A second physical computer's host and complete fresh OS/browser/native-provider runtime acceptance",
+    "Linux/macOS/Windows ARM host adapters",
+    "Guaranteed implicit model selection in arbitrary chats",
+    "Concurrent multi-chat guest session/workspace scheduling",
+    "Windows guest provisioning/native UI Automation and accelerated/GPU behavior",
+    "Human simultaneous-work acceptance while unrelated chats control the host"
+  ],
+  "privacy": "No credentials, machine binding, VM disk, third-party binary, personal Codex configuration or raw private logs included in source archive",
+  "publication": "No Git commit/push or cloud distribution performed"
+}

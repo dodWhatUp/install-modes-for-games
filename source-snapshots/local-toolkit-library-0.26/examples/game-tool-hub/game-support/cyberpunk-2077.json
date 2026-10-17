@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "kind": "game_support_pack",
+  "pack_version": "1.0.0",
+  "definition": {
+    "game_id": "cyberpunk-2077",
+    "name": "Cyberpunk 2077",
+    "manager_id": "rhi",
+    "adapter": "external",
+    "platform": "windows",
+    "executable_any": [
+      "bin/x64/Cyberpunk2077.exe"
+    ],
+    "mods_relative": null,
+    "loader_markers": [],
+    "scan_depth": 3,
+    "review_note": "Filesystem metadata only. Build/runtime compatibility and installation must be reviewed independently."
+  },
+  "recipe": null,
+  "sources": [
+    {
+      "url": "https://github.com/RankFTW/RHI",
+      "checked_on": "2026-10-13",
+      "evidence": "upstream-documented"
+    }
+  ],
+  "notes": [
+    "Retain the user\u2019s existing RHI workflow for ReShade, RenoDX, OptiScaler and related libraries.",
+    "No independent proxy-DLL deployment or universal graphics stack is supplied. Add reviewed mod choices separately."
+  ]
+}

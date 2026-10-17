@@ -1,0 +1,192 @@
+[
+  {
+    "file": "Pathfinder_Kingmaker_Ordered_Mod_Kit_2026-10-12.zip",
+    "bytes": 12646,
+    "sha256": "4ef68a01301e9e53a8bddbb073e38b83945d53d6ab37eb7c4b5a1330c7624e59",
+    "entries": 13,
+    "zip_crc_ok": true,
+    "manifest_paths": [
+      "KIT_MANIFEST.json"
+    ],
+    "test_paths": []
+  },
+  {
+    "file": "GameToolHub_ModWorkflows_0.1.0_2026-10-13.zip",
+    "bytes": 60907,
+    "sha256": "459635fa4c8266ce78cf0a452df89be18decacc79c0e1e7d7026d59d967a0c8d",
+    "entries": 26,
+    "zip_crc_ok": true,
+    "manifest_paths": [
+      "MANIFEST.json"
+    ],
+    "test_paths": [
+      "02_RUN_TESTS.cmd",
+      "evidence/MOD-WORKFLOWS-TEST-RESULTS.txt",
+      "scripts/tests/Test-GameModOps.py",
+      "scripts/tests/Test-GameModPanel.py"
+    ]
+  },
+  {
+    "file": "Unified-Game-Tools-0.20.2-Source-and-Continuation-2026-10-13.zip",
+    "bytes": 754278,
+    "sha256": "c4c8eafc63731f822611e51fa532eca3873d3d5d8c73afd17388a45e97fd942e",
+    "entries": 151,
+    "zip_crc_ok": true,
+    "manifest_paths": [
+      "examples/game-tool-hub/overlay-manifest.example.json",
+      "templates/PROFILE-MANIFEST.example.json",
+      "MANIFEST.json"
+    ],
+    "test_paths": [
+      "examples/game-input/tests/Test-OverlayGroups.ahk",
+      "examples/game-input/tests/Test-UIFeedback.ahk",
+      "examples/game-input/tests/Test-PictureModule.ahk",
+      "examples/game-input/tests/Test-PictureEditor.ahk",
+      "examples/game-input/tests/Test-MicEditor.ahk",
+      "scripts/tests/Test-PictureHost.py",
+      "scripts/tests/Run-NativePictureDesktop.py",
+      "scripts/tests/Test-NativePictureLayout.py",
+      "scripts/tests/Test-ModernStartup.py",
+      "examples/skyrim-special-edition/Skyrim-F12-Test.ahk",
+      "scripts/tests/Test-GameSourceExport.ps1",
+      "scripts/tests/Test-GameToolAzeronLayer.py",
+      "scripts/tests/Test-GameToolModernUI.py",
+      "scripts/tests/Render-GameToolModernUI.py",
+      "scripts/tests/Test-GameToolAppearance.py",
+      "scripts/tests/Test-GameToolCompactUI.py",
+      "scripts/tests/Test-GameToolWorkspace.py",
+      "scripts/tests/Test-GameToolUserData.py",
+      "scripts/tests/Test-GameToolUserDataPanel.py",
+      "scripts/tests/Test-UnifiedToolsLaunchers.py",
+      "scripts/tests/Test-GameToolUnified.py",
+      "scripts/tests/Test-GameToolOverlay.py",
+      "scripts/tests/Test-GameToolsInstaller.py",
+      "scripts/tests/Test-GameToolReadiness.py",
+      "scripts/tests/Test-GameToolReadinessPanel.py",
+      "scripts/tests/Test-GameToolReadinessCLI.py",
+      "scripts/tests/Test-GameToolWorkflow.py",
+      "scripts/tests/Test-GameToolWorkflowPanel.py",
+      "scripts/tests/Test-GameToolWorkflowCLI.py",
+      "scripts/tests/Test-GameToolCrashEvidence.py",
+      "scripts/tests/Test-GameToolEvidencePanel.py",
+      "scripts/tests/Test-GameToolEvidenceCLI.py",
+      "scripts/tests/Test-GameToolJournal.py",
+      "scripts/tests/Test-GameToolCoordinator.py",
+      "scripts/tests/Test-GameToolSessionPanel.py",
+      "scripts/tests/Test-GameToolSessionCLI.py",
+      "scripts/tests/Test-GameToolHub.py",
+      "scripts/tests/Test-GameToolCatalogBridge.py",
+      "scripts/tests/Test-GameToolHubCatalog.py",
+      "scripts/tests/Test-GameToolComparison.py",
+      "scripts/tests/Test-GameToolComparisonPanel.py",
+      "scripts/tests/Test-GameToolComparisonCLI.py",
+      "scripts/tests/Test-GameToolReportImport.py",
+      "scripts/tests/Test-GameToolReportImportPanel.py",
+      "scripts/tests/Test-GameToolReportImportCLI.py",
+      "scripts/tests/test_game_fg_inspector.py",
+      "scripts/tests/test_game_fg_preflight.py",
+      "scripts/tests/Test-GameToolCatalog.py"
+    ]
+  },
+  {
+    "file": "Unified-Game-Tools-0.21.0-preview.1-Mods-AI-2026-10-13.zip",
+    "bytes": 870692,
+    "sha256": "38fba39fe3ec18c6ca3fc5a0a1a5351be72f7f02444ddf11b26583e53c643755",
+    "entries": 182,
+    "zip_crc_ok": true,
+    "manifest_paths": [
+      "MANIFEST.json",
+      "examples/game-tool-hub/overlay-manifest.example.json",
+      "templates/PROFILE-MANIFEST.example.json",
+      "docs/MODS-AI-BASELINE-MANIFEST.json",
+      "docs/MODS-AI-MODULE-BASELINE-MANIFEST.json"
+    ],
+    "test_paths": [
+      "examples/game-input/tests/Test-OverlayGroups.ahk",
+      "examples/game-input/tests/Test-UIFeedback.ahk",
+      "examples/game-input/tests/Test-PictureModule.ahk",
+      "examples/game-input/tests/Test-PictureEditor.ahk",
+      "examples/game-input/tests/Test-MicEditor.ahk",
+      "scripts/tests/Test-PictureHost.py",
+      "scripts/tests/Run-NativePictureDesktop.py",
+      "scripts/tests/Test-NativePictureLayout.py",
+      "scripts/tests/Test-ModernStartup.py",
+      "examples/skyrim-special-edition/Skyrim-F12-Test.ahk",
+      "scripts/tests/Test-GameSourceExport.ps1",
+      "scripts/tests/Test-GameToolAzeronLayer.py",
+      "scripts/tests/Test-GameToolModernUI.py",
+      "scripts/tests/Render-GameToolModernUI.py",
+      "scripts/tests/Test-GameToolAppearance.py",
+      "scripts/tests/Test-GameToolCompactUI.py",
+      "scripts/tests/Test-GameToolWorkspace.py",
+      "scripts/tests/Test-GameToolUserData.py",
+      "scripts/tests/Test-GameToolUserDataPanel.py",
+      "scripts/tests/Test-UnifiedToolsLaunchers.py",
+      "scripts/tests/Test-GameToolUnified.py",
+      "scripts/tests/Test-GameToolOverlay.py",
+      "scripts/tests/Test-GameToolsInstaller.py",
+      "scripts/tests/Test-GameToolReadiness.py",
+      "scripts/tests/Test-GameToolReadinessPanel.py",
+      "scripts/tests/Test-GameToolReadinessCLI.py",
+      "scripts/tests/Test-GameToolWorkflow.py",
+      "scripts/tests/Test-GameToolWorkflowPanel.py",
+      "scripts/tests/Test-GameToolWorkflowCLI.py",
+      "scripts/tests/Test-GameToolCrashEvidence.py",
+      "scripts/tests/Test-GameToolEvidencePanel.py",
+      "scripts/tests/Test-GameToolEvidenceCLI.py",
+      "scripts/tests/Test-GameToolJournal.py",
+      "scripts/tests/Test-GameToolCoordinator.py",
+      "scripts/tests/Test-GameToolSessionPanel.py",
+      "scripts/tests/Test-GameToolSessionCLI.py",
+      "scripts/tests/Test-GameToolHub.py",
+      "scripts/tests/Test-GameToolCatalogBridge.py",
+      "scripts/tests/Test-GameToolHubCatalog.py",
+      "scripts/tests/Test-GameToolComparison.py",
+      "scripts/tests/Test-GameToolComparisonPanel.py",
+      "scripts/tests/Test-GameToolComparisonCLI.py",
+      "scripts/tests/Test-GameToolReportImport.py",
+      "scripts/tests/Test-GameToolReportImportPanel.py",
+      "scripts/tests/Test-GameToolReportImportCLI.py",
+      "scripts/tests/test_game_fg_inspector.py",
+      "scripts/tests/test_game_fg_preflight.py",
+      "scripts/tests/Test-GameToolCatalog.py",
+      "scripts/tests/Test-GameModOps.py",
+      "scripts/tests/Test-GameModPanel.py",
+      "scripts/tests/Test-GameToolAutomation.py",
+      "scripts/tests/Test-GameToolAutomationPanel.py"
+    ]
+  },
+  {
+    "file": "Unified_Game_Tools_ONE_CLICK_LAUNCHER_2026-10-13.zip",
+    "bytes": 54127,
+    "sha256": "5569bd407c1e76c2807b428d68f0ab7d7a409dbc700649e42299f6cc4c725c3b",
+    "entries": 5,
+    "zip_crc_ok": true,
+    "manifest_paths": [
+      "_support/MANIFEST.json"
+    ],
+    "test_paths": []
+  },
+  {
+    "file": "Easy_Launch_Standard_Reusable_Kit_2026-10-13.zip",
+    "bytes": 17048,
+    "sha256": "1721b5749bb83b7249bf16f8f05b48b4bab7344111e2d92ec5715e5f8fca6ff3",
+    "entries": 15,
+    "zip_crc_ok": true,
+    "manifest_paths": [],
+    "test_paths": [
+      ".agents/skills/create-one-click-launchers/tests/test_create_launchers.py"
+    ]
+  },
+  {
+    "file": "Proactive_Workflow_Tooling_2026-10-13.zip",
+    "bytes": 15379,
+    "sha256": "a1dceba4b20fd251e156250e902130cb36cbca344f9976f01a70ef42dcd5b782",
+    "entries": 10,
+    "zip_crc_ok": true,
+    "manifest_paths": [
+      "MANIFEST.json"
+    ],
+    "test_paths": []
+  }
+]

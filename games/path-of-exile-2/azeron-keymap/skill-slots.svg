@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="690" viewBox="0 0 1200 690">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:Segoe UI,Arial,sans-serif;fill:#172033}.muted{fill:#586579}</style>
+<text x="50" y="48" font-size="28" font-weight="700">Path of Exile 2 · All configured skill slots</text>
+<text x="50" y="78" class="muted" font-size="15">Slot bindings from the local config · actual socketed skill names are not stored there · gameplay prompts not verified</text>
+<rect x="50" y="120" width="340" height="66" rx="12" fill="#e5f3eb" stroke="#26734d" stroke-width="2"/>
+<text x="66" y="145" font-size="17" font-weight="700">Slot 1</text>
+<text x="170" y="145" font-size="17" font-weight="700">Mouse 1</text>
+<text x="66" y="169" class="muted" font-size="13">External mouse binding</text>
+<rect x="430" y="120" width="340" height="66" rx="12" fill="#e5f3eb" stroke="#26734d" stroke-width="2"/>
+<text x="446" y="145" font-size="17" font-weight="700">Slot 2</text>
+<text x="550" y="145" font-size="17" font-weight="700">Mouse 2</text>
+<text x="446" y="169" class="muted" font-size="13">External mouse binding</text>
+<rect x="810" y="120" width="340" height="66" rx="12" fill="#e5f3eb" stroke="#26734d" stroke-width="2"/>
+<text x="826" y="145" font-size="17" font-weight="700">Slot 3</text>
+<text x="930" y="145" font-size="17" font-weight="700">Mouse 3</text>
+<text x="826" y="169" class="muted" font-size="13">External mouse binding</text>
+<rect x="50" y="196" width="340" height="66" rx="12" fill="#e5f3eb" stroke="#26734d" stroke-width="2"/>
+<text x="66" y="221" font-size="17" font-weight="700">Slot 4</text>
+<text x="170" y="221" font-size="17" font-weight="700">Q</text>
+<text x="66" y="245" class="muted" font-size="13">BASIC · key Q · Azeron #11</text>
+<rect x="430" y="196" width="340" height="66" rx="12" fill="#e5f3eb" stroke="#26734d" stroke-width="2"/>
+<text x="446" y="221" font-size="17" font-weight="700">Slot 5</text>
+<text x="550" y="221" font-size="17" font-weight="700">E</text>
+<text x="446" y="245" class="muted" font-size="13">BASIC · key E · Azeron #16</text>
+<rect x="810" y="196" width="340" height="66" rx="12" fill="#e5f3eb" stroke="#26734d" stroke-width="2"/>
+<text x="826" y="221" font-size="17" font-weight="700">Slot 6</text>
+<text x="930" y="221" font-size="17" font-weight="700">R</text>
+<text x="826" y="245" class="muted" font-size="13">BASIC · key R · Azeron #18</text>
+<rect x="50" y="272" width="340" height="66" rx="12" fill="#e5f3eb" stroke="#26734d" stroke-width="2"/>
+<text x="66" y="297" font-size="17" font-weight="700">Slot 7</text>
+<text x="170" y="297" font-size="17" font-weight="700">T</text>
+<text x="66" y="321" class="muted" font-size="13">BASIC · key T · Azeron #3</text>
+<rect x="430" y="272" width="340" height="66" rx="12" fill="#e5f3eb" stroke="#26734d" stroke-width="2"/>
+<text x="446" y="297" font-size="17" font-weight="700">Slot 8</text>
+<text x="550" y="297" font-size="17" font-weight="700">F</text>
+<text x="446" y="321" class="muted" font-size="13">BASIC · key F · Azeron #15</text>
+<rect x="810" y="272" width="340" height="66" rx="12" fill="#eee8ff" stroke="#7041a6" stroke-width="2"/>
+<text x="826" y="297" font-size="17" font-weight="700">Slot 9</text>
+<text x="930" y="297" font-size="17" font-weight="700">Ctrl+Q</text>
+<text x="826" y="321" class="muted" font-size="13">BASIC + Ctrl · #5 + #11</text>
+<rect x="50" y="348" width="340" height="66" rx="12" fill="#eee8ff" stroke="#7041a6" stroke-width="2"/>
+<text x="66" y="373" font-size="17" font-weight="700">Slot 10</text>
+<text x="170" y="373" font-size="17" font-weight="700">Ctrl+E</text>
+<text x="66" y="397" class="muted" font-size="13">BASIC + Ctrl · #5 + #16</text>
+<rect x="430" y="348" width="340" height="66" rx="12" fill="#eee8ff" stroke="#7041a6" stroke-width="2"/>
+<text x="446" y="373" font-size="17" font-weight="700">Slot 11</text>
+<text x="550" y="373" font-size="17" font-weight="700">Ctrl+R</text>
+<text x="446" y="397" class="muted" font-size="13">BASIC + Ctrl · #5 + #18</text>
+<rect x="810" y="348" width="340" height="66" rx="12" fill="#eee8ff" stroke="#7041a6" stroke-width="2"/>
+<text x="826" y="373" font-size="17" font-weight="700">Slot 12</text>
+<text x="930" y="373" font-size="17" font-weight="700">Unmapped</text>
+<text x="826" y="397" class="muted" font-size="13">No binding recorded</text>
+<rect x="50" y="424" width="340" height="66" rx="12" fill="#eee8ff" stroke="#7041a6" stroke-width="2"/>
+<text x="66" y="449" font-size="17" font-weight="700">Slot 13</text>
+<text x="170" y="449" font-size="17" font-weight="700">Ctrl+F</text>
+<text x="66" y="473" class="muted" font-size="13">BASIC + Ctrl · #5 + #15</text>
+<text x="50" y="528" font-size="19" font-weight="700">Temporary skill keys on NUMBERS layer</text>
+<rect x="50" y="548" width="340" height="60" rx="11" fill="#fff2d6" stroke="#9a6800" stroke-width="2"/>
+<text x="66" y="572" font-size="16" font-weight="700">Temporary skill 1 · key 6</text>
+<text x="66" y="594" class="muted" font-size="13">Hold #2 for NUMBERS · Azeron #16</text>
+<rect x="430" y="548" width="340" height="60" rx="11" fill="#fff2d6" stroke="#9a6800" stroke-width="2"/>
+<text x="446" y="572" font-size="16" font-weight="700">Temporary skill 2 · key 7</text>
+<text x="446" y="594" class="muted" font-size="13">Hold #2 for NUMBERS · Azeron #8</text>
+<text x="50" y="648" class="muted" font-size="14">NUMBERS is a hold layer; it does not contain the main skill slots 1–13. Ctrl is also configured as a skill-bar toggle, so confirm Ctrl behavior in game.</text>
+</svg>

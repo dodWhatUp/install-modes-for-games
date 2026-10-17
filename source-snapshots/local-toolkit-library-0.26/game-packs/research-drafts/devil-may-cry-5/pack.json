@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "kind": "game-keybind-pack",
+  "id": "devil-may-cry-5",
+  "version": "0.1.0",
+  "game_id": "devil-may-cry-5",
+  "title": "Devil May Cry 5",
+  "keymaps": {
+    "keyboard": {
+      "Space": "Space",
+      "F": "F",
+      "E": "E",
+      "R": "R",
+      "MouseLeft": "MouseLeft",
+      "MouseRight": "MouseRight",
+      "WheelUp": "WheelUp",
+      "WheelDown": "WheelDown"
+    }
+  },
+  "files": [
+    {
+      "id": "input",
+      "adapter": "unresolved-native",
+      "locations": [
+        {
+          "root": "DMC5",
+          "pattern": "dmc5config.ini"
+        }
+      ],
+      "fields": [],
+      "inventory_complete": false,
+      "stopped_processes": [],
+      "writable": true,
+      "priority": 100,
+      "fingerprints": []
+    }
+  ],
+  "variants": [
+    {
+      "id": "keyboard",
+      "files": [
+        "input"
+      ]
+    }
+  ],
+  "presets": [],
+  "evidence": {
+    "stage": "draft",
+    "notes": "Location-research draft only: storage_unresolved",
+    "sources": []
+  },
+  "fixtures": []
+}

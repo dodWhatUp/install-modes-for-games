@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "version": "0.5.0",
+  "guest_helper_version": "0.3.0",
+  "review_date": "2026-10-12",
+  "outcome": "PASS_LOCAL_TRANSPORT_AND_POLICY; WEB_ACCOUNT_CONNECTION_PENDING",
+  "client": {"vendor": "OpenAI tunnel-client", "version": "v0.0.16 Windows amd64", "zip_sha256": "edef7241b0c647fcb30f1a80ff376b6b25c51927960f257a3f01e21b17c2aba6", "verification": "Matching official SHA256SUMS and executable readback; signed provenance not independently verified"},
+  "fixtures": {"web_policy_and_recovery_passed": 13, "portable_and_existing_guards_passed": 47, "failed": 0, "scope": "local read-only/disabled enforcement, no remote privilege expansion, local dedicated-guest requirement, blocked VM lifecycle, duplicate key retrieval across facade restart, changed payload refusal, unknown outcome/crashed journal refusal, nonzero result preservation, path quoting"},
+  "local_transport": {"checks_passed": 6, "scope": "real vendor Windows dev proxy -> actual stdio facade -> accepted runtime lab_status; initialize, tool discovery, structured status, blocked action, mutation-as-inspection rejection, blocked VM stop", "account_credentials_used": false, "guest_actions_performed": false, "guest_started_or_stopped": false},
+  "profile_launcher": "PASS actual PowerShell init creates an isolated fixture profile through the official executable; loopback-only health, browser opening disabled, environment-only secret reference and exact MCP command preserved. Fixture ID is not an account tunnel and was never connected.",
+  "reference_runtime": "Existing 0.3.0 Linux build/browser/native GTK acceptance retained; running source and guest sessions preserved",
+  "unverified": ["Actual Platform tunnel/workspace permissions and association", "Actual ChatGPT web plugin install, tool selection and end-to-end app workflow", "OAuth facade (not implemented); public distribution (outside scope)", "Managed tunnel supervision, stored secret/reboot recovery and cloud disconnect behavior", "Windows guest/native automation", "Human simultaneous-work test", "Second physical computer"],
+  "privacy": "Source packet excludes client binaries, keys, policy/plan/account binding, action journals, guest disks and raw evidence",
+  "publication": "No Git commit/push or public endpoint"
+}

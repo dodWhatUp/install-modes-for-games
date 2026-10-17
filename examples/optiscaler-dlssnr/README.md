@@ -4,9 +4,11 @@
 
 The table below records the **earlier v0.7.7 implementation**. The user's later cross-tool default uses F9 **100/75/67/50%**; see [current preferences](../../preferences/GENERAL.md) and the [installation procedure](../../docs/GRAPHICS-CONTROLS.md). This preserved patch/binary still uses 100/75/50/25%. Do not describe its existing behavior as the new default or rewrite its evidence without rebuilding and validating it. The [Batman patch](dagherbou-v020-f9/README.md) implements the newer cycle for Dagherbou v0.2.0.
 
+The 2026-10-07 owner mapping also supersedes the table's historical full-menu key for future deployments: merge [Compact-controls.ini](Compact-controls.ini) to set OptiScaler Home (`0x24`), while ReShade uses Delete.
+
 | Key | Action |
 |---|---|
-| Delete | Full OptiScaler menu |
+| Delete | Full OptiScaler menu in this historical build/profile |
 | F12 | Small DLSS Neural Rendering-only window |
 | F11 | Cycle numeric model preset hints 0–3 |
 | F10 | Neural Rendering on/off |

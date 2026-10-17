@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "kind": "poe2_overlay_handoff",
+  "mapping_revision": "2026-10-12-poe2-grouped-r2",
+  "status": "Native library files added; UI recognition/active layer/gameplay/host integration pending",
+  "game_executable": "PathOfExileSteam.exe",
+  "source_record": "KEYBINDS-GROUPED-R2.json",
+  "source_record_sha256": "61BFEAF8FE5CB8BBDAA9F9C0DE88D0DE85377A0CD417A8147F7572772B3E0403",
+  "views": [
+    {
+      "layer": "COMBAT",
+      "profile_id": "0ca7e8e3-131e-5f6b-8a8d-9a0dd78c0b17",
+      "profile_name": "PATH OF EXILE 2 - GROUPED R2 COMBAT",
+      "profile_file": "native-profiles/PATH OF EXILE 2 - GROUPED R2 COMBAT.json",
+      "profile_sha256": "2E9CC24AF1174693A5959093128DE2DE6508C53987A9ABD66BA771C9B78F00DF",
+      "png": "combat-icons.png",
+      "png_sha256": "5DD436371A87C5932F8B259049C50E677860F2E3D2FDC23716222BDF70483AF2",
+      "svg": "combat-combined.svg"
+    },
+    {
+      "layer": "MENU",
+      "profile_id": "4943b051-848c-5389-aa4d-e835b6dfd1e2",
+      "profile_name": "PATH OF EXILE 2 - GROUPED R2 MENU",
+      "profile_file": "native-profiles/PATH OF EXILE 2 - GROUPED R2 MENU.json",
+      "profile_sha256": "433E09E646A1092B0F7D938636978978407C6BD137BC6BEA379C2E4C9342A14F",
+      "png": "menu-icons.png",
+      "png_sha256": "B06EDF115A3B6291643F001ED0A12F5EA774A0D4B505EA37CC5533EE04711845",
+      "svg": "menu-combined.svg"
+    }
+  ],
+  "layer_controls": {
+    "primary": {
+      "button_id": 6,
+      "tap": "V",
+      "hold_ms": 150,
+      "hold": "MENU",
+      "release": "COMBAT"
+    },
+    "alternative": {
+      "button_id": 1,
+      "hold": "MENU",
+      "release": "COMBAT"
+    }
+  },
+  "integration_boundary": "Descriptive handoff only. Not a validated/imported Hub overlay_manifest; joystick is drawn and all current native positions are shown."
+}

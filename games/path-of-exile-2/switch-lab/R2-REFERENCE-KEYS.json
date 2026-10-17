@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "source": {
+    "revision": "2026-10-12-poe2-grouped-r2",
+    "sha256": "61bfeaf8fe5cb8bbdaa9f9c0de88d0de85377a0cd417a8147f7572772b3e0403",
+    "note": "Keys from saved R2. Skill names, assignments and availability are demo values."
+  },
+  "skills": [
+    {
+      "id": "use_bound_skill1",
+      "number": 1,
+      "button": 8,
+      "key": "LMB",
+      "code": null,
+      "ctrl": false,
+      "name": "Skill 1",
+      "set": "both",
+      "available": true
+    },
+    {
+      "id": "use_bound_skill2",
+      "number": 2,
+      "button": 7,
+      "key": "MMB",
+      "code": null,
+      "ctrl": false,
+      "name": "Skill 2",
+      "set": "both",
+      "available": true
+    },
+    {
+      "id": "use_bound_skill3",
+      "number": 3,
+      "button": 5,
+      "key": "RMB",
+      "code": null,
+      "ctrl": false,
+      "name": "Skill 3",
+      "set": "both",
+      "available": true
+    },
+    {
+      "id": "use_bound_skill4",
+      "number": 4,
+      "button": 12,
+      "key": "Q",
+      "code": "KeyQ",
+      "ctrl": false,
+      "name": "Skill 4",
+      "set": "I",
+      "available": true
+    },
+    {
+      "id": "use_bound_skill5",
+      "number": 5,
+      "button": 11,
+      "key": "E",
+      "code": "KeyE",
+      "ctrl": false,
+      "name": "Skill 5",
+      "set": "II",
+      "available": true
+    },
+    {
+      "id": "use_bound_skill6",
+      "number": 6,
+      "button": 10,
+      "key": "R",
+      "code": "KeyR",
+      "ctrl": false,
+      "name": "Skill 6",
+      "set": "both",
+      "available": true
+    },
+    {
+      "id": "use_bound_skill7",
+      "number": 7,
+      "button": 9,
+      "key": "T",
+      "code": "KeyT",
+      "ctrl": false,
+      "name": "Skill 7",
+      "set": "both",
+      "available": true
+    },
+    {
+      "id": "use_bound_skill8",
+      "number": 8,
+      "button": 13,
+      "key": "F",
+      "code": "KeyF",
+      "ctrl": false,
+      "name": "Skill 8",
+      "set": "both",
+      "available": true
+    },
+    {
+      "id": "use_bound_skill9",
+      "number": 9,
+      "button": 17,
+      "key": "Ctrl+Q",
+      "code": "KeyQ",
+      "ctrl": true,
+      "name": "Skill 9",
+      "set": "both",
+      "available": true
+    },
+    {
+      "id": "use_bound_skill10",
+      "number": 10,
+      "button": 16,
+      "key": "Ctrl+E",
+      "code": "KeyE",
+      "ctrl": true,
+      "name": "Skill 10",
+      "set": "both",
+      "available": true
+    },
+    {
+      "id": "use_bound_skill11",
+      "number": 11,
+      "button": 15,
+      "key": "Ctrl+R",
+      "code": "KeyR",
+      "ctrl": true,
+      "name": "Skill 11",
+      "set": "both",
+      "available": true
+    },
+    {
+      "id": "use_bound_skill12",
+      "number": 12,
+      "button": 38,
+      "key": "Ctrl+T",
+      "code": "KeyT",
+      "ctrl": true,
+      "name": "Skill 12",
+      "set": "both",
+      "available": true
+    },
+    {
+      "id": "use_bound_skill13",
+      "number": 13,
+      "button": 18,
+      "key": "Ctrl+F",
+      "code": "KeyF",
+      "ctrl": true,
+      "name": "Skill 13",
+      "set": "both",
+      "available": true
+    }
+  ]
+}

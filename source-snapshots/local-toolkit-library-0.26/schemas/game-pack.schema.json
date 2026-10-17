@@ -1,0 +1,450 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:gametools:keybind-game-pack:1",
+  "title": "Game Tools Keybind Data Pack \u2014 editor assistance, schema 1",
+  "description": "Runtime validate_pack/spec and pack-check additionally enforce native codes, identities, relationships, budgets, fixtures and portable paths.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "kind": {
+      "const": "game-keybind-pack"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "game_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "keymaps": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 32,
+      "additionalProperties": {
+        "type": "object",
+        "minProperties": 1,
+        "maxProperties": 256,
+        "additionalProperties": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "ctrl": {
+                  "type": "boolean"
+                },
+                "shift": {
+                  "type": "boolean"
+                },
+                "alt": {
+                  "type": "boolean"
+                },
+                "cmd": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "key",
+                "ctrl",
+                "shift",
+                "alt",
+                "cmd"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        }
+      }
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+          },
+          "adapter": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "root": {
+                  "type": "string",
+                  "pattern": "^[A-Z][A-Z0-9_]{0,47}$"
+                },
+                "pattern": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                }
+              },
+              "required": [
+                "root",
+                "pattern"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 12,
+            "minItems": 1
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                },
+                "selector": {
+                  "type": "object"
+                },
+                "keymap": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                },
+                "action": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                },
+                "contexts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                  },
+                  "maxItems": 16,
+                  "minItems": 1,
+                  "uniqueItems": true
+                },
+                "slot": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                },
+                "locked": {
+                  "type": "boolean"
+                },
+                "linked_group": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                },
+                "fallback_key": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "modifier_match": {
+                  "enum": [
+                    "exact",
+                    "subset"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "selector",
+                "keymap",
+                "action",
+                "contexts"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 512,
+            "minItems": 0
+          },
+          "inventory_complete": {
+            "type": "boolean"
+          },
+          "stopped_processes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "maxItems": 32,
+            "minItems": 0
+          },
+          "writable": {
+            "type": "boolean"
+          },
+          "priority": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+          },
+          "fingerprints": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "selector": {
+                  "type": "object"
+                },
+                "equals": {}
+              },
+              "required": [
+                "selector",
+                "equals"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 32,
+            "minItems": 0
+          },
+          "encoding": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "allow_middle": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "adapter",
+          "locations",
+          "fields",
+          "inventory_complete",
+          "stopped_processes",
+          "writable",
+          "priority",
+          "fingerprints"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 16,
+      "minItems": 1
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+            },
+            "maxItems": 16,
+            "minItems": 1
+          }
+        },
+        "required": [
+          "id",
+          "files"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 32,
+      "minItems": 1
+    },
+    "presets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+          },
+          "variant": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+          },
+          "changes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                },
+                "context": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                },
+                "key": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "slot": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+                }
+              },
+              "required": [
+                "action",
+                "context",
+                "key"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 512,
+            "minItems": 0
+          }
+        },
+        "required": [
+          "id",
+          "variant",
+          "changes"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 64,
+      "minItems": 0
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "stage": {
+          "enum": [
+            "draft",
+            "source-reviewed",
+            "fixture-tested"
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "pattern": "^(https://|source:)",
+                "maxLength": 1000
+              },
+              "note": {
+                "type": "string",
+                "maxLength": 1000
+              }
+            },
+            "required": [
+              "url",
+              "note"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 32,
+          "minItems": 0
+        }
+      },
+      "required": [
+        "stage",
+        "notes",
+        "sources"
+      ],
+      "additionalProperties": false
+    },
+    "fixtures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "file_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+          },
+          "before": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "after": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "changes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        },
+        "required": [
+          "file_id",
+          "before",
+          "after",
+          "changes"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 64,
+      "minItems": 0
+    },
+    "exclusive_contexts": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "maxItems": 64,
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "id",
+    "version",
+    "game_id",
+    "title",
+    "keymaps",
+    "files",
+    "variants",
+    "presets",
+    "evidence",
+    "fixtures"
+  ],
+  "additionalProperties": false
+}

@@ -1,5 +1,13 @@
 # A Plague Tale: Requiem History
 
+## 2026-10-07 — OptiScaler full menu moved to Home
+
+- User replaced the earlier cross-tool menu mapping with ReShade on Delete and OptiScaler on Home for existing and future installations. Requiem has OptiScaler but no ReShade layer.
+- The game/helper were closed and the live INI was exclusively writable. Private snapshot `20261007-110500-before-reshade-delete-optiscaler-home` preserved the prior `OptiScaler.ini`, Steam library metadata and relevant manifest; the older known-good snapshots remain separate.
+- Changed exactly `[Menu] ShortcutKey = auto` to explicit Home, `ShortcutKey = 0x24`. Pre-change SHA-256 `1D0C07C8DFC1EE6D18348ED14ED9BCDA8397FC4A3DBD54255E5DDE320ADE127C`; post-change `EC1605C95BCA129FE61E09494697B7AA7E51CA1C20D9F415AD0147DE7EB2373C`.
+- Static line readback and full-file comparison passed. No game launch occurred, so Home open/close behavior remains pending; earlier Delete hotkey results apply only to the previous binding.
+- Rollback: with Requiem and helpers closed, restore this game's saved INI from the named snapshot and verify the pre-change hash. No reminder or automatic test was scheduled.
+
 ## 2026-09-13 — F7 two-value controls installed
 
 - User requested replacing every installed NR resolution cycle with F7 toggling only 25% and 100%, and live DLSS SR selection beside NR where possible.
