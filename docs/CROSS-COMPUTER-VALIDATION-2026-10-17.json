@@ -4,7 +4,7 @@
     "files": 582,
     "python": 186,
     "json": 140,
-    "snapshot": 369
+    "snapshot": 377
   },
   "issues": [],
   "missing_relative_links": [],
@@ -14,5 +14,16 @@
     "poe_offline_checks": 20,
     "lab_safety_tests": 11
   },
-  "runtime_tests_performed": false
+  "runtime_tests_performed": false,
+  "additional_fixture_files": [
+    "game-packs/format-examples/sample-cfg-bind/fixtures/after.cfg",
+    "game-packs/format-examples/sample-cfg-bind/fixtures/before.cfg",
+    "game-packs/format-examples/sample-jsonc/fixtures/after.jsonc",
+    "game-packs/format-examples/sample-jsonc/fixtures/before.jsonc",
+    "game-packs/format-examples/sample-keyvalues/fixtures/after.vdf",
+    "game-packs/format-examples/sample-keyvalues/fixtures/before.vdf",
+    "game-packs/format-examples/sample-xml/fixtures/after.xml",
+    "game-packs/format-examples/sample-xml/fixtures/before.xml"
+  ],
+  "scope_note": "Initial changed-file scan plus eight restored format fixtures; final Git archive verifies every source-snapshot hash."
 }

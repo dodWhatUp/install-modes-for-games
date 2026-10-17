@@ -1,0 +1,6 @@
+"Controls" {
+ "Use" "E" // retained
+ "Reload" "R"
+ "Fire" "MouseLeft"
+}
+"Volume" "73"

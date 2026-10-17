@@ -2588,6 +2588,62 @@
       "published_sha256": "9b95ad986cd8cc59054a240e1171802536cfb2959aba7f482f82fc3bf4f3f6f9",
       "size": 1064,
       "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-cfg-bind/fixtures/after.cfg",
+      "original_sha256": "288e093836685b5c09d55251b7912ac1a93c18e656f13d57f74dc2e6c0a5a3cb",
+      "published_sha256": "288e093836685b5c09d55251b7912ac1a93c18e656f13d57f74dc2e6c0a5a3cb",
+      "size": 116,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-cfg-bind/fixtures/before.cfg",
+      "original_sha256": "7195addeffc39a64fb463c1c85db4badf0006c817cfae17a0d6a3752329a116f",
+      "published_sha256": "7195addeffc39a64fb463c1c85db4badf0006c817cfae17a0d6a3752329a116f",
+      "size": 116,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-jsonc/fixtures/after.jsonc",
+      "original_sha256": "72e18e73e0094ba89d8b59ff2954fa181bae3000f860bf6b885cfffa06114ead",
+      "published_sha256": "72e18e73e0094ba89d8b59ff2954fa181bae3000f860bf6b885cfffa06114ead",
+      "size": 104,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-jsonc/fixtures/before.jsonc",
+      "original_sha256": "7927a17cea27147398973e306c86fccd9ebc4dc668dd05054b02dc85d47212b8",
+      "published_sha256": "7927a17cea27147398973e306c86fccd9ebc4dc668dd05054b02dc85d47212b8",
+      "size": 104,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-keyvalues/fixtures/after.vdf",
+      "original_sha256": "f650f28767778e26458c6217c231ea0308fe3d01368e395304fef5ce7c5c7f52",
+      "published_sha256": "f650f28767778e26458c6217c231ea0308fe3d01368e395304fef5ce7c5c7f52",
+      "size": 86,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-keyvalues/fixtures/before.vdf",
+      "original_sha256": "2c239b11b8a8be0d6edbc7a45ffc2c199520c2da5dfb4152c1ef28d594b3b390",
+      "published_sha256": "2c239b11b8a8be0d6edbc7a45ffc2c199520c2da5dfb4152c1ef28d594b3b390",
+      "size": 86,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-xml/fixtures/after.xml",
+      "original_sha256": "c2b9bc122aefbf995e2ea8046ef386c40f0a012a8b80d93cc8ee3d14821765b1",
+      "published_sha256": "c2b9bc122aefbf995e2ea8046ef386c40f0a012a8b80d93cc8ee3d14821765b1",
+      "size": 169,
+      "sanitized": false
+    },
+    {
+      "path": "game-packs/format-examples/sample-xml/fixtures/before.xml",
+      "original_sha256": "f7218c83d3467fc7ad6890cf819528ed01e84d617542f7b3bed125a9467efae5",
+      "published_sha256": "f7218c83d3467fc7ad6890cf819528ed01e84d617542f7b3bed125a9467efae5",
+      "size": 169,
+      "sanitized": false
     }
   ],
   "documentation_links_routed_to_canonical_owner": [
