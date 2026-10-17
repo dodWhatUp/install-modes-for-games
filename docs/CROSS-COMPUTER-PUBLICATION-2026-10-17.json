@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-17",
+  "timezone": "Asia/Jerusalem",
+  "source_commit_in_immutable_context": "854b987052ecebb66c2da29978a3149a363e6beb",
+  "source_owner": "https://github.com/dodWhatUp/install-modes-for-games",
+  "context": {
+    "url": "https://drive.google.com/file/d/1EY4Zhins7YCFE1udKD7WDh_M1ck631XT/view",
+    "bytes": 28987990,
+    "sha256": "a2072ddac2f357fa4d307a49d659d3e130f3a8aac328a39811e16498355d93e4",
+    "manifest_sha256": "c09d39326c222c3c428db3fb13db592cdbc157f574f44865dc0dcf36b42a8873",
+    "payload_files": 1507,
+    "Drive_archive_readback": "PASS_EXACT_BYTES",
+    "Drive_access": "OBSERVED_OWNER_ONLY_NOT_SHARED"
+  },
+  "opening_message": {
+    "url": "https://drive.google.com/file/d/1qHnu6z6Z7RGvSdQbSeWTdMl8BLAkKLBh/view",
+    "readback": "PASS_EXACT_UTF8_BYTES"
+  },
+  "verification_receipt": "https://drive.google.com/file/d/15cd2c7TXj4f86r11DPKyLMgTbCCcZ6QW/view",
+  "chat": {
+    "project_records": 71,
+    "visible_messages": 1605,
+    "pasted_texts_copied": 3,
+    "referenced_images_copied": 8,
+    "referenced_images_unavailable": 2,
+    "tool_outputs_reasoning_and_later_messages_excluded": true,
+    "native_database_import_tested": false
+  },
+  "source_snapshot": {
+    "files": 377,
+    "adopted": false,
+    "exact_published_entry_hashes_verified": true,
+    "original_bytes_retained_privately": true
+  },
+  "verification": {
+    "source_export_contracts": 69,
+    "component_management_checks": 50,
+    "poe_offline_checks": 20,
+    "lab_safety_tests": 11,
+    "python_syntax_files": 186,
+    "parsed_json_files": 140,
+    "relative_markdown_links": "PASS",
+    "Git_bundle_clone_and_document_retrieval": "PASS",
+    "application_profile_restore_tested": false,
+    "destination_acceptance_tested": false
+  },
+  "receipt_postdates_immutable_package": true,
+  "scope": "source/knowledge reconciliation and private transfer; no application installation, game/device/input/graphics/capture/benchmark/scheduler action"
+}

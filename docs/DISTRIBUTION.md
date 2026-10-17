@@ -1,5 +1,42 @@
 # Repository and Drive export
 
+## 2026-10-17 — Cross-computer source and private context
+
+The [private continuation folder](https://drive.google.com/drive/folders/1YlSh6Y3tBFgWehfjrpfFPgBnw3vz8dUn)
+contains the [copy-ready opening message](https://drive.google.com/file/d/1qHnu6z6Z7RGvSdQbSeWTdMl8BLAkKLBh/view),
+[context package](https://drive.google.com/file/d/1EY4Zhins7YCFE1udKD7WDh_M1ck631XT/view)
+and [verification receipt](https://drive.google.com/file/d/15cd2c7TXj4f86r11DPKyLMgTbCCcZ6QW/view).
+Context size is 28,987,990 bytes; SHA-256 is
+`a2072ddac2f357fa4d307a49d659d3e130f3a8aac328a39811e16498355d93e4`.
+All 1,507 payload entries and the manifest were checked. Downloaded Drive bytes
+matched, the opening message matched exactly, and metadata confirmed private
+owner-only access. Previous Drive archives and sharing settings were retained.
+
+The immutable package includes canonical source commit
+`854b987052ecebb66c2da29978a3149a363e6beb`, a verified Git bundle, original local
+masters, scoped private settings/assets, skills/lab references and 71 project
+chat projections with 1,605 visible messages. Three pasted texts and eight local
+images were copied; two temporary clipboard images were unavailable. The Git
+bundle was cloned into a new directory and its recorded document read back.
+This is source recovery acceptance, not a native chat/database import, profile
+restore, new installation or target-computer runtime acceptance.
+
+The adopted 0.27 product source remains separate from the reference PC's
+installed 0.25 pointer and the preserved unadopted 0.26 library candidate.
+377 snapshot entries were verified from the actual Git archive. Validation
+passed 69 export contracts, 50 component checks, 20 PoE2 offline checks and 11 lab
+safety tests, plus syntax/JSON/link/privacy checks. Downloaded mod/program and
+external recovery bytes remain in local SSD ZIPs with separate manifests;
+credentials, browser profiles, whole Codex databases/settings and VM runtimes
+are excluded from the context. Functional application/profile restoration
+remains untested.
+
+Read [the continuation map](CROSS-COMPUTER-CONTINUATION-2026-10-17.md) and
+[machine-readable publication evidence](CROSS-COMPUTER-PUBLICATION-2026-10-17.json).
+This final receipt is newer than the immutable source/context package. No game,
+benchmark, capture, graphics/input/device change, schedule or cross-chat message
+was performed for the transfer.
+
 ## 2026-10-15 — Read-only planning 0.27 adopted source
 
 The exact runtime-tested R9 product source is commit
