@@ -1,5 +1,10 @@
 # Repository and Drive export
 
+## 2026-10-18 — Keybinds A+B immutable transport archived
+
+[Verified preservation and reconciliation receipt](KEYBINDS-AB-DRIVE-BACKUP-2026-10-18.md) records the private owner-only Drive file and independently validated SHA-256 (`fd3cb621c83220f15c7fa5d51efe2916bba9ced70d8505d57f404300b498a4b2`). This is recovery-source byte preservation, not a fresh installation, whole-Git mirror or game acceptance. Earlier archives remain unchanged.
+
+
 ## 2026-10-17 — Cross-computer source and private context
 
 The [private continuation folder](https://drive.google.com/drive/folders/1YlSh6Y3tBFgWehfjrpfFPgBnw3vz8dUn)
