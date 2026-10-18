@@ -1,5 +1,10 @@
 # Game tools knowledge and recovery index
 
+## 2026-10-18 — Keybinds A+B private-source preservation
+
+Read the [verified A+B Drive backup and current Git reconciliation](KEYBINDS-AB-DRIVE-BACKUP-2026-10-18.md) before requesting the October 13 sources again. The immutable transport has a private, byte-verified Drive backup; Keybinds code is already integrated into the later 0.27 repository lineage, so do not replay the historic A+B merge or replace current host code. Installed 0.25, adopted 0.27 and preserved unadopted 0.26 remain distinct observations.
+
+
 ## 2026-10-17 — Cross-computer reconciliation
 
 Start with [the continuation and coverage map](CROSS-COMPUTER-CONTINUATION-2026-10-17.md) and the [private continuation folder](https://drive.google.com/drive/folders/1YlSh6Y3tBFgWehfjrpfFPgBnw3vz8dUn). The adopted 0.27 source is preserved; the observed installed pointer remains 0.25, and the independent 0.26 library candidate is retained as a [separate source snapshot](../source-snapshots/README.md). Local game histories, controls, lab records and dated deployment receipts are reconciled below. Chat projections, native profiles and original settings stay private; downloaded mods/programs stay in local SSD ZIPs.
