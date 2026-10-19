@@ -6,6 +6,23 @@ Build a program a person can use to understand and supervise the existing system
 
 The initial interface should work from explicit local/source snapshots without a paid model call. Later optional model-assisted interpretation or controlled behavioral evaluation needs its own credential, cost, runtime and test setup. The program remains useful when exact model behavior or hidden platform state is unavailable.
 
+## Integrated execution and portable-workspace dependencies
+
+The [integrated execution plan](INTEGRATED-SYSTEM-EXECUTION-PLAN.md) is the combined dependency and integration map: 60 integration points, 18 work packages and 108 checks. Use its [machine-readable packages](INTEGRATED-SYSTEM-WORK-PACKAGES.json) and the GT-to-package mapping in the [requirement ledger](PORTABLE-WORKSPACE-REQUIREMENTS.json). This makes control-center views consumers of the same source, resource, policy and receipt contracts as portable workspaces. It does not create a competing task master or import another project's implementation.
+
+| Control-center slice | Work packages and required integration |
+|---|---|
+| U0 inventory | MCI-01 source/capability inventory and MCI-02 shared contracts |
+| U1 human explorer | MCI-03 architecture, instruction and trigger navigation with exact source provenance |
+| U2 overview | MCI-05 human device/sync/change/chat overview consuming MCI-08 receipts; MCI-12 exposes effective policy |
+| U3 local source | MCI-06 local-source and Drive-link pilot, with MCI-02 resolution and MCI-13 access control |
+| U4 request checks | MCI-04 static preflight consuming MCI-03 applicability, MCI-12 policy and current capability evidence |
+| U5 optional evaluation | MCI-16 controlled model trials; separate credential, budget and isolated-tool acceptance |
+| U6 central control | MCI-13 enrollment/roles, MCI-14 scoped operations through accepted MCI-10 transport, and MCI-18 integrated acceptance |
+
+First deliver MCI-01 through MCI-04; MCI-05 can proceed from stable contract fixtures. U2/U4 may show known rules before policy editing exists, while edits and actions stay unavailable until their capability passes. U3 is a selected reversible pilot: keep historical Drive object links, source ownership and provider-specific semantics. U5 and remote operations do not delay a useful read-only architecture and preflight tool. GitHub tracks implementation acceptance; TickTick provides a private execution view using the same MCI identifiers. Neither task registration nor planning publication proves a running synchronizer, native-chat migration or model-prediction accuracy.
+
+
 ## Main user journeys
 
 | User question | Useful answer |

@@ -1,5 +1,10 @@
 # Game tools knowledge and recovery index
 
+## 2026-10-19 integrated work packages and task tracking
+
+The [combined execution plan](INTEGRATED-SYSTEM-EXECUTION-PLAN.md) now integrates both projects through 60 coverage points, 18 dependent work packages and 108 implementation checks. The [package manifest](INTEGRATED-SYSTEM-WORK-PACKAGES.json), [GT requirement mapping](PORTABLE-WORKSPACE-REQUIREMENTS.json) and [project backlog](SYSTEM-DEVELOPMENT-BACKLOG.json) share stable MCI identifiers. [GitHub parent tracker #12](https://github.com/dodWhatUp/install-modes-for-games/issues/12) indexes the implementation issues; TickTick mirrors the work privately. Start with P0 source inventory, shared contracts, architecture navigation, static preflight and the human overview. Registration completes planning integration; every product capability remains subject to its implementation and acceptance checks.
+
+
 ## 2026-10-19 — Urgent human control center and multi computer extension
 
 The [urgent control center and request preflight project](SYSTEM-CONTROL-CENTER-PLAN.md) and [P0 project record](SYSTEM-DEVELOPMENT-BACKLOG.json) add human navigation of architecture, instructions/triggers, device/sync/change/chat summaries, central policy, scoped remote actions, stable references for selected local-source migration and evidence-based request checks. [GT-081 through GT-096](PORTABLE-WORKSPACE-REQUIREMENTS.json) extend the [portable workspace plan](PORTABLE-WORKSPACE-PLAN.md) to N devices and shared, split, replicated, cloud or hybrid storage. Existing toolkit source and separately owned personal-system documentation are linked for reuse; no full sync engine, remote operator, cloud cutover or exact-model predictor is claimed. Next urgent slice: U0/U1/U4 read-only inventory, navigation and static preflight.

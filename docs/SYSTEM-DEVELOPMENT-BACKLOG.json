@@ -30,10 +30,24 @@
         "U1 architecture and trigger explorer",
         "U4 static request preflight"
       ],
-      "next_action": "Implement source-bound read-only inventory and fixture-driven human navigation and request checks",
+      "next_action": "Start MCI-01 inventory and MCI-02 shared contracts; deliver MCI-03 architecture explorer and MCI-04 static preflight before activation.",
       "implementation_started": false,
       "activation_state": "NO_SERVICE_OR_SCHEDULE_CREATED",
-      "issue_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/12"
+      "issue_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/12",
+      "work_packages": [
+        "MCI-01",
+        "MCI-02",
+        "MCI-03",
+        "MCI-04",
+        "MCI-05",
+        "MCI-06",
+        "MCI-12",
+        "MCI-13",
+        "MCI-14",
+        "MCI-16",
+        "MCI-18"
+      ],
+      "shared_dependencies": "Use each work package depends_on list; project phase numbers are not a complete execution order."
     },
     {
       "id": "portable-workspaces",
@@ -51,9 +65,32 @@
         "R1 managed vault",
         "R2 offline exchange"
       ],
-      "next_action": "Verify actual devices and supported Codex capabilities, then build a synthetic managed-vault prototype",
+      "next_action": "Start shared MCI-01/02; implement MCI-07 vault and MCI-08 offline exchange, with independent MCI-15 native-session feasibility.",
       "implementation_started": false,
-      "activation_state": "NO_SYNCHRONIZATION_ENABLED"
+      "activation_state": "NO_SYNCHRONIZATION_ENABLED",
+      "work_packages": [
+        "MCI-01",
+        "MCI-02",
+        "MCI-07",
+        "MCI-08",
+        "MCI-09",
+        "MCI-10",
+        "MCI-11",
+        "MCI-12",
+        "MCI-13",
+        "MCI-14",
+        "MCI-15",
+        "MCI-17",
+        "MCI-18"
+      ],
+      "shared_dependencies": "Use each work package depends_on list; project phase numbers are not a complete execution order."
     }
-  ]
+  ],
+  "integrated_execution_plan": "INTEGRATED-SYSTEM-EXECUTION-PLAN.md",
+  "work_package_manifest": "INTEGRATED-SYSTEM-WORK-PACKAGES.json",
+  "task_systems": {
+    "github": "https://github.com/dodWhatUp/install-modes-for-games/issues/12",
+    "ticktick": "Private execution mirror keyed by MCI task IDs; no automatic synchronization is implemented",
+    "implementation_status": "All work packages remain planned; registration is not implementation acceptance"
+  }
 }

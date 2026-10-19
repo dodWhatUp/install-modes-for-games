@@ -1,5 +1,10 @@
 # Continue on another computer
 
+## 2026-10-19 integrated work packages and task tracking
+
+The [combined execution plan](INTEGRATED-SYSTEM-EXECUTION-PLAN.md) now integrates both projects through 60 coverage points, 18 dependent work packages and 108 implementation checks. The [package manifest](INTEGRATED-SYSTEM-WORK-PACKAGES.json), [GT requirement mapping](PORTABLE-WORKSPACE-REQUIREMENTS.json) and [project backlog](SYSTEM-DEVELOPMENT-BACKLOG.json) share stable MCI identifiers. [GitHub parent tracker #12](https://github.com/dodWhatUp/install-modes-for-games/issues/12) indexes the implementation issues; TickTick mirrors the work privately. Start with P0 source inventory, shared contracts, architecture navigation, static preflight and the human overview. Registration completes planning integration; every product capability remains subject to its implementation and acceptance checks.
+
+
 ## 2026-10-19 multi computer and urgent control center extension
 
 The [multi computer workspace plan](PORTABLE-WORKSPACE-PLAN.md) covers shared, split, replicated and cloud/hybrid storage with scoped remote capabilities. The separately requested [urgent human control center](SYSTEM-CONTROL-CENTER-PLAN.md) explains architecture/instructions/triggers, sync/change/chat summaries, source availability and draft-request behavior. [Project priorities](SYSTEM-DEVELOPMENT-BACKLOG.json) preserve the P0 next slice. A local-information-source pilot must retain existing Drive links and verify required client access before cutover; no existing Drive object, account permission, schedule or Codex runtime is changed by this planning extension.

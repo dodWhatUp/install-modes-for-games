@@ -1,0 +1,606 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-19",
+  "timezone": "Asia/Jerusalem",
+  "kind": "integrated_work_package_plan",
+  "status": "PLANNED_NOT_IMPLEMENTED",
+  "owner": "dodWhatUp/install-modes-for-games",
+  "basis_commit": "e174ba6fe6db0edc70725daf1d9255172ac97b01",
+  "umbrella_issue": "https://github.com/dodWhatUp/install-modes-for-games/issues/12",
+  "task_status_owner": "GitHub issues; TickTick is a private execution view, not an automatically synchronized task master",
+  "task_map_privacy": "Public records use stable MCI IDs and GitHub issue URLs. TickTick account/project/task identifiers stay in private local receipts.",
+  "tasks": [
+    {
+      "id": "MCI-01",
+      "title": "Inventory source owners, existing components and device capabilities",
+      "priority": "P0",
+      "phases": [
+        "R0",
+        "U0"
+      ],
+      "requirements": [
+        "GT-079",
+        "GT-080",
+        "GT-093",
+        "GT-096"
+      ],
+      "depends_on": [],
+      "steps": [
+        "Record exact source owners, commits, versions and acceptance receipts for toolkit and personal-system components.",
+        "Identify reusable registry, reader, journal, approval and handoff code without adopting an independent source master.",
+        "Inventory each selected device OS, filesystem, runtime and reachable client; mark missing devices unknown.",
+        "Classify every capability as implemented source, fixture-tested, installed, observed, planned or unsupported.",
+        "Record current Codex history formats and runtime-portability constraints without copying credentials or production databases.",
+        "Publish a source-bound capability matrix and the next smallest safe implementation slice."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 13,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/13",
+      "ticktick_mirror_registered": true
+    },
+    {
+      "id": "MCI-02",
+      "title": "Define shared workspace, resource, revision and event contracts",
+      "priority": "P0",
+      "phases": [
+        "R1",
+        "U0"
+      ],
+      "requirements": [
+        "GT-062",
+        "GT-075",
+        "GT-079",
+        "GT-082"
+      ],
+      "depends_on": [
+        "MCI-01"
+      ],
+      "steps": [
+        "Define stable workspace, resource, device, replica, project and task-reference identities independently of paths.",
+        "Specify versioned resource references, source records, checkpoint manifests, policy decisions and operation receipts.",
+        "Map logical IDs to private local roots, source owners, revisions, authoritative locations and permitted replicas.",
+        "Define one event progression from receipt through verification, staging, adoption, indexing and context exposure.",
+        "Preserve unknown fields, existing native owners and old supported formats through explicit additive adapters.",
+        "Validate schema, size bounds, stale revisions, duplicate IDs, clone detection and inaccessible-source behavior."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 14,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/14",
+      "ticktick_mirror_registered": true
+    },
+    {
+      "id": "MCI-03",
+      "title": "Build the human architecture, instruction and trigger explorer",
+      "priority": "P0",
+      "phases": [
+        "U1"
+      ],
+      "requirements": [
+        "GT-078",
+        "GT-087"
+      ],
+      "depends_on": [
+        "MCI-01",
+        "MCI-02"
+      ],
+      "steps": [
+        "Inventory applicable AGENTS files, overrides, skills, declared triggers, tool capabilities and accessible preferences.",
+        "Separate declared rules, sources actually loaded where observable, observed execution and inaccessible context.",
+        "Resolve scope and precedence using the selected client version without weakening higher-priority instructions.",
+        "Provide compact search, dependency graph and accessible list views with exact source and freshness links.",
+        "Explain conflicts, repeated defaults, historical instructions and probabilistic skill-selection cues.",
+        "Test keyboard navigation, long names, narrow layouts, missing sources, cancellation and stale-source refusal."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 15,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/15",
+      "ticktick_mirror_registered": true
+    },
+    {
+      "id": "MCI-04",
+      "title": "Build static request preflight and minimal wording comparison",
+      "priority": "P0",
+      "phases": [
+        "U4"
+      ],
+      "requirements": [
+        "GT-071",
+        "GT-090",
+        "GT-092"
+      ],
+      "depends_on": [
+        "MCI-02",
+        "MCI-03"
+      ],
+      "steps": [
+        "Accept a draft request, intended outcome and selected observable project/device context without submitting it.",
+        "Identify defaults already supplied, missing necessary details, ambiguity and unintended expansion of scope.",
+        "Explain likely skills, tools, permissions and source needs as conditional estimates with citations.",
+        "Compare original and minimal wording while retaining intent, exclusions, deliverables and action boundaries.",
+        "Clearly distinguish verified policy facts, untested estimates and actual observed behavior; keep hidden model state unknown.",
+        "Test positive, negative and ambiguous fixtures; preserve the original draft and require deliberate acceptance of a rewrite."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 16,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/16",
+      "ticktick_mirror_registered": true
+    },
+    {
+      "id": "MCI-05",
+      "title": "Build human device, synchronization, change and chat overview",
+      "priority": "P0",
+      "phases": [
+        "U2"
+      ],
+      "requirements": [
+        "GT-086",
+        "GT-094"
+      ],
+      "depends_on": [
+        "MCI-02"
+      ],
+      "steps": [
+        "Project existing receipts and authored event fixtures into one human-readable activity timeline.",
+        "Show device availability, last-known freshness, transfer, staging, conflict, adoption and next-decision states.",
+        "Summarize chat goals, outcomes, blockers, changed artifacts and continuation boundaries with source provenance.",
+        "Fetch full conversation content and attachment bytes only when specifically requested and authorized.",
+        "Apply no-store, retention and access choices to summaries, indexes and caches as well as originals.",
+        "Verify accessible filtering, missing content, stale devices, unknown operations and consistent status labels."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 17,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/17",
+      "ticktick_mirror_registered": true
+    },
+    {
+      "id": "MCI-06",
+      "title": "Pilot local information sources and preserve existing Drive links",
+      "priority": "P1",
+      "phases": [
+        "U3"
+      ],
+      "requirements": [
+        "GT-088",
+        "GT-089",
+        "GT-094"
+      ],
+      "depends_on": [
+        "MCI-02",
+        "MCI-05",
+        "MCI-13"
+      ],
+      "steps": [
+        "Inventory selected resource owners and existing Drive/Git references before any pilot source change.",
+        "Implement a stable logical-reference resolver with revision, availability and private local-binding information.",
+        "Provide separately tested local, paired-host and approved cloud-client read routes; do not assume cloud access to local paths.",
+        "Retain original Drive object IDs and URLs while verifying a small authorized local-source replica.",
+        "Test access-control equivalence, native Google document semantics, offline fallback and missing attachments.",
+        "Record a reversible pilot decision; automate selected indexing or mirroring only through an explicitly enabled adapter."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 18,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/18",
+      "ticktick_mirror_registered": true
+    },
+    {
+      "id": "MCI-07",
+      "title": "Implement managed storage on non-system internal or external drives",
+      "priority": "P1",
+      "phases": [
+        "R1"
+      ],
+      "requirements": [
+        "GT-061",
+        "GT-062",
+        "GT-075",
+        "GT-078",
+        "GT-079"
+      ],
+      "depends_on": [
+        "MCI-02"
+      ],
+      "steps": [
+        "Enroll a selected vault and bind it by logical and volume identity rather than drive letter alone.",
+        "Route managed project source, selected assets, outputs and continuation records into declared relative roots.",
+        "Inventory unsupported host-local tool outputs and prevent silent OS-drive fallback when the vault is absent.",
+        "Keep credentials, mutable runtime databases, local permissions and machine bindings under their existing owners.",
+        "Test changed usernames, mounts, clone collisions, Unicode/case/path constraints and symlink escapes.",
+        "Verify actual output placement and reopen behavior on synthetic projects while preserving existing native settings."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 19,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/19",
+      "ticktick_mirror_registered": true
+    },
+    {
+      "id": "MCI-08",
+      "title": "Implement checkpoints, move-drive handover and full or delta packages",
+      "priority": "P1",
+      "phases": [
+        "R2"
+      ],
+      "requirements": [
+        "GT-063",
+        "GT-064",
+        "GT-076",
+        "GT-080"
+      ],
+      "depends_on": [
+        "MCI-02",
+        "MCI-07"
+      ],
+      "steps": [
+        "Create bounded streaming full-seed and parent-bound delta manifests with content hashes and provenance.",
+        "Stage and verify complete payloads before publication; distinguish received, verified and adopted acknowledgements.",
+        "Preview and restore into a new location with granular rollback and source-drift refusal.",
+        "Handle missing parents, repeated packages, reordering, incompatible formats and untrusted archive paths.",
+        "Checkpoint and release drive ownership before transfer; recover incomplete staging after unexpected removal.",
+        "Complete a synthetic A-to-B-to-A round trip and record byte verification separately from functional restoration."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 20,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/20",
+      "ticktick_mirror_registered": true
+    },
+    {
+      "id": "MCI-09",
+      "title": "Implement independent parallel branches and N-device conflict reconciliation",
+      "priority": "P1",
+      "phases": [
+        "R3"
+      ],
+      "requirements": [
+        "GT-067",
+        "GT-068",
+        "GT-077",
+        "GT-081"
+      ],
+      "depends_on": [
+        "MCI-08"
+      ],
+      "steps": [
+        "Give each enrolled device an independent working replica, branch, chat identity and explicit common ancestry.",
+        "Merge text through three-way ancestry and structured records through stable format-owned identifiers.",
+        "Retain both versions for binary, same-field, rename, deletion-versus-edit and external-writer conflicts.",
+        "Use versioned tombstones, per-replica acknowledgements and deliberate device retirement before garbage collection.",
+        "Fence exclusive operations by writer generation; a lease timeout alone must not authorize conflicting offline writers.",
+        "Test A-B-C propagation, cycles, partitions, stale writers, late devices and lossless conflict recovery."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 21,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/21",
+      "ticktick_mirror_registered": true
+    },
+    {
+      "id": "MCI-10",
+      "title": "Implement network-share and authenticated peer transfer adapters",
+      "priority": "P1",
+      "phases": [
+        "R4"
+      ],
+      "requirements": [
+        "GT-065",
+        "GT-066",
+        "GT-081",
+        "GT-082"
+      ],
+      "depends_on": [
+        "MCI-09",
+        "MCI-12",
+        "MCI-13"
+      ],
+      "steps": [
+        "Reuse one checkpoint and receipt protocol for network shares and direct peer networking.",
+        "Keep active working trees and runtime databases local while exchanging immutable objects and manifests.",
+        "Bind peer operations to authenticated device/project scopes using maintained transport libraries.",
+        "Implement bounded resumable chunks, throttling, reconnect and visible queue state without automatic action replay.",
+        "Test share disconnection, revoked peers, expired requests, partial files and duplicate network delivery.",
+        "Verify two real hosts first and a third independent replica before advertising general multi-device support."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 22,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/22",
+      "ticktick_mirror_registered": true
+    },
+    {
+      "id": "MCI-11",
+      "title": "Implement opt-in cloud and hybrid storage adapters",
+      "priority": "P1",
+      "phases": [
+        "R4"
+      ],
+      "requirements": [
+        "GT-075",
+        "GT-082",
+        "GT-083"
+      ],
+      "depends_on": [
+        "MCI-09",
+        "MCI-12",
+        "MCI-13"
+      ],
+      "steps": [
+        "Define shared, split, replicated, cloud and hybrid authority rules separately for each content class.",
+        "Investigate the existing Drive route first while preserving original editable source owners and private recovery boundaries.",
+        "Respect provider revisions, quotas, incomplete downloads, permissions and explicit transfer selection.",
+        "Keep sender authentication distinct from integrity hashes and verify encryption/unlock compatibility where selected.",
+        "Test cloud/local divergence, missing hosts, stale caches, account access changes and interrupted provider operations.",
+        "Accept a small authorized provider pilot without automatic whole-account migration, upload or link rewriting."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 23,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/23",
+      "ticktick_mirror_registered": true
+    },
+    {
+      "id": "MCI-12",
+      "title": "Implement independent directional scope, cadence, adoption and context policies",
+      "priority": "P1",
+      "phases": [
+        "R4",
+        "R5",
+        "U2"
+      ],
+      "requirements": [
+        "GT-069",
+        "GT-070",
+        "GT-071",
+        "GT-078",
+        "GT-085",
+        "GT-095"
+      ],
+      "depends_on": [
+        "MCI-02",
+        "MCI-03"
+      ],
+      "steps": [
+        "Define policy keys by account, workspace, project, source device, destination device, capability and content class.",
+        "Configure A-to-B independently from B-to-A, including manual, checkpoint, reconnect, interval and debounced triggers.",
+        "Separate data transfer, local file adoption, index refresh and model-context exposure into distinct controls.",
+        "Support none, notice, summary, task packet and selected detailed-source context levels at supported turn boundaries.",
+        "Show restrictive effective-policy decisions; local exclusions override broader central proposals and peer content.",
+        "Test active-turn staging, canceled edits, hidden-controls versus enablement, policy revision drift and granular rollback."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 24,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/24",
+      "ticktick_mirror_registered": true
+    },
+    {
+      "id": "MCI-13",
+      "title": "Implement centralized roles, device enrollment and local authorization",
+      "priority": "P1",
+      "phases": [
+        "R4",
+        "U6"
+      ],
+      "requirements": [
+        "GT-075",
+        "GT-077",
+        "GT-085",
+        "GT-095"
+      ],
+      "depends_on": [
+        "MCI-02"
+      ],
+      "steps": [
+        "Separate personal/account identities, enrolled devices, project membership and storage permissions.",
+        "Define viewer, contributor, operator and policy-administrator capabilities without conflating them.",
+        "Allow a selected central computer or account to propose policy while retaining destination-side hard exclusions.",
+        "Keep secrets in local credential stores and require fresh supported sign-in rather than credential transplantation.",
+        "Implement enrollment, revocation, expiry, policy acknowledgements and explicit device retirement.",
+        "Test least-privilege reads/actions, offline devices, stale writer generations and an immediately usable local stop path."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 25,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/25",
+      "ticktick_mirror_registered": true
+    },
+    {
+      "id": "MCI-14",
+      "title": "Implement scoped remote Codex and named-operation controls",
+      "priority": "P1",
+      "phases": [
+        "R4",
+        "U6"
+      ],
+      "requirements": [
+        "GT-084",
+        "GT-085",
+        "GT-095"
+      ],
+      "depends_on": [
+        "MCI-10",
+        "MCI-12",
+        "MCI-13"
+      ],
+      "steps": [
+        "Probe supported Codex remote-control, SSH-project and named application capabilities separately on each target.",
+        "Define typed requests with operation ID, source/target identity, expected revision, expiry and result receipt.",
+        "Revalidate capability, project scope and permission on the destination before a permitted action.",
+        "Keep existing-host control, execution handoff, file transfer and remote desktop input visibly distinct.",
+        "Provide cancellation, local approval and uncertain-effect inspection; reconnect must not replay expired work.",
+        "Accept a bounded named operation on two actual hosts before advertising remote execution."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 26,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/26",
+      "ticktick_mirror_registered": true
+    },
+    {
+      "id": "MCI-15",
+      "title": "Implement honest Codex continuity and native-session feasibility",
+      "priority": "P1",
+      "phases": [
+        "R0",
+        "R5"
+      ],
+      "requirements": [
+        "GT-072",
+        "GT-073",
+        "GT-075",
+        "GT-080"
+      ],
+      "depends_on": [
+        "MCI-01",
+        "MCI-08",
+        "MCI-13"
+      ],
+      "steps": [
+        "Offer files and source-linked continuation packets even when original native-session portability is unavailable.",
+        "Label a new chat, original-host access, lineage-preserving fork and exact original-ID continuation separately.",
+        "Inventory legacy/paginated formats, native logs, database projections, attachment paths and runtime dependencies in synthetic profiles.",
+        "Use only a supported consistent-state snapshot/import route; do not concatenate histories or edit production databases.",
+        "Verify pagination, attachments, directory rebinding, a subsequent turn, restart and return transfer for each advertised route.",
+        "Maintain exclusive ownership of a native session identity and preserve divergent parallel chats as separate lineage."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 27,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/27",
+      "ticktick_mirror_registered": true
+    },
+    {
+      "id": "MCI-16",
+      "title": "Build optional controlled model behavior and prompt-quality evaluation",
+      "priority": "P2",
+      "phases": [
+        "U5"
+      ],
+      "requirements": [
+        "GT-090",
+        "GT-091",
+        "GT-092"
+      ],
+      "depends_on": [
+        "MCI-04"
+      ],
+      "steps": [
+        "Compare original, minimal and justified prompt variants on frozen tasks with positive and negative controls.",
+        "Distinguish current-project, fresh-session and accessible client-default baselines without claiming a model-alone condition.",
+        "Pin runtime/model settings, instruction/source hashes, tool fixtures and evaluation version.",
+        "Use the credential/setup workflow, explicit cost limits and isolated tools before any API-backed trials.",
+        "Repeat stochastic cases and report correctness, scope, necessary clarification, tool choices, tokens and latency where measured.",
+        "Retain uncertainty and held-out validation; never promise exact future responses or hidden-model-state inspection."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 28,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/28",
+      "ticktick_mirror_registered": true
+    },
+    {
+      "id": "MCI-17",
+      "title": "Decide and implement the optional portable Codex companion",
+      "priority": "P2",
+      "phases": [
+        "R0",
+        "R6"
+      ],
+      "requirements": [
+        "GT-074",
+        "GT-075",
+        "GT-080"
+      ],
+      "depends_on": [
+        "MCI-01",
+        "MCI-07",
+        "MCI-15"
+      ],
+      "steps": [
+        "Test desktop app and standalone CLI portability separately for each actual OS and architecture.",
+        "Verify cold start, dependencies, account sign-in, registration, update, restart and prior-version rollback.",
+        "Decide among full accepted companion, accurately labeled portable CLI, or project-data-only integration.",
+        "Reuse workspace, revision, policy and transfer owners rather than creating a duplicate application core.",
+        "Keep user data independent of runtime releases and credentials local to the current computer.",
+        "Publish only the capability level actually accepted, preserving the conditional project branch if unsupported."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 29,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/29",
+      "ticktick_mirror_registered": true
+    },
+    {
+      "id": "MCI-18",
+      "title": "Run integrated storage, control-center and recovery release acceptance",
+      "priority": "P1",
+      "phases": [
+        "R0",
+        "R6",
+        "U6"
+      ],
+      "requirements": [
+        "GT-080",
+        "GT-086",
+        "GT-092",
+        "GT-096"
+      ],
+      "depends_on": [
+        "MCI-05",
+        "MCI-06",
+        "MCI-08",
+        "MCI-09",
+        "MCI-10",
+        "MCI-11",
+        "MCI-12",
+        "MCI-13",
+        "MCI-14",
+        "MCI-15"
+      ],
+      "steps": [
+        "Run schema/contract fixtures, accepted isolated GUI checks and scoped actual-host tests as distinct evidence classes.",
+        "Exercise disk-full, surprise removal, process interruption, network partition, stale sources and corrupted packages.",
+        "Verify end-to-end receipt-to-adoption-to-index-to-context flow with independent policy and readable human status.",
+        "Verify selected local-source link preservation, permissions, no-store behavior and missing-asset disclosure.",
+        "Restore a selected prior project revision into a new location and verify actual usability without whole-profile replacement.",
+        "Record exact tested capabilities, unsupported optional routes, source versions, omissions and next boundaries before release."
+      ],
+      "status": "planned",
+      "implementation_started": false,
+      "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
+      "github_issue": 30,
+      "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/30",
+      "ticktick_mirror_registered": true
+    }
+  ],
+  "task_registration": {
+    "github_children": 18,
+    "ticktick_parent_registered": true,
+    "ticktick_subtasks_registered": 18,
+    "checklist_items_per_system": 108,
+    "readback_verified": true,
+    "automatic_task_synchronization": false
+  }
+}

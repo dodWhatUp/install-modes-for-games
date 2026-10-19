@@ -18,6 +18,9 @@
       "acceptance": [
         "Verify actual output locations by content class",
         "Missing volume never causes silent fallback to the OS drive"
+      ],
+      "implementation_tasks": [
+        "MCI-07"
       ]
     },
     {
@@ -28,6 +31,10 @@
       "acceptance": [
         "Rebind on both computers after a mount change",
         "Detect cloned or duplicate vault identities and unsafe path collisions"
+      ],
+      "implementation_tasks": [
+        "MCI-02",
+        "MCI-07"
       ]
     },
     {
@@ -38,6 +45,9 @@
       "acceptance": [
         "Checkpoint, release ownership and reopen on B then A",
         "Recover incomplete staging after unexpected removal"
+      ],
+      "implementation_tasks": [
+        "MCI-08"
       ]
     },
     {
@@ -48,6 +58,9 @@
       "acceptance": [
         "Full seed and chained delta round trip",
         "Duplicate, reordered, corrupt and missing-parent packages preserve current data"
+      ],
+      "implementation_tasks": [
+        "MCI-08"
       ]
     },
     {
@@ -58,6 +71,9 @@
       "acceptance": [
         "Share disconnect does not corrupt local work",
         "Only complete verified packages are offered for adoption"
+      ],
+      "implementation_tasks": [
+        "MCI-10"
       ]
     },
     {
@@ -68,6 +84,9 @@
       "acceptance": [
         "Pair, transfer, interrupt, resume and revoke on two actual hosts",
         "Sender trust is distinct from matching content hashes"
+      ],
+      "implementation_tasks": [
+        "MCI-10"
       ]
     },
     {
@@ -78,6 +97,9 @@
       "acceptance": [
         "Offline divergent edits survive reconnection",
         "One native session identity is never offered to two independent writers"
+      ],
+      "implementation_tasks": [
+        "MCI-09"
       ]
     },
     {
@@ -88,6 +110,9 @@
       "acceptance": [
         "Three-way merge uses explicit common ancestors",
         "Conflicts retain both originals and deletion records remain recoverable"
+      ],
+      "implementation_tasks": [
+        "MCI-09"
       ]
     },
     {
@@ -98,6 +123,9 @@
       "acceptance": [
         "A-to-B and B-to-A can select different data",
         "Local exclusions override peer packages and presets"
+      ],
+      "implementation_tasks": [
+        "MCI-12"
       ]
     },
     {
@@ -108,6 +136,9 @@
       "acceptance": [
         "Manual, interval, reconnect and debounced-change modes obey the effective policy",
         "Receiving bytes never implies adoption or a chat message"
+      ],
+      "implementation_tasks": [
+        "MCI-12"
       ]
     },
     {
@@ -118,6 +149,10 @@
       "acceptance": [
         "None, notice, summary, task packet and detailed-source levels remain distinct",
         "Context refresh occurs only through the selected supported boundary"
+      ],
+      "implementation_tasks": [
+        "MCI-04",
+        "MCI-12"
       ]
     },
     {
@@ -128,6 +163,9 @@
       "acceptance": [
         "Goal, state, revisions, blockers and next boundary reopen with selected assets",
         "New chats are labeled new and incomplete evidence remains visible"
+      ],
+      "implementation_tasks": [
+        "MCI-15"
       ]
     },
     {
@@ -138,6 +176,9 @@
       "acceptance": [
         "Synthetic same-ID versus lineage-fork results recorded separately",
         "History, attachments, new turn, restart and return transfer verified without credential transplantation"
+      ],
+      "implementation_tasks": [
+        "MCI-15"
       ]
     },
     {
@@ -148,6 +189,9 @@
       "acceptance": [
         "Per-OS cold start, sign-in, update, rollback and runtime registration tested",
         "Companion reuses the existing engine; project-only support stays integrated"
+      ],
+      "implementation_tasks": [
+        "MCI-17"
       ]
     },
     {
@@ -158,6 +202,14 @@
       "acceptance": [
         "Generic exchange rejects sensitive runtime classes",
         "Peer content cannot enable permissions, automatic actions or credential imports"
+      ],
+      "implementation_tasks": [
+        "MCI-02",
+        "MCI-07",
+        "MCI-11",
+        "MCI-13",
+        "MCI-15",
+        "MCI-17"
       ]
     },
     {
@@ -168,6 +220,9 @@
       "acceptance": [
         "Interrupted copy and source drift are detected before commit",
         "A verified restore is separate from a checksum and from adoption"
+      ],
+      "implementation_tasks": [
+        "MCI-08"
       ]
     },
     {
@@ -178,6 +233,10 @@
       "acceptance": [
         "Stale writer generation cannot publish a protected update",
         "Partitions and active turns preserve staging instead of forcing exclusive takeover"
+      ],
+      "implementation_tasks": [
+        "MCI-09",
+        "MCI-13"
       ]
     },
     {
@@ -188,6 +247,11 @@
       "acceptance": [
         "Long labels, keyboard use, cancel and offline states remain usable",
         "Hidden settings do not hide active automation or change operational policy"
+      ],
+      "implementation_tasks": [
+        "MCI-03",
+        "MCI-07",
+        "MCI-12"
       ]
     },
     {
@@ -198,6 +262,11 @@
       "acceptance": [
         "User data, journal, Workbench and AI contracts remain owned by existing services",
         "Original exports and old data formats remain readable; no duplicate task master"
+      ],
+      "implementation_tasks": [
+        "MCI-01",
+        "MCI-02",
+        "MCI-07"
       ]
     },
     {
@@ -208,6 +277,13 @@
       "acceptance": [
         "Record exact versions, paths privately, coverage and functional results per capability",
         "Only passed capabilities are advertised; failures have a granular recovery route"
+      ],
+      "implementation_tasks": [
+        "MCI-01",
+        "MCI-08",
+        "MCI-15",
+        "MCI-17",
+        "MCI-18"
       ]
     },
     {
@@ -218,6 +294,10 @@
       "acceptance": [
         "A-B-C cycles, offline replicas and retired devices preserve ancestry and do not duplicate adoption",
         "Keep source ownership, evidence limits and granular recovery explicit"
+      ],
+      "implementation_tasks": [
+        "MCI-09",
+        "MCI-10"
       ]
     },
     {
@@ -228,6 +308,11 @@
       "acceptance": [
         "Per-class source ownership, cache freshness and on-demand retrieval work without sharing live runtime databases",
         "Keep source ownership, evidence limits and granular recovery explicit"
+      ],
+      "implementation_tasks": [
+        "MCI-02",
+        "MCI-10",
+        "MCI-11"
       ]
     },
     {
@@ -238,6 +323,9 @@
       "acceptance": [
         "Provider revisions, partial downloads, quotas, permissions and reconnect are tested independently",
         "Keep source ownership, evidence limits and granular recovery explicit"
+      ],
+      "implementation_tasks": [
+        "MCI-11"
       ]
     },
     {
@@ -248,6 +336,9 @@
       "acceptance": [
         "Target authorization, operation identity, cancellation and uncertain-effect inspection accepted on real hosts",
         "Keep source ownership, evidence limits and granular recovery explicit"
+      ],
+      "implementation_tasks": [
+        "MCI-14"
       ]
     },
     {
@@ -258,6 +349,11 @@
       "acceptance": [
         "Viewer, contributor, operator and policy administration are distinct; local exclusions and revocation remain effective",
         "Keep source ownership, evidence limits and granular recovery explicit"
+      ],
+      "implementation_tasks": [
+        "MCI-12",
+        "MCI-13",
+        "MCI-14"
       ]
     },
     {
@@ -268,6 +364,10 @@
       "acceptance": [
         "Readable overview distinguishes live, reported and stale state with source-linked details on demand",
         "Keep source ownership, evidence limits and granular recovery explicit"
+      ],
+      "implementation_tasks": [
+        "MCI-05",
+        "MCI-18"
       ]
     },
     {
@@ -278,6 +378,9 @@
       "acceptance": [
         "Graph and accessible list trace each known rule and trigger to an exact source and distinguish declared from observed behavior",
         "Keep source ownership, evidence limits and granular recovery explicit"
+      ],
+      "implementation_tasks": [
+        "MCI-03"
       ]
     },
     {
@@ -288,6 +391,9 @@
       "acceptance": [
         "Local, remote-host and cloud-client routes tested separately; offline source and permitted replica behavior remain explicit",
         "Keep source ownership, evidence limits and granular recovery explicit"
+      ],
+      "implementation_tasks": [
+        "MCI-06"
       ]
     },
     {
@@ -298,6 +404,9 @@
       "acceptance": [
         "Stable resource IDs and Drive-ID mappings validated; original URLs retained and native-document semantics not falsely claimed",
         "Keep source ownership, evidence limits and granular recovery explicit"
+      ],
+      "implementation_tasks": [
+        "MCI-06"
       ]
     },
     {
@@ -308,6 +417,10 @@
       "acceptance": [
         "Minimal rewrite preserves intent, exclusions, deliverable and permission boundaries; no auto-submit or auto-rule edit",
         "Keep source ownership, evidence limits and granular recovery explicit"
+      ],
+      "implementation_tasks": [
+        "MCI-04",
+        "MCI-16"
       ]
     },
     {
@@ -318,6 +431,9 @@
       "acceptance": [
         "Runtime/model/context/tool revisions and budget pinned; positive, negative and held-out cases report measured quality and uncertainty",
         "Keep source ownership, evidence limits and granular recovery explicit"
+      ],
+      "implementation_tasks": [
+        "MCI-16"
       ]
     },
     {
@@ -328,6 +444,11 @@
       "acceptance": [
         "Unavailable model memory, hidden platform context and exact future responses are never represented as known",
         "Keep source ownership, evidence limits and granular recovery explicit"
+      ],
+      "implementation_tasks": [
+        "MCI-04",
+        "MCI-16",
+        "MCI-18"
       ]
     },
     {
@@ -338,6 +459,9 @@
       "acceptance": [
         "Exact owner/revision and coverage recorded; no duplicate task master, restart of completed intake or implicit owner repin",
         "Keep source ownership, evidence limits and granular recovery explicit"
+      ],
+      "implementation_tasks": [
+        "MCI-01"
       ]
     },
     {
@@ -348,6 +472,10 @@
       "acceptance": [
         "No-store and retention apply to summaries and caches too; unauthorized or missing files remain unavailable",
         "Keep source ownership, evidence limits and granular recovery explicit"
+      ],
+      "implementation_tasks": [
+        "MCI-05",
+        "MCI-06"
       ]
     },
     {
@@ -358,6 +486,11 @@
       "acceptance": [
         "Effective restrictive policy shown; central requests and peer content cannot broaden destination permissions",
         "Keep source ownership, evidence limits and granular recovery explicit"
+      ],
+      "implementation_tasks": [
+        "MCI-12",
+        "MCI-13",
+        "MCI-14"
       ]
     },
     {
@@ -368,9 +501,15 @@
       "acceptance": [
         "P0 urgency, first read-only slice, dependencies, status and durable publication pointers are discoverable",
         "Keep source ownership, evidence limits and granular recovery explicit"
+      ],
+      "implementation_tasks": [
+        "MCI-01",
+        "MCI-18"
       ]
     }
   ],
   "related_plan": "SYSTEM-CONTROL-CENTER-PLAN.md",
-  "project_priorities": "SYSTEM-DEVELOPMENT-BACKLOG.json"
+  "project_priorities": "SYSTEM-DEVELOPMENT-BACKLOG.json",
+  "integrated_execution_plan": "INTEGRATED-SYSTEM-EXECUTION-PLAN.md",
+  "work_package_manifest": "INTEGRATED-SYSTEM-WORK-PACKAGES.json"
 }

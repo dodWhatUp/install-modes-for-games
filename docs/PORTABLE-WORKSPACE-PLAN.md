@@ -8,6 +8,24 @@ Build this as an extension of the existing unified toolkit. Keep a reusable proj
 
 The requested deliverable at this stage is the architecture, coverage and development sequence. Production storage defaults, Codex installations, network services and active chats are unchanged. Planning a later native-state experiment does not override the current rule against transplanting production Codex databases or credentials.
 
+## Integrated execution and control-center dependencies
+
+The [integrated execution plan](INTEGRATED-SYSTEM-EXECUTION-PLAN.md) expands this design into 60 integration points and 18 work packages with 108 implementation checks. The [work-package manifest](INTEGRATED-SYSTEM-WORK-PACKAGES.json) supplies the dependency graph; each [GT requirement](PORTABLE-WORKSPACE-REQUIREMENTS.json) maps back to its implementing packages. Both projects share resource identity, source provenance, revisions, policy decisions, receipts and context contracts. Their existing owners remain authoritative.
+
+| Existing phase | Implementing work packages and cross-project links |
+|---|---|
+| R0 | MCI-01 inventory; MCI-15 native-session feasibility; MCI-17 conditional runtime decision; MCI-18 actual-host acceptance |
+| R1 | MCI-02 shared contracts; MCI-07 non-system drive vault |
+| R2 | MCI-08 checkpoints, move-drive handover and full/delta packages |
+| R3 | MCI-09 independent parallel branches and N-device reconciliation |
+| R4 | MCI-10 network/share, MCI-11 cloud/hybrid, MCI-12 policy, MCI-13 roles/enrollment and MCI-14 remote operations |
+| R5 | MCI-15 honest continuity plus MCI-12 context/adoption controls |
+| R6 | MCI-17 optional portable companion and MCI-18 acceptance |
+| Shared human surface | MCI-03 architecture/instructions, MCI-04 static request checks, MCI-05 overview and MCI-06 local-source/Drive-link pilot |
+
+The urgent control-center core can use fixture data before any synchronization service exists. Network and cloud adapters depend on merge, policy and authorization contracts; the local-source pilot depends on resource resolution and access rules. Received bytes, adopted workspace state and information supplied to a running chat are separate transitions. Policy must independently control transport, timing, adoption, context depth and remote actions. Native runtime/history failures do not block file exchange and clearly labeled continuation packets. MCI-16 model trials and MCI-17 runtime portability are optional acceptance tracks.
+
+
 ## Read the plan
 
 - [What must be possible](#what-must-be-possible)

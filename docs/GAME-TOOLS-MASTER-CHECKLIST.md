@@ -1,5 +1,10 @@
 # Game tools master feature and acceptance checklist
 
+## 2026-10-19 integrated work packages and task tracking
+
+The [combined execution plan](INTEGRATED-SYSTEM-EXECUTION-PLAN.md) now integrates both projects through 60 coverage points, 18 dependent work packages and 108 implementation checks. The [package manifest](INTEGRATED-SYSTEM-WORK-PACKAGES.json), [GT requirement mapping](PORTABLE-WORKSPACE-REQUIREMENTS.json) and [project backlog](SYSTEM-DEVELOPMENT-BACKLOG.json) share stable MCI identifiers. [GitHub parent tracker #12](https://github.com/dodWhatUp/install-modes-for-games/issues/12) indexes the implementation issues; TickTick mirrors the work privately. Start with P0 source inventory, shared contracts, architecture navigation, static preflight and the human overview. Registration completes planning integration; every product capability remains subject to its implementation and acceptance checks.
+
+
 ## 2026-10-19 — Urgent control center and multi computer coverage GT-081 through GT-096
 
 [Control center and request preflight](SYSTEM-CONTROL-CENTER-PLAN.md) is a separately tracked **P0 urgent development task** in the [project backlog](SYSTEM-DEVELOPMENT-BACKLOG.json). The [requirement ledger](PORTABLE-WORKSPACE-REQUIREMENTS.json) appends sixteen planned requirements for N-device/storage topologies, cloud exchange, central permissions, remote capabilities, human-readable architecture/triggers/activity, local information sources, stable links and bounded request evaluation. Earlier GT-001 through GT-080 remain intact. These are planned interfaces and acceptance gates, not enabled automation or exact behavioral prediction.
