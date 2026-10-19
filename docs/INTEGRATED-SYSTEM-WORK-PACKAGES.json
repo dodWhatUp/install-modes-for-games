@@ -3,7 +3,7 @@
   "date": "2026-10-19",
   "timezone": "Asia/Jerusalem",
   "kind": "integrated_work_package_plan",
-  "status": "PLANNED_NOT_IMPLEMENTED",
+  "status": "P0_READ_ONLY_SOURCE_PREVIEW_VERIFIED_ACCEPTANCE_PENDING",
   "owner": "dodWhatUp/install-modes-for-games",
   "basis_commit": "e174ba6fe6db0edc70725daf1d9255172ac97b01",
   "umbrella_issue": "https://github.com/dodWhatUp/install-modes-for-games/issues/12",
@@ -33,12 +33,22 @@
         "Record current Codex history formats and runtime-portability constraints without copying credentials or production databases.",
         "Publish a source-bound capability matrix and the next smallest safe implementation slice."
       ],
-      "status": "planned",
-      "implementation_started": false,
+      "status": "completed",
+      "implementation_started": true,
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 13,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/13",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "implementation_report": "control-center/MCI-01-CONCLUSIONS.md",
+      "checklist_complete": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "completion_scope": "Selected-source inventory/contracts"
     },
     {
       "id": "MCI-02",
@@ -65,12 +75,22 @@
         "Preserve unknown fields, existing native owners and old supported formats through explicit additive adapters.",
         "Validate schema, size bounds, stale revisions, duplicate IDs, clone detection and inaccessible-source behavior."
       ],
-      "status": "planned",
-      "implementation_started": false,
+      "status": "completed",
+      "implementation_started": true,
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 14,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/14",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "implementation_report": "control-center/MCI-02-CONCLUSIONS.md",
+      "checklist_complete": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "completion_scope": "Selected-source inventory/contracts"
     },
     {
       "id": "MCI-03",
@@ -95,12 +115,22 @@
         "Explain conflicts, repeated defaults, historical instructions and probabilistic skill-selection cues.",
         "Test keyboard navigation, long names, narrow layouts, missing sources, cancellation and stale-source refusal."
       ],
-      "status": "planned",
-      "implementation_started": false,
+      "status": "source_preview_verified_acceptance_pending",
+      "implementation_started": true,
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 15,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/15",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "implementation_report": "control-center/MCI-03-CONCLUSIONS.md",
+      "checklist_complete": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "completion_scope": "Read-only source preview; remaining broad acceptance stays open"
     },
     {
       "id": "MCI-04",
@@ -126,12 +156,22 @@
         "Clearly distinguish verified policy facts, untested estimates and actual observed behavior; keep hidden model state unknown.",
         "Test positive, negative and ambiguous fixtures; preserve the original draft and require deliberate acceptance of a rewrite."
       ],
-      "status": "planned",
-      "implementation_started": false,
+      "status": "source_preview_verified_acceptance_pending",
+      "implementation_started": true,
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 16,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/16",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "implementation_report": "control-center/MCI-04-CONCLUSIONS.md",
+      "checklist_complete": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "completion_scope": "Read-only source preview; remaining broad acceptance stays open"
     },
     {
       "id": "MCI-05",
@@ -155,12 +195,22 @@
         "Apply no-store, retention and access choices to summaries, indexes and caches as well as originals.",
         "Verify accessible filtering, missing content, stale devices, unknown operations and consistent status labels."
       ],
-      "status": "planned",
-      "implementation_started": false,
+      "status": "source_preview_verified_acceptance_pending",
+      "implementation_started": true,
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 17,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/17",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "implementation_report": "control-center/MCI-05-CONCLUSIONS.md",
+      "checklist_complete": [
+        true,
+        true,
+        true,
+        false,
+        true,
+        false
+      ],
+      "completion_scope": "Read-only source preview; remaining broad acceptance stays open"
     },
     {
       "id": "MCI-06",
@@ -192,7 +242,8 @@
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 18,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/18",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "readiness_note": "Not started; follow declared dependencies and each actual-device/capability gate."
     },
     {
       "id": "MCI-07",
@@ -224,7 +275,8 @@
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 19,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/19",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "readiness_note": "Not started; follow declared dependencies and each actual-device/capability gate."
     },
     {
       "id": "MCI-08",
@@ -256,7 +308,8 @@
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 20,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/20",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "readiness_note": "Not started; follow declared dependencies and each actual-device/capability gate."
     },
     {
       "id": "MCI-09",
@@ -287,7 +340,8 @@
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 21,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/21",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "readiness_note": "Not started; follow declared dependencies and each actual-device/capability gate."
     },
     {
       "id": "MCI-10",
@@ -320,7 +374,8 @@
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 22,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/22",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "readiness_note": "Not started; follow declared dependencies and each actual-device/capability gate."
     },
     {
       "id": "MCI-11",
@@ -352,7 +407,8 @@
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 23,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/23",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "readiness_note": "Not started; follow declared dependencies and each actual-device/capability gate."
     },
     {
       "id": "MCI-12",
@@ -388,7 +444,8 @@
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 24,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/24",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "readiness_note": "Not started; follow declared dependencies and each actual-device/capability gate."
     },
     {
       "id": "MCI-13",
@@ -420,7 +477,8 @@
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 25,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/25",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "readiness_note": "Not started; follow declared dependencies and each actual-device/capability gate."
     },
     {
       "id": "MCI-14",
@@ -453,7 +511,8 @@
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 26,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/26",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "readiness_note": "Not started; follow declared dependencies and each actual-device/capability gate."
     },
     {
       "id": "MCI-15",
@@ -487,7 +546,8 @@
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 27,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/27",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "readiness_note": "Not started; follow declared dependencies and each actual-device/capability gate."
     },
     {
       "id": "MCI-16",
@@ -517,7 +577,8 @@
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 28,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/28",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "readiness_note": "Not started; follow declared dependencies and each actual-device/capability gate."
     },
     {
       "id": "MCI-17",
@@ -550,7 +611,8 @@
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 29,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/29",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "readiness_note": "Not started; follow declared dependencies and each actual-device/capability gate."
     },
     {
       "id": "MCI-18",
@@ -592,7 +654,8 @@
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 30,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/30",
-      "ticktick_mirror_registered": true
+      "ticktick_mirror_registered": true,
+      "readiness_note": "Not started; follow declared dependencies and each actual-device/capability gate."
     }
   ],
   "task_registration": {
@@ -602,5 +665,6 @@
     "checklist_items_per_system": 108,
     "readback_verified": true,
     "automatic_task_synchronization": false
-  }
+  },
+  "progress_report": "control-center/P0-IMPLEMENTATION.md"
 }

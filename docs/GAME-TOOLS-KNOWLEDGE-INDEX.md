@@ -1,5 +1,10 @@
 # Game tools knowledge and recovery index
 
+## 2026-10-19 P0 control-center source implementation
+
+The [read-only source preview and current boundaries](control-center/P0-IMPLEMENTATION.md) implements selected-source inventory/contracts, architecture/instruction navigation, static request checks and a device/event/activity overview. Each of MCI-01 through MCI-05 has its own conclusions file. Inventory and contract tasks are complete for their recorded scope; broader UI/source coverage and actual adapters remain open. Source/guest tests do not install the toolkit or Codex, prove native-chat transfer, enable synchronization or accept another computer.
+
+
 ## 2026-10-19 integrated work packages and task tracking
 
 The [combined execution plan](INTEGRATED-SYSTEM-EXECUTION-PLAN.md) now integrates both projects through 60 coverage points, 18 dependent work packages and 108 implementation checks. The [package manifest](INTEGRATED-SYSTEM-WORK-PACKAGES.json), [GT requirement mapping](PORTABLE-WORKSPACE-REQUIREMENTS.json) and [project backlog](SYSTEM-DEVELOPMENT-BACKLOG.json) share stable MCI identifiers. [GitHub parent tracker #12](https://github.com/dodWhatUp/install-modes-for-games/issues/12) indexes the implementation issues; TickTick mirrors the work privately. Start with P0 source inventory, shared contracts, architecture navigation, static preflight and the human overview. Registration completes planning integration; every product capability remains subject to its implementation and acceptance checks.

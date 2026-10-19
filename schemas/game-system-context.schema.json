@@ -1,0 +1,382 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Game Tools system context and shared projection contracts",
+  "description": "The runtime validator additionally enforces byte/depth/value bounds, source references and dependency cycles. Unknown additive data is preserved, never executed. Native formats retain their owners.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "kind",
+    "scope",
+    "sources",
+    "nodes"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "kind": {
+      "const": "GameToolsSystemContext"
+    },
+    "scope": {
+      "$ref": "#/$defs/id"
+    },
+    "sources": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    },
+    "devices": {
+      "type": "array"
+    },
+    "events": {
+      "type": "array"
+    },
+    "activities": {
+      "type": "array"
+    },
+    "resources": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "id",
+        "owner",
+        "locator",
+        "sha256",
+        "availability"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "availability": {
+          "enum": [
+            "available",
+            "missing",
+            "stale",
+            "unreadable"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "node": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "label",
+        "source_id",
+        "scopes",
+        "observation"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "source_id": {
+          "$ref": "#/$defs/id"
+        },
+        "kind": {
+          "enum": [
+            "component",
+            "instruction",
+            "preference",
+            "skill",
+            "tool",
+            "automation"
+          ]
+        },
+        "label": {
+          "type": "string"
+        },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "observation": {
+          "enum": [
+            "declared",
+            "reported_loaded",
+            "observed_execution",
+            "unknown"
+          ]
+        },
+        "layer": {
+          "enum": [
+            "global",
+            "project",
+            "directory",
+            "historical"
+          ]
+        },
+        "depends_on": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "ResourceReference": {
+      "type": "object",
+      "required": [
+        "id",
+        "owner",
+        "revision",
+        "content_class",
+        "availability",
+        "binding_id"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "additionalProperties": true,
+      "description": "Versioned read-only projection/handoff shape. This record does not authorize an operation or replace its native owner."
+    },
+    "SourceInstructionRecord": {
+      "type": "object",
+      "required": [
+        "id",
+        "source_id",
+        "scopes",
+        "layer",
+        "observation",
+        "declared_trigger"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "additionalProperties": true,
+      "description": "Versioned read-only projection/handoff shape. This record does not authorize an operation or replace its native owner."
+    },
+    "CapabilityRecord": {
+      "type": "object",
+      "required": [
+        "id",
+        "scope",
+        "route",
+        "version",
+        "evidence",
+        "limitations"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "additionalProperties": true,
+      "description": "Versioned read-only projection/handoff shape. This record does not authorize an operation or replace its native owner."
+    },
+    "CheckpointManifest": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "workspace_id",
+        "replica_id",
+        "checkpoint_id",
+        "parents"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "parents": {
+          "type": "array",
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/sha256"
+          }
+        }
+      },
+      "additionalProperties": true,
+      "description": "Versioned read-only projection/handoff shape. This record does not authorize an operation or replace its native owner."
+    },
+    "PolicyDecision": {
+      "type": "object",
+      "required": [
+        "id",
+        "source",
+        "destination",
+        "rule_revision",
+        "allowed_effects",
+        "timing",
+        "context_depth",
+        "explanation"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "additionalProperties": true,
+      "description": "Versioned read-only projection/handoff shape. This record does not authorize an operation or replace its native owner."
+    },
+    "OperationRequest": {
+      "type": "object",
+      "required": [
+        "id",
+        "source",
+        "target",
+        "expires_at",
+        "expected_revision",
+        "operation"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "additionalProperties": true,
+      "description": "Versioned read-only projection/handoff shape. This record does not authorize an operation or replace its native owner."
+    },
+    "OperationReceipt": {
+      "type": "object",
+      "required": [
+        "id",
+        "operation_id",
+        "outcome",
+        "uncertainty",
+        "cancellation",
+        "evidence_revision"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "additionalProperties": true,
+      "description": "Versioned read-only projection/handoff shape. This record does not authorize an operation or replace its native owner."
+    },
+    "ActivitySummary": {
+      "type": "object",
+      "required": [
+        "id",
+        "goal",
+        "outcome",
+        "blocker",
+        "changed_artifacts",
+        "next_boundary",
+        "source_id",
+        "retention"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "additionalProperties": true,
+      "description": "Versioned read-only projection/handoff shape. This record does not authorize an operation or replace its native owner."
+    },
+    "ContextPacket": {
+      "type": "object",
+      "required": [
+        "id",
+        "scope",
+        "source_refs",
+        "freshness",
+        "omissions",
+        "next_boundary",
+        "permitted_exposure"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "additionalProperties": true,
+      "description": "Versioned read-only projection/handoff shape. This record does not authorize an operation or replace its native owner."
+    },
+    "PreflightResult": {
+      "type": "object",
+      "required": [
+        "kind",
+        "context_revision",
+        "original",
+        "candidate",
+        "findings",
+        "unknown_influences",
+        "submitted",
+        "execution"
+      ],
+      "properties": {
+        "kind": {
+          "const": "static_request_preflight"
+        },
+        "submitted": {
+          "const": false
+        },
+        "execution": {
+          "const": "none"
+        }
+      },
+      "additionalProperties": true,
+      "description": "Versioned read-only projection/handoff shape. This record does not authorize an operation or replace its native owner."
+    },
+    "WorkPackageReference": {
+      "type": "object",
+      "required": [
+        "id",
+        "requirements",
+        "depends_on",
+        "task_status_owner",
+        "acceptance",
+        "github_issue"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "additionalProperties": true,
+      "description": "Versioned read-only projection/handoff shape. This record does not authorize an operation or replace its native owner."
+    }
+  }
+}

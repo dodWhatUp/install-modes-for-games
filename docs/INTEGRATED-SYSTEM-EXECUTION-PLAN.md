@@ -1,6 +1,6 @@
 # Integrated development plan and implementation checklist
 
-Date: 2026-10-19, Asia/Jerusalem. Status: planning integration completed; implementation remains planned. Parent tracker: [GitHub issue 12](https://github.com/dodWhatUp/install-modes-for-games/issues/12).
+Date: 2026-10-19, Asia/Jerusalem. Status: P0 read-only source preview verified; remaining acceptance and work packages stay open. Parent tracker: [GitHub issue 12](https://github.com/dodWhatUp/install-modes-for-games/issues/12).
 
 The portable workspace and the urgent human control center form one coordinated development program with shared contracts and separately deliverable capabilities. This plan integrates the original SSD/transfer workflow with multiple computers, storage topologies, cloud exchange, central policies, scoped remote operation, human architecture/trigger navigation, local information sources, stable links and request preflight.
 
@@ -133,9 +133,11 @@ Parallel development means independent scoped work on owned modules. It does not
 
 ## Detailed implementation checklist
 
-Each item below is planned and unchecked. Task registration and plan publication are separate from implementation evidence.
+Checks below follow the current [P0 implementation report](control-center/P0-IMPLEMENTATION.md). Completed inventory/contracts and verified preview work are distinguished from remaining broad acceptance. Registration is not implementation evidence.
 
 ### MCI-01
+
+Current result: [completed](control-center/MCI-01-CONCLUSIONS.md).
 
 Implementation tracker: [GitHub #13](https://github.com/dodWhatUp/install-modes-for-games/issues/13). Private TickTick mirror: registered under the same MCI ID.
 
@@ -143,14 +145,16 @@ Implementation tracker: [GitHub #13](https://github.com/dodWhatUp/install-modes-
 
 Requirements: GT-079, GT-080, GT-093, GT-096. Dependencies: None.
 
-- [ ] Record exact source owners, commits, versions and acceptance receipts for toolkit and personal-system components.
-- [ ] Identify reusable registry, reader, journal, approval and handoff code without adopting an independent source master.
-- [ ] Inventory each selected device OS, filesystem, runtime and reachable client; mark missing devices unknown.
-- [ ] Classify every capability as implemented source, fixture-tested, installed, observed, planned or unsupported.
-- [ ] Record current Codex history formats and runtime-portability constraints without copying credentials or production databases.
-- [ ] Publish a source-bound capability matrix and the next smallest safe implementation slice.
+- [x] Record exact source owners, commits, versions and acceptance receipts for toolkit and personal-system components.
+- [x] Identify reusable registry, reader, journal, approval and handoff code without adopting an independent source master.
+- [x] Inventory each selected device OS, filesystem, runtime and reachable client; mark missing devices unknown.
+- [x] Classify every capability as implemented source, fixture-tested, installed, observed, planned or unsupported.
+- [x] Record current Codex history formats and runtime-portability constraints without copying credentials or production databases.
+- [x] Publish a source-bound capability matrix and the next smallest safe implementation slice.
 
 ### MCI-02
+
+Current result: [completed](control-center/MCI-02-CONCLUSIONS.md).
 
 Implementation tracker: [GitHub #14](https://github.com/dodWhatUp/install-modes-for-games/issues/14). Private TickTick mirror: registered under the same MCI ID.
 
@@ -158,14 +162,16 @@ Implementation tracker: [GitHub #14](https://github.com/dodWhatUp/install-modes-
 
 Requirements: GT-062, GT-075, GT-079, GT-082. Dependencies: MCI-01.
 
-- [ ] Define stable workspace, resource, device, replica, project and task-reference identities independently of paths.
-- [ ] Specify versioned resource references, source records, checkpoint manifests, policy decisions and operation receipts.
-- [ ] Map logical IDs to private local roots, source owners, revisions, authoritative locations and permitted replicas.
-- [ ] Define one event progression from receipt through verification, staging, adoption, indexing and context exposure.
-- [ ] Preserve unknown fields, existing native owners and old supported formats through explicit additive adapters.
-- [ ] Validate schema, size bounds, stale revisions, duplicate IDs, clone detection and inaccessible-source behavior.
+- [x] Define stable workspace, resource, device, replica, project and task-reference identities independently of paths.
+- [x] Specify versioned resource references, source records, checkpoint manifests, policy decisions and operation receipts.
+- [x] Map logical IDs to private local roots, source owners, revisions, authoritative locations and permitted replicas.
+- [x] Define one event progression from receipt through verification, staging, adoption, indexing and context exposure.
+- [x] Preserve unknown fields, existing native owners and old supported formats through explicit additive adapters.
+- [x] Validate schema, size bounds, stale revisions, duplicate IDs, clone detection and inaccessible-source behavior.
 
 ### MCI-03
+
+Current result: [source_preview_verified_acceptance_pending](control-center/MCI-03-CONCLUSIONS.md).
 
 Implementation tracker: [GitHub #15](https://github.com/dodWhatUp/install-modes-for-games/issues/15). Private TickTick mirror: registered under the same MCI ID.
 
@@ -174,13 +180,15 @@ Implementation tracker: [GitHub #15](https://github.com/dodWhatUp/install-modes-
 Requirements: GT-078, GT-087. Dependencies: MCI-01, MCI-02.
 
 - [ ] Inventory applicable AGENTS files, overrides, skills, declared triggers, tool capabilities and accessible preferences.
-- [ ] Separate declared rules, sources actually loaded where observable, observed execution and inaccessible context.
-- [ ] Resolve scope and precedence using the selected client version without weakening higher-priority instructions.
-- [ ] Provide compact search, dependency graph and accessible list views with exact source and freshness links.
-- [ ] Explain conflicts, repeated defaults, historical instructions and probabilistic skill-selection cues.
+- [x] Separate declared rules, sources actually loaded where observable, observed execution and inaccessible context.
+- [x] Resolve scope and precedence using the selected client version without weakening higher-priority instructions.
+- [x] Provide compact search, dependency graph and accessible list views with exact source and freshness links.
+- [x] Explain conflicts, repeated defaults, historical instructions and probabilistic skill-selection cues.
 - [ ] Test keyboard navigation, long names, narrow layouts, missing sources, cancellation and stale-source refusal.
 
 ### MCI-04
+
+Current result: [source_preview_verified_acceptance_pending](control-center/MCI-04-CONCLUSIONS.md).
 
 Implementation tracker: [GitHub #16](https://github.com/dodWhatUp/install-modes-for-games/issues/16). Private TickTick mirror: registered under the same MCI ID.
 
@@ -188,14 +196,16 @@ Implementation tracker: [GitHub #16](https://github.com/dodWhatUp/install-modes-
 
 Requirements: GT-071, GT-090, GT-092. Dependencies: MCI-02, MCI-03.
 
-- [ ] Accept a draft request, intended outcome and selected observable project/device context without submitting it.
-- [ ] Identify defaults already supplied, missing necessary details, ambiguity and unintended expansion of scope.
-- [ ] Explain likely skills, tools, permissions and source needs as conditional estimates with citations.
-- [ ] Compare original and minimal wording while retaining intent, exclusions, deliverables and action boundaries.
-- [ ] Clearly distinguish verified policy facts, untested estimates and actual observed behavior; keep hidden model state unknown.
+- [x] Accept a draft request, intended outcome and selected observable project/device context without submitting it.
+- [x] Identify defaults already supplied, missing necessary details, ambiguity and unintended expansion of scope.
+- [x] Explain likely skills, tools, permissions and source needs as conditional estimates with citations.
+- [x] Compare original and minimal wording while retaining intent, exclusions, deliverables and action boundaries.
+- [x] Clearly distinguish verified policy facts, untested estimates and actual observed behavior; keep hidden model state unknown.
 - [ ] Test positive, negative and ambiguous fixtures; preserve the original draft and require deliberate acceptance of a rewrite.
 
 ### MCI-05
+
+Current result: [source_preview_verified_acceptance_pending](control-center/MCI-05-CONCLUSIONS.md).
 
 Implementation tracker: [GitHub #17](https://github.com/dodWhatUp/install-modes-for-games/issues/17). Private TickTick mirror: registered under the same MCI ID.
 
@@ -203,11 +213,11 @@ Implementation tracker: [GitHub #17](https://github.com/dodWhatUp/install-modes-
 
 Requirements: GT-086, GT-094. Dependencies: MCI-02.
 
-- [ ] Project existing receipts and authored event fixtures into one human-readable activity timeline.
-- [ ] Show device availability, last-known freshness, transfer, staging, conflict, adoption and next-decision states.
-- [ ] Summarize chat goals, outcomes, blockers, changed artifacts and continuation boundaries with source provenance.
+- [x] Project existing receipts and authored event fixtures into one human-readable activity timeline.
+- [x] Show device availability, last-known freshness, transfer, staging, conflict, adoption and next-decision states.
+- [x] Summarize chat goals, outcomes, blockers, changed artifacts and continuation boundaries with source provenance.
 - [ ] Fetch full conversation content and attachment bytes only when specifically requested and authorized.
-- [ ] Apply no-store, retention and access choices to summaries, indexes and caches as well as originals.
+- [x] Apply no-store, retention and access choices to summaries, indexes and caches as well as originals.
 - [ ] Verify accessible filtering, missing content, stale devices, unknown operations and consistent status labels.
 
 ### MCI-06
@@ -413,4 +423,4 @@ GitHub issue #12 is the parent tracker for the integrated program. Child issues 
 
 GitHub is the status owner for these development work packages. TickTick is a human execution view with personal priority/scheduling choices. Registration creates no bidirectional synchronization service. Later status updates require an explicit reconciliation of matching MCI IDs, last observed revisions and actual implementation evidence; checking an item in one product does not silently complete it in the other. The existing toolkit's operational jobs, approvals and native chat tasks keep their separate owners.
 
-Current authorization covers planning integration and task publication. No due dates, reminders, recurrence, model API calls, cloud migration, native-profile/database restore, remote execution or game activity is activated here.
+The current continuation implements and tests the read-only P0 source preview; see its stage conclusions and validation record. No due dates, reminders, recurrence, model API calls, cloud migration, native-profile/database restore, remote execution or game activity is activated here.

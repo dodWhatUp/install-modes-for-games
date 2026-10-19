@@ -10,7 +10,7 @@
       "title": "System control center and request preflight",
       "priority": "P0",
       "urgency": "explicitly_requested_urgent",
-      "status": "PLANNED_READY_FOR_READ_ONLY_PROTOTYPE",
+      "status": "READ_ONLY_SOURCE_PREVIEW_VERIFIED_ACCEPTANCE_PENDING",
       "plan": "SYSTEM-CONTROL-CENTER-PLAN.md",
       "requirements": [
         "GT-086",
@@ -30,8 +30,8 @@
         "U1 architecture and trigger explorer",
         "U4 static request preflight"
       ],
-      "next_action": "Start MCI-01 inventory and MCI-02 shared contracts; deliver MCI-03 architecture explorer and MCI-04 static preflight before activation.",
-      "implementation_started": false,
+      "next_action": "Finish selected-source coverage, platform accessibility and human usability acceptance; connect real evidence adapters in their dependent packages.",
+      "implementation_started": true,
       "activation_state": "NO_SERVICE_OR_SCHEDULE_CREATED",
       "issue_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/12",
       "work_packages": [
@@ -47,14 +47,15 @@
         "MCI-16",
         "MCI-18"
       ],
-      "shared_dependencies": "Use each work package depends_on list; project phase numbers are not a complete execution order."
+      "shared_dependencies": "Use each work package depends_on list; project phase numbers are not a complete execution order.",
+      "implementation_report": "control-center/P0-IMPLEMENTATION.md"
     },
     {
       "id": "portable-workspaces",
       "title": "Portable workspaces and multi computer collaboration",
       "priority": "P1",
       "urgency": "requested_development_plan",
-      "status": "PLANNED_NOT_IMPLEMENTED",
+      "status": "SHARED_CONTRACTS_IMPLEMENTED_WORKSPACE_ENGINE_NOT_STARTED",
       "plan": "PORTABLE-WORKSPACE-PLAN.md",
       "requirements_range": [
         "GT-061",
@@ -65,8 +66,8 @@
         "R1 managed vault",
         "R2 offline exchange"
       ],
-      "next_action": "Start shared MCI-01/02; implement MCI-07 vault and MCI-08 offline exchange, with independent MCI-15 native-session feasibility.",
-      "implementation_started": false,
+      "next_action": "Implement MCI-07 managed vault using existing user-data owners; MCI-12/13 are independent contract-dependent work. Native runtime transfer remains unverified.",
+      "implementation_started": true,
       "activation_state": "NO_SYNCHRONIZATION_ENABLED",
       "work_packages": [
         "MCI-01",

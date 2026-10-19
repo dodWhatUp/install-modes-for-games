@@ -1,0 +1,353 @@
+{
+  "date": "2026-10-19",
+  "tasks": [
+    {
+      "id": "MCI-01",
+      "priority": "P0",
+      "status": "completed",
+      "depends_on": [],
+      "checklist_complete": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "report": "control-center/MCI-01-CONCLUSIONS.md",
+      "note": null
+    },
+    {
+      "id": "MCI-02",
+      "priority": "P0",
+      "status": "completed",
+      "depends_on": [
+        "MCI-01"
+      ],
+      "checklist_complete": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "report": "control-center/MCI-02-CONCLUSIONS.md",
+      "note": null
+    },
+    {
+      "id": "MCI-03",
+      "priority": "P0",
+      "status": "source_preview_verified_acceptance_pending",
+      "depends_on": [
+        "MCI-01",
+        "MCI-02"
+      ],
+      "checklist_complete": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "report": "control-center/MCI-03-CONCLUSIONS.md",
+      "note": null
+    },
+    {
+      "id": "MCI-04",
+      "priority": "P0",
+      "status": "source_preview_verified_acceptance_pending",
+      "depends_on": [
+        "MCI-02",
+        "MCI-03"
+      ],
+      "checklist_complete": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "report": "control-center/MCI-04-CONCLUSIONS.md",
+      "note": null
+    },
+    {
+      "id": "MCI-05",
+      "priority": "P0",
+      "status": "source_preview_verified_acceptance_pending",
+      "depends_on": [
+        "MCI-02"
+      ],
+      "checklist_complete": [
+        true,
+        true,
+        true,
+        false,
+        true,
+        false
+      ],
+      "report": "control-center/MCI-05-CONCLUSIONS.md",
+      "note": null
+    },
+    {
+      "id": "MCI-06",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "MCI-02",
+        "MCI-05",
+        "MCI-13"
+      ],
+      "checklist_complete": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "report": null,
+      "note": "Not started; follow declared dependencies and each actual-device/capability gate."
+    },
+    {
+      "id": "MCI-07",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "MCI-02"
+      ],
+      "checklist_complete": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "report": null,
+      "note": "Not started; follow declared dependencies and each actual-device/capability gate."
+    },
+    {
+      "id": "MCI-08",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "MCI-02",
+        "MCI-07"
+      ],
+      "checklist_complete": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "report": null,
+      "note": "Not started; follow declared dependencies and each actual-device/capability gate."
+    },
+    {
+      "id": "MCI-09",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "MCI-08"
+      ],
+      "checklist_complete": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "report": null,
+      "note": "Not started; follow declared dependencies and each actual-device/capability gate."
+    },
+    {
+      "id": "MCI-10",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "MCI-09",
+        "MCI-12",
+        "MCI-13"
+      ],
+      "checklist_complete": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "report": null,
+      "note": "Not started; follow declared dependencies and each actual-device/capability gate."
+    },
+    {
+      "id": "MCI-11",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "MCI-09",
+        "MCI-12",
+        "MCI-13"
+      ],
+      "checklist_complete": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "report": null,
+      "note": "Not started; follow declared dependencies and each actual-device/capability gate."
+    },
+    {
+      "id": "MCI-12",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "MCI-02",
+        "MCI-03"
+      ],
+      "checklist_complete": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "report": null,
+      "note": "Not started; follow declared dependencies and each actual-device/capability gate."
+    },
+    {
+      "id": "MCI-13",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "MCI-02"
+      ],
+      "checklist_complete": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "report": null,
+      "note": "Not started; follow declared dependencies and each actual-device/capability gate."
+    },
+    {
+      "id": "MCI-14",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "MCI-10",
+        "MCI-12",
+        "MCI-13"
+      ],
+      "checklist_complete": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "report": null,
+      "note": "Not started; follow declared dependencies and each actual-device/capability gate."
+    },
+    {
+      "id": "MCI-15",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "MCI-01",
+        "MCI-08",
+        "MCI-13"
+      ],
+      "checklist_complete": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "report": null,
+      "note": "Not started; follow declared dependencies and each actual-device/capability gate."
+    },
+    {
+      "id": "MCI-16",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "MCI-04"
+      ],
+      "checklist_complete": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "report": null,
+      "note": "Not started; follow declared dependencies and each actual-device/capability gate."
+    },
+    {
+      "id": "MCI-17",
+      "priority": "P2",
+      "status": "planned",
+      "depends_on": [
+        "MCI-01",
+        "MCI-07",
+        "MCI-15"
+      ],
+      "checklist_complete": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "report": null,
+      "note": "Not started; follow declared dependencies and each actual-device/capability gate."
+    },
+    {
+      "id": "MCI-18",
+      "priority": "P1",
+      "status": "planned",
+      "depends_on": [
+        "MCI-05",
+        "MCI-06",
+        "MCI-08",
+        "MCI-09",
+        "MCI-10",
+        "MCI-11",
+        "MCI-12",
+        "MCI-13",
+        "MCI-14",
+        "MCI-15"
+      ],
+      "checklist_complete": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "report": null,
+      "note": "Not started; follow declared dependencies and each actual-device/capability gate."
+    }
+  ],
+  "automatic_continuation_service": false
+}

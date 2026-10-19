@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "kind": "GameToolsSystemContext",
+  "scope": "project.example",
+  "label": "Authored example · invented devices/events/chat summaries",
+  "sources": [
+    {
+      "id": "rules",
+      "owner": "authored-fixture",
+      "locator": "instructions.example.md",
+      "binding": "selected_project",
+      "sha256": "c8af0e2f0da13793b74ed9fb42131ba90e899464199169d74f4f1883b0c94eae",
+      "availability": "available"
+    },
+    {
+      "id": "detail",
+      "owner": "authored-fixture",
+      "locator": "detail.example.txt",
+      "binding": "selected_project",
+      "sha256": "0ac0aa927c36f0911c13d5b194ecc59fb0d279e2c7de2ba5c267ac43cd024954",
+      "availability": "available"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "language",
+      "kind": "preference",
+      "label": "English output default · authored fixture",
+      "source_id": "rules",
+      "scopes": [
+        "project.example"
+      ],
+      "layer": "project",
+      "observation": "reported_loaded",
+      "quote": "Answer in English.",
+      "depends_on": [],
+      "default": {
+        "key": "response.language",
+        "value": "English",
+        "category": "presentation_preference",
+        "redundant_lines": [
+          "Answer in English."
+        ]
+      }
+    },
+    {
+      "id": "reader",
+      "kind": "component",
+      "label": "Existing bounded source reader",
+      "source_id": "rules",
+      "scopes": [
+        "*"
+      ],
+      "layer": "global",
+      "observation": "declared",
+      "depends_on": []
+    },
+    {
+      "id": "explorer",
+      "kind": "component",
+      "label": "Local instruction and capability explorer",
+      "source_id": "rules",
+      "scopes": [
+        "project.example"
+      ],
+      "layer": "project",
+      "observation": "declared",
+      "depends_on": [
+        "reader"
+      ]
+    },
+    {
+      "id": "docs-skill",
+      "kind": "skill",
+      "label": "Official documentation lookup · declared cue",
+      "source_id": "rules",
+      "scopes": [
+        "project.example"
+      ],
+      "layer": "project",
+      "observation": "declared",
+      "depends_on": [
+        "reader"
+      ],
+      "trigger": "May be relevant for Codex documentation questions.",
+      "trigger_terms": [
+        "Codex",
+        "documentation",
+        "קודקס"
+      ]
+    },
+    {
+      "id": "no-execution",
+      "kind": "instruction",
+      "label": "Read-only action boundary",
+      "source_id": "rules",
+      "scopes": [
+        "project.example"
+      ],
+      "layer": "project",
+      "observation": "declared",
+      "depends_on": [],
+      "quote": "Do not submit requests, change Codex, or enable remote actions."
+    }
+  ],
+  "devices": [
+    {
+      "id": "device-a",
+      "label": "Example computer A",
+      "availability": "reported_online",
+      "last_seen": "2026-10-19T10:00:00Z"
+    },
+    {
+      "id": "device-b",
+      "label": "Example computer B",
+      "availability": "unknown",
+      "last_seen": null
+    }
+  ],
+  "events": [
+    {
+      "id": "event-0",
+      "operation_id": "example-transfer",
+      "device_id": "device-b",
+      "source_id": "rules",
+      "at": "2026-10-19T10:00:00Z",
+      "state": "received"
+    },
+    {
+      "id": "event-1",
+      "operation_id": "example-transfer",
+      "device_id": "device-b",
+      "source_id": "rules",
+      "at": "2026-10-19T10:00:01Z",
+      "state": "verified"
+    },
+    {
+      "id": "event-2",
+      "operation_id": "example-transfer",
+      "device_id": "device-b",
+      "source_id": "rules",
+      "at": "2026-10-19T10:00:02Z",
+      "state": "staged"
+    }
+  ],
+  "activities": [
+    {
+      "id": "example-chat",
+      "goal": "Continue a selected project on another computer",
+      "outcome": "Transfer staged for review; native chat identity not transferred",
+      "blocker": "Destination acceptance not observed",
+      "changed_artifacts": [
+        "example/project.txt"
+      ],
+      "next_boundary": "Review staged files and choose a supported continuation route",
+      "source_id": "rules",
+      "retention": "no_store",
+      "detail_resource": "detail-reference"
+    }
+  ],
+  "resources": [
+    {
+      "id": "detail-reference",
+      "source_id": "detail",
+      "relative": "detail.example.txt",
+      "access": "local_selected"
+    }
+  ],
+  "unknown_additive_field": {
+    "preserved": true
+  }
+}

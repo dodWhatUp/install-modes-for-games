@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-19",
+  "task": "MCI-01",
+  "components": [
+    {
+      "id": "userdata",
+      "owner": "dodWhatUp/install-modes-for-games",
+      "path": "scripts/GameToolUserData.py",
+      "basis_commit": "a279b2bda17bb8dc1c8ea06cd0e3b2f3b7cd8f76",
+      "sha256": "cdde51c16db5e3b6d43ef55940dd0098290322ffa62c42175ee5fb930fe381a7",
+      "version": "0.1.0",
+      "evidence": "source_inspected",
+      "decision": "Reuse exact-byte archives, migration and new-copy restore; no second backup engine.",
+      "installation": "not_established_by_source"
+    },
+    {
+      "id": "knowledge",
+      "owner": "dodWhatUp/install-modes-for-games",
+      "path": "scripts/GameToolAIKnowledge.py",
+      "basis_commit": "a279b2bda17bb8dc1c8ea06cd0e3b2f3b7cd8f76",
+      "sha256": "7f55145999d999127e1f8d3c77682f30a356e68eaf294b6b78612f6e1a7b8da7",
+      "version": "not_declared",
+      "evidence": "source_inspected",
+      "decision": "Extend bounded selected-source reading; keep manifest knowledge search owned here.",
+      "installation": "not_established_by_source"
+    },
+    {
+      "id": "contracts",
+      "owner": "dodWhatUp/install-modes-for-games",
+      "path": "scripts/GameToolAIContracts.py",
+      "basis_commit": "a279b2bda17bb8dc1c8ea06cd0e3b2f3b7cd8f76",
+      "sha256": "f2350d2967082aab1128236fa7dde6d43cffe902bed44e338be4dcceaacdffc8",
+      "version": "0.27.0-preview.1",
+      "evidence": "source_inspected",
+      "decision": "Reuse canonical JSON revisions and the existing AI envelope.",
+      "installation": "not_established_by_source"
+    },
+    {
+      "id": "journal",
+      "owner": "dodWhatUp/install-modes-for-games",
+      "path": "scripts/GameToolJournal.py",
+      "basis_commit": "a279b2bda17bb8dc1c8ea06cd0e3b2f3b7cd8f76",
+      "sha256": "319b13e1b96a7e073e9b5b755b228af955dcd8fd2a3842ee61c3f7ea6c43bff8",
+      "version": "0.1.0",
+      "evidence": "source_inspected",
+      "decision": "Read existing validated journal receipts; do not replay or create another journal.",
+      "installation": "not_established_by_source"
+    },
+    {
+      "id": "approval",
+      "owner": "dodWhatUp/install-modes-for-games",
+      "path": "scripts/GameToolAutomation.py",
+      "basis_commit": "a279b2bda17bb8dc1c8ea06cd0e3b2f3b7cd8f76",
+      "sha256": "34f8410678824146946682da35071c46a8cefe7378895f7f4c1e3071c6bb927f",
+      "version": "0.2.0",
+      "evidence": "source_inspected",
+      "decision": "Keep approvals and operational tasks here; new views have no executor.",
+      "installation": "not_established_by_source"
+    },
+    {
+      "id": "workspace",
+      "owner": "dodWhatUp/install-modes-for-games",
+      "path": "scripts/GameToolWorkspace.py",
+      "basis_commit": "a279b2bda17bb8dc1c8ea06cd0e3b2f3b7cd8f76",
+      "sha256": "a10d580169be930b3097fa79d756e76020645e7f469fa3c0c1c7200740793d6a",
+      "version": "0.4.0",
+      "evidence": "source_inspected",
+      "decision": "Register additive navigation routes.",
+      "installation": "not_established_by_source"
+    },
+    {
+      "id": "compact-ui",
+      "owner": "dodWhatUp/install-modes-for-games",
+      "path": "scripts/GameToolCompactUI.py",
+      "basis_commit": "a279b2bda17bb8dc1c8ea06cd0e3b2f3b7cd8f76",
+      "sha256": "602b48c8c14d4a5ee105e88c501c86c927754e0a39c05fed4db35d8adde1c4f8",
+      "version": "0.4.0",
+      "evidence": "source_inspected",
+      "decision": "Reuse Selector, FlowToolbar and ScrollableFrame.",
+      "installation": "not_established_by_source"
+    },
+    {
+      "id": "personal-context",
+      "owner": "dodWhatUp/install-modes-for-games",
+      "path": "scripts/GameToolAIFoundation.py",
+      "basis_commit": "a279b2bda17bb8dc1c8ea06cd0e3b2f3b7cd8f76",
+      "sha256": "a9549212cb67380778a582acbb3d0fc56e86858d2738af83a829e66ff9a48424",
+      "version": "not_declared",
+      "evidence": "source_inspected",
+      "decision": "Keep AI read/proposal envelope and permissions; no new AI transport.",
+      "installation": "not_established_by_source"
+    }
+  ],
+  "device_coverage": [
+    {
+      "id": "current-device",
+      "os": "Windows",
+      "architecture": "AMD64",
+      "python": "3.12.14",
+      "codex_desktop": "26.1013.4894.0",
+      "evidence": "local_metadata_observed",
+      "native_history_transfer": "not_tested",
+      "runtime_portability": "not_tested"
+    },
+    {
+      "id": "other-device",
+      "evidence": "not_observed",
+      "availability": "unknown",
+      "capabilities": "unknown"
+    }
+  ],
+  "native_history_evidence": {
+    "current": "No native database or profile was read, copied or changed. Current desktop version was observed.",
+    "historical": "Prior 0.163.0-alpha10.2 source inspection rejected cross-host continuation for paginated chats; legacy and newer capabilities need independent acceptance.",
+    "conclusion": "Do not promise native chat transfer or portable desktop runtime."
+  },
+  "reuse_conclusion": "Extend existing toolkit views and bounded readers; keep external architecture/research owners.",
+  "next": "MCI-02 versioned read-only projection contracts",
+  "external_owner": {
+    "repository": "dodWhatUp/attempt-2-unified-personal-system",
+    "branch": "codex/rebuild-stage3-20260920",
+    "commit": "e78732c8b86cd5a8b8b9c0d2f42abc36cb68c2e4",
+    "references": [
+      {
+        "path": "integration/REBUILD_ARCHITECTURE_MAP.md",
+        "sha": "46aeca4c5fbc08ff2818adbce8ef33c7ad64d5e5"
+      },
+      {
+        "path": "integration/REBUILD_AUTHORING_PREFLIGHT_REVIEW.md",
+        "sha": "6140d75535253c5bbb9d21cfa5dfac93ac428671"
+      },
+      {
+        "path": "experiments/project-doc-reader/architecture_view.py",
+        "sha": "512152d6acbb3acbb4b2b1e66562ad09767de84f"
+      },
+      {
+        "path": "experiments/project-doc-reader/research_authoring_preflight.py",
+        "sha": "d1681a6fa51d36b6102108090da1b735a83095a1"
+      }
+    ]
+  },
+  "external_reuse_decision": "Reference the existing project architecture renderer and Research authoring preflight; build only the missing local runtime-instruction/activity projection. No external source or state is adopted."
+}

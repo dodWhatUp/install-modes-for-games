@@ -22,8 +22,8 @@ class FocusHost(fixture.NativeTkFixtures):
  def test_full_host_mounts_real_focus_classes(self):
   self.build();self.assertTrue(self.surface.active);self.assertIsInstance(self.integration.mods,FocusModPanel);self.assertIsInstance(self.integration.automation,FocusAutomationPanel)
  def test_all_original_routes_preserved(self):
-  self.build();self.assertEqual(len(self.tabs.tabs()),11)
-  self.assertEqual([self.tabs.tab(t,'text') for t in self.tabs.tabs()],['Tools','Sensors','RTSS','Reports','How to use','Catalog','Comparison','Sessions','Overlays','Mods','AI & automation'])
+  self.build();self.assertEqual(len(self.tabs.tabs()),12)
+  self.assertEqual([self.tabs.tab(t,'text') for t in self.tabs.tabs()],['Tools','Sensors','RTSS','Reports','How to use','Catalog','Comparison','Sessions','Overlays','Mods','AI & automation','System control'])
  def test_same_backend_and_no_client_activation(self):
   self.build();self.assertIs(self.integration.automation.service,self.integration.service);self.assertFalse(self.integration.service.mods_root.exists());self.assertFalse(self.integration.automation.allow_client_requests.get())
  def test_find_control_has_visible_label(self):

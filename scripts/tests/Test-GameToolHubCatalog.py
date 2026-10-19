@@ -424,8 +424,8 @@ class FullGUIContracts(NativeTkFixtures):
     def test_readiness_child_is_wired_with_additive_overlay_tab(self):
         import tkinter as tk
         self.build_gui()
-        self.assertEqual(len(self.tabs.tabs()), 11)
-        self.assertEqual([self.tabs.tab(tab, "text") for tab in self.tabs.tabs()][-2:], ["Mods", "AI & automation"])
+        self.assertEqual(len(self.tabs.tabs()), 12)
+        self.assertEqual([self.tabs.tab(tab, "text") for tab in self.tabs.tabs()][-3:], ["Mods", "AI & automation", "System control"])
         self.assertEqual([self.tabs.tab(tab, "text") for tab in self.tabs.tabs()][:8],
                          ["Tools", "Sensors", "RTSS", "Reports", "How to use", "Catalog", "Comparison", "Sessions"])
         self.assertIsNotNone(self.session_panel.readiness_factory)
@@ -484,7 +484,7 @@ class FullGUIContracts(NativeTkFixtures):
     def test_hidden_full_gui_has_original_five_tabs_plus_catalog_and_refresh_off(self):
         self.build_gui()
         names = [self.tabs.tab(tab, "text") for tab in self.tabs.tabs()]
-        self.assertEqual(names, ["Tools", "Sensors", "RTSS", "Reports", "How to use", "Catalog", "Comparison", "Sessions", "Overlays", "Mods", "AI & automation"])
+        self.assertEqual(names, ["Tools", "Sensors", "RTSS", "Reports", "How to use", "Catalog", "Comparison", "Sessions", "Overlays", "Mods", "AI & automation", "System control"])
         self.assertEqual(self.root.state(), "withdrawn")
         auto_boxes = [widget for widget in descendants(self.root)
                       if isinstance(widget, self.ttk.Checkbutton) and "Auto refresh" in widget.cget("text")]

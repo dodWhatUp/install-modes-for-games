@@ -3,7 +3,7 @@
   "kind": "development_requirement_ledger",
   "date": "2026-10-19",
   "timezone": "Asia/Jerusalem",
-  "status": "PLANNED_NOT_IMPLEMENTED",
+  "status": "PARTIAL_READ_ONLY_P0_IMPLEMENTATION",
   "source_owner": "dodWhatUp/install-modes-for-games",
   "source_basis_commit": "169d7570ac34822153ea1407d27b77d62df7607d",
   "product_basis": "adopted 0.27; independent library 0.26 remains unmerged",
@@ -27,7 +27,7 @@
       "id": "GT-062",
       "requirement": "Keep logical workspace identities independent of drive letters, usernames, operating systems and mount paths",
       "phase": "R1",
-      "status": "planned",
+      "status": "partially_implemented",
       "acceptance": [
         "Rebind on both computers after a mount change",
         "Detect cloned or duplicate vault identities and unsafe path collisions"
@@ -35,7 +35,14 @@
       "implementation_tasks": [
         "MCI-02",
         "MCI-07"
-      ]
+      ],
+      "implementation_evidence": {
+        "tasks": [
+          "MCI-02"
+        ],
+        "report": "control-center/P0-IMPLEMENTATION.md",
+        "scope": "Selected-source read-only preview; original broad acceptance is not completed."
+      }
     },
     {
       "id": "GT-063",
@@ -145,7 +152,7 @@
       "id": "GT-071",
       "requirement": "Control how much shared knowledge and instruction detail affects another chat",
       "phase": "R5",
-      "status": "planned",
+      "status": "partially_implemented",
       "acceptance": [
         "None, notice, summary, task packet and detailed-source levels remain distinct",
         "Context refresh occurs only through the selected supported boundary"
@@ -153,7 +160,14 @@
       "implementation_tasks": [
         "MCI-04",
         "MCI-12"
-      ]
+      ],
+      "implementation_evidence": {
+        "tasks": [
+          "MCI-04"
+        ],
+        "report": "control-center/P0-IMPLEMENTATION.md",
+        "scope": "Selected-source read-only preview; original broad acceptance is not completed."
+      }
     },
     {
       "id": "GT-072",
@@ -198,7 +212,7 @@
       "id": "GT-075",
       "requirement": "Keep credentials, local permissions, native runtime databases and machine bindings under their existing owners",
       "phase": "R1/R5",
-      "status": "planned",
+      "status": "partially_implemented",
       "acceptance": [
         "Generic exchange rejects sensitive runtime classes",
         "Peer content cannot enable permissions, automatic actions or credential imports"
@@ -210,7 +224,14 @@
         "MCI-13",
         "MCI-15",
         "MCI-17"
-      ]
+      ],
+      "implementation_evidence": {
+        "tasks": [
+          "MCI-02"
+        ],
+        "report": "control-center/P0-IMPLEMENTATION.md",
+        "scope": "Selected-source read-only preview; original broad acceptance is not completed."
+      }
     },
     {
       "id": "GT-076",
@@ -243,7 +264,7 @@
       "id": "GT-078",
       "requirement": "Expose one compact workspace and sharing interface with separate direction, depth and timing controls",
       "phase": "R1/R4",
-      "status": "planned",
+      "status": "partially_implemented",
       "acceptance": [
         "Long labels, keyboard use, cancel and offline states remain usable",
         "Hidden settings do not hide active automation or change operational policy"
@@ -252,13 +273,20 @@
         "MCI-03",
         "MCI-07",
         "MCI-12"
-      ]
+      ],
+      "implementation_evidence": {
+        "tasks": [
+          "MCI-03"
+        ],
+        "report": "control-center/P0-IMPLEMENTATION.md",
+        "scope": "Selected-source read-only preview; original broad acceptance is not completed."
+      }
     },
     {
       "id": "GT-079",
       "requirement": "Reuse adopted toolkit owners while supporting generic projects and preserving existing independent sources",
       "phase": "R1",
-      "status": "planned",
+      "status": "partially_implemented",
       "acceptance": [
         "User data, journal, Workbench and AI contracts remain owned by existing services",
         "Original exports and old data formats remain readable; no duplicate task master"
@@ -267,13 +295,21 @@
         "MCI-01",
         "MCI-02",
         "MCI-07"
-      ]
+      ],
+      "implementation_evidence": {
+        "tasks": [
+          "MCI-01",
+          "MCI-02"
+        ],
+        "report": "control-center/P0-IMPLEMENTATION.md",
+        "scope": "Selected-source read-only preview; original broad acceptance is not completed."
+      }
     },
     {
       "id": "GT-080",
       "requirement": "Accept storage, protocol, merging, native chats and runtime portability independently on both actual computers",
       "phase": "R0/R6",
-      "status": "planned",
+      "status": "partially_implemented",
       "acceptance": [
         "Record exact versions, paths privately, coverage and functional results per capability",
         "Only passed capabilities are advertised; failures have a granular recovery route"
@@ -284,7 +320,14 @@
         "MCI-15",
         "MCI-17",
         "MCI-18"
-      ]
+      ],
+      "implementation_evidence": {
+        "tasks": [
+          "MCI-01"
+        ],
+        "report": "control-center/P0-IMPLEMENTATION.md",
+        "scope": "Selected-source read-only preview; original broad acceptance is not completed."
+      }
     },
     {
       "id": "GT-081",
@@ -304,7 +347,7 @@
       "id": "GT-082",
       "requirement": "Support shared, split, replicated and hybrid storage with explicit authority and availability",
       "phase": "R0/R4",
-      "status": "planned",
+      "status": "partially_implemented",
       "acceptance": [
         "Per-class source ownership, cache freshness and on-demand retrieval work without sharing live runtime databases",
         "Keep source ownership, evidence limits and granular recovery explicit"
@@ -313,7 +356,14 @@
         "MCI-02",
         "MCI-10",
         "MCI-11"
-      ]
+      ],
+      "implementation_evidence": {
+        "tasks": [
+          "MCI-02"
+        ],
+        "report": "control-center/P0-IMPLEMENTATION.md",
+        "scope": "Selected-source read-only preview; original broad acceptance is not completed."
+      }
     },
     {
       "id": "GT-083",
@@ -360,7 +410,7 @@
       "id": "GT-086",
       "requirement": "Provide a human-facing control center for synchronization, changes, devices and chat outcomes",
       "phase": "U1/U2",
-      "status": "planned",
+      "status": "partially_implemented",
       "acceptance": [
         "Readable overview distinguishes live, reported and stale state with source-linked details on demand",
         "Keep source ownership, evidence limits and granular recovery explicit"
@@ -368,20 +418,34 @@
       "implementation_tasks": [
         "MCI-05",
         "MCI-18"
-      ]
+      ],
+      "implementation_evidence": {
+        "tasks": [
+          "MCI-05"
+        ],
+        "report": "control-center/P0-IMPLEMENTATION.md",
+        "scope": "Selected-source read-only preview; original broad acceptance is not completed."
+      }
     },
     {
       "id": "GT-087",
       "requirement": "Expose architecture, source ownership, instructions, triggers, dependencies and applicability",
       "phase": "U0/U1",
-      "status": "planned",
+      "status": "partially_implemented",
       "acceptance": [
         "Graph and accessible list trace each known rule and trigger to an exact source and distinguish declared from observed behavior",
         "Keep source ownership, evidence limits and granular recovery explicit"
       ],
       "implementation_tasks": [
         "MCI-03"
-      ]
+      ],
+      "implementation_evidence": {
+        "tasks": [
+          "MCI-03"
+        ],
+        "report": "control-center/P0-IMPLEMENTATION.md",
+        "scope": "Selected-source read-only preview; original broad acceptance is not completed."
+      }
     },
     {
       "id": "GT-088",
@@ -413,7 +477,7 @@
       "id": "GT-090",
       "requirement": "Check a draft request for redundant defaults, ambiguity and unnecessary scope before submission",
       "phase": "U4",
-      "status": "planned",
+      "status": "partially_implemented",
       "acceptance": [
         "Minimal rewrite preserves intent, exclusions, deliverable and permission boundaries; no auto-submit or auto-rule edit",
         "Keep source ownership, evidence limits and granular recovery explicit"
@@ -421,7 +485,14 @@
       "implementation_tasks": [
         "MCI-04",
         "MCI-16"
-      ]
+      ],
+      "implementation_evidence": {
+        "tasks": [
+          "MCI-04"
+        ],
+        "report": "control-center/P0-IMPLEMENTATION.md",
+        "scope": "Selected-source read-only preview; original broad acceptance is not completed."
+      }
     },
     {
       "id": "GT-091",
@@ -440,7 +511,7 @@
       "id": "GT-092",
       "requirement": "Separate verified policy, estimated model behavior and observed evaluation results",
       "phase": "U4/U5",
-      "status": "planned",
+      "status": "partially_implemented",
       "acceptance": [
         "Unavailable model memory, hidden platform context and exact future responses are never represented as known",
         "Keep source ownership, evidence limits and granular recovery explicit"
@@ -449,26 +520,40 @@
         "MCI-04",
         "MCI-16",
         "MCI-18"
-      ]
+      ],
+      "implementation_evidence": {
+        "tasks": [
+          "MCI-04"
+        ],
+        "report": "control-center/P0-IMPLEMENTATION.md",
+        "scope": "Selected-source read-only preview; original broad acceptance is not completed."
+      }
     },
     {
       "id": "GT-093",
       "requirement": "Audit and reuse existing toolkit and separately owned personal-system work",
       "phase": "U0",
-      "status": "planned",
+      "status": "partially_implemented",
       "acceptance": [
         "Exact owner/revision and coverage recorded; no duplicate task master, restart of completed intake or implicit owner repin",
         "Keep source ownership, evidence limits and granular recovery explicit"
       ],
       "implementation_tasks": [
         "MCI-01"
-      ]
+      ],
+      "implementation_evidence": {
+        "tasks": [
+          "MCI-01"
+        ],
+        "report": "control-center/P0-IMPLEMENTATION.md",
+        "scope": "Selected-source read-only preview; original broad acceptance is not completed."
+      }
     },
     {
       "id": "GT-094",
       "requirement": "Use chat summaries and small indexes by default with authorized full content on demand",
       "phase": "U2/U3",
-      "status": "planned",
+      "status": "partially_implemented",
       "acceptance": [
         "No-store and retention apply to summaries and caches too; unauthorized or missing files remain unavailable",
         "Keep source ownership, evidence limits and granular recovery explicit"
@@ -476,7 +561,14 @@
       "implementation_tasks": [
         "MCI-05",
         "MCI-06"
-      ]
+      ],
+      "implementation_evidence": {
+        "tasks": [
+          "MCI-05"
+        ],
+        "report": "control-center/P0-IMPLEMENTATION.md",
+        "scope": "Selected-source read-only preview; original broad acceptance is not completed."
+      }
     },
     {
       "id": "GT-095",
@@ -497,7 +589,7 @@
       "id": "GT-096",
       "requirement": "Track the control center and request preflight as a separate urgent development project",
       "phase": "U0",
-      "status": "planned",
+      "status": "partially_implemented",
       "acceptance": [
         "P0 urgency, first read-only slice, dependencies, status and durable publication pointers are discoverable",
         "Keep source ownership, evidence limits and granular recovery explicit"
@@ -505,7 +597,14 @@
       "implementation_tasks": [
         "MCI-01",
         "MCI-18"
-      ]
+      ],
+      "implementation_evidence": {
+        "tasks": [
+          "MCI-01"
+        ],
+        "report": "control-center/P0-IMPLEMENTATION.md",
+        "scope": "Selected-source read-only preview; original broad acceptance is not completed."
+      }
     }
   ],
   "related_plan": "SYSTEM-CONTROL-CENTER-PLAN.md",

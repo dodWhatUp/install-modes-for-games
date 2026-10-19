@@ -1,0 +1,3 @@
+Authored detail fixture. No original Codex chat or attachment is included.
+Goal: demonstrate selected-content retrieval after a deliberate local request.
+Outcome: the original source remains unchanged; the view writes no cache.

@@ -82,6 +82,31 @@ def _regular_no_links(root: Path, relative: str, maximum: int) -> tuple[Path, by
     return path, raw
 
 
+def read_selected_source(root: Path, relative: str, expected_sha256: str | None = None) -> dict:
+    """Local read-only adapter for an explicitly selected source, never a scan.
+
+    This shares the package reader's bounds/link/identity checks. It does not
+    enroll the source in KnowledgeIndex or make its contents an instruction.
+    """
+    from pathlib import PurePosixPath
+    if (not isinstance(relative, str) or not relative or
+            PurePosixPath(relative).as_posix() != relative or
+            any(c in relative for c in "\\\\:\x00") or
+            any(p in {".", "..", ""} for p in relative.split("/"))):
+        raise KnowledgeError("Invalid selected source identity.")
+    if expected_sha256 is not None and not re.fullmatch(r"[a-f0-9]{64}", expected_sha256):
+        raise KnowledgeError("Invalid expected source revision.")
+    _, raw = _regular_no_links(Path(root).absolute(), relative, MAX_FILE_BYTES)
+    revision = hashlib.sha256(raw).hexdigest()
+    if expected_sha256 is not None and revision != expected_sha256:
+        raise KnowledgeError("Selected source changed; reload before using it.")
+    try:
+        content = raw.decode("utf-8-sig")
+    except UnicodeError:
+        raise KnowledgeError("Selected source is not UTF-8 text.") from None
+    return {"locator": relative, "sha256": revision, "bytes": len(raw), "content": content}
+
+
 def _heading(relative: str, text: str) -> str:
     if relative.endswith(".md"):
         for line in text.splitlines()[:40]:
@@ -120,11 +145,11 @@ class KnowledgeIndex:
             if not isinstance(relative, str) or Path(relative).suffix.lower() not in _TEXT_SUFFIXES or not _scope_matches(relative, "all"):
                 continue
             if not isinstance(row["bytes"], int) or row["bytes"] < 0 or row["bytes"] > MAX_FILE_BYTES or \
-                    not isinstance(row["sha256"], str) or not re.fullmatch(r"[a-f0-9]{64}", row["sha256"]):
+                    not isinstance(row["sha256"], str) or not re.fullmatch(r"[a-fA-F0-9]{64}", row["sha256"]):
                 continue
             _, raw = _regular_no_links(self.root, relative, MAX_FILE_BYTES)
             digest = hashlib.sha256(raw).hexdigest()
-            if digest != row["sha256"] or len(raw) != row["bytes"]:
+            if digest != row["sha256"].lower() or len(raw) != row["bytes"]:
                 raise KnowledgeError("Packaged source no longer matches its manifest.")
             total += len(raw)
             if total > MAX_TOTAL_BYTES:
