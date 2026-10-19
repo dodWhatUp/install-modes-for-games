@@ -1,5 +1,13 @@
 # Game tools master feature and acceptance checklist
 
+## 2026-10-19 — Urgent control center and multi computer coverage GT-081 through GT-096
+
+[Control center and request preflight](SYSTEM-CONTROL-CENTER-PLAN.md) is a separately tracked **P0 urgent development task** in the [project backlog](SYSTEM-DEVELOPMENT-BACKLOG.json). The [requirement ledger](PORTABLE-WORKSPACE-REQUIREMENTS.json) appends sixteen planned requirements for N-device/storage topologies, cloud exchange, central permissions, remote capabilities, human-readable architecture/triggers/activity, local information sources, stable links and bounded request evaluation. Earlier GT-001 through GT-080 remain intact. These are planned interfaces and acceptance gates, not enabled automation or exact behavioral prediction.
+
+## 2026-10-19 — Portable workspace requirements GT-061 through GT-080
+
+The [portable workspace plan](PORTABLE-WORKSPACE-PLAN.md) and its [requirement ledger](PORTABLE-WORKSPACE-REQUIREMENTS.json) append twenty stable requirements for selected-drive storage, four exchange transports, independent parallel work, conflict/recovery handling, directional update policies and capability-gated native Codex continuity. All twenty are **planned, not implemented**. They extend the existing User data/AI services and GT-001/006/008/009/055–059; no old ID or historical acceptance is renumbered. A separate portable companion depends on actual runtime/session feasibility; no production installation, chat migration, network listener or synchronization was activated by this planning work.
+
 ## 2026-10-13 — data-driven multi-game support (source preview 0.24)
 
 Read [Game support packs](GAME-SUPPORT-PACKS.md), the

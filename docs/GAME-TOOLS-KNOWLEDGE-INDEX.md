@@ -1,5 +1,13 @@
 # Game tools knowledge and recovery index
 
+## 2026-10-19 — Urgent human control center and multi computer extension
+
+The [urgent control center and request preflight project](SYSTEM-CONTROL-CENTER-PLAN.md) and [P0 project record](SYSTEM-DEVELOPMENT-BACKLOG.json) add human navigation of architecture, instructions/triggers, device/sync/change/chat summaries, central policy, scoped remote actions, stable references for selected local-source migration and evidence-based request checks. [GT-081 through GT-096](PORTABLE-WORKSPACE-REQUIREMENTS.json) extend the [portable workspace plan](PORTABLE-WORKSPACE-PLAN.md) to N devices and shared, split, replicated, cloud or hybrid storage. Existing toolkit source and separately owned personal-system documentation are linked for reuse; no full sync engine, remote operator, cloud cutover or exact-model predictor is claimed. Next urgent slice: U0/U1/U4 read-only inventory, navigation and static preflight.
+
+## 2026-10-19 — Portable workspaces and two computer collaboration plan
+
+[Development plan](PORTABLE-WORKSPACE-PLAN.md), [GT-061 through GT-096 requirements](PORTABLE-WORKSPACE-REQUIREMENTS.json) and [inert policy example](../templates/WORKSPACE-SYNC-POLICY.example.json) cover non-system data-drive defaults, moved-drive handover, full/delta transfer files, network-share/direct-network exchange, independent parallel branches and separate directional scope, frequency, adoption and chat-context depth. Extend existing User data/AI owners; a portable Codex companion remains conditional on runtime and native-history acceptance. This is planning, not an installed synchronizer, production database migration or two-host acceptance. Existing GT-001 through GT-060, adopted 0.27 and independent library 0.26 source ownership remain intact.
+
 ## 2026-10-18 — Keybinds A+B private-source preservation
 
 Read the [verified A+B Drive backup and current Git reconciliation](KEYBINDS-AB-DRIVE-BACKUP-2026-10-18.md) before requesting the October 13 sources again. The immutable transport has a private, byte-verified Drive backup; Keybinds code is already integrated into the later 0.27 repository lineage, so do not replay the historic A+B merge or replace current host code. Installed 0.25, adopted 0.27 and preserved unadopted 0.26 remain distinct observations.

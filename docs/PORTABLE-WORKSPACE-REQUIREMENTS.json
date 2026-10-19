@@ -1,0 +1,376 @@
+{
+  "schema_version": 1,
+  "kind": "development_requirement_ledger",
+  "date": "2026-10-19",
+  "timezone": "Asia/Jerusalem",
+  "status": "PLANNED_NOT_IMPLEMENTED",
+  "source_owner": "dodWhatUp/install-modes-for-games",
+  "source_basis_commit": "169d7570ac34822153ea1407d27b77d62df7607d",
+  "product_basis": "adopted 0.27; independent library 0.26 remains unmerged",
+  "request_source": "Current user requests for portable and multi-computer work, centralized human oversight, local information sources and request preflight",
+  "plan": "PORTABLE-WORKSPACE-PLAN.md",
+  "requirements": [
+    {
+      "id": "GT-061",
+      "requirement": "Default managed project files and outputs to a selected non-system internal or external drive",
+      "phase": "R1",
+      "status": "planned",
+      "acceptance": [
+        "Verify actual output locations by content class",
+        "Missing volume never causes silent fallback to the OS drive"
+      ]
+    },
+    {
+      "id": "GT-062",
+      "requirement": "Keep logical workspace identities independent of drive letters, usernames, operating systems and mount paths",
+      "phase": "R1",
+      "status": "planned",
+      "acceptance": [
+        "Rebind on both computers after a mount change",
+        "Detect cloned or duplicate vault identities and unsafe path collisions"
+      ]
+    },
+    {
+      "id": "GT-063",
+      "requirement": "Hand over an active workspace by physically moving its internal or external drive",
+      "phase": "R2",
+      "status": "planned",
+      "acceptance": [
+        "Checkpoint, release ownership and reopen on B then A",
+        "Recover incomplete staging after unexpected removal"
+      ]
+    },
+    {
+      "id": "GT-064",
+      "requirement": "Exchange full and incremental transfer files with verified ancestry and content",
+      "phase": "R2",
+      "status": "planned",
+      "acceptance": [
+        "Full seed and chained delta round trip",
+        "Duplicate, reordered, corrupt and missing-parent packages preserve current data"
+      ]
+    },
+    {
+      "id": "GT-065",
+      "requirement": "Use a network drive as an exchange location with independent active replicas",
+      "phase": "R4",
+      "status": "planned",
+      "acceptance": [
+        "Share disconnect does not corrupt local work",
+        "Only complete verified packages are offered for adoption"
+      ]
+    },
+    {
+      "id": "GT-066",
+      "requirement": "Connect two computers through an authenticated network transport with incremental updates",
+      "phase": "R4",
+      "status": "planned",
+      "acceptance": [
+        "Pair, transfer, interrupt, resume and revoke on two actual hosts",
+        "Sender trust is distinct from matching content hashes"
+      ]
+    },
+    {
+      "id": "GT-067",
+      "requirement": "Allow both computers to work independently and simultaneously on separate branches and chats",
+      "phase": "R3",
+      "status": "planned",
+      "acceptance": [
+        "Offline divergent edits survive reconnection",
+        "One native session identity is never offered to two independent writers"
+      ]
+    },
+    {
+      "id": "GT-068",
+      "requirement": "Reconcile source, structured records, binaries, renames and deletions without silent data loss",
+      "phase": "R3",
+      "status": "planned",
+      "acceptance": [
+        "Three-way merge uses explicit common ancestors",
+        "Conflicts retain both originals and deletion records remain recoverable"
+      ]
+    },
+    {
+      "id": "GT-069",
+      "requirement": "Configure scope independently per project, direction and content class",
+      "phase": "R4",
+      "status": "planned",
+      "acceptance": [
+        "A-to-B and B-to-A can select different data",
+        "Local exclusions override peer packages and presets"
+      ]
+    },
+    {
+      "id": "GT-070",
+      "requirement": "Configure transfer frequency separately from adoption and context-refresh timing",
+      "phase": "R4",
+      "status": "planned",
+      "acceptance": [
+        "Manual, interval, reconnect and debounced-change modes obey the effective policy",
+        "Receiving bytes never implies adoption or a chat message"
+      ]
+    },
+    {
+      "id": "GT-071",
+      "requirement": "Control how much shared knowledge and instruction detail affects another chat",
+      "phase": "R5",
+      "status": "planned",
+      "acceptance": [
+        "None, notice, summary, task packet and detailed-source levels remain distinct",
+        "Context refresh occurs only through the selected supported boundary"
+      ]
+    },
+    {
+      "id": "GT-072",
+      "requirement": "Provide source-linked continuation packets when native original-chat transfer is unavailable",
+      "phase": "R5",
+      "status": "planned",
+      "acceptance": [
+        "Goal, state, revisions, blockers and next boundary reopen with selected assets",
+        "New chats are labeled new and incomplete evidence remains visible"
+      ]
+    },
+    {
+      "id": "GT-073",
+      "requirement": "Investigate native original-chat continuation including paginated history and exact identity",
+      "phase": "R0/R5",
+      "status": "planned",
+      "acceptance": [
+        "Synthetic same-ID versus lineage-fork results recorded separately",
+        "History, attachments, new turn, restart and return transfer verified without credential transplantation"
+      ]
+    },
+    {
+      "id": "GT-074",
+      "requirement": "Decide whether a separate portable Codex companion is justified by actual desktop or CLI portability",
+      "phase": "R0/R6",
+      "status": "planned",
+      "acceptance": [
+        "Per-OS cold start, sign-in, update, rollback and runtime registration tested",
+        "Companion reuses the existing engine; project-only support stays integrated"
+      ]
+    },
+    {
+      "id": "GT-075",
+      "requirement": "Keep credentials, local permissions, native runtime databases and machine bindings under their existing owners",
+      "phase": "R1/R5",
+      "status": "planned",
+      "acceptance": [
+        "Generic exchange rejects sensitive runtime classes",
+        "Peer content cannot enable permissions, automatic actions or credential imports"
+      ]
+    },
+    {
+      "id": "GT-076",
+      "requirement": "Use consistent checkpoints, idempotent publication and per-destination receipt and adoption acknowledgements",
+      "phase": "R2",
+      "status": "planned",
+      "acceptance": [
+        "Interrupted copy and source drift are detected before commit",
+        "A verified restore is separate from a checksum and from adoption"
+      ]
+    },
+    {
+      "id": "GT-077",
+      "requirement": "Prevent conflicting exclusive actions using ownership generations and safe-boundary adoption",
+      "phase": "R3",
+      "status": "planned",
+      "acceptance": [
+        "Stale writer generation cannot publish a protected update",
+        "Partitions and active turns preserve staging instead of forcing exclusive takeover"
+      ]
+    },
+    {
+      "id": "GT-078",
+      "requirement": "Expose one compact workspace and sharing interface with separate direction, depth and timing controls",
+      "phase": "R1/R4",
+      "status": "planned",
+      "acceptance": [
+        "Long labels, keyboard use, cancel and offline states remain usable",
+        "Hidden settings do not hide active automation or change operational policy"
+      ]
+    },
+    {
+      "id": "GT-079",
+      "requirement": "Reuse adopted toolkit owners while supporting generic projects and preserving existing independent sources",
+      "phase": "R1",
+      "status": "planned",
+      "acceptance": [
+        "User data, journal, Workbench and AI contracts remain owned by existing services",
+        "Original exports and old data formats remain readable; no duplicate task master"
+      ]
+    },
+    {
+      "id": "GT-080",
+      "requirement": "Accept storage, protocol, merging, native chats and runtime portability independently on both actual computers",
+      "phase": "R0/R6",
+      "status": "planned",
+      "acceptance": [
+        "Record exact versions, paths privately, coverage and functional results per capability",
+        "Only passed capabilities are advertised; failures have a granular recovery route"
+      ]
+    },
+    {
+      "id": "GT-081",
+      "requirement": "Support N independently working computers with per-replica ancestry and acknowledgements",
+      "phase": "R3/R4",
+      "status": "planned",
+      "acceptance": [
+        "A-B-C cycles, offline replicas and retired devices preserve ancestry and do not duplicate adoption",
+        "Keep source ownership, evidence limits and granular recovery explicit"
+      ]
+    },
+    {
+      "id": "GT-082",
+      "requirement": "Support shared, split, replicated and hybrid storage with explicit authority and availability",
+      "phase": "R0/R4",
+      "status": "planned",
+      "acceptance": [
+        "Per-class source ownership, cache freshness and on-demand retrieval work without sharing live runtime databases",
+        "Keep source ownership, evidence limits and granular recovery explicit"
+      ]
+    },
+    {
+      "id": "GT-083",
+      "requirement": "Add opt-in cloud exchange through provider adapters, starting with existing Drive routes",
+      "phase": "R4",
+      "status": "planned",
+      "acceptance": [
+        "Provider revisions, partial downloads, quotas, permissions and reconnect are tested independently",
+        "Keep source ownership, evidence limits and granular recovery explicit"
+      ]
+    },
+    {
+      "id": "GT-084",
+      "requirement": "Operate supported Codex or named actions from one computer on another",
+      "phase": "R4/U6",
+      "status": "planned",
+      "acceptance": [
+        "Target authorization, operation identity, cancellation and uncertain-effect inspection accepted on real hosts",
+        "Keep source ownership, evidence limits and granular recovery explicit"
+      ]
+    },
+    {
+      "id": "GT-085",
+      "requirement": "Administer enrolled devices and project policies from a selected central computer or account",
+      "phase": "R4/U6",
+      "status": "planned",
+      "acceptance": [
+        "Viewer, contributor, operator and policy administration are distinct; local exclusions and revocation remain effective",
+        "Keep source ownership, evidence limits and granular recovery explicit"
+      ]
+    },
+    {
+      "id": "GT-086",
+      "requirement": "Provide a human-facing control center for synchronization, changes, devices and chat outcomes",
+      "phase": "U1/U2",
+      "status": "planned",
+      "acceptance": [
+        "Readable overview distinguishes live, reported and stale state with source-linked details on demand",
+        "Keep source ownership, evidence limits and granular recovery explicit"
+      ]
+    },
+    {
+      "id": "GT-087",
+      "requirement": "Expose architecture, source ownership, instructions, triggers, dependencies and applicability",
+      "phase": "U0/U1",
+      "status": "planned",
+      "acceptance": [
+        "Graph and accessible list trace each known rule and trigger to an exact source and distinguish declared from observed behavior",
+        "Keep source ownership, evidence limits and granular recovery explicit"
+      ]
+    },
+    {
+      "id": "GT-088",
+      "requirement": "Allow the user computer to become an authorized information source in place of selected Drive content",
+      "phase": "U3",
+      "status": "planned",
+      "acceptance": [
+        "Local, remote-host and cloud-client routes tested separately; offline source and permitted replica behavior remain explicit",
+        "Keep source ownership, evidence limits and granular recovery explicit"
+      ]
+    },
+    {
+      "id": "GT-089",
+      "requirement": "Preserve existing references during a reversible storage-source transition",
+      "phase": "U3",
+      "status": "planned",
+      "acceptance": [
+        "Stable resource IDs and Drive-ID mappings validated; original URLs retained and native-document semantics not falsely claimed",
+        "Keep source ownership, evidence limits and granular recovery explicit"
+      ]
+    },
+    {
+      "id": "GT-090",
+      "requirement": "Check a draft request for redundant defaults, ambiguity and unnecessary scope before submission",
+      "phase": "U4",
+      "status": "planned",
+      "acceptance": [
+        "Minimal rewrite preserves intent, exclusions, deliverable and permission boundaries; no auto-submit or auto-rule edit",
+        "Keep source ownership, evidence limits and granular recovery explicit"
+      ]
+    },
+    {
+      "id": "GT-091",
+      "requirement": "Compare minimal and original prompts through optional controlled repeated evaluations",
+      "phase": "U5",
+      "status": "planned",
+      "acceptance": [
+        "Runtime/model/context/tool revisions and budget pinned; positive, negative and held-out cases report measured quality and uncertainty",
+        "Keep source ownership, evidence limits and granular recovery explicit"
+      ]
+    },
+    {
+      "id": "GT-092",
+      "requirement": "Separate verified policy, estimated model behavior and observed evaluation results",
+      "phase": "U4/U5",
+      "status": "planned",
+      "acceptance": [
+        "Unavailable model memory, hidden platform context and exact future responses are never represented as known",
+        "Keep source ownership, evidence limits and granular recovery explicit"
+      ]
+    },
+    {
+      "id": "GT-093",
+      "requirement": "Audit and reuse existing toolkit and separately owned personal-system work",
+      "phase": "U0",
+      "status": "planned",
+      "acceptance": [
+        "Exact owner/revision and coverage recorded; no duplicate task master, restart of completed intake or implicit owner repin",
+        "Keep source ownership, evidence limits and granular recovery explicit"
+      ]
+    },
+    {
+      "id": "GT-094",
+      "requirement": "Use chat summaries and small indexes by default with authorized full content on demand",
+      "phase": "U2/U3",
+      "status": "planned",
+      "acceptance": [
+        "No-store and retention apply to summaries and caches too; unauthorized or missing files remain unavailable",
+        "Keep source ownership, evidence limits and granular recovery explicit"
+      ]
+    },
+    {
+      "id": "GT-095",
+      "requirement": "Apply control policies by account, workspace, project, device, direction and capability",
+      "phase": "U2/U6",
+      "status": "planned",
+      "acceptance": [
+        "Effective restrictive policy shown; central requests and peer content cannot broaden destination permissions",
+        "Keep source ownership, evidence limits and granular recovery explicit"
+      ]
+    },
+    {
+      "id": "GT-096",
+      "requirement": "Track the control center and request preflight as a separate urgent development project",
+      "phase": "U0",
+      "status": "planned",
+      "acceptance": [
+        "P0 urgency, first read-only slice, dependencies, status and durable publication pointers are discoverable",
+        "Keep source ownership, evidence limits and granular recovery explicit"
+      ]
+    }
+  ],
+  "related_plan": "SYSTEM-CONTROL-CENTER-PLAN.md",
+  "project_priorities": "SYSTEM-DEVELOPMENT-BACKLOG.json"
+}

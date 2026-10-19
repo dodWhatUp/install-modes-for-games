@@ -1,5 +1,9 @@
 # Repository and Drive export
 
+## 2026-10-19 — Multi computer and urgent control center plan
+
+[Publication and verification receipt](MULTICOMPUTER-PLAN-PUBLICATION-2026-10-19.md) links the private Drive plan snapshot and human start page, the P0 control-center issue, exact archive hash and acceptance limits. Multi-device storage, scoped remote operation, human architecture/trigger navigation and request preflight are planned requirements. Earlier source/recovery packages and links remain intact.
+
 ## 2026-10-18 — Keybinds A+B immutable transport archived
 
 [Verified preservation and reconciliation receipt](KEYBINDS-AB-DRIVE-BACKUP-2026-10-18.md) records the private owner-only Drive file and independently validated SHA-256 (`fd3cb621c83220f15c7fa5d51efe2916bba9ced70d8505d57f404300b498a4b2`). This is recovery-source byte preservation, not a fresh installation, whole-Git mirror or game acceptance. Earlier archives remain unchanged.

@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-19",
+  "timezone": "Asia/Jerusalem",
+  "owner": "dodWhatUp/install-modes-for-games",
+  "kind": "project_priority_and_next_boundary",
+  "projects": [
+    {
+      "id": "system-control-center",
+      "title": "System control center and request preflight",
+      "priority": "P0",
+      "urgency": "explicitly_requested_urgent",
+      "status": "PLANNED_READY_FOR_READ_ONLY_PROTOTYPE",
+      "plan": "SYSTEM-CONTROL-CENTER-PLAN.md",
+      "requirements": [
+        "GT-086",
+        "GT-087",
+        "GT-088",
+        "GT-089",
+        "GT-090",
+        "GT-091",
+        "GT-092",
+        "GT-093",
+        "GT-094",
+        "GT-095",
+        "GT-096"
+      ],
+      "first_slice": [
+        "U0 source inventory",
+        "U1 architecture and trigger explorer",
+        "U4 static request preflight"
+      ],
+      "next_action": "Implement source-bound read-only inventory and fixture-driven human navigation and request checks",
+      "implementation_started": false,
+      "activation_state": "NO_SERVICE_OR_SCHEDULE_CREATED",
+      "issue_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/12"
+    },
+    {
+      "id": "portable-workspaces",
+      "title": "Portable workspaces and multi computer collaboration",
+      "priority": "P1",
+      "urgency": "requested_development_plan",
+      "status": "PLANNED_NOT_IMPLEMENTED",
+      "plan": "PORTABLE-WORKSPACE-PLAN.md",
+      "requirements_range": [
+        "GT-061",
+        "GT-085"
+      ],
+      "first_slice": [
+        "R0 capability and topology report",
+        "R1 managed vault",
+        "R2 offline exchange"
+      ],
+      "next_action": "Verify actual devices and supported Codex capabilities, then build a synthetic managed-vault prototype",
+      "implementation_started": false,
+      "activation_state": "NO_SYNCHRONIZATION_ENABLED"
+    }
+  ]
+}

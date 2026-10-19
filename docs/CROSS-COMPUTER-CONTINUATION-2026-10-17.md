@@ -1,5 +1,15 @@
 # Continue on another computer
 
+## 2026-10-19 multi computer and urgent control center extension
+
+The [multi computer workspace plan](PORTABLE-WORKSPACE-PLAN.md) covers shared, split, replicated and cloud/hybrid storage with scoped remote capabilities. The separately requested [urgent human control center](SYSTEM-CONTROL-CENTER-PLAN.md) explains architecture/instructions/triggers, sync/change/chat summaries, source availability and draft-request behavior. [Project priorities](SYSTEM-DEVELOPMENT-BACKLOG.json) preserve the P0 next slice. A local-information-source pilot must retain existing Drive links and verify required client access before cutover; no existing Drive object, account permission, schedule or Codex runtime is changed by this planning extension.
+
+## 2026-10-19 development plan extension
+
+The [portable workspace and collaboration plan](PORTABLE-WORKSPACE-PLAN.md) adds the requested development path for default storage on a non-system drive, moved-drive and package exchange, network transports and independent parallel work with adjustable scope, cadence, adoption and context depth. [GT-061 through GT-080](PORTABLE-WORKSPACE-REQUIREMENTS.json) are planned requirements. A future native-chat/runtime adapter needs separate version-specific acceptance; the existing package below remains a visible-message projection, not a native chat import. Current production credential/database preservation rules remain in effect. This extension does not modify either computer's Codex installation or activate synchronization.
+
+## Original preparation record
+
 Prepared 2026-10-17, Asia/Jerusalem. This is the entry point for the requested
 GitHub/Drive reconciliation and SSD transfer. Existing source owners and dated
 acceptance remain separate.

@@ -1,0 +1,121 @@
+{
+  "schema_version": 0,
+  "kind": "proposed_workspace_sync_policy_example",
+  "status": "DESIGN_EXAMPLE_NOT_RUNTIME_CONFIGURATION",
+  "enabled": false,
+  "workspace_id": "example-workspace",
+  "project_id": "example-project",
+  "hard_exclusions": [
+    "credentials",
+    "browser_profiles",
+    "os_credential_store",
+    "live_runtime_databases",
+    "local_permissions",
+    "schedules",
+    "action_approvals"
+  ],
+  "links": [
+    {
+      "source_device": "computer-a",
+      "destination_device": "computer-b",
+      "enabled": false,
+      "transport": "manual_package",
+      "content_classes": [
+        "project_source",
+        "selected_assets",
+        "continuation_packet"
+      ],
+      "relative_roots": [
+        "source",
+        "assets",
+        "continuation"
+      ],
+      "transfer": {
+        "trigger": "manual",
+        "debounce_seconds": null,
+        "interval_seconds": null,
+        "bandwidth_limit_bytes_per_second": null
+      },
+      "adoption": {
+        "mode": "stage_and_preview",
+        "timing": "manual_safe_boundary",
+        "conflict": "retain_both_and_stage",
+        "deletions": "preview_tombstones"
+      },
+      "context": {
+        "depth": "availability_notice",
+        "refresh": "on_request",
+        "requires_explicit_instruction_review": true
+      }
+    },
+    {
+      "source_device": "computer-b",
+      "destination_device": "computer-a",
+      "enabled": false,
+      "transport": "manual_package",
+      "content_classes": [
+        "selected_results"
+      ],
+      "relative_roots": [
+        "outputs"
+      ],
+      "transfer": {
+        "trigger": "manual",
+        "debounce_seconds": null,
+        "interval_seconds": null,
+        "bandwidth_limit_bytes_per_second": null
+      },
+      "adoption": {
+        "mode": "stage_and_preview",
+        "timing": "manual_safe_boundary",
+        "conflict": "retain_both_and_stage",
+        "deletions": "preview_tombstones"
+      },
+      "context": {
+        "depth": "none",
+        "refresh": "on_request",
+        "requires_explicit_instruction_review": true
+      }
+    }
+  ],
+  "policy_precedence": [
+    "local_hard_exclusions",
+    "destination_project_policy",
+    "direction_and_content_class",
+    "named_preset"
+  ],
+  "unknown_format_behavior": "read_only",
+  "native_chat_transfer": {
+    "mode": "capability_gated",
+    "concurrent_same_identity_writers": false
+  },
+  "portable_runtime": {
+    "mode": "feasibility_gated",
+    "credential_transfer": false
+  },
+  "topology": {
+    "supported_design_modes": [
+      "shared",
+      "split",
+      "replicated",
+      "cloud_exchange",
+      "hybrid"
+    ],
+    "selected_mode": "replicated",
+    "device_limit": null
+  },
+  "cloud_adapter": {
+    "enabled": false,
+    "provider": "capability_gated",
+    "remote_destination": null
+  },
+  "remote_operations": {
+    "enabled": false,
+    "target_approval_required": true,
+    "arbitrary_shell": false
+  },
+  "central_administration": {
+    "enabled": false,
+    "local_exclusions_override": true
+  }
+}
