@@ -115,6 +115,53 @@ class PanelTests(unittest.TestCase):
         self.assertIsNone(p.context);self.assertIsNone(p.view);self.assertFalse(p.tree.get_children())
         self.assertEqual(original,{f.name:f.read_bytes() for f in self.path.iterdir()})
 
+    def test_intended_outcome_scope_and_device_edits_invalidate_comparison(self):
+        p=self.panel;p.intended_outcome.set("Read-only inspection")
+        self.draft("Answer in English.\nInspect the project.")
+        self.assertEqual(p.result["intended_outcome"],"Read-only inspection")
+        p.device.set("other-device");self.root.update()
+        self.assertIsNone(p.result);self.assertTrue(p.accept_button.instate(["disabled"]))
+
+    def test_guidance_dialog_cancel_keeps_original_context(self):
+        p=self.panel;before=p.context_path
+        with patch("GameToolSystemControlPanel.filedialog.askdirectory",return_value=""):
+            p.choose_global();p.choose_skills()
+        self.assertEqual(p.context_path,before);self.assertFalse(p.skill_roots);self.assertIsNone(p.global_root)
+
+    def test_report_cancel_and_existing_file_preserve_sources(self):
+        p=self.panel;target=self.path/"existing.html";target.write_text("keep existing")
+        with patch("GameToolSystemControlPanel.filedialog.asksaveasfilename",return_value=""):
+            p.save_report()
+        with patch("GameToolSystemControlPanel.filedialog.asksaveasfilename",return_value=str(target)):
+            p.save_report()
+        self.assertEqual(target.read_text(),"keep existing")
+        target=self.path/"new-report.html"
+        with patch("GameToolSystemControlPanel.filedialog.asksaveasfilename",return_value=str(target)):
+            p.save_report()
+        self.assertIn("<!doctype html>",target.read_text());self.assertNotIn("Authored detail",target.read_text())
+
+    def test_attachment_bytes_are_released_on_filter_and_failed_read(self):
+        import hashlib
+        p=self.panel;raw=b"\x00\xffprivate binary";(self.path/"blob.bin").write_bytes(raw)
+        p.context["sources"].append({"id":"blob","owner":"selected fixture","locator":"blob.bin","binding":"selected_project",
+                                      "sha256":hashlib.sha256(raw).hexdigest(),"availability":"available"})
+        p.context["resources"].append({"id":"blob-ref","source_id":"blob","relative":"blob.bin","access":"local_selected","content_type":"attachment"})
+        p.notebook.select(p.activity_tab);self.root.update();p.resource.set("blob-ref");p.detail_authorized.set(True);p.read_detail()
+        self.assertEqual(p.detail_bytes,raw)
+        p.activity_filter.set("unknown");self.root.update();self.assertIsNone(p.detail_bytes)
+        p.detail_authorized.set(True);p.read_detail();self.assertEqual(p.detail_bytes,raw)
+        (self.path/"blob.bin").write_bytes(b"changed");p.read_detail();self.assertIsNone(p.detail_bytes)
+        self.assertEqual(p.detail_output.get("1.0","end-1c"),"")
+
+    def test_activity_controls_fit_narrow_view_and_keyboard_focus(self):
+        p=self.panel;self.root.geometry("420x760");p.notebook.select(p.activity_tab);self.root.update()
+        for widget in (p.resource_control,p.detail_output):
+            self.assertLessEqual(widget.winfo_rootx()+widget.winfo_width(),self.root.winfo_rootx()+self.root.winfo_width()+2)
+        p.resource_control.focus_force();self.root.update()
+        self.assertEqual(self.root.focus_get(),p.resource_control)
+        p.resource_control.event_generate("<Tab>");self.root.update()
+        self.assertNotEqual(self.root.focus_get(),p.resource_control)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

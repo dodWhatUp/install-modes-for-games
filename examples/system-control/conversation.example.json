@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "kind": "GameToolsConversationProjection",
+  "coverage": "visible_messages",
+  "source_owner": "Invented example, not a native chat database",
+  "messages": [
+    {
+      "role": "user",
+      "text": "Inspect the selected project. Keep Codex installation unchanged."
+    },
+    {
+      "role": "assistant",
+      "text": "The selected sources were reviewed. Device B remains unknown."
+    }
+  ]
+}

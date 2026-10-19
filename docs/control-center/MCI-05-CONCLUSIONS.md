@@ -1,11 +1,15 @@
 # MCI-05: human device, synchronization, change and chat overview
 
-Outcome: implemented an in-memory view of selected device reports, transfer lifecycle declarations, gaps/conflicts, activity goals/outcomes/blockers, changed artifacts and continuation boundaries. Existing journal input goes through GameToolJournal's hash-chain validator and projects only event metadata, not private payloads or commands.
+Result: all six original checklist items accepted for read-only selected evidence and content access. Device freshness, transfer receipt/verification/staging/adoption/context exposure, conflicts, activity goals/outcomes/blockers, changed artifacts and next boundaries remain distinct. Existing journal input uses GameToolJournal's hash-chain validator and omits private payloads.
 
-Decision: recent reports are not live connections; receiving bytes is not adoption or context refresh. Unknown operations and incomplete transition history stay visibly partial. Chat summaries are source-owned selected records, not an automatic native-chat reader.
+Fixed an eager-read defect: architecture construction and ordinary source refresh now defer every resource body, including sources also referenced by a node. Verification is explicitly deferred until an authorized content request. Metadata refresh cannot promote a deferred body to a verified instruction.
 
-Full referenced UTF-8 content is read only after an explicit selected-reference request and local authorization, with exact hash and bounded-root checks. No-store views write no index/cache; detail is cleared when leaving the tab, switching context, forgetting detail or clearing the view. Upstream retention remains with its original owner.
+Full content requires both a selected-resource request and local authorization, caller-selected root, exact locator and expected SHA-256. The existing bounded source reader owns link/reparse/identity checks. Routes support UTF-8 text (128 KiB), declared conversation projections (2 MiB with bounded message structure) and exact attachment bytes (16 MiB). Malformed, changed, missing, oversized, credential and native-state references are refused. Binary content stays in memory; no external application opens.
 
-Validation covers stale/unknown devices, event gaps, summary-only projection, full-content denial before authorization, changed detail refusal, validated journal reuse and no-store UI clearing. No actual two-device transport, native-chat adapter or always-on monitor is claimed.
+Conversation coverage is visible_messages, selected_messages or source_export. Message roles/text remain intact; native chat identity is explicitly not imported. Reading a projection does not resume the original native Codex chat. Real native continuity/source-specific adapters remain MCI-15; live transport and another computer remain unobserved.
 
-Next: connect real transport receipts after MCI-08/10 and actual supported chat summaries after MCI-15. Keep unsupported/missing content visible.
+No-store/session views write no index/cache. Detail references and bytes are released on filter, tab/context switch, failure, forget, clear and close; forensic memory erasure is not claimed. Durable HTML reports omit no_store/session_only summaries and every body. Upstream retention stays with its owner.
+
+Evidence covers denial before IO, deferred body refresh, exact non-UTF-8 bytes, conversation content above the ordinary text limit, malformed/duplicate JSON, root/locator mismatch, drift/size/missing-content refusal and unchanged originals. Tk/browser filtering retains stale, unknown and partial labels. Windows/native screen-reader/human acceptance remains unverified.
+
+Decision: accept the original P0 content/filtering criteria. Future adapters reuse these references and lifecycle contracts without implying live synchronization, automatic collection, native database migration or remote execution.

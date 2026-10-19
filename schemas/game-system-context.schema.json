@@ -44,7 +44,11 @@
       "type": "array"
     },
     "resources": {
-      "type": "array"
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "$ref": "#/$defs/detail"
+      }
     }
   },
   "additionalProperties": true,
@@ -377,6 +381,93 @@
       },
       "additionalProperties": true,
       "description": "Versioned read-only projection/handoff shape. This record does not authorize an operation or replace its native owner."
+    },
+    "detail": {
+      "type": "object",
+      "required": [
+        "id",
+        "source_id",
+        "relative",
+        "access"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "source_id": {
+          "$ref": "#/$defs/id"
+        },
+        "relative": {
+          "type": "string"
+        },
+        "access": {
+          "enum": [
+            "local_selected",
+            "unavailable"
+          ]
+        },
+        "content_type": {
+          "enum": [
+            "text",
+            "conversation",
+            "attachment"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "ConversationProjection": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "kind",
+        "coverage",
+        "messages"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "kind": {
+          "const": "GameToolsConversationProjection"
+        },
+        "coverage": {
+          "enum": [
+            "visible_messages",
+            "selected_messages",
+            "source_export"
+          ]
+        },
+        "messages": {
+          "type": "array",
+          "maxItems": 4096,
+          "items": {
+            "type": "object",
+            "required": [
+              "role",
+              "text"
+            ],
+            "properties": {
+              "role": {
+                "enum": [
+                  "user",
+                  "assistant",
+                  "system",
+                  "developer",
+                  "tool",
+                  "unknown"
+                ]
+              },
+              "text": {
+                "type": "string",
+                "maxLength": 131072
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
     }
   }
 }

@@ -1,19 +1,21 @@
 # P0 implementation and current conclusions
 
-This source preview implements the shared read-only core and human views for MCI-01 through MCI-05. It reuses existing source, archive, journal, approval and UI owners. Codex and the installed toolkit were not reinstalled or configured.
+All 30 original P0 checklist items in MCI-01 through MCI-05 are complete for the read-only source application. This is 30 of 108 program items; the other 13 work packages remain unstarted. Codex installation, configuration, authentication and native databases were not changed. The installed toolkit was not updated.
 
-| Stage | Deliverable | Current acceptance boundary |
+| Stage | Completed deliverable | Boundary |
 |---|---|---|
-| [MCI-01](MCI-01-CONCLUSIONS.md) | Exact-source reuse inventory and capability/unknown matrix | Inventory complete for selected sources; other device unknown |
-| [MCI-02](MCI-02-CONCLUSIONS.md) | Versioned context/handoff contracts and bounded source checks | Read-only contract core; future operational services remain separate |
-| [MCI-03](MCI-03-CONCLUSIONS.md) | Human source/instruction explorer and dependency graph/list | Source/Tk preview implemented; native accessibility and Windows GUI pending |
-| [MCI-04](MCI-04-CONCLUSIONS.md) | Static request checks and conservative optional reduction | Source/Tk preview implemented; human usability acceptance pending |
-| [MCI-05](MCI-05-CONCLUSIONS.md) | Device/event/activity overview and selected details | Authored fixtures and existing-journal adapter; real transport/chat adapters pending |
+| [MCI-01](MCI-01-CONCLUSIONS.md) | Exact-source inventory and reuse decisions | Existing owners retained; other device unknown |
+| [MCI-02](MCI-02-CONCLUSIONS.md) | Versioned context/resource/checkpoint/event contracts | No implicit authority or adoption |
+| [MCI-03](MCI-03-CONCLUSIONS.md) | Selected instructions/preferences/skills/capabilities, graph/list and accessible report | Runtime load and hidden context remain unobserved |
+| [MCI-04](MCI-04-CONCLUSIONS.md) | Static request comparison, intended outcome and scope/device reports | Original preserved; explicit alternative selection; no submission |
+| [MCI-05](MCI-05-CONCLUSIONS.md) | Human overview and authorized conversation/attachment reads | Selected projections, not native-chat import or live synchronization |
 
-Use [the source preview](../../scripts/GameToolSystemControl.pyw), [usage](../../examples/system-control/README.md) and [validation record](P0-VALIDATION.json). Each stage conclusion explains the decision, evidence and next boundary. The [all-stage status file](STAGE-STATUS.json) records all 18 work packages without claiming unstarted work. Task tracking distinguishes completed inventory/contracts from partial broad product acceptance; a source preview does not complete native history transfer, remote operation or all 36 GT requirements.
+Use [the source preview](../../scripts/GameToolSystemControl.pyw), [usage](../../examples/system-control/README.md), [validation](P0-VALIDATION.json), [stage status](STAGE-STATUS.json) and [completion decisions](P0-COMPLETION-2026-10-19.md). Each stage has a separate conclusions file.
 
-Execution order was MCI-01 → MCI-02 → MCI-03's source model → MCI-04 → MCI-05. The pending native-accessibility gate does not invalidate the tested source model consumed by preflight. Independent next source work is MCI-07 vault, MCI-12 policy and MCI-13 enrollment, following the full dependency map. Future source migration, transport enrollment, remote effects and actual-device acceptance need their declared gates. No automatic background continuation or schedule is installed.
+Acceptance follows the original criteria: 33 core, 16 completion, 17 real Tk and five browser tests passed in the isolated guest. Existing Hub (45), Focus host (10) and AI foundation (16 passed, one package-mode skip) checks passed. Export fixture suite: 69 checks passed. Actual guest screenshots were inspected; Windows, human-study and second-computer acceptance are not inferred.
 
-Known limits: scope/routing estimates are static and incomplete; only explicitly selected sources are read. The source viewer cannot inspect inaccessible platform instructions or memory. Loaded-state assertions are contextual reports. Device freshness is last-reported, never proof of a live connection. No-store means this view persists nothing; it does not delete upstream originals. Detail reads currently support selected UTF-8 references, not arbitrary binary native-chat attachments. Tk keyboard behavior passed guest tests; the lab AT-SPI adapter did not expose its semantic tree.
+The earlier checkpoint held MCI-03/04 test items open for broader platform/human acceptance. The listed functional criteria are verified, with browser accessibility added; wider release gates remain in MCI-18. Native Codex session continuity remains MCI-15. Original native chats cannot yet be claimed portable.
 
-Recovery: close the preview; its session state is discarded. Original sources and journals are unchanged. Revert the additive source change through Git if necessary; never replace Codex home or native databases to roll back this view.
+Dependency order: MCI-01 → MCI-02 → MCI-03 → MCI-04; MCI-05 follows MCI-02. Next eligible foundations are MCI-07 managed storage, MCI-12 directional/adoption/context policies and MCI-13 device enrollment/roles. Exchange, parallel reconciliation, transports and native continuity follow their declared dependencies. No background schedule was installed.
+
+Recovery: close the preview to discard session state. Original selected sources are unchanged. Revert additive source changes through Git if needed; never replace Codex home or native databases.

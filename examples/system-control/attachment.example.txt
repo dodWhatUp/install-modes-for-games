@@ -1,0 +1,1 @@
+Invented attachment for the explicit in-memory binary reader.

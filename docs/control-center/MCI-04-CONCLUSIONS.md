@@ -1,11 +1,11 @@
 # MCI-04: static request preflight and minimal wording
 
-Outcome: implemented a local draft checker with source-cited declared defaults, conflicting declarations, missing referents, broad/action-related wording and conditional skill cues. Original, suggested and deliberately selected wording remain separate.
+Result: all six original checklist items accepted for the local static checker. The panel accepts an intended outcome, selected project scope and device-report identity alongside the original request. Device selection does not prove a live connection.
 
-Decision: remove only an allowlisted standalone English-output-default line when a fresh selected source supports it, the selected context reports it loaded and no applicable default conflicts. Never remove an exclusion/action boundary, a partial sentence or the last meaningful content. Otherwise keep the original and explain the uncertainty. Imported loaded-state claims are contextual reports, not platform attestation.
+Checks cite source-bound defaults and conditional routing cues, explain conflicts, missing referents and broad/action-related wording, and retain unknown platform/model influences. The only optional reduction removes an allowlisted standalone English-output line supported by a fresh selected source, a reported-loaded assertion and no conflicting default. Imported load reports are not platform attestation. Actions, exclusions, deliverables, partial sentences and the last meaningful content remain intact.
 
-Acceptance of an alternative rechecks both draft and source revision. Editing, reloading or source drift invalidates the previous result. No request is submitted, no instructions are rewritten, no model/API is called and no exact response is predicted. Semantic equivalence and quality improvement are not guaranteed by these static checks.
+Original, candidate and deliberately selected alternative stay separate. Draft, source, scope, outcome or device edits invalidate the comparison. Acceptance rechecks source and draft revision. No request is submitted, instructions rewritten, permission granted or model/API called. Static checks do not establish semantic equivalence, improved quality or exact future behavior.
 
-Validation includes positive/negative/ambiguous requests, conflicting/out-of-scope/historical rules, source drift, original/exclusion preservation, no empty rewrite, explicit acceptance and editing invalidation. The source core works independently of the pending native accessibility acceptance in MCI-03.
+Evidence: positive, negative, ambiguous and held-out English/Hebrew requests, hostile default declarations, drift, scope/history/conflict handling and deliberate acceptance passed in the core/completion/Tk suites. Original boundaries remain intact, including requests to update trackers while preserving Codex installation and original chats.
 
-Next: collect human usability evidence before broad acceptance. Optional model-quality trials remain MCI-16 with their separate budget/credential gates.
+Decision: accept the original fixture/preservation/acceptance checklist. The previous checkpoint held its last item open for a human study even though the stated automated criteria passed. Human usability remains unverified; optional controlled model-quality evaluation belongs to MCI-16. No credential, API or evaluation budget was activated.

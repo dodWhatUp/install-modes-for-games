@@ -5,8 +5,8 @@ from copy import deepcopy
 from datetime import datetime, timezone
 
 from GameToolJournal import inspect_journal
-from .contracts import STAGES, require, timestamp, validate_context
-from .inventory import selected_text
+from .contracts import STAGES, require, timestamp, validate_context, json_value
+from .inventory import selected_text, selected_bytes, bound_root
 
 
 def overview(context, *, now=None, stale_after_seconds=300):
@@ -74,7 +74,27 @@ def fetch_detail(context, resource_id, root, *, requested=False, authorized=Fals
     resource = next((r for r in doc.get("resources", []) if r["id"] == resource_id), None)
     require(resource is not None and resource["access"] == "local_selected", "Detail resource is unavailable.")
     source = next(s for s in doc["sources"] if s["id"] == resource["source_id"])
-    require(source.get("binding") == "selected_project" and source["availability"] == "available" and
+    selected_root = bound_root(root, source.get("binding"))
+    require(selected_root is not None and source["availability"] == "available" and
             resource["relative"] == source["locator"], "Detail has no accepted selected-root binding.")
-    value = selected_text(root, resource["relative"], source["sha256"])
-    return {**value, "resource_id": resource_id, "persistence": "none", "effect": "read_only"}
+    kind = resource.get("content_type", "text")
+    if kind == "text":
+        value = selected_text(selected_root, resource["relative"], source["sha256"])
+    else:
+        value = selected_bytes(selected_root, resource["relative"], source["sha256"],
+                               2 * 1024 * 1024 if kind == "conversation" else 16 * 1024 * 1024)
+        if kind == "conversation":
+            projection = json_value(value.pop("data"))
+            require(type(projection) is dict and projection.get("kind") == "GameToolsConversationProjection" and
+                    projection.get("schema_version") == 1, "Unsupported conversation projection; use a reviewed source adapter.")
+            require(projection.get("coverage") in {"visible_messages", "selected_messages", "source_export"}, "Conversation coverage is required.")
+            messages = projection.get("messages")
+            require(type(messages) is list and len(messages) <= 4096, "Invalid bounded conversation messages.")
+            for message in messages:
+                require(type(message) is dict and message.get("role") in {"user", "assistant", "system", "developer", "tool", "unknown"} and
+                        type(message.get("text")) is str, "Invalid conversation message.")
+            value.update(conversation=projection, content="\n\n".join(m["role"] + ":\n" + m["text"] for m in messages),
+                         coverage=projection["coverage"], native_chat_identity="not_imported")
+        else:
+            value["content"] = f"Attachment read in memory: {value['bytes']} bytes; SHA-256 {value['sha256']}. No application was launched."
+    return {**value, "content_type": kind, "resource_id": resource_id, "persistence": "none", "effect": "read_only"}

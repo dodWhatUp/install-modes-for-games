@@ -4,24 +4,50 @@ from __future__ import annotations
 from copy import deepcopy
 from pathlib import Path, PurePosixPath
 
-from GameToolAIKnowledge import KnowledgeError, read_selected_source
-from .contracts import ContextError, decode, require, validate_context
+from GameToolAIKnowledge import KnowledgeError, read_selected_source, read_selected_bytes
+from .contracts import ContextError, decode, json_value, require, validate_context
 
 MAX_SELECTED_SOURCES = 32
 MAX_TOTAL_SOURCE_BYTES = 2 * 1024 * 1024
 SENSITIVE_PARTS = {"auth.json", "credentials", "sessions", "archived_sessions", "browser", "cookies", "tokens"}
 
 
-def selected_text(root, relative, expected=None):
+def _safe_relative(relative):
     require(type(relative) is str, "A selected source needs a relative locator.")
     parts = PurePosixPath(relative).parts
     require(not any(x.casefold() in SENSITIVE_PARTS or x.casefold().startswith(".env") for x in parts) and
             not relative.casefold().endswith((".sqlite", ".sqlite3", ".db", ".env")),
             "Native state and credential sources are outside this reader.")
+
+
+def selected_text(root, relative, expected=None):
+    _safe_relative(relative)
     try:
         return read_selected_source(Path(root), relative, expected)
     except (KnowledgeError, OSError) as exc:
         raise ContextError(str(exc)) from None
+
+
+def selected_bytes(root, relative, expected, maximum):
+    _safe_relative(relative)
+    require(expected is not None, "Full content needs an expected revision.")
+    try:
+        return read_selected_bytes(Path(root), relative, expected, maximum=maximum)
+    except (KnowledgeError, OSError) as exc:
+        raise ContextError(str(exc)) from None
+
+
+def bound_root(roots, binding):
+    # Only a caller-selected binding supplies filesystem authority. Context JSON
+    # cannot introduce a root by embedding an absolute path.
+    if isinstance(roots, dict):
+        return roots.get(binding)
+    return roots if binding == "selected_project" else None
+
+
+def deferred_sources(context):
+    return {r["source_id"] for r in context.get("resources", [])} | {
+        s["id"] for s in context["sources"] if s.get("read_policy") == "on_demand"}
 
 
 def load_context(path):
@@ -85,11 +111,107 @@ def project_context(root):
 def check_sources(context, root):
     out = validate_context(context)
     # This local adapter refreshes only locators explicitly marked for this root.
-    selected = [s for s in out["sources"] if s.get("binding") == "selected_project"]
-    refreshed = capture_sources(root, [{**s, "expected_sha256": s.get("sha256")} for s in selected])
+    deferred = deferred_sources(out)
+    selected = [s for s in out["sources"] if s["id"] not in deferred and bound_root(root, s.get("binding")) is not None]
+    require(len(selected) <= MAX_SELECTED_SOURCES, "Too many selected sources.")
+    refreshed, total = [], 0
+    for s in selected:
+        row = capture_sources(bound_root(root, s.get("binding")), [{**s, "expected_sha256": s.get("sha256")}])[0]
+        total += row.get("bytes", 0)
+        require(total <= MAX_TOTAL_SOURCE_BYTES, "Selected-source total exceeds its bound.")
+        refreshed.append(row)
     by_id = {s["id"]: s for s in refreshed}
     out["sources"] = [by_id.get(s["id"], s) for s in out["sources"]]
     return validate_context(out)
+
+
+def environment_context(project_root, cwd="", *, global_root=None, skill_roots=(), catalog=None):
+    """Inventory only caller-selected guidance, skill folders and a tool catalog.
+
+    Descriptions and routing cues are declarations, never observed runtime load.
+    No configuration, profile database, scheduler or credential store is read.
+    Root bindings are returned separately and must not be published with evidence.
+    """
+    require(len(skill_roots) <= 8, "Too many selected skill folders.")
+    doc = project_context(project_root)
+    roots = {"selected_project": Path(project_root)}
+    chain = discover_instructions(project_root, cwd, global_root=global_root)
+    doc["sources"] = [s for s in doc["sources"] if s["id"] != "instructions"]
+    doc["nodes"] = [n for n in doc["nodes"] if n["id"] != "instructions"]
+    omissions = []
+    def add(binding, relative, kind, label, layer="global", **extra):
+        if len(doc["sources"]) >= MAX_SELECTED_SOURCES or len(doc["nodes"]) >= 256:
+            omissions.append({"kind": kind, "reason": "inventory bound reached"})
+            return None
+        ident = "selected-" + str(len(doc["sources"]))
+        source = capture_sources(roots[binding], [{"id": ident, "owner": "caller-selected source", "locator": relative, "binding": binding}])[0]
+        doc["sources"].append(source)
+        node = {"id": ident, "kind": kind, "label": label, "source_id": ident, "scopes": [doc["scope"]],
+                "layer": layer, "observation": "declared", "depends_on": [], **extra}
+        doc["nodes"].append(node)
+        return node
+    if global_root is not None:
+        roots["selected_global"] = Path(global_root)
+    for s in chain["sources"]:
+        add("selected_global" if s["layer"] == "global" else "selected_project", s["locator"], "instruction",
+            s["layer"] + " / " + s["locator"], s["layer"], precedence_order=s["precedence_order"],
+            included_bytes=s["included_bytes"], truncated=s["truncated"])
+    for i, root in enumerate(skill_roots):
+        root = Path(root)
+        binding = "selected_skills_" + str(i); roots[binding] = root
+        # No recursion; .system or plugin folders need their own explicit selection.
+        try:
+            if root.is_symlink() or getattr(root.lstat(), "st_file_attributes", 0) & 0x400:
+                raise OSError("Linked skill folder")
+            names = sorted(p.name for p in root.iterdir())
+            require(len(names) <= 512, "Selected skill folder exceeds its entry bound.")
+        except OSError:
+            omissions.append({"kind": "skill", "reason": "selected folder unavailable"}); continue
+        candidates = ["SKILL.md"] if "SKILL.md" in names else [name + "/SKILL.md" for name in names if not name.startswith(".")]
+        for relative in candidates:
+            if not (root/relative).is_file():
+                continue
+            node = add(binding, relative, "skill", relative)
+            if node is None:
+                break
+            source = next(s for s in doc["sources"] if s["id"] == node["source_id"])
+            if source["availability"] != "available":
+                continue
+            text = selected_text(root, relative, source["sha256"])["content"]
+            header = text.split("---", 2)[1] if text.startswith("---") and text.count("---") >= 2 else ""
+            # Exact scalar frontmatter only. Multiline/YAML constructs stay visible
+            # in the source; they are not guessed or executed by a YAML loader.
+            fields = dict(line.split(":", 1) for line in header.splitlines() if ":" in line and not line.startswith((" ", "\t")))
+            name = fields.get("name", "").strip().strip("\"'")
+            description = fields.get("description", "").strip().strip("\"'")
+            if name and len(name) <= 100:
+                node.update(label=name, trigger_terms=["$" + name], trigger="Explicit skill name; semantic matching remains conditional.")
+            if description and description not in {"|", ">", "|-", ">-"}:
+                node["declared_description"] = description
+    if catalog is not None:
+        path = Path(catalog).absolute(); roots["selected_catalog"] = path.parent
+        node = add("selected_catalog", path.name, "component", "Selected capability declarations")
+        if node is not None:
+            source = next(s for s in doc["sources"] if s["id"] == node["source_id"])
+            value = json_value(selected_text(path.parent, path.name, source["sha256"])["content"].encode("utf-8"))
+            require(type(value) is dict and value.get("kind") == "GameToolsCapabilityCatalog" and value.get("schema_version") == 1,
+                    "Unsupported capability catalog.")
+            for group, kind in (("tools", "tool"), ("automations", "automation")):
+                rows = value.get(group, [])
+                require(type(rows) is list and len(rows) <= 256, "Capability catalog exceeds its bound.")
+                for row in rows:
+                    require(type(row) is dict and type(row.get("name")) is str and bool(row["name"]), "A capability needs a name.")
+                    if len(doc["nodes"]) >= 256:
+                        omissions.append({"kind": kind, "reason": "node bound reached"}); break
+                    doc["nodes"].append({"id": "capability-" + str(len(doc["nodes"])), "kind": kind, "label": row["name"],
+                        "source_id": source["id"], "scopes": [doc["scope"]], "layer": "global", "observation": "declared",
+                        "depends_on": [], "declared_description": row.get("description", ""), "trigger_terms": row.get("trigger_terms", [])})
+    require(sum(s.get("bytes", 0) for s in doc["sources"]) <= MAX_TOTAL_SOURCE_BYTES, "Selected-source total exceeds its bound.")
+    doc["instruction_discovery"] = {k: v for k, v in chain.items() if k != "sources"}
+    doc["inventory_omissions"] = omissions
+    doc["unknown_coverage"] = ["Unselected guidance, skills, tools and automations", "Account and platform memory", "Actual runtime load and tool permission", "Other computer"]
+    doc["label"] = "Selected environment guidance and capability declarations"
+    return validate_context(doc), roots
 
 
 def discover_instructions(project_root, cwd="", *, global_root=None, fallback_names=(), max_bytes=32768):

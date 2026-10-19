@@ -2,7 +2,7 @@
 
 ## 2026-10-19 P0 control-center source implementation
 
-The [read-only source preview and current boundaries](control-center/P0-IMPLEMENTATION.md) implements selected-source inventory/contracts, architecture/instruction navigation, static request checks and a device/event/activity overview. Each of MCI-01 through MCI-05 has its own conclusions file. Inventory and contract tasks are complete for their recorded scope; broader UI/source coverage and actual adapters remain open. Source/guest tests do not install the toolkit or Codex, prove native-chat transfer, enable synchronization or accept another computer.
+The [read-only source preview and current boundaries](control-center/P0-IMPLEMENTATION.md) implements selected-source inventory/contracts, architecture/instruction navigation, static request checks and a device/event/activity overview. Each of MCI-01 through MCI-05 has its own conclusions file. All 30 original P0 checklist items are accepted for the selected-source application; 78 later program items remain planned. Windows/human/actual-device acceptance and native continuity remain separate. Source/guest tests do not install the toolkit or Codex, prove native-chat transfer, enable synchronization or accept another computer.
 
 
 ## 2026-10-19 integrated work packages and task tracking

@@ -3,7 +3,7 @@
   "date": "2026-10-19",
   "timezone": "Asia/Jerusalem",
   "kind": "integrated_work_package_plan",
-  "status": "P0_READ_ONLY_SOURCE_PREVIEW_VERIFIED_ACCEPTANCE_PENDING",
+  "status": "P0_CHECKLIST_COMPLETE_READ_ONLY_SOURCE",
   "owner": "dodWhatUp/install-modes-for-games",
   "basis_commit": "e174ba6fe6db0edc70725daf1d9255172ac97b01",
   "umbrella_issue": "https://github.com/dodWhatUp/install-modes-for-games/issues/12",
@@ -115,7 +115,7 @@
         "Explain conflicts, repeated defaults, historical instructions and probabilistic skill-selection cues.",
         "Test keyboard navigation, long names, narrow layouts, missing sources, cancellation and stale-source refusal."
       ],
-      "status": "source_preview_verified_acceptance_pending",
+      "status": "completed",
       "implementation_started": true,
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 15,
@@ -123,14 +123,14 @@
       "ticktick_mirror_registered": true,
       "implementation_report": "control-center/MCI-03-CONCLUSIONS.md",
       "checklist_complete": [
-        false,
         true,
         true,
         true,
         true,
-        false
+        true,
+        true
       ],
-      "completion_scope": "Read-only source preview; remaining broad acceptance stays open"
+      "completion_scope": "Original P0 selected-source/read-only application checklist; actual-device and native continuity acceptance remain separate."
     },
     {
       "id": "MCI-04",
@@ -156,7 +156,7 @@
         "Clearly distinguish verified policy facts, untested estimates and actual observed behavior; keep hidden model state unknown.",
         "Test positive, negative and ambiguous fixtures; preserve the original draft and require deliberate acceptance of a rewrite."
       ],
-      "status": "source_preview_verified_acceptance_pending",
+      "status": "completed",
       "implementation_started": true,
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 16,
@@ -169,9 +169,9 @@
         true,
         true,
         true,
-        false
+        true
       ],
-      "completion_scope": "Read-only source preview; remaining broad acceptance stays open"
+      "completion_scope": "Original P0 selected-source/read-only application checklist; actual-device and native continuity acceptance remain separate."
     },
     {
       "id": "MCI-05",
@@ -195,7 +195,7 @@
         "Apply no-store, retention and access choices to summaries, indexes and caches as well as originals.",
         "Verify accessible filtering, missing content, stale devices, unknown operations and consistent status labels."
       ],
-      "status": "source_preview_verified_acceptance_pending",
+      "status": "completed",
       "implementation_started": true,
       "acceptance": "All six checklist items require evidence; completing task registration is not implementation completion.",
       "github_issue": 17,
@@ -206,11 +206,11 @@
         true,
         true,
         true,
-        false,
         true,
-        false
+        true,
+        true
       ],
-      "completion_scope": "Read-only source preview; remaining broad acceptance stays open"
+      "completion_scope": "Original P0 selected-source/read-only application checklist; actual-device and native continuity acceptance remain separate."
     },
     {
       "id": "MCI-06",
@@ -666,5 +666,13 @@
     "readback_verified": true,
     "automatic_task_synchronization": false
   },
-  "progress_report": "control-center/P0-IMPLEMENTATION.md"
+  "progress_report": "control-center/P0-IMPLEMENTATION.md",
+  "progress": {
+    "p0_completed": 30,
+    "p0_total": 30,
+    "program_completed": 30,
+    "program_total": 108,
+    "completed_packages": 5,
+    "planned_packages": 13
+  }
 }

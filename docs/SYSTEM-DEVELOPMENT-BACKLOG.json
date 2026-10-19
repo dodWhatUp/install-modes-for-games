@@ -10,7 +10,7 @@
       "title": "System control center and request preflight",
       "priority": "P0",
       "urgency": "explicitly_requested_urgent",
-      "status": "READ_ONLY_SOURCE_PREVIEW_VERIFIED_ACCEPTANCE_PENDING",
+      "status": "P0_CHECKLIST_COMPLETE_READ_ONLY_SOURCE",
       "plan": "SYSTEM-CONTROL-CENTER-PLAN.md",
       "requirements": [
         "GT-086",
@@ -30,7 +30,7 @@
         "U1 architecture and trigger explorer",
         "U4 static request preflight"
       ],
-      "next_action": "Finish selected-source coverage, platform accessibility and human usability acceptance; connect real evidence adapters in their dependent packages.",
+      "next_action": "P0 source checklist complete. Implement MCI-12/13 policy/enrollment foundations and dependent evidence adapters; keep actual-device release gates in MCI-18.",
       "implementation_started": true,
       "activation_state": "NO_SERVICE_OR_SCHEDULE_CREATED",
       "issue_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/12",

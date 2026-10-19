@@ -54,14 +54,19 @@ def _pairs(items):
     return out
 
 
-def decode(raw):
+def json_value(raw):
     require(isinstance(raw, bytes) and len(raw) <= MAX_BYTES, "Context exceeds its byte bound.")
     try:
         value = json.loads(raw.decode("utf-8-sig"), object_pairs_hook=_pairs,
                            parse_constant=lambda _: require(False, "Nonfinite JSON value."))
-        return validate_context(value)
+        _bounded(value)
+        return value
     except (UnicodeError, json.JSONDecodeError, RecursionError):
         raise ContextError("Context is not bounded UTF-8 JSON.") from None
+
+
+def decode(raw):
+    return validate_context(json_value(raw))
 
 
 def identifier(value):
@@ -138,6 +143,7 @@ def validate_context(value):
     for row in resources.values():
         require(row.get("source_id") in sources and type(row.get("relative")) is str, "Invalid resource reference.")
         require(row.get("access") in {"local_selected", "unavailable"}, "Unsupported resource route.")
+        require(row.get("content_type", "text") in {"text", "conversation", "attachment"}, "Unsupported detail type.")
     for row in _rows(value, "devices"):
         require(row.get("availability") in {"reported_online", "reported_offline", "unknown"}, "Invalid device availability.")
         require(type(row.get("label")) is str, "Device label is missing.")

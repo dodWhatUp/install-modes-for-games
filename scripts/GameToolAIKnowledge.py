@@ -82,7 +82,8 @@ def _regular_no_links(root: Path, relative: str, maximum: int) -> tuple[Path, by
     return path, raw
 
 
-def read_selected_source(root: Path, relative: str, expected_sha256: str | None = None) -> dict:
+def read_selected_bytes(root: Path, relative: str, expected_sha256: str | None = None,
+                        *, maximum: int = MAX_FILE_BYTES) -> dict:
     """Local read-only adapter for an explicitly selected source, never a scan.
 
     This shares the package reader's bounds/link/identity checks. It does not
@@ -96,15 +97,22 @@ def read_selected_source(root: Path, relative: str, expected_sha256: str | None 
         raise KnowledgeError("Invalid selected source identity.")
     if expected_sha256 is not None and not re.fullmatch(r"[a-f0-9]{64}", expected_sha256):
         raise KnowledgeError("Invalid expected source revision.")
-    _, raw = _regular_no_links(Path(root).absolute(), relative, MAX_FILE_BYTES)
+    if type(maximum) is not int or not 1 <= maximum <= 16 * 1024 * 1024:
+        raise KnowledgeError("Invalid selected source byte bound.")
+    _, raw = _regular_no_links(Path(root).absolute(), relative, maximum)
     revision = hashlib.sha256(raw).hexdigest()
     if expected_sha256 is not None and revision != expected_sha256:
         raise KnowledgeError("Selected source changed; reload before using it.")
+    return {"locator": relative, "sha256": revision, "bytes": len(raw), "data": raw}
+
+
+def read_selected_source(root: Path, relative: str, expected_sha256: str | None = None) -> dict:
+    value = read_selected_bytes(root, relative, expected_sha256)
     try:
-        content = raw.decode("utf-8-sig")
+        content = value.pop("data").decode("utf-8-sig")
     except UnicodeError:
         raise KnowledgeError("Selected source is not UTF-8 text.") from None
-    return {"locator": relative, "sha256": revision, "bytes": len(raw), "content": content}
+    return {**value, "content": content}
 
 
 def _heading(relative: str, text: str) -> str:

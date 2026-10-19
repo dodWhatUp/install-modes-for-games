@@ -10,7 +10,7 @@ from GameToolCompactUI import FlowToolbar, ScrollableFrame, Selector
 from game_system_control import VERSION
 from game_system_control.contracts import ContextError
 from game_system_control.explorer import build_view, graph_text
-from game_system_control.inventory import check_sources, load_context, project_context
+from game_system_control.inventory import check_sources, load_context, project_context, environment_context
 from game_system_control.overview import overview, fetch_detail, journal_summary
 from game_system_control.preflight import check_request
 
@@ -24,6 +24,11 @@ class SystemControlPanel(ttk.Frame):
         self.source_root = Path(source_root) if source_root else self.context_path.absolute().parent
         self.context = self.view = self.result = None
         self.accepted_draft = None
+        self.bindings = None
+        self.global_root = None
+        self.skill_roots = []
+        self.catalog = None
+        self.detail_bytes = None
         self._rendering = False
         self.status = tk.StringVar(self, "Select a context. Nothing is submitted or executed.")
         ttk.Label(self, text="System control center", font=("Segoe UI", 14, "bold")).pack(anchor="w", padx=8, pady=5)
@@ -32,6 +37,10 @@ class SystemControlPanel(ttk.Frame):
         bar = FlowToolbar(self); bar.pack(fill="x", padx=8)
         bar.add("Select context…", self.choose_context)
         bar.add("View current project", self.current_project)
+        bar.add("Select global guidance…", self.choose_global)
+        bar.add("Add skill folder…", self.choose_skills)
+        bar.add("Select capability catalog…", self.choose_catalog)
+        bar.add("Save accessible report…", self.save_report)
         bar.add("Reload selected sources", self.reload)
         bar.add("Inspect selected journal…", self.choose_journal)
         bar.add("Clear private view", self.clear)
@@ -89,6 +98,18 @@ class SystemControlPanel(ttk.Frame):
         self.request_scroll = ScrollableFrame(self.request_tab)
         self.request_scroll.pack(fill="both", expand=True)
         body = self.request_scroll.body
+        ttk.Label(body, text="Intended outcome (optional)").pack(anchor="w")
+        self.intended_outcome = tk.StringVar(self)
+        ttk.Entry(body, textvariable=self.intended_outcome).pack(fill="x")
+        ttk.Label(body, text="Project scope · device report (no live connection)").pack(anchor="w")
+        self.scope = tk.StringVar(self)
+        self.scope_control = ttk.Combobox(body, textvariable=self.scope, state="readonly")
+        self.scope_control.pack(fill="x")
+        self.device = tk.StringVar(self)
+        self.device_control = ttk.Combobox(body, textvariable=self.device, state="readonly")
+        self.device_control.pack(fill="x")
+        for value in (self.intended_outcome, self.scope, self.device):
+            value.trace_add("write", lambda *_: self.invalidate())
         ttk.Label(body, text="Original request · retained until you deliberately choose an alternative").pack(anchor="w")
         self.draft = tk.Text(body, height=5, wrap="word", undo=True)
         self.draft.pack(fill="x", pady=4); self.draft.bind("<<Modified>>", self.draft_changed)
@@ -135,14 +156,22 @@ class SystemControlPanel(ttk.Frame):
         except (ContextError, OSError) as exc:
             self.status.set(str(exc)); return
         self.project_mode = False
+        self.bindings = None
         self.context_path = Path(value); self.source_root = self.context_path.absolute().parent
         self.reload()
 
     def reload(self):
         try:
-            context = project_context(self.source_root) if getattr(self, "project_mode", False) else load_context(self.context_path)
-            view = build_view(context, self.source_root)
+            if getattr(self, "project_mode", False):
+                context, self.bindings = environment_context(self.source_root, global_root=self.global_root, skill_roots=self.skill_roots, catalog=self.catalog)
+            else:
+                context = load_context(self.context_path)
+            view = build_view(context, self.selected_roots)
             self.context, self.view = context, view
+            self.scope_control.configure(values=sorted({context["scope"], *(scope for n in context["nodes"] for scope in n["scopes"] if scope != "*")}))
+            self.scope.set(context["scope"])
+            self.device_control.configure(values=["unspecified", *[d["id"] for d in context.get("devices", [])]])
+            self.device.set("unspecified")
             self.selector.set_choices([(n["id"], n["label"]) for n in view["nodes"]])
             self.selector.select(None)
             self.filter_nodes(); self.render_graph(); self.render_activity()
@@ -165,6 +194,42 @@ class SystemControlPanel(ttk.Frame):
         self.project_mode = True
         self.source_root = Path(__file__).resolve().parents[1]
         self.reload()
+
+    @property
+    def selected_roots(self):
+        return self.bindings if self.bindings is not None else self.source_root
+
+    def choose_global(self):
+        value = filedialog.askdirectory(parent=self, title="Select global instruction folder; only AGENTS guidance is read")
+        if value:
+            self.global_root = Path(value); self.current_project()
+
+    def choose_skills(self):
+        value = filedialog.askdirectory(parent=self, title="Select a skill or parent skill folder; one level only")
+        if value and Path(value) not in self.skill_roots:
+            if len(self.skill_roots) >= 8:
+                self.status.set("Eight skill folders are already selected."); return
+            self.skill_roots.append(Path(value)); self.current_project()
+
+    def choose_catalog(self):
+        value = filedialog.askopenfilename(parent=self, title="Select capability declarations", filetypes=[("Catalog JSON", "*.json")])
+        if value:
+            self.catalog = Path(value); self.current_project()
+
+    def save_report(self):
+        if self.context is None:
+            self.status.set("Select a context first."); return
+        value = filedialog.asksaveasfilename(parent=self, title="Save a new accessible metadata report", defaultextension=".html", filetypes=[("HTML", "*.html")])
+        if not value:
+            return
+        try:
+            from game_system_control.report import accessible_report
+            report = accessible_report(self.context, self.selected_roots)
+            with Path(value).open("x", encoding="utf-8", newline="\n") as stream:
+                stream.write(report)
+            self.status.set("New report saved. Private session summaries and full content were omitted.")
+        except (ContextError, OSError) as exc:
+            self.status.set(str(exc))
 
     def filter_nodes(self):
         if not self.view or self._rendering:
@@ -240,8 +305,9 @@ class SystemControlPanel(ttk.Frame):
         try:
             if self.context is None:
                 raise ContextError("Select an intact context first.")
-            self.view = build_view(self.context, self.source_root)
-            self.result = check_request(self.draft.get("1.0", "end-1c"), self.view)
+            self.view = build_view(self.context, self.selected_roots, scope=self.scope.get())
+            self.result = check_request(self.draft.get("1.0", "end-1c"), self.view, self.intended_outcome.get())
+            self.result["selected_device_report"] = self.device.get()
             lines = ["Static checks · no model call or submission", ""]
             for f in self.result["findings"]:
                 lines += [f["class"] + " / " + f["code"], f["message"], "Sources: " + ", ".join(f["sources"]), ""]
@@ -255,7 +321,7 @@ class SystemControlPanel(ttk.Frame):
     def accept_candidate(self):
         if self.result is None:
             return
-        fresh = build_view(self.context, self.source_root)
+        fresh = build_view(self.context, self.selected_roots, scope=self.scope.get())
         if fresh["revision"] != self.result["context_revision"] or self.draft.get("1.0", "end-1c") != self.result["original"]:
             self.invalidate(); self.status.set("Draft or sources changed; run the check again."); return
         self.accepted_draft = self.result["candidate"]
@@ -263,7 +329,7 @@ class SystemControlPanel(ttk.Frame):
         self.status.set("Alternative selected locally. Nothing was submitted; the original is retained.")
 
     def render_activity(self):
-        state = overview(check_sources(self.context, self.source_root))
+        state = overview(check_sources(self.context, self.selected_roots))
         self.activity_state = state
         self.filter_activity()
 
@@ -293,14 +359,17 @@ class SystemControlPanel(ttk.Frame):
         try:
             if self.context is None:
                 raise ContextError("Select a context first.")
-            result = fetch_detail(self.context, self.resource.get(), self.source_root,
+            result = fetch_detail(self.context, self.resource.get(), self.selected_roots,
                                   requested=True, authorized=self.detail_authorized.get())
-            self._put(self.detail_output, result["content"])
+            self.detail_bytes = result.get("data")
+            prefix = ("Conversation coverage: " + result["coverage"] + " · native chat identity not imported\n\n") if result["content_type"] == "conversation" else ""
+            self._put(self.detail_output, prefix + result["content"])
             self.status.set("Selected detail is in memory only. Forget detail or leave this tab to clear it.")
         except (ContextError, OSError) as exc:
             self.clear_detail(); self.status.set(str(exc))
 
     def clear_detail(self):
+        self.detail_bytes = None
         if hasattr(self, "detail_output"):
             self._put(self.detail_output, ""); self.detail_authorized.set(False)
 
@@ -316,10 +385,13 @@ class SystemControlPanel(ttk.Frame):
             self.status.set(str(exc))
 
     def clear(self):
+        self.bindings = None; self.global_root = None; self.skill_roots = []; self.catalog = None
         self.context = self.view = None
         self.selector.set_choices([]); self.selector.select(None)
         self.tree.delete(*self.tree.get_children()); self.canvas.delete("all")
         self.draft.delete("1.0", "end")
+        self.intended_outcome.set(""); self.scope.set(""); self.device.set("")
+        self.scope_control.configure(values=[]); self.device_control.configure(values=[])
         for widget in (self.details, self.graph_list, self.preflight_output, self.activity_output):
             self._put(widget, "")
         self.resource_control.configure(values=[]); self.resource.set("")

@@ -133,7 +133,7 @@ Parallel development means independent scoped work on owned modules. It does not
 
 ## Detailed implementation checklist
 
-Checks below follow the current [P0 implementation report](control-center/P0-IMPLEMENTATION.md). Completed inventory/contracts and verified preview work are distinguished from remaining broad acceptance. Registration is not implementation evidence.
+Checks below follow the current [P0 implementation report](control-center/P0-IMPLEMENTATION.md). All 30 original P0 items are accepted for the read-only source application; 78 later program items remain planned. Actual-device/native continuity release acceptance remains separate. Registration is not implementation evidence.
 
 ### MCI-01
 
@@ -171,7 +171,7 @@ Requirements: GT-062, GT-075, GT-079, GT-082. Dependencies: MCI-01.
 
 ### MCI-03
 
-Current result: [source_preview_verified_acceptance_pending](control-center/MCI-03-CONCLUSIONS.md).
+Current result: [completed](control-center/MCI-03-CONCLUSIONS.md).
 
 Implementation tracker: [GitHub #15](https://github.com/dodWhatUp/install-modes-for-games/issues/15). Private TickTick mirror: registered under the same MCI ID.
 
@@ -179,16 +179,16 @@ Implementation tracker: [GitHub #15](https://github.com/dodWhatUp/install-modes-
 
 Requirements: GT-078, GT-087. Dependencies: MCI-01, MCI-02.
 
-- [ ] Inventory applicable AGENTS files, overrides, skills, declared triggers, tool capabilities and accessible preferences.
+- [x] Inventory applicable AGENTS files, overrides, skills, declared triggers, tool capabilities and accessible preferences.
 - [x] Separate declared rules, sources actually loaded where observable, observed execution and inaccessible context.
 - [x] Resolve scope and precedence using the selected client version without weakening higher-priority instructions.
 - [x] Provide compact search, dependency graph and accessible list views with exact source and freshness links.
 - [x] Explain conflicts, repeated defaults, historical instructions and probabilistic skill-selection cues.
-- [ ] Test keyboard navigation, long names, narrow layouts, missing sources, cancellation and stale-source refusal.
+- [x] Test keyboard navigation, long names, narrow layouts, missing sources, cancellation and stale-source refusal.
 
 ### MCI-04
 
-Current result: [source_preview_verified_acceptance_pending](control-center/MCI-04-CONCLUSIONS.md).
+Current result: [completed](control-center/MCI-04-CONCLUSIONS.md).
 
 Implementation tracker: [GitHub #16](https://github.com/dodWhatUp/install-modes-for-games/issues/16). Private TickTick mirror: registered under the same MCI ID.
 
@@ -201,11 +201,11 @@ Requirements: GT-071, GT-090, GT-092. Dependencies: MCI-02, MCI-03.
 - [x] Explain likely skills, tools, permissions and source needs as conditional estimates with citations.
 - [x] Compare original and minimal wording while retaining intent, exclusions, deliverables and action boundaries.
 - [x] Clearly distinguish verified policy facts, untested estimates and actual observed behavior; keep hidden model state unknown.
-- [ ] Test positive, negative and ambiguous fixtures; preserve the original draft and require deliberate acceptance of a rewrite.
+- [x] Test positive, negative and ambiguous fixtures; preserve the original draft and require deliberate acceptance of a rewrite.
 
 ### MCI-05
 
-Current result: [source_preview_verified_acceptance_pending](control-center/MCI-05-CONCLUSIONS.md).
+Current result: [completed](control-center/MCI-05-CONCLUSIONS.md).
 
 Implementation tracker: [GitHub #17](https://github.com/dodWhatUp/install-modes-for-games/issues/17). Private TickTick mirror: registered under the same MCI ID.
 
@@ -216,9 +216,9 @@ Requirements: GT-086, GT-094. Dependencies: MCI-02.
 - [x] Project existing receipts and authored event fixtures into one human-readable activity timeline.
 - [x] Show device availability, last-known freshness, transfer, staging, conflict, adoption and next-decision states.
 - [x] Summarize chat goals, outcomes, blockers, changed artifacts and continuation boundaries with source provenance.
-- [ ] Fetch full conversation content and attachment bytes only when specifically requested and authorized.
+- [x] Fetch full conversation content and attachment bytes only when specifically requested and authorized.
 - [x] Apply no-store, retention and access choices to summaries, indexes and caches as well as originals.
-- [ ] Verify accessible filtering, missing content, stale devices, unknown operations and consistent status labels.
+- [x] Verify accessible filtering, missing content, stale devices, unknown operations and consistent status labels.
 
 ### MCI-06
 

@@ -5,21 +5,25 @@ from copy import deepcopy
 
 from GameToolAIContracts import stable_revision
 from .contracts import ContextError, validate_context, require
-from .inventory import selected_text, MAX_SELECTED_SOURCES, MAX_TOTAL_SOURCE_BYTES
+from .inventory import selected_text, bound_root, deferred_sources, MAX_SELECTED_SOURCES, MAX_TOTAL_SOURCE_BYTES
 
 
 def build_view(context, root=None, scope=None, query=""):
     doc = validate_context(context)
     scope = doc["scope"] if scope is None else scope
     sources, texts, total = {}, {}, 0
-    require(sum(s.get("binding") == "selected_project" for s in doc.get("sources", [])) <= MAX_SELECTED_SOURCES,
+    deferred = deferred_sources(doc)
+    require(sum(s["id"] not in deferred and bound_root(root, s.get("binding")) is not None for s in doc.get("sources", [])) <= MAX_SELECTED_SOURCES,
             "Too many selected sources for one view.")
     for source in doc.get("sources", []):
         row = deepcopy(source)
         row["verification"] = "not_observed"
-        if root is not None and source.get("binding") == "selected_project":
+        selected_root = bound_root(root, source.get("binding"))
+        if source["id"] in deferred:
+            row["verification"] = "deferred_until_authorized_request"
+        elif selected_root is not None:
             try:
-                snap = selected_text(root, source["locator"], source.get("sha256"))
+                snap = selected_text(selected_root, source["locator"], source.get("sha256"))
                 total += snap["bytes"]
                 row.update(availability="available", verification="hash_checked", sha256=snap["sha256"])
                 texts[source["id"]] = snap["content"]

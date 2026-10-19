@@ -1,129 +1,146 @@
 {
   "schema_version": 1,
   "date": "2026-10-19",
-  "status": "READ_ONLY_SOURCE_AND_GUEST_VERIFIED_BROAD_ACCEPTANCE_PENDING",
+  "status": "ORIGINAL_P0_CHECKLIST_ACCEPTED_READ_ONLY_SOURCE",
   "component": "system-control",
-  "version": "0.1.0-preview.1",
-  "source_basis_commit": "a279b2bda17bb8dc1c8ea06cd0e3b2f3b7cd8f76",
+  "version": "0.1.0-preview.2",
+  "source_basis_commit": "b99c9f993400a5b95a285d21b3ac891dd43bdcf0",
+  "acceptance_scope": "30 original P0 selected-source/read-only checklist items; 78 later program items remain planned",
   "source_hashes": {
-    "scripts/game_system_control/contracts.py": "183c6c7b18f4a9472c0dbf318b966d8908328cb06fb553da568fec63aef863c5",
-    "scripts/game_system_control/explorer.py": "978e860dfe5b2b78ad2a8942fa7598c578237ba45dfd7c2d84ae5c4b6177c2f2",
-    "scripts/game_system_control/inventory.py": "3c8b46eb72d7876f6b90504bfec2d9737c09377c5810da18ddbc1d4c9766460c",
-    "scripts/game_system_control/overview.py": "37fe14f700d9cffb17f33482412c6c9ffe2c9852f2a1e75f5ea4fce8452ee6a1",
+    "scripts/GameToolAIKnowledge.py": "9bae47236f95543b99d0666ed28149833428de64d64b0cbc13d6e84f8b582983",
+    "scripts/GameToolSystemControl.py": "eda8a6851b3fefc50b17b1573fd0472f4faff4fb5ff277d338d64a85d64bddb7",
+    "scripts/GameToolSystemControlPanel.py": "c1fdef22c1a73ccd063efaa627e9f0110b161c06442af0916f943bbbfbd9c466",
+    "scripts/game_system_control/__init__.py": "fa864887d3e31d820bd886e56d0858f11b3aa6dba2b7c6ac1e623feb0a5e672a",
+    "scripts/game_system_control/contracts.py": "d5d66473ccc81ed9d6a9d1fced12bdf821c282736bdcdfd396629a52963e1d67",
+    "scripts/game_system_control/explorer.py": "a81b9e2cc90068cc2b9b4cea5e8b21eb0959cf44763e580379414d8575b89d28",
+    "scripts/game_system_control/inventory.py": "465659982db14c07eb6b9aa9e33acaf85011e17ee4090861e00728a45f55eb39",
+    "scripts/game_system_control/overview.py": "151db657576a3fb8b59569430b19fbfea8fd8a34e6c560a30c1a4e20da6b5114",
+    "scripts/tests/Test-GameToolSystemControlPanel.py": "738e5354c495f4b4d9f08481252f3c4821cccb641a0e47aeccd1873e04e8bbab",
+    "scripts/game_system_control/report.py": "f44861ac7696577fb7df6ed286380f7541681f91d1851a92c76f459bf054d782",
+    "scripts/tests/Test-GameToolSystemControlCompletion.py": "39b4f94cd6cd407b3f8a11d2993ff2d1db02682c4316a64a1cd4f7bdeee61f14",
+    "scripts/tests/Test-GameToolSystemControlReport.py": "a81a8f95c605a2de6b3506256b1445a7a358171cb5e16b70f444cab3a83b7b72",
     "scripts/game_system_control/preflight.py": "3735ed3a366ef5820b1f5b852b72499db221442b94bf86eab89b2067bc3fe60f",
-    "scripts/game_system_control/__init__.py": "5594809ee9a10df1f08422251a69c91ed082b0d9eaba24594dc58e3cfe493377",
-    "scripts/GameToolAIKnowledge.py": "c7638817a66ea9960160fbc584b88f9dfbae19cb91b05784f4bba8a8db42e700",
-    "scripts/GameToolModIntegration.py": "639f5258226cdcf1b490fba7317e834c070573e0a23903c057662d2003a69baf",
-    "scripts/GameToolSystemControl.py": "2f660b6accdb043b59f57dcada481521d59cf7ec298723c867d7f219dbe6f089",
-    "scripts/GameToolSystemControlPanel.py": "5abbf93ffdf991365f630421e85fe2b9b106278e20eae40c58167033ac48a3da",
     "scripts/tests/Test-GameToolSystemControl.py": "bc4ad5169ecb3ef74708c5067711c046ce296943cf12efe0e186dd40bd35a574",
-    "scripts/tests/Test-GameToolSystemControlPanel.py": "63c85d7f8153814f7e68d062fbce9b1fb96cac5226829c65590eee29577474c3",
-    "scripts/tests/Test-GameToolHubCatalog.py": "de2251757b38bb3c68280d360cfec8fd9efaddf4588e6ca7a78d7c3bf4fccec5",
-    "scripts/tests/Test-GameToolFocusHost.py": "f38d794d55128696ce4d8b0853d2f39c5af8b9b5a7c91ee506952f84e6e7f0ef"
+    "schemas/game-system-context.schema.json": "f7b3d30764ce2fe397506be7922e2100285c3d710efde96392351cafcc0e97ba"
   },
   "suites": [
     {
-      "name": "new core",
-      "environment": "Linux guest",
+      "name": "core",
+      "environment": "isolated Linux guest",
       "tests": 33,
       "passed": 33,
       "skipped": 0
     },
     {
-      "name": "new Tk UI",
-      "environment": "Linux virtual display",
-      "tests": 12,
-      "passed": 12,
+      "name": "P0 completion",
+      "environment": "isolated Linux guest",
+      "tests": 16,
+      "passed": 16,
+      "skipped": 0
+    },
+    {
+      "name": "Tk interaction",
+      "environment": "isolated Linux virtual display",
+      "tests": 17,
+      "passed": 17,
+      "skipped": 0
+    },
+    {
+      "name": "browser semantics and keyboard/layout",
+      "environment": "isolated Linux Chromium",
+      "tests": 5,
+      "passed": 5,
       "skipped": 0
     },
     {
       "name": "existing Hub",
-      "environment": "Linux virtual display",
+      "environment": "isolated Linux virtual display",
       "tests": 45,
       "passed": 45,
       "skipped": 0
     },
     {
       "name": "existing Focus host",
-      "environment": "Linux virtual display",
+      "environment": "isolated Linux virtual display",
       "tests": 10,
       "passed": 10,
       "skipped": 0
     },
     {
       "name": "existing AI foundation",
-      "environment": "Linux guest package mode",
+      "environment": "isolated Linux package mode",
       "tests": 17,
       "passed": 16,
       "skipped": 1,
-      "skip_reason": "Repository-without-manifest case is inapplicable in package mode."
-    },
-    {
-      "name": "existing user data",
-      "environment": "Windows headless fixtures",
-      "tests": 42,
-      "passed": 41,
-      "skipped": 1
-    },
-    {
-      "name": "existing journal",
-      "environment": "Windows headless fixtures",
-      "tests": 59,
-      "passed": 58,
-      "skipped": 1
-    },
-    {
-      "name": "existing workspace",
-      "environment": "Windows withdrawn fixtures",
-      "tests": 40,
-      "passed": 40,
-      "skipped": 0
+      "skip_reason": "Repository-without-generated-manifest case inapplicable to package mode"
     }
   ],
-  "counts_note": "Suites are listed separately; repeated runs are not independent tests. Windows link skips are covered by Linux tests.",
-  "linux_at_spi": "NOT_EXPOSED_BY_TK",
-  "windows_gui": "NOT_RUN",
-  "human_simultaneous_work": "NOT_OBSERVED",
-  "second_computer": "NOT_OBSERVED",
-  "codex_installation": "UNCHANGED",
-  "installed_toolkit": "UNCHANGED",
-  "model_api_calls": 0,
-  "background_services_created": 0,
-  "guest_dependency_changes": [
-    "python3-tk and distribution dependencies",
-    "python3-jsonschema and distribution dependencies"
-  ],
-  "transfer_findings": [
-    "Direct Unicode tool transfer failed; exact-byte base64 transport and SHA-256 verification used.",
-    "Lab script size limit respected by splitting source transport into bounded pieces."
-  ],
-  "source_preview_only": true,
-  "tested_source_hashes": {
-    "scripts/game_system_control/contracts.py": "183c6c7b18f4a9472c0dbf318b966d8908328cb06fb553da568fec63aef863c5",
-    "scripts/game_system_control/explorer.py": "978e860dfe5b2b78ad2a8942fa7598c578237ba45dfd7c2d84ae5c4b6177c2f2",
-    "scripts/game_system_control/inventory.py": "3c8b46eb72d7876f6b90504bfec2d9737c09377c5810da18ddbc1d4c9766460c",
-    "scripts/game_system_control/overview.py": "37fe14f700d9cffb17f33482412c6c9ffe2c9852f2a1e75f5ea4fce8452ee6a1",
-    "scripts/game_system_control/preflight.py": "3735ed3a366ef5820b1f5b852b72499db221442b94bf86eab89b2067bc3fe60f",
-    "scripts/game_system_control/__init__.py": "5594809ee9a10df1f08422251a69c91ed082b0d9eaba24594dc58e3cfe493377",
-    "scripts/GameToolAIKnowledge.py": "e3624ddb62f4f274407e07630a4499dcd7241f89d4f839416cb90bdb4c56bffd",
-    "scripts/GameToolModIntegration.py": "434f30ecfb6825a93debb392bfe649d4e7371409e30537fce40e1dd16a58ed54",
-    "scripts/GameToolSystemControl.py": "2f660b6accdb043b59f57dcada481521d59cf7ec298723c867d7f219dbe6f089",
-    "scripts/GameToolSystemControlPanel.py": "5abbf93ffdf991365f630421e85fe2b9b106278e20eae40c58167033ac48a3da",
-    "scripts/tests/Test-GameToolSystemControl.py": "bc4ad5169ecb3ef74708c5067711c046ce296943cf12efe0e186dd40bd35a574",
-    "scripts/tests/Test-GameToolSystemControlPanel.py": "63c85d7f8153814f7e68d062fbce9b1fb96cac5226829c65590eee29577474c3",
-    "scripts/tests/Test-GameToolHubCatalog.py": "de2251757b38bb3c68280d360cfec8fd9efaddf4588e6ca7a78d7c3bf4fccec5",
-    "scripts/tests/Test-GameToolFocusHost.py": "f38d794d55128696ce4d8b0853d2f39c5af8b9b5a7c91ee506952f84e6e7f0ef"
-  },
-  "publication_source_equivalence": {
-    "changed_files": [
-      "scripts/GameToolAIKnowledge.py",
-      "scripts/GameToolModIntegration.py"
-    ],
-    "only_changes": "CRLF/LF normalization and one final newline; byte-normalized content and Python AST equality verified for every tested code file.",
-    "substantive_untested_code_changes": false
-  },
   "source_export_contracts": {
     "passed": 69,
-    "environment": "Windows synthetic fixture tests"
-  }
+    "environment": "Windows synthetic fixtures"
+  },
+  "tested_candidate_transport": {
+    "files": 423,
+    "archive_sha256": "392b7bdf60f641394a4f0ced6724d4bf6ffab447fe8a2b138729ba2abec4b78d",
+    "entry_hashes_verified": true,
+    "additional_exact_hash_transferred_test": "scripts/tests/Test-GameToolSystemControlReport.py",
+    "functional_code_changed_after_guest_test": false
+  },
+  "private_inventory": {
+    "selected_sources": 17,
+    "skills": 8,
+    "exposed_tool_declarations": 15,
+    "omissions": 0,
+    "source_states": "all available and hash checked",
+    "actual_runtime_load": "not_observed",
+    "actual_account_schedules": "not_observed",
+    "roots_and_raw_records": "private only"
+  },
+  "browser_acceptance": {
+    "semantic_search_navigation_status_lists": true,
+    "tab_enter_escape": true,
+    "viewport_widths": [
+      390,
+      1100
+    ],
+    "large_text_percent": 200,
+    "horizontal_overflow": false,
+    "network_requests": 0,
+    "actual_screenshots_inspected": true
+  },
+  "defects_fixed": [
+    "Ordinary architecture/source refresh could eagerly read referenced full-content bodies; all resource bodies now defer until explicit authorized fetch."
+  ],
+  "detail_acceptance": {
+    "text_limit_bytes": 131072,
+    "conversation_limit_bytes": 2097152,
+    "attachment_limit_bytes": 16777216,
+    "expected_hash_and_explicit_request_and_authorization_required": true,
+    "conversation_identity": "native chat identity not imported",
+    "durable_report_omits": [
+      "no_store summaries",
+      "session_only summaries",
+      "all full bodies"
+    ],
+    "no_forensic_memory_erasure_claim": true
+  },
+  "unverified": [
+    "Windows GUI and native screen reader",
+    "Linux Tk AT-SPI semantic tree",
+    "Human usability and simultaneous-work observation",
+    "Real second computer",
+    "Native Codex chat resume/import",
+    "Live disk/network/cloud synchronization",
+    "Production remote actions",
+    "Model quality or exact future response"
+  ],
+  "codex_installation_changed": false,
+  "codex_configuration_changed": false,
+  "credentials_or_native_databases_transplanted": false,
+  "installed_toolkit_changed": false,
+  "model_api_calls": 0,
+  "background_services_created": 0,
+  "guest_dependency_changes_this_continuation": [],
+  "source_preview_only": true,
+  "historical_validation": "Previous source-preview validation is retained at basis commit; current counts are not cumulative duplicate runs."
 }

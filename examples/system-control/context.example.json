@@ -19,6 +19,24 @@
       "binding": "selected_project",
       "sha256": "0ac0aa927c36f0911c13d5b194ecc59fb0d279e2c7de2ba5c267ac43cd024954",
       "availability": "available"
+    },
+    {
+      "id": "conversation-source",
+      "owner": "Invented example export",
+      "locator": "conversation.example.json",
+      "binding": "selected_project",
+      "sha256": "21d9452c25607986909dd1dc616864660d366f20d1e36ddae50ef77092e5a99b",
+      "availability": "available",
+      "read_policy": "on_demand"
+    },
+    {
+      "id": "attachment-source",
+      "owner": "Invented example export",
+      "locator": "attachment.example.txt",
+      "binding": "selected_project",
+      "sha256": "72a783169b41d85087a16b0cef0b0cfe05c15f7e857f5c2eb9f3779bc393a8cc",
+      "availability": "available",
+      "read_policy": "on_demand"
     }
   ],
   "nodes": [
@@ -164,6 +182,20 @@
       "source_id": "detail",
       "relative": "detail.example.txt",
       "access": "local_selected"
+    },
+    {
+      "id": "conversation-reference",
+      "source_id": "conversation-source",
+      "relative": "conversation.example.json",
+      "access": "local_selected",
+      "content_type": "conversation"
+    },
+    {
+      "id": "attachment-reference",
+      "source_id": "attachment-source",
+      "relative": "attachment.example.txt",
+      "access": "local_selected",
+      "content_type": "attachment"
     }
   ],
   "unknown_additive_field": {

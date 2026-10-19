@@ -38,26 +38,26 @@
     {
       "id": "MCI-03",
       "priority": "P0",
-      "status": "source_preview_verified_acceptance_pending",
+      "status": "completed",
       "depends_on": [
         "MCI-01",
         "MCI-02"
       ],
       "checklist_complete": [
-        false,
         true,
         true,
         true,
         true,
-        false
+        true,
+        true
       ],
       "report": "control-center/MCI-03-CONCLUSIONS.md",
-      "note": null
+      "note": "Original P0 checklist accepted; Windows/human/real-device release gates remain unverified."
     },
     {
       "id": "MCI-04",
       "priority": "P0",
-      "status": "source_preview_verified_acceptance_pending",
+      "status": "completed",
       "depends_on": [
         "MCI-02",
         "MCI-03"
@@ -68,15 +68,15 @@
         true,
         true,
         true,
-        false
+        true
       ],
       "report": "control-center/MCI-04-CONCLUSIONS.md",
-      "note": null
+      "note": "Original P0 checklist accepted; Windows/human/real-device release gates remain unverified."
     },
     {
       "id": "MCI-05",
       "priority": "P0",
-      "status": "source_preview_verified_acceptance_pending",
+      "status": "completed",
       "depends_on": [
         "MCI-02"
       ],
@@ -84,12 +84,12 @@
         true,
         true,
         true,
-        false,
         true,
-        false
+        true,
+        true
       ],
       "report": "control-center/MCI-05-CONCLUSIONS.md",
-      "note": null
+      "note": "Original P0 checklist accepted; Windows/human/real-device release gates remain unverified."
     },
     {
       "id": "MCI-06",
@@ -349,5 +349,13 @@
       "note": "Not started; follow declared dependencies and each actual-device/capability gate."
     }
   ],
-  "automatic_continuation_service": false
+  "automatic_continuation_service": false,
+  "progress": {
+    "p0_completed": 30,
+    "p0_total": 30,
+    "program_completed": 30,
+    "program_total": 108,
+    "completed_packages": 5,
+    "planned_packages": 13
+  }
 }

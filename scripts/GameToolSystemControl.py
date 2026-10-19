@@ -9,7 +9,7 @@ import sys
 from game_system_control import VERSION
 from game_system_control.contracts import ContextError
 from game_system_control.explorer import build_view
-from game_system_control.inventory import load_context
+from game_system_control.inventory import load_context, environment_context
 from game_system_control.overview import overview, journal_summary
 from game_system_control.preflight import check_request
 
@@ -19,13 +19,18 @@ EXAMPLE = ROOT / "examples/system-control/context.example.json"
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=("explore", "preflight", "overview", "journal", "gui"))
+    parser.add_argument("mode", choices=("explore", "preflight", "overview", "inventory", "report", "journal", "gui"))
     parser.add_argument("--context", type=Path, default=EXAMPLE)
     parser.add_argument("--root", type=Path, help="Explicit local source root; default: context file's directory")
     parser.add_argument("--scope")
     parser.add_argument("--query", default="")
     parser.add_argument("--draft", help="Read-only draft text; never submitted")
+    parser.add_argument("--intended-outcome", default="")
     parser.add_argument("--journal", type=Path)
+    parser.add_argument("--global-root", type=Path, help="Explicit global instruction folder")
+    parser.add_argument("--skill-root", type=Path, action="append", default=[], help="Explicit skill folder, one level only; repeatable")
+    parser.add_argument("--catalog", type=Path, help="Selected capability declarations JSON")
+    parser.add_argument("--cwd", default="", help="Selected project-relative working directory")
     args = parser.parse_args(argv)
     try:
         if args.mode == "journal":
@@ -46,14 +51,25 @@ def main(argv=None):
             root.mainloop()
             return 0
         else:
-            context = load_context(args.context)
             source_root = args.root or args.context.absolute().parent
+            if args.mode == "inventory" or args.global_root or args.skill_root or args.catalog:
+                if args.root is None:
+                    raise ContextError("Select --root for an environment inventory.")
+                context, source_root = environment_context(args.root, args.cwd, global_root=args.global_root, skill_roots=args.skill_root, catalog=args.catalog)
+            else:
+                context = load_context(args.context)
             view = build_view(context, source_root, args.scope, args.query)
-            if args.mode == "preflight":
-                result = check_request(args.draft or "", view)
+            if args.mode == "report":
+                from game_system_control.report import accessible_report
+                print(accessible_report(context, source_root))
+                return 0
+            elif args.mode == "preflight":
+                result = check_request(args.draft or "", view, args.intended_outcome)
             elif args.mode == "overview":
                 from game_system_control.inventory import check_sources
                 result = overview(check_sources(context, source_root))
+            elif args.mode == "inventory":
+                result = context
             else:
                 result = view
         print(json.dumps(result, ensure_ascii=False, indent=2))
