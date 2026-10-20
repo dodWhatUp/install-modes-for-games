@@ -126,14 +126,24 @@
       ],
       "owners": [
         "scripts/game_system_control/contracts.py",
-        "scripts/GameToolManagedWorkspace.py"
+        "scripts/GameToolManagedWorkspace.py",
+        "scripts/game_system_control/checkpoints.py",
+        "schemas/workspace-checkpoint.schema.json",
+        "docs/control-center/MCI-08-CHECKPOINT-CONCLUSIONS.md"
       ],
       "contract": {
         "input": "Selected manifest/object revisions, current phase and authorized requested transition",
         "output": "One transition result with receipt and next boundary",
         "invariant": "Implement missing stages additively; STAGES declarations and managed placement are not an end-to-end sync engine."
       },
-      "extension_rule": "Extend these owners; do not create a parallel registry, journal or approval system."
+      "extension_rule": "Extend these owners; do not create a parallel registry, journal or approval system.",
+      "source_candidate_evidence": {
+        "scope": "bounded synthetic seed and inactive reconstruction",
+        "report": "docs/control-center/MCI-08-CHECKPOINT-VALIDATION.json",
+        "state": "tested_source_candidate_not_main_adoption",
+        "original_checks_closed": 0,
+        "remaining": "Full/delta, physical handover, broad restoration/rollback and integrated actual-device acceptance remain open."
+      }
     },
     {
       "id": "C6",

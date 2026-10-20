@@ -38,3 +38,51 @@ Save view-context JSON inside the selected local parent, then use the existing s
 </details>
 
 Recovery: preserve any partial vault/metadata operation and inspect its journal. Stale/unknown locks and incomplete revisions are never automatically removed or replayed. Stop remains available even with corrupt authorization metadata. Rollback of one policy rule creates a new revision; it does not rewind writer generations or replace another direction. Actual checkpoint recovery, transport, native continuity and integrated multi-device release acceptance remain their dependent packages.
+
+
+## Bounded MCI-08 seed source candidate — 2026-10-20
+
+[Conclusions](../../docs/control-center/MCI-08-CHECKPOINT-CONCLUSIONS.md) and
+[validation](../../docs/control-center/MCI-08-CHECKPOINT-VALIDATION.json) describe
+this source/synthetic slice; it is not an installed sync feature.
+
+New modes in the existing CLI: `checkpoint-preview`, `checkpoint-publish`,
+`checkpoint-inspect`, `checkpoint-restore-preview`, `checkpoint-restore`, and
+`checkpoint-inspect-restore`. Every mode selects existing `--state` bindings,
+`--policy-state`, `--access-state`, `--vault-id` and a private `--input` JSON.
+No fixture identity/volume override is exposed by these CLI modes. Ordinary
+callers retain the current native Windows-only binding adapter and local identity.
+
+The private JSON contains `actor` with exactly `account_id`, `workspace_id`,
+`project_id`, `device_id`, `generation`. A seed preview adds `selection` (a list
+of `content_class`/`relative` pairs), `operation_id`, and `destination` equal to
+`checkpoint-<operation_id>`. Publication takes that exact preview as `plan` plus
+`--accept <plan_sha256>`. Inspection uses `--relative checkpoint-<operation_id>`.
+
+A reconstruction preview adds `source`, exact `package_id`, `operation_id`, and
+`destination` equal to `reconstruction-<operation_id>`. Commit supplies `plan`
+and its exact `--accept` digest; inspection uses the corresponding `--relative`.
+Destinations must be new beneath an existing selected-results root. All included
+classes need matching read grants; reconstruction also requires their write
+permissions and the restrictive local adoption control. No active adoption occurs.
+
+Portable payloads omit private roots, principals and local authorization stores.
+Preview JSON is private planning data, not transferable authority. The initial
+format rejects parents/deltas, tombstones, native/sensitive paths and known
+instruction-discovery files. Existing destinations, interrupted attempts and
+stale locks are not overwritten, retried or deleted automatically.
+
+To run only the new benign synthetic proof, use an existing compatible Python:
+
+```text
+python -B scripts/tests/Accept-ManagedWorkspaceCheckpoint.py --output-parent EXISTING_PRIVATE_PARENT
+```
+
+Choose a parent outside Git, cloud folders, Codex and portable vaults. The runner
+uses explicit fixture identity/volume, does not prompt for sign-in, retains only
+synthetic evidence, and leaves fixture access stopped. It does not prove native
+Windows/macOS or multi-device acceptance. Default unit command:
+
+```text
+python -B scripts/tests/Test-ManagedWorkspaceCheckpoints.py
+```

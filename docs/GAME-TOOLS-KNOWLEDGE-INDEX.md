@@ -1,5 +1,16 @@
 # Game tools knowledge and recovery index
 
+## MCI-08 seed checkpoint source proof — 2026-10-20
+
+[Candidate conclusions](control-center/MCI-08-CHECKPOINT-CONCLUSIONS.md) and
+[exact validation](control-center/MCI-08-CHECKPOINT-VALIDATION.json) cover bounded
+seed preview/publication, interrupted-attempt inspection and new inactive
+reconstruction through existing owners. 212 distinct checks passed, two existing
+environment cases skipped. Identity/volume were synthetic on macOS; no native
+Windows, physical handover, transport or installed capability is accepted.
+The reproduced policy-queue defect remains separate and unrepaired. Original
+program acceptance remains 47/108; this candidate closes no whole MCI-08 check.
+
 ## Shared build blueprint — 2026-10-20
 
 [One master plan](INTEGRATED-SYSTEM-EXECUTION-PLAN.md#one-shared-foundation-then-specialized-adapters) now explains seven common components, ten system adapters and task-scoped human/AI handoffs. [Build map](INTEGRATED-SYSTEM-BUILD-MAP.json) references the original 18 MCI packages without duplicating task status. [Conclusions](control-center/SHARED-BUILD-CONCLUSIONS.md) record the read-only prototype and acceptance.

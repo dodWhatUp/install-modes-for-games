@@ -552,3 +552,77 @@ def restore_new_copy(archive, destination, expected_sha256, preview_sha256):
     _write_new(target / "RESTORE-RECEIPT.json", _canonical(receipt) + b"\n")
     marker.unlink()  # Only this operation's own transient completion marker.
     return receipt
+
+
+# MCI-08 additive streaming primitives. Legacy archives above are unchanged.
+STREAM_BUFFER_BYTES = 1024 * 1024
+
+
+def _stream_visit(path, limit, before_chunk=None, sink=None):
+    """Bounded stable-file read; the caller owns authorization and destinations."""
+    if type(limit) is not int or not 0 <= limit <= MAX_FILE_BYTES:
+        _fail("FILE_LIMIT_OR_TYPE_REFUSED")
+    path = local_path(path)
+    before = path.stat()
+    if not stat.S_ISREG(before.st_mode) or before.st_size > limit:
+        _fail("FILE_LIMIT_OR_TYPE_REFUSED")
+    identity = lambda s: (s.st_dev, s.st_ino, s.st_size, s.st_mtime_ns, s.st_ctime_ns)
+    count, hashed = 0, hashlib.sha256()
+    with path.open("rb") as stream:
+        if identity(os.fstat(stream.fileno())) != identity(before):
+            _fail("SOURCE_CHANGED")
+        while True:
+            if before_chunk is not None:
+                before_chunk()
+            block = stream.read(min(STREAM_BUFFER_BYTES, limit - count + 1))
+            if not block:
+                break
+            count += len(block)
+            if count > limit:
+                _fail("FILE_LIMIT_OR_TYPE_REFUSED")
+            hashed.update(block)
+            if sink is not None:
+                if sink.write(block) != len(block):
+                    _fail("SHORT_WRITE_PRESERVE_PARTIAL")
+        after_handle = os.fstat(stream.fileno())
+    after = local_path(path).stat()
+    if count != before.st_size or identity(before) != identity(after_handle) or identity(before) != identity(after):
+        _fail("SOURCE_CHANGED")
+    return {"bytes": count, "sha256": hashed.hexdigest()}
+
+
+def stream_fingerprint(path, limit=MAX_FILE_BYTES, *, before_chunk=None):
+    """Read and hash one regular selected file without retaining its full body."""
+    return _stream_visit(path, limit, before_chunk)
+
+
+def copy_stream_new(source, destination, expected_sha256, expected_bytes, *, before_chunk=None):
+    """Exact bounded copy to a new file. Errors preserve inspectable partial data.
+
+    No implicit mkdir, overwrite, retry, permissions transfer or action replay.
+    Files are flushed/fsynced; physical power-loss durability is not asserted.
+    """
+    expected = {"bytes": expected_bytes, "sha256": _hash(expected_sha256)}
+    if type(expected_bytes) is not int or not 0 <= expected_bytes <= MAX_FILE_BYTES:
+        _fail("FILE_LIMIT_OR_TYPE_REFUSED")
+    if stream_fingerprint(source, expected_bytes, before_chunk=before_chunk) != expected:
+        _fail("SOURCE_CHANGED")
+    target = local_path(destination)
+    if not target.parent.is_dir():
+        _fail("EXISTING_PARENT_REQUIRED")
+    if before_chunk is not None:
+        before_chunk()
+    try:
+        with target.open("xb") as output:
+            observed = _stream_visit(source, expected_bytes, before_chunk, output)
+            if observed != expected:
+                _fail("SOURCE_CHANGED_PRESERVE_NEW_COPY")
+            if before_chunk is not None:
+                before_chunk()
+            output.flush()
+            os.fsync(output.fileno())
+    except FileExistsError:
+        _fail("NEW_COPY_REQUIRED")
+    if stream_fingerprint(target, expected_bytes, before_chunk=before_chunk) != expected:
+        _fail("NEW_COPY_READBACK_FAILED")
+    return expected

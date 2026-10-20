@@ -1,4 +1,4 @@
-"""Explicit local front door for MCI-07/12/13; no Codex settings or network API."""
+"""Explicit local workspace/checkpoint front door; no native-state or network API."""
 import argparse
 import json
 from pathlib import Path
@@ -17,6 +17,7 @@ from game_system_control.access import AccessStore
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("mode", choices=("volume", "vault-create", "vault-attach", "vault-status", "vault-rebind", "route", "place",
+                        "checkpoint-preview", "checkpoint-publish", "checkpoint-inspect", "checkpoint-restore-preview", "checkpoint-restore", "checkpoint-inspect-restore",
                         "policy-create", "policy-status", "policy-preview", "policy-ack-preview", "policy-rollback-preview", "policy-commit", "policy-check",
                         "windows-account-status", "access-windows-create", "access-create", "access-status", "access-preview", "access-commit", "access-check", "stop", "resume", "view-context", "report"))
     parser.add_argument("--state", type=Path)
@@ -37,7 +38,7 @@ def main(argv=None):
     parser.add_argument("--access-state", type=Path)
     args = parser.parse_args(argv)
     try:
-        data = _decode(_read(args.input, 128 * 1024)[0]) if args.input else None
+        data = _decode(_read(args.input, 2 * 1024 * 1024 if args.mode.startswith("checkpoint-") else 128 * 1024)[0]) if args.input else None
         now = time.time()
         if args.mode == "windows-account-status":
             from game_system_control.windows_account import availability
@@ -52,6 +53,23 @@ def main(argv=None):
                 if args.mode == "report":
                     from game_system_control.report import accessible_report
                     print(accessible_report(result, args.state)); return 0
+            elif args.mode.startswith("checkpoint-"):
+                require(args.policy_state is not None and args.access_state is not None and args.vault_id is not None and type(data) is dict,
+                        "Checkpoint operations require existing local bindings, policy, access, vault identity and a private actor request.")
+                from game_system_control.checkpoints import CheckpointService
+                service = CheckpointService(VaultRegistry(args.state), PolicyStore(args.policy_state), AccessStore(args.access_state), data.get("actor"), args.vault_id)
+                if args.mode == "checkpoint-preview":
+                    result = service.preview_seed(data["selection"], data["destination"], data["operation_id"])
+                elif args.mode == "checkpoint-publish":
+                    result = service.publish_seed(data["plan"], args.accept)
+                elif args.mode == "checkpoint-inspect":
+                    result = service.inspect(args.relative)
+                elif args.mode == "checkpoint-restore-preview":
+                    result = service.preview_reconstruction(data["source"], data["destination"], data["operation_id"], data["package_id"])
+                elif args.mode == "checkpoint-restore":
+                    result = service.reconstruct(data["plan"], args.accept)
+                else:
+                    result = service.inspect_reconstruction(args.relative)
             elif args.mode == "vault-create":
                 require(args.root is not None, "Select a new --root on a non-system volume.")
                 registry = VaultRegistry.create(args.state)

@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-20",
+  "kind": "MCI08BoundedSeedSourceCandidateValidation",
+  "baseline_commit": "9683b32ca6260b060f4727937f26e6a4a96d50de",
+  "candidate_branch": "agent/shared-workspace-pro-followup-20261020-00e82af0",
+  "status": "SOURCE_SYNTHETIC_PROOF_PASSED_NOT_ADOPTED",
+  "environment": {
+    "platform": "macOS",
+    "python": "3.9.6",
+    "identity": "explicit mock in fixtures only",
+    "volume": "explicit mock in fixtures only",
+    "native_macos_adapter_added": false,
+    "native_windows_gui_used": false
+  },
+  "checkpoint_tests": {
+    "tests": 43,
+    "passed": 43,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 226.61,
+    "forced_child_exits": 2
+  },
+  "regressions": [
+    {
+      "suite": "Test-GameToolUserData.py",
+      "tests": 42,
+      "passed": 42,
+      "skipped": [],
+      "failures": 0,
+      "errors": 0,
+      "identity": "explicit_mock_for_local_registry_tests",
+      "platform": "macOS Python 3.9.6"
+    },
+    {
+      "suite": "Test-GameToolJournal.py",
+      "tests": 59,
+      "passed": 59,
+      "skipped": [],
+      "failures": 0,
+      "errors": 0,
+      "identity": "explicit_mock_for_local_registry_tests",
+      "platform": "macOS Python 3.9.6"
+    },
+    {
+      "suite": "Test-ManagedWorkspacePolicy.py",
+      "tests": 17,
+      "passed": 16,
+      "skipped": [
+        {
+          "test": "test_published_contract_accepts_runtime_revision_and_inert_example (<run_path>.PolicyTests)",
+          "reason": "Full schema acceptance runs in the isolated guest."
+        }
+      ],
+      "failures": 0,
+      "errors": 0,
+      "identity": "explicit_mock_for_local_registry_tests",
+      "platform": "macOS Python 3.9.6"
+    },
+    {
+      "suite": "Test-ManagedWorkspaceAccess.py",
+      "tests": 18,
+      "passed": 18,
+      "skipped": [],
+      "failures": 0,
+      "errors": 0,
+      "identity": "explicit_mock_for_local_registry_tests",
+      "platform": "macOS Python 3.9.6"
+    },
+    {
+      "suite": "Test-ManagedWorkspaceVault.py",
+      "tests": 23,
+      "passed": 22,
+      "skipped": [
+        {
+          "test": "test_separate_processes_cannot_publish_the_same_generation_twice (<run_path>.VaultTests)",
+          "reason": "Existing child expects native Linux/Windows principal; macOS adapter is unsupported. New checkpoint child tests explicitly mock identity."
+        }
+      ],
+      "failures": 0,
+      "errors": 0,
+      "identity": "explicit_mock_for_local_registry_tests",
+      "platform": "macOS Python 3.9.6"
+    },
+    {
+      "suite": "Test-GameToolBuildPlan.py",
+      "tests": 12,
+      "passed": 12,
+      "skipped": [],
+      "failures": 0,
+      "errors": 0,
+      "identity": "explicit_mock_for_local_registry_tests",
+      "platform": "macOS Python 3.9.6"
+    }
+  ],
+  "total_distinct": {
+    "tests": 214,
+    "passed": 212,
+    "skipped": 2,
+    "failures": 0,
+    "errors": 0
+  },
+  "count_method": "Final latest cases per suite; the earlier 39-case run and repeated baseline runs are not additional cases. The retained functional proof is reported separately.",
+  "retained_functional_proof": {
+    "passed": true,
+    "receipt_sha256": "5f22c77e8d5e9d50f3203d7d4021f20516b97199b48a949cd98d82ac6e7162f1",
+    "checks": [
+      "preview has no persistent mutation",
+      "publish then reopen verifies same package",
+      "new inactive reconstruction",
+      "relative data reference and arithmetic oracle",
+      "fixture access stopped; no authorization stores exported"
+    ]
+  },
+  "policy_queue_finding": {
+    "state": "reproduced",
+    "finding": "queue_only_change_invalidates_earlier_context_notice",
+    "reason": "Policy changed after staging; re-evaluate the source reference.",
+    "changes_to_policy_source": false,
+    "repair": "separate_versioned_policy_queue_change_still_pending"
+  },
+  "source_files": [
+    {
+      "path": "scripts/GameToolUserData.py",
+      "sha256": "b5cc40e4980a3831404da505eda7208216ff101d4e68811a250ca4b41c0760ae"
+    },
+    {
+      "path": "scripts/GameToolManagedWorkspace.py",
+      "sha256": "a12fb8ed80f25b8bd578c6626dc2f3e920747584ee3dc749111dd35c3229b537"
+    },
+    {
+      "path": "scripts/game_system_control/checkpoints.py",
+      "sha256": "e6ba2d671a0e692e5ba91bec8c5fd260f1af1dfa1057b81c7e00e2153ea3d98c"
+    },
+    {
+      "path": "schemas/workspace-checkpoint.schema.json",
+      "sha256": "65d267f25361e7872d361eef0a324bcfd1e96706e92e9fc39d4cfb9f4cceb1be"
+    },
+    {
+      "path": "scripts/tests/Test-ManagedWorkspaceCheckpoints.py",
+      "sha256": "4e7a02f8db9637863da57a26f70d4ee0725dccf4568855eb20d4b450a9b4ac3a"
+    },
+    {
+      "path": "scripts/tests/Accept-ManagedWorkspaceCheckpoint.py",
+      "sha256": "456a5c7cbbf79f2f2649e3408e1433f1bcb9410c548a9ddd403ce44c5a34cc47"
+    },
+    {
+      "path": "docs/INTEGRATED-SYSTEM-BUILD-MAP.json",
+      "sha256": "7f72a42063361be3b4cade70e7f617beb557afc07e452e5999e4e068d561b56a"
+    }
+  ],
+  "acceptance": {
+    "original_program_accepted": 47,
+    "original_program_total": 108,
+    "mci08_original_checks_closed": 0,
+    "mci13_accepted": 5,
+    "mci13_total": 6,
+    "main_adoption": false,
+    "installation": false
+  },
+  "limits": {
+    "files": 512,
+    "per_file_bytes": 16777216,
+    "payload_bytes": 67108864,
+    "manifest_bytes": 2097152,
+    "stream_buffer_bytes": 1048576,
+    "parents": 0,
+    "tombstones": 0,
+    "path_note": "240 characters/12 segments apply to the complete reconstruction-relative data/class/path, not just the user suffix."
+  },
+  "not_verified": [
+    "native Windows success/cancel and destination acceptance",
+    "native macOS account/volume integration",
+    "exact pending managed-schema Linux runtime check",
+    "physical moved-drive or power-loss recovery",
+    "full or delta transport format",
+    "independent multi-device reconciliation",
+    "active-project adoption and rollback",
+    "instruction activation",
+    "index/model-context delivery",
+    "native chat continuity",
+    "network/cloud/remote actions",
+    "peak RSS, throughput, token savings or model quality"
+  ],
+  "execution_boundaries": {
+    "production_data_changed": false,
+    "codex_or_windows_settings_changed": false,
+    "credentials_transplanted": false,
+    "services_or_schedules_created": false,
+    "paid_api_or_cloud_trials": false,
+    "task_tracker_changed": false,
+    "known_queue_defect_fixed": false
+  },
+  "raw_evidence": "Private repository-local evidence only; not in Git source or cloud exchange."
+}
