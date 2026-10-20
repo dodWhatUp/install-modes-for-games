@@ -1,5 +1,18 @@
 # Game tools knowledge and recovery index
 
+## MCI-08 audit and offline exchange continuation — 2026-10-21
+
+[Current conclusions](control-center/MCI-08-CHECKPOINT-CONCLUSIONS.md#continuation-candidate--2026-10-21)
+and [source-bound validation](control-center/MCI-08-CONTINUATION-VALIDATION.json)
+extend the existing PR #31 candidate with Windows streaming/audit/revision fixes,
+versioned full/delta packages, exact parent validation, local receipt versus
+adoption, selected inactive recovery/parent rollback and synthetic A→B→A.
+The policy queue correction uses an explicit v2 digest upgrade and fresh local
+acknowledgement; legacy hash meanings and queues are retained. Build packets
+recheck their source vector and expose relevant shared-owner capability gates.
+This source candidate is not installed or adopted into main. Acceptance remains
+47/108, MCI-08 0/6 and MCI-13 5/6; native/physical gates remain separate.
+
 ## MCI-08 seed checkpoint source proof — 2026-10-20
 
 [Candidate conclusions](control-center/MCI-08-CHECKPOINT-CONCLUSIONS.md) and
@@ -8,7 +21,8 @@ seed preview/publication, interrupted-attempt inspection and new inactive
 reconstruction through existing owners. 212 distinct checks passed, two existing
 environment cases skipped. Identity/volume were synthetic on macOS; no native
 Windows, physical handover, transport or installed capability is accepted.
-The reproduced policy-queue defect remains separate and unrepaired. Original
+At that dated proof the policy-queue defect remained unrepaired; the versioned
+source correction is recorded above. Original
 program acceptance remains 47/108; this candidate closes no whole MCI-08 check.
 
 ## Shared build blueprint — 2026-10-20

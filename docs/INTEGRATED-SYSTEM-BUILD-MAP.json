@@ -138,11 +138,12 @@
       },
       "extension_rule": "Extend these owners; do not create a parallel registry, journal or approval system.",
       "source_candidate_evidence": {
-        "scope": "bounded synthetic seed and inactive reconstruction",
-        "report": "docs/control-center/MCI-08-CHECKPOINT-VALIDATION.json",
+        "scope": "Reviewed seed fixes and bounded single-parent full/delta, destination-local receipt, inactive selected recovery/parent rollback and synthetic A-to-B-to-A; original acceptance unchanged.",
+        "report": "docs/control-center/MCI-08-CONTINUATION-VALIDATION.json",
         "state": "tested_source_candidate_not_main_adoption",
         "original_checks_closed": 0,
-        "remaining": "Full/delta, physical handover, broad restoration/rollback and integrated actual-device acceptance remain open."
+        "remaining": "Physical handover and surprise-removal durability, protected Windows / independent actual-device acceptance, active adoption and later conflict/transport/native continuity gates remain open.",
+        "previous_seed_report": "docs/control-center/MCI-08-CHECKPOINT-VALIDATION.json"
       }
     },
     {

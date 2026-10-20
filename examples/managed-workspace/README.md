@@ -86,3 +86,64 @@ Windows/macOS or multi-device acceptance. Default unit command:
 ```text
 python -B scripts/tests/Test-ManagedWorkspaceCheckpoints.py
 ```
+# Offline full/delta continuation — source candidate 0.2
+
+The existing seed commands and v1 identities remain supported. The additive
+v2 directory format keeps one logical checkpoint identity across full/delta
+representations. It supports one explicit parent and at most eight checkpoints
+in a selected ancestry. Merge/conflict reconciliation remains MCI-09. All file,
+byte, path, streaming and freshness limits remain bounded as documented below.
+
+Use the existing CLI with the same destination-local binding, policy, access,
+vault and actor arguments. Every writing command requires its exact preview
+digest through `--accept`; previews create no persistent state.
+
+| Mode | Request fields beyond `actor` | Effect |
+|---|---|---|
+| `checkpoint-package-preview` | `selection`, `destination`, `operation_id`, `representation`, optional `parent`, `parent_sources`, inert `extensions` | Read-only full/delta plan |
+| `checkpoint-package-publish` | `plan` | New immutable package attempt |
+| `checkpoint-receive-preview` | `source`, `destination`, `operation_id`, `package_id`, optional `parent_sources` | Verify a locally staged carrier; prepare local receipt |
+| `checkpoint-receive` | `plan` | New destination-local verified package; no adoption |
+| `checkpoint-recovery-preview` | `source`, `incomplete`, explicit `selection`, `destination`, `operation_id`, `package_id`, optional `parent_sources` | Recover selected files into a new inactive copy |
+| `checkpoint-rollback-preview` | Same fields as recovery; `source` must be the exact direct parent | Restore selected parent bytes into a new inactive copy |
+
+`checkpoint-restore` executes reconstruction, recovery and rollback plans.
+`checkpoint-restore-preview` and `checkpoint-inspect` also accept explicit
+`parent_sources`. Those are destination-local relative locators, never sender
+authority. Ancestor locator order is immaterial; unused, duplicate, missing,
+wrong-scope or incomplete parents refuse. Full packages still validate their
+declared ancestry. A delta carries precisely the current objects unavailable
+from its parent; omitting a selected resource never creates a tombstone.
+
+Checkpoint/receive destinations are `checkpoint-OPERATION_ID`; reconstruction,
+recovery and rollback destinations are `reconstruction-OPERATION_ID`. Existing
+attempts are inspection-only. Recovery and rollback preserve the interrupted
+copy and active files, bind current selected before-images, and return
+`whole_checkpoint: false` for subsets. Unlisted restored files prevent a
+completion claim. No source code, hooks or instruction discovery files execute.
+
+The byte carrier must first be locally staged under an already granted results
+scope. No network/cloud carrier or credential transfer is implemented. Received,
+verified and adopted are distinct receipt fields; v2 receipts identify their
+target replica. The new receive interface requires v2; v1 seeds remain readable
+local sources and parents through their original interfaces. Hashes prove
+integrity, not sender authenticity. Missing parents
+remain `MISSING_PARENTS`; torn publication evidence is `PUBLICATION_UNCERTAIN`.
+Neither state grants reconstruction or automatic replay. Receipt loss and stale
+locks remain inspectable; no old journal is repaired or appended.
+
+The policy queue correction is an explicit opt-in source interface:
+`policy-upgrade-preview` prepares `effective-config-v2`, followed by the existing
+`policy-commit`. Legacy hashes retain their old meaning. The access administrator
+must explicitly pin the new effective revision and acknowledge it on the device.
+Legacy queued references remain inert until `policy-restage-preview` and commit.
+`policy-stage-preview` and `policy-context-notice` retain the supported-boundary
+requirement and return notices only; no model-context delivery is connected.
+Queue/view changes still affect store compare-and-swap, while real rules,
+exclusions and acknowledgements affect the effective policy digest.
+
+Source/synthetic evidence and remaining gates are in
+[the checkpoint conclusions](../../docs/control-center/MCI-08-CHECKPOINT-CONCLUSIONS.md).
+This candidate is not installed or merged. Physical handover, protected Windows
+success/Cancel, independently accepted real destinations, active adoption,
+native chat continuity and network/cloud operations remain separate gates.

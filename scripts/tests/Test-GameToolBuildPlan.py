@@ -6,6 +6,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 SCRIPTS = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(SCRIPTS))
 from game_system_control.build_plan import BUILD_MAP, build_packet, build_context
@@ -53,6 +54,24 @@ class BuildPlanTests(unittest.TestCase):
     def test_pending_signin_or_merge_dependencies_are_not_presented_as_ready(self):
         packet = build_packet(self.root, "MCI-10")
         self.assertEqual(set(packet["task"]["unaccepted_prerequisites"]), {"MCI-09", "MCI-13"})
+
+    def test_scoped_source_work_exposes_shared_windows_gate_without_new_dependency(self):
+        packet = build_packet(self.root, "MCI-08")
+        gate = next(g for g in packet["relevant_capability_gates"] if g["id"] == "MCI-13")
+        self.assertEqual(gate["accepted"], 5); self.assertEqual(len(gate["remaining_criteria"]), 1)
+        self.assertEqual(packet["task"]["depends_on"], ["MCI-02", "MCI-07"])
+
+    def test_source_vector_changed_during_owner_collection_is_refused(self):
+        import game_system_control.build_plan as module
+        original = module.selected_text
+        changed = [False]
+        def read(root, path, expected=None):
+            result = original(root, path, expected)
+            if path.startswith("scripts/") and not changed[0]:
+                changed[0] = True
+                self.write(self.plan["task_manifest"], {**self.manifest, "date": "concurrent-edit"})
+            return result
+        with patch.object(module, "selected_text", side_effect=read), self.assertRaises(ContextError): build_packet(self.root, "MCI-08")
 
     def test_manifest_change_updates_progress_without_editing_the_build_map(self):
         task = next(t for t in self.manifest["tasks"] if t["id"] == "MCI-13")

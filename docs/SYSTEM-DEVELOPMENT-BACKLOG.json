@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "date": "2026-10-20",
+  "date": "2026-10-21",
   "timezone": "Asia/Jerusalem",
   "owner": "dodWhatUp/install-modes-for-games",
   "kind": "project_priority_and_next_boundary",
@@ -30,7 +30,7 @@
         "U1 architecture and trigger explorer",
         "U4 static request preflight"
       ],
-      "next_action": "Complete MCI-13 Windows-account human success/cancel and destination acceptance; native adapter and headless availability are implemented. MCI-08 checkpoint/exchange is independently eligible. Preserve separate transport/native-chat/remote-operation acceptance.",
+      "next_action": "Review the MCI-08 full/delta, inactive recovery and synthetic exchange candidate. Protected Windows success/Cancel and independent real destination / physical handover acceptance remain separate. No installation or transport activation.",
       "implementation_started": true,
       "activation_state": "NO_SERVICE_OR_SCHEDULE_CREATED",
       "issue_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/12",
@@ -48,14 +48,20 @@
         "MCI-18"
       ],
       "shared_dependencies": "Use each work package depends_on list; project phase numbers are not a complete execution order.",
-      "implementation_report": "control-center/WORKSPACE-FOUNDATIONS-2026-10-20.md"
+      "implementation_report": "control-center/WORKSPACE-FOUNDATIONS-2026-10-20.md",
+      "source_candidate": {
+        "pr": "https://github.com/dodWhatUp/install-modes-for-games/pull/31",
+        "report": "control-center/MCI-08-CHECKPOINT-CONCLUSIONS.md",
+        "validation": "control-center/MCI-08-CONTINUATION-VALIDATION.json",
+        "acceptance_unchanged": true
+      }
     },
     {
       "id": "portable-workspaces",
       "title": "Portable workspaces and multi computer collaboration",
       "priority": "P1",
       "urgency": "requested_development_plan",
-      "status": "MANAGED_STORAGE_IMPLEMENTED_EXCHANGE_NOT_STARTED",
+      "status": "MCI08_SOURCE_CANDIDATE_NOT_ADOPTED",
       "plan": "PORTABLE-WORKSPACE-PLAN.md",
       "requirements_range": [
         "GT-061",
@@ -66,7 +72,7 @@
         "R1 managed vault",
         "R2 offline exchange"
       ],
-      "next_action": "Complete MCI-13 Windows-account human success/cancel and destination acceptance; native adapter and headless availability are implemented. MCI-08 checkpoint/exchange is independently eligible. Preserve separate transport/native-chat/remote-operation acceptance.",
+      "next_action": "Review the MCI-08 full/delta, inactive recovery and synthetic exchange candidate. Protected Windows success/Cancel and independent real destination / physical handover acceptance remain separate. No installation or transport activation.",
       "implementation_started": true,
       "activation_state": "NO_SYNCHRONIZATION_ENABLED",
       "work_packages": [
@@ -85,7 +91,13 @@
         "MCI-18"
       ],
       "shared_dependencies": "Use each work package depends_on list; project phase numbers are not a complete execution order.",
-      "implementation_report": "control-center/WORKSPACE-FOUNDATIONS-2026-10-20.md"
+      "implementation_report": "control-center/WORKSPACE-FOUNDATIONS-2026-10-20.md",
+      "source_candidate": {
+        "pr": "https://github.com/dodWhatUp/install-modes-for-games/pull/31",
+        "report": "control-center/MCI-08-CHECKPOINT-CONCLUSIONS.md",
+        "validation": "control-center/MCI-08-CONTINUATION-VALIDATION.json",
+        "acceptance_unchanged": true
+      }
     }
   ],
   "integrated_execution_plan": "INTEGRATED-SYSTEM-EXECUTION-PLAN.md",
@@ -93,6 +105,6 @@
   "task_systems": {
     "github": "https://github.com/dodWhatUp/install-modes-for-games/issues/12",
     "ticktick": "Private execution mirror keyed by MCI task IDs; no automatic synchronization is implemented",
-    "implementation_status": "All work packages remain planned; registration is not implementation acceptance"
+    "implementation_status": "GitHub issues own live acceptance; the work-package manifest remains 47/108. MCI-08 has partial source/synthetic evidence, with all six original criteria unaccepted."
   }
 }

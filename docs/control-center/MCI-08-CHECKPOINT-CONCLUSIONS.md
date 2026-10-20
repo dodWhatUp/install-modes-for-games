@@ -1,5 +1,93 @@
 # MCI-08 — bounded seed checkpoint source proof
 
+## Continuation candidate — 2026-10-21
+
+The reviewed PR #31 seed at `cc5d8f2841f562f611cec4864c9b3f9ec490af18`
+is extended through the same checkpoint, UserData, Journal, vault, policy, access
+and CLI owners. The earlier dated proof below remains historical evidence.
+Current verification belongs to
+[the continuation machine record](MCI-08-CONTINUATION-VALIDATION.json).
+
+Windows verification: **271 passed, eight environment skips, no failures/errors**.
+Ten focused Linux cases passed, including those eight gaps; two cases overlap
+Windows passes. There are 279 distinct Python case identities across the selected
+environments. The 69 existing source-export contracts also passed. Repeated and
+intermediate runs are not added to these counts.
+
+Independent audit reproduced three defects: Windows path/handle `ctime`
+observations could falsely reject unchanged streamed files; an accepted plan
+could omit its exact revision vector; reconstruction inspection could accept an
+unrelated or cancelled audit as completed evidence. Fixes keep path and handle
+change checks separately, require all three exact revisions, and bind successful
+audit intent, owner, result and terminal event. Inspection also enforces logical
+workspace/project scope before reading payloads and refuses unlisted restored
+content. Torn publication evidence is explicit uncertainty, never success.
+
+The additive v2 format implements bounded single-parent full/delta packages,
+explicit expected ancestry and complete selected-state closure. Full and delta
+representations share checkpoint identity but have distinct package identities.
+The eight-node ancestry bound, existing 512-file/16 MiB-file/64 MiB-checkpoint
+bounds and 1 MiB streaming buffer are deliberate proof limits. Ancestor bytes
+are also bounded by the selected graph; this is not a production throughput or
+peak-memory claim. V1 seed hashes have a golden compatibility fixture.
+
+Locally staged carriers receive fresh destination-local read/write checks and
+new operation receipts identifying received, verified and unadopted state on the
+target replica. Missing/wrong/unlisted/duplicate parents, corrupted objects,
+changed sources, expired access and stop refuse. Repeated operation IDs never
+overwrite prior evidence. Locator order does not select ancestry or a winner.
+No network transport or sender-authentication claim is supplied by a checksum.
+
+Restoration remains an inactive new copy. Selected recovery preserves the
+interrupted directory and later work. Granular rollback restores selected bytes
+from the exact direct parent into another new inactive copy; it does not rewind
+active files. Both bind current before-images and label subset receipts and
+inspection as `whole_checkpoint: false`. Imported scripts/instructions do not
+execute, and receipt recovery never appends or repairs an old journal.
+
+The synthetic A→B→A harness uses independent local policy/access/binding stores
+and distinct replicas. It separately verifies returned hashes and a known benign
+relative-reference/arithmetic oracle. Only manifest/object bytes cross its
+authored carrier. No native identity, binding, grant or credential is copied.
+The retained evidence excludes authorization stores. It is not two physical
+computers, protected Windows presence, a moved drive or native chat acceptance.
+
+A separate one-host fixture also passed with the actual Windows principal and
+`windows-volume-guid` observer on a verified non-system NTFS volume, without
+identity/volume mocks. Five benign files across all four classes passed full /
+delta publication, exact-parent verification, byte readback and inactive
+relative-reference/arithmetic restoration. Fixture authorization stayed on the
+system volume outside the vault/data volume and was left stopped. This uses the
+existing local OS-session test mode, not protected Windows presence acceptance;
+no physical release/unmount, other computer or production project was tested.
+
+The policy coupling repair is separately versioned under the existing policy
+owner: effective configuration, queue/view mutation and store CAS remain
+distinct. Explicit upgrade changes the digest, requiring fresh access pin and
+device acknowledgement. Legacy queues are preserved and require explicit
+restaging. Legacy hash meanings and exact central-rule acknowledgements are not
+silently changed. The same renderer exposes history capacity and freshness
+limits; no epoch reset or expiry bypass is implemented.
+
+The existing build reader rechecks its aggregate source vector and derives
+relevant shared-owner gate summaries from the task manifest. Original MCI/GT
+IDs, dependency arrays and acceptance checklists stay unchanged. Hash-bound
+example files now retain LF bytes on Windows checkouts.
+
+**Acceptance remains 47/108; MCI-08 0/6; MCI-13 5/6.** Source/synthetic tests do
+not automatically accept an original product criterion. Physical release and
+surprise-removal recovery, real destination binding and protected Windows
+success/Cancel, active adoption, conflict reconciliation, native chat/context,
+network/cloud/remote operation and whole-program release remain independent.
+
+**Next environment: Codex.** Continue source review and the existing platform /
+physical acceptance gates when their actual capabilities and human actions are
+available. Return to ChatGPT Pro if those observations require a material change
+to the accepted authority, ancestry or recovery contracts; no architecture
+decision blocks the implemented bounded source workflow.
+
+## Original seed proof — 2026-10-20
+
 Date: 2026-10-20. Baseline: `9683b32ca6260b060f4727937f26e6a4a96d50de`.
 Candidate: `agent/shared-workspace-pro-followup-20261020-00e82af0`.
 Status: **source/synthetic proof passed; not installed or adopted into main**.
