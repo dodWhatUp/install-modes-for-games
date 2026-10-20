@@ -1,5 +1,7 @@
 # System control center and request preflight
 
+Current common implementation foundation: [one master build plan](INTEGRATED-SYSTEM-EXECUTION-PLAN.md#one-shared-foundation-then-specialized-adapters) and [machine-readable core/adapter map](INTEGRATED-SYSTEM-BUILD-MAP.json). Reuse the existing 18 tasks; retrieve one MCI build packet rather than duplicating the whole plan in each implementation prompt.
+
 Date: 2026-10-19, Asia/Jerusalem. Priority: **P0 urgent development task**, requested by the user. Status: original P0 checklist complete for the read-only source application; dependent control services, model evaluation and migration remain planned. Project ID: `system-control-center`. Urgent task: [GitHub issue 12](https://github.com/dodWhatUp/install-modes-for-games/issues/12). Requirement owner: [GT-086 through GT-096](PORTABLE-WORKSPACE-REQUIREMENTS.json); related infrastructure: [portable workspace plan](PORTABLE-WORKSPACE-PLAN.md).
 
 Build a program a person can use to understand and supervise the existing system: its architecture, source owners, instructions, triggers, permissions, devices, synchronization, changes and chat activity. Add a request preflight tool that explains what the current system supplies automatically, what a proposed request adds, what may activate, and the smallest clear wording that retains the user's intent. Keep these as two connected views in one application, backed by the existing owners.

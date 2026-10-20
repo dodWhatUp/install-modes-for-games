@@ -1,8 +1,103 @@
 # Integrated development plan and implementation checklist
 
-Date: 2026-10-19, Asia/Jerusalem. Status: P0 read-only source preview verified; remaining acceptance and work packages stay open. Parent tracker: [GitHub issue 12](https://github.com/dodWhatUp/install-modes-for-games/issues/12).
+Updated 2026-10-20, Asia/Jerusalem. Status: shared build blueprint and task-scoped reading tool implemented; 47/108 original program checks accepted. Remaining systems and actual-device acceptance stay open. Parent tracker: [GitHub issue 12](https://github.com/dodWhatUp/install-modes-for-games/issues/12).
 
 The portable workspace and the urgent human control center form one coordinated development program with shared contracts and separately deliverable capabilities. This plan integrates the original SSD/transfer workflow with multiple computers, storage topologies, cloud exchange, central policies, scoped remote operation, human architecture/trigger navigation, local information sources, stable links and request preflight.
+
+## One shared foundation, then specialized adapters
+
+This is the single master build plan for all requested systems. The existing 18 MCI packages and 108 checks remain the execution backlog. The [build map](INTEGRATED-SYSTEM-BUILD-MAP.json) specifies seven common components and ten specialized system groups; it references those tasks without copying their checklist/status ownership. Original project plans retain detailed use cases, not separate implementation queues.
+
+The user experience is one recognizable workspace and one understandable control surface. Each machine retains its local installation, Windows authentication, bindings and active runtime state. Shared project identity, revisions and policy connect the machines. A source, transport or interface changes through an adapter; the shared rules stay consistent.
+
+```mermaid
+flowchart TD
+    H[Person or AI: selected goal and MCI task] --> V[Shared views and task-specific build context]
+    V --> C[Common core: identity, storage, evidence, policy and lifecycle]
+    C --> A[Specialized adapters]
+    A --> D[Data drive or transfer package]
+    A --> N[Network share, peer or cloud]
+    A --> X[Local sources, continuity or named operations]
+    D --> R[Verify, stage and resolve differences]
+    N --> R
+    X --> R
+    R --> P[Destination policy and local authorization]
+    P --> W[Adopt files]
+    W --> I[Refresh selected index]
+    I --> Q[Expose approved context at an allowed boundary]
+```
+
+### Common base: build or extend once
+
+| Core | Reuse/build boundary | Used by |
+|---|---|---|
+| C1 Identity and references | Existing IDs, source/revision contracts and private bindings; stable logical IDs are separate from paths | Every system |
+| C2 Guarded storage | Existing UserData guards, managed vault/routing and selected content classes | Storage, packages, sources and transport |
+| C3 Revisions and evidence | Existing Journal, append-only local revisions and cooperative locks; checkpoint ancestry through its format adapter | Mutations, recovery and oversight |
+| C4 Policy and trust | Existing policy/access stores, Windows verifier and local approval owner | Sources, transfer, adoption, context and remote actions |
+| C5 Explicit lifecycle | Extend receive → verify → stage → adopt → index → expose; implement each missing stage with its own receipt | Checkpoints, reconciliation, transport and continuity |
+| C6 Source projections and views | Existing bounded readers, graph/overview/report and retention rules | Human control center, sources, preflight and continuation |
+| C7 Implementation context | New read-only build-map adapter over the same plan, manifest and views | Human planning and task-scoped AI handoff |
+
+Common does not mean one process or one writable database. Local cooperative locks are not distributed locks. Use one local owner on each device, immutable exchange objects and explicit revision publication. A shared primitive change receives consumer/regression checks; transport or UI code cannot redefine its behavior silently.
+
+### Nuances: implement only the differences
+
+| System | Shared foundation | Adapter-specific work and implementing tasks |
+|---|---|---|
+| S1 Storage / drive / transfer file | C1–C5 | Non-system vault, consistent checkpoint, full/delta package, handover and rebind: MCI-07/08 |
+| S2 Parallel replicas | C1–C3, C5 | Ancestry, conflict adapters, binary conflicts, acknowledgements, tombstones and retirement: MCI-09 |
+| S3 Share / peer / cloud | C1–C5 | Provider authentication, interrupted transfer, quotas, revisions and permissions: MCI-10/11 |
+| S4 Central policies / local accounts | C1, C3, C4, C6 | Directional administration, local acknowledgement and Windows verification per computer; remote pairing separately: MCI-12/13 |
+| S5 Computer as information source | C1, C4, C6 | Stable-reference resolver, authorized local/remote/Drive/Git routes, document fidelity and preserved old links: MCI-06 |
+| S6 Chat continuity | C1–C6 | Source-linked packet or separately accepted native adapter; distinguish original identity, fork and new chat: MCI-15 |
+| S7 Remote named actions | C1, C3, C4, C6 | Target capability, expiry, local approval, cancellation and uncertain results: MCI-14 |
+| S8 Human architecture / activity view | C1, C6, C7 | Compact navigation, instruction/trigger graph, sync/change/chat summaries and on-demand details: MCI-01/03/05 |
+| S9 Request quality / model tests | C1, C4, C6, C7 | Original-preserving static checks, then optional frozen-context model experiments: MCI-04/16 |
+| S10 Optional portable companion | C1–C4, C6 | Thin host/runtime launch/update/rollback adapter after feasibility acceptance: MCI-17 |
+
+MCI-02 owns shared contracts. MCI-18 qualifies integrated enabled systems, recovery and actual devices. These architectural groups create no new MCI tasks or accepted checklist items.
+
+### Build sequence and concrete vertical slices
+
+1. **Reuse baseline:** inspect exact source and receipts. P0 MCI-01–05, MCI-07 and MCI-12 are accepted in their recorded scope. MCI-13 has local controls and a Windows-account adapter; human verification remains pending. Program count is 47/108, not a claim that synchronization is installed.
+2. **Checkpoint first:** MCI-08 is independently eligible. Add a non-writing checkpoint preview with selected classes, parent revision, exclusions, hashes and missing coverage. Then publish one immutable synthetic checkpoint and reopen it. Add full/delta packaging and drive handover after that slice passes. Keep format/object/transport adapters separate.
+3. **Independent work:** MCI-09 consumes the checkpoint contract. Demonstrate A and B diverging from one parent, preserve conflict candidates, then reconcile A → B → C. Add retention and retirement before garbage-collecting ancestry.
+4. **Trust and information-source pilot:** finish MCI-13's human Windows success/cancel check and independently enroll the second computer. MCI-06 then pilots selected local resources and preserved Drive links. A USB/file fixture does not establish remote pairing.
+5. **Transport adapters:** after their dependencies pass, implement MCI-10 network/share and MCI-11 selected cloud/hybrid routes. They move approved immutable objects and receipts; they do not share active runtime databases or automatically adopt received files.
+6. **Continuity and actions:** MCI-15 follows its package/trust prerequisites without waiting for cloud support. MCI-14 waits for authenticated networking and target capability/approval. Start with selected-file/context continuity; native chat identity and remote execution require separate acceptance.
+7. **Optional extensions and release:** MCI-16 needs separately authorized model credentials/budget and quality evaluation; MCI-17 has its runtime feasibility branch. MCI-18 records enabled/disabled/unsupported optional paths and tests two physical computers, interruption, granular restore and return transfer.
+
+Within each slice: inspect → propose the smallest additive contract change → implement → verify → save conclusions → update the same task. Work may overlap when ownership/dependencies allow; this plan does not dispatch agents or activate background work.
+
+### What a person should expect
+
+- **Move the SSD:** A publishes a consistent checkpoint and relinquishes the drive. B recognizes the workspace, creates fresh local bindings/sign-in, verifies the checkpoint and opens the selected project. Original-chat resumption requires a separately accepted adapter.
+- **Work at the same time:** each machine keeps its working tree and chat identity. Exchange publishes immutable revisions. A conflict view preserves both edits; destination policy controls adoption, indexing and when a chat sees selected context.
+- **Use the computer instead of Drive:** a logical resource resolves to its authorized owner. Existing Drive objects/URLs remain during the pilot. An offline owner is unavailable/stale unless an approved replica exists.
+- **Use shorter requests:** a task packet supplies relevant owners, requirements and inherited constraints. The user can state the outcome briefly, for example, “Implement the next MCI-08 slice.” The tool does not invent missing intent or know hidden model state.
+
+<details><summary>AI implementation handoff, interfaces and token discipline</summary>
+
+Run `python -B scripts/GameToolSystemControl.py build-plan --root SELECTED_REPOSITORY --task MCI-08`. The bounded JSON packet contains the selected six checks, immediate prerequisites and unfinished evidence, relevant core/adapter contracts, source hashes and mandatory boundaries. It excludes full source bodies, raw chats, native databases and unrelated work packages. Load full detail on demand.
+
+The packet is advisory project data. Current platform/project instructions and user authorization retain precedence. Read cited source before changing it; hashes are freshness evidence, not understanding. Source-checklist readiness is not permission to run a service, remote action or API evaluation.
+
+An AI implementation proposal states: selected MCI/GT IDs and outcome; exact source snapshot; existing owner/API and smallest missing adapter; typed input/output and effects; expected revision, cancellation/uncertainty/recovery; meaningful checks and remaining human/platform acceptance; artifacts, conclusions and existing tracker updates.
+
+Do not copy the master plan into every prompt. Load common invariants and relevant contracts, retrieve selected detail, preserve source references and invalidate stale packets. Keep reusable knowledge with its owner. Do not remove constraints or required meaning simply to shorten text. Avoid duplicate plans, registries, sync engines, approval controllers and renderers.
+
+Measure rather than promise savings: compare packet bytes/tool reads with the full planning/source set, then measure actual tokens, time, rework and quality only in an enabled evaluation. Bytes are not tokens or demonstrated quality. Provider caches and hidden model behavior are not assumed.
+
+Example boundaries: `CheckpointManifest + expected_parent → verified objects + receipt`; `received objects + PolicyDecision → staged candidate`; `reviewed candidate + current authorization → adoption receipt`; `adopted revision + separate context policy + allowed boundary → selected ContextPacket`. These are planned interfaces; they are not all implemented APIs. The build map ties them to current source owners and MCI tasks.
+
+</details>
+
+<details><summary>Open the same architecture for a person</summary>
+
+`python -B scripts/GameToolSystemControl.py build-report --root SELECTED_REPOSITORY` emits a searchable, expandable report using the existing renderer. `build-context` emits the same architecture for the existing GUI. Filtering/disclosure only change presentation; the report performs no operations or settings writes. It labels architecture as declared design and shows checklist evidence separately. The private preview provided with this stage is not an installed live sync dashboard.
+
+</details>
 
 ## What was integrated and what needed completion
 

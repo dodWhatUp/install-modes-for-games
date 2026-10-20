@@ -1,5 +1,9 @@
 # Game tools knowledge and recovery index
 
+## Shared build blueprint — 2026-10-20
+
+[One master plan](INTEGRATED-SYSTEM-EXECUTION-PLAN.md#one-shared-foundation-then-specialized-adapters) now explains seven common components, ten system adapters and task-scoped human/AI handoffs. [Build map](INTEGRATED-SYSTEM-BUILD-MAP.json) references the original 18 MCI packages without duplicating task status. [Conclusions](control-center/SHARED-BUILD-CONCLUSIONS.md) record the read-only prototype and acceptance.
+
 ## Windows-account verification continuation — 2026-10-20
 
 MCI-13 now has a [Windows account adapter and acceptance boundary](control-center/MCI-13-WINDOWS-ACCOUNT.md). Current-account PIN/Hello verification is local to each computer; native availability is verified, human success/cancel acceptance remains pending. No Codex installation or credential migration.

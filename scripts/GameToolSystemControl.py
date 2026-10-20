@@ -19,7 +19,7 @@ EXAMPLE = ROOT / "examples/system-control/context.example.json"
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=("explore", "preflight", "overview", "inventory", "report", "journal", "gui"))
+    parser.add_argument("mode", choices=("explore", "preflight", "overview", "inventory", "report", "journal", "gui", "build-plan", "build-context", "build-report"))
     parser.add_argument("--context", type=Path, default=EXAMPLE)
     parser.add_argument("--root", type=Path, help="Explicit local source root; default: context file's directory")
     parser.add_argument("--scope")
@@ -31,9 +31,20 @@ def main(argv=None):
     parser.add_argument("--skill-root", type=Path, action="append", default=[], help="Explicit skill folder, one level only; repeatable")
     parser.add_argument("--catalog", type=Path, help="Selected capability declarations JSON")
     parser.add_argument("--cwd", default="", help="Selected project-relative working directory")
+    parser.add_argument("--task", help="Optional MCI ID for a bounded build packet")
     args = parser.parse_args(argv)
     try:
-        if args.mode == "journal":
+        if args.mode.startswith("build-"):
+            if args.root is None: raise ContextError("Select --root for the existing plan and source owners.")
+            from game_system_control.build_plan import build_packet, build_context
+            if args.mode == "build-plan": result = build_packet(args.root, args.task)
+            else:
+                if args.task: raise ContextError("Task selection applies to build-plan packets; human context/report shows the shared architecture.")
+                result = build_context(args.root)
+                if args.mode == "build-report":
+                    from game_system_control.report import accessible_report
+                    print(accessible_report(result, args.root)); return 0
+        elif args.mode == "journal":
             if args.journal is None:
                 raise ContextError("Select --journal explicitly.")
             result = journal_summary(args.journal)

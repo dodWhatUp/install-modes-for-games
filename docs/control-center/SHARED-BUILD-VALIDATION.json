@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-20",
+  "basis_commit": "d94e1096e101bd7ba8395119a9a076eb5b888ab5",
+  "kind": "shared_build_blueprint_validation",
+  "architecture": {
+    "core_components": 7,
+    "specialized_systems": 10,
+    "existing_tasks_covered": 18,
+    "original_checklist_items": 108,
+    "original_requirements": 36,
+    "accepted_items_unchanged": 47
+  },
+  "new_build_contracts": {
+    "tests": 12,
+    "passed": 12,
+    "failures": 0
+  },
+  "windows_headless": {
+    "cases": 81,
+    "passed": 79,
+    "skipped": 2,
+    "failures": 0,
+    "errors": 0,
+    "skips": "Existing symlink/schema environment cases; not new build-map failures."
+  },
+  "isolated_browser": {
+    "new_report_checks": 8,
+    "passed": 8,
+    "existing_report_tests": 5,
+    "existing_report_passed": 5,
+    "external_requests": 0,
+    "page_errors": 0,
+    "keyboard": "passed",
+    "narrow_width": 390,
+    "text_scale": "200%",
+    "wide_screenshot_visually_inspected": true,
+    "human_usability_study": false,
+    "windows_gui": false,
+    "guest_cleanly_stopped": true
+  },
+  "source_export_contracts": 69,
+  "context_measurement": {
+    "task": "MCI-08",
+    "compact_utf8_packet_bytes": 9829,
+    "compact_utf8_full_bytes": 27054,
+    "fraction": 0.3633,
+    "actual_tokens_measured": false,
+    "model_quality_measured": false,
+    "api_call_made": false
+  },
+  "source_files": [
+    {
+      "path": "docs/INTEGRATED-SYSTEM-BUILD-MAP.json",
+      "sha256": "77b61e2ecb98d7aeb176a1b0f21ba359733d32c21d8e49f61a22ecabb7db43f5"
+    },
+    {
+      "path": "docs/INTEGRATED-SYSTEM-EXECUTION-PLAN.md",
+      "sha256": "f1789622f68b243c53fc4be52b6fa09032e5ca45b089d8e4ad90722b2d9b9c7e"
+    },
+    {
+      "path": "docs/INTEGRATED-SYSTEM-WORK-PACKAGES.json",
+      "sha256": "11cf67593feb663cc4fea3e863d18d099631d271262d12990d261f4d3bc7e930"
+    },
+    {
+      "path": "scripts/GameToolSystemControl.py",
+      "sha256": "d4ce3d993dc6a7222502f8260aa2871087aa75603a39744cf3fb073e669573bb"
+    },
+    {
+      "path": "scripts/game_system_control/build_plan.py",
+      "sha256": "fb3589ca6140c56fc00c2b518a0681b936887c3f10eca1eec77ed2527313769f"
+    },
+    {
+      "path": "scripts/game_system_control/report.py",
+      "sha256": "a84d8be794bd892cdd650a09b4996b01b84adf63027c39f8c6d265260d742a35"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolBuildPlan.py",
+      "sha256": "e2e8acfe9b6913608eb8ad415e92f6d1d0649b96cf4ff7a6865c11b82d6c8a2f"
+    }
+  ],
+  "owner_policy": {
+    "task_status": "existing work-package manifest/source snapshot; GitHub implementation tracker and private TickTick mirror",
+    "human": "existing report renderer",
+    "ai": "bounded task packet, no full source/chat bodies",
+    "not_runtime_authority": true
+  },
+  "unchanged": {
+    "codex_installation": true,
+    "codex_native_state": true,
+    "credentials": true,
+    "windows_settings": true,
+    "drive_originals": true,
+    "installed_toolkit": true,
+    "production_sources": true
+  },
+  "private_evidence": "Machine paths, raw receipts, task identities, previews and screenshots are excluded from Git and OneDrive.",
+  "next_task": "MCI-08 checkpoint preview; not implemented by this planning/projection extension",
+  "mci13": "5/6; human Windows and destination acceptance pending"
+}

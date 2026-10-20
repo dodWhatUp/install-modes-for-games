@@ -1,0 +1,464 @@
+{
+  "schema_version": 1,
+  "kind": "GameToolsSharedBuildMap",
+  "date": "2026-10-20",
+  "basis_commit": "d94e1096e101bd7ba8395119a9a076eb5b888ab5",
+  "master_plan": "docs/INTEGRATED-SYSTEM-EXECUTION-PLAN.md",
+  "task_manifest": "docs/INTEGRATED-SYSTEM-WORK-PACKAGES.json",
+  "task_status_policy": "Read task checklists from the manifest; this map defines architecture, not another task database.",
+  "effect": "none",
+  "invariants": [
+    "Preserve existing source owners; add adapters before replacing a core.",
+    "Native credentials, browser profiles, local permissions and live Codex databases stay on their owning computer.",
+    "Receive, verify, stage, adopt, index and expose context are separate effects and receipts.",
+    "Source checks and dependency readiness are not runtime permission or actual-device acceptance.",
+    "Preserve divergence, uncertain effects and partial output; never overwrite conflicts or retry unknown effects blindly.",
+    "Private roots, identity hashes, raw chats and task-system identifiers remain outside Git and OneDrive.",
+    "A central proposal never weakens destination exclusions, local approval or immediate stop.",
+    "No background service, network pairing, Codex installation change, API evaluation or production migration is enabled by this map."
+  ],
+  "ai_workflow": [
+    "Read the selected task packet and applicable current instructions.",
+    "Verify cited source hashes and search existing owners before writing a new implementation.",
+    "Propose the smallest additive change with typed inputs, outputs, effects and failure states.",
+    "Implement one bounded vertical workflow and reuse the existing read/write/journal/approval owners.",
+    "Run checks appropriate to the change; record source, synthetic, platform, human and multi-device evidence separately.",
+    "Save stage conclusions and update the existing GitHub/TickTick task; never close an unaccepted checklist item."
+  ],
+  "core": [
+    {
+      "id": "C1",
+      "label": "Identity, schemas and stable references",
+      "tasks": [
+        "MCI-02"
+      ],
+      "depends_on": [],
+      "owners": [
+        "scripts/game_system_control/contracts.py",
+        "scripts/game_system_control/workspace_state.py",
+        "schemas/game-system-context.schema.json"
+      ],
+      "contract": {
+        "input": "Selected logical IDs, source locator and exact revision",
+        "output": "Validated references with separate private device bindings",
+        "invariant": "A label or drive letter never substitutes for identity; schema data never grants filesystem authority."
+      },
+      "extension_rule": "Extend these owners; do not create a parallel registry, journal or approval system."
+    },
+    {
+      "id": "C2",
+      "label": "Guarded storage and selected routing",
+      "tasks": [
+        "MCI-07"
+      ],
+      "depends_on": [
+        "C1"
+      ],
+      "owners": [
+        "scripts/GameToolUserData.py",
+        "scripts/game_system_control/vault.py"
+      ],
+      "contract": {
+        "input": "Explicit selected roots, content class and expected source digest",
+        "output": "Verified managed destination or an explicit refusal",
+        "invariant": "No silent OS-drive fallback; preserve existing bytes and reject links, sensitive paths and ambiguous clones."
+      },
+      "extension_rule": "Extend these owners; do not create a parallel registry, journal or approval system."
+    },
+    {
+      "id": "C3",
+      "label": "Local revisions, journals and recovery evidence",
+      "tasks": [
+        "MCI-02",
+        "MCI-08"
+      ],
+      "depends_on": [
+        "C1"
+      ],
+      "owners": [
+        "scripts/GameToolJournal.py",
+        "scripts/game_system_control/workspace_state.py",
+        "scripts/game_mod_ops/safety.py"
+      ],
+      "contract": {
+        "input": "Exact reviewed intent, expected revision and local ownership",
+        "output": "Append-only result receipt, uncertainty or inspectable partial output",
+        "invariant": "Existing cooperative local locks are not distributed consensus; checkpoint ancestry belongs to its new format adapter."
+      },
+      "extension_rule": "Extend these owners; do not create a parallel registry, journal or approval system."
+    },
+    {
+      "id": "C4",
+      "label": "Policy, local identity and authorization",
+      "tasks": [
+        "MCI-12",
+        "MCI-13"
+      ],
+      "depends_on": [
+        "C1",
+        "C3"
+      ],
+      "owners": [
+        "scripts/game_system_control/policy.py",
+        "scripts/game_system_control/access.py",
+        "scripts/game_system_control/windows_account.py",
+        "scripts/GameToolAutomation.py"
+      ],
+      "contract": {
+        "input": "Actor, device generation, project/storage scope, policy revision and intended capability",
+        "output": "Explained effective policy and destination-local authorization decision",
+        "invariant": "Transport is not adoption; configuration authority is not execution approval; stop stays locally usable."
+      },
+      "extension_rule": "Extend these owners; do not create a parallel registry, journal or approval system."
+    },
+    {
+      "id": "C5",
+      "label": "Explicit lifecycle transition protocol",
+      "tasks": [
+        "MCI-08",
+        "MCI-09",
+        "MCI-12"
+      ],
+      "depends_on": [
+        "C2",
+        "C3",
+        "C4"
+      ],
+      "owners": [
+        "scripts/game_system_control/contracts.py",
+        "scripts/GameToolManagedWorkspace.py"
+      ],
+      "contract": {
+        "input": "Selected manifest/object revisions, current phase and authorized requested transition",
+        "output": "One transition result with receipt and next boundary",
+        "invariant": "Implement missing stages additively; STAGES declarations and managed placement are not an end-to-end sync engine."
+      },
+      "extension_rule": "Extend these owners; do not create a parallel registry, journal or approval system."
+    },
+    {
+      "id": "C6",
+      "label": "Bounded source projections and human views",
+      "tasks": [
+        "MCI-01",
+        "MCI-03",
+        "MCI-05"
+      ],
+      "depends_on": [
+        "C1",
+        "C3"
+      ],
+      "owners": [
+        "scripts/game_system_control/inventory.py",
+        "scripts/game_system_control/explorer.py",
+        "scripts/game_system_control/overview.py",
+        "scripts/game_system_control/report.py",
+        "scripts/GameToolAIKnowledge.py"
+      ],
+      "contract": {
+        "input": "Explicit source selection and disclosure/retention scope",
+        "output": "Source-linked graph, activity summary and accessible report",
+        "invariant": "Fetch detail on demand; show declared, observed, missing and stale evidence separately."
+      },
+      "extension_rule": "Extend these owners; do not create a parallel registry, journal or approval system."
+    },
+    {
+      "id": "C7",
+      "label": "Task-scoped implementation context",
+      "tasks": [
+        "MCI-02",
+        "MCI-03",
+        "MCI-05"
+      ],
+      "depends_on": [
+        "C1",
+        "C6"
+      ],
+      "owners": [
+        "scripts/game_system_control/build_plan.py",
+        "scripts/GameToolSystemControl.py",
+        "docs/INTEGRATED-SYSTEM-WORK-PACKAGES.json"
+      ],
+      "contract": {
+        "input": "One MCI task ID, current checklist manifest and selected build map",
+        "output": "Small implementation packet with owners, prerequisites and verification boundaries",
+        "invariant": "Derive status from the existing manifest; no second task queue, automatic dispatch or hidden memory."
+      },
+      "extension_rule": "Extend these owners; do not create a parallel registry, journal or approval system."
+    }
+  ],
+  "systems": [
+    {
+      "id": "S1",
+      "label": "Managed storage and physical-drive/file handover",
+      "tasks": [
+        "MCI-07",
+        "MCI-08"
+      ],
+      "depends_on": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "variation": "Checkpoint manifests, full/delta packaging, exclusive moved-drive handover and destination rebinding.",
+      "contract": {
+        "input": "Selected vault + common parent + explicitly included objects",
+        "output": "Verified checkpoint/package + handover/attach receipt"
+      },
+      "failures": [
+        "Removed drive",
+        "Partial copy",
+        "Wrong volume or clone",
+        "Lost handover receipt"
+      ],
+      "acceptance": "Reopen selected files on another computer, verify hashes and return-transfer without transplanting local auth."
+    },
+    {
+      "id": "S2",
+      "label": "Parallel replicas and N-device reconciliation",
+      "tasks": [
+        "MCI-09"
+      ],
+      "depends_on": [
+        "C1",
+        "C2",
+        "C3",
+        "C5"
+      ],
+      "variation": "Ancestry, per-replica acknowledgements, text/structured merge adapters, tombstones and retirement.",
+      "contract": {
+        "input": "Common ancestor and independently changed branches",
+        "output": "Merged candidate or preserved conflicts; no silent adoption"
+      },
+      "failures": [
+        "Same-field edits",
+        "Rename/delete",
+        "Binary conflicts",
+        "Late retired replica",
+        "A-B-C relay cycle"
+      ],
+      "acceptance": "Offline concurrent edits preserve both versions and reconcile predictably across at least three logical replicas."
+    },
+    {
+      "id": "S3",
+      "label": "Network share, direct peer and cloud transports",
+      "tasks": [
+        "MCI-10",
+        "MCI-11"
+      ],
+      "depends_on": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "variation": "Separate adapters implement provider availability, resumable byte transfer, peer authentication and provider revision/permission semantics.",
+      "contract": {
+        "input": "Immutable approved objects + manifest + destination policy",
+        "output": "Received bytes and transfer receipt; never implicit adoption"
+      },
+      "failures": [
+        "Disconnect",
+        "Duplicate delivery",
+        "Expired pairing",
+        "Quota",
+        "Placeholder/incomplete cloud data"
+      ],
+      "acceptance": "Run one transport conformance suite per provider plus actual endpoint acceptance; no live database share."
+    },
+    {
+      "id": "S4",
+      "label": "Central proposals and local account/device controls",
+      "tasks": [
+        "MCI-12",
+        "MCI-13"
+      ],
+      "depends_on": [
+        "C1",
+        "C3",
+        "C4",
+        "C6"
+      ],
+      "variation": "Local Windows account verification on each machine, optional future pairing adapter and source/destination policy administration.",
+      "contract": {
+        "input": "Selected policy proposal + actor/device/project scope",
+        "output": "Destination acknowledgement or refusal + current lifecycle/stop state"
+      },
+      "failures": [
+        "Wrong account",
+        "Expired enrollment",
+        "Stale generation",
+        "Canceled Windows verification",
+        "Central/local conflict"
+      ],
+      "acceptance": "Human Windows success/cancel remains pending; remote trust is separately accepted, never inferred from a shared account name."
+    },
+    {
+      "id": "S5",
+      "label": "Local information source and stable-reference resolver",
+      "tasks": [
+        "MCI-06"
+      ],
+      "depends_on": [
+        "C1",
+        "C4",
+        "C6"
+      ],
+      "variation": "Resolve logical resources to authorized local, Git, Drive or remote owners while retaining existing provider URLs.",
+      "contract": {
+        "input": "Stable resource reference + client route + selected revision",
+        "output": "Authorized source bytes or explicit stale/unavailable result"
+      },
+      "failures": [
+        "Owner offline",
+        "Broken inbound link",
+        "Native document export loss",
+        "Permission mismatch"
+      ],
+      "acceptance": "Pilot selected sources without deleting Drive originals; verify link resolution and permissions in every required client."
+    },
+    {
+      "id": "S6",
+      "label": "Codex continuity and source-linked chat packets",
+      "tasks": [
+        "MCI-15"
+      ],
+      "depends_on": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ],
+      "variation": "Supported continuation adapter versus new-chat context packet; preserve identity/lineage/attachments and version-specific evidence.",
+      "contract": {
+        "input": "Selected consistent snapshot or explicit bounded source-linked continuation",
+        "output": "Clearly labeled native continuation, fork or new-chat packet"
+      },
+      "failures": [
+        "Unsupported format",
+        "Pagination/attachment loss",
+        "Different thread identity",
+        "Subsequent-turn/restart failure"
+      ],
+      "acceptance": "Actual subsequent turn, restart and return transfer are required before claiming native continuity; no production database edits."
+    },
+    {
+      "id": "S7",
+      "label": "Scoped remote named operations",
+      "tasks": [
+        "MCI-14"
+      ],
+      "depends_on": [
+        "C1",
+        "C3",
+        "C4",
+        "C6"
+      ],
+      "variation": "Typed capability and target adapter reuse the target approval/operation owner; file transfer, remote UI and execution handoff remain distinct.",
+      "contract": {
+        "input": "Authenticated operation ID + expiry + scope + expected revision",
+        "output": "Target-side approval/result/uncertainty/cancellation receipt"
+      },
+      "failures": [
+        "Target offline",
+        "Expired request",
+        "Lost result",
+        "Capability mismatch",
+        "Revocation during operation"
+      ],
+      "acceptance": "One bounded named action accepted on two physical hosts; reconnect never blindly replays an uncertain action."
+    },
+    {
+      "id": "S8",
+      "label": "Human architecture, instruction and activity control center",
+      "tasks": [
+        "MCI-01",
+        "MCI-03",
+        "MCI-05"
+      ],
+      "depends_on": [
+        "C1",
+        "C6",
+        "C7"
+      ],
+      "variation": "Compact source-bound explorer, contextual disclosure, status/changes/chat summaries and device comparison.",
+      "contract": {
+        "input": "Authorized metadata projections and source/retention choices",
+        "output": "Understandable human view with exact source/evidence and next decision"
+      },
+      "failures": [
+        "Unknown runtime load",
+        "Stale source",
+        "Unavailable device",
+        "Private summary exclusion"
+      ],
+      "acceptance": "Reuse existing renderer/UI; test navigation, accessibility, source links and detail-on-demand without operational side effects."
+    },
+    {
+      "id": "S9",
+      "label": "Minimal request preflight and optional model evaluation",
+      "tasks": [
+        "MCI-04",
+        "MCI-16"
+      ],
+      "depends_on": [
+        "C1",
+        "C4",
+        "C6",
+        "C7"
+      ],
+      "variation": "Static intent/default/ambiguity check first; repeated frozen-context model trials only through an accepted evaluation adapter.",
+      "contract": {
+        "input": "Original request + selected observable context + intended outcome",
+        "output": "Original-preserving suggestion and evidence; optional measured evaluation results"
+      },
+      "failures": [
+        "Intent lost by shortening",
+        "Hidden/unobserved context",
+        "Stale model/tool versions",
+        "Missing budget/credentials"
+      ],
+      "acceptance": "Do not optimize token count alone or promise exact model behavior; optional API work retains separate credential/budget gates."
+    },
+    {
+      "id": "S10",
+      "label": "Optional portable companion/runtime launcher",
+      "tasks": [
+        "MCI-17"
+      ],
+      "depends_on": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C6"
+      ],
+      "variation": "Thin OS/runtime adapter over the same core, only if feasibility and actual-host acceptance pass.",
+      "contract": {
+        "input": "Selected runtime release + explicit local setup + portable project reference",
+        "output": "Supported launch/registration/update/rollback receipt, or unsupported status"
+      },
+      "failures": [
+        "OS dependency",
+        "Registration failure",
+        "Unavailable native history route",
+        "Unverified rollback"
+      ],
+      "acceptance": "Files and context continuity work independently of this optional runtime path; never copy credentials or whole Codex configuration."
+    }
+  ],
+  "release": {
+    "tasks": [
+      "MCI-18"
+    ],
+    "criteria": [
+      "All enabled required task checklists accepted.",
+      "Two-device/offline/concurrent/reconnect and granular recovery demonstrated for advertised modes.",
+      "Optional model/runtime paths accepted independently or explicitly excluded."
+    ]
+  }
+}

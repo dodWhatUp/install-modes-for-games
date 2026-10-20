@@ -319,7 +319,7 @@
       "github_issue": 20,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/20",
       "ticktick_mirror_registered": true,
-      "readiness_note": "Not started; follow declared dependencies and each actual-device/capability gate."
+      "readiness_note": "Next eligible storage slice: checkpoint preview, immutable synthetic checkpoint and reopen before package/drive handover. Use the shared build map; accepted count remains 0/6 until evidence exists."
     },
     {
       "id": "MCI-09",
@@ -707,5 +707,8 @@
     "completed_packages": 7,
     "in_progress_packages": 1,
     "planned_packages": 10
-  }
+  },
+  "shared_build_map": "INTEGRATED-SYSTEM-BUILD-MAP.json",
+  "build_reader": "scripts/GameToolSystemControl.py build-plan --root SELECTED_REPOSITORY --task MCI-ID",
+  "planning_extension": "Shared core and specialized adapter contracts; no change to checklist acceptance or automatic dispatch."
 }

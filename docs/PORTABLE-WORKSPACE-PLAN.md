@@ -1,5 +1,7 @@
 # Portable workspaces and collaboration across multiple computers
 
+Current common implementation foundation: [one master build plan](INTEGRATED-SYSTEM-EXECUTION-PLAN.md#one-shared-foundation-then-specialized-adapters) and [machine-readable core/adapter map](INTEGRATED-SYSTEM-BUILD-MAP.json). Reuse the existing 18 tasks; retrieve one MCI build packet rather than duplicating the whole plan in each implementation prompt.
+
 Prepared 2026-10-19, Asia/Jerusalem. Status: development plan, not an installed synchronization feature.
 
 Provide one recognizable workspace across multiple computers, starting with two, with project files stored by default on a selected internal or external data drive. Support moving the drive, carrying a transfer file, using a network drive, direct networking and optional cloud exchange. Devices can work independently and concurrently with shared, split, replicated or hybrid storage. Each direction has separate controls for scope, frequency, adoption and influence on chat context.
