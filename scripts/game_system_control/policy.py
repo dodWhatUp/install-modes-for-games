@@ -14,10 +14,13 @@ DIMENSIONS = ("account_id", "workspace_id", "project_id", "source_device", "dest
 CONTROLS = ("transfer", "adoption", "index", "context")
 DEPTHS = ("none", "notice", "summary", "task_packet", "selected_details")
 TRIGGERS = {"manual", "checkpoint", "reconnect", "interval", "debounced"}
+LEGACY_REVISION = "legacy-body-v1"
+EFFECTIVE_REVISION = "effective-config-v2"
 
 
 def validate_policy(body):
-    require(type(body) is dict and body.get("schema_version") == 1 and body.get("kind") == "GameToolsWorkspacePolicy", "Unsupported policy format.")
+    require(type(body) is dict and type(body.get("schema_version")) is int and body["schema_version"] == 1 and body.get("kind") == "GameToolsWorkspacePolicy", "Unsupported policy format.")
+    require(body.get("revision_scheme", LEGACY_REVISION) in {LEGACY_REVISION, EFFECTIVE_REVISION}, "Unsupported policy revision semantics.")
     require(type(body.get("hard_exclusions")) is list and all(type(x) is str for x in body["hard_exclusions"]), "Invalid local exclusions.")
     rules = body.get("rules")
     require(type(rules) is list and len(rules) <= 128, "Policy rule count bound exceeded.")
@@ -41,9 +44,24 @@ def validate_policy(body):
     staged = body.get("staged_context", [])
     require(type(staged) is list and len(staged) <= 128, "Staged context count exceeds its bound.")
     for row in staged:
+        require(type(row) is dict and row.get("revision_scheme", LEGACY_REVISION) in {LEGACY_REVISION, EFFECTIVE_REVISION}, "Unsupported context reference revision semantics.")
         identifier(row.get("id")); require(type(row.get("source_sha256")) is str and SHA.fullmatch(row["source_sha256"]), "Staged reference needs a revision.")
         require(row.get("depth") in DEPTHS and type(row.get("policy_revision")) is str and SHA.fullmatch(row["policy_revision"]), "Invalid staged context binding.")
     return deepcopy(body)
+
+
+def policy_revision(body):
+    """Versioned effective configuration; legacy hashes retain their meaning.
+
+    All unknown body fields conservatively affect the v2 digest. Only the
+    explicitly inert queue and presentation are excluded. LocalState still
+    binds the entire body for compare-and-swap and audit history.
+    """
+    body = validate_policy(body)
+    if body.get("revision_scheme", LEGACY_REVISION) == LEGACY_REVISION:
+        return stable_revision(body)
+    configuration = {k: v for k, v in body.items() if k not in {"staged_context", "view", "revision_scheme"}}
+    return stable_revision({"kind": "GameToolsEffectivePolicyRevision", "revision_scheme": EFFECTIVE_REVISION, "configuration": configuration})
 
 
 def trigger_due(trigger, event, *, now, last_fire=None, last_change=None):
@@ -73,7 +91,7 @@ def evaluate(body, request, *, active_turn=True, boundary="unobserved", event="m
     depth = min((DEPTHS.index(r["context_depth"]) for r in matching), default=0) if controls["context"] else 0
     due = bool(matching) and all(trigger_due(r["trigger"], event, now=now, last_fire=last_fire, last_change=last_change) for r in matching)
     staged = controls["context"] and depth > 0 and (active_turn or boundary == "unobserved")
-    return {"kind": "workspace_policy_decision", "request": deepcopy(request), "policy_revision": stable_revision(body),
+    return {"kind": "workspace_policy_decision", "request": deepcopy(request), "policy_revision": policy_revision(body),
             "controls": controls, "context_depth": DEPTHS[depth], "context_ready_at_reported_boundary": bool(depth and not staged),
             "context_staged": bool(staged), "trigger_eligible": due and controls["transfer"],
             "matched_rules": [r["id"] for r in matching], "ignored_unacknowledged_or_peer": ignored,
@@ -119,17 +137,45 @@ class PolicyStore:
 
     def stage_context(self, reference_id, source_sha256, depth):
         base = self.snapshot(); body = deepcopy(base["body"])
-        row = {"id": reference_id, "source_sha256": source_sha256, "depth": depth, "policy_revision": stable_revision(body)}
+        row = {"id": reference_id, "source_sha256": source_sha256, "depth": depth, "policy_revision": policy_revision(body)}
+        if body.get("revision_scheme") == EFFECTIVE_REVISION: row["revision_scheme"] = EFFECTIVE_REVISION
         require(not any(r["id"] == reference_id for r in body["staged_context"]), "Context reference already staged.")
         body["staged_context"].append(row); validate_policy(body)
+        return self.state.propose(body, base["revision"])
+
+    def propose_revision_upgrade(self):
+        """Exact explicit upgrade; old access pins and queued rows are retained.
+
+        Their old hashes cannot become v2 authority. Access needs a fresh pin
+        and device acknowledgement; legacy queued rows require explicit restage.
+        Exact per-rule central acknowledgements keep their existing meaning.
+        """
+        base = self.snapshot(); body = deepcopy(base["body"])
+        require(body.get("revision_scheme", LEGACY_REVISION) == LEGACY_REVISION, "Policy already uses effective configuration revisions.")
+        body["revision_scheme"] = EFFECTIVE_REVISION
+        validate_policy(body)
+        return self.state.propose(body, base["revision"])
+
+    def restage_context(self, reference_id, source_sha256, depth):
+        base = self.snapshot(); body = deepcopy(base["body"])
+        require(body.get("revision_scheme") == EFFECTIVE_REVISION and any(r["id"] == reference_id for r in body["staged_context"]), "Select an existing reference under the explicit v2 scheme.")
+        body["staged_context"] = [r for r in body["staged_context"] if r["id"] != reference_id]
+        body["staged_context"].append({"id": reference_id, "source_sha256": source_sha256, "depth": depth,
+                                       "policy_revision": policy_revision(body), "revision_scheme": EFFECTIVE_REVISION})
+        validate_policy(body)
         return self.state.propose(body, base["revision"])
 
     def context_notice(self, reference_id, expected_policy_revision, *, active_turn=True, boundary="unobserved"):
         body = self.snapshot()["body"]
         row = next((r for r in body["staged_context"] if r["id"] == reference_id), None)
         require(row is not None and row["policy_revision"] == expected_policy_revision, "Staged context/policy drift; inspect again.")
-        policy_without_queue = deepcopy(body); policy_without_queue["staged_context"] = [r for r in body["staged_context"] if r["id"] != reference_id]
-        require(stable_revision(policy_without_queue) == expected_policy_revision, "Policy changed after staging; re-evaluate the source reference.")
+        scheme = body.get("revision_scheme", LEGACY_REVISION)
+        require(row.get("revision_scheme", LEGACY_REVISION) == scheme, "Legacy staged context requires an explicit reviewed restage under v2.")
+        if scheme == LEGACY_REVISION:
+            policy_without_queue = deepcopy(body); policy_without_queue["staged_context"] = [r for r in body["staged_context"] if r["id"] != reference_id]
+            current_revision = stable_revision(policy_without_queue)
+        else: current_revision = policy_revision(body)
+        require(current_revision == expected_policy_revision, "Policy changed after staging; re-evaluate the source reference.")
         require(not active_turn and boundary in {"new_turn", "on_request"}, "Context stays staged until a reported supported boundary.")
         return {"id": row["id"], "source_sha256": row["source_sha256"], "depth": row["depth"], "state": "NOTICE_READY_NO_DELIVERY",
                 "model_context_delivery": "not_connected", "effect": "none"}

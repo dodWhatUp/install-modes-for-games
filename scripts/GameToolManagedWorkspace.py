@@ -10,7 +10,7 @@ from GameToolJournal import JournalError
 from game_mod_ops.safety import ModError, local_lock
 from game_system_control.contracts import ContextError, require
 from game_system_control.vault import VaultRegistry, volume_identity
-from game_system_control.policy import PolicyStore, evaluate
+from game_system_control.policy import PolicyStore, evaluate, policy_revision
 from game_system_control.access import AccessStore
 
 
@@ -19,6 +19,7 @@ def main(argv=None):
     parser.add_argument("mode", choices=("volume", "vault-create", "vault-attach", "vault-status", "vault-rebind", "route", "place",
                         "checkpoint-preview", "checkpoint-publish", "checkpoint-inspect", "checkpoint-restore-preview", "checkpoint-restore", "checkpoint-inspect-restore",
                         "policy-create", "policy-status", "policy-preview", "policy-ack-preview", "policy-rollback-preview", "policy-commit", "policy-check",
+                        "policy-upgrade-preview", "policy-stage-preview", "policy-restage-preview", "policy-context-notice",
                         "windows-account-status", "access-windows-create", "access-create", "access-status", "access-preview", "access-commit", "access-check", "stop", "resume", "view-context", "report"))
     parser.add_argument("--state", type=Path)
     parser.add_argument("--root", type=Path)
@@ -99,8 +100,7 @@ def main(argv=None):
                     require(decision["controls"]["adoption"] and request.get("policy_revision") == decision["policy_revision"], "Local file adoption is disabled or the policy changed.")
                     def recheck():
                         require(access.authorize(request, now=time.time())["allowed"], "Local stop, enrollment or authorization changed before publication.")
-                        from GameToolAIContracts import stable_revision
-                        require(stable_revision(PolicyStore(args.policy_state).snapshot()["body"]) == decision["policy_revision"], "Policy changed before publication.")
+                        require(policy_revision(PolicyStore(args.policy_state).snapshot()["body"]) == decision["policy_revision"], "Policy changed before publication.")
                     require(not args.policy_state.samefile(args.access_state) and not args.state.samefile(args.access_state) and not args.state.samefile(args.policy_state), "Bindings, policy and access need separate local stores.")
                     with local_lock(args.access_state, ".workspace-state.lock"), local_lock(args.policy_state, ".workspace-state.lock"), local_lock(args.state, ".workspace-state.lock"):
                         recheck()
@@ -112,6 +112,10 @@ def main(argv=None):
                 elif args.mode == "policy-ack-preview": result = policy.acknowledge_central(data["rule_id"])
                 elif args.mode == "policy-rollback-preview": result = policy.rollback_rule(data["rule_id"], data["historical_revision"])
                 elif args.mode == "policy-commit": result = policy.accept(data, args.accept)
+                elif args.mode == "policy-upgrade-preview": result = policy.propose_revision_upgrade()
+                elif args.mode == "policy-stage-preview": result = policy.stage_context(data["reference_id"], data["source_sha256"], data["depth"])
+                elif args.mode == "policy-restage-preview": result = policy.restage_context(data["reference_id"], data["source_sha256"], data["depth"])
+                elif args.mode == "policy-context-notice": result = policy.context_notice(data["reference_id"], data["policy_revision"], active_turn=data.get("active_turn", True), boundary=data.get("boundary", "unobserved"))
                 else: result = evaluate(policy.snapshot()["body"], data["request"], active_turn=data.get("active_turn", True), boundary=data.get("boundary", "unobserved"),
                                        event=data.get("event", "manual"), now=now, last_fire=data.get("last_fire"), last_change=data.get("last_change"))
             else:

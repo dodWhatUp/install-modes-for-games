@@ -14,7 +14,6 @@ from pathlib import Path
 import os
 import time
 
-from GameToolAIContracts import stable_revision
 from GameToolUserData import (
     MAX_FILES, MAX_FILE_BYTES, MAX_TOTAL_BYTES, MAX_MANIFEST_BYTES,
     _canonical, _decode, _read, _write_new, _relative, digest, local_path,
@@ -24,7 +23,7 @@ from GameToolJournal import Journal, JournalError, inspect_journal
 from game_mod_ops.safety import local_lock
 from .contracts import require, identifier, SHA
 from .vault import CLASSES, EXCLUDED, _relative_managed
-from .policy import evaluate
+from .policy import evaluate, policy_revision
 
 VERSION = "0.1.0-preview.1"
 _ACTIVATION_NAMES = {"agents.md", "agents.override.md", "claude.md", "skill.md"}
@@ -165,10 +164,10 @@ class CheckpointService:
         self.registry._verify(binding, binding["root"])
         require(binding["marker"]["workspace_id"] == self.actor["workspace_id"], "Vault and actor workspace differ.")
         body = self.policy.snapshot()["body"]
-        policy_revision = stable_revision(body)
+        effective_revision = policy_revision(body)
         for capability, cls, effect in sorted(set(specs)):
             request = {**self.actor, "capability": capability, "storage_id": self.vault_id,
-                       "content_class": cls, "policy_revision": policy_revision}
+                       "content_class": cls, "policy_revision": effective_revision}
             require(self.access.authorize(request, now=self.clock())["allowed"], "Local stop, expiry, enrollment, role or storage grant refuses this operation.")
             scope = {k: self.actor[k] for k in ("account_id", "workspace_id", "project_id")}
             scope.update(source_device=self.actor["device_id"], destination_device=self.actor["device_id"], capability=capability, content_class=cls)
