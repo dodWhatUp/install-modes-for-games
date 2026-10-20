@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-20",
+  "basis_commit": "0e55c6452ec63c675e568d250810ff4a0bafeb37",
+  "owners": [
+    {
+      "path": "scripts/GameToolUserData.py",
+      "sha256": "cdde51c16db5e3b6d43ef55940dd0098290322ffa62c42175ee5fb930fe381a7",
+      "basis_commit": "0e55c6452ec63c675e568d250810ff4a0bafeb37"
+    },
+    {
+      "path": "scripts/GameToolJournal.py",
+      "sha256": "319b13e1b96a7e073e9b5b755b228af955dcd8fd2a3842ee61c3f7ea6c43bff8",
+      "basis_commit": "0e55c6452ec63c675e568d250810ff4a0bafeb37"
+    },
+    {
+      "path": "scripts/game_mod_ops/safety.py",
+      "sha256": "4ccd719819ec2dc357c4bf3a6fdd3bb152204604cd8b5d10f885c7d00901e325",
+      "basis_commit": "0e55c6452ec63c675e568d250810ff4a0bafeb37"
+    },
+    {
+      "path": "scripts/GameToolInstances.py",
+      "sha256": "fe6ef8f35a71ff6b8b2d0eff4e56e26e4f4257da51e60d58248100760b94075f",
+      "basis_commit": "0e55c6452ec63c675e568d250810ff4a0bafeb37"
+    },
+    {
+      "path": "scripts/game_system_control/contracts.py",
+      "sha256": "d5d66473ccc81ed9d6a9d1fced12bdf821c282736bdcdfd396629a52963e1d67",
+      "basis_commit": "0e55c6452ec63c675e568d250810ff4a0bafeb37"
+    },
+    {
+      "path": "scripts/GameToolAutomation.py",
+      "sha256": "34f8410678824146946682da35071c46a8cefe7378895f7f4c1e3071c6bb927f",
+      "basis_commit": "0e55c6452ec63c675e568d250810ff4a0bafeb37"
+    }
+  ],
+  "decisions": [
+    "Reuse existing UserData IO/archive and Journal/lock owners",
+    "Keep existing native approvals and remote execution owner unchanged",
+    "Add only local metadata revisions, managed routing, policy and enrollment checks",
+    "Reuse existing control-center projection/report renderer",
+    "Fresh provider sign-in remains unimplemented; no new credentials or stores"
+  ],
+  "native_evidence": {
+    "os": "Windows",
+    "filesystem": "NTFS",
+    "non_system_volume_observed": true,
+    "actual_computers": 1,
+    "codex_changed": false
+  },
+  "private_evidence": "Machine roots, volume IDs, OS identity hashes and task-system IDs excluded"
+}

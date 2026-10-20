@@ -1,6 +1,6 @@
 # P0 implementation and current conclusions
 
-All 30 original P0 checklist items in MCI-01 through MCI-05 are complete for the read-only source application. This is 30 of 108 program items; the other 13 work packages remain unstarted. Codex installation, configuration, authentication and native databases were not changed. The installed toolkit was not updated.
+All 30 original P0 checklist items in MCI-01 through MCI-05 are complete for the read-only source application. At that checkpoint this was 30 of 108 program items. Subsequent [2026-10-20 foundation work](WORKSPACE-FOUNDATIONS-2026-10-20.md) advances the program to 47/108: seven complete packages, one partial and ten planned. Codex installation, configuration, authentication and native databases were not changed. The installed toolkit was not updated.
 
 | Stage | Completed deliverable | Boundary |
 |---|---|---|

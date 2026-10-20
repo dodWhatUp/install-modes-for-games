@@ -1,0 +1,24 @@
+{
+  "id": "a-to-b",
+  "scope": {
+    "account_id": "example-account",
+    "workspace_id": "example-workspace",
+    "project_id": "example-project",
+    "source_device": "device-a",
+    "destination_device": "device-b",
+    "capability": "managed.write",
+    "content_class": "selected_results"
+  },
+  "origin": "destination",
+  "enabled": false,
+  "controls": {
+    "transfer": false,
+    "adoption": false,
+    "index": false,
+    "context": false
+  },
+  "context_depth": "none",
+  "trigger": {
+    "kind": "manual"
+  }
+}

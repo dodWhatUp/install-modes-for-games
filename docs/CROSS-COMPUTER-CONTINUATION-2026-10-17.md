@@ -1,5 +1,9 @@
 # Continue on another computer
 
+## 2026-10-20 — Managed workspace foundations
+
+[Stage conclusions and next boundary](control-center/WORKSPACE-FOUNDATIONS-2026-10-20.md): MCI-07 storage and MCI-12 policy meet their six-item source checklists; MCI-13 local controls are implemented with fresh sign-in pending (5/6). Program progress: 47/108. Native Windows synthetic placement on a non-system volume and 208 distinct Linux tests passed. Codex installation/native state and actual project defaults are unchanged. Other-computer, transport, provider authentication and native chat continuity remain unverified.
+
 ## 2026-10-19 P0 control-center source implementation
 
 The [read-only source preview and current boundaries](control-center/P0-IMPLEMENTATION.md) implements selected-source inventory/contracts, architecture/instruction navigation, static request checks and a device/event/activity overview. Each of MCI-01 through MCI-05 has its own conclusions file. All 30 original P0 checklist items are accepted for the selected-source application; 78 later program items remain planned. Windows/human/actual-device acceptance and native continuity remain separate. Source/guest tests do not install the toolkit or Codex, prove native-chat transfer, enable synchronization or accept another computer.

@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-20",
+  "timezone": "Asia/Jerusalem",
+  "component": "managed-workspace-foundations",
+  "version": "0.1.0-preview.1",
+  "basis_commit": "0e55c6452ec63c675e568d250810ff4a0bafeb37",
+  "status": "MCI07_MCI12_ACCEPTED_MCI13_SIGNIN_PENDING",
+  "checklist_acceptance": {
+    "MCI-07": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "MCI-12": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "MCI-13": [
+      true,
+      true,
+      true,
+      false,
+      true,
+      true
+    ]
+  },
+  "progress": {
+    "p0_accepted": 30,
+    "p0_total": 30,
+    "program_accepted": 47,
+    "program_total": 108,
+    "complete_packages": 7,
+    "partial_packages": 1,
+    "planned_packages": 10
+  },
+  "linux_suites": [
+    {
+      "suite": "Test-ManagedWorkspaceVault",
+      "tests": 23,
+      "passed": 23,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "failure_details": []
+    },
+    {
+      "suite": "Test-ManagedWorkspacePolicy",
+      "tests": 17,
+      "passed": 17,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "failure_details": []
+    },
+    {
+      "suite": "Test-ManagedWorkspaceAccess",
+      "tests": 18,
+      "passed": 18,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "failure_details": []
+    },
+    {
+      "suite": "Test-GameToolUserData",
+      "tests": 42,
+      "passed": 42,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "failure_details": []
+    },
+    {
+      "suite": "Test-GameToolJournal",
+      "tests": 59,
+      "passed": 59,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "failure_details": []
+    },
+    {
+      "suite": "Test-GameToolSystemControl",
+      "tests": 33,
+      "passed": 33,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "failure_details": []
+    },
+    {
+      "suite": "Test-GameToolSystemControlCompletion",
+      "tests": 16,
+      "passed": 16,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "failure_details": []
+    }
+  ],
+  "linux_distinct_cases": 208,
+  "linux_passed": 208,
+  "linux_skipped": 0,
+  "count_method": "Latest result per suite; the 18-case authorization run supersedes its earlier 17-case result. Repeated runs are not extra independent cases.",
+  "windows_foundations": {
+    "distinct_cases": 58,
+    "passed": 56,
+    "skipped": 2,
+    "skips": [
+      "Symlink creation privilege unavailable",
+      "jsonschema dependency not present on host; checked in prepared Linux guest"
+    ]
+  },
+  "native_windows_acceptance": {
+    "environment": "One actual Windows computer; observed non-system NTFS volume",
+    "public_cli_placement_classes": 4,
+    "byte_placement_and_reopen": true,
+    "same_volume_relocation": true,
+    "fresh_local_bindings_attach_without_vault_rewrite": true,
+    "selected_clone_collision_blocked": true,
+    "local_stop_and_revocation_refused_placement": true,
+    "fixture_access_left_stopped": true,
+    "existing_native_settings_changed": false
+  },
+  "source_export_contracts": {
+    "passed": 69,
+    "environment": "Windows synthetic fixtures"
+  },
+  "tested_transport": {
+    "base_export_files": 437,
+    "archive_sha256": "6bd63c083906b016d7c946afaff62f69efcef27e66954b2029009abf44c63695",
+    "all_entry_hashes_checked": true,
+    "final_auth_guard_delta": {
+      "files": 2,
+      "exact_hashes_checked": true,
+      "auth_cases_passed": 18
+    },
+    "raw_receipts": "Private outside Git and OneDrive"
+  },
+  "source_hashes": {
+    "scripts/game_system_control/workspace_state.py": "5a7557ebf1f244739c5d286bf40ee82a6de1d6c3af4618d8e3d4d105ad9726fa",
+    "scripts/game_system_control/vault.py": "0762f82401c1621f47bee44f2e276b85ab1648538dc84b68775785bc8460fdf3",
+    "scripts/game_system_control/policy.py": "d25629fd9b384f976698edee08fa57f22724a5c4c31dd6fa32ebfeb5862111e6",
+    "scripts/game_system_control/access.py": "c05ad191a86c9c81a47fff3e2da1e34ebb5d84a517ca90986b0776d613e60928",
+    "scripts/GameToolManagedWorkspace.py": "1e12f2424ff91528c004e69f019a5e1ad0df42b6b2f4b991a48310656f74cde6",
+    "scripts/tests/Test-ManagedWorkspaceVault.py": "244fe0667eb3fbb26d45d33873eda2d0ff030c834912a69c1e4d201ab3902429",
+    "scripts/tests/Test-ManagedWorkspacePolicy.py": "e5985ce0c5e0416d30d524da84e032232385dc180b4b5c81a8dd6864c0b4da92",
+    "scripts/tests/Test-ManagedWorkspaceAccess.py": "a19d8a7783d33f8075b8e363b93865210b2af0584092179d2c8ead9b93f6df50",
+    "scripts/tests/Accept-ManagedWorkspace.py": "c12e3379e145f692e388a512507c86cf7c8abf8fddcbc7b7b2321a91a640dd9f",
+    "examples/managed-workspace/policy-rule.example.json": "f7c500d3fb341c9930ae53619de9b4d63eedab5a79ca7c198bc244dbf597cecf",
+    "schemas/managed-workspace.schema.json": "817f3794e56bfcff9f11be307e5901f709676937372e85fbd7eb8f760a478ee2",
+    "scripts/game_system_control/workspace_view.py": "6a72dadb2e9e37c0efa05f584c2be2831f064f709b1631e5977ef91072185c1f"
+  },
+  "reuse": "Existing UserData IO/archive, Journal, cooperative lock, projection contracts and control-center renderer; original source owners unchanged",
+  "effects": {
+    "codex_installation_changed": false,
+    "codex_configuration_changed": false,
+    "native_codex_databases_changed": false,
+    "installed_toolkit_changed": false,
+    "credential_or_browser_profile_transplant": false,
+    "credential_stores_changed": false,
+    "provider_account_signin_implemented": false,
+    "network_transport_activated": false,
+    "model_api_calls": 0,
+    "schedules_or_services_created": 0,
+    "game_or_input_actions": 0
+  },
+  "not_verified": [
+    "Fresh supported provider sign-in; identity selection pending",
+    "A second physical computer",
+    "Actual moved-drive round trip or physical unplug",
+    "Native Linux/macOS/UNC volume enrollment adapters",
+    "Live transport/cloud/remote operations",
+    "Native Codex chat continuity or model-context delivery",
+    "New Windows GUI or human usability acceptance"
+  ],
+  "corrected_findings": [
+    "Journal terminal event must be session_closed",
+    "Local stop marker must not be mistaken for an immutable revision",
+    "Clone physical keys need stable bounded ID encoding",
+    "Volume metadata observation must accept drive roots while file guards still refuse root writes",
+    "Edit preparation must pin its base revision as well as commit",
+    "Writer generation rejects bool/float/string aliases"
+  ],
+  "private_metadata_excluded": true
+}

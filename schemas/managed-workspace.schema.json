@@ -1,0 +1,338 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Managed workspace local foundations",
+  "description": "Runtime additionally checks revisions, OS ownership, scope references, bounds and complete journal evidence. These records do not authenticate a remote peer.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/local_revision"
+    },
+    {
+      "$ref": "#/$defs/vault_marker"
+    },
+    {
+      "$ref": "#/$defs/policy_rule"
+    },
+    {
+      "$ref": "#/$defs/access_body"
+    }
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "local_revision": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "kind",
+        "generation",
+        "parent",
+        "owner_principal",
+        "body",
+        "revision"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "kind": {
+          "enum": [
+            "workspace-vault-bindings",
+            "workspace-policy",
+            "workspace-access"
+          ]
+        },
+        "generation": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "parent": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "owner_principal": {
+          "$ref": "#/$defs/sha256"
+        },
+        "body": {
+          "type": "object"
+        },
+        "revision": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "additionalProperties": false
+    },
+    "vault_marker": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "kind",
+        "workspace_id",
+        "vault_id",
+        "replica_id",
+        "storage_instance_id",
+        "roots"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "kind": {
+          "const": "GameToolsManagedVault"
+        },
+        "workspace_id": {
+          "$ref": "#/$defs/id"
+        },
+        "vault_id": {
+          "$ref": "#/$defs/id"
+        },
+        "replica_id": {
+          "$ref": "#/$defs/id"
+        },
+        "storage_instance_id": {
+          "$ref": "#/$defs/id"
+        },
+        "roots": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    },
+    "policy_rule": {
+      "type": "object",
+      "required": [
+        "id",
+        "scope",
+        "origin",
+        "enabled",
+        "controls",
+        "context_depth",
+        "trigger"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "scope": {
+          "type": "object",
+          "required": [
+            "account_id",
+            "workspace_id",
+            "project_id",
+            "source_device",
+            "destination_device",
+            "capability",
+            "content_class"
+          ],
+          "properties": {
+            "account_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/id"
+                },
+                {
+                  "const": "*"
+                }
+              ]
+            },
+            "workspace_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/id"
+                },
+                {
+                  "const": "*"
+                }
+              ]
+            },
+            "project_id": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/id"
+                },
+                {
+                  "const": "*"
+                }
+              ]
+            },
+            "source_device": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/id"
+                },
+                {
+                  "const": "*"
+                }
+              ]
+            },
+            "destination_device": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/id"
+                },
+                {
+                  "const": "*"
+                }
+              ]
+            },
+            "capability": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/id"
+                },
+                {
+                  "const": "*"
+                }
+              ]
+            },
+            "content_class": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/id"
+                },
+                {
+                  "const": "*"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "origin": {
+          "enum": [
+            "destination",
+            "central",
+            "peer"
+          ]
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "controls": {
+          "type": "object",
+          "required": [
+            "transfer",
+            "adoption",
+            "index",
+            "context"
+          ],
+          "properties": {
+            "transfer": {
+              "type": "boolean"
+            },
+            "adoption": {
+              "type": "boolean"
+            },
+            "index": {
+              "type": "boolean"
+            },
+            "context": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "context_depth": {
+          "enum": [
+            "none",
+            "notice",
+            "summary",
+            "task_packet",
+            "selected_details"
+          ]
+        },
+        "trigger": {
+          "type": "object",
+          "required": [
+            "kind"
+          ],
+          "properties": {
+            "kind": {
+              "enum": [
+                "manual",
+                "checkpoint",
+                "reconnect",
+                "interval",
+                "debounced"
+              ]
+            },
+            "seconds": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 86400
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "access_body": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "kind",
+        "workspace_id",
+        "project_id",
+        "accounts",
+        "devices",
+        "memberships",
+        "storage_permissions",
+        "active_policy_revision"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "kind": {
+          "const": "GameToolsLocalAccess"
+        },
+        "workspace_id": {
+          "$ref": "#/$defs/id"
+        },
+        "project_id": {
+          "$ref": "#/$defs/id"
+        },
+        "accounts": {
+          "type": "array",
+          "maxItems": 128
+        },
+        "devices": {
+          "type": "array",
+          "maxItems": 128
+        },
+        "memberships": {
+          "type": "array",
+          "maxItems": 128
+        },
+        "storage_permissions": {
+          "type": "array",
+          "maxItems": 128
+        },
+        "active_policy_revision": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

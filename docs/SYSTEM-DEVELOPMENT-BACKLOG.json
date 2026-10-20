@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "date": "2026-10-19",
+  "date": "2026-10-20",
   "timezone": "Asia/Jerusalem",
   "owner": "dodWhatUp/install-modes-for-games",
   "kind": "project_priority_and_next_boundary",
@@ -10,7 +10,7 @@
       "title": "System control center and request preflight",
       "priority": "P0",
       "urgency": "explicitly_requested_urgent",
-      "status": "P0_CHECKLIST_COMPLETE_READ_ONLY_SOURCE",
+      "status": "P0_AND_POLICY_COMPLETE_LOCAL_ACCESS_SIGNIN_PENDING",
       "plan": "SYSTEM-CONTROL-CENTER-PLAN.md",
       "requirements": [
         "GT-086",
@@ -30,7 +30,7 @@
         "U1 architecture and trigger explorer",
         "U4 static request preflight"
       ],
-      "next_action": "P0 source checklist complete. Implement MCI-12/13 policy/enrollment foundations and dependent evidence adapters; keep actual-device release gates in MCI-18.",
+      "next_action": "Resolve MCI-13 fresh sign-in identity and adapter; MCI-08 checkpoint/exchange is independently eligible. Do not activate transport, native Codex continuity or remote operations without their implementation/acceptance.",
       "implementation_started": true,
       "activation_state": "NO_SERVICE_OR_SCHEDULE_CREATED",
       "issue_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/12",
@@ -48,14 +48,14 @@
         "MCI-18"
       ],
       "shared_dependencies": "Use each work package depends_on list; project phase numbers are not a complete execution order.",
-      "implementation_report": "control-center/P0-IMPLEMENTATION.md"
+      "implementation_report": "control-center/WORKSPACE-FOUNDATIONS-2026-10-20.md"
     },
     {
       "id": "portable-workspaces",
       "title": "Portable workspaces and multi computer collaboration",
       "priority": "P1",
       "urgency": "requested_development_plan",
-      "status": "SHARED_CONTRACTS_IMPLEMENTED_WORKSPACE_ENGINE_NOT_STARTED",
+      "status": "MANAGED_STORAGE_IMPLEMENTED_EXCHANGE_NOT_STARTED",
       "plan": "PORTABLE-WORKSPACE-PLAN.md",
       "requirements_range": [
         "GT-061",
@@ -66,7 +66,7 @@
         "R1 managed vault",
         "R2 offline exchange"
       ],
-      "next_action": "Implement MCI-07 managed vault using existing user-data owners; MCI-12/13 are independent contract-dependent work. Native runtime transfer remains unverified.",
+      "next_action": "Resolve MCI-13 fresh sign-in identity and adapter; MCI-08 checkpoint/exchange is independently eligible. Do not activate transport, native Codex continuity or remote operations without their implementation/acceptance.",
       "implementation_started": true,
       "activation_state": "NO_SYNCHRONIZATION_ENABLED",
       "work_packages": [
@@ -84,7 +84,8 @@
         "MCI-17",
         "MCI-18"
       ],
-      "shared_dependencies": "Use each work package depends_on list; project phase numbers are not a complete execution order."
+      "shared_dependencies": "Use each work package depends_on list; project phase numbers are not a complete execution order.",
+      "implementation_report": "control-center/WORKSPACE-FOUNDATIONS-2026-10-20.md"
     }
   ],
   "integrated_execution_plan": "INTEGRATED-SYSTEM-EXECUTION-PLAN.md",

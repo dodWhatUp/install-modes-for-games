@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-19",
+  "date": "2026-10-20",
   "tasks": [
     {
       "id": "MCI-01",
@@ -114,20 +114,20 @@
     {
       "id": "MCI-07",
       "priority": "P1",
-      "status": "planned",
+      "status": "completed",
       "depends_on": [
         "MCI-02"
       ],
       "checklist_complete": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
       ],
-      "report": null,
-      "note": "Not started; follow declared dependencies and each actual-device/capability gate."
+      "report": "control-center/MCI-07-CONCLUSIONS.md",
+      "note": "Listed source criteria accepted; actual multi-device/transport acceptance remains separate."
     },
     {
       "id": "MCI-08",
@@ -209,39 +209,39 @@
     {
       "id": "MCI-12",
       "priority": "P1",
-      "status": "planned",
+      "status": "completed",
       "depends_on": [
         "MCI-02",
         "MCI-03"
       ],
       "checklist_complete": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
       ],
-      "report": null,
-      "note": "Not started; follow declared dependencies and each actual-device/capability gate."
+      "report": "control-center/MCI-12-CONCLUSIONS.md",
+      "note": "Listed source criteria accepted; actual multi-device/transport acceptance remains separate."
     },
     {
       "id": "MCI-13",
       "priority": "P1",
-      "status": "planned",
+      "status": "implemented_local_controls_signin_pending",
       "depends_on": [
         "MCI-02"
       ],
       "checklist_complete": [
+        true,
+        true,
+        true,
         false,
-        false,
-        false,
-        false,
-        false,
-        false
+        true,
+        true
       ],
-      "report": null,
-      "note": "Not started; follow declared dependencies and each actual-device/capability gate."
+      "report": "control-center/MCI-13-CONCLUSIONS.md",
+      "note": "5/6 accepted. Select a fresh sign-in identity/provider and implement/verify its supported adapter; credentials are not transplanted."
     },
     {
       "id": "MCI-14",
@@ -353,9 +353,10 @@
   "progress": {
     "p0_completed": 30,
     "p0_total": 30,
-    "program_completed": 30,
+    "program_completed": 47,
     "program_total": 108,
-    "completed_packages": 5,
-    "planned_packages": 13
+    "completed_packages": 7,
+    "in_progress_packages": 1,
+    "planned_packages": 10
   }
 }

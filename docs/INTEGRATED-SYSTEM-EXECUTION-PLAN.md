@@ -133,7 +133,7 @@ Parallel development means independent scoped work on owned modules. It does not
 
 ## Detailed implementation checklist
 
-Checks below follow the current [P0 implementation report](control-center/P0-IMPLEMENTATION.md). All 30 original P0 items are accepted for the read-only source application; 78 later program items remain planned. Actual-device/native continuity release acceptance remains separate. Registration is not implementation evidence.
+Checks below follow the current [P0 implementation report](control-center/P0-IMPLEMENTATION.md). All 30 original P0 items remain accepted. The 2026-10-20 foundation checkpoint advances the program to 47/108: seven complete packages, MCI-13 partial and ten planned. Actual-device/native continuity acceptance remains separate. Registration is not implementation evidence.
 
 ### MCI-01
 
@@ -237,18 +237,20 @@ Requirements: GT-088, GT-089, GT-094. Dependencies: MCI-02, MCI-05, MCI-13.
 
 ### MCI-07
 
+Current result: [completed](control-center/MCI-07-CONCLUSIONS.md).
+
 Implementation tracker: [GitHub #19](https://github.com/dodWhatUp/install-modes-for-games/issues/19). Private TickTick mirror: registered under the same MCI ID.
 
 **Implement managed storage on non-system internal or external drives** · P1 · Phases R1.
 
 Requirements: GT-061, GT-062, GT-075, GT-078, GT-079. Dependencies: MCI-02.
 
-- [ ] Enroll a selected vault and bind it by logical and volume identity rather than drive letter alone.
-- [ ] Route managed project source, selected assets, outputs and continuation records into declared relative roots.
-- [ ] Inventory unsupported host-local tool outputs and prevent silent OS-drive fallback when the vault is absent.
-- [ ] Keep credentials, mutable runtime databases, local permissions and machine bindings under their existing owners.
-- [ ] Test changed usernames, mounts, clone collisions, Unicode/case/path constraints and symlink escapes.
-- [ ] Verify actual output placement and reopen behavior on synthetic projects while preserving existing native settings.
+- [x] Enroll a selected vault and bind it by logical and volume identity rather than drive letter alone.
+- [x] Route managed project source, selected assets, outputs and continuation records into declared relative roots.
+- [x] Inventory unsupported host-local tool outputs and prevent silent OS-drive fallback when the vault is absent.
+- [x] Keep credentials, mutable runtime databases, local permissions and machine bindings under their existing owners.
+- [x] Test changed usernames, mounts, clone collisions, Unicode/case/path constraints and symlink escapes.
+- [x] Verify actual output placement and reopen behavior on synthetic projects while preserving existing native settings.
 
 ### MCI-08
 
@@ -312,20 +314,24 @@ Requirements: GT-075, GT-082, GT-083. Dependencies: MCI-09, MCI-12, MCI-13.
 
 ### MCI-12
 
+Current result: [completed](control-center/MCI-12-CONCLUSIONS.md).
+
 Implementation tracker: [GitHub #24](https://github.com/dodWhatUp/install-modes-for-games/issues/24). Private TickTick mirror: registered under the same MCI ID.
 
 **Implement independent directional scope, cadence, adoption and context policies** · P1 · Phases R4, R5, U2.
 
 Requirements: GT-069, GT-070, GT-071, GT-078, GT-085, GT-095. Dependencies: MCI-02, MCI-03.
 
-- [ ] Define policy keys by account, workspace, project, source device, destination device, capability and content class.
-- [ ] Configure A-to-B independently from B-to-A, including manual, checkpoint, reconnect, interval and debounced triggers.
-- [ ] Separate data transfer, local file adoption, index refresh and model-context exposure into distinct controls.
-- [ ] Support none, notice, summary, task packet and selected detailed-source context levels at supported turn boundaries.
-- [ ] Show restrictive effective-policy decisions; local exclusions override broader central proposals and peer content.
-- [ ] Test active-turn staging, canceled edits, hidden-controls versus enablement, policy revision drift and granular rollback.
+- [x] Define policy keys by account, workspace, project, source device, destination device, capability and content class.
+- [x] Configure A-to-B independently from B-to-A, including manual, checkpoint, reconnect, interval and debounced triggers.
+- [x] Separate data transfer, local file adoption, index refresh and model-context exposure into distinct controls.
+- [x] Support none, notice, summary, task packet and selected detailed-source context levels at supported turn boundaries.
+- [x] Show restrictive effective-policy decisions; local exclusions override broader central proposals and peer content.
+- [x] Test active-turn staging, canceled edits, hidden-controls versus enablement, policy revision drift and granular rollback.
 
 ### MCI-13
+
+Current result: [5/6; fresh sign-in pending](control-center/MCI-13-CONCLUSIONS.md).
 
 Implementation tracker: [GitHub #25](https://github.com/dodWhatUp/install-modes-for-games/issues/25). Private TickTick mirror: registered under the same MCI ID.
 
@@ -333,12 +339,12 @@ Implementation tracker: [GitHub #25](https://github.com/dodWhatUp/install-modes-
 
 Requirements: GT-075, GT-077, GT-085, GT-095. Dependencies: MCI-02.
 
-- [ ] Separate personal/account identities, enrolled devices, project membership and storage permissions.
-- [ ] Define viewer, contributor, operator and policy-administrator capabilities without conflating them.
-- [ ] Allow a selected central computer or account to propose policy while retaining destination-side hard exclusions.
+- [x] Separate personal/account identities, enrolled devices, project membership and storage permissions.
+- [x] Define viewer, contributor, operator and policy-administrator capabilities without conflating them.
+- [x] Allow a selected central computer or account to propose policy while retaining destination-side hard exclusions.
 - [ ] Keep secrets in local credential stores and require fresh supported sign-in rather than credential transplantation.
-- [ ] Implement enrollment, revocation, expiry, policy acknowledgements and explicit device retirement.
-- [ ] Test least-privilege reads/actions, offline devices, stale writer generations and an immediately usable local stop path.
+- [x] Implement enrollment, revocation, expiry, policy acknowledgements and explicit device retirement.
+- [x] Test least-privilege reads/actions, offline devices, stale writer generations and an immediately usable local stop path.
 
 ### MCI-14
 
