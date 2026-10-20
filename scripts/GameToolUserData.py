@@ -566,10 +566,15 @@ def _stream_visit(path, limit, before_chunk=None, sink=None):
     before = path.stat()
     if not stat.S_ISREG(before.st_mode) or before.st_size > limit:
         _fail("FILE_LIMIT_OR_TYPE_REFUSED")
-    identity = lambda s: (s.st_dev, s.st_ino, s.st_size, s.st_mtime_ns, s.st_ctime_ns)
+    # Windows 3.12 may report creation time from stat and change time from
+    # fstat as st_ctime_ns. Compare each observation channel with itself;
+    # cross-channel identity uses the shared object/size/write-time fields.
+    identity = lambda s: (s.st_dev, s.st_ino, s.st_size, s.st_mtime_ns)
+    stable = lambda s: (*identity(s), s.st_ctime_ns)
     count, hashed = 0, hashlib.sha256()
     with path.open("rb") as stream:
-        if identity(os.fstat(stream.fileno())) != identity(before):
+        opened = os.fstat(stream.fileno())
+        if identity(opened) != identity(before):
             _fail("SOURCE_CHANGED")
         while True:
             if before_chunk is not None:
@@ -586,7 +591,7 @@ def _stream_visit(path, limit, before_chunk=None, sink=None):
                     _fail("SHORT_WRITE_PRESERVE_PARTIAL")
         after_handle = os.fstat(stream.fileno())
     after = local_path(path).stat()
-    if count != before.st_size or identity(before) != identity(after_handle) or identity(before) != identity(after):
+    if count != before.st_size or stable(opened) != stable(after_handle) or stable(before) != stable(after):
         _fail("SOURCE_CHANGED")
     return {"bytes": count, "sha256": hashed.hexdigest()}
 

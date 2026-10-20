@@ -18,6 +18,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("mode", choices=("volume", "vault-create", "vault-attach", "vault-status", "vault-rebind", "route", "place",
                         "checkpoint-preview", "checkpoint-publish", "checkpoint-inspect", "checkpoint-restore-preview", "checkpoint-restore", "checkpoint-inspect-restore",
+                        "checkpoint-package-preview", "checkpoint-package-publish", "checkpoint-receive-preview", "checkpoint-receive", "checkpoint-recovery-preview",
+                        "checkpoint-rollback-preview",
                         "policy-create", "policy-status", "policy-preview", "policy-ack-preview", "policy-rollback-preview", "policy-commit", "policy-check",
                         "policy-upgrade-preview", "policy-stage-preview", "policy-restage-preview", "policy-context-notice",
                         "windows-account-status", "access-windows-create", "access-create", "access-status", "access-preview", "access-commit", "access-check", "stop", "resume", "view-context", "report"))
@@ -64,11 +66,21 @@ def main(argv=None):
                 elif args.mode == "checkpoint-publish":
                     result = service.publish_seed(data["plan"], args.accept)
                 elif args.mode == "checkpoint-inspect":
-                    result = service.inspect(args.relative)
+                    result = service.inspect(args.relative, parent_sources=data.get("parent_sources", []))
                 elif args.mode == "checkpoint-restore-preview":
-                    result = service.preview_reconstruction(data["source"], data["destination"], data["operation_id"], data["package_id"])
+                    result = service.preview_reconstruction(data["source"], data["destination"], data["operation_id"], data["package_id"], parent_sources=data.get("parent_sources", []))
                 elif args.mode == "checkpoint-restore":
                     result = service.reconstruct(data["plan"], args.accept)
+                elif args.mode == "checkpoint-package-preview":
+                    result = service.preview_checkpoint(data["selection"], data["destination"], data["operation_id"], parent=data.get("parent"), parent_sources=data.get("parent_sources", []), representation=data["representation"], extensions=data.get("extensions"))
+                elif args.mode == "checkpoint-package-publish":
+                    result = service.publish_checkpoint(data["plan"], args.accept)
+                elif args.mode == "checkpoint-receive-preview":
+                    result = service.preview_receive(data["source"], data["destination"], data["operation_id"], data["package_id"], parent_sources=data.get("parent_sources", []))
+                elif args.mode == "checkpoint-receive":
+                    result = service.receive(data["plan"], args.accept)
+                elif args.mode in {"checkpoint-recovery-preview", "checkpoint-rollback-preview"}:
+                    result = service.preview_recovery(data["source"], data["incomplete"], data["selection"], data["destination"], data["operation_id"], data["package_id"], parent_sources=data.get("parent_sources", []), rollback=args.mode == "checkpoint-rollback-preview")
                 else:
                     result = service.inspect_reconstruction(args.relative)
             elif args.mode == "vault-create":

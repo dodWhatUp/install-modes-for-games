@@ -47,26 +47,27 @@ def reopen(root, clock=lambda: 100.0):
 
 
 class Fixture:
-    def __init__(self):
+    def __init__(self, actor=None):
+        self.actor = deepcopy(ACTOR if actor is None else actor)
         self.temp = tempfile.TemporaryDirectory(prefix="checkpoint-fixture-")
         self.root = Path(self.temp.name).resolve()
         self.identities = identity_fixture()
         self.now = 100.0
         registry = VaultRegistry.create(self.root / "bindings", observe)
-        registry.enroll(self.root / "vault", ACTOR["workspace_id"], registry.state.snapshot()["revision"])
+        registry.enroll(self.root / "vault", self.actor["workspace_id"], registry.state.snapshot()["revision"])
         self.vault_id = registry.state.snapshot()["body"]["vaults"][0]["marker"]["vault_id"]
         self.policy = PolicyStore.create(self.root / "policy")
-        self.rule = {"id": "fixture-local", "scope": {"account_id": ACTOR["account_id"], "workspace_id": ACTOR["workspace_id"], "project_id": ACTOR["project_id"], "source_device": ACTOR["device_id"], "destination_device": ACTOR["device_id"], "capability": "*", "content_class": "*"}, "origin": "destination", "enabled": True, "controls": {"transfer": True, "adoption": True, "index": False, "context": False}, "context_depth": "none", "trigger": {"kind": "manual"}}
+        self.rule = {"id": "fixture-local", "scope": {"account_id": self.actor["account_id"], "workspace_id": self.actor["workspace_id"], "project_id": self.actor["project_id"], "source_device": self.actor["device_id"], "destination_device": self.actor["device_id"], "capability": "*", "content_class": "*"}, "origin": "destination", "enabled": True, "controls": {"transfer": True, "adoption": True, "index": False, "context": False}, "context_depth": "none", "trigger": {"kind": "manual"}}
         p = self.policy.propose_rule(self.rule); self.policy.accept(p, p["preview_sha256"])
-        self.access = AccessStore.create(self.root / "access", ACTOR["account_id"], ACTOR["device_id"], ACTOR["project_id"], workspace_id=ACTOR["workspace_id"], now=self.now)
-        self.admin = {**ACTOR, "capability": "enrollment.manage"}
-        self.change("membership", {"account_id": ACTOR["account_id"], "project_id": ACTOR["project_id"], "roles": ["policy_administrator", "contributor"]})
-        self.change("storage", {"account_id": ACTOR["account_id"], "project_id": ACTOR["project_id"], "storage_id": self.vault_id, "read": sorted(CLASSES), "write": sorted(CLASSES)})
+        self.access = AccessStore.create(self.root / "access", self.actor["account_id"], self.actor["device_id"], self.actor["project_id"], workspace_id=self.actor["workspace_id"], now=self.now)
+        self.admin = {**self.actor, "capability": "enrollment.manage"}
+        self.change("membership", {"account_id": self.actor["account_id"], "project_id": self.actor["project_id"], "roles": ["policy_administrator", "contributor"]})
+        self.change("storage", {"account_id": self.actor["account_id"], "project_id": self.actor["project_id"], "storage_id": self.vault_id, "read": sorted(CLASSES), "write": sorted(CLASSES)})
         rev = stable_revision(self.policy.snapshot()["body"])
         self.change("pin_policy", {"policy_revision": rev})
-        self.change("acknowledge", {"device_id": ACTOR["device_id"], "policy_revision": rev})
-        self.service = reopen(self.root, lambda: self.now)
-        self.project = self.root / "vault" / "projects" / ACTOR["project_id"]
+        self.change("acknowledge", {"device_id": self.actor["device_id"], "policy_revision": rev})
+        self.service = CheckpointService(registry, self.policy, self.access, self.actor, self.vault_id, clock=lambda: self.now)
+        self.project = self.root / "vault" / "projects" / self.actor["project_id"]
         for name in CLASSES.values(): (self.project / name).mkdir(parents=True)
         content = {("project_source", "lookup.txt"): b"numbers.json\n", ("project_source", "numbers.json"): b'{"numbers":[2,3],"sum":5}', ("selected_assets", "asset.bin"): bytes(range(256)), ("selected_results", "report.txt"): b"Synthetic result only\n", ("continuation_packet", "next.txt"): "Selected synthetic context שלום\n".encode()}
         self.selection = []
@@ -143,6 +144,27 @@ class CheckpointTests(unittest.TestCase):
     def test_operation_target_is_canonical_without_a_second_operation_registry(self):
         with self.assertRaises(REFUSED): self.f.service.preview_seed(self.f.selection, "another-target", "seed")
         self.assertFalse((self.f.outputs / "another-target").exists())
+
+    def test_exact_local_revisions_cannot_be_disabled_in_an_accepted_plan(self):
+        for vector in (None, {}, {"access": "0" * 64}):
+            p = self.f.preview(); p["expected_state"] = vector
+            p = self.f.service._plan({k: v for k, v in p.items() if k != "plan_sha256"})
+            with self.assertRaises(REFUSED): self.f.service.publish_seed(p, p["plan_sha256"])
+        self.assertFalse((self.f.outputs / "checkpoint-seed").exists())
+
+    def test_stream_accepts_distinct_path_and_handle_ctime_but_detects_handle_drift(self):
+        from types import SimpleNamespace
+        original = io.os.fstat
+        changed = [False]
+        def observed(fd):
+            s = original(fd)
+            return SimpleNamespace(**{k: getattr(s, k) for k in ("st_dev", "st_ino", "st_size", "st_mtime_ns")},
+                                   st_ctime_ns=s.st_ctime_ns + 100 + int(changed[0]))
+        file = self.f.project / "source/lookup.txt"
+        with patch.object(io.os, "fstat", side_effect=observed):
+            self.assertEqual(io.stream_fingerprint(file)["sha256"], io.digest(file.read_bytes()))
+            with self.assertRaises(REFUSED):
+                io.stream_fingerprint(file, before_chunk=lambda: changed.__setitem__(0, True))
 
     def test_checkpoint_identity_is_independent_of_attempt_identity(self):
         a = self.f.preview("one"); b = self.f.preview("two")
@@ -292,7 +314,10 @@ class CheckpointTests(unittest.TestCase):
 
     def test_symlink_source_is_refused(self):
         link = self.f.project / "source/link.txt"
-        link.symlink_to(self.f.project / "source/lookup.txt")
+        try: link.symlink_to(self.f.project / "source/lookup.txt")
+        except OSError as exc:
+            if getattr(exc, "winerror", None) == 1314: self.skipTest("Windows account cannot create a symlink fixture (WinError 1314).")
+            raise
         with self.assertRaises(REFUSED): self.f.preview(selections=[{"content_class": "project_source", "relative": "link.txt"}])
 
     def test_streaming_reads_do_not_request_whole_file_buffers(self):
@@ -339,6 +364,16 @@ class CheckpointTests(unittest.TestCase):
             with self.assertRaises(REFUSED): self.f.service.inspect("checkpoint-seed")
             self.assertEqual(read.call_count, 0)
 
+    def test_foreign_workspace_manifest_is_refused_before_payload_reads(self):
+        package = deepcopy(self.f.preview()["package"])
+        package["checkpoint"]["core"]["workspace_id"] = "other-workspace"
+        package = _package(package["checkpoint"]["core"])
+        root = self.f.outputs / "checkpoint-foreign"; root.mkdir()
+        (root / "MANIFEST.json").write_bytes(io._canonical(package))
+        with patch("game_system_control.checkpoints.stream_fingerprint", wraps=io.stream_fingerprint) as read:
+            with self.assertRaises(REFUSED): self.f.service.inspect("checkpoint-foreign")
+            self.assertEqual(read.call_count, 0)
+
     def test_stop_inside_a_multichunk_reconstruction_leaves_inspectable_partial_file(self):
         file = self.f.project / "assets/large.bin"; file.write_bytes(b"q" * (3 * io.STREAM_BUFFER_BYTES + 7))
         self.f.selection = [{"content_class": "selected_assets", "relative": "large.bin"}]
@@ -360,6 +395,17 @@ class CheckpointTests(unittest.TestCase):
         file = self.f.outputs / "reconstruction-restore/_COMPLETE.json"
         receipt = json.loads(file.read_text()); receipt["active_adoption"] = True; file.write_text(json.dumps(receipt))
         with self.assertRaises(REFUSED): self.f.service.inspect_reconstruction("reconstruction-restore")
+
+    def test_reconstruction_audit_requires_its_own_intent_and_success_terminal(self):
+        from GameToolJournal import Journal
+        self.f.publish(); p = self.f.reconstruct_preview(); receipt = self.f.service.reconstruct(p, p["plan_sha256"])
+        root = self.f.outputs / "reconstruction-restore"
+        # Replace only this fixture's journal with a valid unrelated audit.
+        (root / "AUDIT.jsonl").unlink()
+        with Journal.create(root / "AUDIT.jsonl", {"owner": "unrelated"}) as journal:
+            journal.append("operation_result", receipt)
+            journal.append("session_cancelled", {"reason": "fixture"})
+        self.assertEqual(self.f.service.inspect_reconstruction("reconstruction-restore")["state"], "RECONSTRUCTED_RECEIPT_PENDING")
 
     def test_all_six_existing_cli_checkpoint_modes_use_guarded_synthetic_service(self):
         import GameToolManagedWorkspace as cli
@@ -400,6 +446,14 @@ class PackageValidationTests(unittest.TestCase):
                 with self.assertRaises(REFUSED): validate_package(_package(v["checkpoint"]["core"]))
                 v = deepcopy(self.package); v["schema_version"] = bad
                 with self.assertRaises(REFUSED): validate_package(v)
+
+    def test_v1_golden_identity_from_original_candidate_is_unchanged(self):
+        from game_system_control.checkpoints import _COVERAGE
+        core = {"schema_version": 1, "kind": "GameToolsSeedCheckpoint", "workspace_id": "golden-workspace", "project_id": "golden-project", "replica_id": "golden-replica",
+                "parents": [], "tombstones": [], "coverage": deepcopy(_COVERAGE), "files": [{"content_class": "project_source", "relative": "hello.txt", "bytes": 5, "sha256": io.digest(b"hello")}]}
+        package = validate_package(_package(core))
+        self.assertEqual(package["checkpoint"]["checkpoint_id"], "93b343aa5b652af01eabfe420575c9eb27756098d33640f15db226a3baaa89fa")
+        self.assertEqual(package["package_id"], "e0031bd55e299ae174a68c819b7c2ddbd536037f989a61f7c6f85c86cfbdf011")
 
     def test_duplicate_paths_prefix_collisions_and_case_aliases_are_refused(self):
         for relative in ("next.txt", "NEXT.txt", "next.txt/sub.txt"):

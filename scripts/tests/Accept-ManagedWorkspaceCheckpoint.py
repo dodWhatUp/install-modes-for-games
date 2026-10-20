@@ -27,6 +27,7 @@ from game_system_control.workspace_state import private_root
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-parent", required=True, type=Path, help="Existing private parent outside Git, cloud folders, Codex and portable vaults")
+    parser.add_argument("--exchange", action="store_true", help="Run the independently enrolled synthetic A-to-B-to-A proof")
     args = parser.parse_args(argv)
     parent = private_root(args.output_parent)
     if not parent.is_dir() or any((p / ".git").exists() or (p / "vault.json").exists() for p in (parent, *parent.parents)):
@@ -34,7 +35,26 @@ def main(argv=None):
     root = Path(tempfile.mkdtemp(prefix="synthetic-checkpoint-proof-", dir=parent))
     ns = runpy.run_path(str(SCRIPTS / "tests/Test-ManagedWorkspaceCheckpoints.py"))
     fixture = ns["Fixture"]()
+    other = None
     try:
+        if args.exchange:
+            exchange = runpy.run_path(str(SCRIPTS / "tests/Test-ManagedWorkspaceExchange.py"))
+            other = ns["Fixture"]({**ns["ACTOR"], "device_id": "fixture-b"})
+            result = exchange["round_trip"](fixture, other)
+            fixture.access.stop_local(); other.access.stop_local()
+            for label, source in (("a", fixture), ("b", other)):
+                # Outputs contain authored synthetic bytes and local effect
+                # evidence only. Never retain the authorization/binding stores.
+                shutil.copytree(source.outputs, root / label)
+            files = ("scripts/GameToolUserData.py", "scripts/GameToolManagedWorkspace.py", "scripts/game_system_control/checkpoints.py", "scripts/game_system_control/policy.py", "scripts/tests/Test-ManagedWorkspaceExchange.py", "scripts/tests/Accept-ManagedWorkspaceCheckpoint.py", "schemas/workspace-checkpoint.schema.json")
+            receipt = {"kind": "ManagedCheckpointSyntheticExchangeProof", "schema_version": 1, "recorded_at": datetime.now(timezone.utc).isoformat(),
+                       "evidence_class": "synthetic_local_filesystem", "identity_and_volume": "explicit_fixtures_only", "result": result,
+                       "original_checks_closed": 0, "fixture_access_left_stopped": True,
+                       "source_files": [{"path": p, "sha256": hashlib.sha256((SCRIPTS.parent / p).read_bytes()).hexdigest()} for p in files]}
+            _write_new(root / "PROOF-RECEIPT.json", _canonical(receipt))
+            assert json.loads((root / "PROOF-RECEIPT.json").read_text()) == receipt
+            print(json.dumps({"state": "SYNTHETIC_EXCHANGE_PROOF_PASSED", "output": str(root), "receipt_sha256": hashlib.sha256((root / "PROOF-RECEIPT.json").read_bytes()).hexdigest(), "original_checks_closed": 0}, indent=2))
+            return 0
         before = ns["snapshot"](fixture.root)
         preview = fixture.preview()
         assert before == ns["snapshot"](fixture.root), "Preview wrote persistent state"
@@ -70,6 +90,9 @@ def main(argv=None):
         print(json.dumps({"state": "SYNTHETIC_PROOF_PASSED", "output": str(root), "receipt_sha256": hashlib.sha256((root / "PROOF-RECEIPT.json").read_bytes()).hexdigest(), "original_checks_closed": 0}, indent=2))
         return 0
     finally:
+        if other is not None:
+            try: other.access.stop_local()
+            finally: other.close()
         # Only the newly created fixture is stopped/removed; no existing state.
         try:
             fixture.access.stop_local()
