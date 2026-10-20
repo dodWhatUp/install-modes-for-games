@@ -241,7 +241,8 @@
         true
       ],
       "report": "control-center/MCI-13-CONCLUSIONS.md",
-      "note": "5/6 accepted. Select a fresh sign-in identity/provider and implement/verify its supported adapter; credentials are not transplanted."
+      "note": "5/6 accepted. Windows account on each computer selected; native Windows Hello/PIN adapter and headless interop/availability verified. Human success/cancel and second-computer acceptance remain pending; credentials stay Windows-owned.",
+      "sign_in_report": "control-center/MCI-13-WINDOWS-ACCOUNT.md"
     },
     {
       "id": "MCI-14",

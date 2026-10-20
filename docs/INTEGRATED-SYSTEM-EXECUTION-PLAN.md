@@ -331,7 +331,7 @@ Requirements: GT-069, GT-070, GT-071, GT-078, GT-085, GT-095. Dependencies: MCI-
 
 ### MCI-13
 
-Current result: [5/6; fresh sign-in pending](control-center/MCI-13-CONCLUSIONS.md).
+Current result: [5/6; Windows-account adapter implemented, interactive acceptance pending](control-center/MCI-13-CONCLUSIONS.md). See [Windows identity decisions and acceptance](control-center/MCI-13-WINDOWS-ACCOUNT.md).
 
 Implementation tracker: [GitHub #25](https://github.com/dodWhatUp/install-modes-for-games/issues/25). Private TickTick mirror: registered under the same MCI ID.
 

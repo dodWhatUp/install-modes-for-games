@@ -7,12 +7,15 @@ stored here. Cloud/OpenAI sign-in and credential stores remain native owners.
 from copy import deepcopy
 import math
 from pathlib import Path
+import time
 
 from GameToolAIContracts import stable_revision
 from GameToolUserData import _canonical, _read, _write_new, digest
+from game_mod_ops.safety import local_lock
 from .contracts import require, identifier, SHA
 from .workspace_state import LocalState, principal
 from .vault import CLASSES
+from . import windows_account
 
 ROLES = {"viewer": {"metadata.read"}, "contributor": {"metadata.read", "managed.read", "managed.write"},
          "operator": {"metadata.read", "operation.propose"},
@@ -27,14 +30,19 @@ def clock(value):
 
 def validate_access(body):
     require(type(body) is dict and body.get("schema_version") == 1 and body.get("kind") == "GameToolsLocalAccess", "Unsupported local access registry.")
+    require(set(body) <= {"schema_version", "kind", "workspace_id", "project_id", "accounts", "devices", "memberships", "storage_permissions", "active_policy_revision", "authentication"}, "Unknown access fields; credentials and imported sign-in receipts are unsupported.")
     identifier(body.get("project_id")); identifier(body.get("workspace_id"))
+    mode = body.get("authentication", "local_os_session")
+    require(type(mode) is str and mode in {"local_os_session", "windows_hello"}, "Unsupported local sign-in requirement.")
     for key in ("accounts", "devices", "memberships", "storage_permissions"):
         require(type(body.get(key)) is list and len(body[key]) <= 128, "Access registry collection bound exceeded.")
     accounts, devices, memberships, permissions = set(), set(), set(), set()
     for a in body["accounts"]:
+        require(type(a) is dict and set(a) == {"id", "provider", "subject_hash"}, "Accounts contain local identity references only.")
         identifier(a.get("id")); require(a["id"] not in accounts, "Duplicate account."); accounts.add(a["id"])
         require(a.get("provider") == "local_os" and a.get("subject_hash") == principal(), "Fresh supported local OS identity is required; provider-account login is not connected.")
     for d in body["devices"]:
+        require(type(d) is dict and set(d) == {"id", "account_id", "principal_hash", "status", "generation", "enrolled_at", "expires_at", "last_seen", "online", "policy_ack"}, "Devices contain enrollment metadata only.")
         identifier(d.get("id")); require(d["id"] not in devices and d.get("account_id") in accounts, "Duplicate device or missing account."); devices.add(d["id"])
         require(d.get("status") in {"active", "revoked", "retired"} and type(d.get("generation")) is int and d["generation"] >= 1, "Invalid enrollment lifecycle.")
         require(d.get("principal_hash") == principal(), "Device needs fresh local acceptance; copied peer declarations cannot sign in.")
@@ -43,11 +51,13 @@ def validate_access(body):
         require(d["enrolled_at"] < d["expires_at"] <= d["enrolled_at"] + MAX_ENROLLMENT_SECONDS, "Enrollment lifetime outside bound.")
         require(d.get("policy_ack") is None or type(d["policy_ack"]) is str and SHA.fullmatch(d["policy_ack"]), "Invalid policy acknowledgement.")
     for m in body["memberships"]:
+        require(type(m) is dict and set(m) == {"account_id", "project_id", "roles"}, "Membership contains role references only.")
         identifier(m.get("project_id")); key = (m.get("account_id"), m["project_id"])
         require(m["project_id"] == body["project_id"], "Use a separate local registry for another project.")
         require(key[0] in accounts and key not in memberships, "Duplicate membership or missing account."); memberships.add(key)
         require(type(m.get("roles")) is list and bool(m["roles"]) and all(r in ROLES for r in m["roles"]), "Unsupported role.")
     for p in body["storage_permissions"]:
+        require(type(p) is dict and set(p) == {"account_id", "project_id", "storage_id", "read", "write"}, "Storage permissions contain scoped grants only.")
         for key in ("storage_id", "project_id"): identifier(p.get(key))
         require(p["project_id"] == body["project_id"], "Storage grant is outside the selected project.")
         key = (p.get("account_id"), p["project_id"], p["storage_id"])
@@ -63,15 +73,24 @@ class AccessStore:
     def __init__(self, root): self.state = LocalState(root, "workspace-access")
 
     @classmethod
-    def create(cls, root, account_id, device_id, project_id, *, now, workspace_id="workspace"):
+    def create(cls, root, account_id, device_id, project_id, *, now, workspace_id="workspace", windows_sign_in=False):
         for value in (account_id, device_id, project_id, workspace_id): identifier(value)
         clock(now)
+        require(type(windows_sign_in) is bool, "Select the explicit Windows sign-in mode.")
+        root = LocalState(root, "workspace-access").root
+        require(root.parent.is_dir() and not root.exists(), "Select a new local access directory under an existing private parent.")
+        if windows_sign_in:
+            scope = windows_account.operation_scope(root, "create", {"account": account_id, "device": device_id, "project": project_id, "workspace": workspace_id})
+            started = time.monotonic()
+            windows_account.verify(scope).consume(scope)
+            now += time.monotonic() - started
         body = {"schema_version": 1, "kind": "GameToolsLocalAccess", "workspace_id": workspace_id, "project_id": project_id,
                 "accounts": [{"id": account_id, "provider": "local_os", "subject_hash": principal()}],
                 "devices": [{"id": device_id, "account_id": account_id, "principal_hash": principal(), "status": "active",
                              "generation": 1, "enrolled_at": now, "expires_at": now + 3600, "last_seen": now, "online": True, "policy_ack": None}],
                 "memberships": [{"account_id": account_id, "project_id": project_id, "roles": ["policy_administrator"]}],
                 "storage_permissions": [], "active_policy_revision": None}
+        if windows_sign_in: body["authentication"] = "windows_hello"
         validate_access(body); LocalState.create(root, "workspace-access", body)
         return cls(root)
 
@@ -105,7 +124,8 @@ class AccessStore:
             op = "read" if request["capability"] == "managed.read" else "write"
             if permission is None or request.get("content_class") not in permission[op]: reason = "storage_scope_denied"
         return {"allowed": reason is None, "reason": reason or "local_os_session_and_scopes_checked", "capability": request["capability"],
-                "effect": "none", "remote_authentication": "not_connected", "execution_approval": "existing_local_owner_required"}
+                "effect": "none", "remote_authentication": "not_connected", "execution_approval": "existing_local_owner_required",
+                "authentication_requirement": body.get("authentication", "local_os_session")}
 
     def propose_change(self, actor, action, values, *, now):
         require(actor.get("capability") == "enrollment.manage" and self.authorize(actor, now=now)["allowed"], "Local policy-administrator approval is required.")
@@ -151,6 +171,10 @@ class AccessStore:
                                            (row["account_id"], row["project_id"], row["storage_id"])] + [row]
         elif action == "pin_policy":
             body["active_policy_revision"] = values.get("policy_revision")
+        elif action == "require_windows_sign_in":
+            # Preview is inert. Accept always invokes the native verifier and
+            # pins the full proposal, including this one-way mode change.
+            body["authentication"] = "windows_hello"
         else:
             require(False, "Unknown named enrollment operation; arbitrary commands are unsupported.")
         validate_access(body)
@@ -159,6 +183,19 @@ class AccessStore:
     def accept(self, actor, proposal, accepted_sha256, *, now):
         require(actor.get("capability") == "enrollment.manage" and self.authorize(actor, now=now)["allowed"], "Revalidate local administration before applying a change.")
         validate_access(proposal["body"])
+        base = self.snapshot()
+        secure = base["body"].get("authentication") == "windows_hello"
+        require(not secure or proposal["body"].get("authentication") == "windows_hello", "Windows sign-in cannot be downgraded by a proposed revision.")
+        if secure or proposal["body"].get("authentication") == "windows_hello":
+            require(set(proposal) == {"kind", "expected_revision", "body", "preview_sha256"} and proposal.get("kind") == self.state.kind,
+                    "Select a valid access preview before sign-in.")
+            require(proposal["expected_revision"] == base["revision"], "Access revision changed; prepare a new preview before sign-in.")
+            require(proposal["preview_sha256"] == accepted_sha256 == digest(_canonical({k: proposal[k] for k in ("kind", "expected_revision", "body")})), "Accept the exact selected preview before sign-in.")
+            scope = windows_account.operation_scope(self.state.root, "commit", {"actor": actor, "proposal": proposal, "accept": accepted_sha256})
+            started = time.monotonic()
+            windows_account.verify(scope).consume(scope)
+            now += time.monotonic() - started
+            require(self.authorize(actor, now=now)["allowed"], "Local authorization expired, changed or stopped during Windows verification.")
         return self.state.commit(proposal, accepted_sha256)
 
     def stop_local(self):
@@ -171,9 +208,19 @@ class AccessStore:
 
     def resume_local(self, actor, expected_stop_sha256, *, now):
         require(actor.get("capability") == "enrollment.manage" and self.authorize(actor, now=now, _ignore_stop=True)["allowed"], "Fresh local administrator approval is required to resume.")
-        path = self.state.root/"LOCAL-STOP.json"
-        raw, before = _read(path)
-        require(digest(raw) == expected_stop_sha256, "Local stop marker changed; inspect again.")
-        require(path.stat().st_ino == before.st_ino, "Local stop identity changed.")
-        path.unlink()
+        base = self.snapshot()
+        require(digest(_read(self.state.root/"LOCAL-STOP.json")[0]) == expected_stop_sha256, "Inspect the exact local stop marker before sign-in.")
+        if base["body"].get("authentication") == "windows_hello":
+            scope = windows_account.operation_scope(self.state.root, "resume", {"actor": actor, "revision": base["revision"], "stop": expected_stop_sha256})
+            started = time.monotonic()
+            windows_account.verify(scope).consume(scope)
+            now += time.monotonic() - started
+            require(self.snapshot()["revision"] == base["revision"] and self.authorize(actor, now=now, _ignore_stop=True)["allowed"], "Local authorization changed or expired during Windows verification.")
+        with local_lock(self.state.root, ".workspace-state.lock"):
+            require(self.snapshot()["revision"] == base["revision"] and self.authorize(actor, now=now, _ignore_stop=True)["allowed"], "Revalidate current local authorization to resume.")
+            path = self.state.root/"LOCAL-STOP.json"
+            raw, before = _read(path)
+            require(digest(raw) == expected_stop_sha256, "Local stop marker changed; inspect again.")
+            require(path.stat().st_ino == before.st_ino, "Local stop identity changed.")
+            path.unlink()
         return {"state": "LOCAL_RESUMED", "remote_action": False}

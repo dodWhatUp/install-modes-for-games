@@ -1,5 +1,9 @@
 # Game tools knowledge and recovery index
 
+## Windows-account verification continuation — 2026-10-20
+
+MCI-13 now has a [Windows account adapter and acceptance boundary](control-center/MCI-13-WINDOWS-ACCOUNT.md). Current-account PIN/Hello verification is local to each computer; native availability is verified, human success/cancel acceptance remains pending. No Codex installation or credential migration.
+
 ## 2026-10-20 — Managed workspace foundations
 
 [Stage conclusions and next boundary](control-center/WORKSPACE-FOUNDATIONS-2026-10-20.md): MCI-07 storage and MCI-12 policy meet their six-item source checklists; MCI-13 local controls are implemented with fresh sign-in pending (5/6). Program progress: 47/108. Native Windows synthetic placement on a non-system volume and 208 distinct Linux tests passed. Codex installation/native state and actual project defaults are unchanged. Other-computer, transport, provider authentication and native chat continuity remain unverified.

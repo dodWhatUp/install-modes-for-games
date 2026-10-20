@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "recorded_date": "2026-10-20",
+  "timezone": "Asia/Jerusalem",
+  "kind": "MCI13WindowsAccountValidation",
+  "basis_commit": "4c36941776dd5548f8f11c586f579a9e0e4883bc",
+  "identity_decision": "Windows account on each computer",
+  "reuse": {
+    "identity_owner": "workspace_state.principal",
+    "access_owner": "AccessStore",
+    "io_owner": "GameToolUserData",
+    "audit_owner": "GameToolJournal",
+    "lock_owner": "game_mod_ops.safety.local_lock",
+    "presentation_owner": "existing control-center report"
+  },
+  "native_probe": {
+    "platform": "Windows",
+    "desktop_interop_activation": "passed",
+    "availability": "available",
+    "interactive_prompt_attempted": false
+  },
+  "automated": {
+    "new_windows_contracts": {
+      "tests": 20,
+      "passed": 20,
+      "skipped": 0
+    },
+    "windows_distinct_total": {
+      "tests": 228,
+      "passed": 222,
+      "skipped": 6,
+      "failures": 0,
+      "errors": 0
+    },
+    "skip_scope": "Windows symlink privileges / missing jsonschema; prior Linux checkpoint covered existing paths, current schema change is additionally pending Linux execution.",
+    "export_contracts": 69
+  },
+  "source_files": [
+    {
+      "path": "scripts/game_system_control/windows_account.py",
+      "sha256": "f4f747ef2ba9be9b68a2577a85e034b80d09235187002cfed5a9d9442caa2c3a"
+    },
+    {
+      "path": "scripts/game_system_control/access.py",
+      "sha256": "5b41d8bbcd383d71ebd8a1b97d4dbe995da8d78caf5801861d9273cd71aecbaf"
+    },
+    {
+      "path": "scripts/game_system_control/workspace_view.py",
+      "sha256": "e1adbb3222c7fb8f86f07a9db69f0806ab617f5177ac2b345ce02dd8464b4861"
+    },
+    {
+      "path": "scripts/GameToolManagedWorkspace.py",
+      "sha256": "3cd5c5d4660b6d14a1d4b393d026ae9e6655d758f2010d88b9ef2ba6bb5bc262"
+    },
+    {
+      "path": "scripts/tests/Test-ManagedWorkspaceWindowsAccount.py",
+      "sha256": "d7765439718b4358817f3b026b4506018f12d9cc466f6880ebd50a1a0ed410fc"
+    },
+    {
+      "path": "scripts/tests/Accept-ManagedWorkspaceWindowsAccount.py",
+      "sha256": "cd377a073c5e25c93103bd1538440c9b777f73914546fcb8fdaabd07ad82c1d0"
+    },
+    {
+      "path": "schemas/managed-workspace.schema.json",
+      "sha256": "78693e0e723f0de78cef60925a6576db3c78ce535911717592e730b773518428"
+    }
+  ],
+  "acceptance": {
+    "source_adapter": "implemented",
+    "human_success_and_cancel": "pending",
+    "native_owner_window": "not interactively accepted",
+    "other_physical_computer": "not tested",
+    "remote_authentication": "not connected",
+    "checklist_complete": [
+      true,
+      true,
+      true,
+      false,
+      true,
+      true
+    ],
+    "program_accepted": 47,
+    "program_total": 108
+  },
+  "boundaries": {
+    "credentials": "Windows owned; no values captured or persisted",
+    "proof": "one process; one operation; one use; 60 seconds; never serialized",
+    "legacy": "session-only mode retained and labeled; no silent upgrade",
+    "codex_installation_changed": false,
+    "windows_signin_settings_changed": false,
+    "existing_registry_changed": false,
+    "transport_activated": false,
+    "raw_evidence": "private; excluded from Git and OneDrive"
+  }
+}

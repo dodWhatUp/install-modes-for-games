@@ -18,7 +18,7 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("mode", choices=("volume", "vault-create", "vault-attach", "vault-status", "vault-rebind", "route", "place",
                         "policy-create", "policy-status", "policy-preview", "policy-ack-preview", "policy-rollback-preview", "policy-commit", "policy-check",
-                        "access-create", "access-status", "access-preview", "access-commit", "access-check", "stop", "resume", "view-context", "report"))
+                        "windows-account-status", "access-windows-create", "access-create", "access-status", "access-preview", "access-commit", "access-check", "stop", "resume", "view-context", "report"))
     parser.add_argument("--state", type=Path)
     parser.add_argument("--root", type=Path)
     parser.add_argument("--workspace", default="workspace")
@@ -39,7 +39,10 @@ def main(argv=None):
     try:
         data = _decode(_read(args.input, 128 * 1024)[0]) if args.input else None
         now = time.time()
-        if args.mode == "volume":
+        if args.mode == "windows-account-status":
+            from game_system_control.windows_account import availability
+            result = availability()
+        elif args.mode == "volume":
             require(args.root is not None, "Select --root."); result = volume_identity(args.root)
         else:
             require(args.state is not None, "Select --state outside Codex/OneDrive.")
@@ -94,8 +97,9 @@ def main(argv=None):
                 else: result = evaluate(policy.snapshot()["body"], data["request"], active_turn=data.get("active_turn", True), boundary=data.get("boundary", "unobserved"),
                                        event=data.get("event", "manual"), now=now, last_fire=data.get("last_fire"), last_change=data.get("last_change"))
             else:
-                access = AccessStore.create(args.state, args.account, args.device, args.project, workspace_id=args.workspace, now=now) if args.mode == "access-create" else AccessStore(args.state)
-                if args.mode in {"access-create", "access-status"}: result = access.snapshot()
+                access = AccessStore.create(args.state, args.account, args.device, args.project, workspace_id=args.workspace, now=now,
+                                            windows_sign_in=args.mode == "access-windows-create") if args.mode in {"access-create", "access-windows-create"} else AccessStore(args.state)
+                if args.mode in {"access-create", "access-windows-create", "access-status"}: result = access.snapshot()
                 elif args.mode == "access-preview": result = access.propose_change(data["actor"], data["action"], data["values"], now=now)
                 elif args.mode == "access-commit": result = access.accept(data["actor"], data["proposal"], args.accept, now=now)
                 elif args.mode == "access-check": result = access.authorize(data, now=now)

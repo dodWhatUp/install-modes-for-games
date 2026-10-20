@@ -13,9 +13,10 @@ from .workspace_state import private_root
 def workspace_context(root):
     root = private_root(root)
     registry, policy, access = VaultRegistry(root/"bindings"), PolicyStore(root/"policy"), AccessStore(root/"access")
+    authentication = access.snapshot()["body"].get("authentication", "local_os_session")
     rows = [("vault", registry.state.snapshot(), "bindings", "Managed vault bindings"),
             ("policy", policy.snapshot(), "policy", "Directional policy · transfer, adoption, index and context"),
-            ("access", access.snapshot(), "access", "Local OS-session roles · provider sign-in not connected")]
+            ("access", access.snapshot(), "access", "Local OS-session roles · provider sign-in not connected" if authentication == "local_os_session" else "Windows account verification · local roles and scopes")]
     sources, nodes = [], []
     for ident, record, folder, label in rows:
         relative = folder + f"/{record['generation']:08}.json"
@@ -24,7 +25,8 @@ def workspace_context(root):
                         "binding": "selected_project", "sha256": digest(raw), "availability": "available"})
         summary = ({"vaults": len(record["body"]["vaults"]), "managed_roots": ["source", "assets", "outputs", "continuation"], "fallback": "refuse"} if ident == "vault" else
                    {"rules": [{k: r[k] for k in ("id", "enabled", "controls", "context_depth", "trigger")} for r in record["body"]["rules"]], "delivery": "not_connected"} if ident == "policy" else
-                   {"memberships": record["body"]["memberships"], "storage_permissions": record["body"]["storage_permissions"], "provider_sign_in": "not_connected"})
+                   {"memberships": record["body"]["memberships"], "storage_permissions": record["body"]["storage_permissions"], "provider_sign_in": authentication,
+                    "remote_authentication": "not_connected"})
         nodes.append({"id": ident, "source_id": ident, "kind": "component", "label": label, "selected_summary": summary,
                       "scopes": ["managed-workspace"], "layer": "project", "observation": "declared", "depends_on": ["policy", "access"] if ident == "vault" else []})
     body = rows[2][1]["body"]
@@ -42,4 +44,5 @@ def workspace_context(root):
     return validate_context({"schema_version": 1, "kind": "GameToolsSystemContext", "scope": "managed-workspace",
                              "label": "Managed workspace foundations · selected local metadata", "sources": sources, "nodes": nodes,
                              "devices": devices, "events": [], "activities": activities, "resources": [],
-                             "unknown_coverage": ["Fresh provider-account sign-in", "Other physical computer", "Live transport", "Native Codex chat continuity", "Actual model-context delivery"]})
+                             "unknown_coverage": (["Fresh Windows verification on this registry"] if authentication == "local_os_session" else []) +
+                             ["Other physical computer", "Live transport", "Native Codex chat continuity", "Actual model-context delivery"]})

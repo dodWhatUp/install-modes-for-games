@@ -498,7 +498,7 @@
       "github_issue": 25,
       "github_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/25",
       "ticktick_mirror_registered": true,
-      "readiness_note": "5/6 accepted. Select a fresh sign-in identity/provider and implement/verify its supported adapter; credentials are not transplanted.",
+      "readiness_note": "5/6 accepted. Windows account on each computer selected; native Windows Hello/PIN adapter and headless interop/availability verified. Human success/cancel and second-computer acceptance remain pending; credentials stay Windows-owned.",
       "checklist_complete": [
         true,
         true,
@@ -508,7 +508,9 @@
         true
       ],
       "implementation_report": "control-center/MCI-13-CONCLUSIONS.md",
-      "completion_scope": "Local OS-session controls; fresh provider-specific sign-in not implemented"
+      "completion_scope": "Local OS-session controls plus Windows account adapter; interactive acceptance pending",
+      "sign_in_provider": "windows_account_via_windows_hello",
+      "sign_in_report": "control-center/MCI-13-WINDOWS-ACCOUNT.md"
     },
     {
       "id": "MCI-14",

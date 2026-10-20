@@ -299,6 +299,13 @@
         "kind": {
           "const": "GameToolsLocalAccess"
         },
+        "authentication": {
+          "enum": [
+            "local_os_session",
+            "windows_hello"
+          ],
+          "description": "A requirement for the local adapter; never an imported authentication proof. Missing means legacy session checks only."
+        },
         "workspace_id": {
           "$ref": "#/$defs/id"
         },
@@ -332,7 +339,7 @@
           ]
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     }
   }
 }

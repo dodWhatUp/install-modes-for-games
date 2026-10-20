@@ -12,6 +12,7 @@ The explicit local front door is scripts/GameToolManagedWorkspace.py. Run it wit
 | Inspect or relocate | vault-status --state bindings --vault-id id; vault-rebind additionally needs --root and --expected-revision |
 | Obtain an explicit managed destination | route --state bindings --vault-id id --project id --class content-class --relative portable/name |
 | Configure local policy | policy-create, policy-status, policy-preview, policy-ack-preview, policy-rollback-preview and policy-commit |
+| Probe / create Windows-protected access | windows-account-status; access-windows-create --state NEW_PRIVATE_ROOT |
 | Configure local roles/enrollment | access-create, access-status, access-preview, access-commit and access-check |
 | Stop / reviewed local resume | stop --state access-store; resume needs the current local actor and exact --accept stop digest |
 | Existing control-center views | view-context or report --state selected-parent-containing-bindings-policy-access |
@@ -22,7 +23,7 @@ Policy/access edits use --input private JSON. Preview output is data only; commi
 
 Managed place requires --source, --source-sha256, --relative, selected vault/project/class, --policy-state, --access-state and --input containing matching authorization and policy requests. The authorization request includes account_id, workspace_id, project_id, device_id, generation, capability managed.write, storage_id, content_class and policy_revision. The policy request includes account_id, workspace_id, project_id, source_device, destination_device, capability and content_class. Exact current policy acknowledgement, storage write grant and enabled adoption are required. Existing output files are preserved.
 
-Fresh provider-specific sign-in is not implemented. Current local OS-session checks do not replace that requirement. Do not transplant credentials, permissions, browser profiles, binding registries or mutable runtime databases. Create fresh machine-local bindings and authorization on a destination; keep them outside the portable vault, Codex and OneDrive. Existing filesystem ACLs remain OS-owned.
+[Windows-account verification](../../docs/control-center/MCI-13-WINDOWS-ACCOUNT.md) is implemented; human interactive acceptance is pending. Use access-windows-create for a protected new registry, or preview/commit require_windows_sign_in to upgrade an existing one. Legacy access-create remains session-only. Windows verification requires a configured local PIN/Hello; it does not fall back on failure. Do not transplant credentials, permissions, browser profiles, binding registries or mutable runtime databases. Create fresh machine-local bindings and authorization on a destination; keep them outside the portable vault, Codex and OneDrive. Existing filesystem ACLs remain OS-owned.
 
 <details><summary>Try the bounded synthetic native-volume acceptance</summary>
 

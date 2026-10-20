@@ -30,7 +30,7 @@
         "U1 architecture and trigger explorer",
         "U4 static request preflight"
       ],
-      "next_action": "Resolve MCI-13 fresh sign-in identity and adapter; MCI-08 checkpoint/exchange is independently eligible. Do not activate transport, native Codex continuity or remote operations without their implementation/acceptance.",
+      "next_action": "Complete MCI-13 Windows-account human success/cancel and destination acceptance; native adapter and headless availability are implemented. MCI-08 checkpoint/exchange is independently eligible. Preserve separate transport/native-chat/remote-operation acceptance.",
       "implementation_started": true,
       "activation_state": "NO_SERVICE_OR_SCHEDULE_CREATED",
       "issue_url": "https://github.com/dodWhatUp/install-modes-for-games/issues/12",
@@ -66,7 +66,7 @@
         "R1 managed vault",
         "R2 offline exchange"
       ],
-      "next_action": "Resolve MCI-13 fresh sign-in identity and adapter; MCI-08 checkpoint/exchange is independently eligible. Do not activate transport, native Codex continuity or remote operations without their implementation/acceptance.",
+      "next_action": "Complete MCI-13 Windows-account human success/cancel and destination acceptance; native adapter and headless availability are implemented. MCI-08 checkpoint/exchange is independently eligible. Preserve separate transport/native-chat/remote-operation acceptance.",
       "implementation_started": true,
       "activation_state": "NO_SYNCHRONIZATION_ENABLED",
       "work_packages": [

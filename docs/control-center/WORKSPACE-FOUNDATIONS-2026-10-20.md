@@ -19,3 +19,8 @@ Review found and corrected a journal terminal-event mismatch, stop-marker enumer
 The source front door is [GameToolManagedWorkspace](../../scripts/GameToolManagedWorkspace.py). [Usage](../../examples/managed-workspace/README.md) distinguishes managed placement, local configuration and read-only reporting. The existing System control panel can load a generated private context; there is no second GUI/report engine. Source CLI tests do not establish Windows GUI/human usability acceptance.
 
 Limits: one actual computer was exercised. Native volume enrollment currently supports Windows only. No actual moved-drive trip between computers, native Codex chat continuation, remote authentication/execution, network/cloud transport, automatic tool-output redirection or native model-context delivery is claimed. Bindings, account identifiers, roots and raw evidence stay private outside Git/OneDrive.
+
+
+## Windows identity continuation
+
+The user selected the Windows account on each computer. The [native Windows adapter](MCI-13-WINDOWS-ACCOUNT.md) now extends the existing local access owner. Headless availability passed and operation-bound verification is implemented; human success/cancel and second-computer acceptance remain pending. MCI-13 remains 5/6; program count stays 47/108. Earlier statements that identity selection or the adapter were pending describe the preceding checkpoint.
