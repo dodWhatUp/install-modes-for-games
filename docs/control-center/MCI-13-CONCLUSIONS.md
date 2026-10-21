@@ -2,6 +2,16 @@
 
 Result: 5/6 checklist items accepted. Windows-account verification is implemented in source; interactive acceptance remains open. The task is not complete.
 
+2026-10-21 continuation: actual host-A Windows verification successfully created
+a protected, subsequently stopped fixture. Native Cancel has not passed; a
+combined attempt verified both dialogs and a separated Cancel-only attempt timed
+out. The harness now supports one action per dialog through explicit success and
+cancel phases and distinguishes wait failures from Windows' canceled result.
+The connected second host is macOS, unsupported by these native adapters.
+[Current interactive evidence](MCI-13-WINDOWS-INTERACTIVE-VALIDATION.json) keeps
+those results separate. Acceptance stays 47/108 overall and MCI-13 5/6; no
+installation, merge or native account/settings change was performed.
+
 | Item | State and evidence |
 |---|---|
 | Separate identity / enrollment / membership / storage permissions | Implemented in a destination-local, workspace/project-scoped registry. Logical local account IDs bind to the current OS principal and machine, not a transplanted account session. |

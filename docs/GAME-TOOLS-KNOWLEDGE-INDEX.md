@@ -1,5 +1,18 @@
 # Game tools knowledge and recovery index
 
+## Native Windows success and acceptance diagnostics — 2026-10-21
+
+[Interactive evidence](control-center/MCI-13-WINDOWS-INTERACTIVE-VALIDATION.json)
+records actual host-A protected Windows creation, stopped fixture readback and
+the still-open explicit Cancel gate. Separate success/Cancel phases now provide
+one intended action per dialog; timeout/window-close/async failures cannot pass
+as Windows' canceled result. The selected 58 contract tests and 69 export checks
+passed. The connected second host is macOS, unsupported by the reviewed native
+adapters. No installation, merge, credential or native Codex change occurred.
+Acceptance stays 47/108, MCI-08 0/6 and MCI-13 5/6. Continue in Codex for Cancel
+diagnosis; Mac-native authority or stale-device reauthorization needs a separate
+architectural decision.
+
 ## MCI-08 local handover and native acceptance preparation — 2026-10-21
 
 [Native acceptance packet](control-center/MCI-08-NATIVE-ACCEPTANCE.md) covers

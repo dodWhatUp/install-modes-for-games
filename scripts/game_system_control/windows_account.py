@@ -30,6 +30,15 @@ class WindowsAccountDenied(ContextError):
         super().__init__("Windows account verification: " + self.outcome + "; no operation accepted.")
 
 
+class WindowsAccountWaitFailed(ContextError):
+    """A failed local wait, distinct from Windows' explicit canceled result."""
+    REASONS = {"timeout", "owner_window_closed", "async_canceled", "async_error", "unexpected_async_status"}
+
+    def __init__(self, reason):
+        self.reason = reason if type(reason) is str and reason in self.REASONS else "unexpected_async_status"
+        super().__init__("Windows account verification: " + self.reason + "; no operation accepted.")
+
+
 def _hr(value):
     require(value >= 0, "Windows account API failed (HRESULT 0x%08X); no sign-in accepted." % (value & 0xffffffff))
 
@@ -85,9 +94,12 @@ class _Runtime:
             _hr(self.call(operation, 0, c.c_void_p, c.POINTER(c.c_void_p))(operation, self.guid(ASYNC_INFO), c.byref(info)))
             deadline = time.monotonic() + timeout
             while True:
-                if time.monotonic() >= deadline or not pump():
+                if time.monotonic() >= deadline:
                     _hr(self.call(info, 9)(info))  # IAsyncInfo.Cancel
-                    require(False, "Windows account verification canceled or timed out; no sign-in accepted.")
+                    raise WindowsAccountWaitFailed("timeout")
+                if not pump():
+                    _hr(self.call(info, 9)(info))
+                    raise WindowsAccountWaitFailed("owner_window_closed")
                 status = c.c_int32()
                 _hr(self.call(info, 7, c.POINTER(c.c_int32))(info, c.byref(status)))
                 if status.value == 1:
@@ -95,7 +107,7 @@ class _Runtime:
                     _hr(self.call(operation, 8, c.POINTER(c.c_int32))(operation, c.byref(result)))
                     return result.value
                 if status.value != 0:
-                    require(False, "Windows account verification was canceled or failed; no sign-in accepted.")
+                    raise WindowsAccountWaitFailed({2: "async_canceled", 3: "async_error"}.get(status.value, "unexpected_async_status"))
                 time.sleep(0.025)
         finally:
             if info:

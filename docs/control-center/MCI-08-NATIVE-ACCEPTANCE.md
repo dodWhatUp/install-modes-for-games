@@ -4,6 +4,12 @@ Prepared from PR #31 at `0969584`, 2026-10-21. Continue in **Codex** for source
 and device verification. Nothing here authorizes an installation, merge,
 credential change, native Codex import or unattended Windows prompt.
 
+Interactive continuation after `4fa0fa1`: actual host-A protected Windows
+creation passed. Explicit Cancel remains unaccepted after an inadvertently
+verified combined attempt and a timed-out separated attempt. The connected
+second host is macOS, unsupported by these native adapters. See the
+[current interactive evidence](MCI-13-WINDOWS-INTERACTIVE-VALIDATION.json).
+
 The new handover preparation verifies the selected saved files and checkpoint,
 then stops the selected local access registry. Its evidence stays on a different
 volume under that registry's existing audit owner. It cannot certify all writers,
@@ -12,7 +18,7 @@ flush an external application, eject a drive or authorize another computer.
 
 | Gate | Required evidence | Current boundary |
 |---|---|---|
-| Windows A | Actual PIN/Hello success, then Windows' explicit Cancel; stopped fixture | Human check pending |
+| Windows A | Actual PIN/Hello success, then Windows' explicit Cancel; stopped fixture | Success passed; Cancel pending |
 | Windows B | Same independent check, fresh local identity and source hashes | Other physical computer pending |
 | Local handover preparation | Full/delta, byte readback, inactive functional restore, exact stop and audit | Automated fixture; see stage validation |
 | Physical A→B→A | External writers closed, OS release observed each leg, destination-local grants and verification | Physical checks pending |
@@ -29,20 +35,40 @@ vaults. Keep this parent on the computer when the data device moves. No package
 installation is needed by these launchers.
 
 ```powershell
-& $Python -B "$Repo/scripts/tests/Accept-ManagedWorkspaceWindowsAccount.py" --local-parent $LocalParent --host-label A
+& $Python -B "$Repo/scripts/tests/Accept-ManagedWorkspaceWindowsAccount.py" --local-parent $LocalParent --host-label A --phase success
 ```
 
 The default is read-only preflight: availability, source head/file hashes,
 runtime and host label; no registry or prompt. Availability alone does not pass
-the interactive gate. When the human is present, run the same command with
-`--run-interactive`. Confirm the **first** Windows dialog using PIN/biometric;
-choose **Cancel** in the second. Enter credentials only in the native Windows UI.
+the interactive gate. When the human is present, add `--run-interactive` to the
+success command. It opens exactly one Windows dialog: confirm using PIN/Hello.
+The small owner window is titled **Verify Windows account** and displays an
+operation code. Enter credentials only in Windows' native verification dialog.
 
-Keep `ACCEPTANCE.private.json` locally. It must report `fresh_creation: passed`,
-`canceled_resume_kept_stop: passed`, `interactive_acceptance: passed` and
-`fixture_access_left_stopped: true`. Device busy, unavailable, dismissal/error or
-an accidentally accepted second prompt does not pass Cancel. Failures preserve a
-receipt and stop any registry successfully created by this run.
+Keep the success fixture path as `$Fixture`. Before its existing 300-second
+freshness expires, explicitly start the separate Cancel phase:
+
+```powershell
+& $Python -B "$Repo/scripts/tests/Accept-ManagedWorkspaceWindowsAccount.py" --local-parent $LocalParent --host-label A --phase cancel --fixture $Fixture --run-interactive
+```
+
+This opens exactly one Windows dialog: choose **Cancel**, without entering PIN
+or approving verification. It selects only the named protected acceptance
+fixture, checks its locally owned state and native/access/IO source hashes, then
+requires Windows' explicit canceled result from resume. A new sibling receipt
+pairs the original success receipt's hash and preserves it unchanged. No new
+permission or reusable sign-in proof comes from that receipt. Stale, missing-stop
+or changed-owner fixtures refuse; no timestamp refresh or stop removal is added.
+
+Keep both `ACCEPTANCE.private.json` files locally. Both phases must say
+`phase_acceptance: passed` and `fixture_access_left_stopped: true`; success needs
+`fresh_creation: passed`, Cancel needs `canceled_resume_kept_stop: passed` and
+`cancel_outcome: native_canceled`. A single phase deliberately leaves the combined
+`interactive_acceptance` field incomplete. Legacy commands still default to
+combined mode for compatibility; adjacent dialogs are less clear for human use.
+Device busy, owner-window closure, timeout, asynchronous cancellation/error or a
+verified Cancel prompt does not pass Cancel. Typed wait failures remain distinct
+from Windows' canceled result, and cleanup failure cannot claim success or stop.
 
 Repeat on B using `--host-label B`, B's own private parent and B's own current
 account. The label is organizational, not identity authentication. Compare the

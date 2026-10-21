@@ -1,5 +1,26 @@
 # MCI-08 — bounded seed checkpoint source proof
 
+## Native acceptance continuation — 2026-10-21
+
+After `4fa0fa1`, actual host-A Windows verification successfully created a
+protected acceptance fixture and left access stopped. Explicit Cancel remains
+open: a combined attempt verified both prompts, and a separated Cancel attempt
+timed out. Neither counts as cancellation. The existing Windows adapter now
+reports bounded distinct wait failures, and its acceptance harness supports
+separate success and Cancel phases with exact local fixture/source checks. No
+authorization, freshness, expiry or stop rule was relaxed. The 58 selected
+contract cases and 69 export checks passed; these overlap earlier stages and are
+not added to their counts.
+
+[Interactive verification](MCI-13-WINDOWS-INTERACTIVE-VALIDATION.json) retains
+sanitized receipt hashes. Raw receipts, local authority and the source-pinned
+launchers remain private. The connected second computer was observed as macOS;
+the Windows-only native account/volume adapters cannot certify it. Physical
+release/movement and destination acceptance remain open. Acceptance stays
+47/108, MCI-08 0/6 and MCI-13 5/6. Continue in Codex for Cancel diagnosis and
+supported-host checks; return to ChatGPT Pro for a new Mac-native authority or
+stale stopped-device reauthorization decision. Nothing was installed or merged.
+
 ## Local handover preparation — 2026-10-21
 
 Continuation from `0969584` adds exact-plan local quiescence through the existing
