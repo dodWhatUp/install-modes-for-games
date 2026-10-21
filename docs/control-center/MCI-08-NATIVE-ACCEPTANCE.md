@@ -209,6 +209,14 @@ copy, its before-images and any later work. A subset receipt must remain
 `whole_checkpoint: false`. Stale unknown cooperative locks require owner/process
 reconciliation; this stage adds no lock reclamation or journal repair.
 
+Recovery preview requires an explicit nonempty selection. Selected prior files
+and their manifest are checked again before the new copy is completed. If either
+changes during recovery, retain the new incomplete copy and the later work,
+review the changed selection, and use a new preview and operation. Unselected
+later files remain preserved without expanding the recovery scope. Injected
+disk-full writes and killed test processes are source evidence only; they do
+not establish actual storage exhaustion, device-removal or power-loss behavior.
+
 Continue in **Codex** for these bounded checks and source fixes. Return to
 **ChatGPT Pro** if physical observations require changing drive authority,
 ancestry, stale-device reauthorization or recovery semantics. No such change is

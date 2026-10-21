@@ -3,18 +3,23 @@
 The authored byte carrier copies manifests/objects only. Grants stay local.
 """
 from copy import deepcopy
+import errno
 import json
+import os
 from pathlib import Path
 import runpy
 import shutil
+import subprocess
 import sys
 import unittest
+from unittest.mock import patch
 
 SCRIPTS = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(SCRIPTS))
 ns = runpy.run_path(str(SCRIPTS / "tests/Test-ManagedWorkspaceCheckpoints.py"))
 Fixture, ACTOR, REFUSED, snapshot = (ns[k] for k in ("Fixture", "ACTOR", "REFUSED", "snapshot"))
 from game_system_control.checkpoints import validate_package, _package, MissingParents
+from game_mod_ops.safety import ModError
 from GameToolUserData import digest
 
 
@@ -264,6 +269,117 @@ class ExchangeTests(unittest.TestCase):
         call("checkpoint-restore", {"plan": p}, "--accept", p["plan_sha256"])
         rollback = call("checkpoint-rollback-preview", {"source": "checkpoint-cli-parent", "incomplete": "reconstruction-cli-current", "selection": self.f.selection, "destination": "reconstruction-cli-rollback", "operation_id": "cli-rollback", "package_id": sent["package_id"]})
         self.assertEqual(rollback["recovery_kind"], "rollback_parent_subset")
+
+
+class RecoveryBoundaryTests(unittest.TestCase):
+    def setUp(self):
+        self.f = Fixture()
+        self.f.selection = [{"content_class": "project_source", "relative": "numbers.json"}]
+
+    def tearDown(self): self.f.close()
+
+    def restored(self):
+        _, sent = self.f.publish()
+        p = self.f.reconstruct_preview()
+        self.f.service.reconstruct(p, p["plan_sha256"])
+        old = self.f.outputs / "reconstruction-restore"
+        recovery = self.f.service.preview_recovery("checkpoint-seed", "reconstruction-restore", self.f.selection,
+                                                  "reconstruction-recover", "recover", sent["package_id"])
+        return old, recovery
+
+    def test_missing_recovery_selection_refuses_during_read_only_preview(self):
+        before = snapshot(self.f.root)
+        for selection in (None, [], {}, "numbers.json"):
+            with self.subTest(selection=selection), self.assertRaises(REFUSED):
+                self.f.service.preview_recovery("absent", "absent", selection, "reconstruction-no", "no", "a" * 64)
+        self.assertEqual(before, snapshot(self.f.root))
+
+    def test_selected_before_image_drift_during_recovery_preserves_both_copies(self):
+        old, p = self.restored()
+        active = snapshot(self.f.project / "source")
+        def edit(phase):
+            if phase == "file_reconstructed": (old / "data/source/numbers.json").write_bytes(b"later external work")
+        with self.assertRaises(REFUSED): self.f.service.reconstruct(p, p["plan_sha256"], observer=edit)
+        new = self.f.outputs / "reconstruction-recover"
+        self.assertEqual((old / "data/source/numbers.json").read_bytes(), b"later external work")
+        self.assertEqual(active, snapshot(self.f.project / "source"))
+        self.assertFalse((new / "_COMPLETE.json").exists())
+        before = snapshot(old), snapshot(new)
+        state = self.f.service.inspect_reconstruction("reconstruction-recover")
+        self.assertEqual(state["state"], "RECONSTRUCTION_INCOMPLETE")
+        self.assertFalse(state["automatic_retry"])
+        self.assertEqual(before, (snapshot(old), snapshot(new)))
+
+    def test_prior_manifest_drift_during_recovery_cannot_receive_completion(self):
+        old, p = self.restored()
+        changed = deepcopy(p["recovery_package"]["checkpoint"]["core"])
+        changed["replica_id"] = "later-replica"
+        raw = json.dumps(_package(changed)).encode()
+        def edit(phase):
+            if phase == "file_reconstructed": (old / "MANIFEST.json").write_bytes(raw)
+        with self.assertRaises(REFUSED): self.f.service.reconstruct(p, p["plan_sha256"], observer=edit)
+        self.assertEqual((old / "MANIFEST.json").read_bytes(), raw)
+        self.assertFalse((self.f.outputs / "reconstruction-recover/_COMPLETE.json").exists())
+
+    def test_unselected_later_work_does_not_expand_the_recovery_selection(self):
+        old, p = self.restored()
+        def edit(phase):
+            if phase == "file_reconstructed": (old / "data/source/later.txt").write_bytes(b"unselected later work")
+        receipt = self.f.service.reconstruct(p, p["plan_sha256"], observer=edit)
+        self.assertFalse(receipt["whole_checkpoint"])
+        self.assertEqual((old / "data/source/later.txt").read_bytes(), b"unselected later work")
+        self.assertFalse((self.f.outputs / "reconstruction-recover/data/source/later.txt").exists())
+        self.assertEqual(self.f.service.inspect_reconstruction("reconstruction-recover")["state"], "RECONSTRUCTED_INACTIVE")
+
+    def test_partial_disk_full_write_is_inspectable_and_recovered_to_a_new_copy(self):
+        _, sent = self.f.publish()
+        p = self.f.reconstruct_preview()
+        active = snapshot(self.f.project / "source")
+        def full(source, target, expected_sha256, expected_bytes, **kwargs):
+            with target.open("xb") as handle:
+                handle.write(b"partial")
+                handle.flush()
+                os.fsync(handle.fileno())
+            raise OSError(errno.ENOSPC, "Synthetic disk-full write")
+        with patch("game_system_control.checkpoints.copy_stream_new", side_effect=full), self.assertRaises(OSError) as failure:
+            self.f.service.reconstruct(p, p["plan_sha256"])
+        self.assertEqual(failure.exception.errno, errno.ENOSPC)
+        old = self.f.outputs / "reconstruction-restore"
+        before = snapshot(old)
+        state = self.f.service.inspect_reconstruction("reconstruction-restore")
+        self.assertEqual(state["state"], "RECONSTRUCTION_INCOMPLETE")
+        self.assertTrue(state["partial"])
+        r = self.f.service.preview_recovery("checkpoint-seed", "reconstruction-restore", self.f.selection,
+                                            "reconstruction-recover", "recover", sent["package_id"])
+        result = self.f.service.reconstruct(r, r["plan_sha256"])
+        self.assertFalse(result["whole_checkpoint"])
+        self.assertEqual(before, snapshot(old))
+        self.assertEqual(active, snapshot(self.f.project / "source"))
+        self.assertEqual(self.f.service.inspect_reconstruction("reconstruction-recover")["state"], "RECONSTRUCTED_INACTIVE")
+
+    def test_killed_reconstruction_is_read_only_inspection_with_unknown_locks_retained(self):
+        self.f.publish()
+        p = self.f.reconstruct_preview()
+        path = self.f.root / "private-reconstruction-plan.json"
+        path.write_text(json.dumps(p))
+        code = "import sys,os,runpy,json;from pathlib import Path;ns=runpy.run_path(sys.argv[1]);scope=ns['identity_fixture']();s=ns['reopen'](Path(sys.argv[2]));p=json.loads(Path(sys.argv[3]).read_text());s.reconstruct(p,p['plan_sha256'],observer=lambda phase: os._exit(17) if phase=='file_reconstructed' else None)"
+        result = subprocess.run([sys.executable, "-B", "-c", code, str(SCRIPTS / "tests/Test-ManagedWorkspaceCheckpoints.py"),
+                                 str(self.f.root), str(path)], capture_output=True, text=True, timeout=45)
+        self.assertEqual(result.returncode, 17, result.stderr)
+        before = snapshot(self.f.root)
+        state = self.f.service.inspect_reconstruction("reconstruction-restore")
+        self.assertEqual(state["state"], "RECONSTRUCTION_INCOMPLETE")
+        self.assertFalse(state["automatic_retry"])
+        self.assertEqual(before, snapshot(self.f.root))
+        for owner in ("access", "policy", "bindings"):
+            self.assertTrue((self.f.root / owner / ".workspace-state.lock").exists())
+        r = self.f.service.preview_recovery("checkpoint-seed", "reconstruction-restore", self.f.selection,
+                                            "reconstruction-recover", "recover", p["package"]["package_id"])
+        with self.assertRaises(ModError) as refused:
+            self.f.service.reconstruct(r, r["plan_sha256"])
+        self.assertEqual(refused.exception.code, "OWNER_UNKNOWN")
+        self.assertFalse((self.f.outputs / "reconstruction-recover").exists())
+        self.assertEqual(before, snapshot(self.f.root))
 
 
 if __name__ == "__main__": unittest.main(verbosity=2)

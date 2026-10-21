@@ -122,6 +122,14 @@ copy and active files, bind current selected before-images, and return
 `whole_checkpoint: false` for subsets. Unlisted restored files prevent a
 completion claim. No source code, hooks or instruction discovery files execute.
 
+Recovery requires an explicit nonempty selection during preview. The existing
+service rechecks the selected prior files and their manifest before writing and
+again before completion. A selected edit during copying leaves a new incomplete
+copy and preserves both the edit and the earlier attempt; prepare another preview
+and a new operation after review. Unselected later work stays outside that check
+and is never copied implicitly. These saved-byte observations do not provide an
+atomic application snapshot or prevent a later external edit.
+
 The byte carrier must first be locally staged under an already granted results
 scope. No network/cloud carrier or credential transfer is implemented. Received,
 verified and adopted are distinct receipt fields; v2 receipts identify their

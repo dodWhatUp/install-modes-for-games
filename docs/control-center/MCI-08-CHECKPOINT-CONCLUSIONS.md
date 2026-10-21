@@ -1,5 +1,52 @@
 # MCI-08 — bounded seed checkpoint source proof
 
+## Recovery boundary audit — 2026-10-21
+
+Continuation from `a1af35e` fixes two reproduced defects in the existing
+checkpoint service. Selected prior files and their manifest are now rechecked
+before a recovery receives completion. A selected edit during copying preserves
+the edit and both attempts, and leaves the new copy incomplete. Recovery preview
+also rejects a missing or empty selection immediately, rather than generating a
+plan that commit cannot execute. Unselected later work remains outside the
+selection and is preserved. Package identities, CLI interfaces and local
+authorization/freshness rules retain their existing meanings.
+
+[Recovery audit evidence](MCI-08-RECOVERY-BOUNDARY-VALIDATION.json) records the
+79 selected Python case identities: **77 passed and two existing environment
+cases skipped**, with six new recovery cases. The 69 source-export contracts
+passed. Earlier stages and repeated cases are not added. The record includes
+injected partial disk-full writes and actual killed
+test-child inspection. A fresh operation can recover selected bytes after an
+ordinary write failure; unknown locks left by a killed child still refuse new
+writes. No lock reclamation, old-journal repair or active overwrite was added.
+These observations do not establish an atomic application snapshot, actual
+device removal, actual storage exhaustion or power-loss durability.
+
+One new crash-test assertion initially expected a generic refusal instead of the
+existing lock owner's `ModError`. Its corrected targeted check confirmed
+`OWNER_UNKNOWN`, preserved locks and no new destination. The validation record
+keeps that test-only correction explicit and counts the case once.
+
+The policy/context-queue reconciliation remains an explicit upgrade through
+`PolicyStore`: its focused checks retain the legacy defect reproduction and
+verify independent v2 notices, configuration-drift refusal and whole-store CAS.
+No second policy or queue owner was introduced.
+
+A fresh native success retry timed out before creating a registry. The human
+reports completing PIN/Hello; completion relative to the deadline remains
+unconfirmed and needs diagnosis. Earlier host-A success remains recorded, and
+explicit Cancel remains open. A subsequent private wait observation preserved
+the existing native results, cleanup and deadlines: 2,351 polls observed only
+`Started` through the 60-second wait, with no completed result or registry. The
+cause and human completion timing remain unconfirmed. No adapter, authentication
+or wait limit was changed. The private
+acceptance packet retains separate success/Cancel phases and independent B-local
+authority requirements. Original acceptance stays **47/108, MCI-08 0/6 and
+MCI-13 5/6**. Continue in **Codex** for bounded source and prepared native/device
+checks. Return to **ChatGPT Pro** for a new Mac-native authority or stale-device
+reauthorization contract, or material ancestry/recovery decisions. Nothing was
+installed or merged.
+
 ## Native acceptance continuation — 2026-10-21
 
 After `4fa0fa1`, actual host-A Windows verification successfully created a

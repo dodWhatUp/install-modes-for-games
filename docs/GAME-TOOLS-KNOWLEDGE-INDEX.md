@@ -1,5 +1,19 @@
 # Game tools knowledge and recovery index
 
+## MCI-08 recovery boundary audit — 2026-10-21
+
+[Current conclusions](control-center/MCI-08-CHECKPOINT-CONCLUSIONS.md#recovery-boundary-audit--2026-10-21)
+and [source-bound evidence](control-center/MCI-08-RECOVERY-BOUNDARY-VALIDATION.json)
+record selected prior-file/manifest drift refusal before recovery completion,
+explicit nonempty selection during preview, preserved later work, injected
+partial disk-full recovery and killed-child inspection with unknown locks
+retained. Existing checkpoint, IO, access, policy, vault and Journal owners are
+reused. The explicit policy revision upgrade remains the queue-coupling fix;
+legacy meanings are preserved. A fresh Windows success retry timed out before
+registry creation; native Cancel, supported B and physical handover stay open.
+Acceptance remains 47/108, MCI-08 0/6 and MCI-13 5/6. Continue in Codex; Mac-native
+authority or stale-device reauthorization needs architectural review in Pro.
+
 ## Native Windows success and acceptance diagnostics — 2026-10-21
 
 [Interactive evidence](control-center/MCI-13-WINDOWS-INTERACTIVE-VALIDATION.json)

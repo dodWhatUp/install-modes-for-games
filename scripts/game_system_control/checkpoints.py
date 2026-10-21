@@ -26,7 +26,7 @@ from .contracts import require, identifier, SHA, ContextError
 from .vault import CLASSES, EXCLUDED, _relative_managed
 from .policy import evaluate, policy_revision
 
-VERSION = "0.3.0-preview.1"
+VERSION = "0.3.1-preview.1"
 _ACTIVATION_NAMES = {"agents.md", "agents.override.md", "claude.md", "skill.md"}
 _COVERAGE = {
     "mode": "explicit_selected_files", "unselected_files": "not_captured",
@@ -721,6 +721,7 @@ class CheckpointService:
 
     def preview_recovery(self, source_relative, incomplete_relative, selection, destination, operation_id, expected_package_id, *, parent_sources=(), rollback=False):
         """Recover selected files to a new copy, preserving all interrupted work."""
+        require(type(selection) is list and selection, "Granular recovery requires an explicit nonempty selection.")
         plan = self.preview_reconstruction(source_relative, destination, operation_id, expected_package_id, parent_sources=parent_sources, selection=selection)
         old = self._target(incomplete_relative)
         require(type(rollback) is bool and old.is_dir(), "Select an existing inactive copy and an explicit recovery kind.")
@@ -761,13 +762,18 @@ class CheckpointService:
             require(prior == package if plan["recovery_kind"] == "recover_subset" else prior["checkpoint"]["core"]["parents"] == [package["checkpoint"]["checkpoint_id"]], "Recovery ancestry mismatch.")
             specs.extend(("managed.read", r["content_class"], "transfer") for r in prior["checkpoint"]["core"]["files"])
         check = lambda: self._check(specs, plan["expected_state"])
+        def verify_recovery():
+            if "recovery_of" in plan:
+                old = self._target(plan["recovery_of"])
+                require(_load(old / "MANIFEST.json") == plan["recovery_package"] and
+                        self._recovery_observation(old, rows, check) == plan["recovery_observation"],
+                        "Selected interrupted files changed; review recovery again.")
         with self._locked():
             check()
             source, target = self._target(plan["source"]), self._target(plan["destination"])
             observed, sources = self._graph(plan["source"], plan.get("parent_sources", ()), specs, plan["expected_state"])
             require(observed == package, "Package or publication evidence changed after preview.")
-            if "recovery_of" in plan:
-                require(_load(self._target(plan["recovery_of"]) / "MANIFEST.json") == plan["recovery_package"] and self._recovery_observation(self._target(plan["recovery_of"]), rows, check) == plan["recovery_observation"], "Selected interrupted files changed; review recovery again.")
+            verify_recovery()
             require(target.parent.is_dir() and not target.exists(), "Existing reconstruction is inspection-only; preserve it.")
             check(); target.mkdir(mode=0o700)
             start = {"operation_id": plan["operation_id"], "plan_sha256": accepted_sha256, "package_id": package["package_id"], "mode": "inactive_new_copy"}
@@ -789,7 +795,9 @@ class CheckpointService:
                 for row in rows:
                     path = target / "data" / CLASSES[row["content_class"]] / row["relative"]
                     require(stream_fingerprint(path, row["bytes"], before_chunk=check) == {"bytes": row["bytes"], "sha256": row["sha256"]}, "Reconstruction changed before completion; preserve the incomplete copy.")
-                _restored_closure(target, rows); check()
+                _restored_closure(target, rows)
+                verify_recovery()
+                check()
                 receipt = {"state": "RECONSTRUCTED_INACTIVE", "operation_id": plan["operation_id"], "package_id": package["package_id"],
                            "files": len(rows), "bytes": sum(r["bytes"] for r in rows), "active_adoption": False, "indexed": False, "context_exposed": False}
                 if "selection" in start: receipt["whole_checkpoint"] = False

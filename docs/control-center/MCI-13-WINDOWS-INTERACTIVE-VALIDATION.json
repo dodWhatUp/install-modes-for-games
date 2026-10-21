@@ -40,6 +40,35 @@
       "paired_success_receipt_sha256": "3d7d53dfc8861b4f168fd4efa429d441c7cbf75e4567570ef0f4734be04bb1e0",
       "failure_stage": "cancel_resume",
       "human_action_observation": "awaiting clarification; no inference that Cancel was selected"
+    },
+    {
+      "phase": "success_only_recovery_continuation",
+      "continuation_base": "a1af35ede33edce9bd45abb8455e37ee48debdc2",
+      "outcome": "timeout",
+      "failure_stage": "create_windows_registry",
+      "access_registry_created": false,
+      "cancel_accepted": false,
+      "receipt_sha256": "b92bd41dca347e0be92eaf69f9ffcebd36bb6f4277dd7e28c67bf75544549ad1",
+      "earlier_success_remains_historical_evidence": true,
+      "human_action_observation": "Human reports completing PIN/Hello; completion relative to the wait deadline remains unconfirmed",
+      "diagnosis": "Native completion discrepancy remains open; bounded private status/timing observation prepared without changing source, return values, timeouts or authentication"
+    },
+    {
+      "phase": "success_only_private_wait_observation",
+      "outcome": "timeout",
+      "access_registry_created": false,
+      "receipt_sha256": "32f003e12470706e88ab99f64aa075d9df37bf95653ce0afd61e1c4976ddb656",
+      "trace_sha256": "e28c2c41fc45963d1c4ff8e39fc4c9d295e5acf01c6b70aef44a4aba11db19be",
+      "original_native_results_deadlines_and_cleanup_preserved": true,
+      "native_status_polls": 2351,
+      "last_native_status": "Started",
+      "last_status_elapsed_ms": 59968,
+      "elapsed_ms": 60000,
+      "completed_status_or_result_received": false,
+      "cancel_requested": true,
+      "close_requested": true,
+      "credential_or_UI_content_recorded": false,
+      "conclusion": "No native completion was delivered to this wait before deadline; human completion timing and the cause remain unconfirmed"
     }
   ],
   "window_observation": {
