@@ -26,7 +26,7 @@ from .contracts import require, identifier, SHA, ContextError
 from .vault import CLASSES, EXCLUDED, _relative_managed
 from .policy import evaluate, policy_revision
 
-VERSION = "0.2.0-preview.1"
+VERSION = "0.3.0-preview.1"
 _ACTIVATION_NAMES = {"agents.md", "agents.override.md", "claude.md", "skill.md"}
 _COVERAGE = {
     "mode": "explicit_selected_files", "unselected_files": "not_captured",
@@ -441,6 +441,132 @@ class CheckpointService:
     def _scope(self, package):
         core = package["checkpoint"]["core"]
         require((core["workspace_id"], core["project_id"]) == (self.actor["workspace_id"], self.actor["project_id"]), "Package scope mismatch.")
+
+    def _handover_path(self, operation_id):
+        _named(operation_id)
+        return local_path(self.access.state.root / "audit" / ("handover-" + operation_id))
+
+    def _handover_local(self):
+        binding = self.registry._binding(self.vault_id)
+        for store in (self.access, self.policy, self.registry):
+            require(self.registry.observer(store.state.root)["volume_id"] != binding["volume"]["volume_id"],
+                    "Handover evidence and all local authority stores must stay off the selected data volume.")
+        return binding["volume"]["volume_id"]
+
+    def _handover_verify(self, source, parents, package, vector):
+        specs = [("managed.read", "selected_results", "transfer")]
+        specs += [("managed.read", r["content_class"], "transfer") for r in package["checkpoint"]["core"]["files"]]
+        def check():
+            self._check(specs, vector)
+            require(self.access.authorize({**self.actor, "capability": "enrollment.manage"}, now=self.clock())["allowed"],
+                    "Current local administrator authorization is required for handover preparation.")
+        check()
+        observed, _ = self._graph(source, parents, specs, vector)
+        require(observed == package and package["schema_version"] == 2 and
+                package["checkpoint"]["core"]["replica_id"] == self.registry._binding(self.vault_id)["marker"]["replica_id"],
+                "Select an exact locally produced v2 checkpoint with complete publication evidence.")
+        rows = package["checkpoint"]["core"]["files"]
+        require(self._sources([{k: r[k] for k in ("content_class", "relative")} for r in rows], check) == rows,
+                "Saved selected files differ from the checkpoint; publish a fresh checkpoint before handover.")
+        check()
+
+    def preview_handover(self, source, operation_id, expected_package_id, *, parent_sources=()):
+        """Plan local quiescence only; external writers and native unmount remain pending."""
+        _hash(expected_package_id); self._handover_path(operation_id)
+        vector = self._check([("managed.read", "selected_results", "transfer")])
+        package = validate_package(_load(self._target(source) / "MANIFEST.json")); self._scope(package)
+        require(package["package_id"] == expected_package_id, "Select the exact handover package.")
+        self._handover_verify(source, parent_sources, package, vector)
+        volume = self._handover_local()
+        require(not self._handover_path(operation_id).exists(), "Existing handover attempt is inspection-only; do not replay.")
+        return self._plan({"action": "prepare_handover", "operation_id": operation_id, "source": source,
+                           "parent_sources": list(parent_sources), "package": package, "expected_state": vector,
+                           "data_volume_id": volume, "effects": ["stop_local_access_and_write_local_evidence"],
+                           "pending": ["external_writer_shutdown", "native_safe_unmount", "physical_handover", "destination_local_acceptance"]})
+
+    def _stop_observation(self):
+        path = self.access.state.root / "LOCAL-STOP.json"
+        if not path.exists() and not path.is_symlink(): return None
+        raw, stat = _read(path)
+        return {"sha256": digest(raw), "file_identity_sha256": digest(_canonical(
+            [stat.st_dev, stat.st_ino, stat.st_mtime_ns, stat.st_ctime_ns]))}
+
+    def prepare_handover(self, plan, accepted_sha256, *, observer=None):
+        self._accept(plan, accepted_sha256, "prepare_handover")
+        fields = {"schema_version", "actor", "vault_id", "plan_sha256", "action", "operation_id", "source", "parent_sources", "package",
+                  "expected_state", "data_volume_id", "effects", "pending"}
+        require(set(plan) == fields and plan["effects"] == ["stop_local_access_and_write_local_evidence"] and
+                plan["pending"] == ["external_writer_shutdown", "native_safe_unmount", "physical_handover", "destination_local_acceptance"],
+                "Unsupported handover effects; this operation cannot release or unmount a drive.")
+        package = validate_package(plan["package"]); self._scope(package)
+        with self._locked():
+            self._handover_verify(plan["source"], plan["parent_sources"], package, plan["expected_state"])
+            require(self._handover_local() == plan["data_volume_id"], "Data-volume identity changed.")
+            target = self._handover_path(plan["operation_id"])
+            require(not target.exists(), "Existing handover attempt is inspection-only; preserve it.")
+            target.mkdir(mode=0o700)
+            intent = {k: deepcopy(plan[k]) for k in ("operation_id", "plan_sha256", "actor", "vault_id", "expected_state", "data_volume_id")}
+            intent.update(checkpoint_id=package["checkpoint"]["checkpoint_id"], package_id=package["package_id"])
+            _write_new(target / "INTENT.json", _canonical(intent))
+            with Journal.create(target / "AUDIT.jsonl", {"owner": "managed-checkpoint-handover", **intent}) as journal:
+                journal.append("operation_intent", intent)
+                if observer: observer("handover_verified")
+                # Recheck saved bytes, receipts, stop, expiry and every revision
+                # under the existing locks immediately before stopping access.
+                self._handover_verify(plan["source"], plan["parent_sources"], package, plan["expected_state"])
+                require(self._handover_local() == plan["data_volume_id"], "Local evidence volume changed.")
+                self.access.stop_local()
+                stop = self._stop_observation()
+                if observer: observer("local_access_stopped")
+                require(self._vector() == plan["expected_state"] and stop == self._stop_observation(), "State or stop changed after quiescence; inspect without replay.")
+                result = {"state": "LOCAL_ACCESS_STOPPED", "operation_id": plan["operation_id"], "plan_sha256": accepted_sha256,
+                          "checkpoint_id": intent["checkpoint_id"], "package_id": intent["package_id"], "stop": stop,
+                          "drive_release": "pending_native_unmount", "all_writers_released": False, "physical_transfer_ready": False}
+                _write_new(target / "RESULT.json", _canonical(result))
+                if observer: observer("handover_receipt_written")
+                journal.append("operation_result", result)
+                journal.append("session_closed", {"reason": "local_handover_preparation_only"})
+            return result
+
+    def inspect_handover(self, operation_id):
+        """Inspect local evidence even while stopped or the data volume is absent.
+
+        Never reads that volume, resumes access, repairs a journal or removes a
+        lock. The current OS owner can inspect private evidence after expiry.
+        """
+        target = self._handover_path(operation_id)
+        self.access.snapshot()  # Existing local OS ownership and schema checks.
+        require(target.is_dir(), "Selected local handover attempt is absent.")
+        base = {"operation_id": operation_id, "effect": "none", "automatic_retry": False,
+                "drive_release": "pending_native_unmount", "all_writers_released": False, "physical_transfer_ready": False}
+        try:
+            intent = _load(target / "INTENT.json")
+            require(type(intent) is dict and set(intent) == {"operation_id", "plan_sha256", "actor", "vault_id", "expected_state", "data_volume_id", "checkpoint_id", "package_id"} and
+                    intent["operation_id"] == operation_id and intent["actor"] == self.actor and intent["vault_id"] == self.vault_id, "Handover intent scope mismatch.")
+            for key in ("plan_sha256", "checkpoint_id", "package_id"): _hash(intent[key])
+            require(type(intent["expected_state"]) is dict and set(intent["expected_state"]) == {"access", "policy", "bindings"}, "Missing handover revision vector.")
+            for revision in intent["expected_state"].values(): _hash(revision)
+            stop = self._stop_observation()
+            if stop is None: return {**base, "state": "LOCAL_STOP_NOT_PRESENT"}
+            if not (target / "RESULT.json").exists(): return {**base, "state": "LOCAL_ACCESS_STOPPED_RECEIPT_PENDING"}
+            result = _load(target / "RESULT.json")
+            require(type(result) is dict and set(result) == {"state", "operation_id", "plan_sha256", "checkpoint_id", "package_id", "stop", "drive_release", "all_writers_released", "physical_transfer_ready"} and
+                    all(result[k] == intent[k] for k in ("operation_id", "plan_sha256", "checkpoint_id", "package_id")) and result["state"] == "LOCAL_ACCESS_STOPPED" and
+                    result["drive_release"] == base["drive_release"] and result["all_writers_released"] is False and result["physical_transfer_ready"] is False,
+                    "Invalid local preparation evidence; physical release is not certified.")
+            require(type(result["stop"]) is dict and set(result["stop"]) == {"sha256", "file_identity_sha256"}, "Missing exact stop observation.")
+            for sha in result["stop"].values(): _hash(sha)
+            if result["stop"] != stop: return {**base, "state": "LOCAL_STOP_REPLACED"}
+            if self._vector() != intent["expected_state"]: return {**base, "state": "LOCAL_STATE_CHANGED"}
+            audit = inspect_journal(target / "AUDIT.jsonl"); records = audit["verified_records"]
+            clean = (audit["valid"] and audit["clean_end"] and records[-1]["kind"] == "session_closed" and
+                     records[0]["data"] == {"owner": "managed-checkpoint-handover", **intent} and
+                     [r["data"] for r in records if r["kind"] == "operation_intent"] == [intent] and
+                     [r["data"] for r in records if r["kind"] == "operation_result"] == [result])
+            return {**base, "state": "LOCAL_ACCESS_STOPPED" if clean else "LOCAL_ACCESS_STOPPED_RECEIPT_PENDING",
+                    "checkpoint_id": intent["checkpoint_id"], "package_id": intent["package_id"]}
+        except (ContextError, ValueError, OSError, JournalError):
+            return {**base, "state": "HANDOVER_UNCERTAIN"}
 
     def _graph(self, relative, parent_sources, specs, vector, *, receipt=True):
         """Resolve only explicitly selected local parents, at most eight nodes.

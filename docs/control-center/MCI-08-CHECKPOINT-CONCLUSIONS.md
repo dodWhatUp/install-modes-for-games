@@ -1,5 +1,57 @@
 # MCI-08 — bounded seed checkpoint source proof
 
+## Local handover preparation — 2026-10-21
+
+Continuation from `0969584` adds exact-plan local quiescence through the existing
+checkpoint/access/Journal owners. It verifies the published v2 graph and current
+selected saved files under the existing locks, then invokes local stop. Evidence
+and all authority stores must remain off the data volume. The operation writes no
+data-volume bytes and creates no drive lease/owner registry. Inspection remains
+local while access is stopped or the data volume is absent. Missing/cancelled
+receipts, unknown locks, changed local revisions and replaced stop markers never
+become a release claim or automatic replay.
+
+All receipts retain `physical_transfer_ready: false`,
+`all_writers_released: false` and pending native unmount. This is the local
+preparation portion of the original drive-handover check. Actual external writer
+shutdown, native OS release, physical movement and destination acceptance are
+still separate. An actual forced test-child exit after local stop preserved stop,
+all three stale cooperative locks and inspectable pending evidence. A fresh
+receive test verified complete receipt-pending payloads into another new
+operation while preserving the original attempt and journal unchanged.
+
+A retained one-host native Windows fixture passed full/delta publication,
+inactive byte and functional readback, local preparation and stop inspection
+using real principal and volume observations. It used local OS-session test
+authorization; no protected prompt, eject, move or other physical host was tested.
+See [stage verification](MCI-08-HANDOVER-VALIDATION.json).
+
+The selected stage checks have **127 distinct passes and two environment skips**
+across 129 Python cases, including 26 new handover/acceptance-preparation cases.
+The 69 source-export contracts passed. An initial negative-test setup omitted its
+required project ID; that fixture was corrected and the case passed on recheck.
+The validation record keeps that correction and targeted case accounting explicit;
+earlier/intermediate runs are not added again. Windows symlink privilege and the
+optional `jsonschema` dependency remain the two skips; no dependency was installed.
+
+The [native acceptance packet](MCI-08-NATIVE-ACCEPTANCE.md) prepares explicit
+Windows success/Cancel on A and B, fresh local grants, physical release/return
+and unexpected-removal recovery. Source-pinned private launchers and inert B
+request templates are retained outside Git. The Windows harness now defaults to
+non-writing preflight; `--run-interactive` is required for its two human prompts.
+An available verifier is not an interactive pass.
+
+One reproduced limitation is now explicit: a stopped registry older than the
+existing 300-second freshness window cannot resume or heartbeat through current
+authorization. Tests confirm refusal without timestamp renewal or stop removal.
+Production stale-device reauthorization is an access-owner follow-up, not a
+bypass added to checkpoint handover.
+
+**Acceptance stays 47/108; MCI-08 0/6; MCI-13 5/6. Next environment: Codex** for
+the prepared native/physical checks. Return to ChatGPT Pro if evidence requires
+changing the accepted authority, ancestry, stale-device reauthorization or
+recovery contracts. This stage installs and merges nothing.
+
 ## Continuation candidate — 2026-10-21
 
 The reviewed PR #31 seed at `cc5d8f2841f562f611cec4864c9b3f9ec490af18`

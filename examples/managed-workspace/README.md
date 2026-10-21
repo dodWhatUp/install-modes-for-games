@@ -86,7 +86,7 @@ Windows/macOS or multi-device acceptance. Default unit command:
 ```text
 python -B scripts/tests/Test-ManagedWorkspaceCheckpoints.py
 ```
-# Offline full/delta continuation — source candidate 0.2
+## Offline full/delta continuation — source candidate 0.2
 
 The existing seed commands and v1 identities remain supported. The additive
 v2 directory format keeps one logical checkpoint identity across full/delta
@@ -147,3 +147,31 @@ Source/synthetic evidence and remaining gates are in
 This candidate is not installed or merged. Physical handover, protected Windows
 success/Cancel, independently accepted real destinations, active adoption,
 native chat continuity and network/cloud operations remain separate gates.
+
+## Local handover preparation — source candidate 0.3
+
+`checkpoint-handover-preview` takes `{actor, source, operation_id, package_id,
+parent_sources}` with the same existing local store/vault arguments. It verifies
+a complete locally produced v2 checkpoint, exact parents and the current selected
+saved files. Local administrator permission and current per-class read grants
+are required; all three local authority stores must be off the data volume.
+
+`checkpoint-handover-prepare` takes `{actor, plan}` and `--accept PLAN_SHA256`.
+Under the existing access→policy→binding locks it rechecks bytes, authorization
+and revisions, writes a new private attempt under the access audit owner and
+invokes the existing local stop. It does not write the data volume. It stops the
+selected access registry, not just one file operation. New entries are additive;
+seed/receive/restore interfaces and portable package identities are unchanged.
+
+`checkpoint-handover-inspect` takes `{actor, operation_id}` and reads only local
+evidence, even while stopped or after the data volume is absent. It distinguishes
+complete, pending/uncertain, replaced/absent stop and changed-state evidence;
+it never removes locks, resumes access or appends old journals. Stop observation
+binds file identity as well as bytes, so a later re-created identical stop marker
+does not reuse the old evidence. Trusted local-operator limits still apply.
+
+All preparation receipts retain `drive_release: pending_native_unmount`,
+`all_writers_released: false` and `physical_transfer_ready: false`. Follow the
+[Windows / second-computer / physical acceptance packet](../../docs/control-center/MCI-08-NATIVE-ACCEPTANCE.md)
+for the remaining human and OS checks. Source preparation is not safe-eject,
+physical-device ownership or completed MCI acceptance.

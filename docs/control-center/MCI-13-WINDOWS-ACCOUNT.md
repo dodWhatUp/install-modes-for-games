@@ -35,12 +35,12 @@ The local lab records Windows as not provisioned/accepted. Linux cannot validate
 
 <details><summary>Run the bounded local human acceptance</summary>
 
-Use the existing Python runtime to run `scripts/tests/Accept-ManagedWorkspaceWindowsAccount.py --local-parent EXISTING_PRIVATE_PARENT`. Choose a parent outside Git, OneDrive, Codex and the portable vault. The private launcher prepared with this stage supplies the current source/runtime paths.
+Use the existing Python runtime to run `scripts/tests/Accept-ManagedWorkspaceWindowsAccount.py --local-parent EXISTING_PRIVATE_PARENT --host-label A`. This now defaults to non-writing preflight. Add `--run-interactive` only when the human is present for both prompts. Choose a parent outside Git, OneDrive, Codex and the portable vault. The [native/physical acceptance packet](MCI-08-NATIVE-ACCEPTANCE.md) separates both hosts and the physical gates; private launchers supply the selected source/runtime paths.
 
 1. In the first **Windows** prompt, confirm using your local PIN or biometric.
 2. In the second Windows prompt, choose **Cancel**.
 
-The harness creates only a new unique synthetic access registry, requires Windows' explicit canceled result, saves a private receipt and leaves fixture access stopped. It does not modify existing access registries, real project defaults, Codex or Windows sign-in settings. A failed/unavailable API result is not accepted as a cancellation pass. Retain the receipt for review; do not publish local identities or bindings. Repeat independently on the other computer when available; do not move the registry or proof between machines.
+The interactive harness creates only a new unique synthetic access registry, requires Windows' explicit canceled result, saves a private receipt with source hashes and runtime and leaves fixture access stopped. It does not modify existing access registries, real project defaults, Codex or Windows sign-in settings. A failed/unavailable API result is not accepted as a cancellation pass. Retain the receipt for review; do not publish local identities or bindings. Repeat independently with `--host-label B` on the other computer when available; do not move the registry or proof between machines.
 
 </details>
 

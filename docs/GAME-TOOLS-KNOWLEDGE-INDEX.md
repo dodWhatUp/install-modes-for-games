@@ -1,5 +1,17 @@
 # Game tools knowledge and recovery index
 
+## MCI-08 local handover and native acceptance preparation — 2026-10-21
+
+[Native acceptance packet](control-center/MCI-08-NATIVE-ACCEPTANCE.md) covers
+Windows success/explicit Cancel on A and B, independent destination grants,
+physical release/move/return and interrupted-copy preservation. The existing
+checkpoint service now provides exact-plan local quiescence and off-volume audit
+evidence, with inspection while the data volume is absent. Physical release
+always stays pending; no lease registry or automatic lock recovery was added.
+See [stage evidence](control-center/MCI-08-HANDOVER-VALIDATION.json). Acceptance
+remains 47/108, MCI-08 0/6 and MCI-13 5/6. Continue in Codex; authority or
+reauthorization contract changes require separate architectural review.
+
 ## MCI-08 audit and offline exchange continuation — 2026-10-21
 
 [Current conclusions](control-center/MCI-08-CHECKPOINT-CONCLUSIONS.md#continuation-candidate--2026-10-21)
