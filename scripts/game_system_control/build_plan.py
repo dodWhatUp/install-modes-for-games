@@ -99,6 +99,11 @@ def build_packet(root, task_id=None):
         total_bytes += owner["bytes"]
         require(total_bytes <= 2 * 1024 * 1024, "Selected owner files exceed their byte bound.")
         receipts.append({"locator": path, "sha256": owner["sha256"]})
+    # Recheck the complete source vector after collection. A mutable checkout
+    # must not yield a mixed packet if an earlier owner changes during a read.
+    # This detects drift, not an atomic filesystem snapshot against hostile ABA.
+    for source in sources + receipts:
+        selected_text(root, source["locator"], source["sha256"])
     summaries = [_task_summary(t, tasks) for t in tasks.values()]
     result = {"kind": "GameToolsBuildPacket", "schema_version": 1, "effect": "none", "selected_task": task_id,
               "sources": sources, "invariants": plan["invariants"], "ai_workflow": plan["ai_workflow"],
@@ -111,6 +116,11 @@ def build_packet(root, task_id=None):
         task = tasks[task_id]
         result["task"] = {**_task_summary(task, tasks), "steps": task["steps"], "checklist_complete": task.get("checklist_complete", [False] * 6)}
         result["prerequisites"] = [_task_summary(tasks[d], tasks) for d in task.get("depends_on", [])]
+        relevant = {t for c in chosen if task_id not in c["tasks"] for t in c["tasks"]} - {task_id}
+        result["relevant_capability_gates"] = [
+            {**_task_summary(tasks[t], tasks), "remaining_criteria": [step for step, accepted in zip(tasks[t]["steps"], tasks[t].get("checklist_complete", [False] * 6)) if not accepted],
+             "applicability": "shared owner capability; does not add a task dependency or block independent synthetic source work"}
+            for t in tasks if t in relevant and not _complete(tasks[t])]
         if task_id in plan["release"]["tasks"]: result["release"] = deepcopy(plan["release"])
     else:
         result["tasks"] = summaries
@@ -142,5 +152,6 @@ def build_context(root):
                              "build_snapshot": {"sources": packet["sources"], "counts": packet["counts"], "frontier": packet["frontier"],
                                                 "core_components": sum(c["id"].startswith("C") for c in packet["components"]),
                                                 "specialized_systems": sum(c["id"].startswith("S") for c in packet["components"])},
-                             "unknown_coverage": ["Blueprint is not a live synchronization engine", "Windows human sign-in acceptance remains pending",
+                             "unknown_coverage": ["Blueprint is not a live synchronization engine",
+                                                  "Windows sign-in package: " + str(tasks["MCI-13"]["accepted"]) + "/6 source criteria; consult current remaining evidence",
                                                   "Other physical computer", "Native Codex continuity", "Actual model behavior or token savings"]})

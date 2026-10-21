@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "kind": "MCI13WindowsInteractiveAcceptanceEvidence",
+  "date": "2026-10-21",
+  "continuation_base": "4fa0fa10ef68d1f3b567ef9582f186c723e301e2",
+  "pr": "https://github.com/dodWhatUp/install-modes-for-games/pull/31",
+  "status": "HOST_A_NATIVE_SUCCESS_VERIFIED_CANCEL_AND_SUPPORTED_DESTINATION_PENDING",
+  "native_attempts": [
+    {
+      "phase": "original_combined",
+      "outcome": "wait_failed_before_registry_creation",
+      "receipt_sha256": "ce3401158254fdd744757ffbc79e7c2c201630a3bb2ff2efe582813ddc6ca373",
+      "elapsed_seconds": 60.2864194,
+      "classification_limit": "Old adapter combined deadline/window-close failure into one ContextError; no native canceled result received",
+      "access_registry_created": false
+    },
+    {
+      "phase": "combined_with_diagnostics",
+      "native_creation": "passed",
+      "resume_instead_of_cancel": "verified",
+      "cancel_accepted": false,
+      "fixture_left_stopped": true,
+      "receipt_sha256": "ff207df79beb729530f3b8ca0b9e66575a0f3682c442361a514dfd34525597c3",
+      "conclusion": "Adjacent dialogs did not produce the required Cancel evidence"
+    },
+    {
+      "phase": "success_only",
+      "native_creation": "passed",
+      "protected_fixture_left_stopped": true,
+      "receipt_sha256": "3d7d53dfc8861b4f168fd4efa429d441c7cbf75e4567570ef0f4734be04bb1e0",
+      "native_access_state_IO_owner_hashes_match_current_source": true,
+      "runtime_harness_sha256": "936ba80f4947197301c4bbe37087cd9ec28e70e8130ff91121b8d101be56eb67"
+    },
+    {
+      "phase": "cancel_only",
+      "outcome": "timeout",
+      "cancel_accepted": false,
+      "fixture_left_stopped": true,
+      "receipt_sha256": "6d025413ecd1b69feae29e4d0110598d0a3b74ae20eefeece6e905e5857b176f",
+      "paired_success_receipt_sha256": "3d7d53dfc8861b4f168fd4efa429d441c7cbf75e4567570ef0f4734be04bb1e0",
+      "failure_stage": "cancel_resume",
+      "human_action_observation": "awaiting clarification; no inference that Cancel was selected"
+    },
+    {
+      "phase": "success_only_recovery_continuation",
+      "continuation_base": "a1af35ede33edce9bd45abb8455e37ee48debdc2",
+      "outcome": "timeout",
+      "failure_stage": "create_windows_registry",
+      "access_registry_created": false,
+      "cancel_accepted": false,
+      "receipt_sha256": "b92bd41dca347e0be92eaf69f9ffcebd36bb6f4277dd7e28c67bf75544549ad1",
+      "earlier_success_remains_historical_evidence": true,
+      "human_action_observation": "Human reports completing PIN/Hello; completion relative to the wait deadline remains unconfirmed",
+      "diagnosis": "Native completion discrepancy remains open; bounded private status/timing observation prepared without changing source, return values, timeouts or authentication"
+    },
+    {
+      "phase": "success_only_private_wait_observation",
+      "outcome": "timeout",
+      "access_registry_created": false,
+      "receipt_sha256": "32f003e12470706e88ab99f64aa075d9df37bf95653ce0afd61e1c4976ddb656",
+      "trace_sha256": "e28c2c41fc45963d1c4ff8e39fc4c9d295e5acf01c6b70aef44a4aba11db19be",
+      "original_native_results_deadlines_and_cleanup_preserved": true,
+      "native_status_polls": 2351,
+      "last_native_status": "Started",
+      "last_status_elapsed_ms": 59968,
+      "elapsed_ms": 60000,
+      "completed_status_or_result_received": false,
+      "cancel_requested": true,
+      "close_requested": true,
+      "credential_or_UI_content_recorded": false,
+      "conclusion": "No native completion was delivered to this wait before deadline; human completion timing and the cause remain unconfirmed"
+    }
+  ],
+  "window_observation": {
+    "owner_title": "Verify Windows account",
+    "responsive_owner_window_observed": true,
+    "same_windows_session_as_Codex_and_Explorer": true,
+    "credentials_or_screenshot_read": false
+  },
+  "read_only_destination_probe": {
+    "os": "Darwin",
+    "os_name": "posix",
+    "python": "3.9.6",
+    "process_exit_code": 0,
+    "effect": "none",
+    "reviewed_native_windows_adapter_platform_supported": false,
+    "native_destination_acceptance": "unsupported_pending_architecture_or_supported_host",
+    "local_permissions_or_native_identity_copied": false
+  },
+  "implementation": [
+    "Typed wait failures separate timeout, owner-window closure, asynchronous cancellation/error and unexpected status from native canceled result",
+    "Explicit success-only and cancel-only harness phases; legacy combined invocation retained",
+    "Cancel selects an exact fresh stopped protected local acceptance fixture and pairs its unchanged success receipt",
+    "Native/access/IO source checks, OS-local state ownership, exact stop and existing expiry/freshness remain enforced",
+    "Separate attempt receipts never overwrite the selected fixture's evidence",
+    "Cleanup failure persists failed evidence and cannot claim stopped access or completed acceptance"
+  ],
+  "tests": {
+    "distinct_selected_cases": 58,
+    "passed": 58,
+    "skipped": 0,
+    "new_case_identities_since_base": 9,
+    "suites": [
+      {
+        "suite_log": "windows-account-diagnostics.log",
+        "cases": 22,
+        "passed": 22,
+        "skipped": 0,
+        "seconds": 1.365
+      },
+      {
+        "suite_log": "acceptance-separated-final.log",
+        "cases": 18,
+        "passed": 18,
+        "skipped": 0,
+        "seconds": 1.775
+      },
+      {
+        "suite_log": "access-diagnostics-regression.log",
+        "cases": 18,
+        "passed": 18,
+        "skipped": 0,
+        "seconds": 5.818
+      }
+    ],
+    "source_export_contracts_passed": 69,
+    "earlier_stage_results_not_added": true
+  },
+  "acceptance": {
+    "program": "47/108",
+    "MCI-08": "0/6",
+    "MCI-13": "5/6",
+    "original_checks_closed": 0,
+    "original_checklists_requirements_dependencies_changed": false
+  },
+  "remaining": [
+    "Actual explicit native Cancel on A",
+    "Independent supported native destination acceptance",
+    "Native adapter decision for the connected Mac",
+    "Native safe release, physical A-to-B-to-A and actual removal",
+    "Existing stale stopped-device reauthorization boundary"
+  ],
+  "next_environment": "Codex for Cancel diagnosis and prepared supported-device checks",
+  "return_to_ChatGPT_Pro_if": "Native Mac authority or stale stopped-device reauthorization contracts need a new decision",
+  "not_performed": [
+    "installation",
+    "merge",
+    "Windows account or credential changes",
+    "native Codex data changes",
+    "physical eject or movement",
+    "native authentication fallback"
+  ],
+  "source_files": [
+    {
+      "path": "scripts/game_system_control/windows_account.py",
+      "sha256_observed_bytes": "e0402807e1965e6cab9c238c16e45cd337f5df0762ddadbabc2abbeab28a7f35",
+      "sha256_lf_normalized": "7087f22a5fff16f295512006fcec6ea608dee63c5ea0de352ed0d6ced83c50a3"
+    },
+    {
+      "path": "scripts/game_system_control/access.py",
+      "sha256_observed_bytes": "9181f451e70120715c578c89da786d3f8fbac93757b84b428664c8fbbb82b443",
+      "sha256_lf_normalized": "1d42382222bdae6ea68f896273bc89c6947cc586e366c059a1c9f775023eeb08"
+    },
+    {
+      "path": "scripts/game_system_control/workspace_state.py",
+      "sha256_observed_bytes": "b1a0c0844dbe488fdd3547a0b29525bf19adecc8a0f8dd33dd2c9786eaf67c9e",
+      "sha256_lf_normalized": "5a7557ebf1f244739c5d286bf40ee82a6de1d6c3af4618d8e3d4d105ad9726fa"
+    },
+    {
+      "path": "scripts/GameToolUserData.py",
+      "sha256_observed_bytes": "e5bfc98984dd7835eacffd69f55ba1f57ebcbfc46a04c56ca4dddd9f6a1baf6a",
+      "sha256_lf_normalized": "662c4c323ddb4156be2acdf2ff44fb9f05a03b9af882966cdd3c54bb2609836c"
+    },
+    {
+      "path": "scripts/tests/Accept-ManagedWorkspaceWindowsAccount.py",
+      "sha256_observed_bytes": "d1b0ebfdf255f49b5f3efe537471e5e270c31788703a11e5f991fed1c1dfa8ce",
+      "sha256_lf_normalized": "00747f628998025cdd37c7ef8f217cc6340ba0c53d637685c5b473ce79b29f41"
+    },
+    {
+      "path": "scripts/tests/Test-ManagedWorkspaceWindowsAccount.py",
+      "sha256_observed_bytes": "b3a728206f1e455a8323dd79a898a96974c60adaea2f6574af171fb473e8ebe6",
+      "sha256_lf_normalized": "171186f25bb52a39cfdf06c4ebb5da24d181c994d58f7f7d6ebaf16e018f5c75"
+    },
+    {
+      "path": "scripts/tests/Test-ManagedWorkspaceAcceptancePreparation.py",
+      "sha256_observed_bytes": "e0e5475e6b788c54a2aed2857f51bd390a22228c42d3862c9690942c3cd05a33",
+      "sha256_lf_normalized": "e0e5475e6b788c54a2aed2857f51bd390a22228c42d3862c9690942c3cd05a33"
+    }
+  ]
+}

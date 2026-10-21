@@ -1,5 +1,69 @@
 # Game tools knowledge and recovery index
 
+## MCI-08 recovery boundary audit — 2026-10-21
+
+[Current conclusions](control-center/MCI-08-CHECKPOINT-CONCLUSIONS.md#recovery-boundary-audit--2026-10-21)
+and [source-bound evidence](control-center/MCI-08-RECOVERY-BOUNDARY-VALIDATION.json)
+record selected prior-file/manifest drift refusal before recovery completion,
+explicit nonempty selection during preview, preserved later work, injected
+partial disk-full recovery and killed-child inspection with unknown locks
+retained. Existing checkpoint, IO, access, policy, vault and Journal owners are
+reused. The explicit policy revision upgrade remains the queue-coupling fix;
+legacy meanings are preserved. A fresh Windows success retry timed out before
+registry creation; native Cancel, supported B and physical handover stay open.
+Acceptance remains 47/108, MCI-08 0/6 and MCI-13 5/6. Continue in Codex; Mac-native
+authority or stale-device reauthorization needs architectural review in Pro.
+
+## Native Windows success and acceptance diagnostics — 2026-10-21
+
+[Interactive evidence](control-center/MCI-13-WINDOWS-INTERACTIVE-VALIDATION.json)
+records actual host-A protected Windows creation, stopped fixture readback and
+the still-open explicit Cancel gate. Separate success/Cancel phases now provide
+one intended action per dialog; timeout/window-close/async failures cannot pass
+as Windows' canceled result. The selected 58 contract tests and 69 export checks
+passed. The connected second host is macOS, unsupported by the reviewed native
+adapters. No installation, merge, credential or native Codex change occurred.
+Acceptance stays 47/108, MCI-08 0/6 and MCI-13 5/6. Continue in Codex for Cancel
+diagnosis; Mac-native authority or stale-device reauthorization needs a separate
+architectural decision.
+
+## MCI-08 local handover and native acceptance preparation — 2026-10-21
+
+[Native acceptance packet](control-center/MCI-08-NATIVE-ACCEPTANCE.md) covers
+Windows success/explicit Cancel on A and B, independent destination grants,
+physical release/move/return and interrupted-copy preservation. The existing
+checkpoint service now provides exact-plan local quiescence and off-volume audit
+evidence, with inspection while the data volume is absent. Physical release
+always stays pending; no lease registry or automatic lock recovery was added.
+See [stage evidence](control-center/MCI-08-HANDOVER-VALIDATION.json). Acceptance
+remains 47/108, MCI-08 0/6 and MCI-13 5/6. Continue in Codex; authority or
+reauthorization contract changes require separate architectural review.
+
+## MCI-08 audit and offline exchange continuation — 2026-10-21
+
+[Current conclusions](control-center/MCI-08-CHECKPOINT-CONCLUSIONS.md#continuation-candidate--2026-10-21)
+and [source-bound validation](control-center/MCI-08-CONTINUATION-VALIDATION.json)
+extend the existing PR #31 candidate with Windows streaming/audit/revision fixes,
+versioned full/delta packages, exact parent validation, local receipt versus
+adoption, selected inactive recovery/parent rollback and synthetic A→B→A.
+The policy queue correction uses an explicit v2 digest upgrade and fresh local
+acknowledgement; legacy hash meanings and queues are retained. Build packets
+recheck their source vector and expose relevant shared-owner capability gates.
+This source candidate is not installed or adopted into main. Acceptance remains
+47/108, MCI-08 0/6 and MCI-13 5/6; native/physical gates remain separate.
+
+## MCI-08 seed checkpoint source proof — 2026-10-20
+
+[Candidate conclusions](control-center/MCI-08-CHECKPOINT-CONCLUSIONS.md) and
+[exact validation](control-center/MCI-08-CHECKPOINT-VALIDATION.json) cover bounded
+seed preview/publication, interrupted-attempt inspection and new inactive
+reconstruction through existing owners. 212 distinct checks passed, two existing
+environment cases skipped. Identity/volume were synthetic on macOS; no native
+Windows, physical handover, transport or installed capability is accepted.
+At that dated proof the policy-queue defect remained unrepaired; the versioned
+source correction is recorded above. Original
+program acceptance remains 47/108; this candidate closes no whole MCI-08 check.
+
 ## Shared build blueprint — 2026-10-20
 
 [One master plan](INTEGRATED-SYSTEM-EXECUTION-PLAN.md#one-shared-foundation-then-specialized-adapters) now explains seven common components, ten system adapters and task-scoped human/AI handoffs. [Build map](INTEGRATED-SYSTEM-BUILD-MAP.json) references the original 18 MCI packages without duplicating task status. [Conclusions](control-center/SHARED-BUILD-CONCLUSIONS.md) record the read-only prototype and acceptance.

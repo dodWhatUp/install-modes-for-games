@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-20",
+  "date": "2026-10-21",
   "tasks": [
     {
       "id": "MCI-01",
@@ -145,8 +145,8 @@
         false,
         false
       ],
-      "report": null,
-      "note": "Not started; follow declared dependencies and each actual-device/capability gate."
+      "report": "control-center/MCI-08-CHECKPOINT-CONCLUSIONS.md",
+      "note": "Partial source/synthetic full/delta, inactive recovery/parent rollback and A-to-B-to-A candidate in PR #31; no original acceptance changed. Physical and native gates remain open."
     },
     {
       "id": "MCI-09",

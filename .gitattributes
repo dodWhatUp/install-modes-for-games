@@ -9,3 +9,6 @@ examples/game-input/baseline/ControlHelper-v031.ahk -text
 
 # Dated source snapshot receipts hash exact published bytes.
 source-snapshots/** -text whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof
+# Authored source snapshots below carry exact SHA-256 references in context JSON.
+# Windows checkout newline conversion must not invalidate those references.
+examples/system-control/** text eol=lf

@@ -186,6 +186,21 @@ class WindowsAccountTests(unittest.TestCase):
         with self.assertRaises(ContextError): runtime.wait(c.c_void_p(1), timeout=1, pump=lambda: False)
         self.assertNotIn("result", events)
 
+    def test_wait_failures_report_distinct_safe_reasons_and_release_interfaces(self):
+        for status, timeout, pump, reason in ((0, 0, lambda: True, "timeout"), (0, 1, lambda: False, "owner_window_closed"),
+                                             (2, 1, lambda: True, "async_canceled"), (3, 1, lambda: True, "async_error"), (99, 1, lambda: True, "unexpected_async_status")):
+            runtime, events = self.fake_runtime(status=status, value=6)
+            with self.subTest(reason=reason), self.assertRaises(windows.WindowsAccountWaitFailed) as error:
+                runtime.wait(c.c_void_p(1), timeout=timeout, pump=pump)
+            self.assertEqual(error.exception.reason, reason)
+            self.assertNotIsInstance(error.exception, windows.WindowsAccountDenied)
+            self.assertNotIn("result", events); self.assertIn("close", events); self.assertEqual(events.count("release"), 2)
+
+    def test_wait_failure_reason_cannot_contain_arbitrary_exception_text(self):
+        error = windows.WindowsAccountWaitFailed("synthetic-private-sentinel")
+        self.assertEqual(error.reason, "unexpected_async_status")
+        self.assertNotIn("synthetic-private-sentinel", str(error))
+
     @staticmethod
     def fake_runtime(*, status, value):
         runtime, events = object.__new__(windows._Runtime), []

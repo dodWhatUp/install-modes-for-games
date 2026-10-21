@@ -16,6 +16,6 @@ Acceptance follows the original criteria: 33 core, 16 completion, 17 real Tk and
 
 The earlier checkpoint held MCI-03/04 test items open for broader platform/human acceptance. The listed functional criteria are verified, with browser accessibility added; wider release gates remain in MCI-18. Native Codex session continuity remains MCI-15. Original native chats cannot yet be claimed portable.
 
-Dependency order: MCI-01 → MCI-02 → MCI-03 → MCI-04; MCI-05 follows MCI-02. Next eligible foundations are MCI-07 managed storage, MCI-12 directional/adoption/context policies and MCI-13 device enrollment/roles. Exchange, parallel reconciliation, transports and native continuity follow their declared dependencies. No background schedule was installed.
+Dependency order: MCI-01 → MCI-02 → MCI-03 → MCI-04; MCI-05 follows MCI-02. MCI-07 and MCI-12 subsequently met their original foundation criteria; MCI-13 remains 5/6. Current source work is the [MCI-08 continuation candidate](MCI-08-CHECKPOINT-CONCLUSIONS.md#continuation-candidate--2026-10-21). Protected Windows success/Cancel, real destination / physical handover acceptance and dependent reconciliation, transports and native continuity retain their original gates. No background schedule was installed.
 
 Recovery: close the preview to discard session state. Original selected sources are unchanged. Revert additive source changes through Git if needed; never replace Codex home or native databases.

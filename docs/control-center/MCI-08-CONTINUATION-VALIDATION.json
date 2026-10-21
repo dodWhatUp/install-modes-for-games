@@ -1,0 +1,404 @@
+{
+  "schema_version": 1,
+  "kind": "MCI08ContinuationSourceCandidateValidation",
+  "date": "2026-10-21",
+  "timezone": "Asia/Jerusalem",
+  "reviewed_main_commit": "9683b32ca6260b060f4727937f26e6a4a96d50de",
+  "reviewed_seed_commit": "cc5d8f2841f562f611cec4864c9b3f9ec490af18",
+  "pr": "https://github.com/dodWhatUp/install-modes-for-games/pull/31",
+  "policy_correction_commit": "a44c5dab00e6a968c24ac5c4170f73ef7e54a788",
+  "checkpoint_extension_commit": "e67b2aa2e356d12d1ce99ca765ac17d3a0521506",
+  "status": "REVIEWED_SOURCE_SYNTHETIC_CANDIDATE_NOT_INSTALLED_OR_ADOPTED",
+  "review": {
+    "defects_reproduced": [
+      "Windows path/handle ctime divergence falsely refused unchanged streams",
+      "Missing exact revision vector could disable local CAS checks",
+      "Unrelated cancelled reconstruction audit could be reported complete"
+    ],
+    "old_candidate_contract_reproduction": {
+      "cases": 2,
+      "expected_failures_observed": 2,
+      "unexpected_errors": 0,
+      "windows_streaming_fix_supplied_only_to_isolate_contract_findings": true
+    },
+    "additional_hardening": [
+      "Workspace/project scope checked before payload reads",
+      "Unlisted restored content prevents completion",
+      "Torn publication evidence stays uncertain",
+      "V1 incoming data cannot be represented as a v2 destination receipt"
+    ],
+    "legacy_compatibility": {
+      "archive_body_and_format_unchanged": true,
+      "seed_v1_golden_checkpoint_id": "93b343aa5b652af01eabfe420575c9eb27756098d33640f15db226a3baaa89fa",
+      "seed_v1_golden_package_id": "e0031bd55e299ae174a68c819b7c2ddbd536037f989a61f7c6f85c86cfbdf011",
+      "hashed_example_files_keep_LF_on_Windows": true
+    }
+  },
+  "windows": {
+    "platform": "Windows host filesystem",
+    "python": "3.12.14",
+    "checkpoint_identity_and_volume": "explicit synthetic fixtures; no protected sign-in or physical-drive acceptance",
+    "regression_principal": "native local OS principal where existing regression suites require it",
+    "case_runs": [
+      {
+        "tests": 46,
+        "passed": 45,
+        "skipped": 1,
+        "seconds": 541.277,
+        "suite": "Test-ManagedWorkspaceCheckpoints.py (46 original/grouped cases)"
+      },
+      {
+        "tests": 2,
+        "passed": 2,
+        "skipped": 0,
+        "seconds": 4.809,
+        "suite": "Test-ManagedWorkspaceCheckpoints.py (2 additional distinct cases)"
+      },
+      {
+        "tests": 15,
+        "passed": 14,
+        "skipped": 1,
+        "seconds": 660.692,
+        "suite": "Test-ManagedWorkspaceExchange.py (15 grouped cases)"
+      },
+      {
+        "tests": 1,
+        "passed": 1,
+        "skipped": 0,
+        "seconds": 27.801,
+        "suite": "Test-ManagedWorkspaceExchange.py (additional CLI case)"
+      },
+      {
+        "tests": 1,
+        "passed": 1,
+        "skipped": 0,
+        "seconds": 17.031,
+        "suite": "Test-ManagedWorkspaceExchange.py (additional legacy receive boundary case)"
+      },
+      {
+        "tests": 25,
+        "passed": 24,
+        "skipped": 1,
+        "seconds": 4.586,
+        "suite": "Test-ManagedWorkspacePolicy.py"
+      },
+      {
+        "tests": 18,
+        "passed": 18,
+        "skipped": 0,
+        "seconds": 7.158,
+        "suite": "Test-ManagedWorkspaceAccess.py"
+      },
+      {
+        "tests": 33,
+        "passed": 31,
+        "skipped": 2,
+        "seconds": 0.297,
+        "suite": "Test-GameToolSystemControl.py"
+      },
+      {
+        "tests": 14,
+        "passed": 14,
+        "skipped": 0,
+        "seconds": 1.393,
+        "suite": "Test-GameToolBuildPlan.py"
+      },
+      {
+        "tests": 42,
+        "passed": 41,
+        "skipped": 1,
+        "seconds": 1.457,
+        "suite": "Test-GameToolUserData.py"
+      },
+      {
+        "tests": 59,
+        "passed": 58,
+        "skipped": 1,
+        "seconds": 0.923,
+        "suite": "Test-GameToolJournal.py"
+      },
+      {
+        "tests": 23,
+        "passed": 22,
+        "skipped": 1,
+        "seconds": 2.612,
+        "suite": "Test-ManagedWorkspaceVault.py"
+      }
+    ],
+    "total_distinct_cases": 279,
+    "passed": 271,
+    "skipped": 8,
+    "failures": 0,
+    "errors": 0,
+    "skip_reasons": {
+      "symlink_creation_privilege": 5,
+      "optional_jsonschema_unavailable": 3
+    },
+    "latest_receive_boundary_recheck": {
+      "passed": 1,
+      "seconds": 38.867,
+      "included_in_distinct_total_already": true
+    }
+  },
+  "linux_focused": {
+    "platform": "prepared isolated Linux guest",
+    "python": "3.12.3",
+    "jsonschema": "4.10.3",
+    "passed": 10,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "scope": "Exact baseline schema structural/example validation, successor runtime policy-record validation, current checkpoint schema/format, two v2 queue compatibility cases and five symlink cases",
+    "schema_hashes": {
+      "baseline/managed-workspace.schema.json": "78693e0e723f0de78cef60925a6576db3c78ce535911717592e730b773518428",
+      "schemas/managed-workspace.schema.json": "62f9020a9b616feff46a394cb810236d9559bc02a8c9941eb83cc58c9ad50f28",
+      "schemas/workspace-checkpoint.schema.json": "4a36839b5ea0be6a237225985a5c0464c2128f289769bba4e83b23357df783d5"
+    },
+    "cases": [
+      {
+        "suite": "Test-ManagedWorkspacePolicy.py",
+        "tests": 3,
+        "passed": 3,
+        "errors": 0,
+        "failures": 0,
+        "skipped": []
+      },
+      {
+        "suite": "Test-GameToolSystemControl.py",
+        "tests": 2,
+        "passed": 2,
+        "errors": 0,
+        "failures": 0,
+        "skipped": []
+      },
+      {
+        "suite": "Test-GameToolUserData.py",
+        "tests": 1,
+        "passed": 1,
+        "errors": 0,
+        "failures": 0,
+        "skipped": []
+      },
+      {
+        "suite": "Test-GameToolJournal.py",
+        "tests": 1,
+        "passed": 1,
+        "errors": 0,
+        "failures": 0,
+        "skipped": []
+      },
+      {
+        "suite": "Test-ManagedWorkspaceVault.py",
+        "tests": 1,
+        "passed": 1,
+        "errors": 0,
+        "failures": 0,
+        "skipped": []
+      },
+      {
+        "suite": "Test-ManagedWorkspaceCheckpoints.py",
+        "tests": 1,
+        "passed": 1,
+        "errors": 0,
+        "failures": 0,
+        "skipped": []
+      },
+      {
+        "suite": "Test-ManagedWorkspaceExchange.py",
+        "tests": 1,
+        "passed": 1,
+        "errors": 0,
+        "failures": 0,
+        "skipped": []
+      }
+    ],
+    "extra_broad_guest_run": "Interrupted after focused scope completed; partial run excluded from all totals",
+    "guest_stopped_cleanly": true
+  },
+  "distinct_python_case_accounting": {
+    "identities": 279,
+    "passed_in_at_least_one_selected_environment": 279,
+    "windows_skips_covered_in_linux": 8,
+    "linux_cases_already_passing_in_windows": 2,
+    "note": "Do not add repeated suites, the two expected candidate failures, intermediate runs or focused overlap to distinct totals."
+  },
+  "source_export": {
+    "passed": 69,
+    "failures": 0
+  },
+  "retained_exchange": {
+    "passed": true,
+    "receipt_sha256": "765dd206e443bff25bfb5fa0bd77db223493cfa23b5f7ef65427b74511a81270",
+    "byte_verification": "passed",
+    "functional_relative_reference_and_arithmetic": "passed (5 then 9)",
+    "replica_ids_distinct": true,
+    "target_receipts_distinct": true,
+    "authorization_stores_transferred": false,
+    "active_source_preserved": true,
+    "physical_computers_tested": false,
+    "raw_evidence": "Retained privately outside Git; no native data or grants in retained artifacts"
+  },
+  "format_scope": {
+    "v1_seeds": "unchanged/readable local sources and parents",
+    "v2": "single-parent full/delta directory objects; explicit complete selected-state closure",
+    "ancestry_nodes": 8,
+    "max_files_per_checkpoint": 512,
+    "max_file_bytes": 16777216,
+    "max_selected_bytes_per_checkpoint": 67108864,
+    "max_manifest_bytes": 2097152,
+    "stream_buffer_bytes": 1048576,
+    "tombstones": "not inferred or implemented",
+    "consistency": "saved-file observation only",
+    "recovery": "new inactive selected copy; exact-parent rollback produces a separate subset copy",
+    "active_adoption": false
+  },
+  "architectural_followups": {
+    "effective_policy_revision": "explicit opt-in v2; legacy rows/hashes retained; fresh access pin/device acknowledgement and explicit restage required",
+    "queue_and_view_CAS": "still uses complete LocalState body",
+    "history_capacity": "256 revisions exposed; no reset/epoch rollover",
+    "non_metadata_device_freshness_seconds": 300,
+    "build_reader": "aggregate source-vector recheck and derived shared-owner gate summaries",
+    "new_registries_or_task_masters": false
+  },
+  "security_scope": {
+    "cooperative_local_locks": true,
+    "hostile_concurrent_path_replacement_certified": false,
+    "sender_authenticity_from_hashes": false,
+    "process_interruption_scope_only": true,
+    "power_loss_or_unplug_durability": false
+  },
+  "acceptance": {
+    "program_accepted": 47,
+    "program_total": 108,
+    "mci08_original_checks_accepted": 0,
+    "mci08_total": 6,
+    "mci13_accepted": 5,
+    "mci13_total": 6,
+    "original_checklists_or_dependencies_changed": false
+  },
+  "remaining": [
+    "Protected Windows success and explicit Cancel",
+    "Independent real destination acceptance",
+    "Physical drive release/unmount and surprise-removal recovery",
+    "Active adoption and conflict reconciliation",
+    "Native Codex chat/instruction/index/context continuity",
+    "Network/cloud/remote operations and integrated release"
+  ],
+  "boundaries": {
+    "installation": false,
+    "main_merge": false,
+    "credentials_or_native_Codex_data_changed": false,
+    "private_review_material_published": false,
+    "services_or_schedules_created": false,
+    "paid_API_trials": false,
+    "task_trackers_changed": false
+  },
+  "next_environment": "Codex for continued source review and platform/physical acceptance; ChatGPT Pro only for a material architectural contract change",
+  "source_hash_basis": "SHA-256 of tested working-file bytes; Git may normalize line endings. Retained proof and focused Linux snapshot keep their own exact source/version evidence. Named incremental cases and the post-boundary v2 receive recheck cover subsequent bounded changes.",
+  "source_files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "144329d90cb43b55ddda3c6866c274d36fad6e72e43a44218f9f66f0e08caab9"
+    },
+    {
+      "path": "scripts/GameToolUserData.py",
+      "sha256": "e5bfc98984dd7835eacffd69f55ba1f57ebcbfc46a04c56ca4dddd9f6a1baf6a"
+    },
+    {
+      "path": "scripts/GameToolManagedWorkspace.py",
+      "sha256": "602820e7b2cca8a2d4113ee55b478724c242eab13badd23891948fab38c9d834"
+    },
+    {
+      "path": "scripts/game_system_control/checkpoints.py",
+      "sha256": "9eb788ac7a8b5477a44bed2f58911a3589df561cac6c53d200b86df0ff40457d"
+    },
+    {
+      "path": "scripts/game_system_control/policy.py",
+      "sha256": "1f7c96debfd68d2a2044628ff9a9ececaed845154f36da075326f9f06da6a8d6"
+    },
+    {
+      "path": "scripts/game_system_control/access.py",
+      "sha256": "9181f451e70120715c578c89da786d3f8fbac93757b84b428664c8fbbb82b443"
+    },
+    {
+      "path": "scripts/game_system_control/workspace_view.py",
+      "sha256": "2ceced150d0eae26671626e779828b481fbbd7c4e68ad5778d46f3a394f46514"
+    },
+    {
+      "path": "scripts/game_system_control/build_plan.py",
+      "sha256": "00a00f33d55141feeb0239b31978efc860b8443c972693e58ca8a1707774c5fb"
+    },
+    {
+      "path": "scripts/tests/Test-ManagedWorkspaceCheckpoints.py",
+      "sha256": "52fc2efa0347eab4632534f32ebf07b0ed2dee9bc6a6ebfd45b0627fc165f22a"
+    },
+    {
+      "path": "scripts/tests/Test-ManagedWorkspaceExchange.py",
+      "sha256": "c8b20ad5e82ded7d910c6f87effa0f7494ecde48d5f9d29d6efbb0401a220653"
+    },
+    {
+      "path": "scripts/tests/Test-ManagedWorkspacePolicy.py",
+      "sha256": "7506b12e7a4a9636acec62fe01a2e8119658608e7cc964b7bff3b13f9e741336"
+    },
+    {
+      "path": "scripts/tests/Test-GameToolBuildPlan.py",
+      "sha256": "dd7d041ddd8e31747fbcf7d92d060a198abd049bffa5a3df0e649cc7053b5f55"
+    },
+    {
+      "path": "scripts/tests/Accept-ManagedWorkspaceCheckpoint.py",
+      "sha256": "d303636e8261e351b88a8a2f328dcb1e46d9f553aa911bbd76eef95488a5e373"
+    },
+    {
+      "path": "schemas/workspace-checkpoint.schema.json",
+      "sha256": "4a36839b5ea0be6a237225985a5c0464c2128f289769bba4e83b23357df783d5"
+    },
+    {
+      "path": "schemas/managed-workspace.schema.json",
+      "sha256": "62f9020a9b616feff46a394cb810236d9559bc02a8c9941eb83cc58c9ad50f28"
+    }
+  ],
+  "native_windows_fixture": {
+    "passed": true,
+    "source_commit": "e67b2aa2e356d12d1ce99ca765ac17d3a0521506",
+    "receipt_sha256": "e87d33d6fdb1e7f7bdf578e63e0d806fedd09a5c10327240823be1b52f8aee4f",
+    "one_physical_host": true,
+    "native_principal_mocked": false,
+    "volume_observer_mocked": false,
+    "adapter": "windows-volume-guid",
+    "non_system_volume_verified": true,
+    "filesystem": "NTFS",
+    "content_classes": 4,
+    "files": 5,
+    "full_and_delta_publication": "passed",
+    "exact_parent_validation": "passed",
+    "byte_readback": "passed",
+    "inactive_relative_reference_and_arithmetic": "passed (21)",
+    "authorization_stores_outside_data_volume": true,
+    "access_left_stopped": true,
+    "authentication_mode": "local_os_session_test_fixture_only",
+    "protected_Windows_presence_accepted": false,
+    "physical_handover_tested": false,
+    "original_checks_closed": 0,
+    "raw_evidence": "New retained synthetic fixture only; private roots, principal/volume hashes, bindings and grants omitted from this record",
+    "tested_local_source_commit": "c01b10bb05c26c034cfdfca5ba3070b3f2e5610c"
+  },
+  "publication_equivalence": {
+    "transport": "Existing authenticated GitHub connector; no credential provisioning or alteration",
+    "runtime_commit_trees_byte_identical": true,
+    "mappings": [
+      {
+        "local_commit": "d51b2ba1c9d579dc1014920ffc418a1c0f398d68",
+        "published_commit": "a44c5dab00e6a968c24ac5c4170f73ef7e54a788",
+        "tree_sha": "dda5a1c3fb8285d2cc16f3e7fd4731d78473a8aa",
+        "parent": "cc5d8f2841f562f611cec4864c9b3f9ec490af18"
+      },
+      {
+        "local_commit": "c01b10bb05c26c034cfdfca5ba3070b3f2e5610c",
+        "published_commit": "e67b2aa2e356d12d1ce99ca765ac17d3a0521506",
+        "tree_sha": "699a3b7047495265418486918c83702bd3c9dddd",
+        "parent": "a44c5dab00e6a968c24ac5c4170f73ef7e54a788"
+      }
+    ],
+    "note": "Connector-created commit metadata has different commit IDs; exact Git tree parity preserves every tested source byte. Existing PR head is retained as ancestor."
+  }
+}

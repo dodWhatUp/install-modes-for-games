@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "kind": "MCI08RecoveryBoundaryAuditValidation",
+  "date": "2026-10-21",
+  "continuation_base": "a1af35ede33edce9bd45abb8455e37ee48debdc2",
+  "reviewed_main": "9683b32ca6260b060f4727937f26e6a4a96d50de",
+  "pr": "https://github.com/dodWhatUp/install-modes-for-games/pull/31",
+  "checkpoint_service_version": "0.3.1-preview.1",
+  "status": "SOURCE_RECOVERY_FIX_VERIFIED_NOT_INSTALLED_OR_MERGED",
+  "confirmed_defects": [
+    {
+      "before": "A selected prior file edited after recovery began could still receive a completed new-copy receipt",
+      "after": "Prior manifest and selected saved-byte observations rechecked before completion; drift preserves both copies and leaves the new attempt incomplete"
+    },
+    {
+      "before": "A null recovery selection could produce a preview that commit refused",
+      "after": "Explicit nonempty recovery selection required during read-only preview"
+    }
+  ],
+  "existing_owners": [
+    "CheckpointService",
+    "UserData streaming IO",
+    "Journal",
+    "VaultRegistry",
+    "PolicyStore",
+    "AccessStore",
+    "existing cooperative locks"
+  ],
+  "windows": {
+    "python": "3.12.14",
+    "distinct_selected_cases": 79,
+    "passed": 77,
+    "skipped": 2,
+    "failures_or_errors": 0,
+    "suites": [
+      {
+        "suite_log": "checkpoint-recovery-regression.log",
+        "sha256_log": "e81fa1b243adb5ca1138ae9ec837123a465fe2354e988d40faa7be39b936b471",
+        "cases": 48,
+        "passed": 47,
+        "skipped": 1,
+        "seconds": 519.689
+      },
+      {
+        "suite_log": "exchange-recovery-boundary.log",
+        "sha256_log": "75867fcfe022ccbad1aa28d4f14efc1555c350a79858a8afd8272babf584af85",
+        "cases": 23,
+        "passed": 22,
+        "skipped": 1,
+        "seconds": 712.093,
+        "initial_run_test_fixture_errors": 1,
+        "corrected_case": "test_killed_reconstruction_is_read_only_inspection_with_unknown_locks_retained",
+        "correction": "New test initially expected the generic refusal tuple instead of the existing lock owner ModError. Corrected expectation to ModError with OWNER_UNKNOWN; production lock behavior unchanged.",
+        "targeted_recheck": {
+          "suite_log": "recovery-unknown-lock-recheck.log",
+          "sha256_log": "930f0c7f87332a353a3c5526c099e3053acf774911fcbe0a8990b1fb0a38bdcf",
+          "cases": 1,
+          "passed": 1,
+          "counts_as_same_case_identity": true
+        },
+        "final_outstanding_failures_or_errors": 0
+      },
+      {
+        "suite_log": "policy-reconciliation-regression.log",
+        "sha256_log": "c8ce12d35d1d5eff58ebb2db35b6e40eb36b73c6c382a58e40a423d56098b129",
+        "cases": 8,
+        "passed": 8,
+        "skipped": 0,
+        "seconds": 1.905
+      }
+    ],
+    "new_case_identities": [
+      "test_missing_recovery_selection_refuses_during_read_only_preview",
+      "test_selected_before_image_drift_during_recovery_preserves_both_copies",
+      "test_prior_manifest_drift_during_recovery_cannot_receive_completion",
+      "test_unselected_later_work_does_not_expand_the_recovery_selection",
+      "test_partial_disk_full_write_is_inspectable_and_recovered_to_a_new_copy",
+      "test_killed_reconstruction_is_read_only_inspection_with_unknown_locks_retained"
+    ],
+    "earlier_or_repeated_runs_not_added": true,
+    "skips": [
+      "Existing Windows symlink fixture privilege unavailable",
+      "Existing optional jsonschema dependency unavailable"
+    ]
+  },
+  "source_export": {
+    "passed": 69,
+    "sha256_log": "7e036f86f7d4cbdd6f0514cd205c8c0e3abdefb09f59f40ca8c40dfa0f89ba81"
+  },
+  "recovery_evidence": [
+    "Selected prior-file and manifest drift during copying cannot receive completion",
+    "Unselected later work stays preserved and outside selected recovery scope",
+    "Injected ENOSPC after partial file write: read-only incomplete inspection, new selected recovery, earlier partial copy and active source preserved",
+    "Actual test-child os._exit after reconstruction file: incomplete read-only inspection, all three unknown locks retained, new write refused without lock reclamation"
+  ],
+  "policy_context_queue_reconciliation": {
+    "owner": "PolicyStore effective-config-v2 opt-in",
+    "focused_cases_passed": 8,
+    "legacy_two-reference_defect": "reproduced intentionally without reinterpreting legacy hashes",
+    "upgraded_two_reference_notices": "passed",
+    "real_configuration_drift_and_CAS": "still refuse",
+    "new_policy_system_or_implicit_upgrade": false
+  },
+  "native_continuation_attempt": {
+    "phase": "success_only_recovery_continuation",
+    "continuation_base": "a1af35ede33edce9bd45abb8455e37ee48debdc2",
+    "outcome": "timeout",
+    "failure_stage": "create_windows_registry",
+    "access_registry_created": false,
+    "cancel_accepted": false,
+    "receipt_sha256": "b92bd41dca347e0be92eaf69f9ffcebd36bb6f4277dd7e28c67bf75544549ad1",
+    "earlier_success_remains_historical_evidence": true,
+    "human_action_observation": "Human reports completing PIN/Hello; completion relative to the wait deadline remains unconfirmed",
+    "diagnosis": "Native completion discrepancy remains open; bounded private status/timing observation prepared without changing source, return values, timeouts or authentication"
+  },
+  "native_wait_observation": {
+    "phase": "success_only_private_wait_observation",
+    "outcome": "timeout",
+    "access_registry_created": false,
+    "receipt_sha256": "32f003e12470706e88ab99f64aa075d9df37bf95653ce0afd61e1c4976ddb656",
+    "trace_sha256": "e28c2c41fc45963d1c4ff8e39fc4c9d295e5acf01c6b70aef44a4aba11db19be",
+    "original_native_results_deadlines_and_cleanup_preserved": true,
+    "native_status_polls": 2351,
+    "last_native_status": "Started",
+    "last_status_elapsed_ms": 59968,
+    "elapsed_ms": 60000,
+    "completed_status_or_result_received": false,
+    "cancel_requested": true,
+    "close_requested": true,
+    "credential_or_UI_content_recorded": false,
+    "conclusion": "No native completion was delivered to this wait before deadline; human completion timing and the cause remain unconfirmed"
+  },
+  "compatibility": {
+    "portable_v1_v2_package_format_or_identity_changed": false,
+    "CLI_interface_changed": false,
+    "access_policy_or_freshness_semantics_changed": false,
+    "old_attempts_or_journals_repaired": false,
+    "application_atomicity_or_physical_durability_claimed": false
+  },
+  "acceptance": {
+    "program": "47/108",
+    "MCI-08": "0/6",
+    "MCI-13": "5/6",
+    "original_checks_closed": 0,
+    "original_requirements_dependencies_and_checklists_changed": false
+  },
+  "remaining": [
+    "Actual explicit Windows Cancel on A",
+    "Independent supported native second-computer acceptance",
+    "Reviewed native adapters for the connected Mac",
+    "External writer shutdown and native release on a qualified scratch device",
+    "Physical A-to-B-to-A and actual surprise-removal recovery",
+    "Existing stale stopped-device reauthorization limitation"
+  ],
+  "next_environment": "Codex for bounded source and prepared native/physical verification",
+  "return_to_ChatGPT_Pro_if": "Mac-native authority, stale-device reauthorization, ancestry or recovery contracts need a new architectural decision",
+  "source_files": [
+    {
+      "path": "scripts/game_system_control/checkpoints.py",
+      "sha256_observed_bytes": "3eb4d49a2edc4d4c219590416fe64308a88b85aaa42896a06de5778089da713a",
+      "sha256_lf_normalized": "b44f41249ff8280c00ef0bbfa3fe3fca60d13d7e7e1a3c972260b472f5096a2f"
+    },
+    {
+      "path": "scripts/tests/Test-ManagedWorkspaceExchange.py",
+      "sha256_observed_bytes": "e59c08b0dc4e3144a9bd1bc01cf5ee89a0efabe670980cd60ca4b4f946faa282",
+      "sha256_lf_normalized": "e59c08b0dc4e3144a9bd1bc01cf5ee89a0efabe670980cd60ca4b4f946faa282"
+    },
+    {
+      "path": "scripts/tests/Test-ManagedWorkspaceCheckpoints.py",
+      "sha256_observed_bytes": "52fc2efa0347eab4632534f32ebf07b0ed2dee9bc6a6ebfd45b0627fc165f22a",
+      "sha256_lf_normalized": "32718349107d3c399dfe83305e403b04326694683459717204b0dfec1c54e9ae"
+    },
+    {
+      "path": "scripts/tests/Test-ManagedWorkspacePolicy.py",
+      "sha256_observed_bytes": "7506b12e7a4a9636acec62fe01a2e8119658608e7cc964b7bff3b13f9e741336",
+      "sha256_lf_normalized": "46d5b5aca7f32d6f599b5c25aa05c7c4141b5ed0bd6cf4be36cd897a865acf44"
+    }
+  ]
+}

@@ -4,6 +4,11 @@ Current common implementation foundation: [one master build plan](INTEGRATED-SYS
 
 Prepared 2026-10-19, Asia/Jerusalem. Status: development plan, not an installed synchronization feature.
 
+Current implementation evidence is the [MCI-08 continuation candidate](control-center/MCI-08-CHECKPOINT-CONCLUSIONS.md#continuation-candidate--2026-10-21)
+and [machine record](control-center/MCI-08-CONTINUATION-VALIDATION.json). The
+original six MCI-08 criteria and program count remain unaccepted/47 of 108;
+bounded source/synthetic exchange is separate from physical and native adoption.
+
 Provide one recognizable workspace across multiple computers, starting with two, with project files stored by default on a selected internal or external data drive. Support moving the drive, carrying a transfer file, using a network drive, direct networking and optional cloud exchange. Devices can work independently and concurrently with shared, split, replicated or hybrid storage. Each direction has separate controls for scope, frequency, adoption and influence on chat context.
 
 Build this as an extension of the existing unified toolkit. Keep a reusable project-neutral core behind the toolkit's User data and AI workspaces. Consider a separate portable Codex launcher only after a feasibility gate proves it useful; it must call the same core. Existing adopted 0.27 source, the independent unadopted 0.26 library candidate, and their original owners remain separate.

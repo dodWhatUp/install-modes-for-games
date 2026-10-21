@@ -13,3 +13,23 @@ Edits remain previews until the exact digest is accepted. Preparation and commit
 Evidence: 17 policy tests passed in the isolated Linux guest, including schema, scope/direction isolation, controls, all context levels, triggers/clocks, local exclusion, acknowledgement drift, peer data, cancellation, staged references and granular rollback. The final native CLI integration also required current policy acknowledgement and enabled adoption before placement.
 
 Decision: accept the original policy-source criteria. This is a policy/eligibility implementation, not an active synchronizer, automatic context injector or remote executor. Those effects keep their separate source owners and acceptance gates.
+# Versioned queue/configuration correction — 2026-10-21 source candidate
+
+The PR #31 continuation reproduces the legacy two-reference invalidation, then
+adds an explicit `effective-config-v2` policy revision scheme. Rules, exclusions,
+exact central acknowledgements and unknown future configuration fields remain
+in the effective digest. Queue and presentation mutation remain in LocalState's
+full-body CAS/audit revision without invalidating unrelated v2 notices.
+
+`propose_revision_upgrade` is a non-writing exact proposal. Acceptance preserves
+legacy queued rows and old hash meanings; the access owner refuses managed
+effects until an administrator pins the new revision and the device explicitly
+acknowledges it. Old rows require an exact `restage_context` proposal and commit.
+Central acknowledgements continue to reference their exact unchanged rules.
+No existing store is automatically migrated. Notices still require a reported
+supported boundary and deliver no model context. Real rule/ack/exclusion changes
+still invalidate references. The existing CLI and schema expose the new scheme.
+
+See [current checkpoint continuation evidence](MCI-08-CONTINUATION-VALIDATION.json).
+This is source-candidate correction, not deployment or new acceptance. MCI-12's
+existing 6/6 scope and the program's 47/108 accepted checks are unchanged.

@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "kind": "MCI08LocalHandoverPreparationValidation",
+  "date": "2026-10-21",
+  "continuation_base": "0969584d295bd15ce2c2bcf3a9278d45125b033c",
+  "reviewed_main": "9683b32ca6260b060f4727937f26e6a4a96d50de",
+  "pr": "https://github.com/dodWhatUp/install-modes-for-games/pull/31",
+  "checkpoint_service_version": "0.3.0-preview.1",
+  "status": "SOURCE_AND_ONE_HOST_NATIVE_PREPARATION_VERIFIED_NOT_INSTALLED_OR_MERGED",
+  "interfaces": [
+    "checkpoint-handover-preview",
+    "checkpoint-handover-prepare",
+    "checkpoint-handover-inspect"
+  ],
+  "existing_owners": [
+    "CheckpointService",
+    "AccessStore.stop_local",
+    "Journal",
+    "VaultRegistry",
+    "PolicyStore",
+    "LocalState",
+    "existing cooperative locks"
+  ],
+  "invariants": [
+    "Exact accepted plan and revision vector",
+    "Current per-class source reads and local administrator scope",
+    "Verified v2 parent graph and unchanged selected saved files",
+    "Authority stores and local audit off selected data volume",
+    "No writes to data volume by handover preparation",
+    "Stop preserved after interruption",
+    "New local attempt only; no replay or old-journal repair",
+    "Inspect locally while stopped or data volume absent",
+    "Stop file identity and bytes both bound",
+    "Physical transfer readiness and all-writer release always false"
+  ],
+  "windows": {
+    "platform": "Windows 11 build 26200",
+    "python": "3.12.14",
+    "distinct_selected_cases": 129,
+    "passed": 127,
+    "skipped": 2,
+    "final_outstanding_failures_or_errors": 0,
+    "suites": [
+      {
+        "log": "checkpoint-stage2.log",
+        "cases": 48,
+        "passed": 47,
+        "skipped": 1,
+        "seconds": 601.939
+      },
+      {
+        "log": "exchange-stage2.log",
+        "cases": 17,
+        "passed": 16,
+        "skipped": 1,
+        "seconds": 738.955
+      },
+      {
+        "log": "windows-account-stage2.log",
+        "cases": 20,
+        "passed": 20,
+        "skipped": 0,
+        "seconds": 1.461
+      },
+      {
+        "log": "access-stage2.log",
+        "cases": 18,
+        "passed": 18,
+        "skipped": 0,
+        "seconds": 7.813
+      },
+      {
+        "log": "acceptance-preparation-stage2.log",
+        "cases": 11,
+        "passed": 11,
+        "skipped": 0,
+        "seconds": 0.384
+      },
+      {
+        "suite": "Test-ManagedWorkspaceHandover.py",
+        "cases": 15,
+        "passed": 15,
+        "skipped": 0,
+        "evidence": "13 unchanged passing cases from initial 14-case run, corrected administrator-case recheck, plus forced-child-exit case",
+        "test_fixture_correction": "Initial negative administrator setup omitted required project_id; fixed the fixture and reran that case. No implementation change was needed.",
+        "targeted_logs": [
+          "handover-admin-recheck.log",
+          "handover-killed-child.log"
+        ]
+      }
+    ],
+    "skips": [
+      "Existing symlink fixture requires Windows privilege",
+      "Existing optional jsonschema dependency unavailable"
+    ],
+    "new_cases": 26,
+    "prior_stage_results_not_added_to_this_stage_count": true
+  },
+  "source_export_contracts_passed": 69,
+  "native_fixture": {
+    "result": "LOCAL_PREPARATION_PASSED",
+    "receipt_sha256": "a5f1c8b2522387cf381ca3d099aedfed570fecf36ba72ec28e6f50ac7e846a71",
+    "principal_observer": "actual Windows local principal",
+    "volume_observer": "actual windows-volume-guid",
+    "data_volume": "observed non-system healthy fixed NTFS",
+    "authorization": "local_os_session test fixture; not protected Windows acceptance",
+    "files": 5,
+    "content_classes": 4,
+    "full_and_parent_bound_delta": "passed",
+    "inactive_byte_readback": "passed",
+    "relative_reference_and_sum_9": "passed",
+    "local_stop_and_evidence_inspection": "passed",
+    "fixture_access_left_stopped": true,
+    "source_runtime_bytes_match_recorded_source_files": true,
+    "windows_interactive": "not_attempted",
+    "safe_unmount": "not_attempted",
+    "physical_handover": "not_attempted",
+    "second_computer": "not_tested"
+  },
+  "private_packet": {
+    "files": 10,
+    "source_pinned_A_and_B_launchers": "prepared",
+    "A_read_only_launcher_preflight": "passed",
+    "A_private_handover_inspection": "passed",
+    "powershell_launcher_parsing": "3 passed",
+    "B_receive_parent_delta_and_inactive_restore_templates": "prepared_inert_inputs_only",
+    "local_stores_exported": false,
+    "source_guard": "SHA256 with CRLF normalized to LF only; per-run receipts retain actual byte hashes"
+  },
+  "recovery_evidence": [
+    "Actual test-child os._exit after local stop: stop and three unknown cooperative locks retained, read-only receipt-pending inspection",
+    "Fresh receive of complete receipt-pending payload: new verified/unadopted copy; old attempt unchanged"
+  ],
+  "confirmed_open_boundary": {
+    "owner": "AccessStore / existing Windows verification owner",
+    "condition": "Stopped registry exceeds existing 300-second freshness window",
+    "observed": "Resume and heartbeat refuse; no implicit prompt, timestamp refresh or stop removal",
+    "new_test": "test_stale_stopped_registry_does_not_silently_refresh_or_resume",
+    "disposable_acceptance_route": "Fresh explicitly accepted local fixture enrollment; retain old stopped registry",
+    "production_reauthorization": "separate contract review required; not implemented"
+  },
+  "acceptance": {
+    "program": "47/108",
+    "MCI-08": "0/6",
+    "MCI-13": "5/6",
+    "original_checks_closed": 0,
+    "original_requirements_dependencies_and_checklists_changed": false
+  },
+  "remaining": [
+    "Human protected Windows success and explicit Cancel on A and B",
+    "Independent physical destination local acceptance",
+    "External writer shutdown and observed native safe release",
+    "Physical A-to-B-to-A and actual unexpected removal",
+    "Reviewed stale stopped-device reauthorization",
+    "Active adoption, conflict reconciliation, native chat and network/cloud gates"
+  ],
+  "next_environment": "Codex for prepared source/native/physical checks",
+  "return_to_ChatGPT_Pro_if": "Authority, ancestry, stale-device reauthorization or recovery contract changes are needed",
+  "source_files": [
+    {
+      "path": "scripts/GameToolJournal.py",
+      "sha256_observed_windows_bytes": "319b13e1b96a7e073e9b5b755b228af955dcd8fd2a3842ee61c3f7ea6c43bff8",
+      "sha256_lf_normalized": "01e76b93c69adefa742dfcb139756903c2259812c437ec72c508739b2a81657a"
+    },
+    {
+      "path": "scripts/GameToolManagedWorkspace.py",
+      "sha256_observed_windows_bytes": "4bb5d21411bff1edaf316bff962092d404358ff1d51e0e42612ceca5f57b9025",
+      "sha256_lf_normalized": "5c0945ea036060d723e28f062f9652e7ce11e31fe1b602a9af3489e5997b3163"
+    },
+    {
+      "path": "scripts/GameToolUserData.py",
+      "sha256_observed_windows_bytes": "e5bfc98984dd7835eacffd69f55ba1f57ebcbfc46a04c56ca4dddd9f6a1baf6a",
+      "sha256_lf_normalized": "662c4c323ddb4156be2acdf2ff44fb9f05a03b9af882966cdd3c54bb2609836c"
+    },
+    {
+      "path": "scripts/game_system_control/access.py",
+      "sha256_observed_windows_bytes": "9181f451e70120715c578c89da786d3f8fbac93757b84b428664c8fbbb82b443",
+      "sha256_lf_normalized": "1d42382222bdae6ea68f896273bc89c6947cc586e366c059a1c9f775023eeb08"
+    },
+    {
+      "path": "scripts/game_system_control/checkpoints.py",
+      "sha256_observed_windows_bytes": "2335a8abbf9b3e91e985467e6d42e2291d8859cf175ce117d610336cad1e4b80",
+      "sha256_lf_normalized": "f6bcdaeea52f6c7c12033c7b20b0aaccf8fd84972b7a199874be3957b1dcfb6e"
+    },
+    {
+      "path": "scripts/game_system_control/policy.py",
+      "sha256_observed_windows_bytes": "1f7c96debfd68d2a2044628ff9a9ececaed845154f36da075326f9f06da6a8d6",
+      "sha256_lf_normalized": "125ffa32ea4ef8e0c9277cb5eba4a66ddd700cad3accfbde5a9fc60498d40099"
+    },
+    {
+      "path": "scripts/game_system_control/vault.py",
+      "sha256_observed_windows_bytes": "1610c28f39d30126ab8238d45d3f95657ec678d7fb86d46f462ff0414030ba41",
+      "sha256_lf_normalized": "0762f82401c1621f47bee44f2e276b85ab1648538dc84b68775785bc8460fdf3"
+    },
+    {
+      "path": "scripts/game_system_control/windows_account.py",
+      "sha256_observed_windows_bytes": "5bb38b71ffab2e371a7b650d97bd2295ae38137fc32c4d227902f55466693fcb",
+      "sha256_lf_normalized": "f4f747ef2ba9be9b68a2577a85e034b80d09235187002cfed5a9d9442caa2c3a"
+    },
+    {
+      "path": "scripts/game_system_control/workspace_state.py",
+      "sha256_observed_windows_bytes": "b1a0c0844dbe488fdd3547a0b29525bf19adecc8a0f8dd33dd2c9786eaf67c9e",
+      "sha256_lf_normalized": "5a7557ebf1f244739c5d286bf40ee82a6de1d6c3af4618d8e3d4d105ad9726fa"
+    },
+    {
+      "path": "scripts/tests/Accept-ManagedWorkspaceHandover.py",
+      "sha256_observed_windows_bytes": "876b7556c9650ecae6b9291dbb3d692f6f4d3d7930fa1fed7ee1a8ca2acdd2bc",
+      "sha256_lf_normalized": "876b7556c9650ecae6b9291dbb3d692f6f4d3d7930fa1fed7ee1a8ca2acdd2bc"
+    },
+    {
+      "path": "scripts/tests/Accept-ManagedWorkspaceWindowsAccount.py",
+      "sha256_observed_windows_bytes": "4871ec5738f3d2d911b2486d95dddfee9c171a81d66d7ca8392660af7f3af3c3",
+      "sha256_lf_normalized": "56e989f9973dfacd92cb39ce30ee0e6cc291165b1529470a7da16c459de88270"
+    },
+    {
+      "path": "scripts/tests/Test-ManagedWorkspaceAcceptancePreparation.py",
+      "sha256_observed_windows_bytes": "6cf4ed504a207b7f394c1b044026024770cbc18693983ab1aa9196b286e26263",
+      "sha256_lf_normalized": "6cf4ed504a207b7f394c1b044026024770cbc18693983ab1aa9196b286e26263"
+    },
+    {
+      "path": "scripts/tests/Test-ManagedWorkspaceHandover.py",
+      "sha256_observed_windows_bytes": "941778a6b46d3a1f75de660ad996559b196d3d57570279334d19a3d2e337e9c3",
+      "sha256_lf_normalized": "941778a6b46d3a1f75de660ad996559b196d3d57570279334d19a3d2e337e9c3"
+    }
+  ]
+}

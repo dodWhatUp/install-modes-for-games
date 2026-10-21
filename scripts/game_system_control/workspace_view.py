@@ -5,9 +5,9 @@ from pathlib import Path
 from GameToolUserData import _read, digest
 from .contracts import validate_context
 from .vault import VaultRegistry
-from .policy import PolicyStore
-from .access import AccessStore
-from .workspace_state import private_root
+from .policy import PolicyStore, LEGACY_REVISION
+from .access import AccessStore, MAX_DEVICE_STALENESS_SECONDS
+from .workspace_state import private_root, MAX_REVISIONS
 
 
 def workspace_context(root):
@@ -24,9 +24,13 @@ def workspace_context(root):
         sources.append({"id": ident, "owner": "GameTools managed-workspace local state", "locator": relative,
                         "binding": "selected_project", "sha256": digest(raw), "availability": "available"})
         summary = ({"vaults": len(record["body"]["vaults"]), "managed_roots": ["source", "assets", "outputs", "continuation"], "fallback": "refuse"} if ident == "vault" else
-                   {"rules": [{k: r[k] for k in ("id", "enabled", "controls", "context_depth", "trigger")} for r in record["body"]["rules"]], "delivery": "not_connected"} if ident == "policy" else
+                   {"rules": [{k: r[k] for k in ("id", "enabled", "controls", "context_depth", "trigger")} for r in record["body"]["rules"]], "delivery": "not_connected",
+                    "revision_scheme": record["body"].get("revision_scheme", LEGACY_REVISION)} if ident == "policy" else
                    {"memberships": record["body"]["memberships"], "storage_permissions": record["body"]["storage_permissions"], "provider_sign_in": authentication,
-                    "remote_authentication": "not_connected"})
+                    "remote_authentication": "not_connected", "non_metadata_freshness_limit_seconds": MAX_DEVICE_STALENESS_SECONDS})
+        summary["local_history_capacity"] = {"maximum_revisions": MAX_REVISIONS, "used": record["generation"] + 1,
+                                             "remaining": MAX_REVISIONS - record["generation"] - 1, "at_capacity": record["generation"] + 1 == MAX_REVISIONS,
+                                             "rollover": "not_implemented_no_automatic_reset"}
         nodes.append({"id": ident, "source_id": ident, "kind": "component", "label": label, "selected_summary": summary,
                       "scopes": ["managed-workspace"], "layer": "project", "observation": "declared", "depends_on": ["policy", "access"] if ident == "vault" else []})
     body = rows[2][1]["body"]

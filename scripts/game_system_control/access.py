@@ -21,6 +21,7 @@ ROLES = {"viewer": {"metadata.read"}, "contributor": {"metadata.read", "managed.
          "operator": {"metadata.read", "operation.propose"},
          "policy_administrator": {"metadata.read", "policy.propose", "enrollment.manage"}}
 MAX_ENROLLMENT_SECONDS = 30 * 86400
+MAX_DEVICE_STALENESS_SECONDS = 300
 
 
 def clock(value):
@@ -114,7 +115,7 @@ class AccessStore:
         membership = next((m for m in body["memberships"] if m["account_id"] == request["account_id"] and m["project_id"] == request["project_id"]), None)
         capabilities = set().union(*(ROLES[r] for r in membership["roles"])) if membership else set()
         if reason is None and request["capability"] not in capabilities: reason = "role_denied"
-        if reason is None and request["capability"] != "metadata.read" and (not device["online"] or not 0 <= now - device["last_seen"] <= 300): reason = "offline_or_stale_device"
+        if reason is None and request["capability"] != "metadata.read" and (not device["online"] or not 0 <= now - device["last_seen"] <= MAX_DEVICE_STALENESS_SECONDS): reason = "offline_or_stale_device"
         if reason is None and request["capability"] in {"managed.read", "managed.write", "operation.propose"}:
             revision = body["active_policy_revision"]
             if revision is None or device["policy_ack"] != revision or request.get("policy_revision") != revision: reason = "policy_ack_required"
