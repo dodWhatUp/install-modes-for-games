@@ -1,5 +1,47 @@
 # History
 
+## 2026-10-25 - Selected DLAA activation: SDR menu passed, HDR restart failed
+
+The user explicitly selected DLAA. The existing Luma `latest-761` package and
+signed DLSS 310.9.16 runtime were activated with preset L, native TAA and the
+existing 3840x2160/100% resolution. Generic neural rendering stayed disabled.
+The gameplay loader was temporarily disabled to isolate the earlier shutdown
+fault; its three plugin choices and settings were preserved. Current files,
+profiles, native settings and the campaign-save subtree were backed up first.
+
+With Windows HDR initially on, Luma displayed its documented SDR-restart notice,
+disabled Windows HDR and spawned a replacement game process. The original
+process faulted before the menu: `0xC0000005`, module `ShadowOfWar.exe`
+1.0.8874.0, offset `0x106ab07`; the replacement exited 0 without reaching a menu.
+This differs from the earlier `nvwgf2umx.dll` shutdown fault and does not isolate
+one universal cause. The working file profile was restored before the next trial.
+
+A manual launch with Windows HDR already off and the same minimal DLAA profile
+reached the title/main menu. Luma showed **DLSS / L / SDR / Enabled** and the
+100%-only TAA requirement. The menu appeared dark with intermittent repeated
+character outlines during animation. Normal Quit to Desktop completed with
+Steam exit code **0** and a normal add-on unload. This is a bounded isolated
+SDR startup/menu/exit pass, not proof of repeated DLAA creation, evaluation,
+delivery, moving-scene quality, HDR game output or combined gameplay stability.
+The combined trial was not run. No campaign, benchmark or neural test ran.
+
+Final state: the previous RenoDX graphics and all three gameplay plugins are
+active; Luma/DLAA and neural rendering remain installed **off**. Windows HDR was
+restored through its normal Settings control and a fresh system report verified
+3840x2160/240 Hz, PQ/BT.2020 and Advanced Color enabled. Native render.cfg and
+campaign-save hashes match the pre-trial backup. The task input helper stopped;
+the existing Studio remained running. Luma's newly created empty auto-restart
+marker was preserved outside the game so a later trial retains its startup notice.
+
+The existing controller now has separate saved presets **Before DLAA 2026-10-25**
+and **DLAA SDR trial - gameplay off**. Loading only fills the preview; Apply
+remains separate, guarded and reversible. The trial is not the everyday default.
+The included guide explains that a graphics-profile switch alone does not undo
+Luma's Windows HDR change. Recovery, exact file checks and logs remain private.
+Next boundary: diagnose HDR restart and visual artifacts, establish repeated
+feature delivery, then validate the gameplay combination before activating it
+for ordinary play. The earlier combined NVIDIA exit failure remains unresolved.
+
 ## 2026-10-25 - Renewed DLSS SR and DLSS 5 request: compatibility recheck
 
 A fresh read after the renewed installation request found the previous RenoDX
