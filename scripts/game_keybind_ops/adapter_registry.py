@@ -23,6 +23,7 @@ _ADAPTERS = {
         Adapter('ue-chord',1,('.ini',),selector_help='existing ActionMappings key and four explicit modifier flags'),
         Adapter('xml',1,('.xml',),selector_help='indexed element or xml_match identity + attribute'),
         Adapter('cfg-bind',1,('.cfg',),selector_help='quoted bind KEY COMMAND'),
+        Adapter('idtech-bindset',1,('.cfg',),selector_help='configVersion 19; bindset + kind + command + occurrence'),
         Adapter('keyvalues',1,('.vdf','.acf','.txt','.cfg'),selector_help='quoted KeyValues1 path of name/occurrence pairs; no directives'),
         Adapter('colon-lines',1,('.txt','.properties','.conf'),selector_help='one key:value line, exact key and occurrence'),
     )

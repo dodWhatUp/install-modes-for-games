@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "kind": "game-mod-controls",
+  "game_id": "no-rest-for-the-wicked",
+  "adapter": "wicked-reviewed",
+  "files": {},
+  "fields": [],
+  "sources": [
+    "https://github.com/LavaGang/MelonLoader/releases/tag/v0.7.3",
+    "https://www.nexusmods.com/norestforthewicked/mods/18",
+    "https://github.com/Vergir/NRftW-RuneDetails",
+    "https://www.nexusmods.com/norestforthewicked/mods/107",
+    "https://www.nexusmods.com/norestforthewicked/mods/41"
+  ],
+  "notes": "Connect the existing prepared controller workspace locally. Reviewed file and TOML controls share one lock, backup and readback transaction. File verification does not establish game startup or gameplay. No new graphics stack is selected by this pack."
+}

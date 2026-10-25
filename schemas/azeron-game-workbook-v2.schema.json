@@ -1,0 +1,2325 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:azeron:game-workbook:schema:2",
+  "title": "Azeron per-game planning workbook — version 2",
+  "description": "Inert planning data. Structure cannot prove semantics, input support, ergonomics or authorization. Check stable ID references, priority arithmetic, source versions and scopes separately.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "kind": {
+      "const": "azeron_game_workbook"
+    },
+    "schema_version": {
+      "const": 2
+    },
+    "workbook_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "revision": {
+      "type": "string"
+    },
+    "previous_revision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "workflow_revision": {
+      "type": "string"
+    },
+    "priority_policy_revision": {
+      "const": "A20-UF-1"
+    },
+    "status": {
+      "enum": [
+        "empty_template",
+        "research",
+        "classified",
+        "proposed",
+        "prepared",
+        "file_verified",
+        "play_verified",
+        "partially_complete"
+      ]
+    },
+    "importable_into_azeron_or_game": {
+      "const": false
+    },
+    "file_content_grants_authorization": {
+      "const": false
+    },
+    "owner": {
+      "type": "string"
+    },
+    "required_features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "game_identity": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "game_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "build": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "store": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "platform": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "profile": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "input_mode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "variant": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "genre_tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "play_style": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "game_id",
+        "build",
+        "store",
+        "platform",
+        "profile",
+        "input_mode",
+        "variant",
+        "genre_tags",
+        "play_style"
+      ],
+      "additionalProperties": false
+    },
+    "shared_baseline_snapshot": {
+      "type": "object",
+      "description": "Reported user baseline, not current native bytes. Retain source identity and explicit coverage when replacing with a newer accepted snapshot."
+    },
+    "shared_rules_snapshot": {
+      "type": "object",
+      "properties": {
+        "snapshot_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_owner": {
+          "type": "string"
+        },
+        "source_locator": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "checked_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "currentness": {
+          "enum": [
+            "not_verified",
+            "verified_current",
+            "known_stale"
+          ]
+        },
+        "coverage": {
+          "enum": [
+            "reported_physical_baseline_only",
+            "partial",
+            "complete_for_scope"
+          ]
+        },
+        "embedded_rule_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "embedded_group_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "authoritative_copy": {
+          "const": false
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "snapshot_id",
+        "source_owner",
+        "source_locator",
+        "source_revision",
+        "checked_at",
+        "currentness",
+        "coverage",
+        "embedded_rule_ids",
+        "embedded_group_ids",
+        "authoritative_copy",
+        "note"
+      ],
+      "additionalProperties": false
+    },
+    "pending_shared_changes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "game_sources_identified": {
+          "type": "boolean"
+        },
+        "effective_source_precedence_verified": {
+          "type": "boolean"
+        },
+        "native_alias_coverage": {
+          "enum": [
+            "partial_reference_only",
+            "missing",
+            "partial",
+            "complete_for_scope",
+            "complete"
+          ]
+        },
+        "selected_context_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "unknowns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "source_bindings_verified": {
+          "type": "boolean"
+        },
+        "physical_or_gameplay_verified_here": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "game_sources_identified",
+        "effective_source_precedence_verified",
+        "native_alias_coverage",
+        "selected_context_ids",
+        "unknowns",
+        "source_bindings_verified",
+        "physical_or_gameplay_verified_here"
+      ],
+      "additionalProperties": false
+    },
+    "source_inventory": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/source"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/evidence"
+      }
+    },
+    "contexts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/context"
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/action"
+      }
+    },
+    "bundles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/bundle"
+      }
+    },
+    "combinations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/combination"
+      }
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/group"
+      }
+    },
+    "layers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/layer"
+      }
+    },
+    "routes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/route"
+      }
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/rule"
+      }
+    },
+    "assignments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/assignment"
+      }
+    },
+    "research_queue": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/research"
+      }
+    },
+    "change_log": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/change"
+      }
+    },
+    "effect_state": {
+      "type": "object",
+      "properties": {
+        "native_profiles": {
+          "enum": [
+            "unchanged",
+            "planned",
+            "partially_applied",
+            "applied",
+            "verified",
+            "unknown"
+          ]
+        },
+        "game_files": {
+          "enum": [
+            "unchanged",
+            "planned",
+            "partially_applied",
+            "applied",
+            "verified",
+            "unknown"
+          ]
+        },
+        "overlay": {
+          "enum": [
+            "unchanged",
+            "planned",
+            "partially_published",
+            "published",
+            "verified",
+            "unknown"
+          ]
+        },
+        "gameplay": {
+          "enum": [
+            "not_tested_here",
+            "partially_tested",
+            "tested_for_named_scope"
+          ]
+        }
+      },
+      "required": [
+        "native_profiles",
+        "game_files",
+        "overlay",
+        "gameplay"
+      ],
+      "additionalProperties": false
+    },
+    "handoff": {
+      "type": "object",
+      "properties": {
+        "summary_he": {
+          "type": "string"
+        },
+        "next_task": {
+          "type": "string"
+        },
+        "next_environment": {
+          "type": "string"
+        },
+        "required_accessible_sources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "remaining_decision_changing_questions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "summary_he",
+        "next_task",
+        "next_environment",
+        "required_accessible_sources",
+        "remaining_decision_changing_questions"
+      ],
+      "additionalProperties": false
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "$schema",
+    "kind",
+    "schema_version",
+    "workbook_id",
+    "revision",
+    "previous_revision",
+    "workflow_revision",
+    "priority_policy_revision",
+    "status",
+    "importable_into_azeron_or_game",
+    "file_content_grants_authorization",
+    "owner",
+    "required_features",
+    "game_identity",
+    "shared_baseline_snapshot",
+    "shared_rules_snapshot",
+    "pending_shared_changes",
+    "coverage",
+    "source_inventory",
+    "evidence",
+    "contexts",
+    "actions",
+    "bundles",
+    "combinations",
+    "groups",
+    "layers",
+    "routes",
+    "rules",
+    "assignments",
+    "research_queue",
+    "change_log",
+    "effect_state",
+    "handoff",
+    "extensions"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "scope": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "enum": [
+            "device",
+            "global",
+            "genre",
+            "game",
+            "variant",
+            "context"
+          ]
+        },
+        "target_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "level",
+        "target_ids",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "priority": {
+      "type": "object",
+      "properties": {
+        "policy_revision": {
+          "const": "A20-UF-1"
+        },
+        "urgency_candidates": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "uniqueItems": true
+        },
+        "frequency_candidates": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4
+          },
+          "uniqueItems": true
+        },
+        "score_candidates": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "uniqueItems": true
+        },
+        "computed_priority": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 20
+        },
+        "user_priority_override": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 20
+        },
+        "override_rule_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "explanation": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "policy_revision",
+        "urgency_candidates",
+        "frequency_candidates",
+        "score_candidates",
+        "computed_priority",
+        "user_priority_override",
+        "override_rule_id",
+        "explanation",
+        "evidence_refs"
+      ],
+      "additionalProperties": false
+    },
+    "usage": {
+      "type": "object",
+      "properties": {
+        "basis": {
+          "enum": [
+            "unknown",
+            "user_report",
+            "observed_sample",
+            "documented_mechanic",
+            "inference"
+          ]
+        },
+        "new_activation_count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "active_context_minutes": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "estimated_per_minute_min": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "estimated_per_minute_max": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "opportunities": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "hold_duration_seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "held_fraction": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "burst_pattern": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sample_scope": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "basis",
+        "new_activation_count",
+        "active_context_minutes",
+        "estimated_per_minute_min",
+        "estimated_per_minute_max",
+        "opportunities",
+        "hold_duration_seconds",
+        "held_fraction",
+        "burst_pattern",
+        "sample_scope",
+        "evidence_refs"
+      ],
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "claim": {
+          "type": "string"
+        },
+        "source_kind": {
+          "enum": [
+            "user_instruction",
+            "user_report",
+            "local_source",
+            "official_documentation",
+            "observation",
+            "inference",
+            "unknown"
+          ]
+        },
+        "locator": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "locator_status": {
+          "enum": [
+            "accessible",
+            "embedded",
+            "missing",
+            "not_checked"
+          ]
+        },
+        "checked_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "game_build": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "context_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "confidence": {
+          "enum": [
+            "high",
+            "medium",
+            "low",
+            "unknown"
+          ]
+        },
+        "limitation": {
+          "type": "string"
+        },
+        "supersedes_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "evidence_refs",
+        "claim",
+        "source_kind",
+        "locator",
+        "locator_status",
+        "checked_at",
+        "game_build",
+        "context_ids",
+        "confidence",
+        "limitation",
+        "supersedes_ids"
+      ],
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "locator": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_role": {
+          "enum": [
+            "native_profile",
+            "user_config",
+            "default_config",
+            "override",
+            "export",
+            "backup",
+            "registry",
+            "ui_only",
+            "other",
+            "unknown"
+          ]
+        },
+        "format": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "profile": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "game_build": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "input_mode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "effective_status": {
+          "enum": [
+            "candidate",
+            "contributing",
+            "inactive",
+            "unknown"
+          ]
+        },
+        "overrides_source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "precedence_verified": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "writer_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "coverage": {
+          "type": "string"
+        },
+        "read_status": {
+          "enum": [
+            "read",
+            "not_read",
+            "unavailable"
+          ]
+        },
+        "raw_bytes_available": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "evidence_refs",
+        "locator",
+        "source_role",
+        "format",
+        "sha256",
+        "profile",
+        "game_build",
+        "input_mode",
+        "effective_status",
+        "overrides_source_ids",
+        "precedence_verified",
+        "writer_names",
+        "coverage",
+        "read_status",
+        "raw_bytes_available",
+        "limitations"
+      ],
+      "additionalProperties": false
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "label": {
+          "type": "string"
+        },
+        "parent_context_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "enum": [
+            "gameplay",
+            "combat",
+            "exploration",
+            "vehicle",
+            "dialogue",
+            "menu",
+            "submenu",
+            "text_entry",
+            "setup",
+            "other",
+            "unknown"
+          ]
+        },
+        "time_behavior": {
+          "enum": [
+            "running",
+            "slowed",
+            "paused",
+            "unknown"
+          ]
+        },
+        "entry_action_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "exit_action_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "exclusive_with_context_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "exclusivity_verified": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "input_namespace_verified": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "evidence_refs",
+        "label",
+        "parent_context_id",
+        "kind",
+        "time_behavior",
+        "entry_action_ids",
+        "exit_action_ids",
+        "exclusive_with_context_ids",
+        "exclusivity_verified",
+        "input_namespace_verified",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "action": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "label": {
+          "type": "string"
+        },
+        "original_label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "native_command": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "context_id": {
+          "type": "string"
+        },
+        "meaning": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "operation": {
+          "enum": [
+            "move",
+            "aim",
+            "activate",
+            "select",
+            "equip",
+            "interact",
+            "navigate",
+            "confirm",
+            "cancel",
+            "toggle_mode",
+            "configure",
+            "other",
+            "unknown"
+          ]
+        },
+        "gesture": {
+          "enum": [
+            "press",
+            "hold",
+            "release",
+            "repeat_press",
+            "double_press",
+            "toggle",
+            "chord",
+            "axis",
+            "mixed",
+            "unknown"
+          ]
+        },
+        "availability": {
+          "enum": [
+            "available",
+            "locked",
+            "conditional",
+            "absent",
+            "unknown"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "bundle_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "group_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "usage": {
+          "$ref": "#/definitions/usage"
+        },
+        "priority": {
+          "$ref": "#/definitions/priority"
+        },
+        "requirements": {
+          "type": "object",
+          "properties": {
+            "direct_access": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "movement_simultaneous": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "aiming_simultaneous": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "sustained_hold": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "repeated_press": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "required_combination_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
+            "short_window_description": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "preparation_in_advance": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "late_action_cost": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "accidental_activation_cost": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "direct_access",
+            "movement_simultaneous",
+            "aiming_simultaneous",
+            "sustained_hold",
+            "repeated_press",
+            "required_combination_ids",
+            "short_window_description",
+            "preparation_in_advance",
+            "late_action_cost",
+            "accidental_activation_cost"
+          ],
+          "additionalProperties": false
+        },
+        "known_binding_descriptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "evidence_by_field": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        },
+        "knowledge_state": {
+          "enum": [
+            "unclassified",
+            "partial",
+            "classified",
+            "source_verified",
+            "play_verified"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "evidence_refs",
+        "label",
+        "original_label",
+        "native_command",
+        "context_id",
+        "meaning",
+        "operation",
+        "gesture",
+        "availability",
+        "tags",
+        "bundle_id",
+        "group_ids",
+        "usage",
+        "priority",
+        "requirements",
+        "known_binding_descriptions",
+        "evidence_by_field",
+        "knowledge_state",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "bundle": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "label": {
+          "type": "string"
+        },
+        "member_action_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 2,
+          "uniqueItems": true
+        },
+        "binding_relationship": {
+          "enum": [
+            "same_native_command",
+            "linked_bindings",
+            "contextual_shared_bind",
+            "unknown"
+          ]
+        },
+        "split_supported": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "preserve_together": {
+          "type": "boolean"
+        },
+        "split_decision": {
+          "enum": [
+            "preserve_default",
+            "comparison_only",
+            "requested_exception",
+            "accepted_exception"
+          ]
+        },
+        "split_rule_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "context_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "context_profiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "context_id": {
+                "type": "string"
+              },
+              "applicable_member_action_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              },
+              "unique_binding_usage": {
+                "$ref": "#/definitions/usage"
+              },
+              "priority": {
+                "$ref": "#/definitions/priority"
+              },
+              "aggregation_basis": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "context_id",
+              "applicable_member_action_ids",
+              "unique_binding_usage",
+              "priority",
+              "aggregation_basis",
+              "evidence_refs"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "evidence_refs",
+        "label",
+        "member_action_ids",
+        "binding_relationship",
+        "split_supported",
+        "preserve_together",
+        "split_decision",
+        "split_rule_id",
+        "context_ids",
+        "context_profiles",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "combination": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "label": {
+          "type": "string"
+        },
+        "context_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "action_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "route_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "held_resources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "sequence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "anatomical_status": {
+          "enum": [
+            "accepted_by_user",
+            "plausible",
+            "difficult",
+            "prohibited",
+            "untested"
+          ]
+        },
+        "input_status": {
+          "enum": [
+            "supported",
+            "unsupported",
+            "unknown"
+          ]
+        },
+        "required": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "evidence_refs",
+        "label",
+        "context_ids",
+        "action_ids",
+        "route_ids",
+        "held_resources",
+        "sequence",
+        "anatomical_status",
+        "input_status",
+        "required",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "group": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "label": {
+          "type": "string"
+        },
+        "group_type": {
+          "enum": [
+            "semantic_roles",
+            "physical_positions"
+          ]
+        },
+        "scope": {
+          "$ref": "#/definitions/scope"
+        },
+        "role_order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "member_action_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "reserved_route_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "physical_button_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "uniqueItems": true
+        },
+        "anchor_policy": {
+          "enum": [
+            "locked",
+            "preferred",
+            "unassigned"
+          ]
+        },
+        "adjacency": {
+          "enum": [
+            "required",
+            "preferred",
+            "not_required",
+            "unknown"
+          ]
+        },
+        "acceptance": {
+          "enum": [
+            "reported_existing",
+            "proposed",
+            "accepted",
+            "superseded"
+          ]
+        },
+        "exception_rule_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "evidence_refs",
+        "label",
+        "group_type",
+        "scope",
+        "role_order",
+        "member_action_ids",
+        "reserved_route_ids",
+        "physical_button_ids",
+        "anchor_policy",
+        "adjacency",
+        "acceptance",
+        "exception_rule_ids",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "layer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "label": {
+          "type": "string"
+        },
+        "native_profile_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "entry_button_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "uniqueItems": true
+        },
+        "entry_mode": {
+          "enum": [
+            "hold",
+            "toggle",
+            "software_select",
+            "other",
+            "unknown"
+          ]
+        },
+        "holder_finger": {
+          "enum": [
+            "little",
+            "ring",
+            "middle",
+            "index",
+            "thumb",
+            "none",
+            "unknown"
+          ]
+        },
+        "exit_description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "entry_access_rank": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 20
+        },
+        "rank_context_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "held_bind_transition": {
+          "enum": [
+            "enabled",
+            "disabled",
+            "unknown"
+          ]
+        },
+        "inventory_coverage": {
+          "enum": [
+            "complete",
+            "partial",
+            "missing"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "evidence_refs",
+        "label",
+        "native_profile_id",
+        "entry_button_ids",
+        "entry_mode",
+        "holder_finger",
+        "exit_description",
+        "entry_access_rank",
+        "rank_context_ids",
+        "held_bind_transition",
+        "inventory_coverage",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "route": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "label": {
+          "type": "string"
+        },
+        "layer_id": {
+          "type": "string"
+        },
+        "button_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "finger": {
+          "enum": [
+            "little",
+            "ring",
+            "middle",
+            "index",
+            "thumb",
+            "unknown"
+          ]
+        },
+        "physical_row_from_bottom": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 5
+        },
+        "context_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "start_layer_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "entry_steps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "held_route_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "output_display": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "normalized_input": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "input_identity_verified": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "candidate_alias_route_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "verified_alias_route_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "button_access_rank": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 20
+        },
+        "effective_route_access_rank": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 20
+        },
+        "rank_basis": {
+          "enum": [
+            "user_report",
+            "user_test",
+            "ordinal_row_only",
+            "proposed",
+            "unknown"
+          ]
+        },
+        "hold_suitability": {
+          "enum": [
+            "accepted",
+            "difficult",
+            "prohibited",
+            "unknown"
+          ]
+        },
+        "repeat_suitability": {
+          "enum": [
+            "accepted",
+            "difficult",
+            "prohibited",
+            "unknown"
+          ]
+        },
+        "movement_compatible": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "aiming_compatible": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "feasibility": {
+          "enum": [
+            "eligible",
+            "conditional",
+            "ineligible",
+            "unknown"
+          ]
+        },
+        "eligibility_conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "evidence_refs",
+        "label",
+        "layer_id",
+        "button_id",
+        "finger",
+        "physical_row_from_bottom",
+        "context_ids",
+        "start_layer_id",
+        "entry_steps",
+        "held_route_ids",
+        "output_display",
+        "normalized_input",
+        "input_identity_verified",
+        "candidate_alias_route_ids",
+        "verified_alias_route_ids",
+        "button_access_rank",
+        "effective_route_access_rank",
+        "rank_basis",
+        "hold_suitability",
+        "repeat_suitability",
+        "movement_compatible",
+        "aiming_compatible",
+        "feasibility",
+        "eligibility_conditions",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "rule": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "scope": {
+          "$ref": "#/definitions/scope"
+        },
+        "field": {
+          "type": "string"
+        },
+        "value": {},
+        "strength": {
+          "enum": [
+            "hard",
+            "preference",
+            "tie_break"
+          ]
+        },
+        "acceptance": {
+          "enum": [
+            "reported_existing",
+            "proposed",
+            "accepted",
+            "superseded"
+          ]
+        },
+        "supersedes_rule_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "evidence_refs",
+        "scope",
+        "field",
+        "value",
+        "strength",
+        "acceptance",
+        "supersedes_rule_ids",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "assignment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "action_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "context_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "route_id": {
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "reported_current",
+            "candidate",
+            "accepted_plan",
+            "prepared",
+            "file_verified",
+            "play_verified",
+            "superseded"
+          ]
+        },
+        "role": {
+          "enum": [
+            "primary",
+            "incidental_alias",
+            "alternative"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        },
+        "displaced_assignment_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "affected_alias_route_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "unresolved_question_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "tested_scope": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "evidence_refs",
+        "action_ids",
+        "context_ids",
+        "route_id",
+        "state",
+        "role",
+        "reason",
+        "displaced_assignment_ids",
+        "affected_alias_route_ids",
+        "unresolved_question_ids",
+        "tested_scope"
+      ],
+      "additionalProperties": false
+    },
+    "research": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "question": {
+          "type": "string"
+        },
+        "decision_affected": {
+          "type": "string"
+        },
+        "scope": {
+          "$ref": "#/definitions/scope"
+        },
+        "depth": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "next_method": {
+          "type": "string"
+        },
+        "sufficient_evidence": {
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "open",
+            "resolved",
+            "blocked",
+            "not_decision_changing"
+          ]
+        },
+        "result": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "evidence_refs",
+        "question",
+        "decision_affected",
+        "scope",
+        "depth",
+        "next_method",
+        "sufficient_evidence",
+        "state",
+        "result"
+      ],
+      "additionalProperties": false
+    },
+    "change": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "request": {
+          "type": "string"
+        },
+        "scope": {
+          "$ref": "#/definitions/scope"
+        },
+        "base_revision": {
+          "type": "string"
+        },
+        "new_revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "allowed_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "affected_record_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "before_after_summary": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "proposed",
+            "accepted_plan",
+            "prepared",
+            "applied",
+            "verified",
+            "reverted"
+          ]
+        },
+        "actual_effects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "remaining_questions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "evidence_refs",
+        "request",
+        "scope",
+        "base_revision",
+        "new_revision",
+        "allowed_fields",
+        "affected_record_ids",
+        "before_after_summary",
+        "reason",
+        "state",
+        "actual_effects",
+        "remaining_questions"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$comment": "P=4*(U-1)+F, higher=greater need. If a dimension is completely unknown, use an empty candidate list and computed_priority=null; score_candidates empty until bounded. Do not silently manufacture confidence. Override requires a scoped accepted rule. Unknown required features are read-only."
+}

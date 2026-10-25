@@ -30,3 +30,19 @@ This stack proved a full-resolution neural/DLAA pass; it did not add an upscalin
 ## 2026-09-14 — Library comparison review
 
 Added [categorized comparisons](COMPARISONS.md) covering manager/foundations, performance, graphics/DLSS, QoL/UI, animation, AI, abilities/mechanics and actual content extensions. No game files changed or new gameplay tests were performed by this review. Earlier local evidence remains stronger than generic recommendations; historical control mappings and unresolved validation boundaries are preserved. See the [14-game guide](../../docs/INSTALLED-GAMES-MOD-GUIDE.md) for scope and installed-library checks.
+
+## 2026-10-25 — Controls planning manual fallback rehearsed
+
+The new controls workspace reused this game's existing 12 reference maps and
+generated 48 private preview images. An unchanged draft preserved exact map
+content, native outputs and evidence. Shared/genre rules remained proposals;
+no other game adopted them automatically. No effective personal source or
+certified binary decoder was found, so the result remains a manual checklist /
+discovery path, not a fabricated automatic writer. No live map/profile/game file
+was changed and no game was launched. See [the source workflow](../../docs/GAME-CONTROLS-WORKFLOW.md).
+
+## 2026-10-19 — Publisher-reference overlay context labels
+
+Reconciled the existing twelve SPARSE6 gameplay/menu display maps with the publisher PC manual's Keyboard and Mouse Controls table. Menu dashes are shown as “No menu action listed”; keys absent from the manual remain unknown. The Space label is Jump. This computer has no located Bayonetta installation or personal binding config, so PUB markers remain published defaults rather than current personal/gameplay verification.
+
+Native outputs and Azeron profiles were not changed. Prior JSON maps and overlay registry recovery are private; existing game associations and presentation settings were preserved. No game was launched. See [portable maps](../../docs/KEYMAP-DOCUMENTS.md) and the [publisher manual](https://store.steampowered.com/manual/460790).

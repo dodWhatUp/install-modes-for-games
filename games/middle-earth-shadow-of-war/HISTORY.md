@@ -1,5 +1,16 @@
 # History
 
+## 2026-10-25 — Shared app and alternative interface source checkpoint
+
+Mod Controls now shares Unified Game Tools' existing services and game/profile
+identities, with an Existing / New interface selector in the same window.
+Source links, folders, refresh, manager preparation, floating options, search
+and Show/Hide retain explicit apply/review ownership. The source checkpoint
+preserves the later 0.27.25 line, runtime profiles and editable-list correction;
+publication itself does not change graphics, installed mods, game bindings,
+saves or native profiles. The independent preview remains available.
+See the [delivery and acceptance boundaries](../../docs/UNIFIED-TOOLS-DELIVERY-2026-10-25.md).
+
 ## 2026-10-25 - Shared multi-game Mod Controls and AI interface
 
 The user requested a multi-game controller integrated with the general game app,

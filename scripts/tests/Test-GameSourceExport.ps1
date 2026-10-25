@@ -47,6 +47,9 @@ try {
     Assert-ExportRefusal { Get-GameSourcePlan -RepositoryRoot $testRepo -RelativePaths @('invalid.txt') } '' 'invalid UTF-8 refusal'
     $testPrivatePath = 'C:' + [char]92 + 'Users' + [char]92 + 'example-person' + [char]92 + 'private.txt'
     Assert-ExportRefusal { Assert-GameSourcePrivacy -Text $testPrivatePath -Label fixture } 'private-path' 'private path refusal'
+    Assert-GameSourcePrivacy -Text 'C:/Users/Public/Documents/reWASD/Profiles' -Label 'public system folder'
+    Assert-ExportTest $true 'public Windows folder is not a personal path'
+    Assert-ExportRefusal { Assert-GameSourcePrivacy -Text ($testPrivatePath.Replace('example-person', 'Public-person')) -Label fixture } 'private-path' 'public prefix does not exempt personal accounts'
     foreach ($testCredential in @(
         ('gh' + 'p_' + ('x' * 24)), ('github_' + 'pat_' + ('x' * 24)),
         ('Bear' + 'er ' + ('x' * 30)), ('s' + 'k-' + ('x' * 24)), ('AK' + 'IA' + ('A' * 16)))) {
@@ -199,6 +202,10 @@ try {
     $testOverlayMetadata = Get-GameBundleMetadata -Bundle GameTools -Plan $testOverlayPlan -ClientDate '2026-10-11'
     Assert-ExportTest ($testOverlayMetadata.component_versions.overlay -eq '0.1.0' -and $testOverlayMetadata.component_versions.overlay_panel -eq '0.1.0' -and
         $testOverlayMetadata.component_versions.compact_ui -eq '0.1.0') 'overlay versions pinned to exact source bytes'
+    Write-ExportFixture 'scripts/GameToolOverlayAlternateUI.py' "VERSION = '0.1.1'"
+    $testSingleQuotePlan = @($testOverlayPlan) + @(Get-GameSourcePlan -RepositoryRoot $testRepo -RelativePaths @('scripts/GameToolOverlayAlternateUI.py'))
+    $testSingleQuoteMetadata = Get-GameBundleMetadata -Bundle GameTools -Plan $testSingleQuotePlan -ClientDate '2026-10-11'
+    Assert-ExportTest ($testSingleQuoteMetadata.component_versions.overlay_alternate_ui -eq '0.1.1') 'Python single quoted component version preserved'
     Write-ExportFixture 'examples/game-input/AzeronOverlayStudio.integrated.ahk' 'this.Version := "2.2.0-groups-preview.1"'
     $testOverlayPlan += @(Get-GameSourcePlan -RepositoryRoot $testRepo -RelativePaths @('examples/game-input/AzeronOverlayStudio.integrated.ahk'))
     $testStudioMetadata = Get-GameBundleMetadata -Bundle GameTools -Plan $testOverlayPlan -ClientDate '2026-10-11'

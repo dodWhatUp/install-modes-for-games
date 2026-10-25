@@ -1,4 +1,52 @@
-# Shared Mod Controls 2.0
+# Shared Mod Controls 2.2
+
+## Find the installation and prepared controls
+
+**Find game & controls…** reads known Steam metadata, existing app connections
+and shallow private controller folders. Its responsive chooser ranks matching
+locations, verifies expected executables and reviewed prepared controls, and
+shows the full paths and reasons. High/Medium/Low and the score describe location
+evidence, not mod compatibility or a statistical probability.
+
+Review the suggested row and choose **Use selected** locally. A prepared Wicked
+setup then offers write-enabled, read-only or Cancel. Discovery does not register
+paths, grant writes, launch games or apply mods. Results are rechecked before
+connection. **Browse manually…** remains available for game folders and prepared
+setups. The editable game selector keeps its caret and filtered choices visible;
+typing or opening the list never commits a selection.
+
+## Compact modules and game/graphics coordination
+
+The shared settings page now has **Game mods** and **Graphics tools** views.
+Gameplay, content and appearance mods belong to Mod Control; purpose and delivery
+mechanism remain separate. Compact rows show the enable draft, applied state,
+verified GitHub/Nexus links, a credited offline image preview and per-mod options.
+Floating windows reuse the shared draft and open beside the current pointer.
+The common gallery and floating-window helpers are shared with the original
+Wicked launcher rather than maintained as a second implementation.
+
+**Coordination** shares installation, revision, dependency and declared resource
+context between both views. Missing loaders, duplicate proxy/file/key ownership
+and configured hotkey collisions block a conflicting apply. A clear declaration
+scan remains runtime-unverified. Existing graphics/native managers retain their
+deployment and recovery owners; opening a workflow carries the selected game and
+data root without activating another stack.
+
+No Rest for the Wicked adds its reviewed file/TOML adapter and public support
+metadata. Select the game and choose **Connect prepared setup…**, then select
+the existing controller folder containing `deployment.json`. The local review
+shows the exact game/controller locations and offers writable, read-only or
+cancel. AI does not select these paths or grant writes. Connecting performs no
+game-file apply. The original standalone launcher and its recovery remain usable.
+The adapter applies related plugin switches and documented options under one
+existing lease, backup journal and readback transaction. Conditional recovery
+preserves a later external writer instead of overwriting it.
+
+Follow [Mod Control creation rules](MOD-CONTROL-CONTRACT.md) for later games.
+The optional data-only `catalog` field can describe compact module presentation,
+typed settings, sources, dependencies and claims; it never imports executable
+adapters. [A catalog template](../templates/MOD-CONTROL-CATALOG.example.json)
+shows the format. Existing INI/Shadow profile schema identities are retained.
 
 Mod Controls is a shared page in Unified Game Tools and a convenient standalone
 view over the same data. Use **Game Mod Controls APP LAUNCHER** to open it. The

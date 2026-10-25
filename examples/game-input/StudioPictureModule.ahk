@@ -1,4 +1,339 @@
 #Requires AutoHotkey v2.0
+; Routed maps use a premultiplied BGRA surface. Other legacy pictures retain their renderer.
+; Microsoft UpdateLayeredWindow / BLENDFUNCTION (AC_SRC_ALPHA, ULW_ALPHA).
+; No hooks, capture, input or disk writes. The surface class creates no windows;
+; the frame presenter below owns initial creation and in-place replacement.
+class PM_AlphaFrame {
+    static Prepare(path, width, height) {
+        return PM_AlphaSurface(path, width, height)
+    }
+    static NewWindow() {
+        return Gui("-Caption +ToolWindow +AlwaysOnTop -DPIScale +E0x08080020", "Azeron picture")
+    }
+    static Show(slot, geometry, existing := 0, reuse := true, opacity := -1, retain := false) {
+        ; Decode/scale before touching the visible frame. Present replaces its pixels
+        ; in one UpdateLayeredWindow call, retaining the HWND and visibility.
+        surface := slot.HasOwnProp("RouteImageHash")
+            ? PM_PreparedSurfaceCache.Acquire(slot.File, slot.RouteImageHash, geometry.w, geometry.h)
+            : this.Prepare(slot.File, geometry.w, geometry.h)
+        window := reuse ? existing : 0, created := false, retained := false
+        try {
+            if !window
+                window := this.NewWindow(), created := true
+            surface.Present(window.Hwnd, geometry.x, geometry.y, opacity < 0 ? slot.Opacity : opacity)
+            if created
+                window.Show("NA x" geometry.x " y" geometry.y " w" geometry.w " h" geometry.h)
+            if existing && existing.Hwnd != window.Hwnd
+                this.Dispose(existing) ; Handoff only after the new frame is visible.
+            if retain {
+                if window.HasOwnProp("PM_Surface")
+                    window.PM_Surface.Close()
+                window.PM_Surface := surface, window.PM_Geometry := geometry
+                retained := true
+            }
+            return window
+        } catch {
+            if created && window
+                window.Destroy()
+            throw
+        } finally {
+            if !retained
+                surface.Close()
+        }
+    }
+    static Paint(window, opacity) {
+        geometry := window.PM_Geometry
+        window.PM_Surface.Present(window.Hwnd, geometry.x, geometry.y, opacity)
+    }
+    static Dispose(window) {
+        if window.HasOwnProp("PM_Surface") {
+            window.PM_Surface.Close()
+            window.DeleteProp("PM_Surface")
+        }
+        window.Destroy()
+    }
+}
+
+; Bounded immutable scaled surfaces. A window owns a lease, so evicting a
+; cache entry never disposes pixels still used by a visible/fading window.
+; Every Acquire rehashes the current source bytes; no stale-file bypass.
+class PM_SurfaceLease {
+    __New(surface) {
+        this.Surface := surface
+    }
+    Present(hwnd, x, y, opacity) {
+        if !this.Surface
+            throw Error("Prepared image lease has been released.")
+        this.Surface.Present(hwnd, x, y, opacity)
+    }
+    Close() {
+        this.Surface := 0
+    }
+}
+class PM_PreparedSurfaceCache {
+    static Entries := Map()
+    static Bytes := 0
+    static Serial := 0
+    static MaxEntries := 16
+    static MaxBytes := 32 * 1024 * 1024
+    static Hits := 0
+    static Misses := 0
+    static Key(path, hash, width, height) {
+        return StrLower(path) "|" hash "|" width "|" height
+    }
+    static Verify(path, hash) {
+        if !RegExMatch(path, "i)^[a-z]:\\") || !RegExMatch(hash, "^[a-f0-9]{64}$")
+            throw Error("Invalid prepared image identity.")
+        attr := DllCall("GetFileAttributesW", "str", path, "uint")
+        if attr = 0xFFFFFFFF || (attr & 0x410) || FileGetSize(path) > 16777216
+            || PM_Model.Sha256(path) != hash
+            throw Error("Prepared image identity mismatch.")
+    }
+    static Has(path, hash, width, height) {
+        return this.Entries.Has(this.Key(path, hash, width, height))
+    }
+    static Acquire(path, hash, width, height) {
+        this.Verify(path, hash)
+        key := this.Key(path, hash, width, height)
+        if this.Entries.Has(key) {
+            entry := this.Entries[key], entry.Used := ++this.Serial
+            this.Hits += 1
+            return PM_SurfaceLease(entry.Surface)
+        }
+        this.Misses += 1
+        surface := PM_AlphaSurface(path, width, height)
+        this.Verify(path, hash) ; Refuse a source replaced during decoding.
+        bytes := width * height * 4
+        if bytes <= this.MaxBytes {
+            while this.Entries.Count && (this.Entries.Count >= this.MaxEntries || this.Bytes + bytes > this.MaxBytes) {
+                oldest := "", serial := this.Serial + 1
+                for candidate, item in this.Entries
+                    if item.Used < serial
+                        oldest := candidate, serial := item.Used
+                this.Bytes -= this.Entries[oldest].Bytes
+                this.Entries.Delete(oldest) ; Outstanding leases retain their surface.
+            }
+            this.Entries[key] := {Surface: surface, Bytes: bytes, Used: ++this.Serial}
+            this.Bytes += bytes
+        }
+        return PM_SurfaceLease(surface)
+    }
+    static Clear() {
+        this.Entries.Clear(), this.Bytes := 0
+    }
+}
+
+; Visibility is independent of the held key's generation/release token.
+; One cached surface, no decode per animation step, no timer while steady/hidden.
+class PM_OverlayFade {
+    __New(host) {
+        this.Host := host, this.Window := 0, this.Target := 0, this.From := 0
+        this.Start := 0, this.Duration := 0, this.OutMs := 0, this.Exe := ""
+        this.Timer := this.Step.Bind(this)
+        this.FirstPaintPending := false
+    }
+    Clock() {
+        static frequency := 0
+        if !frequency
+            DllCall("QueryPerformanceFrequency", "int64*", &frequency)
+        counter := 0
+        DllCall("QueryPerformanceCounter", "int64*", &counter)
+        return counter * 1000 / frequency
+    }
+    Schedule(enabled) {
+        SetTimer(this.Timer, enabled ? 16 : 0)
+    }
+    Level(now := -1) {
+        if !this.Duration
+            return this.Target
+        progress := Min(1, Max(0, ((now < 0 ? this.Clock() : now) - this.Start) / this.Duration))
+        ; Linear entry makes the whole short ramp perceptible from its first
+        ; faint frame. Exit retains the existing smooth endpoints.
+        eased := this.Target > this.From ? progress : progress * progress * (3 - 2 * progress)
+        return this.From + (this.Target - this.From) * eased
+    }
+    Hiding {
+        get => this.Window && this.Target = 0
+    }
+    Show(slot, geometry, existing := 0) {
+        now := this.Clock(), continuing := existing && this.Window && existing.Hwnd = this.Window.Hwnd
+        level := continuing ? this.Level(now) : 0
+        incoming := slot.HasOwnProp("FadeInMs") ? slot.FadeInMs : 0
+        outgoing := slot.HasOwnProp("FadeOutMs") ? slot.FadeOutMs : 0
+        keepAnimation := continuing && this.Target = slot.Opacity && this.Duration && incoming
+        opacity := incoming ? Max(level, slot.Opacity * 0.04) : slot.Opacity
+        window := this.Present(slot, geometry, existing, opacity)
+        this.Window := window, this.Host.PictureGui := window, this.Host.PictureAlpha := true
+        this.OutMs := outgoing, this.Exe := slot.HasOwnProp("DisplayExe") ? slot.DisplayExe : ""
+        this.RouteSlot := slot.HasOwnProp("RouteSlot") ? slot.RouteSlot : 0
+        if keepAnimation
+            return window ; A layer change does not restart the visibility animation.
+        this.From := opacity, this.Target := slot.Opacity, this.Start := this.Clock()
+        this.Duration := incoming && opacity != this.Target
+            ? (continuing ? incoming * Abs(this.Target - opacity) / slot.Opacity : incoming) : 0
+        this.FirstPaintPending := false
+        if incoming && !continuing
+            this.Host.WriteLog("OVERLAY FADE TIMING: first_nonzero_draw_ms=0 (initial faint frame; preparation excluded)")
+        this.Schedule(this.Duration > 0)
+        return window
+    }
+    Present(slot, geometry, existing, opacity) {
+        return PM_AlphaFrame.Show(slot, geometry, existing, true, opacity, true)
+    }
+    Paint(opacity) {
+        PM_AlphaFrame.Paint(this.Window, opacity)
+    }
+    Hide() {
+        if !this.Window
+            return
+        if !this.OutMs {
+            this.Close()
+            return
+        }
+        this.From := this.Level(), this.Target := 0, this.Start := this.Clock()
+        this.Duration := this.OutMs
+        this.Schedule(true)
+    }
+    CheckContext() {
+        if this.Exe != ""
+            this.Host.GroupRoute.ReadForSlot(this.RouteSlot) ; Fresh activity, foreground and hash guards during both fades.
+    }
+    Step(*) {
+        previousCritical := A_IsCritical
+        Critical("On")
+        try {
+            if !this.Window {
+                this.Schedule(false)
+                return
+            }
+            this.CheckContext()
+            now := this.Clock(), level := this.Level(now)
+            this.Paint(level)
+            if this.FirstPaintPending && level > 0 {
+                this.FirstPaintPending := false
+                this.Host.WriteLog("OVERLAY FADE TIMING: first_nonzero_draw_ms=" (now - this.Start))
+            }
+            if !this.Duration || now - this.Start >= this.Duration {
+                this.Duration := 0
+                this.Schedule(false)
+                if this.Target = 0
+                    this.Close()
+            }
+        } catch as err {
+            route := this.Host.HasOwnProp("GroupRoute") ? this.Host.GroupRoute : 0
+            if route && HasMethod(route, "OwnerForSlot")
+                route := route.OwnerForSlot(this.RouteSlot)
+            held := route && route.Enabled ? route.HoldIntent() : 0
+            this.Host.HideCurrent()
+            if held && route.HoldIntent() && ObjPtr(held) = ObjPtr(route.HoldIntent())
+                route.PendingHold := held ; Same physical hold may recover after fresh validation.
+            this.Host.WriteLog("OVERLAY TRANSITION STOPPED: " err.Message)
+        } finally Critical(previousCritical)
+    }
+    Close() {
+        this.Schedule(false)
+        if this.Window {
+            window := this.Window, hwnd := window.Hwnd, this.Window := 0
+            owns := this.Host.PictureGui && this.Host.PictureGui.Hwnd = hwnd
+            PM_AlphaFrame.Dispose(window)
+            if owns
+                this.Host.PictureGui := 0, this.Host.PictureAlpha := false
+        }
+        this.Target := 0, this.Duration := 0
+        this.FirstPaintPending := false
+    }
+}
+
+class PM_AlphaSurface {
+    __New(path, width, height) {
+        this.Module := 0, this.Token := 0, this.Hdc := 0, this.Bitmap := 0, this.Old := 0, this.Bits := 0
+        this.Width := Integer(width), this.Height := Integer(height)
+        if width != this.Width || height != this.Height || width < 1 || height < 1
+            || width > 8192 || height > 8192 || width * height > 16777216
+            throw Error("Overlay surface exceeds the supported display size.")
+        sourceImage := 0, canvasImage := 0, graphics := 0, complete := false
+        try {
+            this.Module := DllCall("LoadLibraryW", "str", "gdiplus.dll", "ptr")
+            if !this.Module
+                throw Error("Windows image renderer unavailable.")
+            startup := Buffer(A_PtrSize = 8 ? 24 : 16, 0)
+            NumPut("uint", 1, startup)
+            token := 0
+            this.Check(DllCall("gdiplus\GdiplusStartup", "ptr*", &token, "ptr", startup, "ptr", 0), "startup")
+            this.Token := token
+            this.Check(DllCall("gdiplus\GdipCreateBitmapFromFile", "wstr", path, "ptr*", &sourceImage), "decode")
+            this.Hdc := DllCall("CreateCompatibleDC", "ptr", 0, "ptr")
+            header := Buffer(40, 0)
+            NumPut("uint", 40, header, 0)
+            NumPut("int", this.Width, header, 4), NumPut("int", -this.Height, header, 8)
+            NumPut("ushort", 1, header, 12), NumPut("ushort", 32, header, 14)
+            bits := 0
+            this.Bitmap := DllCall("CreateDIBSection", "ptr", this.Hdc, "ptr", header, "uint", 0,
+                "ptr*", &bits, "ptr", 0, "uint", 0, "ptr")
+            this.Bits := bits
+            if !this.Hdc || !this.Bitmap || !bits
+                throw Error("Cannot allocate overlay surface.")
+            this.Old := DllCall("SelectObject", "ptr", this.Hdc, "ptr", this.Bitmap, "ptr")
+            if !this.Old || this.Old = -1
+                throw Error("Cannot select overlay bitmap.")
+            ; PixelFormat32bppPARGB: GDI+ writes the premultiplied alpha required by Windows.
+            this.Check(DllCall("gdiplus\GdipCreateBitmapFromScan0", "int", this.Width, "int", this.Height,
+                "int", this.Width * 4, "int", 0xE200B, "ptr", bits, "ptr*", &canvasImage), "surface")
+            this.Check(DllCall("gdiplus\GdipGetImageGraphicsContext", "ptr", canvasImage, "ptr*", &graphics), "graphics")
+            this.Check(DllCall("gdiplus\GdipGraphicsClear", "ptr", graphics, "uint", 0), "clear")
+            this.Check(DllCall("gdiplus\GdipSetCompositingMode", "ptr", graphics, "int", 1), "alpha copy")
+            this.Check(DllCall("gdiplus\GdipSetInterpolationMode", "ptr", graphics, "int", 7), "scale")
+            this.Check(DllCall("gdiplus\GdipDrawImageRectI", "ptr", graphics, "ptr", sourceImage,
+                "int", 0, "int", 0, "int", this.Width, "int", this.Height), "draw")
+            this.Check(DllCall("gdiplus\GdipFlush", "ptr", graphics, "int", 1), "flush")
+            complete := true
+        } finally {
+            if graphics
+                DllCall("gdiplus\GdipDeleteGraphics", "ptr", graphics)
+            if canvasImage
+                DllCall("gdiplus\GdipDisposeImage", "ptr", canvasImage)
+            if sourceImage
+                DllCall("gdiplus\GdipDisposeImage", "ptr", sourceImage)
+            if !complete
+                this.Close()
+        }
+    }
+    Check(status, operation) {
+        if status
+            throw Error("Overlay image " operation " failed (" status ").")
+    }
+    Present(hwnd, x, y, opacity := 100) {
+        if !this.Hdc || opacity < 0 || opacity > 100
+            throw Error("Invalid overlay surface or opacity.")
+        destination := Buffer(8, 0), size := Buffer(8, 0), origin := Buffer(8, 0), blend := Buffer(4, 0)
+        NumPut("int", Round(x), "int", Round(y), destination)
+        NumPut("int", this.Width, "int", this.Height, size)
+        NumPut("uchar", Round(opacity * 255 / 100), blend, 2), NumPut("uchar", 1, blend, 3)
+        if !DllCall("UpdateLayeredWindow", "ptr", hwnd, "ptr", 0, "ptr", destination, "ptr", size,
+            "ptr", this.Hdc, "ptr", origin, "uint", 0, "ptr", blend, "uint", 2)
+            throw Error("Windows refused the transparent overlay (" A_LastError ").")
+    }
+    Close() {
+        if this.Hdc && this.Old && this.Old != -1
+            DllCall("SelectObject", "ptr", this.Hdc, "ptr", this.Old)
+        this.Old := 0
+        if this.Bitmap
+            DllCall("DeleteObject", "ptr", this.Bitmap)
+        this.Bitmap := 0, this.Bits := 0
+        if this.Hdc
+            DllCall("DeleteDC", "ptr", this.Hdc)
+        this.Hdc := 0
+        if this.Token
+            DllCall("gdiplus\GdiplusShutdown", "ptr", this.Token)
+        this.Token := 0
+        if this.Module
+            DllCall("FreeLibrary", "ptr", this.Module)
+        this.Module := 0
+    }
+    __Delete() {
+        this.Close()
+    }
+}
 ; Optional Picture Buttons extension for the existing Studio 2 host.
 ; Adapted from the user's exact Studio 3 preview src/model/ui/library/runtime.
 ; Exact generated Studio 3 SHA-256:
@@ -532,6 +867,25 @@ class PM_Model {
             return [NumGet(data, 4, "int"), Abs(NumGet(data, 8, "int"))]
         } finally DllCall("gdi32\DeleteObject", "ptr", h)
     }
+    static VerifiedImageSize(path, expected) {
+        static sizes := Map()
+        ; Cache small dimensions only, never pixels or permission to display.
+        ; Recheck current file bytes even on a cache hit or same-path rewrite.
+        if !RegExMatch(expected, "^[a-f0-9]{64}$") || this.Sha256(path) != expected
+            throw Error("Image identity changed before layout.")
+        if !sizes.Has(expected) {
+            dimensions := this.ImageSize(path)
+            if this.Sha256(path) != expected
+                throw Error("Image changed while reading dimensions.")
+            if sizes.Count >= 16
+                for key in sizes {
+                    sizes.Delete(key)
+                    break
+                }
+            sizes[expected] := dimensions
+        }
+        return sizes[expected].Clone()
+    }
     static HashText(text) {
         provider := 0, hash := 0
         if !DllCall("advapi32\CryptAcquireContextW", "ptr*", &provider, "ptr", 0, "ptr", 0, "uint", 24, "uint", 0xF0000000)
@@ -746,12 +1100,20 @@ class StudioPictureModule {
             Variants: Map("base", {Id: "base", Name: "Base appearance", Parent: "", Overrides: Map()})}
         this.Dirty := true
     }
+    WarmRouteImage(slot) {
+        geometry := this.Geometry(slot)
+        if PM_PreparedSurfaceCache.Has(slot.File, slot.RouteImageHash, geometry.w, geometry.h)
+            return false
+        lease := PM_PreparedSurfaceCache.Acquire(slot.File, slot.RouteImageHash, geometry.w, geometry.h)
+        lease.Close()
+        return true
+    }
     Geometry(s) {
         mode := s.HasOwnProp("SizeMode") ? s.SizeMode : "Pixels"
         value := s.HasOwnProp("SizeValue") ? s.SizeValue : s.Width
         monitor := s.HasOwnProp("Monitor") ? s.Monitor : "Primary"
         bounds := IsObject(this.MonitorReader) ? this.MonitorReader.Call(monitor) : this.ScreenBounds(monitor)
-        size := this.ImageReader.Call(s.File)
+        size := s.HasOwnProp("RouteImageHash") ? PM_Model.VerifiedImageSize(s.File, s.RouteImageHash) : this.ImageReader.Call(s.File)
         dims := PM_Model.SizeFor(mode, Number(value), size[1], size[2], bounds[3] - bounds[1], bounds[4] - bounds[2])
         x := InStr(s.Position, "Right") ? bounds[3] - dims[1] - 16 : bounds[1] + 16
         y := InStr(s.Position, "Bottom") ? bounds[4] - dims[2] - 16 : bounds[2] + 16

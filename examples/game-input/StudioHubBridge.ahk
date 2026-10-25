@@ -8,8 +8,10 @@ class StudioHubBridge {
         this.WheelCallback := 0
         if !A_Args.Length || A_Args[1] != "--hub-parent"
             return
-        if A_Args.Length != 4 || A_Args[3] != "--hub-owner"
+        if (A_Args.Length != 4 && A_Args.Length != 6) || A_Args[3] != "--hub-owner"
             throw Error("Hub docking requires an exact parent and owner pair.")
+        if A_Args.Length = 6 && (A_Args[5] != "--settings-dir" || !DirExist(A_Args[6]))
+            throw Error("Hub settings directory is missing or invalid.")
         if !RegExMatch(A_Args[2], "^[1-9][0-9]{0,18}$") || !RegExMatch(A_Args[4], "^[1-9][0-9]{0,9}$")
             throw Error("Invalid Hub docking identity.")
         this.Parent := Integer(A_Args[2])

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "kind": "game-mod-controls",
+  "game_id": "example-game",
+  "adapter": "ini",
+  "files": {"settings": "Mods/Example/settings.ini"},
+  "fields": [
+    {"id": "enabled", "label": "Enable example mod", "type": "bool", "file": "settings", "section": "General", "key": "Enabled"},
+    {"id": "mode", "label": "Display mode", "type": "enum", "file": "settings", "section": "General", "key": "Mode", "choices": ["Brief", "Detailed"]}
+  ],
+  "catalog": [
+    {
+      "id": "example-mod",
+      "name": "Example mod",
+      "layer": "game-mods",
+      "mechanism": "configuration",
+      "enabled_field": "enabled",
+      "settings": ["mode"],
+      "github": null,
+      "nexus": null,
+      "description": "Template only. Replace the file, keys and description with verified author documentation.",
+      "requires": [],
+      "claims": ["setting:Mods/Example/settings.ini#General.Enabled", "setting:Mods/Example/settings.ini#General.Mode"],
+      "images": []
+    }
+  ],
+  "sources": [],
+  "notes": "Not a supported game or install recipe. Local import and file-ownership selection are separate. Graphics-tool configuration may use the graphics-tools layer; it still needs its own reviewed deployment owner."
+}

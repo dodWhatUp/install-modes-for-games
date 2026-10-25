@@ -258,3 +258,9 @@ following missing-profile diagnosis and pending UI status retain their earlier s
 - Rollback performed: None required. To return after a future switch, select DirectX 12 in-game or restore `renderer_type=DirectX12` with the game closed.
 - General lesson promoted to: None.
 - Safe next options: Use the in-game Renderer selector and restart, or—with the game closed—snapshot and change only `renderer_type=DirectX11`. Launch normally from Steam; the saved game configuration is already specific to PoE2. Do not add an unverified generic Steam launch argument.
+
+## 2026-10-19 — Retained reference overlay labels, no native changes
+
+Reconciled the six SPARSE6 overlay maps with the archived 2026-10-11 WASD keybinding record. Added the explicit reference status of unbound flask slots 3–5 where their keys occur. A current personal game config was not found at the checked destination locations or in the inspected recovery inventories, so these labels remain archived references; the saved input-mode conflict remains unresolved. No current OptiScaler/ReShade binding was invented from reference-machine history. Unknown actions stay unknown.
+
+The existing output matrices, game associations and overlay preferences are unchanged. Private source/history snapshots preserve the prior display maps; no Azeron/game files changed or game was launched. This is display-data reconciliation, not acceptance of the R2 profiles, input mode, slotted abilities or gameplay. See [portable map editing](../../docs/KEYMAP-DOCUMENTS.md).

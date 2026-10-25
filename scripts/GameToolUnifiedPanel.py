@@ -16,7 +16,7 @@ import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 from GameToolCompactUI import ScrollableFrame, FlowToolbar
 
-VERSION = "0.4.0"
+VERSION = "0.5.0"
 
 def native_viewport_size(available, minimum):
     """Presentation only. Bound owner-reported pixel minima and tiny canvases."""
@@ -53,9 +53,11 @@ class NativeStudio:
             self.lease = None
         return alive
 
-    def start(self):
+    def start(self, reveal=True):
+        self.reveal_on_start = reveal
         if self.alive():
-            self.show(); return
+            if reveal: self.show()
+            return
         value = self.api.read_install(self.root)
         if (self.root / "update.lock").exists():
             raise ValueError("An update transaction requires inspection before Studio starts.")
@@ -63,10 +65,15 @@ class NativeStudio:
         try:
             self.api.assert_idle()  # Do not compete with another AHK owner or deferred tests.
             self.api.verify_current(self.root, value)
+            from GameToolGameProfiles import resolved_file
+            # Pass the actual existing settings owner across the packaged /
+            # unpackaged process boundary. Never create blank replacement data.
+            self.settings_file = resolved_file(value['studio_settings'])
             self.viewport.update_idletasks()
             self.process = subprocess.Popen([value["ahk"], "/ErrorStdOut=UTF-8",
                 str(Path(value["studio_dir"]) / "AzeronOverlayStudio.ahk"),
-                "--hub-parent", str(self.viewport.winfo_id()), "--hub-owner", str(os.getpid())],
+                "--hub-parent", str(self.viewport.winfo_id()), "--hub-owner", str(os.getpid()),
+                "--settings-dir", str(self.settings_file.parent)],
                 cwd=value["studio_dir"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         except Exception:
             self.api.release_source_lease(self.lease)
@@ -88,6 +95,11 @@ class NativeStudio:
                 return child
             child = self.user.GetWindow(child, 2)
         return 0
+
+    def readiness(self):
+        from GameToolGameProfiles import runtime_status
+        if not self.alive(): return {'fresh':False,'reason':'Studio stopped'}
+        return runtime_status(self.settings_file,self.process.pid)
 
     def size(self):
         if not self.child:
@@ -181,7 +193,7 @@ class UnifiedPanel:
         self.build_updates()
         self.timer = root.after(250, self.tick)
         # Only unified mode starts its preserved Studio. No Game Input auto-arm.
-        root.after(150, self.start)
+        root.after(150, lambda: self.start(reveal=False))
 
     def build_updates(self):
         self.update_scroll = ScrollableFrame(self.update_tab, min_width=620)
@@ -258,11 +270,11 @@ class UnifiedPanel:
         except Exception as e:
             self.preview=None; self.status.set("Update inspection blocked: "+str(e)); self.display(str(e))
 
-    def start(self):
+    def start(self, reveal=True):
         if self.closed or self.closing or self.updating: return
         if self.restart_needed:
             self.status.set("Restart the unified app before starting its updated Studio."); return
-        try: self.engine.start()
+        try: self.engine.start(reveal=reveal)
         except Exception as e: self.status.set("Studio start blocked: "+str(e))
 
     def stop(self):
@@ -345,7 +357,8 @@ class UnifiedPanel:
             if hasattr(self.engine,"set_identification_filter"):
                 self.engine.set_identification_filter(getattr(self,"identification_filter",15))
             if self.engine.reveal_requested():
-                self.tabs.select(self.studio_tab)
+                if getattr(self.engine,'reveal_on_start',True):self.tabs.select(self.studio_tab)
+                self.engine.reveal_on_start=True
             if hasattr(self.engine, "fit_viewport"):
                 self.engine.fit_viewport((self.canvas.winfo_width(), self.canvas.winfo_height()))
             size=self.engine.size()

@@ -4,8 +4,9 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import font as tkfont
 from types import SimpleNamespace
+from GameToolEditableLists import install as install_editable_lists, attach as attach_editable_list
 
-VERSION = "0.4.0"
+VERSION = "0.5.0"
 
 
 def window_bounds(screen_width, screen_height):
@@ -157,6 +158,7 @@ class ScrollableFrame(ttk.Frame):
     """Reusable bounded-height workspace; scrolls only its own Tk descendants."""
     def __init__(self, parent, min_width=0):
         super().__init__(parent)
+        install_editable_lists(self)
         self.root = self.winfo_toplevel()
         self.canvas = tk.Canvas(self, highlightthickness=0, yscrollincrement=18, xscrollincrement=18, bg="#edf2f7")
         self.min_width = min_width
@@ -224,6 +226,7 @@ class FlowToolbar(ttk.Frame):
     """Wrap original action widgets without replacing callbacks or values."""
     def __init__(self, parent, **kwargs):
         super().__init__(parent, **kwargs)
+        install_editable_lists(self)
         self.buttons = []
         self.disclosure = False
         self.more_button = self.more_menu = None
@@ -312,6 +315,7 @@ class Selector(ttk.Combobox):
         self.bind("<<ComboboxSelected>>", self.commit)
         self.bind("<Return>", self.commit)
         self.bind("<Escape>", self.cancel)
+        attach_editable_list(self)
 
     def set_choices(self, choices):
         self.records = {key: f"{label} [{key}]" for key, label in choices}
@@ -353,6 +357,49 @@ class Selector(ttk.Combobox):
     def cancel(self, *_):
         self.select(self.selected_id)
         return "break"
+
+
+class ChoiceButtons(ttk.Frame):
+    """A few directly selectable choices, wrapping at the current font scale."""
+    def __init__(self, parent, choices=(), on_select=None, variable=None, **kwargs):
+        super().__init__(parent, **kwargs)
+        self.variable = variable if variable is not None else tk.StringVar(self)
+        self.on_select = on_select
+        self.records, self.buttons = {}, {}
+        self.set_choices(choices)
+        self.bind("<Configure>", self.reflow)
+
+    @property
+    def selected_id(self):
+        return self.variable.get() if self.variable.get() in self.records else None
+
+    def set_choices(self, choices):
+        records = dict(choices)
+        if records == self.records:
+            return
+        for button in self.buttons.values():
+            button.destroy()
+        self.records, self.buttons = records, {}
+        for key, label in records.items():
+            button = ttk.Radiobutton(self, text=label, value=key, variable=self.variable,
+                                     command=lambda k=key: self.on_select(k) if self.on_select else None)
+            self.buttons[key] = button
+        self.reflow()
+
+    def select(self, key):
+        self.variable.set(key if key in self.records else "")
+
+    def reflow(self, event=None):
+        if event is not None and event.widget is not self:
+            return
+        width = max(1, event.width if event else self.winfo_width())
+        row = column = used = 0
+        for button in self.buttons.values():
+            required = button.winfo_reqwidth() + 12
+            if column and used + required > width:
+                row += 1; column = used = 0
+            button.grid(row=row, column=column, sticky="w", padx=(0, 12), pady=2)
+            used += required; column += 1
 
 
 class VisibilityMenu(ttk.Menubutton):

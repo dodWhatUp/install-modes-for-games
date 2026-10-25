@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "recorded_date": "2026-10-25",
+  "source_version": "0.27.22-preview.1",
+  "scope": "Source and isolated/private-copy verification; installed application unchanged",
+  "python_tests": {
+    "controls_headless": 60,
+    "existing_builder_views_comments_appearance_authoring_effective_idtech": 81,
+    "guarded_updater": 30,
+    "isolated_linux_gui": 25,
+    "total_distinct": 196,
+    "result": "PASS"
+  },
+  "source_export_contracts": {"count": 70, "result": "PASS"},
+  "independent_draft7_parity": {"valid": 2, "malformed": 7, "result": "PASS"},
+  "private_game_rehearsals": {
+    "doom": {
+      "binding_rows_read": 283,
+      "proposed_changes": 14,
+      "maps": 30,
+      "rendered_views": 120,
+      "native_source_outputs_equal": true,
+      "exact_original_byte_rollback": true,
+      "gameplay_verified": false,
+      "result": "PASS"
+    },
+    "bayonetta": {
+      "maps": 12,
+      "rendered_views": 48,
+      "unchanged_source_preserved": true,
+      "effective_binding_storage": "unknown",
+      "unsupported_write_attempted": false,
+      "result": "MANUAL_FALLBACK_PASS"
+    }
+  },
+  "preservation": {
+    "handoff_role": "Planning requirements only; reconciled against newer Windows source",
+    "native_profiles_game_configs_registry_installed_sources": "No live mutation",
+    "runtime_owners": "AHK hold, native-layer and map-switching code unchanged",
+    "private_receipts": "Indexed by machine-local continuation bindings; excluded from Git"
+  },
+  "limitations": [
+    "No Windows gameplay, physical ergonomics, actual #19/#2 gestures or compositor/input latency acceptance",
+    "Saved targets and declared effective instances do not prove every external override/Steam Input source",
+    "Unknown urgency, frequency and activation modes remain unknown; optimizer uses bounded ordinal policy",
+    "Current DOOM and BASIC native-byte drift requires explicit reconciliation before live apply/publication",
+    "Broad Windows adapter suite has known symlink-privilege/case-sensitive-fixture limitations; this report covers the listed suites",
+    "Application installation, native profile application, Save and Publish are separate reviewed operations"
+  ]
+}

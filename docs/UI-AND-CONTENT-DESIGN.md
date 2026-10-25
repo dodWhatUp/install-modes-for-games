@@ -10,6 +10,8 @@ Use a consistent small set of components and terms across pages. Put each contro
 
 ## Selection, search and entry in one control
 
+Standing interaction rule, 2026-10-25: clicking anywhere in an editable search/dropdown field opens its choices while keeping the caret available. Typing/editing and the filtered list must work simultaneously. Retain keyboard selection, Escape/cancellation and explicit Add/Save. Apply this consistently across maintained authored apps; opening or typing never commits a value. Ordinary text-only and fixed-choice-only fields retain their appropriate behavior.
+
 Prefer one editable searchable selector for a value that can be chosen from existing options or entered as text. The user can choose an option, type to filter/search, and explicitly add a valid new value when creation is supported. Avoid separate dropdown, search box and text field for that same value. At most one small adjacent Browse, Add or Details icon should normally be needed; give it an accessible name and discoverable text explanation.
 
 - Keep selection, search and creation distinct. Typing, opening a list or cancelling must not silently save, create or replace a record. Mark an unsaved entry and make commitment/validation clear. Preserve the previous selection on cancellation.

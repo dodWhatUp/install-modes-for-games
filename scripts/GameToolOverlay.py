@@ -18,11 +18,16 @@ import re
 import tempfile
 import time
 
-VERSION = "0.2.0"
+VERSION = "0.2.13"
 SCHEMA = 1
 MAX_JSON = 1024 * 1024
+# Retained map families and four views can exceed 512 images across games.
+# Keep the JSON byte/depth and other manifest collection bounds unchanged.
+MAX_ASSETS = 1024
 # Each keymap supplies its exact 29 allowed positions from its source geometry.
-VIEWS = ("Keys", "Actions", "Combined")
+VIEWS = ("Keys", "Actions", "Combined", "ActionFirst")
+VIEW_CHOICES = (("Combined", "Key first"), ("ActionFirst", "Action first"),
+                ("Actions", "Action only"), ("Keys", "Key only"))
 R8_POSITIONS = {4,8,12,17,3,7,11,16,2,6,10,15,1,5,9,14,37,38,13,18,36,28,29,22,31,30,41,20,23}
 ID = re.compile(r"[A-Za-z][A-Za-z0-9_.-]{0,79}\Z")
 HASH = re.compile(r"[a-f0-9]{64}\Z")
@@ -68,7 +73,7 @@ def decode(raw):
                 require(type(k) is str and len(k) <= 120, "Invalid field")
                 check(child, depth + 1)
         elif isinstance(v, list):
-            require(len(v) <= 512, "JSON list limit")
+            require(len(v) <= MAX_ASSETS, "JSON list limit")
             for child in v:
                 check(child, depth + 1)
         elif isinstance(v, str):
@@ -164,7 +169,8 @@ def manifest(value):
             value["kind"] == "overlay_manifest", "Unsupported manifest schema")
     indexed = {}
     for name in ("games", "keymaps", "assets", "groups", "associations"):
-        require(type(value[name]) is list and len(value[name]) <= 512, "Collection limit")
+        limit = MAX_ASSETS if name == "assets" else 512
+        require(type(value[name]) is list and len(value[name]) <= limit, "Collection limit")
         indexed[name] = {}
         for item in value[name]:
             require(type(item) is dict, "Invalid record")
@@ -257,7 +263,11 @@ def validate_store(value):
             type(value["revision"]) is int and value["revision"] >= 0, "Store schema")
     indexed = manifest(value["manifest"])
     p = value["preferences"]
-    fields(p, "enabled display display_target selections overrides visibility")
+    require(type(p) is dict, "Preferences object required")
+    fields({k: v for k, v in p.items() if k != "appearance"}, "enabled display display_target selections overrides visibility")
+    if "appearance" in p:
+        from GameToolOverlayAppearance import validate_policy
+        validate_policy(p["appearance"], indexed["games"])
     require(p["display_target"] in {"hub", "studio"}, "Display owner")
     require(type(p["enabled"]) is bool and type(p["display"]) is bool, "Display state")
     require(type(p["visibility"]) is dict and set(p["visibility"]) == {"overlay"}, "Page visibility")
@@ -279,13 +289,20 @@ class Store:
         self.directory = no_links(directory)
         self.path = self.directory / "overlay-groups.json"
         self.assets = self.directory / "overlay-assets"
+        self._cached_raw = None
+        self._cached_value = None
+        self._image_info = {}
 
     def load(self):
         if not self.path.exists():
             return empty_store(), "absent"
         raw = read(self.path)
-        value = decode(raw); validate_store(value)
-        return value, sha(raw)
+        if raw != self._cached_raw:
+            value = decode(raw); validate_store(value)
+            self._cached_raw, self._cached_value = raw, value
+        # Callers own their draft: neither a UI mutation nor an import may
+        # contaminate the next read. Every load still reads and compares bytes.
+        return copy.deepcopy(self._cached_value), sha(raw)
 
     def write(self, value, expected):
         validate_store(value)
@@ -333,7 +350,7 @@ class Store:
         require(read(source) == raw, "Manifest changed while validating")
         return value, images, sha(raw)
 
-    def import_manifest(self, source, expected, conflict="stop"):
+    def import_manifest(self, source, expected, conflict="stop", preferences=None):
         require(conflict in {"stop", "keep", "replace"}, "Explicit import conflict policy")
         require(self.load()[1] == expected, "Store changed; reload before import")
         incoming, images, fingerprint = self.validate_import(source)
@@ -351,6 +368,8 @@ class Store:
                 old[obj["id"]] = obj
             value["manifest"][name] = list(old.values())
         require(not conflicts or conflict != "stop", "Import conflicts: " + ", ".join(conflicts))
+        if preferences is not None:
+            value["preferences"] = copy.deepcopy(preferences)
         validate_store(value)  # No partial import if dependent records cannot coexist.
         require(read(source) and sha(read(source)) == fingerprint, "Manifest drift")
         self.assets.mkdir(parents=True, exist_ok=True); no_links(self.assets)
@@ -379,6 +398,13 @@ class Store:
             game = payload.pop("game_id")
             require(game in indexed["games"], "Unknown game")
             p["selections"][game] = payload
+            if "appearance" in p:
+                from GameToolOverlayAppearance import effective
+                style = effective(p["appearance"], game)
+                # A layer/context selection does not break global inheritance.
+                if style["view"] != payload["view"]:
+                    style["view"] = payload["view"]
+                    p["appearance"]["games"][game] = style
         elif action in {"select", "auto", "cycle"}:
             fields(payload, "game_id group_id")
             game, gid = payload["game_id"], payload["group_id"]
@@ -408,7 +434,19 @@ class Store:
     def asset(self, asset):
         require(asset["path"].startswith("overlay-assets/"), "Managed asset required")
         raw = read(self.directory / asset["path"], 16 * 1024 * 1024)
-        return raw, image_bytes(raw, asset["sha256"])
+        expected = asset["sha256"]
+        info = self._image_info.get(expected)
+        if info is None:
+            info = image_bytes(raw, expected)
+            if len(self._image_info) >= 16:
+                self._image_info.pop(next(iter(self._image_info)))
+            self._image_info[expected] = info
+        else:
+            # Reuse only decoded metadata for the exact verified bytes. File
+            # existence/reparse/drift/size and content SHA remain checked on
+            # every call, including the same path with altered bytes.
+            require(sha(raw) == expected, "Image hash/size mismatch")
+        return raw, dict(info)
 
 
 def capabilities():
@@ -420,7 +458,7 @@ def capabilities():
             "shortcut_changes": False, "input": False, "game_launch": False}
 
 
-def choose(value, foreground, now=None, native=None):
+def choose(value, foreground, now=None, native=None, fallback_group=None):
     """Pure selection; native is trusted in-process adapter output, never CLI JSON."""
     now = time.monotonic() if now is None else now
     indexed = validate_store(value); p = value["preferences"]
@@ -428,7 +466,8 @@ def choose(value, foreground, now=None, native=None):
               "game_id": None, "group_id": None, "asset_id": None, "manual_override": False,
               "profile_state": "Unknown", "layer_state": "Unknown", "native_mismatch": False,
               "native_capability": "unavailable", "foreground_age_ms": None,
-              "display": p["display"], "enabled": p["enabled"], "render": False, "display_target": p["display_target"]}
+              "display": p["display"], "enabled": p["enabled"], "render": False, "display_target": p["display_target"],
+              "selection_scope": "none"}
     if not p["enabled"]:
         result["reason"] = "Automatic selection stopped"; return result
     if foreground is None:
@@ -437,7 +476,8 @@ def choose(value, foreground, now=None, native=None):
     result["foreground_age_ms"] = max(0, round(age * 1000))
     if not 0 <= age <= 1:
         result["reason"] = "Foreground Stale"; return result
-    if foreground.get("own"):
+    fallback_allowed = fallback_group is not None and p["display_target"] == "studio"
+    if foreground.get("own") and not fallback_allowed:
         result["reason"] = "App-owned window; passive overlay hidden"; return result
     exe = executable(foreground["exe"])
     candidates = []
@@ -450,20 +490,28 @@ def choose(value, foreground, now=None, native=None):
         rules = [r for r in assoc["executables"] if match(r)]
         if rules:
             candidates.append((max(2 if ntpath.isabs(r) else 1 for r in rules), assoc["priority"], assoc))
-    if not candidates:
-        return result
-    candidates.sort(key=lambda r: (-r[0], -r[1], r[2]["id"]))
-    best = candidates[0]
-    ties = [r[2] for r in candidates if r[:2] == best[:2]]
-    if len({(a["game_id"], a["keymap_id"], a["default_group"]) for a in ties}) > 1:
-        result["reason"] = "Ambiguous equal-priority executable matches; nothing displayed"
-        result["ambiguous_associations"] = [a["id"] for a in ties]; return result
-    assoc = best[2]; game = assoc["game_id"]; keymap = indexed["keymaps"][assoc["keymap_id"]]
+    using_fallback = not candidates
+    if using_fallback:
+        if not fallback_allowed:return result
+        group = indexed["groups"].get(fallback_group)
+        if group is None:
+            result["reason"] = "Other-application fallback group unavailable";return result
+        assoc = {"game_id":group["game_id"],"keymap_id":group["keymap_id"],"default_group":group["id"]}
+        result.update(selection_scope="fallback",reason="Other application; saved fallback map")
+    else:
+        candidates.sort(key=lambda r: (-r[0], -r[1], r[2]["id"]))
+        best = candidates[0]
+        ties = [r[2] for r in candidates if r[:2] == best[:2]]
+        if len({(a["game_id"], a["keymap_id"], a["default_group"]) for a in ties}) > 1:
+            result["reason"] = "Ambiguous equal-priority executable matches; nothing displayed"
+            result["ambiguous_associations"] = [a["id"] for a in ties]; return result
+        assoc = best[2]
+        result.update(selection_scope="association",reason="Exact path" if best[0] == 2 else "Executable basename")
+    game = assoc["game_id"]; keymap = indexed["keymaps"][assoc["keymap_id"]]
     selected = p["selections"].get(game, {"layer": "Unknown", "context": "gameplay", "view": "Combined"})
     layer = selected["layer"]
     result.update(game_id=game, profile_state="Selected", layer_state="Selected" if layer != "Unknown" else "Unknown",
-                  context=selected["context"], view=selected["view"], keymap_id=keymap["id"], keymap_revision=keymap["revision"],
-                  reason="Exact path" if best[0] == 2 else "Executable basename")
+                  context=selected["context"], view=selected["view"], keymap_id=keymap["id"], keymap_revision=keymap["revision"])
     if native is not None:
         result["native_capability"] = native.get("provider", "unknown")
         if native.get("available") is False:
@@ -477,6 +525,7 @@ def choose(value, foreground, now=None, native=None):
         result.update(profile_state=native_state, layer_state=native_state)
         if native_state == "Event-tracked":
             result["native_event_utc"] = native.get("event_utc")
+            result["native_momentary_layer"] = native.get("momentary_layer") is True
             result["native_snapshot_verified"] = False
         matching = next((l for l in keymap["layers"] if l["profile_id"] == native.get("profile_id")), None)
         if matching is None or native.get("outputs_sha256") != keymap["outputs_sha256"] or native.get("profile_sha256") != matching["profile_sha256"]:
@@ -484,8 +533,8 @@ def choose(value, foreground, now=None, native=None):
             return result
         layer = matching["id"]
     result["layer"] = layer
-    gid = p["overrides"].get(game, assoc["default_group"])
-    result["manual_override"] = game in p["overrides"]
+    gid = assoc["default_group"] if using_fallback else p["overrides"].get(game, assoc["default_group"])
+    result["manual_override"] = not using_fallback and game in p["overrides"]
     result["group_id"] = gid
     group = indexed["groups"].get(gid)
     if not group or group["keymap_id"] != keymap["id"]:
@@ -530,7 +579,15 @@ def foreground_windows():
 
 
 def checked_selection(store, value, foreground, now=None, native=None):
-    result = choose(value, foreground, now=now, native=native)
+    from GameToolOverlayFallback import read as read_fallback
+    fallback_group = None; fallback_error = False
+    try:
+        fallback_group = read_fallback(store.directory)[0]["group_id"]
+    except (OSError,ValueError):
+        fallback_error = True
+    result = choose(value, foreground, now=now, native=native, fallback_group=fallback_group)
+    if fallback_error and result["game_id"] is None:
+        result["reason"] += "; other-application settings invalid"
     if foreground:
         result["foreground_exe"] = foreground["exe"]
     if result.get("asset_id"):
@@ -617,16 +674,68 @@ def relay(store, result, directory, now=None):
     import configparser
     now = time.time() if now is None else now
     value, _ = store.load(); indexed = validate_store(value)
-    data = {"Schema": "1", "ExpiresUnix": str(int(now + 1)), "Active": "0"}
+    # Whole-second expiry alone can expire a fresh heartbeat at the next boundary.
+    # Keep it for legacy readers; current Studio uses the exact millisecond value.
+    data = {"Schema": "1", "ExpiresUnix": str(int(now + 1)),
+            "ExpiresUnixMs": str(int((now + 1) * 1000)), "Active": "0",
+            "StatusReason": str(result.get("reason", "No active selection")).replace("\r", " ").replace("\n", " ")[:200]}
     if result.get("render") and result.get("asset_id") and result.get("display_target") == "studio":
         asset = indexed["assets"][result["asset_id"]]; store.asset(asset)
         rendering = indexed["groups"][result["group_id"]]["rendering"]
         data.update(Active="1", File=str((store.directory / asset["path"]).absolute()), SHA256=asset["sha256"],
                     Game=result["game_id"], Asset=asset["id"], LayerState=result["layer_state"])
+        data.pop("StatusReason", None)
         data.update({k: str(v) for k, v in rendering.items()})
         # No stale PID is persisted; current foreground is re-read by the host.
         data["Exe"] = result.get("foreground_exe", "")
-    path = no_links(Path(directory) / "overlay-selection.ini")
+        from GameToolOverlayTransition import read as read_transition
+        transition, _ = read_transition(store.directory)
+        duration = transition["duration_ms"] if transition["enabled"] else 0
+        data.update(FadeInMs=str(duration), FadeOutMs=str(duration))
+        # Preparation hints are display data, never active-layer observations.
+        # Only this group's current context/view is eligible; the reader checks
+        # each file's bytes before preparation and again on every cache use.
+        group = indexed["groups"][result["group_id"]]
+        warm = [indexed["assets"][aid] for aid in group["asset_ids"]
+                if indexed["assets"][aid]["context"] == asset["context"]
+                and indexed["assets"][aid]["view"] == asset["view"]][:8]
+        data["WarmCount"] = str(len(warm))
+        for number, hint in enumerate(warm, 1):
+            data[f"WarmFile{number}"] = str((store.directory / hint["path"]).absolute())
+            data[f"WarmSHA256{number}"] = hint["sha256"]
+        from GameToolOverlayLayerShow import relay_fields
+        data.update(relay_fields(store, result))
+        from GameToolOverlayAlternate import relay_fields as alternate_fields
+        data.update(alternate_fields(store, indexed, result, asset))
+    write_relay(Path(directory) / "overlay-selection.ini", data)
+    from GameToolKeymapButtons import relay_data
+    linked = relay_data(store, indexed, result, {k: data[k] for k in ("Schema", "ExpiresUnix", "ExpiresUnixMs")})
+    for slot, slot_data in linked.items():
+        for field in ("FadeInMs", "FadeOutMs"):
+            slot_data[field] = data.get(field, "0")
+        write_relay(Path(directory) / f"overlay-selection-slot-{slot}.ini", slot_data)
+
+
+def replace_relay(source, destination):
+    """Keep atomic publication across a brief Windows reader/rename collision.
+
+    Retry only the known sharing/access contention codes, for at most 50ms.
+    Never truncate/unlink the last complete relay or extend its original TTL.
+    Persistent permission errors still fail closed on this bounded attempt.
+    """
+    for attempt in range(5):
+        try:
+            os.replace(source, destination)
+            return
+        except OSError as error:
+            if getattr(error, "winerror", None) not in {5, 32, 33} or attempt == 4:
+                raise
+            time.sleep(0.005 * (attempt + 1))
+
+
+def write_relay(path, data):
+    import configparser
+    path = no_links(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     config = configparser.ConfigParser(interpolation=None); config.optionxform = str
     config["Overlay"] = data
@@ -635,7 +744,7 @@ def relay(store, result, directory, now=None):
     try:
         with os.fdopen(fd, "w", encoding="utf-8") as out:
             out.write(text.getvalue()); out.flush(); os.fsync(out.fileno())
-        os.replace(temp, path)
+        replace_relay(temp, path)
     finally:
         if Path(temp).exists():
             Path(temp).unlink()

@@ -1,0 +1,73 @@
+{
+  "kind": "game_controls_workbook",
+  "schema_version": 1,
+  "game_id": "synthetic-example",
+  "id": "controls-example",
+  "revision": 1,
+  "policy": "A20-UF-1",
+  "baseline": {
+    "map_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "keymap_revision": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "rules_revision": "combat-r2-readonly-1"
+  },
+  "sources": [],
+  "actions": [
+    {
+      "id": "example-action",
+      "label": "Example action — semantics unknown",
+      "context": "gameplay",
+      "output": "K",
+      "overlay_context": null,
+      "meaning": "",
+      "activation": "unknown",
+      "categories": [],
+      "urgency": [],
+      "frequency": [],
+      "needs_movement": null,
+      "simultaneous": [],
+      "bundle_id": null,
+      "evidence": ["Synthetic example; create a real draft from the selected builder map"],
+      "user_priority_override": null,
+      "override_reason": "",
+      "proposed_route": null
+    }
+  ],
+  "exclusive_contexts": [],
+  "pending_shared_changes": [],
+  "change_log": [],
+  "extensions": {
+    "complete_accessibility_review": {
+      "revision": "complete-accessibility-review-1",
+      "status": "not_started",
+      "guide": "docs/GAME-CONTROLS-COMPLETE-REVIEW.md",
+      "completion_axes": {
+        "inventory_complete": false,
+        "semantics_resolved": false,
+        "placement_reviewed": false,
+        "files_prepared": false,
+        "runtime_effective": false,
+        "physical_accepted": false,
+        "combat_comfort_accepted": false
+      },
+      "coverage": {
+        "saved_binding_rows": null,
+        "contextual_commands": null,
+        "physical_controls": null,
+        "reviewed_controls": null,
+        "unresolved_contexts": [],
+        "ui_only_actions_outside_parser": []
+      },
+      "button_decisions": [],
+      "unused_accessible_button_review": [],
+      "finger_and_sequence_review": [],
+      "output_alias_effects": [],
+      "input_style_evidence": [],
+      "alternatives": [],
+      "effective_source_limitations": [],
+      "baseline_reconciliation": null,
+      "next_step": null,
+      "completion_rule": "Every physical control and action/context needs a decision or explicit limitation. Complete does not mean every button is bound or gameplay verified.",
+      "implementation_limit": "Additive review data, preserved by the v1 reader; this checklist is not automatically enforced by the application."
+    }
+  }
+}

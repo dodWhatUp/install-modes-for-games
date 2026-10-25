@@ -37,8 +37,18 @@ studio := OverlayStudio()
 
 class OverlayStudio {
     __New() {
-        this.Version := "2.2.0-unified.10"
+        this.Version := "2.2.0-unified.24"
         this.Dir := A_AppData "\AzeronOverlayStudio"
+        this.SettingsLoadError := ""
+        this.LoadedSettingsSHA := ""
+        if A_Args.Length = 6 && A_Args[1] = "--hub-parent" && A_Args[3] = "--hub-owner" && A_Args[5] = "--settings-dir" {
+            selectedDir := RTrim(A_Args[6], "\/")
+            if !RegExMatch(selectedDir, "i)^[a-z]:\\") || !DirExist(selectedDir) || !FileExist(selectedDir "\settings.ini")
+                throw Error("The existing Hub settings directory is unavailable; refusing blank defaults.")
+            if DllCall("GetFileAttributesW", "str", selectedDir, "uint") & 0x400
+                throw Error("Linked Hub settings directory refused.")
+            this.Dir := selectedDir
+        }
         this.DesktopTest := false
         if A_Args.Length && A_Args[1] = "--picture-ui-fixture" {
             if A_Args.Length != 2
@@ -66,6 +76,8 @@ class OverlayStudio {
         this.Generation := 0
         this.HideTimer := 0
         this.PictureGui := 0
+        this.PictureAlpha := false
+        this.Fade := PM_OverlayFade(this)
         this.MicVisibleByUs := false
         this.Enabled := true
         this.TotalEvents := 0
@@ -93,6 +105,7 @@ class OverlayStudio {
         this.HubBridge.Attach()
         this.BuildTray()
         this.BindAll()
+        this.WriteRuntimeStatus()
         this.StartKeyDisplay()
         this.WriteLog("Application launched. Control panel is open.")
         if !this.HubBridge.Show()
@@ -138,6 +151,7 @@ class OverlayStudio {
                 this.Slots.Push(this.NewSlot(A_Index))
             this.Enabled := true
             this.LogLines.Push("Settings failed validation; safe defaults loaded: " err.Message)
+            this.SettingsLoadError := err.Message
         }
         try this.ValidateHud(this.Hud)
         catch Error as err {
@@ -148,6 +162,8 @@ class OverlayStudio {
         }
         if !this.ValidCombo(this.MicToggle)
             this.MicToggle := "^!h"
+        if FileExist(this.Config)
+            this.LoadedSettingsSHA := PM_Model.Sha256(this.Config)
     }
 
     SaveConfig() {
@@ -164,6 +180,7 @@ class OverlayStudio {
             for property, value in this.Hud.OwnProps()
                 IniWrite(value, temp, "HUD", property)
             FileMove(temp, this.Config, 1)
+            this.LoadedSettingsSHA := PM_Model.Sha256(this.Config)
         } catch Error as err {
             this.WriteLog("SAVE FAILED: " err.Message)
             if FileExist(temp)
@@ -639,6 +656,8 @@ class OverlayStudio {
 
     UnbindAll() {
         this.GameInput.StopForHost()
+        if this.HasOwnProp("GroupRoute") && this.GroupRoute.HasOwnProp("Alternate")
+            this.GroupRoute.Alternate.Reset()
         for key in this.Bound
             try Hotkey(key, "Off")
         this.Bound := []
@@ -650,9 +669,14 @@ class OverlayStudio {
         if !this.Enabled || this.Pressed.Has(i)
             return
         this.Pressed[i] := 0  ; Ignore repeated key-down until an up event.
+        this.GroupRoute.AlternateDown(i)
+        timedOverlay := this.HasOwnProp("GroupRoute") && HasMethod(this.GroupRoute, "NowMs")
+            && this.GroupRoute.Enabled && i = this.GroupRoute.Slot
+        overlayReceivedUtc := timedOverlay ? this.GroupRoute.NowMs() : 0
         try s := this.Pictures.ResolveSlot(i, 0, true)
         catch Error as err {
             this.HideCurrent()
+            this.GroupRoute.CapturePending(i)
             this.WriteLog("PICTURE ROUTING REFUSED: " err.Message)
             return
         }
@@ -660,11 +684,23 @@ class OverlayStudio {
         this.LastEvent := "DOWN " s.Key " -> " s.Name
         this.WriteLog("DOWN " s.Key " / slot " i " / " s.Mode)
         if s.Mode = "Toggle" && this.Current = i {
-            this.HideCurrent()
+            this.HideCurrent(true)
             return
         }
-        token := this.ShowSlot(i, s)
+        if s.Mode = "Hold" && this.Current = i && this.GroupRoute.KeepForLayer(i) {
+            ; The native layer already owns this same frame: add the physical
+            ; key's hold without hiding/recreating it or restarting its fade.
+            token := this.ShowLocal(s, true) ? this.Generation : 0
+            if !token
+                this.HideCurrent()
+        } else
+            token := this.ShowSlot(i, s)
         this.Pressed[i] := {Token: token, Mode: s.Mode}
+        if timedOverlay
+            this.WriteLog("OVERLAY KEY TIMING: received_utc_ms=" overlayReceivedUtc
+                . " handler_ms=" (this.GroupRoute.NowMs() - overlayReceivedUtc)
+                . " result=" (token ? "frame_prepared" : "not_shown")
+                . " fade_ms=" (s.HasOwnProp("FadeInMs") ? s.FadeInMs : 0))
         if token && s.Mode = "Timed"
             this.ArmHide(token, s.Duration)
     }
@@ -676,12 +712,14 @@ class OverlayStudio {
         pressed := this.Pressed[i]
         token := IsObject(pressed) ? pressed.Token : 0
         this.Pressed.Delete(i)
+        this.GroupRoute.AlternateUp(i)
         s := this.Slots[i]  ; Release uses the actual DOWN snapshot, not a new context match.
         this.TotalEvents += 1
         this.LastEvent := "UP " s.Key " -> " s.Name
         this.WriteLog("UP " s.Key " / slot " i)
         if IsObject(pressed) && pressed.Mode = "Hold" && token && token = this.Generation && this.Current = i
-            this.HideCurrent()
+            && !this.GroupRoute.KeepForLayer(i)
+            this.HideCurrent(true)
     }
 
     ShowSlot(i, resolvedSlot := 0) {
@@ -691,9 +729,10 @@ class OverlayStudio {
             this.WriteLog("PICTURE ROUTING REFUSED: " err.Message)
             return 0
         }
-        this.HideCurrent()
+        keepFade := s.Source = "Local" && s.HasOwnProp("PreserveAlpha") && s.PreserveAlpha && this.Fade.Hiding
+        this.HideCurrent(false, keepFade)
         if s.Source = "Local" {
-            if !this.ShowLocal(s)
+            if !this.ShowLocal(s, keepFade)
                 return 0
         } else {
             if !this.ShowMIC(s)
@@ -705,15 +744,30 @@ class OverlayStudio {
         return this.Generation
     }
 
-    ShowLocal(s) {
+    ShowLocal(s, reuse := false) {
         if !FileExist(s.File) || DirExist(s.File) {
             this.WriteLog("IMAGE MISSING: " s.File)
             TrayTip("Image missing. Open Picture buttons and select a file.", "Azeron Overlay Studio", "Icon!")
             return false
         }
         g := 0
+        timedDraw := s.HasOwnProp("RouteSlot") && this.HasOwnProp("GroupRoute") && HasMethod(this.GroupRoute, "NowMs")
+        drawStartedUtc := timedDraw ? this.GroupRoute.NowMs() : 0
         try {
             geometry := this.Pictures.Geometry(s)
+            layoutDoneUtc := timedDraw ? this.GroupRoute.NowMs() : 0
+            if s.HasOwnProp("PreserveAlpha") && s.PreserveAlpha {
+                previous := reuse ? this.PictureGui : 0
+                g := this.Fade.Show(s, geometry, this.PictureAlpha ? previous : 0)
+                if previous && previous.Hwnd != g.Hwnd
+                    PM_AlphaFrame.Dispose(previous)
+                this.PictureGui := g
+                this.PictureAlpha := true
+                if timedDraw
+                    this.WriteLog("OVERLAY DRAW TIMING: layout_ms=" (layoutDoneUtc - drawStartedUtc)
+                        . " prepare_present_ms=" (this.GroupRoute.NowMs() - layoutDoneUtc))
+                return true
+            }
             g := Gui("-Caption +ToolWindow +AlwaysOnTop -DPIScale +E0x08000020", "Azeron picture")
             g.MarginX := 0, g.MarginY := 0
             g.BackColor := "202833"
@@ -725,6 +779,7 @@ class OverlayStudio {
             g.Show("NA x" x " y" y " w" w " h" h)
             WinSetTransparent(Round(Integer(s.Opacity) * 255 / 100), "ahk_id " g.Hwnd)
             this.PictureGui := g
+            this.PictureAlpha := false
             return true
         } catch Error as err {
             if g
@@ -758,16 +813,26 @@ class OverlayStudio {
         }
     }
 
-    HideCurrent(*) {
+    HideCurrent(animate := false, keepPicture := false, *) {
         Critical()
+        if this.HasOwnProp("GroupRoute")
+            this.GroupRoute.CancelPending()
         this.Generation += 1
         if this.HideTimer {
             SetTimer(this.HideTimer, 0)
             this.HideTimer := 0
         }
-        if this.PictureGui {
-            this.PictureGui.Destroy()
-            this.PictureGui := 0
+        if !keepPicture {
+            if Type(animate) = "Integer" && animate = true
+                this.Fade.Hide()
+            else
+                this.Fade.Close()
+            if this.PictureGui && !this.Fade.Window {
+                this.PictureGui.Destroy()
+                this.PictureGui := 0
+            }
+            if !this.PictureGui
+                this.PictureAlpha := false
         }
         if this.MicVisibleByUs {
             if ProcessExist("MultiImageCanvas.exe") {
@@ -796,7 +861,7 @@ class OverlayStudio {
     }
     Expire(token) {
         if this.Current && this.Generation = token
-            this.HideCurrent()
+            this.HideCurrent(true)
     }
 
     TestSlot(*) {
@@ -1053,10 +1118,35 @@ class OverlayStudio {
 
     Tick(*) {
         this.HudRefresh()
+        if this.HasOwnProp("LogDirty") && this.LogDirty && this.Gui && this.Tabs.Value = 4
+            this.RefreshLogField()
         ; Refreshing the status around once per second avoids excessive GUI updates.
         if !this.HasOwnProp("LastTickStatus") || (A_TickCount - this.LastTickStatus) >= 1000 {
             this.LastTickStatus := A_TickCount
             this.RefreshStatus()
+            this.WriteRuntimeStatus()
+        }
+    }
+
+    WriteRuntimeStatus() {
+        ; A bounded readiness receipt, never a keystroke log. Runs on the UI
+        ; maintenance tick, not inside trigger/layer/fade handling.
+        try {
+            route := this.GroupRoute
+            slot := route.Slot
+            trigger := slot >= 1 && slot <= this.Slots.Length ? this.Slots[slot] : 0
+            temp := this.Dir "\runtime-status.pending-" DllCall("GetCurrentProcessId", "uint")
+            if FileExist(temp)
+                FileDelete(temp)
+            now := DateDiff(A_NowUTC, "19700101000000", "Seconds")
+            for key, value in Map("Schema", 1, "PID", DllCall("GetCurrentProcessId", "uint"),
+                "AtUnix", now, "Enabled", this.Enabled ? 1 : 0, "BoundTriggers", this.Bound.Length // 2,
+                "OverlayTrigger", trigger && trigger.Enabled && trigger.Mode = "Hold" ? 1 : 0,
+                "TriggerKey", trigger ? trigger.Key : "", "RouteEnabled", route.Enabled ? 1 : 0,
+                "RoutePath", route.Path, "SettingsFile", this.Config,
+                "SettingsSHA256", this.LoadedSettingsSHA, "LoadError", this.SettingsLoadError)
+                IniWrite(StrReplace(StrReplace(value "", "`r", " "), "`n", " "), temp, "Runtime", key)
+            FileMove(temp, this.Dir "\runtime-status.ini", 1)
         }
     }
 
@@ -1074,18 +1164,21 @@ class OverlayStudio {
     }
 
     WriteLog(message) {
-        entry := "[" FormatTime(A_Now, "HH:mm:ss") "] " message
+        entry := "[" FormatTime(A_Now, "HH:mm:ss") "." Format("{:03}", A_MSec) "] " message
         this.LogLines.Push(entry)
         while this.LogLines.Length > 70
             this.LogLines.RemoveAt(1)
-        if this.Gui && this.HasOwnProp("LogEdit")
-            this.RefreshLogField()
+        ; Do not synchronously rebuild a hidden edit control inside a hotkey,
+        ; fade or layer-swap critical section. The existing UI tick refreshes
+        ; the Status tab; the bounded in-memory log remains current immediately.
+        this.LogDirty := true
     }
     RefreshLogField() {
         content := ""
         for entry in this.LogLines
             content .= entry "`r`n"
         this.LogEdit.Value := content
+        this.LogDirty := false
     }
     CopyDiagnostics(*) {
         report := "Azeron Overlay Studio " this.Version " / AHK " A_AhkVersion " / Windows " A_OSVersion "`r`n" .
@@ -1199,6 +1292,7 @@ class OverlayStudio {
         this.GameInput.StopForHost()
         SetTimer(this.TickFn, 0)
         this.HideCurrent()
+        PM_PreparedSurfaceCache.Clear()
         this.StopKeyDisplay()
         this.DestroyHUD()
         this.UnbindAll()

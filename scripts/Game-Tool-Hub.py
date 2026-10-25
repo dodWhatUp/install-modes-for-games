@@ -19,7 +19,7 @@ import time
 import uuid
 from datetime import datetime, timezone
 
-VERSION = "0.27.0-preview.1"
+VERSION = "0.27.25-preview.1"
 HEADER = struct.Struct("<5Ii2I")
 ENTRY_MIN = 1324
 MAX_MAP = 16 * 1024 * 1024
@@ -478,7 +478,7 @@ Sessions uses Ctrl+8. Explicitly create a new offline journal, record checkpoint
 
 def load_catalog_module(name):
     # Authored exact sibling modules only; JSON records can never select code.
-    if name not in {"GameToolFocusUI", "GameToolModIntegration", "GameToolAppearance", "GameToolWorkspace", "GameToolUserData", "GameToolUserDataPanel", "GameToolUnified", "GameToolUnifiedPanel", "GameToolCatalogBridge", "GameToolCatalogPanel", "GameToolComparison", "GameToolComparisonPanel", "GameToolReportImport", "GameToolJournal", "GameToolCoordinator", "GameToolSessionPanel", "GameToolCrashEvidence", "GameToolEvidencePanel", "GameToolWorkflow", "GameToolWorkflowPanel", "GameToolReadiness", "GameToolReadinessPanel", "GameToolOverlay", "GameToolCompactUI", "GameToolOverlayPanel"}:
+    if name not in {"GameToolGameProfilesUI", "GameToolFocusUI", "GameToolModIntegration", "GameToolAppearance", "GameToolWorkspace", "GameToolUserData", "GameToolUserDataPanel", "GameToolUnified", "GameToolUnifiedPanel", "GameToolCatalogBridge", "GameToolCatalogPanel", "GameToolComparison", "GameToolComparisonPanel", "GameToolReportImport", "GameToolJournal", "GameToolCoordinator", "GameToolSessionPanel", "GameToolCrashEvidence", "GameToolEvidencePanel", "GameToolWorkflow", "GameToolWorkflowPanel", "GameToolReadiness", "GameToolReadinessPanel", "GameToolOverlay", "GameToolCompactUI", "GameToolOverlayPanel"}:
         raise ValueError("Unsupported optional authored module")
     path = Path(__file__).resolve().with_name(name + ".py")
     before = path.stat()
@@ -648,6 +648,8 @@ def gui(data_dir, draft=None, catalog_path=None, overlay_page=False, unified_ins
     unified_panel = None
     data_panel = None
     data_tab = None
+    profiles_panel = None
+    profiles_tab = None
     if unified_install is not None:
         try:
             unified_panel = load_catalog_module("GameToolUnifiedPanel").UnifiedPanel(
@@ -662,6 +664,15 @@ def gui(data_dir, draft=None, catalog_path=None, overlay_page=False, unified_ins
                 data_tab, load_catalog_module("GameToolUserData"), status, VERSION)
         except Exception as error:
             ttk.Label(data_tab,text="Optional private-data tools unavailable: " + str(error),wraplength=700).pack(anchor="w")
+        if unified_panel is not None and overlay_panel is not None:
+            profiles_tab = ttk.Frame(tabs,padding=12)
+            tabs.add(profiles_tab,text='Game profiles')
+            try:
+                profiles_panel=load_catalog_module('GameToolGameProfilesUI').ProfilesPanel(
+                    profiles_tab,data_dir,unified_panel,overlay_panel,status)
+                tabs.select(profiles_tab)
+            except Exception as error:
+                ttk.Label(profiles_tab,text='Game profiles need attention: '+str(error),wraplength=700).pack(anchor='w')
     if workspace is not None:
         routes = dict(zip(("tools","sensors","rtss","reports","guide"), original_tabs))
         routes.update(catalog=catalog_tab,comparison=comparison_tab,sessions=session_tab,overlays=overlay_tab)
@@ -669,6 +680,7 @@ def gui(data_dir, draft=None, catalog_path=None, overlay_page=False, unified_ins
         if unified_panel is not None:
             routes.update(studio=unified_panel.studio_tab,updates=unified_panel.update_tab)
         if data_tab is not None: routes["data"] = data_tab
+        if profiles_tab is not None: routes['profiles'] = profiles_tab
         workspace.attach(tabs,routes)
     state = {}
     if mod_integration is not None: mod_integration.automation.tool_snapshot = lambda: state
@@ -1035,6 +1047,7 @@ def gui(data_dir, draft=None, catalog_path=None, overlay_page=False, unified_ins
             if workspace is not None: workspace.close()
             if overlay_panel is not None:
                 overlay_panel.close()
+            if profiles_panel is not None: profiles_panel.close()
             if session_panel is not None:
                 session_panel.close()
         finally:

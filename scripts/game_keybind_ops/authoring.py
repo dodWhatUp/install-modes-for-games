@@ -74,18 +74,25 @@ def planner_bridge(extracted_variant:dict,crosswalk:list[dict])->dict:
     Never split a bundled label or infer Ctrl -> LCtrl.
     """
     require(type(crosswalk) is list and len(crosswalk)<=512,'CROSSWALK_INVALID','Use bounded explicit source/native links.')
-    index={}
+    index={};stable_index={}
     for c in crosswalk:
-        require(type(c) is dict and set(c)=={'source_action','action','context','slot','keys'},'CROSSWALK_INVALID','Unknown crosswalk fields.')
+        require(type(c) is dict and set(c) in ({'source_action','action','context','slot','keys'},
+                {'source_id','source_action','action','context','slot','keys'}),'CROSSWALK_INVALID','Unknown crosswalk fields.')
         require(type(c['keys']) is dict,'CROSSWALK_INVALID','Explicit planner-to-native key names are required.')
-        require(c['source_action'] not in index,'CROSSWALK_AMBIGUOUS','One source action per variant crosswalk.');index[c['source_action']]=c
+        if 'source_id' in c:
+            require(type(c['source_id']) is str and c['source_id'] and c['source_id'] not in stable_index,
+                    'CROSSWALK_AMBIGUOUS','One exact stable source ID per crosswalk.')
+            stable_index[c['source_id']]=c
+        else:
+            require(c['source_action'] not in index,'CROSSWALK_AMBIGUOUS','One source action per variant crosswalk.');index[c['source_action']]=c
     rows=extracted_variant.get('assignments',[])
     if type(rows) is dict:rows=[dict(v,target_output=k) for k,v in rows.items()]
     require(type(rows) is list,'PLANNER_SCHEMA','Expected extracted assignment records.')
     intents=[];unresolved=[];seen={}
     for r in rows:
         name=r.get('label',r.get('en',r.get('action',r.get('search_name'))));key=r.get('target_key',r.get('target_output',r.get('output')))
-        c=index.get(name)
+        # An explicit unknown stable ID never falls back to a similar label.
+        c=stable_index.get(r['source_id']) if 'source_id' in r else index.get(name)
         if c is None or key not in c['keys']:
             unresolved.append({'source_action':name,'source_key':key,'status':'ACTION_OR_KEY_CROSSWALK_REQUIRED'});continue
         v={'action':c['action'],'context':c['context'],'slot':c['slot'],'key':c['keys'][key]};validate_intent(v)

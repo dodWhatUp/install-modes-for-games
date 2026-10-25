@@ -55,6 +55,9 @@ class Document:
                 parse_extra(self)
             elif adapter == 'xml': self._xml()
             elif adapter == 'cfg-bind': self._cfg()
+            elif adapter == 'idtech-bindset':
+                from .idtech_bindset import parse
+                parse(self)
             else:
                 from .adapter_registry import adapter_info
                 a=adapter_info(adapter)

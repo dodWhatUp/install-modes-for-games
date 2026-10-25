@@ -46,6 +46,20 @@ class Integration:
         self.mod_controls=ModControlsPanel(notebook,data_dir,status)
         notebook.add(self.mod_controls,text='Mod Controls')
         self.routes['mod-controls']=self.mod_controls
+        self.interface_views=None
+        self._interface_attempts=0
+        def mount_interfaces():
+            self._interface_job=None
+            if getattr(notebook.winfo_toplevel(),'game_tools_notebook',None) is not notebook:
+                self._interface_attempts+=1
+                if self._interface_attempts<200:self._interface_job=notebook.after(50,mount_interfaces)
+                return
+            try:
+                from GameToolInterfaceViews import mount
+                self.interface_views=mount(notebook,self.mod_controls.controls,data_dir,status)
+            except (ImportError,OSError,ValueError,TclError) as error:
+                status.set('Existing interface retained: '+str(error))
+        self._interface_job=notebook.after(50,mount_interfaces)
         self.system_control = None
         try:
             from GameToolSystemControlPanel import SystemControlPanel
@@ -61,9 +75,13 @@ class Integration:
         self.automation_roles=SimpleNamespace(tree=self.automation.tree,output=self.automation.output,
             state=self.automation.state,watch=self.automation.watch,buttons=self.automation.buttons)
     def can_close(self):
+        if self.interface_views is not None and not self.interface_views.can_close():return False
         a=self.mods.can_close(); b=self.automation.can_close()
         return a and b and self.mod_controls.can_close()
     def close(self):
+        if self._interface_job is not None:
+            self.mods.after_cancel(self._interface_job);self._interface_job=None
+        if self.interface_views is not None:self.interface_views.close()
         self.mod_controls.close()
         if self.system_control is not None:
             self.system_control.close()

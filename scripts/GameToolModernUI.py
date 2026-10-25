@@ -10,7 +10,7 @@ from tkinter import ttk, font as tkfont
 from GameToolCompactUI import ScrollableFrame, FlowToolbar
 from GameToolWorkspace import DOMAINS
 
-VERSION = "0.1.1"
+VERSION = "0.1.2"
 COLORS = dict(background="#f3f5f8", surface="#ffffff", ink="#18283b",
               muted="#526477", line="#dce3eb", accent="#076b68",
               rail="#172b40", rail_text="#edf3f9", rail_muted="#bed0e2",
@@ -110,13 +110,14 @@ class ModernSurface:
         brand.grid(row=0, column=0, sticky="w", padx=12, pady=(0, 18))
         self.identify(brand, "UI-007.rail-heading", "Workspace navigation heading")
         self.home_button = self._rail_button("Home", lambda: self.show_home(), 1, "home")
+        self.profiles_button = self._rail_button('Game profiles', self.open_profiles, 2, 'profiles')
         self.domain_buttons = []
         for i, (label, *_rest) in enumerate(CATEGORIES):
-            self.domain_buttons.append(self._rail_button(label, lambda n=i: self.show_home(n), i+2, "domain-"+str(i)))
+            self.domain_buttons.append(self._rail_button(label, lambda n=i: self.show_home(n), i+3, "domain-"+str(i)))
         self.rail_footer = ttk.Label(self.rail, text="Your profiles stay\nwith their own tools.",
                                     style="Modern.Rail.TLabel", foreground=COLORS["rail_muted"], justify="left")
-        self.rail_footer.grid(row=7, column=0, sticky="sw", padx=12, pady=(30, 0))
-        self.rail.rowconfigure(6, weight=1)
+        self.rail_footer.grid(row=8, column=0, sticky="sw", padx=12, pady=(30, 0))
+        self.rail.rowconfigure(7, weight=1)
         self.identify(self.rail_footer, "UI-007.rail-status", "Navigation privacy and ownership note")
 
         self.dashboard = ScrollableFrame(w.content, min_width=0)
@@ -169,6 +170,10 @@ class ModernSurface:
         self.identifiers.append((widget, identifier, label))
         if self.marker_callback:
             self.marker_callback(widget, identifier, label)
+
+    def open_profiles(self):
+        record=self.w.registry.feature_for_route('profiles')
+        if record and 'profiles'in self.w.route_tabs:self.w.route(record['id'])
 
     def _rail_button(self, text, callback, row, role):
         button = ttk.Button(self.rail, text=text, command=callback, style="Modern.Rail.TButton")
@@ -277,6 +282,9 @@ class ModernSurface:
         self._highlight(record["domain"])
 
     def _highlight(self, domain=None):
+        profile_page=not self.home_visible and self.w.notebook.select()==str(self.w.route_tabs.get('profiles',''))
+        self.profiles_button.configure(style='Modern.Selected.TButton'if profile_page else'Modern.Rail.TButton')
+        self.profiles_button.state(['!disabled']if 'profiles'in self.w.route_tabs else['disabled'])
         self.home_button.configure(style="Modern.Selected.TButton" if self.home_visible and self.domain is None else "Modern.Rail.TButton")
         for i, button in enumerate(self.domain_buttons):
             selected = self.domain == i if self.home_visible else DOMAINS[i] == domain

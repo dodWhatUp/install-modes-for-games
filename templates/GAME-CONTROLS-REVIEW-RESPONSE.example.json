@@ -1,0 +1,38 @@
+{
+  "kind": "game_controls_external_review",
+  "schema_version": 1,
+  "status": "review_only_not_an_app_import",
+  "game_id": "synthetic-example",
+  "input_pins": {
+    "active_document_sha256": null,
+    "native_keymap_revision": null,
+    "review_workbook_sha256": null,
+    "source_revisions": []
+  },
+  "coverage": {
+    "binding_rows_reviewed": null,
+    "physical_controls_reviewed": null,
+    "contexts_reviewed": [],
+    "missing_or_unresolved": []
+  },
+  "recommended_option": null,
+  "button_decisions": [],
+  "action_annotations": [],
+  "existing_action_assignments": [],
+  "manual_ui_proposals": [],
+  "combination_reviews": [],
+  "output_alias_effects": [],
+  "rejected_alternatives": [],
+  "questions_that_change_the_decision": [],
+  "sources": [],
+  "acceptance_steps": [],
+  "shared_rule_candidates": [],
+  "notes": [
+    "Use existing stable action IDs and route IDs for existing_action_assignments.",
+    "Keep new UI-only actions separate, with exact visible labels and native_command null until verified.",
+    "Each button decision includes its current use, proposed use or intentional empty state, reason, alternatives, conflicts and evidence status.",
+    "Each annotation separates observed facts, official mechanics, planning inference and unknown user frequency.",
+    "Return this review plus a short explanation. A local agent reconciles pins and supported workbook fields before any import.",
+    "Do not rewrite pinned sources, native outputs or installed files. This data grants no Apply or Publish authority."
+  ]
+}

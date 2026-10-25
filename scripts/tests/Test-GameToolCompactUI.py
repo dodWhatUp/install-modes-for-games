@@ -12,6 +12,7 @@ sys.dont_write_bytecode = True
 
 
 SOURCE = Path(__file__).resolve().parents[1] / "GameToolCompactUI.py"
+sys.path.insert(0,str(SOURCE.parent))
 spec = importlib.util.spec_from_file_location("compact_ui_fixture", SOURCE)
 UI = importlib.util.module_from_spec(spec); spec.loader.exec_module(UI)
 

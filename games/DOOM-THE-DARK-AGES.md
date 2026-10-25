@@ -1,12 +1,18 @@
 # DOOM: The Dark Ages
 
-Status: **experiment paused after a later 4K crash; game currently not installed by user choice**.
+Status: **action overlays configured on the current destination, 2026-10-20; the historical neural experiment remains paused**.
+
+The current destination already has the Steam game installed (observed build
+25755602). [Campaign and Revelations control maps](doom-the-dark-ages/CONTROLS-OVERLAY.md)
+use its saved bindings and the existing native Azeron layout. This task changes
+display data only; current graphics/runtime and DLC entitlement were not accepted.
 
 The earlier 2560×1440 run remains a valid technical success, but it is not the current installed state and it does not establish 4K stability. The exact crashed state was privately snapshotted before rollback. A clean Steam reinstall was started during recovery and then canceled immediately when the user said not to install DOOM. Do not install, launch, remind, or resume this experiment until the user explicitly asks.
 
 Read the durable records before any future change:
 
 - [Chronological history and crash evidence](doom-the-dark-ages/HISTORY.md)
+- [Current action overlays and context boundaries](doom-the-dark-ages/CONTROLS-OVERLAY.md)
 - [Game-specific preferences](doom-the-dark-ages/PREFERENCES.md)
 - [Mod catalog](doom-the-dark-ages/MOD-CATALOG.md)
 - [Curated recommendations](doom-the-dark-ages/RECOMMENDATIONS.md)

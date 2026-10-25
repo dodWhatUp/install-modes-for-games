@@ -1,5 +1,51 @@
 # Measurement-tool connections and user control
 
+## 2026-10-25 — Approved controls application update
+
+The user separately approved normal Game Tools/Overlay Studio shutdown and the
+application-only **0.27.22-preview.1** update. The existing Hub close handler
+closed its owned Studio normally; both processes exited and their source lease
+was released. No forced termination or application relaunch occurred.
+
+The exact reviewed archive SHA-256 is
+`39b8b6fd131f85e01892152ec472ad284754fac088b30bc53582a57526e6d5f8`,
+with source implementation at `7875ff7`. All **528 installed payloads** passed
+hash readback, the pinned planning schema matched, and seven controls modules
+passed import checks from the installed release. The **444 previous payloads**
+remain verified and available for the existing guarded rollback.
+
+A fresh private pre-close snapshot covered **901 files**. All matched after
+normal shutdown. After update, 900 remained byte-identical; only the installation
+pointer changed. Settings, complete toolkit data, native Azeron storage, game
+binding configuration and all six Studio runtime sources retained their exact
+bytes. No game/native binding operation or Overlay publication occurred.
+Runtime selection relay contents are transient and were recorded separately.
+
+The updater committed the version pointer last, retained source/INI recovery,
+and released both locks. The apps remain closed. This is installation/file/import
+acceptance, not new Windows gameplay, physical gesture or latency acceptance.
+Exact machine paths and receipts are indexed only in local continuation bindings.
+Earlier source-only and 0.25 reference-computer installation records are historical.
+
+### Later same-day requested Windows controls-screen check
+
+The user separately requested opening the installed application and inspecting
+Game Controls & Overlay without binding changes or publication. The stable
+launcher opened the visible 0.27.22-preview.1 Hub and its preserved Studio.
+Sources, Actions & priority and Preview & export opened successfully for the
+existing selected Shared SPARSE6 map. Its six native-file contracts matched.
+Search filtering and clearing restored the table; Review changes reported no
+proposed placement or native/game/Overlay changes. The side-by-side BASIC/gameplay
+preview rendered Current and Proposed through the existing renderer.
+
+All **901 protected files** remained byte-identical to the fresh pre-launch
+snapshot, with no saved user/native files added or removed. All 528 installed
+payloads still verified. The runtime selection relay is transient and excluded
+from that saved-file comparison. No planning/map Save, binding apply, native
+profile edit or Overlay publish occurred. The temporary preview closed normally;
+the Hub, Studio and planner remain open. This verifies the scoped Windows UI
+flow, not actual game behavior, fresh device telemetry, gestures or latency.
+
 
 ## 2026-10-14 — Supplied A/B inputs merged and Unified Game Tools reinstalled
 

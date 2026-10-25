@@ -193,9 +193,14 @@ def compile_changes(raw:bytes,spec:dict,changes:dict) -> tuple[bytes,list[dict]]
             if c.writer in {'ini-key','token'}:
                 tag=(c.group,str(c.value).casefold());seen[tag]=seen.get(tag,0)+1
         return {k:n for k,n in seen.items() if n>1}
-    previous=key_duplicates(doc)
-    require(all(n<=previous.get(k,1) for k,n in key_duplicates(updated).items()),
-            'KEY_COLLISION','A native key collision was found outside the declared patch.')
+    if spec['adapter']=='idtech-bindset':
+        from .idtech_bindset import duplicate_pairs
+        require(not (duplicate_pairs(updated)-duplicate_pairs(doc)),
+                'KEY_COLLISION','A new native command-sharing pair was found outside the declared patch.')
+    else:
+        previous=key_duplicates(doc)
+        require(all(n<=previous.get(k,1) for k,n in key_duplicates(updated).items()),
+                'KEY_COLLISION','A native key collision was found outside the declared patch.')
     # A lossless re-key must keep scalar count; all non-selected bytes are retained by render.
     if spec['adapter']!='ini-sparse':
         require(len(updated.cells)==len(doc.cells),'STRUCTURE_CHANGED','Binding edit changed the parsed file structure.')

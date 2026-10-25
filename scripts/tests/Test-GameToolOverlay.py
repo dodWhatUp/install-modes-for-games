@@ -60,6 +60,36 @@ class CoreTests(unittest.TestCase):
         self.assertEqual(result["asset_id"], "asset-combined"); self.assertTrue(result["render"])
         self.assertEqual(result["layer_state"], "Selected"); self.assertFalse(result["native_mismatch"])
 
+    def test_retained_images_cross_old_512_limit_and_round_trip(self):
+        # Multiple old families plus four views of a new family must coexist.
+        extra = copy.deepcopy(self.m)
+        base = extra["assets"][0]
+        extra["assets"] = [dict(base, id="retained-" + str(i)) for i in range(524)]
+        extra["groups"] = []; extra["associations"] = []
+        self.source.write_bytes(api.encode(extra))
+        self.store.import_manifest(self.source, self.hash, conflict="keep", preferences=self.value["preferences"])
+        saved, hashed = api.Store(self.store.directory).load()
+        self.assertEqual(len(saved["manifest"]["assets"]), 528)
+        self.assertEqual(api.sha(self.store.path.read_bytes()), hashed)
+        self.assertEqual(api.choose(saved, self.fg, now=10)["asset_id"], "asset-combined")
+        for asset in self.value["manifest"]["assets"]:
+            self.assertIn(asset, saved["manifest"]["assets"])
+
+    def test_asset_capacity_remains_bounded(self):
+        value = copy.deepcopy(self.value)
+        base = value["manifest"]["assets"][0]
+        value["manifest"]["assets"] += [dict(base, id="retained-" + str(i))
+            for i in range(api.MAX_ASSETS - len(value["manifest"]["assets"]))]
+        self.assertEqual(len(api.validate_store(api.decode(api.encode(value)))["assets"]), api.MAX_ASSETS)
+        value["manifest"]["assets"].append(dict(base, id="one-too-many"))
+        with self.assertRaises(api.OverlayError): api.validate_store(value)
+        with self.assertRaises(api.OverlayError): api.decode(api.encode(value))
+
+    def test_other_manifest_collection_capacity_is_unchanged(self):
+        value = copy.deepcopy(self.value)
+        value["manifest"]["games"] += [{"id": "other-" + str(i), "label": "Fixture"} for i in range(512)]
+        with self.assertRaises(api.OverlayError): api.validate_store(api.decode(api.encode(value)))
+
     def test_pid_restart_does_not_change_association(self):
         old = self.choose(); self.fg["pid"] = 912
         self.assertEqual(self.choose()["asset_id"], old["asset_id"])
@@ -208,8 +238,24 @@ class CoreTests(unittest.TestCase):
         api.relay(self.store, result, self.root / "relay", now=100)
         text = (self.root / "relay/overlay-selection.ini").read_text()
         self.assertIn("ExpiresUnix = 101", text); self.assertIn("Active = 1", text); self.assertIn("Exe = C:", text)
+        self.assertIn("ExpiresUnixMs = 101000", text)
+        api.relay(self.store, result, self.root / "relay", now=100.95)
+        text = (self.root / "relay/overlay-selection.ini").read_text()
+        self.assertIn("ExpiresUnix = 101", text)
+        self.assertIn("ExpiresUnixMs = 101950", text)
         api.relay(self.store, {"render": False}, self.root / "relay", now=101)
         self.assertIn("Active = 0", (self.root / "relay/overlay-selection.ini").read_text())
+
+    def test_saved_transition_reaches_active_relay_only(self):
+        from GameToolOverlayTransition import save
+        result = self.choose()
+        result.update(render=True, display_target="studio")
+        save(self.store.directory, True, 160, None)
+        api.relay(self.store, result, self.root / "relay", now=100)
+        text = (self.root / "relay/overlay-selection.ini").read_text()
+        self.assertIn("FadeInMs = 160", text); self.assertIn("FadeOutMs = 160", text)
+        api.relay(self.store, {"render": False}, self.root / "relay", now=100)
+        self.assertNotIn("FadeInMs", (self.root / "relay/overlay-selection.ini").read_text())
 
     def test_payload_is_not_mutated(self):
         obj = {"game_id": "game", "layer": "BASIC", "context": "gameplay", "view": "Keys"}
@@ -337,8 +383,13 @@ class PanelTests(unittest.TestCase):
             self.root.tk.call("tk", "scaling", scale)
             self.root.geometry("760x600"); self.root.update_idletasks()
             for sel in self.panel.selectors.values():
-                self.assertEqual(str(sel.cget("state")), "normal")
-                self.assertTrue(sel.bind("<Return>")); self.assertTrue(sel.bind("<Escape>"))
+                from GameToolCompactUI import ChoiceButtons
+                if isinstance(sel, ChoiceButtons):
+                    self.assertTrue(sel.buttons)
+                    self.assertTrue(all(not b.instate(["disabled"]) for b in sel.buttons.values()))
+                else:
+                    self.assertEqual(str(sel.cget("state")), "normal")
+                    self.assertTrue(sel.bind("<Return>")); self.assertTrue(sel.bind("<Escape>"))
                 self.assertGreater(sel.winfo_reqwidth(), 50)
         from types import SimpleNamespace
         self.panel.reflow(SimpleNamespace(width=480))

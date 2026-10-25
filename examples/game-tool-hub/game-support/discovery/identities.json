@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "notes": "Local store identity hints only. Expected executables still come from reviewed support packs; these hints never authorize writes or establish mod compatibility.",
+  "games": {
+    "no-rest-for-the-wicked": {"steam_app_id": "1371980"}
+  }
+}

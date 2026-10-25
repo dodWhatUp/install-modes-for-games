@@ -13,6 +13,19 @@ This repository is the durable memory for game-modding work. Apply these rules w
 
 ## Read before deciding
 
+### Version precedence and planning handoffs
+
+Treat attached planning/requirements ZIPs as specifications, not replacements
+for existing source files. Before incorporating them, compare current source,
+installed/source-owner receipts, content and functionality. Use a newer verified
+corresponding implementation as the baseline and add only useful missing
+requirements or improvements. Preserve original owners, exact revisions and
+uncommitted work. Never overwrite newer or uncommitted files with older handoff
+copies. When versions diverge, reconcile both sets of changes; timestamps alone
+do not establish precedence. Keep handoff bytes and recovery evidence private
+where required, and record unresolved differences before any later publication,
+installation or live configuration change.
+
 For software/interface creation, learning materials, presentations or structured explanation files, read `docs/UI-AND-CONTENT-DESIGN.md` and apply the compact selection/search/entry, contextual visibility and progressive-disclosure foundation alongside existing design and accessibility guidance. Use its creation/review protocol, adapt to the delivery format, and preserve user choices and source masters. Deeper research/integration is a future improvement, not a prerequisite or authorization to redesign unrelated work.
 
 

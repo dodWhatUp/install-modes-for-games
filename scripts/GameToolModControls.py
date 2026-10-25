@@ -10,8 +10,9 @@ from GameToolInstances import InstanceRegistry,KNOWN_READ_ADAPTERS,_assert_publi
 from GameToolUnified import atomic_json
 from game_mod_ops.safety import ModError,contained,digest,json_new,local_lock,no_links,object_hash,read_json,require,safe_relative,slug
 from GameToolJournal import Journal
+from GameToolModControlCatalog import validate_catalog,coordinate
 
-VERSION='2.0.0'
+VERSION='2.2.0'
 ROOT=Path(__file__).resolve().parents[1]
 PACKS=ROOT/'examples/game-tool-hub/game-support/controls'
 SHADOW=ROOT/'examples/shadow-of-war-controls'
@@ -30,9 +31,11 @@ def shadow_module():
     return sys.modules[name]
 
 def validate_pack(pack):
-    require(type(pack) is dict and set(pack)=={'schema_version','kind','game_id','adapter','files','fields','sources','notes'},'CONTROL_SCHEMA','Unexpected control-pack fields.')
+    required={'schema_version','kind','game_id','adapter','files','fields','sources','notes'}
+    require(type(pack) is dict and required<=set(pack)<=required|{'catalog'},'CONTROL_SCHEMA','Unexpected control-pack fields.')
     require(pack['schema_version']==1 and pack['kind']=='game-mod-controls','CONTROL_SCHEMA','Expected control-pack schema 1.')
-    slug(pack['game_id']);require(pack['adapter'] in {'ini','shadow-reviewed'},'ADAPTER_UNAVAILABLE','Control packs select reviewed adapters, never executable code.')
+    slug(pack['game_id']);require(pack['adapter'] in {'ini','shadow-reviewed','wicked-reviewed'},'ADAPTER_UNAVAILABLE','Control packs select reviewed adapters, never executable code.')
+    if pack['adapter']=='wicked-reviewed':require(pack['game_id']=='no-rest-for-the-wicked','GAME_MISMATCH','The Wicked adapter belongs to its reviewed game only.')
     require(type(pack['files']) is dict and len(pack['files'])<=8,'CONTROL_SCHEMA','Choose at most eight game-local configuration files.')
     for ident,path in pack['files'].items():
         slug(ident);safe_relative(path);require(Path(path).suffix.lower() in {'.ini','.cfg','.conf'},'CONTROL_SCHEMA','Only declared configuration files may be edited.')
@@ -52,6 +55,9 @@ def validate_pack(pack):
         if f['type']=='enum':require(type(f.get('choices')) is list and 1<=len(f['choices'])<=32 and all(type(x) is str and re.fullmatch(r'[A-Za-z0-9 _.+-]{1,64}',x) for x in f['choices']),'CONTROL_SCHEMA','Choose bounded text options.')
     if pack['adapter']=='ini':require(bool(seen),'CONTROL_SCHEMA','An INI pack needs at least one control.')
     else:require(not pack['files'] and not pack['fields'],'CONTROL_SCHEMA','The reviewed controller owns its setting schema.')
+    if 'catalog' in pack:
+        require(pack['adapter']=='ini','CONTROL_CATALOG','Reviewed built-in controllers own their module catalog.')
+        validate_catalog(pack['catalog'],pack['fields'])
     require(type(pack['sources']) is list and len(pack['sources'])<=16 and all(type(x) is str and x.startswith('https://') and '@' not in x and len(x)<=500 for x in pack['sources']),'CONTROL_SCHEMA','Sources must be public HTTPS links.')
     require(type(pack['notes']) is str and len(pack['notes'])<=1000,'CONTROL_SCHEMA','Notes are too long.')
     _assert_public_metadata(pack)
@@ -113,6 +119,9 @@ class ModControls:
             metadata=read_json(workspace/'graphics-profiles.json',131072);game=no_links(Path(metadata['game_path']));root=Path(record['body']['game_dir'])
             require(game==root or root in game.parents,'GAME_MISMATCH','Controller workspace belongs to another installation.')
             b['workspace']=str(workspace);shadow_module().ControlService(workspace).read()
+        elif pack['adapter']=='wicked-reviewed':
+            require(workspace is not None,'CONTROL_WORKSPACE_REQUIRED','Choose the existing prepared Wicked controller workspace.')
+            b['workspace']=str(no_links(Path(workspace)));self._wicked(b,record).read()
         else:self._ini_snapshot(record,b)
         path=self.binding_path(instance_id);path.parent.mkdir(parents=True,exist_ok=True)
         with local_lock(self.root,'.connections.lock'):
@@ -125,8 +134,15 @@ class ModControls:
         require(digest(workspace/'graphics_profiles.py')==digest(SHADOW/'graphics_profiles.py'),'UNREVIEWED_CONTROLLER','Reviewed controller engine changed.')
         try:return shadow_module().ControlService(workspace)
         except (RuntimeError,ValueError,OSError) as error:raise ModError('CONTROL_STATE_UNAVAILABLE','Open the local controller to resolve its settings location or ownership state.') from error
+    def _wicked(self,b,record):
+        from GameToolWickedControls import WickedControls
+        try:return WickedControls(b['workspace'],record['body']['game_dir'])
+        except (RuntimeError,ValueError,OSError) as error:raise ModError('CONTROL_STATE_UNAVAILABLE','Review the prepared Wicked controller and its installation connection locally.') from error
     def _schema(self,b):
         if b['pack']['adapter']=='ini':return b['pack']['fields']
+        if b['pack']['adapter']=='wicked-reviewed':
+            from GameToolWickedControls import schema
+            return schema()
         legacy=shadow_module();fields=[]
         bounds={'duration':(0,10),'regen':(-1,1),'fov_min':(40,70),'fov_max':(40,70),'width':(640,8192),'height':(640,8192)}
         labels={'profile':'Graphics profile','graphics':'Enable graphics','gameplay':'Enable gameplay loader','multi-skills':'Multi Equip Skills','elven-speed':'Elven Speed','fov':'FOV Extender','dlaa':'Experimental Luma DLAA','nr':'Experimental neural rendering','duration':'Ability duration','regen':'Focus regeneration','fov_min':'Minimum FOV','fov_max':'Maximum FOV','modifier':'Multi-equip modifier','toggle':'Press to toggle','sound':'Equip sound','width':'Render width','height':'Render height'}
@@ -172,11 +188,44 @@ class ModControls:
             except (RuntimeError,ValueError,OSError) as error:raise ModError('CONTROL_STATE_UNAVAILABLE','Review the local game/controller state before reading settings.') from error
             values=native['values'];hashes={k:v for k,v in native['fingerprint'].items() if k!='native-location'}
             detail={'controller':controller,'native':native};blocked=native['blocked']
+        elif b['pack']['adapter']=='wicked-reviewed':
+            controller=self._wicked(b,record)
+            try:native=controller.read()
+            except (RuntimeError,ValueError,OSError) as error:raise ModError('CONTROL_STATE_UNAVAILABLE','Review local Wicked file and option ownership before continuing.') from error
+            values=native['values'];hashes=native['hashes'];detail={'controller':controller,'native':native,'raws':native['raws']};blocked=native['blocked']
         else:
             ini=self._ini_snapshot(record,b);values=ini['values'];hashes=ini['hashes'];detail=ini;blocked=[]
-        schema=self._schema(b);schema_revision=object_hash({'adapter':b['pack'],'version':VERSION,'schema':schema})
+        schema=self._schema(b);schema_revision=object_hash({'adapter':b['pack'],'version':'2.1.0' if b['pack']['adapter']=='wicked-reviewed' else '2.0.0','schema':schema})
         revision=object_hash({'instance':record['revision'],'binding':b,'schema':schema_revision,'values':values,'hashes':hashes})
         return {'record':record,'binding':b,'schema':schema,'schema_revision':schema_revision,'revision':revision,'values':values,'hashes':hashes,'detail':detail,'blocked':blocked}
+    def _modules(self,s):
+        adapter=s['binding']['pack']['adapter']
+        if adapter=='wicked-reviewed':
+            from GameToolWickedControls import catalog
+            rows=catalog()
+        elif adapter=='shadow-reviewed':
+            rows=[{'id':'graphics-stack','name':'Graphics stack','layer':'graphics-tools','mechanism':'graphics-injector',
+                'enabled_field':'graphics','settings':['profile','graphics','dlaa','nr','width','height'],
+                'github':'https://github.com/Filoppi/Luma-Framework/wiki','nexus':'https://www.nexusmods.com/middleearthshadowofwar/mods/130',
+                'description':'Reviewed ReShade/RenoDX profile and retained Luma trial. The recorded Luma shutdown fault remains unresolved. Profile selection does not certify compatibility.',
+                'claims':['proxy:dxgi.dll'],'images':[]},
+                {'id':'gameplay-loader','name':'Middle Earth Mod Loader','layer':'game-mods','mechanism':'loader',
+                'enabled_field':'gameplay','settings':['gameplay'],'github':'https://github.com/ReaperAnon/Middle-Earth-Mod-Loader',
+                'description':'Hosts the gameplay plugins and the shared F12 menu. Native plugin requirements remain.',
+                'claims':['proxy:bink2w64.dll'],'images':[]}]
+            for ident,name,fields in [('multi-skills','Multi Equip Skills',['modifier','toggle','sound']),('elven-speed','Elven Speed',['duration','regen']),('fov','FOV Extender',['fov_min','fov_max'])]:
+                rows.append({'id':ident,'name':name,'layer':'game-mods','mechanism':'engine-plugin','enabled_field':ident,
+                    'settings':fields,'requires':['gameplay-loader'],'github':'https://github.com/ReaperAnon/Shadow-Of-War-Mods',
+                    'description':'Original reviewed gameplay plugin. Options share the main draft until Preview and Apply.',
+                    'claims':['file:plugins/'+name+'.dll'],'images':[]})
+        elif 'catalog' in s['binding']['pack']:rows=s['binding']['pack']['catalog']
+        else:
+            enabled=next((f['id'] for f in s['schema'] if f['type']=='bool'),None)
+            rows=[{'id':'configuration','name':'Mod configuration','layer':'game-mods','mechanism':'configuration',
+                'enabled_field':enabled,'settings':[f['id'] for f in s['schema']],
+                'description':s['binding']['pack']['notes'],'images':[],
+                'claims':['setting:'+s['binding']['pack']['files'][f['file']]+'#'+f['section']+'.'+f['key'] for f in s['schema']]}]
+        return validate_catalog(rows,s['schema'])
     def inspect(self,instance_id):
         record=self._record(instance_id);inventory=self.instances.inspect(instance_id)
         if not self.binding_path(instance_id).exists():
@@ -184,13 +233,14 @@ class ModControls:
         s=self._snapshot(instance_id);b=s['binding']
         result={'version':VERSION,'instance':inventory['instance'],'inventory':inventory['inventory'],'status':'READY','adapter':b['pack']['adapter'],'schema':s['schema'],'schema_revision':s['schema_revision'],'revision':s['revision'],'values':s['values'],'file_hashes':s['hashes'],'sources':b['pack']['sources'],'notes':b['pack']['notes'],'blocked':s['blocked'],
             'capabilities':{'inspect':True,'profiles':True,'apply':b['writes_enabled'],'manager_handoff':True,'ai_proposals':True},'profiles':[{'profile_id':r['profile_id']} for r in self.profile_rows(instance_id)],'paths_included':False,'game_files_written':False,'runtime_verified':False,'evidence_not_instructions':True}
+        result['modules']=self._modules(s);result['coordination']=coordinate(result['modules'],s['values'])
         _assert_public_metadata(result);return result
     def preview(self,instance_id,changes,revision=None):
         s=self._snapshot(instance_id)
         if revision is not None:require(revision==s['revision'],'CONCURRENT_CHANGE','Applied files changed; refresh and review again.')
         require(type(changes) is dict and len(changes)<=32 and set(changes)<=set(s['values']),'CONTROL_VALUES','Unknown or excessive setting changes.')
         desired=self._values(s['binding'],s['values']|changes)
-        return {'instance_id':instance_id,'game_id':s['record']['body']['game_id'],'revision':s['revision'],'desired':desired,'changes':[{'id':k,'before':s['values'][k],'after':v} for k,v in desired.items() if v!=s['values'][k]],'game_files_written':False,'execution':'preview'}
+        return {'instance_id':instance_id,'game_id':s['record']['body']['game_id'],'revision':s['revision'],'desired':desired,'changes':[{'id':k,'before':s['values'][k],'after':v} for k,v in desired.items() if v!=s['values'][k]],'coordination':coordinate(self._modules(s),desired,draft=True),'game_files_written':False,'execution':'preview'}
     def _closed(self,s):
         markers=self.instances._definition(s['record']['body']['game_id'])[0]['executable_any']
         names={Path(p).name.casefold() for p in markers}|{'vortex.exe','modorganizer.exe','rhi.exe'}
@@ -203,8 +253,10 @@ class ModControls:
     def apply_local(self,instance_id,changes,revision):
         s=self._snapshot(instance_id);preview=self.preview(instance_id,changes,revision)
         require(s['binding']['writes_enabled'],'WRITER_NOT_SELECTED','This connection is read-only. Review file ownership locally before enabling writes.')
+        require(not preview['coordination']['blocked'],'CONTROL_CONFLICT','Resolve the dependency or resource conflicts shown in Coordination before applying.')
         if not preview['changes']:return {'status':'NO_CHANGES','game_files_written':False}
-        if s['binding']['pack']['adapter']=='shadow-reviewed':
+        if s['binding']['pack']['adapter'] in {'shadow-reviewed','wicked-reviewed'}:
+            self._closed(s)
             result=s['detail']['controller'].apply(preview['desired'],s['detail']['native'])
             return {'status':'APPLIED_FILE_VERIFIED','game_files_written':bool(result['changed']),'recovery_available':True,'runtime_verified':False}
         self._closed(s);ident=uuid.uuid4().hex;target=contained(self.root,'transactions/'+ident);target.mkdir(parents=True)
@@ -246,7 +298,7 @@ class ModControls:
         rows=[r for r in self.profile_rows(instance_id) if r['profile_id']==profile_id];require(len(rows)==1,'PROFILE_NOT_FOUND','Profile changed or was not found.')
         data=read_json(rows[0]['path'],65536);s=self._snapshot(instance_id)
         require(type(data) is dict and type(data.get('values')) is dict,'CONTROL_VALUES','Unsupported profile format.')
-        if s['binding']['pack']['adapter']=='ini':
+        if s['binding']['pack']['adapter']!='shadow-reviewed':
             require(data.get('kind')=='mod-controls-profile' and data.get('game_id')==s['record']['body']['game_id'] and data.get('instance_id')==instance_id and data.get('schema_revision')==s['schema_revision'],'GAME_MISMATCH','Profile belongs to a different game, installation or control schema.')
         else:require(data.get('kind')=='shadow-war-mod-profile','CONTROL_VALUES','Unsupported legacy controller profile.')
         return {'profile_id':profile_id,'values':self._values(s['binding'],data['values']),'schema_revision':s['schema_revision'],'game_files_written':False}
@@ -282,6 +334,9 @@ class ModControls:
             b=self._binding(instance_id)
             if b['pack']['adapter']=='shadow-reviewed':
                 locations['Saved profiles']=Path(b['workspace'])/'saved-profiles';locations['Controller workspace']=Path(b['workspace']);locations['Mod files']=Path(read_json(Path(b['workspace'])/'graphics-profiles.json',131072)['game_path'])/'plugins'
+            elif b['pack']['adapter']=='wicked-reviewed':
+                locations.update({'Saved profiles':self._profile_root(instance_id,b),'Controller workspace':Path(b['workspace']),
+                    'Mod files':root/'Mods','Mod settings':root/'UserData','Recovery':Path(b['workspace'])/'recovery'})
             else:
                 for key,relative in b['pack']['files'].items():locations['Settings: '+key]=contained(root,relative).parent
                 locations['Saved profiles']=self._profile_root(instance_id,b)

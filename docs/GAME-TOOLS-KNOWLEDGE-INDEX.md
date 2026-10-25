@@ -1,9 +1,107 @@
 # Game tools knowledge and recovery index
 
+- [Unified Game Tools delivery and source reconciliation, 2026-10-25](UNIFIED-TOOLS-DELIVERY-2026-10-25.md): preserves the current 0.27.25 line, Mod Controls 2.2, runtime profiles/reWASD, both interface choices and editable search lists. Source backup, installed state, Windows acceptance and physical game/device acceptance remain distinct.
+- [Existing / New interface selection](UNIFIED-INTERFACE-VIEWS.md) and [editable choice fields](EDITABLE-CHOICE-LISTS.md): shared services and explicit save/apply ownership; opening or typing does not apply a value.
+- [Mod Control creation contract](MOD-CONTROL-CONTRACT.md): compact rows, source/image provenance, nearby options, gameplay/graphics context, discovery and recovery rules for future games.
+
 - [Shared multi-game Mod Controls and direct AI interface](MULTI-GAME-MOD-CONTROLS.md): one game registry, profiles, typed settings, native manager handoffs and revision-bound local approvals; component 2.0 added 2026-10-25.
 
 - [APP LAUNCHER naming and included-entry contract](APP-LAUNCHERS.md): standing user preference; adopted for Shadow of War controls on 2026-10-25.
 
+
+- [Complete accessibility review](GAME-CONTROLS-COMPLETE-REVIEW.md) and
+  [DOOM options](../games/doom-the-dark-ages/CONTROLS-ACCESSIBILITY-REVIEW.md):
+  all-control dispositions, unused BASIC positions, source/style reconciliation,
+  alias and finger checks, plus a scoped external-review response template.
+  Prepared proposals are separate from active bindings and combat acceptance.
+
+## DOOM controls activated; native persistence verified — 2026-10-25
+
+The [activation record](../games/doom-the-dark-ages/HISTORY.md#2026-10-25--combat-r2-activated-native-binding-persistence-verified)
+supersedes the earlier planning-only state. Twelve native UI rows now match the
+reviewed Combat R2 keys after a clean game restart; thirty maps / 120 views were
+published without truncated labels. Native Azeron files and appearance/hold
+settings were preserved. Forty-one focused tests and synthetic routes passed.
+The initial text-cfg transaction did not change effective runtime keys: native
+UI verification and paired Steam profile recovery are required on this build.
+The user subsequently reported **“Done — Overlay works”** for the requested
+physical #2/#19 check; the live relay reports Event-tracked. The setup is ready
+for player-led use. Combat and comfort remain untested. Private bindings contain
+exact snapshots and the current continuation.
+
+## DOOM input audit and play readiness — 2026-10-25
+
+The [revision-3 audit](../games/doom-the-dark-ages/HISTORY.md#2026-10-25--input-source-audit-revision-3-and-play-readiness-options)
+authenticates saved binary-setting bytes and checks installed UI definitions,
+while keeping selected-mode semantics and the exact support-command label
+unverified. A displayed COMBAT R2 BASIC profile and one-newline-only fingerprint
+difference narrow the native-source issue without changing any profile.
+Private candidates preserve both native-source owners and offer full fourteen
+or conservative thirteen-change plans. Neither is active in the game. Thirty-one
+planner tests and 120 full views plus one option preview verify. A concurrent
+app update was preserved: 553 current payloads verify and twelve relevant modules
+match the audited baseline. Final comparison has 902 other original files exact,
+with install metadata and unrelated additions recorded separately. Read the private readiness report for
+ordered menu confirmation, source adoption, separate apply/publication and
+physical acceptance steps; personal frequency optimization can wait.
+
+## DOOM ergonomic review revision 2 — 2026-10-25
+
+The [updated DOOM review](../games/doom-the-dark-ages/HISTORY.md#2026-10-25--ergonomic-review-revision-2-no-operational-changes)
+adds urgency ranges, explicit unknown personal frequency, movement/aim
+requirements and eight sequence/concurrency audits to all 283 saved rows.
+It retains the ten candidate destinations, exports stable button/action links
+and 120 review images, and refreshes the installed planner without applying or
+publishing. Thirty-one planner tests pass; 901 other protected files and all
+528 installed payloads verify. Conditional finger overlaps, support-command
+semantics, input styles, effective precedence and BASIC's byte drift remain
+open. Exact Pro mode could not be selected; no substitute review chat was sent.
+Private bindings index the revision-2 workbook, history, preferred images and
+sanitized independent-review brief.
+
+## DOOM saved planning draft — 2026-10-25
+
+The [current DOOM planning record](../games/doom-the-dark-ages/HISTORY.md#2026-10-25--current-bindings-read-planning-draft-and-overlay-preview-only)
+reads 283 saved rows and prepares 14 action-row proposals across ten positions,
+with 120 proposed Overlay images and separate current-config references. Only
+the planning workbook was saved. All 901 earlier protected files remain exact;
+game/native bindings and published maps are unchanged. BASIC byte drift and
+unknown usage/activation/effective precedence remain review boundaries.
+
+## Live Windows controls-screen check — 2026-10-25
+
+The [separately requested read-only UI check](GAME-TOOL-CONNECTIONS.md#later-same-day-requested-windows-controls-screen-check)
+opened installed 0.27.22-preview.1 and verified all three planner tabs, action
+filter/clear, change review and side-by-side map preview. All 901 protected files
+and 528 installed payloads verified; no Save/apply/publication occurred. Apps and
+planner remain open. Gameplay/device-gesture acceptance remains separate.
+
+## Approved controls application installation — 2026-10-25
+
+The [separately approved application update](GAME-TOOL-CONNECTIONS.md#2026-10-25--approved-controls-application-update)
+installed 0.27.22-preview.1 after normal Hub/Studio shutdown. All 528 payloads
+verified; 900 protected files retained exact bytes and only the installation
+pointer changed. No game/native binding or Overlay publication was performed;
+apps remain closed. Local bindings own exact recovery paths and receipts.
+
+## Controls workflow source stages completed — 2026-10-25
+
+[0.27.22 source workflow](GAME-CONTROLS-WORKFLOW.md) adds stable-ID translation,
+retained v2 intake, bounded recommendations, scoped rules, research exchange and
+reviewed apply/rollback/publication. A fresh 14-row DOOM transaction and 120 images
+passed private-copy apply/readback/exact undo; Bayonetta's manual path generated
+48 previews. Live drift is preserved. Installation, gameplay and physical input
+remain separate. Machine-local bindings index the exact task and private evidence.
+
+## Controls planning inside the map builder — 2026-10-24
+
+[Game Controls & Overlay](GAME-CONTROLS-PLANNER.md) adds a source-level planning
+workspace beside SourceLibrary: actual registered binding reads, A20-UF-1
+uncertainty, bundle/route checks, current/proposed previews and offline exports.
+Save, Publish Overlay and game/native apply remain separate. Current DOOM rows
+and BASIC raw profile bytes differ from the October 21 receipt; the linked
+task preserves them and documents reconciliation before future apply work.
+No deployment, native/game writes, game launch or runtime acceptance occurred.
 
 ## Shared build blueprint — 2026-10-20
 
@@ -16,6 +114,16 @@ MCI-13 now has a [Windows account adapter and acceptance boundary](control-cente
 ## 2026-10-20 — Managed workspace foundations
 
 [Stage conclusions and next boundary](control-center/WORKSPACE-FOUNDATIONS-2026-10-20.md): MCI-07 storage and MCI-12 policy meet their six-item source checklists; MCI-13 local controls are implemented with fresh sign-in pending (5/6). Program progress: 47/108. Native Windows synthetic placement on a non-system volume and 208 distinct Linux tests passed. Codex installation/native state and actual project defaults are unchanged. Other-computer, transport, provider authentication and native chat continuity remain unverified.
+
+## Editable maps and selected-file chat assistance — 2026-10-19
+
+[Visual map builder / JSON packages / Azeron read import / button links](KEYMAP-DOCUMENTS.md)
+documents the 0.27.6 display-authoring extension. Keys and actions remain separate;
+native software owns emitted input. Chat requests include only selected maps and
+references; proposals require review and explicit adoption/save, without an API.
+Private installed identity, current sources and bounded acceptance retain their
+own receipts. This adds no game launch, automatic remapping, cloud upload or chat
+message authorization.
 
 ## 2026-10-19 P0 control-center source implementation
 
@@ -370,3 +478,212 @@ This pointer is not native installation, new game support or Global PR20 adoptio
 ### 2026-10-25 ? No Rest for the Wicked save and mod recovery
 
 The [game checkpoint](../games/no-rest-for-the-wicked/BACKUP-2026-10-25.md) records user-confirmed older-character compatibility with Early Access build 29466 / Steam 22928553, the upcoming Classes release schedule, private save/settings and mod recovery, and the uninstall/reinstall boundary. [Save backup coverage](GAME-SAVE-BACKUPS.md) keeps a verified archive distinct from a complete base-game backup or tested restoration. Private saves and binaries remain outside Git.
+
+### 2026-10-19 — Sourced map labels and focused key capture
+
+[Keymap documents](KEYMAP-DOCUMENTS.md#key-capture-and-special-keys--0277) extends GT-048–053/058–059 through the existing builder and map store. Hub 0.27.7 adds focused key-label capture, special-key selection and unchanged native outputs. The destination's 30-map bundle was reconciled with available binding evidence; Cyberpunk current saved settings, Bayonetta publisher defaults and PoE2 archived WASD references retain separate scopes. Private source hashes, 90-asset readback, map history and exact update receipts are indexed by the machine binding. No native/game remapping, game launch, API generation or cloud upload was performed. Earlier hold/swap acceptance retains its original scope.
+
+### 2026-10-19 — Hold overlay over other desktop applications
+
+[Other-application fallback](OVERLAY-GROUPS.md#hold-to-show-over-other-applications--0278-preview) extends GT-044–053/058–059 through the existing map selector and Studio picture owner. Hub 0.27.8 can use one explicit shared fallback group for unmatched desktop applications, including toolkit windows through Studio; recognized games keep their associated action maps. The separate optional preference has optimistic/atomic saving and an Off choice. No new hotkey, native/game remapping or registry migration occurs. Source/guest routing and GUI tests and headless native hold/route checks passed; installed UI/selection were verified. On 2026-10-20 the user reported PASS for showing over another foreground desktop app, smooth layer changes while held, and hiding on #19 release; exact app and broader game/compositor coverage remain unclaimed. The machine-local receipt records this physical acceptance separately from automated checks. Existing hold/swap/fade records retain their original scope.
+
+### 2026-10-20 — Optional visibility from selected layer buttons
+
+[Selected layer visibility](OVERLAY-GROUPS.md#selected-layer-buttons-can-show-the-map--0279-preview) extends the same GT-044–053/058–059 route. Hub 0.27.9 offers independent checked choices for verified native momentary layers, initially none. The existing dedicated Hold key remains available, with either owner keeping the map visible. Exact native revisions, live event tracking and foreground/image/expiry guards remain required; fixed guides and other picture modes keep their rules. Native profiles and game bindings are unchanged. Automated native-event, persistence, actual key-handler and guest GUI evidence is separate from physical acceptance of this new optional behavior; machine-local receipts own installed state and user selections.
+
+### 2026-10-20 — DOOM campaign and Revelations action maps
+
+[DOOM control overlays](../games/doom-the-dark-ages/CONTROLS-OVERLAY.md) use the destination's saved configVersion 19 with the unchanged R8 source: 30 maps / 90 views across six layers and five explicitly selected game contexts. An exact foreground gameplay-executable association retains #19 / selected-layer visibility. Current saved multi-command keys preserve the shield/spear distinctions; campaign, equipment, unlocks, game mode and DLC ownership are not inferred. Synthetic routing and full asset readback passed; no game launch, remapping, graphics change or physical gameplay acceptance occurred. Toolkit 0.27.10 corrects the old diagram footer to describe optional layer visibility. Private receipts/source recovery remain machine-local and the historical neural experiment stays paused.
+
+The subsequent physical report is **intermittent appearance**, not PASS. The
+[0.27.11 relay repair](OVERLAY-GROUPS.md#relay-file-contention-repair--02711-preview)
+addresses a reproduced Windows file-sharing collision through shared snapshot
+reads and bounded atomic publisher retries. A scoped 419-file update is
+installed; unrelated current source work was excluded from deployment. All 21
+protected native/game/data/settings files and 180 assets were verified unchanged.
+Headless routing/hold/fade/I/O regressions and paced concurrent-file checks
+passed; physical DOOM retest remains pending. Exact private receipts are indexed
+by the current machine binding. No game launch, input simulation, graphics
+change or cloud upload was performed.
+
+The subsequent user reply accepts reliable appearance on 0.27.11 and reports
+slow opening/layer changes. The [0.27.12 response update](OVERLAY-GROUPS.md#overlay-response-time--02712-preview)
+is installed with shorter scheduling waits, fresh-byte checked parsed/image
+metadata reuse, and unchanged hold/focus/expiry/integrity rules. The user chose
+a 60ms fade. 20 protected native/game/map/settings files and 180 assets remain
+byte/hash verified; the fade preference is the one intended data change.
+Headless cache/routing/ownership/frame/native/transition tests and serial file
+timing fixtures passed, with machine-load variation retained. These are not
+physical or game-frame latency measurements. The 421-file release preserves
+unrelated source work; physical response retest remains pending. Current private
+identity and receipts are indexed by the machine binding. This note postdates
+the immutable source package.
+
+The next user reply reports **both opening and layer changes still slow** on
+0.27.12. Actual Studio evidence shows repeated inactive/stale suspensions while
+held. [Live response diagnostics](OVERLAY-GROUPS.md#live-response-diagnosis--02713-preview)
+are installed as 0.27.13: exact inactive/expiry reasons, bounded overlay-only
+millisecond phase messages, and deferred hidden log redraws. All 21 protected
+files, including the 60ms fade, and all 180 assets are unchanged. Headless
+regressions pass; the response problem remains unresolved until the short
+physical trace is reviewed. The machine binding owns current private evidence.
+No native/game remapping, game launch/input simulation, capture or upload.
+
+
+### 2026-10-20 — BASIC-only native revision reconciliation
+
+[The exact BASIC refusal](OVERLAY-GROUPS.md#basic-only-refusal-after-a-native-setting-change--2026-10-20)
+was isolated to an analog-stick upper-limit change in BASIC's native file. The
+keys and dedicated overlay binding were unchanged. A data-only reconciliation
+updates the reviewed native fingerprint, derived revision and five document
+references while retaining native/game settings and all 180 assets. The old
+failure was reproduced and 44 game/layer file checks passed; further native
+drift remains refused. Physical BASIC/#19 acceptance and the earlier response
+problem remain pending. No code release, remapping, game launch/input or upload
+was performed. Exact private evidence is indexed by the machine binding.
+
+
+Physical follow-up, 2026-10-20: the user confirmed that both BASIC and NUMBERS
+work correctly after reconciliation. The requested check used #19 alone in
+BASIC, then held/released #2 while #19 remained held to return from NUMBERS to
+BASIC. This is user-reported acceptance of that visibility/layer sequence; the
+foreground application was not specified. The earlier speed complaint remains
+unresolved. No further product, profile, image or setting change was made.
+
+
+### 2026-10-20 — Prepared image frames and prompt fade entry
+
+[Prepared layer frames](OVERLAY-GROUPS.md#prepared-layer-frames-and-prompt-fade-entry--02714-preview)
+address an observed image preparation/presentation delay before the first fade
+frame. Scoped 0.27.14 adds bounded current-context idle preparation and verified
+pixel reuse, retains continuous layer swaps, and draws a faint first frame
+synchronously before a linear entry ramp. The destination's requested shorter
+fade is 48ms, adjustable through the existing transition control. Native/game
+bindings, all map documents, 180 images and prior BASIC reconciliation remain
+unchanged. Headless image/ownership/integrity/routing/fade checks and 69 export
+contracts pass. Installed startup was verified; physical response and actual
+game/compositor timing remain unaccepted. Machine-local bindings index the
+exact scoped update, recovery and test evidence. No game input or upload.
+
+
+Physical response follow-up, 2026-10-20: the user reports that **opening and
+layer changes are noticeably faster** after the requested DOOM/#19/#2/#1 retest
+on 0.27.14. This supersedes the pending qualitative response check above. It
+establishes user-reported improvement, not measured physical/compositor latency,
+zero-delay behavior or broader game compatibility. The current 48ms preference
+remains adjustable through the existing transition control. No additional
+source, settings, native/game profiles or map assets were changed to record
+this acceptance. Exact user-report evidence is indexed privately.
+
+
+### 2026-10-20 — Ordered native keys, independent game actions
+
+[DOOM Ordered R1](../games/doom-the-dark-ages/CONTROLS-OVERLAY.md#current-ordered-r1-configuration--ordered-r1-native-keys-and-separate-doom-actions)
+and [editable map/binding ownership](KEYMAP-DOCUMENTS.md) describe the separate
+native family, guarded 37-edit game transaction and 36 JSON maps. The user
+accepted BASIC/NUMBERS/MENUS overlay switching; game actions/comfort remain
+unverified. Exact private plan, original/candidate/native hashes, six-profile
+export, lightweight portable package and scoped rollback are indexed locally.
+Other games remain on the prior R8 bindings. No upload or game input.
+
+### 2026-10-20 — One-click overlay content views
+
+[Four display views](KEYMAP-DOCUMENTS.md#one-click-content-views--02716-preview)
+add persisted Key first / Action first / Action only / Key only choices through
+the existing selector and builder. DOOM is configured to Action only. Key/game
+profiles and source JSON are unchanged; installed UI and pinned-preview checks
+are separate from physical gameplay. Private machine bindings index exact
+428-file source, 384-asset, guard/test and paired-registry rollback receipts.
+
+### 2026-10-20 — Global/game overlay appearance presets
+
+[Scoped appearance settings](KEYMAP-DOCUMENTS.md#scoped-appearance-presets--02717-preview)
+add independent action/key text scales, global defaults, per-game overrides and
+named snapshot presets that duplicate/move between game/global scopes. Worker
+preparation publishes settings and image references atomically; current looks,
+DOOM Action only, native/game bindings and input/fade timing remain unchanged.
+102 headless checks, four new isolated Tk checks, existing view regressions,
+120 actual DOOM views in a private copy and the installed editor were verified.
+Private machine bindings index the 431-file release, scoped acceptance and paired
+registry/source downgrade procedure; no physical gameplay acceptance is inferred.
+
+### 2026-10-20 — Portable appearance/keymap JSON and global templates
+
+[Portable JSON exchange](KEYMAP-DOCUMENTS.md#portable-json-and-global-keymap-presets--02718-preview)
+adds all/global/game/selected-preset appearance export and reviewed import into
+the preset library, plus all-game/single-game/single-map/global-template keymap
+exports. Reusable global keymap templates seed separate game drafts. Import is
+distinct from active style application and native/game input ownership.
+Seven real private JSON exports cover 66 maps across six game/shared sources,
+30 DOOM maps and two shared templates. 112 headless and four isolated Tk checks,
+435 installed source hashes and installed menus/dialogs passed verification.
+Active registry/assets/native/game bindings are unchanged; no cloud upload or
+another-computer/physical-game acceptance is inferred. Private bindings index
+exact exports, template store, source/update receipts and rollback boundaries.
+
+### 2026-10-20 — Separate colored key and map comments
+
+[Key and map comments](KEYMAP-DOCUMENTS.md#key-and-map-comments--02719-preview)
+adds optional small colored text inside keys, game-wide header comments and
+separate layer/context header comments. Local draft editing and existing scoped
+JSON/global-template exchanges retain annotations independently of keys/actions.
+No existing production map is annotated automatically. 119 headless and three
+isolated Tk checks, 24 legacy pixel comparisons, four annotated actual-game views
+and the installed menu/dialog check passed; 437 installed source hashes verified.
+Source/native/game bindings, active appearance and 384 images stayed unchanged.
+Later annotated documents need compatible readers when downgrading; private
+bindings index scoped packages,snapshots,exact revisions and rollback boundaries.
+
+### 2026-10-20 — Alternate view by double press or held combination
+
+[Alternate overlay view](OVERLAY-GROUPS.md#alternate-overlay-view--02720-preview)
+extends GT-044–053/058–059 with a second display look on the existing picture
+button's double press, or an observed held keyboard/mouse combination. A normal
+press remains immediate; default second-hold behavior uses a 300 ms adjustable
+window and Key first, keeping each game's normal appearance. Saved preset
+snapshots prepare before settings commit; global/game scopes stay separate.
+Native/game inputs and normal registry/assets remain unchanged. 147 Python
+headless tests, 88 native checks, two actual-handler suites and two isolated Tk
+tests passed; 108 real route pairs and installed settings were verified.
+Physical gesture/game/compositor acceptance remains pending. Exact private
+441-file source, paired Studio update, settings and rollback receipts are indexed
+locally. No synthetic game/device input, game launch, capture or cloud upload.
+
+Physical follow-up, 2026-10-20: the user reports that **both views and release
+work correctly** in the requested DOOM check: normal #19 hold, then tap/release
+and a second hold for key + action, followed by hiding on release. This is scoped
+user-reported acceptance of that sequence. Physical keyboard/mouse combinations,
+other saved-look targets, broader layer/game coverage and measured input or
+compositor latency remain unestablished. No further product, settings, profiles
+or map changes were made. Exact report evidence is indexed privately.
+
+### 2026-10-21 — Comfort-based control draft and keymap customization
+
+[Keymap customization](KEYMAP-DOCUMENTS.md#comfort-grouping-icons-and-key-colors--02721-preview)
+extends the existing editable-map workflow with physical comfort/group/type/tags,
+action frequency/simultaneous-button warnings, icons, inherited text/background/
+border colors and key-background opacity. The 444-file scoped 0.27.21 package is
+prepared and tested, **not installed**. Existing installed 0.27.20 and active
+data remain unchanged. JSON/global templates carry optional source fields;
+runtime images still prepare before activation. 58 headless checks, two isolated
+Tk tests, narrow/high-scale visual review and 24 identical legacy renders passed.
+Private bindings index exact source/receipt/recovery and pending normal close.
+
+The separate DOOM Combat R2 draft follows the user's bottom-up comfort order
+2 → 4 → 3 → 5 → 1, one #2-held WEAPONS bank, BASIC movement/common combat,
+noncombat thumb positions and rare bottom-row actions. It fills 36 unassigned
+positions in six new profiles, preserves mouse/stick/#19/main finger modifiers,
+and stages 14 gameplay keyboard binding-row edits. Native import/ID reconciliation,
+offline apply, paired overlay publication and physical acceptance remain pending.
+Fixture apply/exact undo, 33 protected files and 384 existing assets passed.
+No new game launch, injected input, graphics test, benchmark or upload occurred.
+
+Installation follow-up: [Combat R2 applied and accepted overlay sequence](../games/doom-the-dark-ages/HISTORY.md#2026-10-21--combat-r2-applied-and-overlay-switching-accepted)
+supersedes the preparation-only state above. Scoped 0.27.21-preview.2 is installed;
+six new native profiles, the guarded 14-row DOOM transaction and 36 paired maps
+are configured. The user accepted #19 and BASIC/WEAPONS return. DOOM gameplay
+remains unverified. All 16 old profiles and 384 old images are preserved within
+the 528-image registry; the [bounded capacity repair](OVERLAY-GROUPS.md#retained-image-capacity--02721-preview-2)
+passed 43 installed core checks and 144 synthetic routes. Exact packages,
+native revisions, acceptance, recovery and portable exports are indexed by the
+machine-local binding. No game launch/input, graphics operation or upload.

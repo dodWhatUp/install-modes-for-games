@@ -32,6 +32,15 @@ def archive_bytes(release, extra=None):
     return data.getvalue()
 
 class Updates(unittest.TestCase):
+    def test_growing_source_release_has_a_fixed_bound_and_keeps_manifest_checks(self):
+        release=package()
+        for n in range(520):
+            name=f'docs/fixture-source-{n}.md';raw=b'authored fixture'
+            release['payloads'][name]=raw;release['manifest']['files'].append({'path':name,'bytes':len(raw),'sha256':api.digest(raw)})
+        api.check_manifest(release['manifest'],release['payloads'])
+        invalid=__import__('copy').deepcopy(release);invalid['manifest']['files']*=3
+        with self.assertRaises(ValueError):api.check_manifest(invalid['manifest'],invalid['payloads'])
+
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory(prefix="UnifiedTools-contract-")
         self.addCleanup(self.temp.cleanup)

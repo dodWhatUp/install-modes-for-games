@@ -24,6 +24,7 @@ General upstream references reviewed 2026-09-14. Local results retain the dates 
 4. Use a bridge only for its documented API, resource format and consumer. A proxy filename or D3D12 code does not establish renderer support. Do not add another bridge when the chosen consumer already provides the required interoperability path.
 5. Use estimated/synthetic inputs only after recording why no practical engine-input path is available. Verify a feeder's API, motion provider, consumer and versions together. Follow the dated exceptions in [Components](COMPONENTS.md); one fork's compatibility does not establish another's.
 6. Keep one owner per SR/RR/FG/neural feature and proxy. A host loading another component is different from duplicate feature ownership. Never combine competing consumers, Feeder/OptiScaler or Feeder/Smooth Motion unless current upstream documentation supports that exact arrangement.
+7. Resolve each Auto setting against the exact fork/version and input path. It can mean a fixed disabled default, capability-based backend selection or following the game; it does not imply automatic benchmarking, newest-runtime selection or engine-native inputs. Confirm that manager options map to values the selected fork actually parses. The [dated F5/RHI review](../games/cyberpunk-2077/COMPARISONS.md#rhi--f5-fg-routes-and-auto-semantics--2026-10-18) records concrete parser/label mismatches; do not generalize them to other releases.
 
 ## Establish the minimum, then extend it
 

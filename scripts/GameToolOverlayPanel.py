@@ -12,9 +12,9 @@ import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 import GameToolOverlay as api
 from GameToolAzeronLayer import installed_follower
-from GameToolCompactUI import Selector, VisibilityMenu
+from GameToolCompactUI import Selector, VisibilityMenu, ChoiceButtons
 
-VERSION = "0.2.0"
+VERSION = "0.4.9"
 
 
 def monitors(root):
@@ -109,6 +109,7 @@ class Renderer:
 
 
 class OverlayPanel:
+    POLL_MS = 20
     def __init__(self, parent, directory, status=None, foreground=api.foreground_windows, renderer_factory=Renderer,
                  layer_factory=installed_follower):
         self.parent, self.store = parent, api.Store(directory)
@@ -118,6 +119,7 @@ class OverlayPanel:
         self.layer_follower = layer_factory()
         self.follow_layer = tk.BooleanVar(parent, value=True)
         self.result = None; self.peek_held = False; self.last_game_result = None
+        self._status_signature = None; self._next_status_at = 0
         self.note = tk.StringVar(parent, value="Stopped • no native layer telemetry • explicit layer selection available")
         self.path = tk.StringVar(parent)
         self.value, self.fingerprint = self.store.load()
@@ -140,15 +142,21 @@ class OverlayPanel:
         self.selectors = {}
         for row, name in enumerate(("game", "group", "layer", "context", "view")):
             ttk.Label(rows, text=name.capitalize()).grid(row=row, column=0, sticky="w", padx=(0, 8), pady=3)
-            selector = Selector(rows, on_select=lambda key, n=name: self.selected(n, key),
+            selector = ChoiceButtons(rows, api.VIEW_CHOICES, on_select=lambda key: self.selected("view", key)) if name == "view" else Selector(rows, on_select=lambda key, n=name: self.selected(n, key),
                                 on_add=(lambda n=name: self.add_entity(n)) if name in {"game", "group", "context"} else None)
             selector.grid(row=row, column=1, sticky="ew", pady=3)
             self.selectors[name] = selector
         actions = ttk.Frame(parent); actions.pack(fill="x", pady=6)
         self.action_buttons = []
-        for name, command in (("Return to Auto", self.auto), ("Cycle group", self.cycle), ("Explore (pinned)", self.explore)):
+        for name, command in (("Appearance & presets…", self.edit_appearance),
+                              ("Alternate view…", self.edit_alternate),
+                              ("Build / edit maps…", self.edit_game_map),
+                              ("Return to Auto", self.auto), ("Cycle group", self.cycle), ("Explore (pinned)", self.explore),
+                              ("Show/hide transition…", self.edit_transition)):
             button = ttk.Button(actions, text=name, command=command)
             self.action_buttons.append(button)
+        self.action_buttons.append(ttk.Button(actions,text="Other applications…",command=self.edit_fallback))
+        self.action_buttons.append(ttk.Button(actions,text="Show with layer buttons…",command=self.edit_layer_show))
         self.peek = ttk.Button(actions, text="Hold Peek")
         self.action_buttons.append(self.peek)
         self.peek.bind("<ButtonPress-1>", self.peek_down); self.peek.bind("<ButtonRelease-1>", self.peek_up)
@@ -188,9 +196,17 @@ class OverlayPanel:
         self.tick()
 
     def error(self, error):
+        self._status_signature = None
         text = str(error) if isinstance(error, api.OverlayError) else "Overlay operation refused; inspect source/selection"
+        if isinstance(error, OSError):
+            code = getattr(error, "winerror", None) or error.errno
+            text = f"Overlay file handoff unavailable (OS error {code}); automatic selection will retry"
         self.note.set(text); self.status_callback(text)
         self.renderer.hide()
+
+    def edit_appearance(self):
+        from GameToolOverlayAppearance import open_editor
+        open_editor(self)
 
     def mutate(self, action, payload):
         try:
@@ -217,6 +233,31 @@ class OverlayPanel:
             else:
                 widget.pack_forget()
 
+    def edit_game_map(self):
+        from GameToolKeymapDocument import open_editor
+        open_editor(self)
+
+    def edit_transition(self):
+        from GameToolOverlayTransition import TransitionEditor
+        try:
+            TransitionEditor(self.parent, self.store.directory, lambda: self.tick(reschedule=False))
+        except Exception as error:
+            self.error(error)
+
+    def edit_alternate(self):
+        from GameToolOverlayAlternateUI import AlternateEditor
+        try:
+            return AlternateEditor(self.parent,self.store,lambda:self.tick(reschedule=False))
+        except Exception as error:
+            self.error(error)
+
+    def edit_fallback(self):
+        from GameToolOverlayFallback import FallbackEditor
+        try:
+            return FallbackEditor(self.parent,self.store,lambda:self.tick(reschedule=False))
+        except Exception as error:
+            self.error(error)
+
     def reload_choices(self):
         index = api.validate_store(self.value)
         game = self.selectors["game"].selected_id
@@ -233,7 +274,7 @@ class OverlayPanel:
         self.selectors["layer"].set_choices([("Unknown", "Unknown")] + [(l["id"], l["id"]) for l in keymap["layers"]] if keymap else [("Unknown", "Unknown")])
         contexts = sorted({a["context"] for a in index["assets"].values()} | {"gameplay"})
         self.selectors["context"].set_choices([(c, c) for c in contexts])
-        self.selectors["view"].set_choices([(v, v) for v in api.VIEWS])
+        self.selectors["view"].set_choices(api.VIEW_CHOICES)
         selected = self.value["preferences"]["selections"].get(game, {"layer": "Unknown", "context": "gameplay", "view": "Combined"})
         for name in ("layer", "context", "view"):
             self.selectors[name].select(selected[name])
@@ -445,6 +486,13 @@ class OverlayPanel:
         self.editor("Overlay groups / exact references", self.value["manifest"], save,
                     "Advanced data editor. Preserve IDs; images must already be imported and hash-verified. Native mappings are never edited.")
 
+    def edit_layer_show(self):
+        try:
+            from GameToolOverlayLayerShow import LayerShowEditor
+            LayerShowEditor(self.parent, self.store, lambda: self.tick(reschedule=False))
+        except (OSError, ValueError) as error:
+            self.error(error)
+
     def tick(self, reschedule=True):
         if self.closed:
             return
@@ -471,24 +519,30 @@ class OverlayPanel:
             self.result = result
             if result.get("game_id") and not fg.get("own"):
                 self.last_game_result = result
-            self.note.set(f"{result['reason']} • game/group: {result.get('game_id') or 'None'} / {result.get('group_id') or 'None'} • layer: {result.get('layer', 'Unknown')} ({result['layer_state']}) • " +
-                          ("Azeron event tracking; not snapshot-verified" if following else "manual selected layer") +
-                          (" • MANUAL OVERRIDE — Return to Auto" if result["manual_override"] else ""))
             if result["render"] and result["display_target"] == "hub" and not self.peek_held:
                 self.renderer.show(result)
             elif not self.peek_held:
                 self.renderer.hide()
-            self.details.delete("1.0", "end"); self.details.insert("1.0", json.dumps(result, indent=2))
             # Relay activation is display-only and fresh; automatic stop/fallback
             # publishes inactive. Installed AHK host is not modified or armed.
             if self.value["preferences"]["enabled"] or (self.store.directory / "overlay-selection.ini").exists():
                 api.relay(self.store, result, self.store.directory)
+            # Publish first. An unchanged inspector does not need a text-widget
+            # rebuild at the display cadence; state/layer changes update now.
+            signature = {key: val for key, val in result.items() if key != "foreground_age_ms"}
+            now = time.monotonic()
+            if signature != self._status_signature or now >= self._next_status_at:
+                self.note.set(f"{result['reason']} • game/group: {result.get('game_id') or 'None'} / {result.get('group_id') or 'None'} • layer: {result.get('layer', 'Unknown')} ({result['layer_state']}) • " +
+                              ("Azeron event tracking; not snapshot-verified" if following else "manual selected layer") +
+                              (" • MANUAL OVERRIDE — Return to Auto" if result["manual_override"] else ""))
+                self.details.delete("1.0", "end"); self.details.insert("1.0", json.dumps(result, indent=2))
+                self._status_signature = signature; self._next_status_at = now + 0.25
         except Exception as error:
             self.result = None; self.error(error)
             # Any old relay expires within one second; no invalid replacement.
         finally:
             if reschedule and not self.closed:
-                self.timer = self.parent.after(100 if self.follow_layer.get() else 250, self.tick)
+                self.timer = self.parent.after(self.POLL_MS if self.follow_layer.get() else 250, self.tick)
 
     def close(self):
         if self.closed:

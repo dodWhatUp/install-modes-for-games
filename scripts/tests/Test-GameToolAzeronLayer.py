@@ -136,6 +136,22 @@ class LayerTests(unittest.TestCase):
         path.write_bytes(b'{"changed":true}'); self.reader.poll(self.value["manifest"])
         self.assertFalse(self.select()["render"]); self.assertIn("revision", self.select()["reason"])
 
+    def test_retained_old_revision_does_not_block_exact_current_profile(self):
+        old = copy.deepcopy(self.value["manifest"]["keymaps"][0]); old["id"] = "old-keymap"
+        for layer in old["layers"]: layer["profile_sha256"] = "a" * 64
+        old["outputs_sha256"] = "b" * 64
+        self.value["manifest"]["keymaps"].append(old)
+        self.emit("NAV")
+        self.assertTrue(self.reader.snapshot()["available"])
+        self.assertEqual(self.select()["layer"], "NAV")
+
+    def test_conflicting_outputs_for_same_current_profile_still_fail_closed(self):
+        other = copy.deepcopy(self.value["manifest"]["keymaps"][0]); other["id"] = "conflicting-keymap"
+        other["outputs_sha256"] = "b" * 64
+        self.value["manifest"]["keymaps"].append(other)
+        self.emit("NAV")
+        self.assertFalse(self.reader.snapshot()["available"])
+
     def test_partial_line_waits_for_newline(self):
         data = self.emit("NAV", split=True); self.assertFalse(self.select()["render"])
         with self.log.open("ab") as stream: stream.write(data[len(data)//2:])

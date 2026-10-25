@@ -8,6 +8,9 @@ from GameToolCompactUI import FlowToolbar,ScrollableFrame,window_bounds
 from GameToolModControls import ModControls,VERSION,ROOT,PACKS,ini_template,validate_pack,atomic_json
 from GameToolAutomationPanel import AutomationPanel
 from game_mod_ops.safety import ModError,read_json,json_new
+from GameToolFloatingWindows import show_near_pointer
+from GameToolModGallery import PreviewWindow
+from GameToolEditableLists import attach as attach_editable_list
 
 class ControlRequests(AutomationPanel):
     def __init__(self,parent,controls,instance,status):
@@ -40,6 +43,8 @@ class ModControlsPanel(ttk.Frame):
         self.state=tk.StringVar(self,value='Select a game and installation. Opening this page does not apply settings.')
         self.game=tk.StringVar(self);self.instance=tk.StringVar(self);self.profile=tk.StringVar(self)
         self.current=None;self.observation=None;self.variables={};self.drafts={};self.floating=[];self.workbenches=[];self.ai=None;self.closed=False
+        self.root=self.winfo_toplevel();self.module_popups={};self.gallery_popups={};self.row_actions={};self.location_choosers=[]
+        ttk.Style(self).configure('ModRow.TButton',font=('Segoe UI',9),padding=(3,0))
         self.view_path=self.controls.root/'view.json'
         if self.view_path.is_file():
             view=read_json(self.view_path,131072)
@@ -53,8 +58,9 @@ class ModControlsPanel(ttk.Frame):
         ttk.Label(choose,text='Game').grid(row=0,column=0,sticky='w',padx=(0,8))
         self.game_box=ttk.Combobox(choose,textvariable=self.game,values=list(self.game_labels));self.game_box.grid(row=0,column=1,sticky='ew')
         self.game_box.bind('<<ComboboxSelected>>',self.choose_game);self.game_box.bind('<Return>',self.choose_game)
-        self.game_box.bind('<KeyRelease>',lambda _:self.game_box.configure(values=[x for x in self.game_labels if self.game.get().casefold() in x.casefold()]))
-        ttk.Button(choose,text='Connect game folder…',command=lambda:self.safe(self.register)).grid(row=0,column=2,padx=6)
+        self.game_choices=attach_editable_list(self.game_box)
+        self.game_box.bind('<Escape>',lambda _:self.game.set(getattr(self,'game_committed',self.game.get())))
+        ttk.Button(choose,text='Find game & controls…',command=lambda:self.safe(self.find_locations)).grid(row=0,column=2,padx=6)
         ttk.Label(choose,text='Installation').grid(row=1,column=0,sticky='w',pady=5)
         self.instance_box=ttk.Combobox(choose,textvariable=self.instance,state='readonly');self.instance_box.grid(row=1,column=1,sticky='ew')
         self.instance_box.bind('<<ComboboxSelected>>',lambda _:self.safe(self.load_instance))
@@ -66,8 +72,11 @@ class ModControlsPanel(ttk.Frame):
         self.inspector=ttk.Frame(self.pages);self.pages.add(self.inspector,text='Inspector')
         self.links=ScrollableFrame(self.pages,min_width=320);self.pages.add(self.links,text='Folders, tools & workflows')
         self.ai_host=ttk.Frame(self.pages);self.pages.add(self.ai_host,text='AI requests')
+        self.coordination=ttk.Frame(self.pages,padding=8);self.pages.add(self.coordination,text='Coordination')
+        self.coordination_text=tk.Text(self.coordination,wrap='word',height=14);self.coordination_text.pack(fill='both',expand=True)
+        ttk.Button(self.coordination,text='Open graphics / game workflow',command=lambda:self.safe(self.open_workbench)).pack(anchor='w',pady=6)
         tools=FlowToolbar(self.edit.body);tools.pack(fill='x')
-        for label,action in [('Connect controls…',self.connect),('Import control pack…',self.import_pack),('Build pack template…',self.template)]:tools.add(label,lambda a=action:self.safe(a))
+        for label,action in [('Find game & controls…',self.find_locations),('Connect controls…',self.connect),('Import control pack…',self.import_pack),('Build pack template…',self.template)]:tools.add(label,lambda a=action:self.safe(a))
         self.form=ttk.Frame(self.edit.body);self.form.pack(fill='x',pady=8)
         bar=FlowToolbar(self.edit.body);bar.pack(fill='x')
         self.action_buttons={}
@@ -107,7 +116,7 @@ class ModControlsPanel(ttk.Frame):
     def choose_game(self,_event=None):
         def go():
             if not self.can_change():return
-            self._stash();row=self.selected_game();instances=[i['instance_id'] for g in self.controls.games()['games'] if g['game_id']==row['game_id'] for i in g['instances']]
+            self._stash();row=self.selected_game();self.game_committed=self.game.get();instances=[i['instance_id'] for g in self.controls.games()['games'] if g['game_id']==row['game_id'] for i in g['instances']]
             self.instance_box.configure(values=instances);self.instance.set(instances[0] if instances else '');self.load_instance()
         self.safe(go)
     def can_change(self):
@@ -123,10 +132,12 @@ class ModControlsPanel(ttk.Frame):
         for w in self.floating:
             if w.winfo_exists():w.destroy()
         self.floating=[]
+        self.module_popups={};self.gallery_popups={}
         if self.ai:self.ai.close();self.ai.destroy();self.ai=None
         if not self.current:
-            self.render({});self._text(self.inspect_text,{'status':'Connect an installed game folder to inspect it.'});self.build_links();self.set_state('This game has no connected installation.');return
+            self.render({});self._text(self.inspect_text,{'status':'Find an installed game and review a suggested location to connect it.'});self.build_links();self.update_coordination();self.set_state('No connected installation. Find game & controls ranks local matches and prepared setups; manual browsing remains available.');return
         self.observation=self.controls.inspect(self.current);self.render(self.drafts.get(self.current,{}));self._text(self.inspect_text,self.observation);self.build_links()
+        self.update_coordination()
         if self.observation['capabilities'].get('profiles'):
             self.ai=ControlRequests(self.ai_host,self.controls,self.current,self.shared_status);self.ai.pack(fill='both',expand=True)
             self.set_state('Applied state loaded. Drafts, profiles and previews do not change the game.')
@@ -138,7 +149,8 @@ class ModControlsPanel(ttk.Frame):
         self.variables={};observation=self.observation or {};schema=observation.get('schema',[])
         for f in schema:
             value=draft.get(f['id'],observation['values'][f['id']]);self.variables[f['id']]=tk.BooleanVar(self,value=value) if f['type']=='bool' else tk.StringVar(self,value=str(value))
-        self.fields(self.form)
+        if observation.get('modules'):self.module_rows()
+        else:self.fields(self.form)
         if not schema:ttk.Label(self.form,text='No reviewed settings are connected for this installation.',wraplength=680).pack(anchor='w')
         enabled='normal' if schema else 'disabled'
         for b in self.action_buttons.values():b.configure(state=enabled)
@@ -146,8 +158,9 @@ class ModControlsPanel(ttk.Frame):
         self.profile_rows={r['label']+' ['+r['profile_id'][:8]+']':r for r in self.controls.profile_rows(self.current)} if schema else {}
         self.profile_box.configure(values=list(self.profile_rows));self.profile.set('')
         self._text(self.preview_text,'Review a preview before applying. Floating editors share this same draft.')
-    def fields(self,parent):
-        for i,f in enumerate((self.observation or {}).get('schema',[])):
+    def fields(self,parent,ids=None):
+        fields=[f for f in (self.observation or {}).get('schema',[]) if ids is None or f['id'] in ids]
+        for i,f in enumerate(fields):
             var=self.variables[f['id']];ttk.Label(parent,text=f['label']).grid(row=i,column=0,sticky='w',padx=(0,12),pady=4)
             if f['type']=='bool':widget=ttk.Checkbutton(parent,text='Enabled',variable=var)
             elif f['type']=='enum':widget=ttk.Combobox(parent,textvariable=var,values=f['choices'],state='readonly')
@@ -164,7 +177,7 @@ class ModControlsPanel(ttk.Frame):
             result[f['id']]=v
         return result
     def preview(self):
-        p=self.controls.preview(self.current,self.desired(),self.observation['revision']);self._text(self.preview_text,p);self.set_state(str(len(p['changes']))+' proposed changes. Applied files have not changed.');return p
+        p=self.controls.preview(self.current,self.desired(),self.observation['revision']);self._text(self.preview_text,p);self.update_coordination(p['coordination']);self.set_state(str(len(p['changes']))+' proposed changes. Applied files have not changed.');return p
     def apply(self):
         p=self.preview()
         if not p['changes']:return
@@ -176,10 +189,131 @@ class ModControlsPanel(ttk.Frame):
         self.drafts.pop(self.current,None);self.preview()
     def float_settings(self):
         if not self.variables:return
-        win=tk.Toplevel(self);win.title('Mod Controls — '+self.selected_game()['name']);win.geometry('540x600');win.minsize(360,280)
+        point=self.winfo_pointerxy();win=tk.Toplevel(self);win.withdraw();win.title('Mod Controls — '+self.selected_game()['name']);win.minsize(360,280)
         top=tk.BooleanVar(win,value=False);ttk.Checkbutton(win,text='Keep above other windows',variable=top,command=lambda:win.attributes('-topmost',top.get())).pack(anchor='w',padx=8,pady=4)
         body=ScrollableFrame(win,min_width=300);body.pack(fill='both',expand=True);form=ttk.Frame(body.body,padding=8);form.pack(fill='x');self.fields(form)
-        ttk.Label(body.body,text='Shared draft • Use Preview and Apply in the main window.',wraplength=440).pack(anchor='w',padx=8,pady=8);self.floating.append(win)
+        ttk.Label(body.body,text='Shared draft • Use Preview and Apply in the main window.',wraplength=440).pack(anchor='w',padx=8,pady=8);self.floating.append(win);show_near_pointer(win,point,(540,600))
+
+    def module_rows(self):
+        self.row_actions={};self.module_rows_frames=[]
+        self.module_tabs=ttk.Notebook(self.form);self.module_tabs.pack(fill='x')
+        for layer,title in [('game-mods','Game mods'),('graphics-tools','Graphics tools')]:
+            frame=ttk.Frame(self.module_tabs,padding=6);self.module_tabs.add(frame,text=title)
+            rows=[m for m in self.observation['modules'] if m['layer']==layer]
+            if not rows:
+                ttk.Label(frame,text='No reviewed graphics controls are connected for this installation.\nThe game workflow shares the selected game; another graphics stack is not enabled here.',wraplength=620).pack(anchor='w')
+                ttk.Button(frame,text='Open graphics / game workflow',command=lambda:self.safe(self.open_workbench)).pack(anchor='w',pady=5)
+                continue
+            box=ttk.Frame(frame);box.pack(fill='x');box.columnconfigure(0,weight=1);self.module_rows_frames.append(box)
+            for index,mod in enumerate(rows):
+                field=mod.get('enabled_field')
+                if field:widget=ttk.Checkbutton(box,text=mod['name'],variable=self.variables[field])
+                else:widget=ttk.Label(box,text=mod['name'])
+                widget.grid(row=index,column=0,sticky='w',pady=3)
+                applied=self.observation['values'].get(field)
+                ttk.Label(box,text='On' if applied is True else 'Off' if applied is False else 'Info',width=5).grid(row=index,column=1)
+                actions={}
+                for column,key,label,width in [(2,'github','GitHub',7),(3,'nexus','Nexus',6)]:
+                    button=ttk.Button(box,text=label,width=width,style='ModRow.TButton',
+                        command=lambda m=mod,k=key:self.safe(lambda:webbrowser.open(m[k])))
+                    button.grid(row=index,column=column,padx=(3,0))
+                    if not mod.get(key):button.state(['disabled'])
+                    actions[key]=button
+                for column,key,label,action in [(4,'preview','Preview',self.module_preview),(5,'options','Options',self.module_options)]:
+                    button=ttk.Button(box,text=label,width=7,style='ModRow.TButton',command=lambda m=mod,a=action:self.safe(lambda:a(m['id'])))
+                    button.grid(row=index,column=column,padx=(3,0));actions[key]=button
+                self.row_actions[mod['id']]=actions
+            toolbar=FlowToolbar(frame);toolbar.pack(fill='x',pady=(6,0))
+            toolbar.add('Select group Off',lambda group=rows:self.select_modules(group,False))
+            if self.observation.get('adapter')=='wicked-reviewed' and layer=='game-mods':toolbar.add('Select main setup',lambda group=rows:self.select_modules(group,True))
+            ttk.Label(frame,text='Checkboxes edit the shared draft. On / Off labels show applied files.\nPreview and Apply commit reviewed changes; source links and images do not.',wraplength=680).pack(anchor='w',pady=(5,0))
+
+    def select_modules(self,modules,enabled):
+        for mod in modules:
+            if mod.get('enabled_field'):self.variables[mod['enabled_field']].set(enabled)
+        self.set_state('Group selection changed in the draft. Review Preview before Apply.')
+
+    def _module(self,ident):
+        return next(m for m in self.observation['modules'] if m['id']==ident)
+
+    def module_options(self,ident):
+        point=self.winfo_pointerxy();mod=self._module(ident)
+        if ident not in self.module_popups:
+            win=tk.Toplevel(self);win.withdraw();win.title(mod['name']+' - Options');win.protocol('WM_DELETE_WINDOW',win.withdraw)
+            body=ScrollableFrame(win,min_width=300);body.pack(fill='both',expand=True)
+            ttk.Label(body.body,text=mod['name'],font=('Segoe UI',13,'bold')).pack(anchor='w',padx=8,pady=6)
+            form=ttk.Frame(body.body,padding=8);form.pack(fill='x');self.fields(form,mod['settings'])
+            if not mod['settings']:ttk.Label(form,text='Use this module\'s main checkbox. It has no reviewed extra settings.',wraplength=420).pack(anchor='w')
+            ttk.Label(body.body,text='Shared draft. Preview and Apply in the main window commit these settings.',wraplength=420).pack(anchor='w',padx=8,pady=8)
+            bar=FlowToolbar(body.body);bar.pack(fill='x',padx=8,pady=5)
+            bar.add('Save draft',lambda:self.safe(self._stash));bar.add('Preview changes',lambda:self.safe(self.preview));bar.add('Close',win.withdraw)
+            self.module_popups[ident]=win;self.floating.append(win)
+        win=self.module_popups[ident];show_near_pointer(win,point);return win
+
+    def open_options(self,component):return self.module_options(component['id'])
+
+    def module_preview(self,ident):
+        point=self.winfo_pointerxy();mod=self._module(ident)
+        if ident not in self.gallery_popups:
+            media=self.controls.root/'resources'/self.selected_game()['game_id']
+            gallery=PreviewWindow(self,mod,mod,media_root=media);self.gallery_popups[ident]=gallery;self.floating.append(gallery.window)
+        gallery=self.gallery_popups[ident];gallery.show(point);return gallery
+
+    def update_coordination(self,report=None):
+        observation=self.observation or {};report=report or observation.get('coordination')
+        if not report:return self._text(self.coordination_text,'Connect a reviewed installation to share its mod and graphics context.')
+        modules={m['id']:m for m in observation.get('modules',[])}
+        lines=[self.selected_game()['name']+' | '+report['scope'],'']
+        for layer,label in [('game-mods','Game mods: gameplay, content and appearance'),('graphics-tools','Graphics tools: hooks and injectors')]:
+            lines.append(label)
+            lines.extend('  '+modules[k]['name'] for k in report['layers'][layer])
+            if not report['layers'][layer]:lines.append('  No reviewed controls connected.')
+            lines.append('')
+        lines.append('Dependency / resource checks:')
+        if not report['issues']:lines.append('  No declared collisions. Runtime compatibility remains unverified.')
+        for issue in report['issues']:
+            if issue['code']=='DEPENDENCY_OFF':lines.append('  '+modules[issue['module']]['name']+' requires '+modules[issue['requires']]['name']+'.')
+            else:lines.append('  Shared resource '+issue['resource']+': '+', '.join(issue['owners']))
+        lines.extend(['','Both areas share this installation, revisions, typed drafts and ownership checks.','Each native tool retains its Apply, backup and recovery owner.'])
+        self._text(self.coordination_text,'\n'.join(lines))
+
+    def find_locations(self):
+        if not self.can_change():return
+        from GameToolModDiscoveryUI import LocationChooser
+        for chooser in self.location_choosers:
+            if not chooser.closed and chooser.game['game_id']==self.selected_game()['game_id']:
+                show_near_pointer(chooser.window,self.winfo_pointerxy(),(740,540));return chooser
+        chooser=LocationChooser(self);self.location_choosers.append(chooser);return chooser
+    def use_discovered(self,candidate):
+        if not self.can_change():return False
+        if self.selected_game()['game_id']!=candidate['game_id']:raise ModError('DISCOVERY_CONTEXT_CHANGED','The selected game changed. Open its own location chooser.')
+        instance=candidate.get('instance_id')
+        if instance and self.controls.binding_path(instance).is_file():
+            binding=read_json(self.controls.binding_path(instance),131072)
+            if not candidate.get('workspace') or binding.get('workspace')==candidate['workspace']:
+                self.choose_game();self.instance.set(instance);self.load_instance();return True
+        if candidate.get('workspace'):return self.connect_prepared_path(candidate['workspace'])
+        if instance is None:instance=self.controls.register_local(candidate['game_id'],candidate['game_dir'])['instance']['instance_id']
+        self.choose_game();self.instance.set(instance);self.load_instance();return True
+    def connect_prepared(self):
+        if self.selected_game()['game_id']!='no-rest-for-the-wicked':raise ModError('CONTROL_CONNECTION_REQUIRED','Prepared-setup connection is currently reviewed for No Rest for the Wicked. Other games use Connect game folder and Connect controls.')
+        path=filedialog.askdirectory(parent=self,title='Choose the existing No Rest for the Wicked controller folder (contains deployment.json)')
+        if not path:return
+        return self.connect_prepared_path(path)
+    def connect_prepared_path(self,path):
+        if self.selected_game()['game_id']!='no-rest-for-the-wicked':raise ModError('GAME_MISMATCH','This prepared controller belongs to No Rest for the Wicked.')
+        from GameToolWickedControls import WickedControls
+        metadata=read_json(Path(path)/'deployment.json',1048576);game=Path(metadata['game_root'])
+        WickedControls(path,game).read()
+        answer=messagebox.askyesnocancel('Connect this prepared installation?',
+            'Game: '+str(game)+'\nController: '+str(path)+'\n\nYes: connect with reviewed file/settings writes.\nNo: connect read-only.\nCancel: leave the registry unchanged.\n\nConnecting does not apply changes or launch the game.',parent=self)
+        if answer is None:return False
+        instance=None
+        for row in self.controls.instances.list_public(limit=64)['instances']:
+            if row['game_id']=='no-rest-for-the-wicked' and Path(self.controls.instances._read(row['instance_id'])['body']['game_dir']).resolve()==game.resolve():instance=row['instance_id'];break
+        if instance is None:instance=self.controls.register_local('no-rest-for-the-wicked',game)['instance']['instance_id']
+        self.controls.connect_local(instance,workspace=path,writes_enabled=answer)
+        self.choose_game();self.instance.set(instance);self.load_instance();return True
     def load_profile(self):
         row=self.profile_rows.get(self.profile.get())
         if not row:return
@@ -195,8 +329,8 @@ class ModControlsPanel(ttk.Frame):
             if not path.is_file():return self.import_pack()
             pack=read_json(path,131072)
         workspace=None
-        if pack['adapter']=='shadow-reviewed':
-            workspace=filedialog.askdirectory(parent=self,title='Choose the existing reviewed Shadow of War controller workspace')
+        if pack['adapter'] in {'shadow-reviewed','wicked-reviewed'}:
+            workspace=filedialog.askdirectory(parent=self,title='Choose the existing reviewed '+self.selected_game()['name']+' controller workspace')
             if not workspace:return
         writes=messagebox.askyesno('Settings file ownership','Allow this controller to write only the declared settings?\nChoose No for a read-only connection. Keep external managers closed during writes.',parent=self)
         self.controls.connect_local(self.current,workspace=workspace,pack=pack,writes_enabled=writes);self.load_instance()
@@ -215,6 +349,7 @@ class ModControlsPanel(ttk.Frame):
         for w in parent.winfo_children():w.destroy()
         bar=FlowToolbar(parent);bar.pack(fill='x')
         bar.add('Open game workflow',lambda:self.safe(self.open_workbench));bar.add('Find APP LAUNCHER',lambda:self.safe(self.find_launcher))
+        bar.add('Mod Control rules',lambda:self.safe(lambda:self.open_path(ROOT/'docs/MOD-CONTROL-CONTRACT.md')))
         if self.current:
             folders=ttk.LabelFrame(parent,text='Local folders',padding=6);folders.pack(fill='x',pady=6)
             for label,path in self.controls.locations_local(self.current).items():ttk.Button(folders,text=label,command=lambda p=path:self.safe(lambda:self.open_path(p))).pack(anchor='w',pady=2)
@@ -249,6 +384,7 @@ class ModControlsPanel(ttk.Frame):
     def close(self):
         if self.closed:return
         self._stash();self.closed=True
+        for chooser in self.location_choosers:chooser.close()
         for v in self.workbenches:
             if not v.closed:v.close()
         if self.ai:self.ai.close()
@@ -260,10 +396,11 @@ class ModControlsPanel(ttk.Frame):
 
 def main(argv=None):
     import argparse
-    p=argparse.ArgumentParser();p.add_argument('--data-dir',type=Path,required=True);p.add_argument('--game-id');a=p.parse_args(argv)
+    p=argparse.ArgumentParser();p.add_argument('--data-dir',type=Path,required=True);p.add_argument('--game-id');p.add_argument('--discover',action='store_true');a=p.parse_args(argv)
     root=tk.Tk();root.title('Game Mod Controls '+VERSION)
     w,h,mw,mh=window_bounds(root.winfo_screenwidth(),root.winfo_screenheight());root.geometry(f'{w}x{h}');root.minsize(mw,mh)
     panel=ModControlsPanel(root,a.data_dir,initial_game=a.game_id);panel.pack(fill='both',expand=True)
+    if a.discover:root.after(100,lambda:panel.safe(panel.find_locations))
     def close():
         if panel.can_close():panel.close();root.destroy()
     root.protocol('WM_DELETE_WINDOW',close);root.mainloop();return 0

@@ -15,9 +15,9 @@ import re
 import threading
 import time
 
-VERSION = "0.1.0"
+VERSION = "0.1.3"
 SUPPORTED_VERSION = "2.0.2.442"
-INTERVAL = 0.05
+INTERVAL = 0.02
 MAX_BATCH = 256 * 1024
 MAX_LINE = 8192
 TRANSITION = re.compile(r"^(?:Switch layer on toggle hold: |Switch layer: |active profile reported: )([0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12})$", re.I)
@@ -81,7 +81,7 @@ class LayerFollower:
         self.probe = probe or (lambda: native_identity(self.executable) if self.executable else None)
         self.clock, self.wall = clock, wall
         self.identity = None; self.file_identity = None; self.offset = None
-        self.pending = b""; self.profile = None; self.event_at = None
+        self.pending = b""; self.profile = None; self.event_at = None; self.momentary = False
         self._lock = threading.Lock(); self._stop = threading.Event(); self.thread = None
         self.result = self.unavailable("Waiting for a fresh Azeron layer event")
 
@@ -90,7 +90,7 @@ class LayerFollower:
                 "available": False, "state": "Unknown", "reason": reason}
 
     def clear(self, reason):
-        self.profile = None; self.event_at = None
+        self.profile = None; self.event_at = None; self.momentary = False
         self.result = self.unavailable(reason)
 
     def poll(self, manifest):
@@ -137,6 +137,7 @@ class LayerFollower:
                                 (self.event_at is not None and event_time < self.event_at):
                             self.clear("Delayed or out-of-order native layer event"); continue
                         self.profile, self.event_at = match[1].lower(), event_time
+                        self.momentary = message.startswith("Switch layer on toggle hold: ")
                     elif re.search(r"disconnect|\b(?:hardware|software) mode\b|profile switch|switch.*profile|switch layer|active.*profile|migration|device connected|\bsleep\b", message, re.I):
                         # A transition we cannot interpret must not retain an old map.
                         self.clear("Native context changed; waiting for a fresh layer event")
@@ -144,8 +145,7 @@ class LayerFollower:
                     return
                 matches = [(k, l) for k in manifest["keymaps"] for l in k["layers"]
                            if l["profile_id"].lower() == self.profile]
-                identities = {(l["profile_sha256"], k["outputs_sha256"]) for k, l in matches}
-                if not matches or len(identities) != 1:
+                if not matches:
                     self.clear("Native layer has no unambiguous registered asset revision"); return
                 paths = list(self.profiles.glob("*/ProfileStorage/profile_" + self.profile + ".json"))
                 if len(paths) != 1 or paths[0].is_symlink():
@@ -157,11 +157,16 @@ class LayerFollower:
                         (after.st_size, after.st_mtime_ns, after.st_ctime_ns):
                     self.clear("Native profile changed during read; layer unknown"); return
                 digest = hashlib.sha256(raw).hexdigest()
-                if digest != matches[0][1]["profile_sha256"] or json.loads(raw).get("id", "").lower() != self.profile:
+                matches = [(k, l) for k, l in matches if l["profile_sha256"] == digest]
+                if not matches or json.loads(raw).get("id", "").lower() != self.profile:
                     self.clear("Native profile revision changed; refusing stale labels"); return
+                identities = {(l["profile_sha256"], k["outputs_sha256"]) for k, l in matches}
+                if len(identities) != 1:
+                    self.clear("Current native profile has ambiguous registered outputs; refusing stale labels"); return
                 self.result = {"provider": "Azeron native log (experimental)", "at": self.clock(), "available": True,
                                "state": "Event-tracked", "profile_id": self.profile, "profile_sha256": digest,
                                "outputs_sha256": matches[0][0]["outputs_sha256"], "event_utc": self.event_at,
+                               "momentary_layer": self.momentary,
                                "reason": "Native layer event tracked; not a fresh native snapshot"}
             except (OSError, ValueError, KeyError, TypeError):
                 self.offset = None; self.pending = b""; self.clear("Native reader unavailable; layer unknown")

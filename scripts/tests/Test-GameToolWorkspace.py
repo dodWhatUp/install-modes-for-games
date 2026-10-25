@@ -38,7 +38,8 @@ def actual_hub_shortcut_handler(root, workspace, notebook=None, selected="tool-p
 class RegistryTests(unittest.TestCase):
     def test_ids_and_domains(self):
         registry = api.FeatureRegistry()
-        self.assertEqual(len(registry.features), 12)
+        self.assertEqual(len(registry.features), 13)
+        self.assertEqual(registry.get('page.profiles')['route'],'profiles')
         self.assertEqual(len(registry.goals), 8)
         self.assertEqual(set(r["domain"] for r in registry.features), set(api.DOMAINS))
 

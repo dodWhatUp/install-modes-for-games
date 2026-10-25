@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-25",
+  "timezone": "Asia/Jerusalem",
+  "scope": "source publication and source-only Drive checkpoint",
+  "canonical_base": "e503cd6c85d7d1ae7efe3aa4039e05dd554f74c7",
+  "source_owners": {
+    "controls_workflow": "823f8c7804e3e673f3ee791bddaf4aa35b4d4cec",
+    "interface_views": "b44c7d7f75a18d4ae8e319c8969b6a2a34c180a2",
+    "mod_controls": "2.2.0 installed authored-source payloads, reconciled with canonical master",
+    "editable_lists_correction": "reviewed three-file prepared patch from the controls-workflow owner; original uncommitted source preserved"
+  },
+  "published_components": {
+    "tool_hub": "0.27.25-preview.1",
+    "mod_controls": "2.2.0",
+    "interface_views": "1.0.1",
+    "game_profiles": "0.2.0",
+    "game_profiles_ui": "0.2.0",
+    "rewasd": "0.1.0",
+    "editable_lists": "0.1.2"
+  },
+  "focused_headless_checks": {
+    "interface_packaging": 7,
+    "preview_model": 13,
+    "preview_search": 11,
+    "mod_controls": 12,
+    "runtime_profiles": 10,
+    "rewasd": 11,
+    "total": 64
+  },
+  "additional_checks": {
+    "python_syntax_files": 305,
+    "headless_platform_binding_choices": 3,
+    "extracted_powershell_privacy_pattern_cases": 4,
+    "powershell_source_parse": "pass",
+    "powershell_script_tests": "not run: destination execution policy refused; no bypass or policy change"
+  },
+  "editable_lists_0_1_2_guest_owner_report": {
+    "passed_cases": 16,
+    "receipt": "agent-20261025T192721Z-9df96827",
+    "meaning": "isolated Tk behavior and platform-selection regression; not Windows startup acceptance"
+  },
+  "native_windows": {
+    "installed_editable_lists": "0.1.1",
+    "observed_error": "bad event type or keysym ISO_Left_Tab; partial preview window",
+    "correction_installed": false,
+    "corrected_startup_and_typing_acceptance": "pending after human Escape stop",
+    "other_updated_app_reopen_acceptance": "pending"
+  },
+  "publication_mutations": {
+    "installed_pointer": false,
+    "app_restart_or_host_input": false,
+    "game_files_or_bindings": false,
+    "native_profiles": false,
+    "overlay_configuration": false,
+    "user_settings_or_drafts": false
+  },
+  "backup_boundary": "authored source and sanitized documentation only; file verification does not establish full installed-machine, game-save or native-profile recovery"
+}

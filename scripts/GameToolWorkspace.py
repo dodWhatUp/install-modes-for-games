@@ -12,7 +12,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import font as tkfont
 
-VERSION = "0.4.0"
+VERSION = "0.4.1"
 SIDEBAR_DEFAULT = 256
 SIDEBAR_MIN = 150
 SIDEBAR_MAX = 520
@@ -41,6 +41,9 @@ def _record(identifier, title, domain, route, summary, scope, keywords=""):
 
 
 DEFAULT_FEATURES = (
+    _record('page.profiles', 'Game profiles · activate & startup', DOMAINS[1], 'profiles',
+            'Save the published setup for each game, activate or stop its Overlay and choose automatic startup.',
+            'Runtime selection only · game/native changes retain separate reviewed owners', 'game profile auto startup activate deactivate overlay azeron'),
     _record("page.comparison", "Saved-result comparison", DOMAINS[0], "comparison",
             "Import original saved reports, retain provider definitions and compare compatible results.",
             "Saved reports only · no benchmark starts", "benchmark fps report csv frameview presentmon import"),

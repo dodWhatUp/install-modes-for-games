@@ -130,6 +130,8 @@ class ModOptions:
         if current['revision'] != revision:
             raise RuntimeError('The settings changed since preview. Refresh and review again.')
         before = self.path.read_bytes() if self.path.is_file() else None
+        if digest(before) != revision:
+            raise RuntimeError('The settings changed during preview; refresh and review again.')
         after = before
         for ident, wanted in changes.items():
             schema = SCHEMAS[ident]
@@ -142,6 +144,8 @@ class ModOptions:
             delta = {k: v for k, v in wanted.items() if v != saved[k]}
             if delta:
                 after = rewrite(after or b'', schema['section'], delta)
+        if digest(self.path.read_bytes() if self.path.is_file() else None) != revision:
+            raise RuntimeError('The settings changed during preview; refresh and review again.')
         return {'before': before, 'after': after}
 
     def save(self, ident, changes, revision):
