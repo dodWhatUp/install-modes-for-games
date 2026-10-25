@@ -1,5 +1,7 @@
 # Preferences
 
+2026-10-25 self-setup preference: let Mod Control find and validate its native settings location and rebuild its own saved mapping instead of requiring assistant-edited absolute paths. Keep prior mappings, native configuration and pending edits recoverable. Resolve redirected Windows paths; present conflicting valid files for selection and a clear first-setup route when no native file exists.
+
 2026-10-25 mod-navigation preference: include links to the actual mod/config folders and original source pages inside Mod Control, readable author information in the app, separate manager-package preparation/open actions, and nonmodal floating settings for supported mods. Keep per-mod Apply precise, preserve unrelated drafts and persistent profiles, and distinguish prepared manager files from actual deployment/ownership transfer.
 
 2026-10-25 interface preference: provide convenient graphical controls with exact values, clear applied versus pending state and persistent file results. Reuse the existing Desktop entry. Saved profile JSON and native INI output must remain useful after the window closes. Keep standard-manager transfer as a reviewed handoff option, with one writer per file and no silent second loader. The delivered Vortex export is preparation only, not authority to install another manager or migrate ownership.

@@ -25,14 +25,14 @@ class PureTests(unittest.TestCase):
     def test_missing_native_settings_are_not_created(self):
         with tempfile.TemporaryDirectory() as folder,patch.dict(os.environ,{'LOCALAPPDATA':folder}):
             with self.assertRaisesRegex(RuntimeError,'No settings file was created or reset'):
-                native_settings_path(Path(folder))
+                native_settings_path(Path(folder),roots=[])
             self.assertFalse((Path(folder)/'WB Games').exists())
 
     def test_invalid_native_binding_is_not_silently_ignored(self):
         with tempfile.TemporaryDirectory() as folder:
             base=Path(folder)
             (base/'control-panel-paths.json').write_text(json.dumps({'schema':1,'native_config_path':'relative/render.cfg'}))
-            with self.assertRaisesRegex(ValueError,'absolute render.cfg'):native_settings_path(base)
+            with self.assertRaisesRegex(RuntimeError,'No valid Shadow of War'):native_settings_path(base,roots=[])
 
 @unittest.skipUnless(os.name=='nt','Original reviewed Bink/profile controller is Windows-only')
 class TransactionTests(unittest.TestCase):

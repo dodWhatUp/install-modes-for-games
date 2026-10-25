@@ -7,8 +7,9 @@ from pathlib import Path
 import configparser, contextlib, copy, datetime, hashlib, importlib.util, json, math
 import os, re, shutil, subprocess, tempfile, zipfile
 from mod_resources import resources
+from settings_locator import SettingsLocationError, resolve_settings
 
-VERSION='1.1.0'
+VERSION='1.2.0'
 MODS={'multi-skills':('Multi Equip Skills','Multi Equip Skills.dll'),
       'elven-speed':('Elven Speed','Elven Speed.dll'),'fov':('FOV Extender','FOV Extender.dll')}
 KEYS={'Left Ctrl':'527 0 0','Right Ctrl':'531 0 0','Left Shift':'528 0 0',
@@ -32,27 +33,8 @@ def sha(p):
 def read_json(p):return json.loads(p.read_text(encoding='utf-8-sig'))
 def json_bytes(v):return (json.dumps(v,indent=2,ensure_ascii=False)+'\n').encode('utf-8')
 
-def native_settings_path(workspace,override=None):
-    """Reuse a reviewed physical file across packaged and Desktop launches."""
-    binding=Path(workspace)/'control-panel-paths.json'
-    if override is not None:
-        candidate=Path(override)
-    elif binding.is_file():
-        if binding.stat().st_size>65536:raise ValueError('The local settings-path binding is too large.')
-        obj=read_json(binding)
-        if type(obj) is not dict or obj.get('schema')!=1 or not isinstance(obj.get('native_config_path'),str):
-            raise ValueError('The local settings-path binding needs review.')
-        candidate=Path(obj['native_config_path'])
-        if not candidate.is_absolute() or candidate.name.casefold()!='render.cfg':
-            raise ValueError('The local settings-path binding must name an absolute render.cfg file.')
-    else:
-        root=os.environ.get('LOCALAPPDATA')
-        if not root:raise RuntimeError('Windows did not provide a local app-data folder. Review the local settings-path binding.')
-        candidate=Path(root)/'WB Games/Shadow of War/render.cfg'
-    if not candidate.is_file():
-        raise RuntimeError('Shadow of War settings were not found at '+str(candidate)+
-            '. Review control-panel-paths.json in the controller workspace. No settings file was created or reset.')
-    return candidate
+def native_settings_path(workspace,override=None,roots=None):
+    return Path(resolve_settings(workspace,override,roots)['path'])
 def atomic(p,data):
     p.parent.mkdir(parents=True,exist_ok=True)
     fd,name=tempfile.mkstemp(prefix=p.name+'.',suffix='.tmp',dir=p.parent)
@@ -132,6 +114,7 @@ class ControlService:
             spec=importlib.util.spec_from_file_location('shadow_reviewed_profiles',p)
             backend=importlib.util.module_from_spec(spec);spec.loader.exec_module(backend)
         self.b=backend
+        self.native_override=native
         self.native=native_settings_path(self.base,native)
 
     def files(self):
@@ -151,7 +134,8 @@ class ControlService:
         result['native-location']=str(self.native)
         return result
 
-    def read(self):
+    def read(self,refresh_location=True):
+        if refresh_location:self.native=native_settings_path(self.base,self.native_override)
         b=self.b;b.validate()
         cfg={k:b.config_read(p) for k,p in self.files().items() if k in SETTINGS}
         loader=cfg['loader'];v=copy.deepcopy(DEFAULTS)
@@ -222,7 +206,7 @@ class ControlService:
                     if count!=1:raise ValueError('Ambiguous native render setting: '+key)
                 if old!=new:b.write(self.native,new)
                 b.validate()
-                after=self.read()['values']
+                after=self.read(refresh_location=False)['values']
                 if after!=v:raise RuntimeError('Readback does not match requested settings; restoring transaction.')
                 receipt={'schema':1,'kind':'shadow-war-mod-profile','values':v,'applied_utc':now(),'recovery':str(saved)}
                 b.write(self.base/'last-applied-profile.json',json_bytes(receipt))

@@ -220,7 +220,7 @@ class FloatingSettings(tk.Toplevel):
         try:
             desired=self.target_values();changed=bool(self.panel.service.preview(desired,self.panel.snapshot))
             self.status.set('Pending settings for this mod. Apply keeps recovery; unrelated preview edits stay pending.' if changed else 'This mod matches the applied files.')
-            self.apply_button.configure(state='normal' if changed and not self.panel.busy else 'disabled')
+            self.apply_button.configure(state='normal' if changed and not self.panel.busy and not self.panel.location_blocked else 'disabled')
         except Exception as e:self.status.set(str(e));self.apply_button.configure(state='disabled')
     def apply(self):
         self.panel.apply_mod(self.key,lambda:self.update_status() if self.winfo_exists() else None)

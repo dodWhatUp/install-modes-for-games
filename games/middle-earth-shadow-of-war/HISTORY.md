@@ -1,5 +1,13 @@
 # History
 
+## 2026-10-25 - Automatic native-settings discovery and mapping rebuild
+
+The user asked the program to handle the earlier missing-render.cfg problem itself. Controller 1.2 adds a bounded locator for the saved mapping, normal Windows local app-data roots and the game's exact package-cache locations. An open Windows file handle resolves virtual spellings to the physical file. Validation checks native width/height/HDR keys, duplicate/nonfinite values and size limits. A valid saved selection wins; unique/byte-identical candidates can rebuild the mapping automatically, while conflicting different files require an explicit choice.
+
+Mapping updates preserve previous bytes and unknown fields, use a controller-local lock and atomic readback, and never move/reset the native settings. Startup recovery can search again or select a validated existing file; its Steam action opens the game details page for first setup rather than launching a game automatically. The same repair UI is available under Files & tools. Refresh can recover a disappeared location; repair keeps pending drafts and unavailable settings block Apply. This is deterministic game-specific discovery, not an autonomous code-generation service or universal repair engine.
+
+Twenty-seven Windows disposable-file checks and 57 isolated real-Tk checks passed, including corrupt/stale/missing mappings, redirected paths, candidate conflicts, atomic-write failure, first-open retry/cancel and preserved pending edits. All twelve final source files matched guest hashes. The normal Desktop launcher was then opened with the old mapping safely backed up and absent: the Explorer-launched 1.2 process found the real redirected render.cfg and rebuilt its own mapping, with the previous native path/hash preserved. The current settings were visible. Game settings, saves and loaded mod files stayed unchanged; no game launch or real Apply occurred. Prior windows/drafts and the original mapping remain recoverable. The task-owned helper/VM were stopped cleanly. Exact machine paths and receipts remain private.
+
 ## 2026-10-25 - Mod folders, in-app author text, manager package and floating settings
 
 The user requested mod-folder links, source pages visible inside Mod Control, preparation/open actions for a standard manager and floating mod settings. Controller 1.1 adds one searchable mod browser with configured state, source URLs and existing mod/config/download/native-settings folders. The three installed gameplay plugins and shared loader have a read-only author-text reader pinned to the reviewed original GitHub source; full websites open separately. Third-party page text is never executed.

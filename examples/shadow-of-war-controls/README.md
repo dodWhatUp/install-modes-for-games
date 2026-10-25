@@ -1,5 +1,35 @@
 # Shadow of War file controls
 
+## 1.2 - Automatic settings discovery and setup recovery
+
+The controller now finds and validates the existing `render.cfg` itself. It
+checks the saved location, Windows local app-data roots and the exact game's
+redirected package-cache locations. Windows file handles resolve virtual paths
+to their physical files, so Desktop and packaged-app launches use the same file.
+Search is bounded to those known locations, not a recursive drive/profile scan.
+
+A valid saved selection is retained. A unique valid candidate rebuilds the local
+`control-panel-paths.json` automatically, preserving previous mapping bytes and
+unknown fields. Files must have unambiguous, finite native render dimensions and
+HDR settings. Different conflicting candidates open a choice window instead of
+being selected by modification time. Invalid/missing settings open startup
+recovery with **Find automatically**, **Use selected file** and **Choose render.cfg**.
+If no native configuration exists yet, **Open game in Steam** provides the game's
+own first-setup route; the controller does not fabricate a native configuration.
+
+Use **Files & tools > Find / repair settings location...** for an explicit check.
+Refresh also rediscovers a vanished settings location. Repairs preserve pending
+preview edits and update stale-state fingerprints; unavailable settings block
+Apply. Native configuration files stay in place and retain their original bytes.
+
+Validation: 27 disposable Windows file checks and 57 real Tk guest checks passed.
+The actual Windows Desktop launch was also tested with its saved location mapping
+absent: version 1.2 found the existing redirected file, rebuilt its own mapping
+and displayed the current settings. The native configuration and save hashes
+remained unchanged. Twelve source files matched the tested guest bytes; the
+task-owned helper and VM were stopped cleanly. No game launch or real Apply was
+part of this acceptance. The earlier fourteen-check path fix is historical.
+
 ## 1.1 - Mod folders, author pages and floating editors
 
 **Mods & folders** opens one searchable selector for the installed/retained mods
@@ -113,8 +143,8 @@ binding, separate from imported profiles. Packaged Windows apps may see a
 redirected app-data file while an Explorer-launched app sees the normal folder;
 resolve the actual existing file during setup and verify from Explorer itself.
 Do not create a blank render configuration or move game settings to hide a
-missing-file error. Without a binding, the controller uses its normal Windows
-local app-data location and reports a missing file clearly.
+missing-file error. Version 1.2 supersedes the original environment-only fallback
+with validated automatic discovery and the recovery window described above.
 
 The bound file and its path are included in stale-state checks. Apply also keeps
 an exact native-file recovery copy independent of the legacy engine's app-data

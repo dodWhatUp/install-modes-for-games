@@ -7,6 +7,8 @@ from tkinter import ttk, messagebox
 from control_service import ControlService, DemoService, DEFAULTS, KEYS, MODS, VERSION, atomic, json_bytes
 from mod_resources import EDIT_FIELDS
 from mod_tools_ui import ModTools
+from settings_locator import SettingsLocationError
+from settings_ui import SettingsLocationDialog,startup_service
 
 LABELS={'profile':'Graphics profile','graphics':'Graphics enabled','gameplay':'Gameplay loader',
         'multi-skills':'Multi Equip Skills','elven-speed':'Elven Speed','fov':'FOV Extender',
@@ -20,7 +22,8 @@ class Panel(ttk.Frame):
         super().__init__(root,padding=18);self.pack(fill='both',expand=True)
         self.root=root;self.service=service;self.demo=demo;self.snapshot=None;self.busy=False
         self.events=queue.Queue();self.widgets={};self.loading=True;self.vars={};self._disposed=False;self._drain_job=None
-        root.title('Shadow of War — Mod Controls'+(' [isolated demo]' if demo else ''))
+        self.location_blocked=False;self._settings_dialog=None
+        root.title('Shadow of War — Mod Controls '+VERSION+(' [isolated demo]' if demo else ''))
         root.geometry('960x580');root.minsize(850,520)
         style=ttk.Style(root);style.theme_use('clam')
         style.configure('.',font=('Segoe UI',10),background='#f4f6fa',foreground='#162338')
@@ -59,6 +62,7 @@ class Panel(ttk.Frame):
         ttk.Button(head,text='Mods & folders...',command=lambda:self.mod_tools.show()).pack(side='right',padx=7)
         menu=tk.Menu(self.files_menu,tearoff=False);self.files_menu['menu']=menu
         for label,action in [('Show APP LAUNCHER',lambda:self.open_path(Path(__file__).resolve().parent)),
+             ('Find / repair settings location...',self.setup_settings),
              ('Saved profiles',lambda:self.open_path(self.service.base/'saved-profiles')),
              ('Settings & recovery folder',lambda:self.open_path(self.service.base)),
              ('Open RHI graphics manager',self.open_rhi),('Steam texture-pack controls',self.open_textures),
@@ -170,7 +174,7 @@ class Panel(ttk.Frame):
         try:
             changes=self.service.preview(self.values(),self.snapshot)
             self.dirty.set(f'{len(changes)} pending change(s). Apply writes native INIs + last-applied-profile.json.' if changes else 'Applied files match this preview. No resident manager is needed during play.')
-            self.apply_button.configure(state='normal' if changes and not self.busy else 'disabled')
+            self.apply_button.configure(state='normal' if changes and not self.busy and not self.location_blocked else 'disabled')
         except Exception as e:self.dirty.set(str(e));self.apply_button.configure(state='disabled')
         for k in ('dlaa','nr'):self.widgets[k].configure(state='normal' if self.vars['profile'].get()=='luma' else 'disabled')
     def run(self,fn,done):
@@ -185,7 +189,10 @@ class Panel(ttk.Frame):
         try:
             while True:
                 done,result,error=self.events.get_nowait();self.busy=False
-                if error:self.notice.set(str(error));messagebox.showerror('Action needs attention',str(error),parent=self.root)
+                if error:
+                    self.notice.set(str(error))
+                    if isinstance(error,SettingsLocationError):self.location_blocked=True;self.setup_settings(error.report)
+                    else:messagebox.showerror('Action needs attention',str(error),parent=self.root)
                 else:self.notice.set('');done(result)
                 self.changed()
                 for editor in self.mod_tools.editors.values():
@@ -201,11 +208,26 @@ class Panel(ttk.Frame):
     def refresh(self):
         if self.busy:return
         def done(data):
-            self.snapshot=data;self.set_values(data['values'])
+            self.location_blocked=False;self.snapshot=data;self.set_values(data['values'])
             self.show_applied(data)
             self.notice.set('Close the game, Steam and RHI before Apply. Saving/exporting files is available now.' if data['blocked'] else 'Game-file switching is available. Every Apply keeps recovery.')
             self.profile_combo.configure(values=self.service.profile_names())
         self.run(self.service.read,done)
+    def setup_settings(self,report=None):
+        if self._settings_dialog is not None and self._settings_dialog.winfo_exists():
+            self._settings_dialog.lift();return
+        roots=[self.service.base/'demo-local-appdata'] if self.demo else None
+        def selected(path):
+            old=copy.deepcopy(self.snapshot);draft=self.values()
+            def done(data):
+                self.location_blocked=False;self.snapshot=data;merged=copy.deepcopy(data['values'])
+                if old:
+                    for field in DEFAULTS:
+                        if draft[field]!=old['values'][field]:merged[field]=draft[field]
+                self.set_values(merged);self.show_applied(data)
+                self.notice.set('Settings location found and saved. Pending preview edits are preserved.')
+            self.run(self.service.read,done)
+        self._settings_dialog=SettingsLocationDialog(self.root,self.service.base,report,on_selected=selected,roots=roots,allow_external=not self.demo)
     def show_applied(self,data):
         v=data['values'];active=[MODS[k][0] for k in MODS if v['gameplay'] and v[k]]
         graphics=('RenoDX' if v['profile']=='previous' else 'Luma trial') if v['graphics'] else 'Graphics off'
@@ -216,12 +238,12 @@ class Panel(ttk.Frame):
         except Exception as e:return messagebox.showerror('Check values',str(e),parent=self.root)
         self.text_window('Review pending file changes','\n'.join(changes) if changes else 'No changes. Applied settings already match this preview.')
     def apply(self):
-        if not self.snapshot:return
+        if not self.snapshot or self.busy or self.location_blocked:return
         desired=self.values();snapshot=copy.deepcopy(self.snapshot)
         def done(result):self.notice.set(result['message']);self.refresh()
         self.run(lambda:self.service.apply(desired,snapshot),done)
     def apply_mod(self,key,callback=None):
-        if not self.snapshot or self.busy:return
+        if not self.snapshot or self.busy or self.location_blocked:return
         snapshot=copy.deepcopy(self.snapshot);draft=self.values();fields=EDIT_FIELDS[key]
         desired=copy.deepcopy(snapshot['values'])
         for field in fields:desired[field]=draft[field]
@@ -283,7 +305,9 @@ def main():
     parser=argparse.ArgumentParser();parser.add_argument('--workspace',type=Path,default=Path(__file__).parent)
     parser.add_argument('--demo',action='store_true');args=parser.parse_args()
     root=tk.Tk()
-    try:service=DemoService(args.workspace) if args.demo else ControlService(args.workspace)
+    try:
+        service=startup_service(root,args.workspace,DemoService if args.demo else ControlService)
+        if service is None:root.destroy();return 0
     except Exception as e:root.withdraw();messagebox.showerror('Cannot open mod controls',str(e),parent=root);root.destroy();return 1
     Panel(root,service,args.demo);root.mainloop();return 0
 if __name__=='__main__':raise SystemExit(main())
