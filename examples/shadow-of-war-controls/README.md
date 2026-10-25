@@ -68,3 +68,22 @@ trusted controller. These local bindings are not distributed as public source.
 Double-clicking the configured launcher opens the same UI without applying edits.
 The root workspace also includes a named entry; the older Manage entry forwards
 to it. See the [standing launcher contract](../../docs/APP-LAUNCHERS.md).
+
+### Native settings location (1.0.1)
+
+Setup can pin the existing reviewed native settings file using the private
+workspace file `control-panel-paths.json`, with `schema: 1` and an absolute
+`native_config_path` pointing to `render.cfg`. This is a trusted installation
+binding, separate from imported profiles. Packaged Windows apps may see a
+redirected app-data file while an Explorer-launched app sees the normal folder;
+resolve the actual existing file during setup and verify from Explorer itself.
+Do not create a blank render configuration or move game settings to hide a
+missing-file error. Without a binding, the controller uses its normal Windows
+local app-data location and reports a missing file clearly.
+
+The bound file and its path are included in stale-state checks. Apply also keeps
+an exact native-file recovery copy independent of the legacy engine's app-data
+view. Reopen the controller after changing a path binding. Fourteen disposable
+file tests cover the environment mismatch, bound-file recovery, stale binding
+refusal and the existing transactions. Desktop opening was observed separately;
+no real profile Apply was performed for the launcher repair.

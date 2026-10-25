@@ -1,5 +1,16 @@
 # Repository and Drive export
 
+## 2026-10-25 - Desktop launch verification repair
+
+Shadow of War controller 1.0.1 fixes the reported native-settings path error;
+[the game history](../games/middle-earth-shadow-of-war/HISTORY.md#2026-10-25---desktop-launcher-native-settings-path-repair)
+records fourteen passing file tests and the observed Explorer/Desktop launch.
+The standing [launcher contract](APP-LAUNCHERS.md) now explicitly requires that
+launch-context check. Its existing private Drive instruction file was updated
+in place to 2,926 bytes and downloaded bytes matched; owner-only access and
+earlier archives remain preserved. The 2,625-byte count below describes the
+earlier instruction revision. No game/profile Apply was part of this repair.
+
 ## 2026-10-25 - APP LAUNCHER standing convention
 
 The [launcher contract](APP-LAUNCHERS.md) records the exact `<App Name> APP LAUNCHER`

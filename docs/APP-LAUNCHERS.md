@@ -21,6 +21,10 @@ shortcut `Shadow of War Mods APP LAUNCHER.lnk`.
   launcher; do not make users repair existing references.
 - Verify the launcher's existence, target, arguments, working folder and included
   runtime bindings. Distinguish file verification from an observed GUI launch.
+- On Windows, test the normal Desktop/Explorer launch as well as setup-time file
+  checks. Packaged apps can see redirected app-data files. Bind the actual
+  existing settings location privately when needed; do not create blank game
+  settings or reset configuration to suppress a missing-file error.
 - Apply this convention automatically to future scoped app creation, packaging
   and delivery work. Migrate existing authored apps when working on their delivery;
   this rule does not authorize bulk renaming unrelated third-party software.

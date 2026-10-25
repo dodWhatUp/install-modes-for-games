@@ -2,7 +2,7 @@
 import copy, hashlib, importlib.util, json, os, shutil, tempfile, unittest
 from pathlib import Path
 from unittest.mock import patch
-from control_service import ControlService, DEFAULTS, patch_ini, sha, validate_values
+from control_service import ControlService, DEFAULTS, native_settings_path, patch_ini, sha, validate_values
 
 HERE=Path(__file__).parent
 class PureTests(unittest.TestCase):
@@ -21,6 +21,18 @@ class PureTests(unittest.TestCase):
         self.assertEqual(patch_ini(b'[General]\nOther=9\n','General',{'X':3}),b'[General]\nOther=9\nX = 3\n')
         self.assertEqual(patch_ini(b'[ADDON]\nLoadFromDllMain=\n[Luma]\nSRUserType=2\n','ADDON',{'LoadFromDllMain':'addon.dll'}),b'[ADDON]\nLoadFromDllMain=addon.dll\n[Luma]\nSRUserType=2\n')
         with self.assertRaises(ValueError):patch_ini(b'[General]\nX=1\nX=2\n','General',{'X':3})
+
+    def test_missing_native_settings_are_not_created(self):
+        with tempfile.TemporaryDirectory() as folder,patch.dict(os.environ,{'LOCALAPPDATA':folder}):
+            with self.assertRaisesRegex(RuntimeError,'No settings file was created or reset'):
+                native_settings_path(Path(folder))
+            self.assertFalse((Path(folder)/'WB Games').exists())
+
+    def test_invalid_native_binding_is_not_silently_ignored(self):
+        with tempfile.TemporaryDirectory() as folder:
+            base=Path(folder)
+            (base/'control-panel-paths.json').write_text(json.dumps({'schema':1,'native_config_path':'relative/render.cfg'}))
+            with self.assertRaisesRegex(ValueError,'absolute render.cfg'):native_settings_path(base)
 
 @unittest.skipUnless(os.name=='nt','Original reviewed Bink/profile controller is Windows-only')
 class TransactionTests(unittest.TestCase):
@@ -74,6 +86,28 @@ class TransactionTests(unittest.TestCase):
         self.assertEqual((self.base/'steam-save/campaign.sav').read_bytes(),b'Never change this save')
         self.assertTrue((self.base/'last-applied-profile.json').exists())
         self.assertTrue(Path(result['recovery']).is_dir())
+
+    def test_desktop_environment_uses_bound_file_and_preserves_its_recovery(self):
+        native=self.service.native;original=native.read_bytes()
+        (self.base/'control-panel-paths.json').write_text(json.dumps({'schema':1,'native_config_path':str(native)}))
+        other=self.base/'different-desktop-appdata'
+        with patch.dict(os.environ,{'LOCALAPPDATA':str(other)}):
+            service=ControlService(self.base,backend=self.b)
+            self.assertEqual(service.native,native)
+            snapshot=service.read();v=copy.deepcopy(snapshot['values']);v['width']=2560
+            result=service.apply(v,snapshot)
+            recovery=Path(result['recovery'])/'controller-native-settings'
+            self.assertEqual((recovery/'render.cfg').read_bytes(),original)
+            self.assertEqual(json.loads((recovery/'location.json').read_text())['source'],str(native))
+            self.assertEqual(service.read()['values']['width'],2560)
+            self.assertFalse(other.exists())
+
+    def test_native_binding_change_refuses_stale_apply(self):
+        binding=self.base/'control-panel-paths.json'
+        binding.write_text(json.dumps({'schema':1,'native_config_path':str(self.service.native)}))
+        snapshot=self.service.read();v=copy.deepcopy(snapshot['values']);v['duration']=3.
+        binding.write_text(binding.read_text()+'\n')
+        with self.assertRaisesRegex(RuntimeError,'Files changed'):self.service.apply(v,snapshot)
     def test_mid_transaction_failure_restores_files_and_positions(self):
         snapshot=self.service.read();v=copy.deepcopy(snapshot['values']);v.update({'multi-skills':False,'duration':4.,'fov_min':50.})
         original=self.b.write

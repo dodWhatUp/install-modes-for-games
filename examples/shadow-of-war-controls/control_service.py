@@ -7,7 +7,7 @@ from pathlib import Path
 import configparser, contextlib, copy, datetime, hashlib, importlib.util, json, math
 import os, re, shutil, subprocess, tempfile
 
-VERSION='1.0.0'
+VERSION='1.0.1'
 MODS={'multi-skills':('Multi Equip Skills','Multi Equip Skills.dll'),
       'elven-speed':('Elven Speed','Elven Speed.dll'),'fov':('FOV Extender','FOV Extender.dll')}
 KEYS={'Left Ctrl':'527 0 0','Right Ctrl':'531 0 0','Left Shift':'528 0 0',
@@ -30,6 +30,28 @@ def sha(p):
     return h.hexdigest().upper()
 def read_json(p):return json.loads(p.read_text(encoding='utf-8-sig'))
 def json_bytes(v):return (json.dumps(v,indent=2,ensure_ascii=False)+'\n').encode('utf-8')
+
+def native_settings_path(workspace,override=None):
+    """Reuse a reviewed physical file across packaged and Desktop launches."""
+    binding=Path(workspace)/'control-panel-paths.json'
+    if override is not None:
+        candidate=Path(override)
+    elif binding.is_file():
+        if binding.stat().st_size>65536:raise ValueError('The local settings-path binding is too large.')
+        obj=read_json(binding)
+        if type(obj) is not dict or obj.get('schema')!=1 or not isinstance(obj.get('native_config_path'),str):
+            raise ValueError('The local settings-path binding needs review.')
+        candidate=Path(obj['native_config_path'])
+        if not candidate.is_absolute() or candidate.name.casefold()!='render.cfg':
+            raise ValueError('The local settings-path binding must name an absolute render.cfg file.')
+    else:
+        root=os.environ.get('LOCALAPPDATA')
+        if not root:raise RuntimeError('Windows did not provide a local app-data folder. Review the local settings-path binding.')
+        candidate=Path(root)/'WB Games/Shadow of War/render.cfg'
+    if not candidate.is_file():
+        raise RuntimeError('Shadow of War settings were not found at '+str(candidate)+
+            '. Review control-panel-paths.json in the controller workspace. No settings file was created or reset.')
+    return candidate
 def atomic(p,data):
     p.parent.mkdir(parents=True,exist_ok=True)
     fd,name=tempfile.mkstemp(prefix=p.name+'.',suffix='.tmp',dir=p.parent)
@@ -109,7 +131,7 @@ class ControlService:
             spec=importlib.util.spec_from_file_location('shadow_reviewed_profiles',p)
             backend=importlib.util.module_from_spec(spec);spec.loader.exec_module(backend)
         self.b=backend
-        self.native=Path(native) if native else Path(os.environ['LOCALAPPDATA'])/'WB Games/Shadow of War/render.cfg'
+        self.native=native_settings_path(self.base,native)
 
     def files(self):
         result={k:self.b.path(p) for k,p in SETTINGS.items()}
@@ -124,6 +146,8 @@ class ControlService:
         for component in self.b.M['components']:
             result['component-'+component['id']]=self.b.module_state(component)
         result['ownership-manifest']=sha(self.base/'graphics-profiles.json')
+        result['native-path-binding']=sha(self.base/'control-panel-paths.json')
+        result['native-location']=str(self.native)
         return result
 
     def read(self):
@@ -170,6 +194,11 @@ class ControlService:
                 actual=self.fingerprint()
                 if actual!=snapshot['fingerprint']:raise RuntimeError('Files changed since Refresh. Refresh and review before applying.')
                 saved=b.snapshot()
+                # The legacy engine snapshots its own LOCALAPPDATA view. A Desktop
+                # launch may use a different view from the reviewed native file.
+                native_backup=saved/'controller-native-settings'
+                atomic(native_backup/'render.cfg',self.native.read_bytes())
+                atomic(native_backup/'location.json',json_bytes({'source':str(self.native)}))
                 b.select_profile(v['profile'])
                 b.enable('graphics',v['graphics']);b.gameplay(v['gameplay'])
                 changed_mods={k for k in MODS if v[k]!=snapshot['values'][k]}

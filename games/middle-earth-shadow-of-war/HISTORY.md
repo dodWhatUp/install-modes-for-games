@@ -1,5 +1,13 @@
 # History
 
+## 2026-10-25 - Desktop launcher native-settings path repair
+
+The user reported an `Errno 2` dialog for `render.cfg` when opening the delivered launcher. The initial setup-time file check missed a Windows context difference: its apparent local app-data path resolved to the packaged Codex app's physical cache, while the Explorer-launched controller looked in the normal local app-data folder. Resolving an open file handle identified the existing reviewed file; this is observed filesystem evidence, not a missing-config guess.
+
+Controller 1.0.1 reads an explicit private workspace path binding before its environment default. The binding points to the existing file; no native configuration was created, copied into another game location, reset or applied. Missing/invalid bindings produce a clear error. Fingerprints include the binding and file location; transactions retain a native-file recovery copy independent of the legacy backend's app-data view.
+
+All fourteen disposable Windows file tests passed, including a different Desktop environment, exact bound-file recovery and stale-binding refusal. The actual Desktop `.lnk` was then opened through Explorer; its new Python process was an Explorer child, and the window displayed RenoDX, all three configured gameplay plugins and 3840x2160 without the missing-file error. The seven protected settings/save file hashes remained unchanged. No game launch or real profile Apply occurred. Existing windows were preserved; the corrected window was left available. Source and installed service bytes match; recovery and exact machine paths remain private.
+
 ## 2026-10-25 - Included APP LAUNCHER and standing delivery rule
 
 At the user's request, the primary Desktop shortcut is **Shadow of War Mods APP LAUNCHER**. A same-named double-click entry is included in the control-panel package and workspace root. The old Manage entry forwards to the included launcher. **Files & tools > Show APP LAUNCHER** locates it after the next normal open. Runtime/workspace bindings and just-in-time recovery remain private. Existing windows were left running to preserve pending edits.
