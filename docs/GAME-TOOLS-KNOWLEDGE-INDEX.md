@@ -1,5 +1,8 @@
 # Game tools knowledge and recovery index
 
+- [APP LAUNCHER naming and included-entry contract](APP-LAUNCHERS.md): standing user preference; adopted for Shadow of War controls on 2026-10-25.
+
+
 ## Shared build blueprint — 2026-10-20
 
 [One master plan](INTEGRATED-SYSTEM-EXECUTION-PLAN.md#one-shared-foundation-then-specialized-adapters) now explains seven common components, ten system adapters and task-scoped human/AI handoffs. [Build map](INTEGRATED-SYSTEM-BUILD-MAP.json) references the original 18 MCI packages without duplicating task status. [Conclusions](control-center/SHARED-BUILD-CONCLUSIONS.md) record the read-only prototype and acceptance.

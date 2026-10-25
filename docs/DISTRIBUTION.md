@@ -1,5 +1,21 @@
 # Repository and Drive export
 
+## 2026-10-25 - APP LAUNCHER standing convention
+
+The [launcher contract](APP-LAUNCHERS.md) records the exact `<App Name> APP LAUNCHER`
+suffix, an included app-folder launcher, matching Desktop shortcut, in-app
+discovery and stable compatibility entries. Repository AGENTS/preferences hold
+the rule for future scoped deliveries. Shadow of War's controls adopt it now;
+other installed apps have not been bulk-renamed.
+
+The [private Drive instruction copy](https://drive.google.com/file/d/1_-YhUoDP8e-RQ-c2Wk4l2c9pPiqY5iS9/view?usp=drivesdk) is 2,625 bytes;
+downloaded bytes matched the canonical instruction file and metadata verified
+owner-only access. Previous Drive exports and permissions remain unchanged.
+This is instruction/file delivery verification; no game or new GUI launch,
+profile Apply, installed unified-toolkit replacement or gameplay acceptance was
+performed for the naming update. Local runtime bindings and recovery are private.
+
+
 ## 2026-10-19 — Multi computer and urgent control center plan
 
 [Publication and verification receipt](MULTICOMPUTER-PLAN-PUBLICATION-2026-10-19.md) links the private Drive plan snapshot and human start page, the P0 control-center issue, exact archive hash and acceptance limits. Multi-device storage, scoped remote operation, human architecture/trigger navigation and request preflight are planned requirements. Earlier source/recovery packages and links remain intact.

@@ -1,5 +1,8 @@
 # General User Preferences
 
+App launcher convention, requested 2026-10-25: every app we create or deliver must include a convenient double-click launcher in its app folder/package. Its visible name and Desktop shortcut name end with the exact suffix `APP LAUNCHER`, using `<App Name> APP LAUNCHER` before the file extension. Provide an in-app way to locate it; preserve stable launch targets, settings, version pointers and useful legacy forwarding entries. Verify paths/targets after delivery or updates. Keep Open distinct from Install/Update. Apply this to future scoped app work; do not bulk-rename unrelated third-party apps. See [app launcher contract](../docs/APP-LAUNCHERS.md).
+
+
 Game-library navigation, requested 2026-10-14: keep game-oriented navigation as the default and offer a compact, clearly labeled global switch to goals/functions. Preserve launcher filters, tags and distinct last-played, last-used-in-toolkit and last-changed-in-toolkit fields; unavailable history stays unknown. The independent local 0.26 candidate is preserved in `source-snapshots/`; it has not been adopted into 0.27 or deployed by this transfer.
 
 Response language, confirmed 2026-10-10: always answer in English, including when the user writes in Hebrew.

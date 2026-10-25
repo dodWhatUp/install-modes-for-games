@@ -124,6 +124,9 @@ and [installation/preservation](GAME-TOOL-CONNECTIONS.md#2026-10-12--azeron-laye
 
 ## Open it yourself
 
+New delivery convention (2026-10-25): primary launchers and Desktop shortcuts use **`<App Name> APP LAUNCHER`**, with an included app-folder entry and in-app discovery. Apply this when this app is next delivered; the older access names below describe historical installation evidence, not a verified rename on every computer. See [launcher contract](APP-LAUNCHERS.md).
+
+
 The program is already installed on the configured computer. Double-click
 **Unified Game Tools** on the Desktop. Alternatively, open the **Unified Game
 Tools** folder in Documents and double-click **Open Unified Game Tools.cmd**.

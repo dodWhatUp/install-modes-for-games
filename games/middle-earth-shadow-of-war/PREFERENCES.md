@@ -1,0 +1,17 @@
+# Preferences
+
+2026-10-25 interface preference: provide convenient graphical controls with exact values, clear applied versus pending state and persistent file results. Reuse the existing Desktop entry. Saved profile JSON and native INI output must remain useful after the window closes. Keep standard-manager transfer as a reviewed handoff option, with one writer per file and no silent second loader. The delivered Vortex export is preparation only, not authority to install another manager or migrate ownership.
+
+2026-10-25: the user authorized all helpful steps after the explicit menu/HDR-restart test proposal. Menu testing proceeded; stock/previous exited normally, Luma faulted on shutdown and the queued neural run was cancelled. Preserve the previous selected profile active and the trial disabled; the remaining issue is fault diagnosis/feature acceptance, not missing permission. The user reported a normal physical desktop, and a fresh read reverified 4K/240 Hz HDR; the test-session display reading does not establish physical degradation. The game's saved render size was corrected to 4K with recovery. Campaign, benchmark and unrelated testing were not started. Current exact results supersede the earlier pending-authorization and research-only statements below.
+
+Later 2026-10-24: the user authorized the texture/Luma/DLSS extension with independent switches and previous-state recovery. Official textures are installed and Steam owns their checkbox. Luma latest-761 is a separate optional **DLAA-only, 100%** trial; true SR is unavailable. Generic 8.5.0-rc10 neural settings are prepared with one native-DX11 consumer and a valid NVIDIA-signed original runtime. The previous RenoDX profile remains active while main-menu test authorization is pending. Preserve stable menu choices 1/2, the two distinct HDR owners/profiles, exact payload hashes and the disclosed Luma HDR restart behavior. F10 is configured for the trial; F7/F11 requested special controls remain unsupported by that consumer. See the latest history; the earlier research-only statements below are historical.
+
+2026-10-24: the user explicitly selected graphics + multiple skills + movement/FOV. Prioritize easy independent enable/disable and preserve current saves. Expanded combat/progression cheats are separate options.
+
+- F12 opens the shared gameplay-mod interface; Delete opens ReShade/RenoDX. Held Left Ctrl allows multi-equip in the skill screen; native purchases and unlock requirements remain.
+- Elven Speed starts at duration multiplier 2, regeneration multiplier 0. FOV Extender starts at 45/60. Both can be configured through the existing loader interface.
+- Reuse RHI for graphics provenance and install records. Close it, Steam and the game before filesystem switching. Preserve external/native settings and source owners.
+- The switcher starts with the selected set enabled. All Mods Off restores the original runtime but does not undo saved campaign or skill decisions.
+- Use the author's borderless/HDR path for initial graphics acceptance. No native settings were fabricated when the local config folder was absent.
+- Luma DLSS is researched/WIP, not an installed alternative. F6/F7/F10/F11 neural/SR controls are unavailable because no such consumer/controller was installed; no placeholder hotkeys were added. Home/OptiScaler is unused.
+- This installation request did not resume unrelated deferred tests, benchmarks, game input, recording or schedules.

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "kind": "game_support_pack",
+  "pack_version": "0.1.2",
+  "definition": {
+    "game_id": "middle-earth-shadow-of-war",
+    "name": "Middle-earth: Shadow of War",
+    "manager_id": "manual",
+    "adapter": "directory",
+    "platform": "windows",
+    "executable_any": ["x64/ShadowOfWar.exe"],
+    "mods_relative": "x64/plugins",
+    "loader_markers": ["x64/bink2w64_.dll", "x64/modloader/Mod Loader.ini"],
+    "scan_depth": 3,
+    "review_note": "Metadata-only layout from destination installation/version 1.0.8874.0 on 2026-10-24. RHI owns graphics installation records; a private reviewed switcher owns gameplay and reversible file enable/disable. No runtime support certification or manager mutation is provided by this pack."
+  },
+  "recipe": null,
+  "sources": [
+    {"url": "https://github.com/ReaperAnon/Middle-Earth-Mod-Loader", "checked_on": "2026-10-24", "evidence": "upstream-documented"},
+    {"url": "https://github.com/ReaperAnon/Shadow-Of-War-Mods", "checked_on": "2026-10-24", "evidence": "upstream-documented"},
+    {"url": "https://www.nexusmods.com/middleearthshadowofwar/mods/130", "checked_on": "2026-10-24", "evidence": "upstream-documented"}
+  ],
+  "notes": [
+    "No automatic download/deployment recipe. Importing this pack does not install mods, alter private manager data or launch a game.",
+    "File/hash/signature switching and stock/previous-profile menu/normal-exit checks passed locally. Moving gameplay is untested. Optional Luma shutdown faulted in the NVIDIA driver; Luma/neural remain disabled. Do not infer certified runtime support from these markers.",
+    "A private graphical file controller reuses the reviewed local profile engine. Its saved profiles/native INIs persist after closing. Vortex original-archive/settings handoff is export-verified only; no external-manager import, ownership migration or deployment is provided by this metadata pack."
+  ]
+}
