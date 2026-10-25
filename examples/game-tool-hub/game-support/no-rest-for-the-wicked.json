@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "kind": "game_support_pack",
+  "pack_version": "0.1.0",
+  "definition": {
+    "game_id": "no-rest-for-the-wicked",
+    "name": "No Rest for the Wicked",
+    "manager_id": "manual",
+    "adapter": "directory",
+    "platform": "windows",
+    "executable_any": ["NoRestForTheWicked.exe"],
+    "mods_relative": "Mods",
+    "loader_markers": ["version.dll", "MelonLoader/net6/MelonLoader.dll"],
+    "scan_depth": 3,
+    "review_note": "Metadata-only Steam build 22928553 / internal build 29466 layout, inspected 2026-10-25. Private reviewed file controls own the loader proxy and three plugin DLLs. File switching is verified; first startup, assembly generation and gameplay remain untested. No manager mutation or certified runtime support is exposed by this pack."
+  },
+  "recipe": null,
+  "sources": [
+    {"url": "https://github.com/LavaGang/MelonLoader/releases/tag/v0.7.3", "checked_on": "2026-10-25", "evidence": "upstream-documented"},
+    {"url": "https://www.nexusmods.com/norestforthewicked/mods/18", "checked_on": "2026-10-25", "evidence": "upstream-documented"},
+    {"url": "https://www.nexusmods.com/norestforthewicked/mods/107", "checked_on": "2026-10-25", "evidence": "upstream-documented"},
+    {"url": "https://www.nexusmods.com/norestforthewicked/mods/41", "checked_on": "2026-10-25", "evidence": "upstream-documented"}
+  ],
+  "notes": [
+    "No automatic download/deployment recipe. Importing metadata does not install mods, select a private path, alter a manager database or launch the game.",
+    "MelonLoader 0.7.3 plus Build Liberator 1.0.0, Rune Details 1.1.0 and Wicked Menu 1.0-0225 are installed and file-enabled locally. F12 is configured for Wicked Menu. Exact original archives, runtime, hashes, save/config backup, recovery and launcher bindings remain private.",
+    "The installation does not add independent 10-20 spell slots, new weapons/spells or a dedicated quick weapon-swap implementation. Other optional candidates and graphics were not installed."
+  ]
+}

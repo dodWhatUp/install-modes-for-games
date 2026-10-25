@@ -365,3 +365,8 @@ text-only sample workflow. Existing GT requirements, source owners and installed
 profiles are unchanged. See [Workbench review](WORKBENCH-REVIEW.md) for proven
 defects, implementation, modern design sources, ranked remaining gaps and tests.
 This pointer is not native installation, new game support or Global PR20 adoption.
+
+
+### 2026-10-25 ? No Rest for the Wicked save and mod recovery
+
+The [game checkpoint](../games/no-rest-for-the-wicked/BACKUP-2026-10-25.md) records user-confirmed older-character compatibility with Early Access build 29466 / Steam 22928553, the upcoming Classes release schedule, private save/settings and mod recovery, and the uninstall/reinstall boundary. [Save backup coverage](GAME-SAVE-BACKUPS.md) keeps a verified archive distinct from a complete base-game backup or tested restoration. Private saves and binaries remain outside Git.

@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "reviewed": "2026-10-25",
+  "mods": {
+    "loader": {
+      "author": "LavaGang",
+      "github": "https://github.com/LavaGang/MelonLoader/releases/tag/v0.7.3",
+      "nexus": null,
+      "description": "Loads the three installed gameplay plugins. Its proxy must be enabled for them to run. Initial startup generates game assemblies and can take several minutes.",
+      "source_note": "Official GitHub release. No verified Nexus page for this game's loader setup.",
+      "image_note": "This framework has no separate gameplay effect to illustrate. See GitHub for its documentation.",
+      "images": []
+    },
+    "build-liberator": {
+      "author": "Fr4nsson",
+      "github": null,
+      "nexus": "https://www.nexusmods.com/norestforthewicked/mods/18",
+      "description": "Makes rune and gem extraction/insertion free while retaining the source equipment. Useful for trying different builds at Eleanor. Existing rune-slot and weapon-category limits still apply.",
+      "source_note": "Author's Nexus page. No verified public GitHub repository found.",
+      "images": [
+        {
+          "file": "media/build-liberator.png",
+          "url": "https://staticdelivery.nexusmods.com/mods/6360/images/18/18-1746894687-166583299.png",
+          "caption": "Author example: Fireball extraction confirmation.",
+          "credit": "Fr4nsson / Nexus Mods"
+        }
+      ]
+    },
+    "rune-details": {
+      "author": "vergir",
+      "github": "https://github.com/Vergir/NRftW-RuneDetails",
+      "nexus": "https://www.nexusmods.com/norestforthewicked/mods/107",
+      "description": "Adds damage, healing, resource costs and timing information to rune tooltips. Brief appends a short note; Detailed shows separate statistics. It changes displayed information and does not add combat slots.",
+      "source_note": "Both pages belong to the mod's author. Images show author examples, not a test of this installation.",
+      "images": [
+        {
+          "file": "media/rune-details-detailed.png",
+          "url": "https://staticdelivery.nexusmods.com/mods/6360/images/107/107-1791144567-97762510.jpg",
+          "caption": "Detailed mode: damage, costs, cast times and effects. Use 100% to read each tooltip.",
+          "credit": "vergir / Nexus Mods"
+        },
+        {
+          "file": "media/rune-details-brief.png",
+          "url": "https://staticdelivery.nexusmods.com/mods/6360/images/107/107-1791144552-568367988.jpg",
+          "caption": "Brief mode: compact extra information in each rune description.",
+          "credit": "vergir / Nexus Mods"
+        }
+      ]
+    },
+    "wicked-menu": {
+      "author": "theSchlooper",
+      "github": null,
+      "nexus": "https://www.nexusmods.com/norestforthewicked/mods/41",
+      "description": "Opens portable town services for selling, repairing, enchanting, infusing and managing runes. Fast travel requires it to be unlocked in the realm. Use the menu key chosen in Options; this setup initially uses F12.",
+      "source_note": "Author's Nexus page. No verified public GitHub repository found.",
+      "images": [
+        {
+          "file": "media/wicked-menu.png",
+          "url": "https://staticdelivery.nexusmods.com/mods/6360/images/headers/41_1772047022.jpg",
+          "caption": "Author's overview image, with portable service choices at the left.",
+          "credit": "theSchlooper / Nexus Mods"
+        }
+      ]
+    }
+  }
+}
