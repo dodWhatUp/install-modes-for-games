@@ -2,6 +2,7 @@
 import argparse,copy,importlib.util,json,subprocess,sys,zipfile
 from pathlib import Path
 OWNED=['scripts/GameToolEditableLists.py','scripts/GameToolCompactUI.py','scripts/Game-Tool-Hub.py',
+ 'scripts/GameToolGameProfiles.py','scripts/tests/Test-GameProfiles.py',
  'examples/game-input/AzeronOverlayStudio.integrated.ahk','examples/game-input/StudioOverlayGroups.ahk',
  'scripts/tests/Test-EditableLists.py','scripts/tests/Test-GameToolCompactUI.py',
  'scripts/Build-EditableListsRelease.py','docs/EDITABLE-CHOICE-LISTS.md']
@@ -15,7 +16,7 @@ def build(base,source,output):
     for name in OWNED:payloads[api.member_name(name)]=(source/name).read_bytes()
     manifest=copy.deepcopy(before['manifest'])
     manifest['component_versions'].update(tool_hub='0.27.25-preview.1',overlay_studio='2.2.0-unified.24',
-      compact_ui='0.5.0',editable_lists='0.1.2',overlay_groups='0.1.13')
+      compact_ui='0.5.0',editable_lists='0.1.2',overlay_groups='0.1.13',game_profiles='0.2.1')
     manifest['component_update']={'component':'editable_lists','source_commit':commit,
       'base_manifest_sha256':api.digest((base/'MANIFEST.json').read_bytes()),
       'incumbent_sources_preserved_except':OWNED,'game_state_included':False}

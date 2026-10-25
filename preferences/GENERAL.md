@@ -1,5 +1,13 @@
 # General User Preferences
 
+Choice-field presentation, requested 2026-10-26: use subtle relevant icons in
+editable search/choice fields, separate from text and stable IDs. Provide an
+explicit icon picker with Automatic/presets/No icon, Start/End placement and
+Save/Cancel. No icon retains a quiet outlined slot; opening/typing never saves
+or applies a value. Keep the permanent top area compact while retaining existing
+operations through View and an expanded-controls disclosure. See
+[field icons](../docs/CHOICE-FIELD-ICONS.md) and [responsive UI](../docs/RESPONSIVE-UI.md).
+
 App launcher convention, requested 2026-10-25: every app we create or deliver must include a convenient double-click launcher in its app folder/package. Its visible name and Desktop shortcut name end with the exact suffix `APP LAUNCHER`, using `<App Name> APP LAUNCHER` before the file extension. Provide an in-app way to locate it; preserve stable launch targets, settings, version pointers and useful legacy forwarding entries. Verify paths/targets after delivery or updates. Keep Open distinct from Install/Update. Apply this to future scoped app work; do not bulk-rename unrelated third-party apps. See [app launcher contract](../docs/APP-LAUNCHERS.md).
 
 

@@ -58,6 +58,14 @@ class Profiles(unittest.TestCase):
     def test_unknown_profile_commands_and_schema_refused(self):
         p=copy.deepcopy(self.profile);p['command']='launch';v=api.empty();v['profiles']=[p]
         with self.assertRaises(ValueError):api.validate(v)
+    def test_restore_effective_default_group_preserves_exact_overlay_and_profile_revisions(self):
+        v=self.save();v=self.service.activate(self.profile['id'],api.fingerprint(v))
+        overlay,revision=self.service.store.load();overlay['preferences']['overrides'].clear()
+        self.service.store.write(overlay,revision)
+        before_overlay=self.service.store.load()[1];before_profiles=self.service.load()[1]
+        self.service.activate(self.profile['id'],before_profiles)
+        self.assertEqual(self.service.store.load()[1],before_overlay)
+        self.assertEqual(self.service.load()[1],before_profiles)
     def test_startup_entry_refuses_foreign_file_and_only_removes_owned_entry(self):
         root=self.root/'startup';root.mkdir();path=root/api.LAUNCHER
         with mock.patch.object(api,'launcher_bytes',return_value=b'fixed app launcher'):

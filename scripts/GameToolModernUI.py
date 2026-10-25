@@ -10,7 +10,7 @@ from tkinter import ttk, font as tkfont
 from GameToolCompactUI import ScrollableFrame, FlowToolbar
 from GameToolWorkspace import DOMAINS
 
-VERSION = "0.1.2"
+VERSION = "0.1.3"
 COLORS = dict(background="#f3f5f8", surface="#ffffff", ink="#18283b",
               muted="#526477", line="#dce3eb", accent="#076b68",
               rail="#172b40", rail_text="#edf3f9", rail_muted="#bed0e2",
@@ -93,6 +93,7 @@ class ModernSurface:
         self.domain = None
         self.closed = False
         self._job = None
+        self._heading_job = None
         self._bindings = []
         self._legacy_grid = []
         self._raw_colors = []
@@ -159,6 +160,11 @@ class ModernSurface:
         for label in (self.title, self.subtitle, self.note, self.empty, self.page_title, self.detail):
             label.game_tools_wrap_managed = True
         self.reflow_font = tkfont.Font(root=self.root, family="Segoe UI", size=10)
+        # The dashboard is hidden on a saved page. Its Configure event cannot
+        # own the visible page heading's widths or resize scheduling.
+        for widget in (w.breadcrumb,self.top):
+            token=widget.bind('<Configure>',self._queue_heading,add='+')
+            self._bindings.append((widget,'<Configure>',token))
         for widget, role in ((self.back, "home"), (self.page_title, "page-title"),
                              (self.detail_button, "show-details"), (self.detail, "page-details")):
             self.identify(widget, "UI-007."+role, "Modern / "+role.replace("-", " "))
@@ -200,6 +206,7 @@ class ModernSurface:
         self.w.view_menu.master.configure(width=7)
         self.w.toolbar.configure(padding=(16, 10))
         self.w.breadcrumb.configure(padding=(18, 12))
+        self._queue_heading()
         self._color_raw()
         self._disclose_actions(self.w.content)
         self.show_home()
@@ -279,6 +286,7 @@ class ModernSurface:
         self.page_title.configure(text=record["title"])
         self.detail_button.grid()
         self.details_changed()
+        self._queue_heading()
         self._highlight(record["domain"])
 
     def _highlight(self, domain=None):
@@ -374,6 +382,28 @@ class ModernSurface:
         else:
             self.detail.pack_forget()
         self.detail_button.configure(text="Hide details" if visible else "Show details")
+        self._queue_heading()
+
+    def _queue_heading(self,event=None):
+        if not self.closed and self._heading_job is None:
+            self._heading_job=self.top.after_idle(self._reflow_heading)
+
+    def _reflow_heading(self):
+        self._heading_job=None
+        if self.closed or not self.active:return
+        width=self.top.winfo_width()
+        if width<=1:
+            width=max(240,self.w._available_width-36)
+        buttons=self.back.winfo_reqwidth()+self.detail_button.winfo_reqwidth()+26
+        narrow=width-buttons<max(240,self.reflow_font.measure('Game profiles and controls'))
+        info=self.page_title.grid_info()
+        row=1 if narrow else 0;column=0 if narrow else 1;span=3 if narrow else 1
+        if (int(info.get('row',-1)),int(info.get('column',-1)),int(info.get('columnspan',1)))!=(row,column,span):
+            self.page_title.grid_configure(row=row,column=column,columnspan=span,pady=(7,0)if narrow else 0)
+        self._set_wrap(self.page_title,max(180,width if narrow else width-buttons))
+        detail_width=self.w.breadcrumb.winfo_width()-36
+        if detail_width<=1:detail_width=width
+        self._set_wrap(self.detail,max(180,detail_width))
 
     def _queue_reflow(self, event):
         if event.widget is self.grid and self._job is None and not self.closed:
@@ -397,8 +427,7 @@ class ModernSurface:
         wrap = max(160, self.body.winfo_width()-70)
         for label in (self.title, self.subtitle, self.note, self.empty):
             self._set_wrap(label, wrap)
-        self._set_wrap(self.page_title, max(120, self.w.breadcrumb.winfo_width()-240))
-        self._set_wrap(self.detail, max(200, self.w.breadcrumb.winfo_width()-40))
+        self._queue_heading()
 
     @staticmethod
     def _set_wrap(label, width):
@@ -410,4 +439,9 @@ class ModernSurface:
         if self._job:
             self.grid.after_cancel(self._job)
             self._job = None
+        if self._heading_job:
+            self.top.after_cancel(self._heading_job);self._heading_job=None
+        for widget,event,token in self._bindings:
+            if widget.winfo_exists():widget.unbind(event,token)
+        self._bindings=[]
         self.dashboard.close()

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-26",
+  "timezone": "Asia/Jerusalem",
+  "scope": "GitHub source publication and private Drive source checkpoint only",
+  "published_base": "cab772a9ebb49930038aa5fdb1ca7762c8c58310",
+  "source_owner_head": "ea2de50d127ce904f8125ce59fc934af9d252c10",
+  "reconciled_components": {
+    "tool_hub": "0.27.28-preview.2",
+    "choice_icons": "0.1.1",
+    "editable_lists": "0.1.3",
+    "compact_header": "0.1.0",
+    "modern_ui": "0.1.3",
+    "appearance": "0.5.4",
+    "game_profiles": "0.2.1",
+    "mod_controls": "2.2.0",
+    "interface_views": "1.0.1"
+  },
+  "source_preservation": {
+    "installed_payload_hashes_verified": 614,
+    "reconciled_runtime_code": "matches all incumbent runtime code after Git line-ending normalization",
+    "intentional_other_differences": "maintained historical documentation, sanitized templates, export inventory and privacy tests",
+    "original_source_masters": "retained"
+  },
+  "fresh_headless_checks": {"profile_backend": 11, "interface_packaging": 7, "total": 18},
+  "owner_reported_gui_suites": {
+    "windows_tcl_correction_icon_cases": 14,
+    "editable_list_cases": 16,
+    "icon_feature_modern_ui_baseline": 27,
+    "earlier_responsive_heading_cases": 24,
+    "compact_header_cases": 27,
+    "interface_views_integration_fixture": "passed with unchanged incumbent InterfaceViews1.0.1; retained route and both drafts",
+    "counting_boundary": "separate dated suites; do not sum as one native acceptance count"
+  },
+  "windows_acceptance": {
+    "platform_dropdown_startup_typing_backspace_escape": "passed on the earlier installed0.1.2 correction",
+    "responsive_rendering_and_compact_menu_contents": "passed in their scoped deliveries",
+    "compact_full_submenu_interaction": "not fully accepted natively after concurrent human input",
+    "latest_icons_render_and_startup_log": "passed according to current source owner",
+    "latest_icon_picker_and_persistence": "in progress; not claimed accepted"
+  },
+  "publication_changes": {
+    "installation_or_pointer": false,
+    "app_restart_or_input": false,
+    "game_or_overlay_action": false,
+    "settings_or_profiles": false
+  },
+  "backup_boundary": "authored source and sanitized documentation only; settings/native profiles/saves/binaries/machine manifests remain outside this package"
+}

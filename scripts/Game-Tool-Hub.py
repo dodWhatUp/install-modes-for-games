@@ -19,7 +19,7 @@ import time
 import uuid
 from datetime import datetime, timezone
 
-VERSION = "0.27.25-preview.1"
+VERSION = "0.27.28-preview.2"
 HEADER = struct.Struct("<5Ii2I")
 ENTRY_MIN = 1324
 MAX_MAP = 16 * 1024 * 1024
@@ -524,6 +524,8 @@ def gui(data_dir, draft=None, catalog_path=None, overlay_page=False, unified_ins
         dpi_api.SetProcessDpiAwarenessContext.argtypes = [ctypes.c_void_p]
         dpi_api.SetProcessDpiAwarenessContext(ctypes.c_void_p(-2))
     root = tk.Tk()
+    root.game_tools_icon_path = data_dir / 'ui-choice-icons.json'
+    root.game_tools_icon_namespace = 'unified-game-tools'
     instance_handle = None
     if unified_install is not None:
         kernel = ctypes.WinDLL("kernel32", use_last_error=True)
@@ -1096,6 +1098,14 @@ def gui(data_dir, draft=None, catalog_path=None, overlay_page=False, unified_ins
         except Exception as error:
             status.set("Focus layout unavailable; original pages retained: " + str(error))
     root.game_tools_mod_integration = mod_integration
+    try:
+        from GameToolChoiceIcons import context as icon_context
+        if workspace: icon_context(workspace.selector, 'navigation.finder', 'Search')
+        if profiles_panel:
+            icon_context(profiles_panel.game, 'profiles.game', 'Game')
+            icon_context(profiles_panel.profile, 'profiles.saved', 'Profile')
+    except ImportError:
+        pass
     root.game_tools_notebook = tabs
     if unified_panel is not None: unified_panel.on_close = close_hub
     root.protocol("WM_DELETE_WINDOW", close_hub)

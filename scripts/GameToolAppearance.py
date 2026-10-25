@@ -13,7 +13,7 @@ import tkinter as tk
 from tkinter import ttk
 from GameToolCompactUI import FlowToolbar, enhance_tables
 
-VERSION = "0.5.2"
+VERSION = "0.5.4"
 MODES = ("Modern", "Professional", "Compact", "Classic")
 MARKER_TYPES = ((1,"Controls"),(2,"Text & status"),(4,"Tables & images"),(8,"Sections"))
 
@@ -339,7 +339,7 @@ class Appearance:
         self.classic_foreground = self.style.lookup("TLabel", "foreground") or "black"
         self.controls = ttk.Frame(header)
         self.controls.pack(side="right", padx=8)
-        ttk.Label(self.controls, text="Interface").pack(side="left", padx=(0, 5))
+        ttk.Label(self.controls, text="Layout").pack(side="left", padx=(0, 5))
         self.selector = ttk.Combobox(self.controls, textvariable=self.mode,
             values=MODES, state="readonly", width=14)
         self.selector.pack(side="left")
@@ -366,6 +366,10 @@ class Appearance:
                 (workspace.active_widget,"UI-004","Current page heading")):
                 self.markers.register(widget, identifier, label)
         self.change(self.mode.get(), persist=False)
+        self.compact_header = None
+        if workspace:
+            from GameToolCompactHeader import CompactHeader
+            self.compact_header = CompactHeader(root, header, workspace, self)
         wrap_labels(root)
         enhance_tables(root)
         if self.preferences.read_only:
@@ -514,6 +518,9 @@ class Appearance:
                     self.markers.register(widget, identifier, label)
             if scroll: workspace.tree.yview_moveto(scroll[0])
         self.current = mode
+        compact = getattr(self, 'compact_header', None)
+        if compact:
+            compact.refresh()
         if persist:
             if self.save():
                 self.status.set(f"{mode} layout • existing pages, edits, profiles and engines kept")
@@ -596,6 +603,8 @@ class Appearance:
         entry.focus_set()
 
     def close(self):
+        if self.compact_header:
+            self.compact_header.close()
         if self.native_feedback:
             self.native_feedback(False)
         self.markers.close()

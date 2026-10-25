@@ -9,7 +9,7 @@ from pathlib import Path
 import time, uuid
 import GameToolOverlay as overlay
 
-VERSION = "0.2.0"
+VERSION = "0.2.1"
 LAUNCHER = 'Unified Game Tools APP LAUNCHER.cmd'
 
 def fingerprint(value): return overlay.sha(overlay.encode(value))
@@ -192,6 +192,19 @@ class Profiles:
         v,current=self.load();overlay.require(current==expected,'Profiles changed; refresh')
         p=next(x for x in v['profiles']if x['id']==profile_id)
         problems=self.check(p);overlay.require(not problems,'; '.join(problems))
+        # Restoring an already effective setup must not re-save preferences,
+        # invent a redundant default-group override or advance either revision.
+        if v['active_profile_id']==profile_id and v['options']['enabled']:
+            current,_=self.store.load();prefs=current['preferences']
+            if p.get('provider')=='rewasd':
+                if not prefs['enabled']and not prefs['display']:return v
+            else:
+                idx=overlay.validate_store(current)
+                groups={a['default_group']for a in idx['associations'].values()if a['game_id']==p['game_id']}
+                group=prefs['overrides'].get(p['game_id'])
+                group_matches=group==p['group_id']if group else groups=={p['group_id']}
+                if (group_matches and prefs['enabled']and prefs['display']and prefs['display_target']=='studio'
+                    and prefs['selections'].get(p['game_id'])==p['selection']):return v
         if p.get('provider')=='rewasd':
             # Selecting/restoring a controller setup never applies native input
             # or displays an Azeron map for an unrelated device.

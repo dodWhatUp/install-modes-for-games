@@ -1,5 +1,8 @@
 # Game tools knowledge and recovery index
 
+- [Latest Unified Game Tools source checkpoint, 2026-10-26](UNIFIED-TOOLS-DELIVERY-2026-10-26.md): Windows dropdown and idempotent profile restoration, responsive headings, compact top area and configurable field icons. Preserves the installed 0.27.28-preview.2 line and all prior Mod Controls/interface owners; publication never restarts tools or interrupts a running game.
+- [Choice-field icons](CHOICE-FIELD-ICONS.md) and [responsive/compact UI](RESPONSIVE-UI.md): quiet presets/empty slots, Start/End placement, explicit Save/Cancel and retained View operations, with separately scoped native/guest acceptance.
+
 - [Unified Game Tools delivery and source reconciliation, 2026-10-25](UNIFIED-TOOLS-DELIVERY-2026-10-25.md): preserves the current 0.27.25 line, Mod Controls 2.2, runtime profiles/reWASD, both interface choices and editable search lists. Source backup, installed state, Windows acceptance and physical game/device acceptance remain distinct.
 - [Existing / New interface selection](UNIFIED-INTERFACE-VIEWS.md) and [editable choice fields](EDITABLE-CHOICE-LISTS.md): shared services and explicit save/apply ownership; opening or typing does not apply a value.
 - [Mod Control creation contract](MOD-CONTROL-CONTRACT.md): compact rows, source/image provenance, nearby options, gameplay/graphics context, discovery and recovery rules for future games.

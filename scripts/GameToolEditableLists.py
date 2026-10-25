@@ -1,13 +1,14 @@
 """Editable Tk choice lists that keep the caret while suggestions are open.
 
 Presentation only: existing variables, validation, selection events and explicit
-Add/Save actions retain ownership. No grab, global OS input hook or file writes.
+Add/Save actions retain ownership. No grab or global OS input hook. Optional
+choice icons have their own separately reviewed presentation preferences.
 """
 from __future__ import annotations
 import tkinter as tk
 from tkinter import ttk, font
 
-VERSION = "0.1.2"
+VERSION = "0.1.3"
 
 def tab_events(window_system):
     # ISO_Left_Tab is an X11 keysym; Windows Tk rejects it during binding.
@@ -40,9 +41,17 @@ class EditableList:
     def editable(self):return self.widget.winfo_exists()and not self.widget.instate(['disabled'])and str(self.widget.cget('state'))=='normal'
     def click(self,event):
         if not self.editable():return
-        if 'arrow'in self.widget.identify(event.x,event.y):
+        element=self.widget.identify(event.x,event.y)
+        if 'arrow'in element:
             return self.toggle(event)
         self.widget.after_idle(self.open)
+        if 'textarea'not in element:
+            # Leading/trailing icon padding is still part of the text field.
+            # Native Combobox bindings otherwise post a grabbing readonly list
+            # when a click lands in that padding instead of its textarea.
+            self.widget.focus_set();self.widget.icursor('@'+str(event.x))
+            if not getattr(event,'state',0)&1:self.widget.selection_clear()
+            return 'break'
         # Native entry binding still positions the caret / selects text.
     def toggle(self,*_):
         if not self.editable():return
@@ -174,6 +183,11 @@ class EditableList:
 class ListBehavior:
     def __init__(self,root):
         self.root=root;self.active=None
+        try:
+            from GameToolChoiceIcons import install as install_icons
+            install_icons(root)
+        except ImportError:
+            pass  # Older standalone packages keep their original list behavior.
         root.bind_class('TCombobox','<Map>',self.mapped,add='+')
         root.bind_all('<ButtonPress-1>',self.outside,add='+')
         root.bind_all('<FocusIn>',self.focus,add='+')

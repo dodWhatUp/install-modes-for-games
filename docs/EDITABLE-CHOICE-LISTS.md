@@ -37,3 +37,10 @@ an X11 keysym. Version 0.1.2 binds Tab/Shift-Tab everywhere and the additional
 ISO_Left_Tab event only on X11. Sixteen isolated cases passed; installation and
 native Windows acceptance of this correction remain pending after a human
 Escape stop. A partially built window from 0.1.1 does not indicate lost profiles.
+
+Follow-up, 2026-10-26: the 0.1.2 correction was subsequently installed and passed
+actual Windows startup, text-area opening, typing/filtering, Backspace and Escape
+restoration checks. Later editable lists 0.1.3 retain this fix and coordinate
+clickable presentation icons without inserting icon characters into field values.
+The earlier pending paragraph is a historical delivery boundary. See the
+[latest checkpoint](UNIFIED-TOOLS-DELIVERY-2026-10-26.md) for current scope.

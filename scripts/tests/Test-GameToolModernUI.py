@@ -87,6 +87,47 @@ class ModernUI(unittest.TestCase):
         self.assertEqual(len(self.m.links), 8)
         self.assertEqual(self.operations, [])
 
+    def test_compact_top_keeps_search_and_reclaims_editor_space(self):
+        self.root.deiconify()
+        self.w.route('page.profiles')
+        self.root.update()
+        self.assertFalse(self.header.winfo_ismapped())
+        self.assertTrue(self.w.selector.winfo_ismapped())
+        self.assertTrue(self.w.view_menu.master.winfo_ismapped())
+        self.assertLess(self.w.content.winfo_rooty()-self.root.winfo_rooty(), 150)
+        self.assertEqual(self.operations, [])
+
+    def test_expanded_controls_are_reachable_without_changing_edits_or_settings(self):
+        self.root.deiconify()
+        self.w.route('page.comparison')
+        self.root.update()
+        compact = self.a.compact_header
+        before = self.path.read_bytes() if self.path.exists() else None
+        compact.expanded.set(True); compact.refresh(); self.root.update()
+        self.assertTrue(self.a.selector.winfo_ismapped())
+        compact.expanded.set(False); compact.refresh(); self.root.update()
+        self.assertFalse(self.header.winfo_ismapped())
+        self.assertEqual(self.entry.get(), 'unsaved fixture')
+        self.assertEqual(self.w.current_route, 'comparison')
+        self.assertEqual(self.path.read_bytes() if self.path.exists() else None, before)
+        self.assertEqual(self.operations, [])
+
+    def test_compact_menu_keeps_layout_and_identification_owners(self):
+        compact = self.a.compact_header
+        labels = [self.w.view_menu.entrycget(i, 'label') for i in range(self.w.view_menu.index('end')+1)
+                  if self.w.view_menu.type(i) != 'separator']
+        self.assertIn('Layout', labels)
+        self.assertIn('Identify UI', labels)
+        self.assertIn('Show expanded app controls', labels)
+        target = next(i for i in range(compact.layout_menu.index('end')+1)
+                      if compact.layout_menu.entrycget(i, 'label') == 'Compact')
+        self.w.route('page.comparison')
+        compact.layout_menu.invoke(target); self.root.update()
+        self.assertEqual(self.a.mode.get(), 'Compact')
+        self.assertEqual(self.w.current_route, 'comparison')
+        self.assertEqual(self.entry.get(), 'unsaved fixture')
+        self.assertEqual(self.operations, [])
+
     def test_categories_are_view_only_and_all_features_remain_reachable(self):
         before = self.tabs.select()
         count = 0
@@ -202,6 +243,23 @@ class ModernUI(unittest.TestCase):
         self.assertTrue(self.w.show_navigation.get())
         self.w.toggle_navigation()
         self.assertIn(str(self.w.sidebar), self.w.splitter.panes())
+    def test_saved_page_header_reflows_when_home_was_never_mapped(self):
+        self.w.route('page.profiles');self.w.show_details.set(True);self.w._visibility_changed()
+        self.root.geometry('1000x700');self.root.deiconify();self.root.update()
+        self.assertFalse(self.m.dashboard.winfo_ismapped())
+        self.assertGreater(int(self.m.page_title.cget('wraplength')),400)
+        self.assertGreater(self.w.content.winfo_height(),self.w.frame.winfo_height()*.55)
+        self.assertLess(self.w.breadcrumb.winfo_height(),180)
+        self.assertEqual(self.entry.get(),'unsaved fixture');self.assertEqual(self.operations,[])
+    def test_active_page_resizes_at_large_text_without_revisiting_home(self):
+        self.w.route('page.profiles');self.w.show_details.set(True);self.w._visibility_changed()
+        self.root.tk.call('tk','scaling',1.8);self.root.deiconify()
+        for width,height in ((1300,850),(720,650),(1000,700)):
+            self.root.geometry(f'{width}x{height}');self.root.update()
+            self.assertGreater(self.w.content.winfo_height(),self.w.frame.winfo_height()*.45)
+            self.assertLess(self.w.breadcrumb.winfo_height(),220)
+            self.assertEqual(self.tabs.select(),str(self.pages['profiles']))
+            self.assertEqual(self.entry.get(),'unsaved fixture')
 
     def test_feedback_on_tasks_text_and_sections_has_stable_ids(self):
         first = {label: identifier for _, identifier, label in self.m.identifiers}
