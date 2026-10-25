@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "version": "0.1.0",
+  "date": "2026-10-25",
+  "status": "parallel_user_review_not_adopted",
+  "base_installed_version": "hub-0.27.22-preview.1-2817156aa3b7",
+  "source_package": {
+    "sha256": "da7bae53b39437c71a900fb1db37b6f07714b7f842860348009103c41c712635",
+    "files": 561,
+    "unchanged_incumbent_files": 553
+  },
+  "validation": {
+    "disposable_model_tests": 13,
+    "isolated_Tk_GUI_tests": 10,
+    "visual_review": "Wide light and narrow 125-percent dark reviewed; contrast and wrapping repaired",
+    "real_Shadow_controls_read": 17,
+    "real_private_Vortex_handoff": "Prepared and ZIP bytes verified; not deployed",
+    "current_installation_pointer_unchanged": true,
+    "native_settings_unchanged": true,
+    "game_launched": false,
+    "real_game_Apply_tested": false
+  },
+  "review_scope": [
+    "Shared location, open/copy and bounded Refresh files components",
+    "Page-specific destination-program choices and private handoff exports",
+    "Independent Show/Hide sections with retained values",
+    "Floating draft editor and parallel profile copies",
+    "Profiles/overlays, tools, reports and app-file navigation",
+    "Theme/zoom and separate launcher view/draft files",
+    "Local comparison feedback without automatic adoption or messaging"
+  ],
+  "limits": [
+    "Original manager/game/native-profile owners remain authoritative.",
+    "File handoff is not universal native import or deployment.",
+    "Apply uses the existing reviewed controller and its confirmation/recovery checks.",
+    "Tests with fictional games do not establish real game or hardware stability.",
+    "The current main app is not replaced; the user decides adoption after review."
+  ]
+}
