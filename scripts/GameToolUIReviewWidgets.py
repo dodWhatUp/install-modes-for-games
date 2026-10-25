@@ -3,6 +3,16 @@ import tkinter as tk
 from tkinter import ttk
 from GameToolCompactUI import Selector,FlowToolbar,ScrollableFrame,TableLayout
 
+class WindowPin(ttk.Checkbutton):
+    """An independent window-manager preference; no focus loop or input hook."""
+    def __init__(self,parent,window,value=False,on_change=lambda value:None):
+        self.window,self.on_change=window,on_change;self.value=tk.BooleanVar(window,value=bool(value))
+        super().__init__(parent,text='Always on top',variable=self.value,command=self.apply)
+        self.apply(save=False)
+    def apply(self,save=True):
+        self.window.attributes('-topmost',self.value.get())
+        if save:self.on_change(self.value.get())
+
 class Section(ttk.Frame):
     def __init__(self,parent,title,on_hide):
         super().__init__(parent,style='Review.Card.TFrame',padding=12)
@@ -51,7 +61,7 @@ class ResourcePane(ttk.Frame):
 
 class SchemaEditor(ttk.Frame):
     def __init__(self,parent,schema,variables):
-        super().__init__(parent,style='Review.Card.TFrame');self.columnconfigure(1,weight=1)
+        super().__init__(parent,style='Review.Card.TFrame');self.columnconfigure(1,weight=1);self.widgets={}
         for i,field in enumerate(schema):
             ttk.Label(self,text=field['label'],style='Review.Card.TLabel').grid(row=i,column=0,sticky='w',padx=(0,20),pady=6)
             var=variables[field['id']]
@@ -59,6 +69,7 @@ class SchemaEditor(ttk.Frame):
             elif field['type']=='enum':widget=ttk.Combobox(self,textvariable=var,values=field['choices'],state='readonly')
             else:widget=ttk.Spinbox(self,textvariable=var,from_=field['min'],to=field['max'],increment=1 if field['type']=='int' else .1)
             widget.grid(row=i,column=1,sticky='ew',pady=6)
+            self.widgets[field['id']]=widget
 
 def theme(root,dark=False,zoom=100):
     palette=({'bg':'#111821','card':'#1d2734','ink':'#ecf2f9','muted':'#b4c2d3','accent':'#86bfff'} if dark else

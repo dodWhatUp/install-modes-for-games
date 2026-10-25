@@ -1,4 +1,42 @@
-# Game Tools UI workflow preview 0.1
+# Game Tools UI workflow preview 0.2
+
+## Pin and find controls (0.2)
+
+The design remains a parallel preview. **Always on top** is available independently
+on the main window, floating settings editor and finder. It uses the ordinary
+window-manager flag, saves a preview-only preference and does not repeatedly
+steal focus, install an input hook or change a game overlay. It keeps the window
+above ordinary desktop windows; exclusive fullscreen and secure desktops are
+outside this guarantee.
+
+**Find settings & functions** (Ctrl+F) opens a nonmodal finder. Search scopes are
+This page, Selected game and All connected games. Ctrl+Shift+F starts at Selected
+game. Advanced filters select Type and Relevant to (Graphics, Gameplay, Camera,
+Files, Programs, Profiles, Reports or Interface). Hiding advanced filters resets
+their restrictions. Empty search browses controls; unavailable connections and
+partial result limits are shown. The index reads at most 64 connected installations
+and 32 typed fields per installation, plus declared preview navigation/functions
+and known location metadata. It does not recursively scan personal files or index
+the internal menus of external programs.
+
+Search accepts exact names/IDs, common English and Hebrew purpose terms and close
+spellings. For example, “more abilities at the same time” finds Multi Equip Skills,
+“camera” finds FOV controls, and “Vortex” finds file preparation. Related-purpose
+matches are explained. This is a curated local vocabulary, not an AI model call
+or a compatibility diagnosis. Experimental controls retain their existing labels
+and limits; finding DLAA does not establish working SR or DLSS 5.
+
+Results show the page/section, game/installation, control type and relevant topic.
+Selecting **Reveal control** restores a hidden card, navigates to the correct
+context and focuses its widget. It never invokes Apply, exports, launches programs
+or toggles settings. Switching game contexts preserves their separate drafts.
+Applied values in results are an index snapshot; refresh the index for new values.
+
+Updates can reuse the existing separate review-data folder with `--review-data`.
+Existing preview drafts, profiles, exports and view choices are retained. The
+old version and shortcut recovery are preserved; the production pointer is not
+switched. Windows launcher paths are read back after delivery. Actual window
+stacking depends on the destination window manager and requires native observation.
 
 This is a separate parallel review version, requested on 2026-10-25. The current
 Mod Controls and Unified Game Tools source, launchers and settings stay in place.

@@ -7,12 +7,14 @@ from urllib.parse import urlsplit
 from tkinter import ttk,messagebox,simpledialog,filedialog
 from GameToolCompactUI import Selector,FlowToolbar,ScrollableFrame,window_bounds
 from GameToolUIReviewModel import ReviewModel,VERSION,PAGES,MANAGERS,TARGETS
-from GameToolUIReviewWidgets import Section,Visibility,ResourcePane,SchemaEditor,theme
+from GameToolUIReviewWidgets import Section,Visibility,ResourcePane,SchemaEditor,WindowPin,theme
+from GameToolUIReviewSearch import Finder,SCOPES,group_for
 from game_mod_ops.safety import ModError
 
 class ReviewApp(ttk.Frame):
     def __init__(self,root,model,initial_page=None):
         self.root,self.model=root,model;self.page=initial_page or model.view['page'];self.instance=None;self.observation=None;self.variables={};self.sections={};self.rows=[];self.resource_id=None;self.floating=[];self.closed=False;self.worker=None;self.events=queue.Queue();self.pending=False;self.token=0
+        self.finder=None;self.pending_result=None;self.field_widgets={};self.action_widgets={}
         self.status=tk.StringVar(root,value='Parallel preview • current installation and game files remain unchanged')
         self.manager=tk.StringVar(root,value=model.view.get('manager','vortex'));self.game_id=model.view.get('game_id');self.profile_id=None
         self.dark=tk.BooleanVar(root,value=model.view.get('theme')=='Dark');self.zoom=tk.StringVar(root,value=str(model.view.get('zoom',100)))
@@ -20,11 +22,13 @@ class ReviewApp(ttk.Frame):
         root.title('Game Tools UI Preview '+VERSION+' — parallel review');w,h,mw,mh=window_bounds(root.winfo_screenwidth(),root.winfo_screenheight());root.geometry(f'{w}x{h}');root.minsize(mw,mh)
         top=ttk.Frame(self,style='Review.TFrame');top.pack(fill='x');ttk.Label(top,text='Game Tools · UI Preview',style='Review.Title.TLabel').pack(side='left')
         ttk.Label(top,text='  '+VERSION+'  |  separate review version',style='Review.TLabel').pack(side='left')
-        ttk.Checkbutton(top,text='Dark',variable=self.dark,command=self.restyle).pack(side='right')
-        z=ttk.Combobox(top,textvariable=self.zoom,values=['90','100','125','150'],width=5,state='readonly');z.pack(side='right',padx=8);z.bind('<<ComboboxSelected>>',lambda _:self.restyle())
+        self.dark_button=ttk.Checkbutton(top,text='Dark',variable=self.dark,command=self.restyle);self.dark_button.pack(side='right')
+        z=ttk.Combobox(top,textvariable=self.zoom,values=['90','100','125','150'],width=5,state='readonly');z.pack(side='right',padx=8);z.bind('<<ComboboxSelected>>',lambda _:self.restyle());self.zoom_box=z
         context=ttk.Frame(self,style='Review.TFrame');context.pack(fill='x',pady=10);context.columnconfigure(1,weight=1);context.columnconfigure(3,weight=1)
         ttk.Label(context,text='Game',style='Review.TLabel').grid(row=0,column=0,padx=(0,8));self.game=Selector(context,on_select=self.choose_game);self.game.grid(row=0,column=1,sticky='ew')
         ttk.Label(context,text='Installation',style='Review.TLabel').grid(row=0,column=2,padx=10);self.installation=Selector(context,on_select=self.choose_instance);self.installation.grid(row=0,column=3,sticky='ew')
+        findbar=ttk.Frame(self,style='Review.TFrame');findbar.pack(fill='x',pady=(0,8));self.find_button=ttk.Button(findbar,text='Find settings & functions…  Ctrl+F',command=self.open_finder);self.find_button.pack(side='left')
+        self.pin=WindowPin(findbar,root,model.view.setdefault('window_pins',{}).get('main',False),lambda value:self.save_pin('main',value));self.pin.pack(side='right',padx=8)
         shell=ttk.Frame(self,style='Review.TFrame');shell.pack(fill='both',expand=True);shell.columnconfigure(1,weight=1);shell.rowconfigure(0,weight=1)
         self.nav=ttk.Frame(shell,style='Review.TFrame',padding=(0,0,12,0));self.nav.grid(row=0,column=0,sticky='ns')
         for key,label in PAGES.items():ttk.Button(self.nav,text=label,style='Review.TButton',command=lambda k=key:self.navigate(k)).pack(fill='x',pady=(0,7))
@@ -41,11 +45,45 @@ class ReviewApp(ttk.Frame):
         self.game_id=self.game_id if any(g['game_id']==self.game_id for g in self.game_rows) else default
         self.game.select(self.game_id);self.choose_game(self.game_id);self._poll=self.after(80,self.poll)
         root.protocol('WM_DELETE_WINDOW',self.close);root.bind('<Control-r>',lambda _:self.refresh());root.bind('<Control-k>',lambda _:self.game.focus_set())
+        root.bind('<Control-f>',lambda _:self.open_finder());root.bind('<Control-Shift-F>',lambda _:self.open_finder(SCOPES[1]))
     @property
     def busy(self):return bool(self.worker and self.worker.is_alive())
     def safe(self,fn):
         try:return fn()
         except (ModError,ValueError,OSError,KeyError,RuntimeError,tk.TclError) as error:self.status.set(str(error));messagebox.showerror('Preview needs attention',str(error),parent=self.root)
+    def save_pin(self,key,value):
+        self.model.view.setdefault('window_pins',{})[key]=bool(value);self.model.save_view()
+    def open_finder(self,scope=SCOPES[0]):
+        self.stash()
+        if self.finder and self.finder.winfo_exists():self.finder.lift();self.finder.entry.focus_set();return self.finder
+        self.finder=Finder(self,scope);return self.finder
+    def action(self,bar,label,fn,key):
+        button=bar.add(label,lambda:self.safe(fn));self.action_widgets[key]=button;return button
+    def reveal_result(self,item):
+        # Discovery can navigate and focus. It must never invoke a result action.
+        self.stash();target_game=item.get('game_id');target_instance=item.get('instance')
+        if target_game and target_game!=self.game_id:self.game.select(target_game);self.choose_game(target_game)
+        if target_instance and target_instance!=self.instance:self.installation.select(target_instance);self.choose_instance(target_instance)
+        if item['page']!=self.page:self.navigate(item['page'])
+        self.pending_result=item
+        if not self.busy and not self.pending:self.finish_reveal()
+    def finish_reveal(self):
+        item=self.pending_result
+        if item is None:return
+        if item.get('instance') and item['instance']!=self.instance:self.pending_result=None;self.status.set('The selected installation changed. Search again.');return
+        self.pending_result=None;section=item.get('section')
+        if section:self.jump_section(section)
+        widget=None
+        if item.get('field_id'):widget=self.field_widgets.get(item['field_id'])
+        elif item.get('resource_id') and hasattr(self,'resource_pane'):
+            ident=item['resource_id'];self.resource_pane.selector.select(ident);self.select_resource(ident);widget=self.resource_pane.selector
+        elif item.get('action_id'):
+            key=item['action_id'];widget={'pin':self.pin,'find':self.find_button,'dark':self.dark_button,'zoom':self.zoom_box,'show-hide':self.visibility,'game':self.game,'installation':self.installation}.get(key) or self.action_widgets.get(key)
+        self.root.update_idletasks()
+        if widget and widget.winfo_exists():
+            self.root.lift();widget.focus_set();top=widget.winfo_rooty()-self.body.winfo_rooty()
+            if section:self.scroll.canvas.yview_moveto(max(0,top-70)/max(1,self.body.winfo_height()))
+        self.status.set('Found: '+item['breadcrumb']+' • revealed only; no value changed or function run.')
     def restyle(self):
         self.palette,self.font=theme(self.root,self.dark.get(),int(self.zoom.get()));self.model.view.update(theme='Dark' if self.dark.get() else 'Light',zoom=int(self.zoom.get()));self.model.save_view()
         self.schedule_wrap()
@@ -93,7 +131,7 @@ class ReviewApp(ttk.Frame):
     def clear(self):
         if hasattr(self,'resource_pane'):self.resource_pane.close();del self.resource_pane
         for widget in self.content.winfo_children():widget.destroy()
-        self.sections={}
+        self.sections={};self.field_widgets={};self.action_widgets={}
     def render(self):
         self.clear();self.title.set(PAGES[self.page]);self.resource_id=None
         if self.page=='mods':self.render_mods()
@@ -105,7 +143,8 @@ class ReviewApp(ttk.Frame):
         self.rows=self.model.resources(self.page,self.instance)
         self.resource_pane=ResourcePane(parent,on_select=self.select_resource,on_folder=lambda:self.safe(self.open_folder),on_open=lambda:self.safe(self.open_item),on_copy=lambda:self.safe(self.copy_path),on_refresh=self.refresh);self.resource_pane.pack(fill='both',expand=True)
         self.resource_pane.set_resources(self.rows);self.select_resource(self.resource_pane.selector.selected_id,refresh=False)
-        ttk.Button(parent,text='Add location…',command=lambda:self.safe(self.add_location)).pack(anchor='w',pady=(6,0))
+        button=ttk.Button(parent,text='Add location…',command=lambda:self.safe(self.add_location));button.pack(anchor='w',pady=(6,0));self.action_widgets['add-location']=button
+        self.action_widgets.update({key:self.resource_pane.actions[label] for key,label in [('folder','Open location'),('item','Open selected item'),('copy','Copy path'),('refresh','Refresh files')]})
     def add_location(self):
         path=filedialog.askdirectory(parent=self.root,title='Connect an existing folder to this preview page')
         if path:self.model.add_location(self.page,path);self.stash();self.render();self.refresh()
@@ -115,15 +154,16 @@ class ReviewApp(ttk.Frame):
         if schema:
             self.ensure_variables(schema,state['values']);groups={}
             for field in schema:
-                group='Graphics' if field['id'] in {'profile','graphics','dlaa','nr'} else 'Camera & render size' if field['id'] in {'fov','fov_min','fov_max','width','height'} else 'Gameplay & mod options'
+                group=group_for(field)
                 groups.setdefault(group,[]).append(field)
             bar=FlowToolbar(parent);bar.pack(fill='x')
-            for label,fn in [('Preview changes',self.preview),('Apply through current controller…',self.apply),('Floating editor',self.floating_editor),('Reset draft to applied',self.reset_draft)]:bar.add(label,lambda f=fn:self.safe(f))
-            for index,(name,fields) in enumerate(groups.items()):SchemaEditor(self.section('settings-'+str(index),name),fields,self.variables).pack(fill='x')
+            for label,fn,key in [('Preview changes',self.preview,'preview'),('Apply through current controller…',self.apply,'apply'),('Floating editor',self.floating_editor,'floating'),('Reset draft to applied',self.reset_draft,'reset')]:self.action(bar,label,fn,key)
+            for index,(name,fields) in enumerate(groups.items()):
+                editor=SchemaEditor(self.section('settings-'+str(index),name),fields,self.variables);editor.pack(fill='x');self.field_widgets.update(editor.widgets)
         else:ttk.Label(parent,text='Choose a connected installation with reviewed controls. Existing app connections remain the source owner.',style='Review.Card.TLabel',wraplength=750).pack(anchor='w')
         parent=self.section('profiles','Profiles · current and parallel copies');self.profile=Selector(parent,on_select=lambda ident:setattr(self,'profile_id',ident));self.profile.pack(fill='x')
         if schema:self.profile.set_choices([(r['id'],r['label']) for r in self.model.profile_rows(self.instance)])
-        bar=FlowToolbar(parent);bar.pack(fill='x');bar.add('Load into draft',lambda:self.safe(self.load_profile));bar.add('Save parallel profile…',lambda:self.safe(self.save_profile))
+        bar=FlowToolbar(parent);bar.pack(fill='x');self.action(bar,'Load into draft',self.load_profile,'load-profile');self.action(bar,'Save parallel profile…',self.save_profile,'save-profile')
         parent=self.section('changes','Preview & source state');self.output=tk.Text(parent,height=6,width=28,wrap='word',font=self.font,bg=self.palette['card'],fg=self.palette['ink']);self.output.pack(fill='both',expand=True);self.write('Refresh files reads applied settings. Preview and saved drafts do not change the game.')
         self.render_resources();self.render_manager()
         parent=self.section('sources','Mod sources & capability details')
@@ -148,7 +188,7 @@ class ReviewApp(ttk.Frame):
         allowed=TARGETS.get(self.page,['folder','custom']);preferred=self.model.view.get('destination_by_page',{}).get(self.page,self.manager.get());selected=preferred if preferred in allowed else allowed[0];self.manager.set(selected)
         self.destination=Selector(parent,choices=[(key,MANAGERS[key]) for key in allowed],on_select=self.choose_manager);self.destination.pack(fill='x');self.destination.select(selected)
         bar=FlowToolbar(parent);bar.pack(fill='x',pady=4)
-        for label,fn in [('Prepare files',self.export),('Open prepared folder',self.open_export),('Open selected program',self.open_program),('Locate program…',self.locate_program)]:bar.add(label,lambda f=fn:self.safe(f))
+        for label,fn,key in [('Prepare files',self.export,'export'),('Open prepared folder',self.open_export,'export-folder'),('Open selected program',self.open_program,'program'),('Locate program…',self.locate_program,'locate-program')]:self.action(bar,label,fn,key)
         ttk.Label(parent,text='Choose the relevant program. Preparation, opening and native import/deployment are separate steps.',style='Review.Muted.TLabel',wraplength=800).pack(anchor='w')
     def choose_manager(self,ident):self.manager.set(ident);self.model.view.setdefault('destination_by_page',{})[self.page]=ident;self.model.save_view()
     def render_review(self):
@@ -201,6 +241,7 @@ class ReviewApp(ttk.Frame):
         self.stash();self.preview()
     def floating_editor(self):
         win=tk.Toplevel(self.root);win.title('Parallel preview · floating settings');win.geometry('580x650');win.minsize(360,300)
+        pin=WindowPin(win,win,self.model.view.setdefault('window_pins',{}).get('floating',False),lambda value:self.save_pin('floating',value));pin.pack(anchor='e',padx=10,pady=6);win.review_pin=pin
         body=ScrollableFrame(win,min_width=300);body.pack(fill='both',expand=True);SchemaEditor(body.body,self.observation['schema'],self.variables).pack(fill='x',padx=10,pady=10)
         ttk.Label(body.body,text='Shared draft • hiding a section does not disable its mods.',wraplength=500).pack(anchor='w',padx=10,pady=8);self.floating.append(win)
     def save_profile(self):
@@ -240,6 +281,7 @@ class ReviewApp(ttk.Frame):
         if not self.busy:
             self.progress.stop()
             if self.pending:self.refresh()
+            elif self.pending_result:self.finish_reveal()
         self._poll=self.after(80,self.poll)
     def export(self):
         if self.busy:raise ModError('READ_BUSY','Wait for the current read before preparing files.')
@@ -272,6 +314,7 @@ class ReviewApp(ttk.Frame):
         if path:self.model.locate_program(self.manager.get(),path);self.status.set('Program connection saved only in the parallel preview.')
     def close(self):
         if self.busy:self.status.set('A bounded read/export is finishing. Close again when it returns; existing output is retained.');return False
+        if self.finder and self.finder.winfo_exists() and not self.finder.close():self.status.set('The control finder is finishing its bounded read. Close again when it returns.');return False
         self.stash();self.closed=True;self.after_cancel(self._poll)
         if self._wrap_job is not None:self.after_cancel(self._wrap_job)
         if hasattr(self,'resource_pane'):self.resource_pane.close()

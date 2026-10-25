@@ -1,24 +1,31 @@
 {
   "schema_version": 1,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "date": "2026-10-25",
   "status": "parallel_user_review_not_adopted",
   "base_installed_version": "hub-0.27.22-preview.1-2817156aa3b7",
   "source_package": {
-    "sha256": "da7bae53b39437c71a900fb1db37b6f07714b7f842860348009103c41c712635",
-    "files": 561,
+    "sha256": "11028648152748fc35fddcc015614a6de57770b08cdd7b0f6c3410cc378fc231",
+    "files": 563,
     "unchanged_incumbent_files": 553
   },
   "validation": {
     "disposable_model_tests": 13,
-    "isolated_Tk_GUI_tests": 10,
-    "visual_review": "Wide light and narrow 125-percent dark reviewed; contrast and wrapping repaired",
+    "local_search_tests": 11,
+    "isolated_Tk_GUI_tests": 17,
+    "visual_review": "Wide light main and narrow 125-percent dark finder reviewed; details/actions remain visible.",
     "real_Shadow_controls_read": 17,
-    "real_private_Vortex_handoff": "Prepared and ZIP bytes verified; not deployed",
+    "purpose_queries_verified": [
+      "more abilities at the same time",
+      "camera",
+      "Vortex"
+    ],
     "current_installation_pointer_unchanged": true,
     "native_settings_unchanged": true,
+    "existing_preview_views_unchanged": true,
     "game_launched": false,
-    "real_game_Apply_tested": false
+    "real_game_Apply_tested": false,
+    "native_Windows_window_stacking_observed": false
   },
   "review_scope": [
     "Shared location, open/copy and bounded Refresh files components",
@@ -27,13 +34,25 @@
     "Floating draft editor and parallel profile copies",
     "Profiles/overlays, tools, reports and app-file navigation",
     "Theme/zoom and separate launcher view/draft files",
-    "Local comparison feedback without automatic adoption or messaging"
+    "Local comparison feedback without automatic adoption or messaging",
+    "Independent Always on top preferences for main/floating/finder windows",
+    "Page/game/all-connected-game metadata search; type/topic filters; purpose synonyms and spelling tolerance",
+    "Reveal exact hidden control/context without invoking its function or changing values"
   ],
   "limits": [
     "Original manager/game/native-profile owners remain authoritative.",
     "File handoff is not universal native import or deployment.",
     "Apply uses the existing reviewed controller and its confirmation/recovery checks.",
     "Tests with fictional games do not establish real game or hardware stability.",
-    "The current main app is not replaced; the user decides adoption after review."
-  ]
+    "The current main app is not replaced; the user decides adoption after review.",
+    "Search covers reviewed preview controls and declared metadata, not every external program menu.",
+    "Purpose vocabulary is curated locally; no AI service call or compatibility inference.",
+    "Effective window stacking remains dependent on the destination window manager."
+  ],
+  "previous_0_1_acceptance": {
+    "model": 13,
+    "isolated_Tk": 10,
+    "real_Shadow_controls": 17,
+    "private_Vortex_export": "Prepared in 0.1; no new deployment in 0.2"
+  }
 }

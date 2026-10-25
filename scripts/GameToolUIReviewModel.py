@@ -7,7 +7,7 @@ from GameToolModControls import ModControls
 from GameToolUnified import atomic_json
 from game_mod_ops.safety import ModError,contained,digest,no_links,read_json,require,slug,copy_new
 
-VERSION='0.1.0'
+VERSION='0.2.0'
 MANAGERS={'vortex':'Vortex','mod-organizer-2':'Mod Organizer 2','rhi':'RHI','azeron':'Azeron Software','rewasd':'reWASD','rtss':'RTSS','obs':'OBS Studio','spreadsheet':'Spreadsheet app','custom':'Another installed app','folder':'Portable folder'}
 TARGETS={'mods':['vortex','mod-organizer-2','rhi','custom','folder'],'tools':['folder','custom'],
          'profiles':['azeron','rewasd','rtss','vortex','mod-organizer-2','custom','folder'],
