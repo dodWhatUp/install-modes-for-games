@@ -14,11 +14,12 @@ from tkinter import ttk, font as tkfont
 
 VERSION='0.1.0'
 DEFAULT={'schema_version':1,'zoom':100,'density':'Compact','navigation':True,'route':'mods'}
-LABELS={'mods':'Mods','automation':'AI requests','studio':'Picture & input','overlays':'Overlays',
+LABELS={'mod-controls':'Mod Controls','mods':'Mods','automation':'AI requests','studio':'Picture & input','overlays':'Overlays',
         'comparison':'Compare results','reports':'Reports','sessions':'Diagnostics','catalog':'Catalog',
         'tools':'Connected tools','sensors':'Sensors','rtss':'RTSS','updates':'Updates','data':'User data','guide':'Help'}
 ORDER=tuple(LABELS)
-SCOPES={'mods':'Plan → download → prepare → install with UMM',
+SCOPES={'mod-controls':'Selected game and installation · typed settings, profiles and local AI review',
+        'mods':'Plan → download → prepare → install with UMM',
         'automation':'Local approval · no automatic execution',
         'studio':'Native Studio · zoom here changes the shell only',
         'overlays':'Display choices are separate from native input mappings',
@@ -215,7 +216,7 @@ class FocusSurface:
         self.selector.focus_set();self.selector.selection_range(0,'end');return 'break'
     def rebuild_routes(self):
         tree=self.w.tree;tree.delete(*tree.get_children());self.w._rows={}
-        groups=[('Work',('mods','automation','overlays','studio')),('Evidence',('comparison','reports','sessions')),('Tools & setup',('catalog','tools','sensors','rtss','updates','data','guide'))]
+        groups=[('Work',('mod-controls','mods','automation','overlays','studio')),('Evidence',('comparison','reports','sessions')),('Tools & setup',('catalog','tools','sensors','rtss','updates','data','guide'))]
         for index,(label,routes) in enumerate(groups):
             present=[r for r in routes if r in self.w.route_tabs]
             if not present:continue

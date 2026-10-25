@@ -19,12 +19,13 @@ from game_mod_ops.safety import (
     read_json, require, slug,
 )
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 SCHEMA_VERSION = 1
 MAX_INSTANCES = 64
 MAX_RECORD_BYTES = 64 * 1024
 MAX_PUBLIC_VALUES = 4096
 _ACCEPTED_ADAPTERS = {"umm"}
+KNOWN_READ_ADAPTERS = {"umm", "smapi", "bepinex", "directory", "external"}
 _STORES = {"steam", "gog", "epic", "microsoft", "other", "unknown"}
 _SHORT = re.compile(r"[^\x00-\x1f\x7f]{1,120}\Z")
 _SHA = re.compile(r"[a-f0-9]{64}\Z")
@@ -108,10 +109,13 @@ def _assert_public_metadata(value, depth=0):
 class InstanceRegistry:
     """Opaque identities over explicitly selected local game directories."""
 
-    def __init__(self, data_dir: Path, workspaces):
+    def __init__(self, data_dir: Path, workspaces, accepted_adapters=None):
         self.data_dir = no_links(Path(data_dir))
         self.root = self.data_dir / "game-instances"
         self.workspaces = workspaces
+        self.accepted_adapters=set(_ACCEPTED_ADAPTERS if accepted_adapters is None else accepted_adapters)
+        require(bool(self.accepted_adapters) and self.accepted_adapters<=KNOWN_READ_ADAPTERS,
+                'ADAPTER_UNAVAILABLE','Choose implemented read adapters.')
 
     def _definition(self, game_id):
         game_id = slug(game_id)
@@ -126,7 +130,7 @@ class InstanceRegistry:
         else:
             raise ModError("ADAPTER_UNAVAILABLE",
                            "This game has no reviewed folder-identification definition.")
-        require(definition["adapter"] in _ACCEPTED_ADAPTERS,
+        require(definition["adapter"] in self.accepted_adapters,
                 "ADAPTER_ACCEPTANCE_PENDING",
                 "This slice accepts only the reviewed UMM read adapter.")
         return definition, support_revision
@@ -157,7 +161,7 @@ class InstanceRegistry:
         require(type(body) is dict and set(body) == fields,
                 "INSTANCE_CORRUPT", "Unexpected game-instance body fields.")
         slug(body["instance_id"]); slug(body["game_id"]); slug(body["manager_id"])
-        require(body["adapter"] in _ACCEPTED_ADAPTERS and body["platform"] in {"windows", "linux", "macos"},
+        require(body["adapter"] in KNOWN_READ_ADAPTERS and body["platform"] in {"windows", "linux", "macos"},
                 "INSTANCE_CORRUPT", "Instance adapter or platform is unsupported.")
         require(body["store"] in _STORES, "INSTANCE_CORRUPT", "Instance store is unsupported.")
         _text(body["build"], "build")
@@ -246,6 +250,7 @@ class InstanceRegistry:
             "truncated": matched > len(rows),
             "registration": "LOCAL_OPERATOR_ONLY",
             "accepted_adapter": "umm",
+            "accepted_adapters":sorted(self.accepted_adapters),
             "paths_included": False,
             "writes_game_files": False,
         }
@@ -344,9 +349,9 @@ class InstanceRegistry:
             "inventory": observation,
             "observation_revision": object_hash(observation),
             "adapter_contract": {
-                "adapter": "umm",
+                "adapter": body['adapter'],
                 "version": 1,
-                "reads": ["executable_markers", "loader_markers", "Mods/Info.json", "declared_assemblies"],
+                "reads": ["executable_markers", "loader_markers", "declared_mod_metadata"],
                 "writes": [],
                 "manager_profile_read": False,
                 "runtime_verified": False,

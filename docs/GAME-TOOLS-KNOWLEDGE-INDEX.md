@@ -1,5 +1,7 @@
 # Game tools knowledge and recovery index
 
+- [Shared multi-game Mod Controls and direct AI interface](MULTI-GAME-MOD-CONTROLS.md): one game registry, profiles, typed settings, native manager handoffs and revision-bound local approvals; component 2.0 added 2026-10-25.
+
 - [APP LAUNCHER naming and included-entry contract](APP-LAUNCHERS.md): standing user preference; adopted for Shadow of War controls on 2026-10-25.
 
 

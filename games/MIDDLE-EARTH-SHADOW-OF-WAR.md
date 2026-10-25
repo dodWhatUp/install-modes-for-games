@@ -1,5 +1,7 @@
 # Middle-earth: Shadow of War
 
+2026-10-25 shared controls: [Mod Controls 2.0](../docs/MULTI-GAME-MOD-CONTROLS.md) adds a multi-game workspace to Unified Game Tools, retaining the reviewed Shadow controller engine, profiles and recovery. It exposes 17 typed Shadow controls through the shared UI and local AI tools. The old controller remains available. Connection/read verification preserved the native settings hash; no game settings were applied or game launched by this integration.
+
 2026-10-25 Mod Control 1.2: automatic validated settings discovery and mapping rebuild now handle the earlier render.cfg launch failure. The actual Desktop launch succeeded with its mapping absent; native configuration/save hashes were preserved. 27 file checks and 57 isolated GUI checks passed. **Files & tools > Find / repair settings location...** provides the recovery UI. [Source and acceptance](../examples/shadow-of-war-controls/README.md).
 
 2026-10-25 Mod Control 1.1: **Mods & folders** provides source links and in-app author text; **Settings...** opens floating gameplay editors; **Manager transfer...** prepares and opens an export folder/ZIP and can open a chosen installed manager. Fifteen file checks and 41 isolated GUI checks passed; the Windows Desktop launch and browser were observed. No game configuration Apply or real manager migration occurred. [Source and controls](../examples/shadow-of-war-controls/README.md).

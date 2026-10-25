@@ -579,6 +579,8 @@ class WorkspaceAI:
     def __init__(self,data_dir):
         self.workspaces=GameWorkspaces(data_dir)
         self.keybinds=self.workspaces.keybinds
+        from GameToolModControls import ModControls
+        self.controls=ModControls(data_dir,self.workspaces)
     def games(self):return self.workspaces.context()['sections']['games']
     def support_schema(self):return support_schema()
     def validate_support(self,pack):

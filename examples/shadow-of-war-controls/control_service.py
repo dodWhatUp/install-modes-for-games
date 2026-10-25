@@ -6,8 +6,12 @@ from __future__ import annotations
 from pathlib import Path
 import configparser, contextlib, copy, datetime, hashlib, importlib.util, json, math
 import os, re, shutil, subprocess, tempfile, zipfile
-from mod_resources import resources
-from settings_locator import SettingsLocationError, resolve_settings
+if __package__:
+    from .mod_resources import resources
+    from .settings_locator import SettingsLocationError, resolve_settings
+else:
+    from mod_resources import resources
+    from settings_locator import SettingsLocationError, resolve_settings
 
 VERSION='1.2.0'
 MODS={'multi-skills':('Multi Equip Skills','Multi Equip Skills.dll'),

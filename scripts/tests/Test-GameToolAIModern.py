@@ -183,6 +183,29 @@ class ModernProtocolContracts(unittest.TestCase):
         result = self.endpoint.handle({"jsonrpc": "2.0", "id": 2, "method": "initialize", "params": {}})
         self.assertEqual(result["error"]["code"], -32601)
 
+    def test_legacy_progress_and_tracing_metadata_do_not_change_era(self):
+        endpoint=DualEndpoint(self.service,source_root=self.package)
+        endpoint.handle({'jsonrpc':'2.0','id':1,'method':'initialize','params':{}})
+        endpoint.handle({'jsonrpc':'2.0','method':'notifications/initialized'})
+        for meta in ({'progressToken':'test','com.example/trace':'fixture'},
+                     {'io.modelcontextprotocol/protocolVersion':'2025-11-25','io.modelcontextprotocol/clientCapabilities':{}}):
+            result=endpoint.handle({'jsonrpc':'2.0','id':2,'method':'tools/list','params':{'_meta':meta}})
+            self.assertIn('tools',result['result']);self.assertEqual(endpoint.era,'legacy')
+            result=endpoint.handle({'jsonrpc':'2.0','id':3,'method':'tools/call','params':{'_meta':meta,'name':'hub_context','arguments':{}}})
+            self.assertFalse(result['result']['isError']);self.assertEqual(endpoint.era,'legacy')
+
+    def test_genuine_modern_metadata_is_still_refused_after_legacy_initialize(self):
+        endpoint=DualEndpoint(self.service,source_root=self.package)
+        endpoint.handle({'jsonrpc':'2.0','id':1,'method':'initialize','params':{}})
+        result=endpoint.handle({'jsonrpc':'2.0','id':2,'method':'tools/list','params':{'_meta':self.meta}})
+        self.assertEqual(result['error']['code'],-32600)
+
+    def test_malformed_legacy_metadata_is_refused(self):
+        endpoint=DualEndpoint(self.service,source_root=self.package)
+        endpoint.handle({'jsonrpc':'2.0','id':1,'method':'initialize','params':{}})
+        result=endpoint.handle({'jsonrpc':'2.0','id':2,'method':'tools/list','params':{'_meta':'wrong'}})
+        self.assertEqual(result['error']['code'],-32602)
+
 
     def test_modern_workspace_lists_keybind_and_foundation_tools_once(self):
         from GameToolGameWorkspaces import WorkspaceAI

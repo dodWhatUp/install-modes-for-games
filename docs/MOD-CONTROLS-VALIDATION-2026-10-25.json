@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "component": "Mod Controls",
+  "version": "2.0.0",
+  "date": "2026-10-25",
+  "source_release": {
+    "sha256": "c784a68bf6e67b6a96d2f84836d835004d0c0fdcafe3233987a8dec8de95eb23",
+    "files": 553,
+    "unchanged_incumbent_files": 519,
+    "hub_version_preserved": "0.27.22-preview.1",
+    "studio_version_preserved": "2.2.0-unified.22",
+    "source_verifier_preserved": "0.2.1"
+  },
+  "checks": {
+    "disposable_multi_game_service": {"passed": 12},
+    "isolated_native_Tk": {"passed": 9, "scope": "switching, persisted drafts, profiles, floating editor, narrow layout, registration, confirmed apply and cancelled apply"},
+    "shared_workspaces": {"passed": 41},
+    "modern_and_legacy_protocol": {"passed": 23},
+    "source_update_recovery": {"passed": 33},
+    "AI_foundation_in_isolated_Linux": {"passed": 16, "skipped": 1, "skip_reason": "source-checkout-without-manifest case is inapplicable in an actual generated package"},
+    "hub_page_mount": "PASS",
+    "Windows_launcher_delivery_fixture": "PASS",
+    "real_Windows_Desktop_Explorer_launch": "PASS",
+    "real_Shadow_settings_read": {"fields": 17, "native_settings_unchanged": true},
+    "real_Codex_MCP_client_discovery": {"tools": 35, "mod_control_tools": 9, "no_AI_turn": true}
+  },
+  "limitations": [
+    "Per-game writable controls require a reviewed adapter and pack, not merely a catalog entry.",
+    "Generic INI and multi-game writes were tested on disposable fixtures; real Shadow settings were read only.",
+    "Manager handoff is prepared files, not native deployment or profile migration.",
+    "An existing running Hub loads the new page on its next normal restart; user draft windows are preserved.",
+    "AI tool discovery in a diagnostic client does not prove a running chat has reloaded its tool catalog.",
+    "No game launch, benchmark, capture, save mutation, graphics-profile activation or neural-rendering experiment was performed."
+  ],
+  "private_evidence": "Retained outside Git and OneDrive; machine bindings, source provenance, package hashes and recovery receipts are separate."
+}

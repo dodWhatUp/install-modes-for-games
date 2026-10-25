@@ -6,7 +6,7 @@ from GameToolAutomation import AutomationService
 from GameToolAutomationPanel import AutomationPanel
 from game_mod_ops.panel import ModWorkflowPanel
 
-VERSION = "0.1.1"
+VERSION = "0.2.0"
 
 
 def navigation_registry(workspace_api):
@@ -15,10 +15,12 @@ def navigation_registry(workspace_api):
     def record(ident,title,route,summary,keywords):
         return dict(id=ident,title=title,route=route,domain=workspace_api.DOMAINS[3],
                     summary=summary,scope='Explicit actions only; no games, capture or driver changes',keywords=keywords)
-    additions=[record('page.mods','Mods & downloads','mods','Plan, download and stage original mod files with preserved receipts.','nexus kingmaker umm mods'),
+    additions=[record('page.mod-controls','Mod Controls','mod-controls','Inspect and manage reviewed mod settings across registered games.','profiles settings mods manager ai'),
+               record('page.mods','Mods & downloads','mods','Plan, download and stage original mod files with preserved receipts.','nexus kingmaker umm mods'),
                record('page.automation','AI & automation','automation','Review typed AI requests, share sanitized summaries and approve exact actions.','ai mcp agent automation context'),
                record('page.system-control','System control center','system-control','Explore selected instructions and capabilities, inspect activity and check a draft request.','architecture instructions triggers sync chats preflight')]
-    goals=[record('goal.mods','Prepare my game mods','mods','Choose one game recipe and review downloads before installation.','mods download manager'),
+    goals=[record('goal.mod-controls','Control my game mods','mod-controls','Choose an installation, review settings and reuse shared profiles and AI requests.','settings profiles manager'),
+           record('goal.mods','Prepare my game mods','mods','Choose one game recipe and review downloads before installation.','mods download manager'),
            record('goal.ai','Work with AI safely','automation','Preview requests and share only selected information.','ai automation approval reports'),
            record('goal.understand-system','Understand my system and request','system-control','Read source evidence and compare request wording before submission.','architecture rules request preflight')]
     return workspace_api.FeatureRegistry(features=workspace_api.DEFAULT_FEATURES+tuple(additions),
@@ -40,6 +42,10 @@ class Integration:
         notebook.add(self.mods,text='Mods')
         notebook.add(self.automation,text='AI & automation')
         self.routes={'mods':self.mods,'automation':self.automation}
+        from GameToolModControlsPanel import ModControlsPanel
+        self.mod_controls=ModControlsPanel(notebook,data_dir,status)
+        notebook.add(self.mod_controls,text='Mod Controls')
+        self.routes['mod-controls']=self.mod_controls
         self.system_control = None
         try:
             from GameToolSystemControlPanel import SystemControlPanel
@@ -56,8 +62,9 @@ class Integration:
             state=self.automation.state,watch=self.automation.watch,buttons=self.automation.buttons)
     def can_close(self):
         a=self.mods.can_close(); b=self.automation.can_close()
-        return a and b
+        return a and b and self.mod_controls.can_close()
     def close(self):
+        self.mod_controls.close()
         if self.system_control is not None:
             self.system_control.close()
         self.automation.close()

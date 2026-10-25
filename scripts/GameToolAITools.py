@@ -93,6 +93,9 @@ def base_tools(allow_requests=False, multi_game=False):
                 definition["description"] = "Preview a registered game recipe; no network or writes."
             if name == "hub_propose":
                 schema["properties"]["operation"]["enum"] = ["mods.create_plan", "mods.download", "mods.stage"]
+    if multi_game:
+        from GameToolModControlAI import tools as control_tools
+        result.extend(control_tools(allow_requests))
     return result
 
 
@@ -106,6 +109,9 @@ def validate_arguments(definition: dict[str, Any], args: Any) -> None:
 
 
 def dispatch_base(service, name, args, *, multi_game=False):
+    if name.startswith('mod_controls_'):
+        from GameToolModControlAI import dispatch
+        return dispatch(service,name,args)
     if name == "hub_capabilities":
         value = capabilities()
         if multi_game:

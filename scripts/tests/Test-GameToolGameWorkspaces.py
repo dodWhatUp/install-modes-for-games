@@ -108,7 +108,7 @@ class WorkspaceTests(unittest.TestCase):
  def test_context_delta_and_privacy(self):
   self.samples();c=self.w.context();d=self.w.context(known_revisions=c['revisions']);self.assertEqual(d['sections'],{});self.assertNotIn(str(self.data),json.dumps(c));self.assertNotIn('https:',json.dumps(c))
  def test_ai_schema_scoped_no_approve(self):
-  defs=tools(True,True);self.assertEqual(len(defs),10)
+  defs=tools(True,True);self.assertEqual(len(defs),19)
   self.assertNotIn('approve',','.join(d['name'] for d in defs))
   for d in defs:
    if d['name'] in {'hub_propose','mods_preview_plan','hub_request_status'}:self.assertIn('game_id',d['inputSchema']['required'])

@@ -217,9 +217,13 @@ class DualEndpoint:
 
     @staticmethod
     def _looks_modern(message):
+        # _meta also exists in legacy MCP (progress/tracing). It is not, on
+        # its own, evidence that the client changed protocol eras.
         return isinstance(message, dict) and (
             message.get("method") == "server/discover" or
             isinstance(message.get("params"), dict) and isinstance(message["params"].get("_meta"), dict)
+            and any(key in message['params']['_meta'] for key in (PROTOCOL_KEY,CLIENT_CAPABILITIES_KEY))
+            and message['params']['_meta'].get(PROTOCOL_KEY) != LEGACY_PROTOCOL
         )
 
     def handle(self, message):
@@ -240,6 +244,10 @@ class DualEndpoint:
                 return {"jsonrpc": "2.0", "id": ident, "error": {
                     "code": -32600, "message": "This stdio process already selected legacy protocol semantics.",
                 }}
+            if isinstance(message,dict) and isinstance(message.get('params'),dict) and '_meta' in message['params']:
+                if not isinstance(message['params']['_meta'],dict):
+                    return {'jsonrpc':'2.0','id':message.get('id'),'error':{'code':-32602,'message':'Request metadata must be an object.'}}
+                message=deepcopy(message);message['params'].pop('_meta')
             return self.legacy.handle(message)
         if isinstance(message, dict) and message.get("method") in {"initialize", "notifications/initialized", "ping"}:
             ident = message.get("id")

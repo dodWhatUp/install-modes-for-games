@@ -1,5 +1,37 @@
 # History
 
+## 2026-10-25 - Shared multi-game Mod Controls and AI interface
+
+The user requested a multi-game controller integrated with the general game app,
+reusing its workflows, external programs and direct AI access. Mod Controls 2.0
+adds a shared Hub page and a stable standalone APP LAUNCHER over the same game
+registry, installation identities, profiles, typed settings and approval owner.
+Shadow reuses its reviewed controller engine and recovery; other games can
+connect reviewed data-only INI control packs. Support is capability-specific,
+not universal automatic mod installation or manager deployment.
+
+The real Shadow installation exposes 17 typed controls. Its Desktop shortcut was
+opened through Explorer and displayed applied settings without the earlier
+render.cfg error. The native configuration SHA-256 stayed
+`700db74e4240084afa593f3988f75658c0f0530ebfeaec3ecf0ee5c1aece7281`.
+No game settings were applied and no game was launched for this integration.
+The older Shadow controller windows and their drafts remain available.
+
+Twelve disposable service tests, nine isolated Tk tests, the shared workspace
+suite, modern protocol suite and source updater checks passed. Real Codex
+client discovery found 35 shared tools including nine Mod Controls operations.
+It exposed an ordinary legacy-metadata compatibility failure; the repaired
+transport has explicit regression coverage and retains protocol-era boundaries.
+AI reads/previews are direct; changes are revision-bound proposals for visible
+local review, never model-approved execution. No model API key or paid model
+call was added.
+
+The component update preserves unrelated incumbent code, the newer verifier,
+Studio bytes, data roots and the previous baseline. A running old Hub keeps its
+draft editors until its next normal restart; the new standalone view is already
+available. [Architecture, limits and access](../../docs/MULTI-GAME-MOD-CONTROLS.md),
+[sanitized validation](../../docs/MOD-CONTROLS-VALIDATION-2026-10-25.json).
+
 ## 2026-10-25 - Automatic native-settings discovery and mapping rebuild
 
 The user asked the program to handle the earlier missing-render.cfg problem itself. Controller 1.2 adds a bounded locator for the saved mapping, normal Windows local app-data roots and the game's exact package-cache locations. An open Windows file handle resolves virtual spellings to the physical file. Validation checks native width/height/HDR keys, duplicate/nonfinite values and size limits. A valid saved selection wins; unique/byte-identical candidates can rebuild the mapping automatically, while conflicting different files require an explicit choice.

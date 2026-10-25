@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "kind": "game-mod-controls",
+  "game_id": "middle-earth-shadow-of-war",
+  "adapter": "shadow-reviewed",
+  "files": {},
+  "fields": [],
+  "sources": [
+    "https://github.com/ReaperAnon/Shadow-Of-War-Mods",
+    "https://github.com/ReaperAnon/Middle-Earth-Mod-Loader",
+    "https://www.nexusmods.com/middleearthshadowofwar/mods/130"
+  ],
+  "notes": "Uses the existing reviewed file controller and its recovery, ownership and process checks. Luma and neural trials remain off after the recorded shutdown fault. Manager export is preparation, not deployment; game-time behavior remains separately verified."
+}

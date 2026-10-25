@@ -18,7 +18,7 @@ import subprocess
 import uuid
 import zipfile
 
-VERSION = "0.2.0"
+VERSION = "0.2.1"
 BOOTSTRAP = "scripts/Start-UnifiedTools.pyw"
 SOURCE_LOCK = ".game-tools-owner.lock"
 STUDIO = {
@@ -32,6 +32,7 @@ REQUIRED = {*STUDIO.values(), "scripts/Game-Tool-Hub.py", "scripts/GameToolUnifi
             "scripts/GameToolKeybindIntegration.py", "scripts/game_keybind_ops/core.py",
             "schemas/game-pack.schema.json"}
 MAX_BYTES = 32 * 1024 * 1024
+MAX_SOURCE_FILES = 1024
 BLOCKED = {"skyrimse.exe", "skyrimvr.exe", "cyberpunk2077.exe", "obs64.exe", "obs32.exe",
            "presentmon.exe", "presentmonconsole.exe", "frameview.exe", "capframex.exe"}
 
@@ -112,7 +113,7 @@ def check_manifest(manifest, payloads):
         raise ValueError("Expected a GameTools authored-source manifest.")
     rows = manifest.get("files")
     versions = manifest.get("component_versions", {})
-    if not isinstance(rows, list) or not 1 <= len(rows) <= 512:
+    if not isinstance(rows, list) or not 1 <= len(rows) <= MAX_SOURCE_FILES:
         raise ValueError("Invalid bounded source inventory.")
     for key in ("tool_hub", "overlay_studio"):
         if not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+(?:-[A-Za-z0-9]+(?:\.[A-Za-z0-9]+)*)?", str(versions.get(key, ""))):
@@ -148,7 +149,7 @@ def inspect_archive(archive, expected_sha256):
         raise ValueError("Package SHA-256 differs from the expected checkpoint.")
     with zipfile.ZipFile(io.BytesIO(raw)) as z:
         entries = z.infolist()
-        if len(entries) > 513 or sum(e.file_size for e in entries) > MAX_BYTES + 2 * 1024 * 1024:
+        if len(entries) > MAX_SOURCE_FILES + 1 or sum(e.file_size for e in entries) > MAX_BYTES + 2 * 1024 * 1024:
             raise ValueError("Archive bounds exceeded.")
         names = set(); payloads = {}; manifest = None
         for e in entries:
