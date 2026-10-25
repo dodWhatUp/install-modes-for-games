@@ -1,5 +1,81 @@
 # History
 
+## 2026-10-25 - Selected DLAA activation: SDR menu passed, HDR restart failed
+
+The user explicitly selected DLAA. The existing Luma `latest-761` package and
+signed DLSS 310.9.16 runtime were activated with preset L, native TAA and the
+existing 3840x2160/100% resolution. Generic neural rendering stayed disabled.
+The gameplay loader was temporarily disabled to isolate the earlier shutdown
+fault; its three plugin choices and settings were preserved. Current files,
+profiles, native settings and the campaign-save subtree were backed up first.
+
+With Windows HDR initially on, Luma displayed its documented SDR-restart notice,
+disabled Windows HDR and spawned a replacement game process. The original
+process faulted before the menu: `0xC0000005`, module `ShadowOfWar.exe`
+1.0.8874.0, offset `0x106ab07`; the replacement exited 0 without reaching a menu.
+This differs from the earlier `nvwgf2umx.dll` shutdown fault and does not isolate
+one universal cause. The working file profile was restored before the next trial.
+
+A manual launch with Windows HDR already off and the same minimal DLAA profile
+reached the title/main menu. Luma showed **DLSS / L / SDR / Enabled** and the
+100%-only TAA requirement. The menu appeared dark with intermittent repeated
+character outlines during animation. Normal Quit to Desktop completed with
+Steam exit code **0** and a normal add-on unload. This is a bounded isolated
+SDR startup/menu/exit pass, not proof of repeated DLAA creation, evaluation,
+delivery, moving-scene quality, HDR game output or combined gameplay stability.
+The combined trial was not run. No campaign, benchmark or neural test ran.
+
+Final state: the previous RenoDX graphics and all three gameplay plugins are
+active; Luma/DLAA and neural rendering remain installed **off**. Windows HDR was
+restored through its normal Settings control and a fresh system report verified
+3840x2160/240 Hz, PQ/BT.2020 and Advanced Color enabled. Native render.cfg and
+campaign-save hashes match the pre-trial backup. The task input helper stopped;
+the existing Studio remained running. Luma's newly created empty auto-restart
+marker was preserved outside the game so a later trial retains its startup notice.
+
+The existing controller now has separate saved presets **Before DLAA 2026-10-25**
+and **DLAA SDR trial - gameplay off**. Loading only fills the preview; Apply
+remains separate, guarded and reversible. The trial is not the everyday default.
+The included guide explains that a graphics-profile switch alone does not undo
+Luma's Windows HDR change. Recovery, exact file checks and logs remain private.
+Next boundary: diagnose HDR restart and visual artifacts, establish repeated
+feature delivery, then validate the gameplay combination before activating it
+for ordinary play. The earlier combined NVIDIA exit failure remains unresolved.
+
+## 2026-10-25 - Renewed DLSS SR and DLSS 5 request: compatibility recheck
+
+A fresh read after the renewed installation request found the previous RenoDX
+profile and three gameplay plugins active, with Luma/DLAA and Generic neural
+rendering disabled. The RTX 5090/621.01 combination is unchanged. Existing DLSS
+and NR runtimes have valid NVIDIA Authenticode signatures and deployment-matching
+hashes; installed runtime files do not establish active feature delivery.
+
+Latest Luma is still `latest-761`. Its normal Shadow of War archive digest remains
+`74336c1c7124dc033146c26ac5baee4bc07856898573871a569d60301b37d1b7`.
+The freshly fetched game source at `dc471fa590c24a12a36be3e527ec45d2595466bd`
+matches the previous review and still requires TAA with 100% internal/render
+resolution: a native-resolution DLAA path, not supported lower-resolution SR.
+No newer supported game-specific SR path or release fixing the recorded local
+shutdown failure was established.
+
+The selected RHI Generic 8.5.0-rc10 archive retains its published digest. Its
+installed native-DX11 configuration consumes a DLSS contract; it cannot create
+the missing working integration. The prior Luma exit fault and cancelled NR run
+remain the current runtime evidence. NIGos Bridge v1.4.12 documents a synthetic
+alternative for games without DLSS, using native-size DLAA and estimated motion.
+That would be a different DLSS-5-only experiment, not true SR; it was not installed.
+
+No game, store, manager, driver or display setting changed and no game launched.
+The previous profile, switches and recovery remain intact. Requested working SR
+plus DLSS 5 is **not achieved**. The next boundary is a supported SR integration
+and diagnosis of the existing Luma failure, or a separately selected alternative
+neural-rendering trial. Exact metadata/source hashes and local evidence are private.
+
+Primary sources: [Luma release](https://github.com/Filoppi/Luma-Framework/releases/tag/latest-761),
+[game source](https://github.com/Filoppi/Luma-Framework/blob/dc471fa590c24a12a36be3e527ec45d2595466bd/Source/Games/Middle-earth%20Shadow%20of%20War/main.cpp),
+[RHI mirror](https://github.com/RankFTW/rhi-repo/releases/tag/renodx-dlss5-8.5.0-rc10),
+[Bridge contract](https://github.com/NIGos/dlss5-bridge).
+
 ## 2026-10-25 - Shared multi-game Mod Controls and AI interface
 
 The user requested a multi-game controller integrated with the general game app,
