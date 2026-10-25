@@ -5,6 +5,8 @@ from pathlib import Path
 import tkinter as tk
 from tkinter import ttk, messagebox
 from control_service import ControlService, DemoService, DEFAULTS, KEYS, MODS, VERSION, atomic, json_bytes
+from mod_resources import EDIT_FIELDS
+from mod_tools_ui import ModTools
 
 LABELS={'profile':'Graphics profile','graphics':'Graphics enabled','gameplay':'Gameplay loader',
         'multi-skills':'Multi Equip Skills','elven-speed':'Elven Speed','fov':'FOV Extender',
@@ -43,7 +45,7 @@ class Panel(ttk.Frame):
         initial_height=810 if self.precise.get() else (670 if self.advanced.get() else 580)
         root.geometry(f'{min(960,root.winfo_screenwidth()-40)}x{min(initial_height,root.winfo_screenheight()-80)}')
         self.view_path=view
-        self.build();self.loading=False
+        self.build();self.mod_tools=ModTools(self);self.loading=False
         root.protocol('WM_DELETE_WINDOW',self.close)
         root.bind('<Control-s>',lambda e:self.save_profile())
         root.bind('<F5>',lambda e:self.refresh())
@@ -54,6 +56,7 @@ class Panel(ttk.Frame):
         head=ttk.Frame(self);head.pack(fill='x')
         ttk.Label(head,text='Shadow of War',style='Title.TLabel').pack(side='left')
         self.files_menu=ttk.Menubutton(head,text='Files & tools ▾');self.files_menu.pack(side='right')
+        ttk.Button(head,text='Mods & folders...',command=lambda:self.mod_tools.show()).pack(side='right',padx=7)
         menu=tk.Menu(self.files_menu,tearoff=False);self.files_menu['menu']=menu
         for label,action in [('Show APP LAUNCHER',lambda:self.open_path(Path(__file__).resolve().parent)),
              ('Saved profiles',lambda:self.open_path(self.service.base/'saved-profiles')),
@@ -93,7 +96,10 @@ class Panel(ttk.Frame):
             foreground='#8a4300',wraplength=325).pack(anchor='w',pady=(5,0))
         gameplay=ttk.LabelFrame(columns,text='Gameplay');gameplay.grid(row=0,column=1,sticky='nsew',padx=(7,0))
         self.check(gameplay,'gameplay','Enable gameplay loader').pack(anchor='w',pady=(0,5))
-        for key,(name,_) in MODS.items():self.check(gameplay,key,name).pack(anchor='w',pady=2)
+        for key,(name,_) in MODS.items():
+            row=ttk.Frame(gameplay);row.pack(fill='x',pady=2)
+            self.check(row,key,name).pack(side='left')
+            ttk.Button(row,text='Settings...',command=lambda key=key:self.mod_tools.floating(key)).pack(side='right')
         ttk.Label(gameplay,text='With the loader off, selected plugins stay configured but do not run.',style='Muted.TLabel',wraplength=325).pack(anchor='w',pady=(7,0))
         viewbar=ttk.Frame(self.body);viewbar.pack(fill='x',pady=(10,4))
         ttk.Checkbutton(viewbar,text='Show precise settings',variable=self.precise,command=self.toggle_view).pack(side='left')
@@ -121,7 +127,7 @@ class Panel(ttk.Frame):
         ttk.Label(self.bottom,textvariable=self.notice,wraplength=870,foreground='#8a4300').pack(anchor='w',pady=(0,7))
         actions=ttk.Frame(self.bottom);actions.pack(fill='x')
         ttk.Button(actions,text='Refresh files',command=self.refresh).pack(side='left')
-        ttk.Button(actions,text='Export for Vortex…',command=self.export).pack(side='left',padx=6)
+        ttk.Button(actions,text='Manager transfer...',command=self.export).pack(side='left',padx=6)
         ttk.Button(actions,text='Review changes',command=self.preview).pack(side='right',padx=(6,0))
         self.apply_button=ttk.Button(actions,text='Apply & keep files',style='Accent.TButton',command=self.apply)
         self.apply_button.pack(side='right')
@@ -182,6 +188,8 @@ class Panel(ttk.Frame):
                 if error:self.notice.set(str(error));messagebox.showerror('Action needs attention',str(error),parent=self.root)
                 else:self.notice.set('');done(result)
                 self.changed()
+                for editor in self.mod_tools.editors.values():
+                    if editor.winfo_exists():editor.update_status()
         except queue.Empty:pass
         if not self._disposed and self.winfo_exists():self._drain_job=self.root.after(100,self.drain)
     def disposed(self,event):
@@ -194,12 +202,14 @@ class Panel(ttk.Frame):
         if self.busy:return
         def done(data):
             self.snapshot=data;self.set_values(data['values'])
-            v=data['values'];active=[MODS[k][0] for k in MODS if v['gameplay'] and v[k]]
-            graphics=('RenoDX' if v['profile']=='previous' else 'Luma trial') if v['graphics'] else 'Graphics off'
-            self.applied.set('Applied: '+graphics+' · '+(', '.join(active) if active else 'Gameplay off'))
+            self.show_applied(data)
             self.notice.set('Close the game, Steam and RHI before Apply. Saving/exporting files is available now.' if data['blocked'] else 'Game-file switching is available. Every Apply keeps recovery.')
             self.profile_combo.configure(values=self.service.profile_names())
         self.run(self.service.read,done)
+    def show_applied(self,data):
+        v=data['values'];active=[MODS[k][0] for k in MODS if v['gameplay'] and v[k]]
+        graphics=('RenoDX' if v['profile']=='previous' else 'Luma trial') if v['graphics'] else 'Graphics off'
+        self.applied.set('Applied: '+graphics+' · '+(', '.join(active) if active else 'Gameplay off'))
     def preview(self):
         if not self.snapshot:return
         try:changes=self.service.preview(self.values(),self.snapshot)
@@ -210,6 +220,20 @@ class Panel(ttk.Frame):
         desired=self.values();snapshot=copy.deepcopy(self.snapshot)
         def done(result):self.notice.set(result['message']);self.refresh()
         self.run(lambda:self.service.apply(desired,snapshot),done)
+    def apply_mod(self,key,callback=None):
+        if not self.snapshot or self.busy:return
+        snapshot=copy.deepcopy(self.snapshot);draft=self.values();fields=EDIT_FIELDS[key]
+        desired=copy.deepcopy(snapshot['values'])
+        for field in fields:desired[field]=draft[field]
+        def job():return self.service.apply(desired,snapshot),self.service.read()
+        def done(result):
+            applied,data=result;self.snapshot=data;self.show_applied(data);merged=copy.deepcopy(data['values'])
+            for field in DEFAULTS:
+                if field not in fields and draft[field]!=snapshot['values'][field]:merged[field]=draft[field]
+            self.set_values(merged)
+            self.notice.set('Applied this mod. Other preview edits remain pending. '+applied['message'])
+            if callback:callback()
+        self.run(job,done)
     def save_profile(self):
         if self.busy or not self.snapshot:return
         try:
@@ -228,15 +252,12 @@ class Panel(ttk.Frame):
     def all_off(self):
         v=self.values();v['graphics']=False;v['gameplay']=False;self.set_values(v)
     def export(self):
-        if not self.snapshot or self.busy:return
-        snapshot=copy.deepcopy(self.snapshot)
-        def done(p):self.notice.set('Vortex handoff saved: '+str(p));self.text_window('Vortex export ready',f'{p}\n\nOriginal archives + current gameplay settings + profile.json. No deployment or migration was performed. Read READ-ME-FIRST.txt before using another manager.')
-        self.run(lambda:self.service.export_vortex(snapshot),done)
+        self.mod_tools.show('manager')
     def open_path(self,p):
         if self.demo:return self.notice.set('Demo: external file/app opening is disabled.')
         try:
             p=Path(p)
-            if not p.exists():p.mkdir(parents=True,exist_ok=True)
+            if not p.exists():raise FileNotFoundError('This location does not exist yet: '+str(p))
             os.startfile(p)
         except Exception as e:messagebox.showerror('Cannot open',str(e),parent=self.root)
     def open_rhi(self):

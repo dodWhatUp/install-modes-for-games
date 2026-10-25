@@ -1,5 +1,40 @@
 # Shadow of War file controls
 
+## 1.1 - Mod folders, author pages and floating editors
+
+**Mods & folders** opens one searchable selector for the installed/retained mods
+and official texture DLC. Each entry shows its source, file location, configured
+state and relevant mod/config/download folders. **Open folder** opens an existing
+location; it never creates a missing game folder. **Read author page here** shows
+the pinned author's text for the three gameplay plugins and loader inside the
+app. **Open author page** opens the full source website in the default browser.
+This is a text reader, not an embedded authenticated web browser.
+
+The three gameplay rows have **Settings...** buttons for nonmodal floating
+editors; the shared loader also has an editor in the mod browser. They share the
+main preview, retain that preview on close, validate original plugin bounds and
+offer optional **Keep this window on top**. **Apply this mod** applies only that
+mod's supported fields and retains unrelated pending edits. **Save profile file**
+uses the existing main profile name and persistent JSON format. These are offline
+file controls; they do not inject an overlay or promise live in-game changes.
+
+**Manager transfer...** separates **Prepare manager files**, **Open export folder**,
+**Open package ZIP**, the readable handoff guide and **Open manager**. The latter
+uses a detected or explicitly selected installed executable. It does not install
+a manager. The ZIP is a transport container: extract it and import the four
+original mod archives individually after reviewing loader and file ownership.
+Preparation reads applied files, not pending edits; it does not deploy, purge,
+edit a manager database or retire the existing controller. Official textures,
+graphics binaries, proprietary game files and saves are excluded.
+
+Validation: fifteen Windows disposable-file checks, sixteen existing Tk checks
+and twenty-five new real-widget checks passed. The GUI suites ran in the private
+Linux Xvfb lab, including compact layouts, per-mod Apply isolation, readable author
+information and separate export/open actions. Native Windows Desktop opening and
+the mod browser were observed separately. Actual manager import/deployment and
+gameplay were not tested. Machine bindings, original archives, exports, exact
+settings/save hashes and recovery remain private.
+
 An optional native Tk front end for the reviewed local profile controller. This
 extends the existing game-specific switcher, without rebuilding or modifying the
 installed Unified Game Tools app. The existing metadata support pack stays under

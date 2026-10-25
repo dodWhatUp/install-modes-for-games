@@ -5,9 +5,10 @@ No game launch, resident injector, external-manager database edit or save restor
 from __future__ import annotations
 from pathlib import Path
 import configparser, contextlib, copy, datetime, hashlib, importlib.util, json, math
-import os, re, shutil, subprocess, tempfile
+import os, re, shutil, subprocess, tempfile, zipfile
+from mod_resources import resources
 
-VERSION='1.0.1'
+VERSION='1.1.0'
 MODS={'multi-skills':('Multi Equip Skills','Multi Equip Skills.dll'),
       'elven-speed':('Elven Speed','Elven Speed.dll'),'fov':('FOV Extender','FOV Extender.dll')}
 KEYS={'Left Ctrl':'527 0 0','Right Ctrl':'531 0 0','Left Shift':'528 0 0',
@@ -260,6 +261,39 @@ class ControlService:
         if obj.get('schema')!=1 or obj.get('kind')!='shadow-war-mod-profile':raise ValueError('Unsupported profile file.')
         return validate_values(obj['values'])
 
+    def mod_resources(self):return resources(self.b.G,self.base,self.native)
+
+    def manager_executable(self):
+        saved=self.base/'manager-tools.json'
+        if saved.is_file():
+            obj=read_json(saved);candidate=Path(obj.get('manager_executable',''))
+            if candidate.is_absolute() and candidate.suffix.casefold()=='.exe' and candidate.is_file():return candidate
+        for root,relative in [('LOCALAPPDATA','Programs/Vortex/Vortex.exe'),
+                              ('ProgramFiles','Black Tree Gaming Ltd/Vortex/Vortex.exe'),
+                              ('ProgramFiles','Vortex/Vortex.exe')]:
+            if os.environ.get(root):
+                candidate=Path(os.environ[root])/relative
+                if candidate.is_file():return candidate
+        return None
+
+    def set_manager_executable(self,path):
+        path=Path(path)
+        if not path.is_absolute() or path.suffix.casefold()!='.exe' or not path.is_file():
+            raise ValueError('Choose an existing installed manager .exe file.')
+        target=private_child(self.base,'manager-tools.json')
+        obj=read_json(target) if target.exists() else {'schema':1}
+        obj['manager_executable']=str(path);atomic(target,json_bytes(obj));return path
+
+    def latest_manager_export(self):
+        root=private_child(self.base,'manager-exports')
+        if not root.exists():return None
+        candidates=[]
+        for path in root.glob('Vortex-handoff-*'):
+            if path.is_dir() and not path.is_symlink() and not (path/'INCOMPLETE.txt').exists():
+                private_child(self.base,path.relative_to(self.base))
+                if (path/'handoff-manifest.json').is_file():candidates.append(path)
+        return max(candidates,key=lambda p:p.name) if candidates else None
+
     def export_vortex(self,snapshot):
         """Private handoff of pinned original archives, never deployment or migration."""
         specs=read_json(self.base/'control-export-sources.json')
@@ -319,7 +353,15 @@ This handoff is export-verified, NOT a tested Vortex import or one-click migrati
 Installed disabled trials remain disabled. The Luma exit fault is unresolved.
 Keep this private: original authors retain their binaries and licenses.
 '''
+            guide+='\nPACKAGE ZIP: the outer ZIP is a transport/backup container. Extract it and import the four original archives individually; do not deploy the outer ZIP as a mod.\n'
             (target/'READ-ME-FIRST.txt').write_text(guide,encoding='utf-8')
+            if self.fingerprint()!=snapshot['fingerprint']:raise RuntimeError('Files changed during export; Refresh and prepare again.')
+            package=target/'Shadow of War Manager Files.zip'
+            payload=[p for p in target.rglob('*') if p.is_file()]
+            with zipfile.ZipFile(package,'w',compression=zipfile.ZIP_DEFLATED) as archive:
+                for p in payload:archive.write(p,p.relative_to(target))
+            with zipfile.ZipFile(package) as archive:
+                if archive.testzip() is not None:raise RuntimeError('Manager package verification failed.')
             return target
         except Exception as e:
             (target/'INCOMPLETE.txt').write_text(str(e),encoding='utf-8')
@@ -335,6 +377,16 @@ class DemoService:
     profile_path=ControlService.profile_path
     save_profile=ControlService.save_profile
     load_profile=ControlService.load_profile
+    manager_executable=ControlService.manager_executable
+    set_manager_executable=ControlService.set_manager_executable
+    latest_manager_export=ControlService.latest_manager_export
+    def mod_resources(self):return resources(self.base/'fixture-game/x64',self.base,self.base/'fixture-native/render.cfg')
     def apply(self,v,snapshot):self.values=validate_values(v);atomic(self.base/'demo-applied.json',json_bytes(self.values));return {'changed':True,'message':'Fixture applied; no real game was modified.'}
     def export_vortex(self,snapshot):
-        p=self.base/'demo-handoff';p.mkdir(exist_ok=True);atomic(p/'profile.json',json_bytes(snapshot['values']));return p
+        p=self.base/'manager-exports'/('Vortex-handoff-'+stamp());p.mkdir(parents=True)
+        atomic(p/'profile.json',json_bytes(snapshot['values']))
+        atomic(p/'handoff-manifest.json',json_bytes({'mode':'isolated-demo-no-real-mods'}))
+        (p/'READ-ME-FIRST.txt').write_text('Isolated demo only. No real mod archives or game files.')
+        with zipfile.ZipFile(p/'Shadow of War Manager Files.zip','w') as archive:
+            archive.write(p/'profile.json','profile.json')
+        return p

@@ -1,5 +1,5 @@
 """Disposable Windows filesystem transactions; no real game or store is touched."""
-import copy, hashlib, importlib.util, json, os, shutil, tempfile, unittest
+import copy, hashlib, importlib.util, json, os, shutil, tempfile, unittest, zipfile
 from pathlib import Path
 from unittest.mock import patch
 from control_service import ControlService, DEFAULTS, native_settings_path, patch_ini, sha, validate_values
@@ -161,7 +161,25 @@ class TransactionTests(unittest.TestCase):
         self.assertTrue((out/'READ-ME-FIRST.txt').exists())
         self.assertEqual(self.service.fingerprint(),snapshot['fingerprint'])
         self.assertFalse(list(out.rglob('*.sav')));self.assertFalse(list(out.rglob('*.exe')))
+        with zipfile.ZipFile(out/'Shadow of War Manager Files.zip') as archive:
+            self.assertIsNone(archive.testzip())
+            self.assertEqual(len([p for p in archive.namelist() if p.startswith('original-archives/')]),4)
+            self.assertIn('READ-ME-FIRST.txt',archive.namelist())
+            self.assertFalse(any(p.endswith(('.sav','.exe')) for p in archive.namelist()))
+        self.assertEqual(self.service.latest_manager_export(),out)
+        incomplete=out.parent/'Vortex-handoff-99999999';incomplete.mkdir()
+        (incomplete/'handoff-manifest.json').write_text('{}');(incomplete/'INCOMPLETE.txt').write_text('fixture failure')
+        self.assertEqual(self.service.latest_manager_export(),out)
         (self.base/'downloads/Elven.Speed.7z').write_bytes(b'Changed archive')
         with self.assertRaisesRegex(ValueError,'changed'):self.service.export_vortex(snapshot)
+
+    def test_manager_choice_is_private_and_does_not_apply(self):
+        snapshot=self.service.read();exe=self.base/'Installed Manager.exe';exe.write_bytes(b'fixture only; never execute')
+        (self.base/'manager-tools.json').write_text('{"schema":1,"unknown_future_field":true}')
+        self.service.set_manager_executable(exe)
+        self.assertEqual(self.service.manager_executable(),exe)
+        self.assertTrue(json.loads((self.base/'manager-tools.json').read_text())['unknown_future_field'])
+        self.assertEqual(self.service.fingerprint(),snapshot['fingerprint'])
+        with self.assertRaises(ValueError):self.service.set_manager_executable(self.base/'missing.exe')
 
 if __name__=='__main__':unittest.main(verbosity=2)

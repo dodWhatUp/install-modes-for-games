@@ -1,5 +1,15 @@
 # History
 
+## 2026-10-25 - Mod folders, in-app author text, manager package and floating settings
+
+The user requested mod-folder links, source pages visible inside Mod Control, preparation/open actions for a standard manager and floating mod settings. Controller 1.1 adds one searchable mod browser with configured state, source URLs and existing mod/config/download/native-settings folders. The three installed gameplay plugins and shared loader have a read-only author-text reader pinned to the reviewed original GitHub source; full websites open separately. Third-party page text is never executed.
+
+Nonmodal settings editors share the main preview, support optional always-on-top and validate the original plugin bounds. Apply this mod writes only that mod's selected fields and preserves unrelated drafts; closing a floating editor keeps the preview. Saved profiles retain the existing JSON owner/format. Graphics continue to use their reviewed profiles, RHI and the in-game Delete menu; no live-game overlay or new graphics feature was added.
+
+The manager panel prepares four hash-pinned original archives, applied gameplay INIs, a profile, manifest, guide and verified transport ZIP. Separate actions open the export folder, ZIP, guide and a detected or chosen installed manager. The ZIP is not presented as directly deployable; import the original archives individually after ownership review. A fresh real export was prepared and verified locally. No Vortex installation/import/deployment, second loader, manager-database change or writer-ownership transfer occurred.
+
+Fifteen disposable Windows file checks passed. Sixteen existing and twenty-five new real Tk checks passed in the isolated Linux lab; the latter cover search commitment/cancel, in-app reading, folder selection, floating preview/close, per-mod Apply with unrelated drafts retained, applied-status refresh, persistent profiles and export/open separation. A resize callback and a clipped manager button were corrected before final verification. Exact final source hashes matched the guest; the task-owned helper and guest were stopped cleanly. The actual Desktop shortcut opened the upgraded Windows UI and its mod browser. The older window had two unsaved preview edits and was preserved separately. Protected settings/save hashes stayed unchanged; no real Apply or game launch was performed. Private deployment/recovery receipts retain exact paths, byte checks and the export package.
+
 ## 2026-10-25 - Desktop launcher native-settings path repair
 
 The user reported an `Errno 2` dialog for `render.cfg` when opening the delivered launcher. The initial setup-time file check missed a Windows context difference: its apparent local app-data path resolved to the packaged Codex app's physical cache, while the Explorer-launched controller looked in the normal local app-data folder. Resolving an open file handle identified the existing reviewed file; this is observed filesystem evidence, not a missing-config guess.

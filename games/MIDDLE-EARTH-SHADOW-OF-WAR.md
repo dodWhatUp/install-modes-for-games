@@ -1,5 +1,7 @@
 # Middle-earth: Shadow of War
 
+2026-10-25 Mod Control 1.1: **Mods & folders** provides source links and in-app author text; **Settings...** opens floating gameplay editors; **Manager transfer...** prepares and opens an export folder/ZIP and can open a chosen installed manager. Fifteen file checks and 41 isolated GUI checks passed; the Windows Desktop launch and browser were observed. No game configuration Apply or real manager migration occurred. [Source and controls](../examples/shadow-of-war-controls/README.md).
+
 2026-10-25 launcher repair: controller 1.0.1 fixes the missing `render.cfg` error by binding the existing settings file across packaged-app and Desktop launch contexts. Fourteen file tests passed, and the actual Desktop shortcut was opened through Explorer with the current settings visible. No game settings or save hashes changed. [Repair history](middle-earth-shadow-of-war/HISTORY.md#2026-10-25---desktop-launcher-native-settings-path-repair).
 
 2026-10-25 launcher update: open **Shadow of War Mods APP LAUNCHER** on the Desktop; the same-named entry is included with the app. The old Manage entry forwards to it. [Naming and delivery rule](../docs/APP-LAUNCHERS.md).
