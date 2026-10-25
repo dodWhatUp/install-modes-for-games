@@ -1,5 +1,39 @@
 # History
 
+## 2026-10-25 - Renewed DLSS SR and DLSS 5 request: compatibility recheck
+
+A fresh read after the renewed installation request found the previous RenoDX
+profile and three gameplay plugins active, with Luma/DLAA and Generic neural
+rendering disabled. The RTX 5090/621.01 combination is unchanged. Existing DLSS
+and NR runtimes have valid NVIDIA Authenticode signatures and deployment-matching
+hashes; installed runtime files do not establish active feature delivery.
+
+Latest Luma is still `latest-761`. Its normal Shadow of War archive digest remains
+`74336c1c7124dc033146c26ac5baee4bc07856898573871a569d60301b37d1b7`.
+The freshly fetched game source at `dc471fa590c24a12a36be3e527ec45d2595466bd`
+matches the previous review and still requires TAA with 100% internal/render
+resolution: a native-resolution DLAA path, not supported lower-resolution SR.
+No newer supported game-specific SR path or release fixing the recorded local
+shutdown failure was established.
+
+The selected RHI Generic 8.5.0-rc10 archive retains its published digest. Its
+installed native-DX11 configuration consumes a DLSS contract; it cannot create
+the missing working integration. The prior Luma exit fault and cancelled NR run
+remain the current runtime evidence. NIGos Bridge v1.4.12 documents a synthetic
+alternative for games without DLSS, using native-size DLAA and estimated motion.
+That would be a different DLSS-5-only experiment, not true SR; it was not installed.
+
+No game, store, manager, driver or display setting changed and no game launched.
+The previous profile, switches and recovery remain intact. Requested working SR
+plus DLSS 5 is **not achieved**. The next boundary is a supported SR integration
+and diagnosis of the existing Luma failure, or a separately selected alternative
+neural-rendering trial. Exact metadata/source hashes and local evidence are private.
+
+Primary sources: [Luma release](https://github.com/Filoppi/Luma-Framework/releases/tag/latest-761),
+[game source](https://github.com/Filoppi/Luma-Framework/blob/dc471fa590c24a12a36be3e527ec45d2595466bd/Source/Games/Middle-earth%20Shadow%20of%20War/main.cpp),
+[RHI mirror](https://github.com/RankFTW/rhi-repo/releases/tag/renodx-dlss5-8.5.0-rc10),
+[Bridge contract](https://github.com/NIGos/dlss5-bridge).
+
 ## 2026-10-25 - Shared multi-game Mod Controls and AI interface
 
 The user requested a multi-game controller integrated with the general game app,

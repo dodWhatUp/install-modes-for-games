@@ -1,5 +1,12 @@
 # Recommendations
 
+Fresh recheck after the renewed 2026-10-25 install request: latest-761 and its
+game-specific asset/source are unchanged; its 100%-only DLAA path does not provide
+supported lower-resolution SR. The signed runtimes and disabled neural add-on
+are already present. Keep the working previous profile active while the recorded
+Luma shutdown fault remains unresolved. Working SR plus DLSS 5 is not achieved;
+a synthetic-input DLSS-5-only route would be a different experiment.
+
 2026-10-25: keep official textures and the previous RenoDX + three plugins active. Stock/previous passed menu and normal-exit checks; campaign behavior/performance remain unverified. **Keep Luma/NR disabled:** Luma reached the menu but faulted in the NVIDIA driver at shutdown; the neural run was cancelled before launch. DLAA selection is not proof of evaluation/delivery. The user's normal physical desktop and a fresh 4K/240 Hz HDR report resolved the display-status question; the game's saved render size was corrected to 4K with recovery. In-game physical HDR still needs acceptance. Testing is authorized; a new permission request is not the blocker.
 
 Later 2026-10-24: official UHD textures are installed/on. Keep the previous RenoDX setup as the active graphics baseline. The user-authorized Luma/Generic neural trial is installed/off pending runtime acceptance; Luma latest-761 explicitly supports **native-resolution DLAA only**, so the earlier experimental row's DLSS wording does not establish real lower-resolution SR. Trial NR and DLAA have independent file/config controls; HDR owners stay in separate profiles. See current history before activating or updating these files.
