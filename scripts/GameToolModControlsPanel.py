@@ -21,7 +21,13 @@ class ControlRequests(AutomationPanel):
     def _copy(self,value):
         self.write(value);self.clipboard_clear();self.clipboard_append(json.dumps(value,indent=2))
         self.set_state('Structured context copied. No external AI call was made.')
-    def client_setup(self):return self.controls.client_setup_local()
+    def client_setup(self):
+        setup=self.controls.client_setup_local()
+        if not self.allow_client_requests.get():
+            # Pin the retained source version for a read-only client. The
+            # registered proposal-enabled connection keeps its stable entry.
+            setup['mcpServers']['game-tools-mods']['args']=[str(ROOT/'scripts/GameToolAI.py'),'--data-dir',str(self.controls.data_dir),'--workspaces','stdio']
+        return setup
     def show_capabilities(self):self.safe(lambda:self.write(self.controls.inspect(self.instance)['capabilities']))
     def save_context(self):
         path=filedialog.asksaveasfilename(parent=self,title='Save a new structured context',defaultextension='.json')

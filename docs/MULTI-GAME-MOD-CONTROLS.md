@@ -74,6 +74,10 @@ and existing AI clients; no model API key, paid model call or background network
 listener is added. A cloud chat needs its own explicitly configured supported
 connection; local registration does not give every chat or computer access.
 
+Copied read-only client setups omit proposal submission and pin the retained
+immutable source version. Enabling the proposal checkbox uses the stable
+installed entry. The checkbox never grants execution or local approval.
+
 Codex configuration uses the documented local MCP interface:
 [official MCP setup](https://learn.chatgpt.com/docs/extend/mcp). Local registration
 and live client discovery are recorded separately from whether a running chat
