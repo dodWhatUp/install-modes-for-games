@@ -1,0 +1,92 @@
+{
+  "kind": "game_control_ergonomics_master",
+  "schema_version": 1,
+  "data_only": true,
+  "importable_into_application_or_mapper": false,
+  "file_content_grants_authorization": false,
+  "policy_revision": "azeron-little-finger-20261026-r1",
+  "policy_source": "Explicit user clarification, 2026-10-26",
+  "device_family": "Azeron Cyborg II",
+  "geometry_reconciliation_required": true,
+  "applies_to_other_devices_without_verification": false,
+  "coordinates": {
+    "physical_rows_count_from_bottom": true,
+    "document_position_labels_may_count_from_top": true,
+    "little_finger_bottom_up_ids": [37, 1, 2, 3, 4]
+  },
+  "general_finger_row_preference_easiest_first": [2, 4, 3, 5, 1],
+  "finger_specific_rules_override_general_order": true,
+  "little_finger_rules": [
+    {
+      "button_id": 37,
+      "physical_row": 1,
+      "default_role": "intentionally_empty",
+      "assignment_requires_explicit_user_request": true,
+      "agent_may_propose_assignment": true,
+      "reason": "Less comfortable; retain empty until the user asks for an assignment"
+    },
+    {
+      "button_id": 1,
+      "physical_row": 2,
+      "default_role": "momentary_WEAPONS_layer",
+      "reason": "Easiest little-finger press; reserve for frequent weapon and comparable selection"
+    },
+    {
+      "button_id": 2,
+      "physical_row": 3,
+      "default_role": "infrequent_action_candidate",
+      "reason": "Least comfortable little-finger press; avoid frequent or urgent actions"
+    },
+    {
+      "button_id": 3,
+      "physical_row": 4,
+      "default_role": "momentary_MENUS_layer",
+      "reason": "Menus are less urgent than weapon selection"
+    },
+    {
+      "button_id": 4,
+      "physical_row": 5,
+      "default_role": "optional_momentary_combat_or_overflow_layer",
+      "layer_required": false,
+      "reason": "Relatively comfortable hold for useful extra combat/ability or overflow actions when justified"
+    }
+  ],
+  "unchanged_roles": [
+    {"button_id": 36, "role": "TOOLS_layer", "location": "Side control left of the little-finger column"},
+    {"button_id": 19, "role": "Overlay_hold", "game_output": "F24"},
+    {"button_id": 24, "role": "movement_stick"}
+  ],
+  "held_layer_rule": {
+    "other_controls_on_holder_finger": "unavailable_while_held",
+    "may_remain_empty": true,
+    "counts_as_missing_assignment": false,
+    "holder_release_and_return_must_be_verified_separately": true
+  },
+  "action_planning": {
+    "start_with_BASIC_gameplay": true,
+    "output_assigned_does_not_mean_game_action_assigned": true,
+    "eligible_accessible_empty_requires_opportunity_review": true,
+    "fill_every_button_is_not_a_goal": true,
+    "unknown_frequency_is_not_zero": true,
+    "action_priority_policy": "A20-UF-1",
+    "priority_formula": "P = 4 * (U - 1) + F",
+    "priority_highest": 20,
+    "primary_route_separate_from_incidental_aliases": true,
+    "displaced_actions_must_be_reviewed": true
+  },
+  "legacy_alternatives": [
+    {
+      "revision": "legacy-combat-r2",
+      "little_finger_layer_buttons": {"MENUS": 1, "WEAPONS": 2},
+      "status": "retained historical alternative; not the default for new plans",
+      "existing_profiles_automatically_migrated": false
+    }
+  ],
+  "acceptance": {
+    "user_preference_recorded": true,
+    "native_profiles_changed_by_this_file": false,
+    "game_bindings_changed_by_this_file": false,
+    "overlay_published_by_this_file": false,
+    "physical_comfort_verified": false
+  }
+}

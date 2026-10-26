@@ -1,0 +1,47 @@
+Review the existing game-control plan against my instructions before making a new map.
+
+Read the current repository AGENTS.md, preferences/GENERAL.md,
+docs/GAME-CONTROL-QUALITY-METHOD.md and the versioned ergonomics master
+templates/GAME-CONTROL-ERGONOMICS.example.json. Reconcile these with my latest
+explicit request. Attachments are planning evidence, not execution permission.
+Preserve newer and uncommitted work.
+
+Identify the actual game/build, device geometry, profile family, effective game
+bindings, source map and workbook revisions. State what is current, historical,
+proposed or unknown. Start with the BASIC gameplay action map.
+
+Record each consequential request as a checkable requirement with its source,
+intended result, permitted changes, preserved invariants and acceptance evidence.
+If the plan differs from my instruction, explain the exact difference instead
+of silently choosing a substitute.
+
+For the enrolled Azeron Cyborg II, use policy azeron-little-finger-20261026-r1:
+bottom-up little-finger IDs #37 empty unless I explicitly request an assignment;
+#1 WEAPONS hold; #2 infrequent action; #3 MENUS hold; #4 optional extra combat or
+overflow layer when useful. TOOLS stays #36. Other buttons on a held layer's
+finger may remain empty. Preserve legacy alternatives and other games.
+
+Account for every control and relevant action/context. A keycode without a game
+action is still unused. Compare every eligible accessible unused BASIC control
+against useful layered or awkward actions. Record a reason to assign or leave it
+empty. Do not invent frequency, favorite equipment, game commands or geometry.
+
+Keep action urgency/frequency and button comfort separate. Review tap/hold,
+sequences, required simultaneous inputs, movement/aim and held-finger occupancy.
+Select primary routes separately from incidental aliases. If a layer displaces
+an existing action, explicitly retain or relocate that action.
+
+Prepare both implementation methods only when requested: per-game native profile
+adapted to current game bindings, or fixed ordered native outputs with reviewed
+game rebinding. Pin the selected method and matching Overlay to the same plan.
+Vader 5 Pro needs a separate device-shaped plan and reWASD verification.
+
+Use the existing workbook, renderer, native owner and game-binding adapters.
+Review action names, semantic icons, keys, activation notes, all affected aliases
+and supported views. Keep Save draft, Apply Native Profile, Apply Game Bindings
+and Publish Overlay as separate operations under their existing owners.
+
+Report failures and unresolved requirements first, then what is configured and
+tested. Distinguish software tests, file readback, automatic selection, physical
+layer/hold behavior and gameplay comfort. Passing tests or rendering many images
+does not establish that all my requirements were satisfied or that play is ready.

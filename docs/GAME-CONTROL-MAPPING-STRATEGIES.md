@@ -13,6 +13,21 @@ Prepare both alternatives when requested. Record which one is selected; do not s
 
 ## Preserve the intended order
 
+The user's later clarification adopts the
+[`azeron-little-finger-20261026-r1` policy](../templates/GAME-CONTROL-ERGONOMICS.example.json)
+for new and requested revised plans. On the enrolled Cyborg II, bottom-up little
+rows 1–5 are #37, #1, #2, #3, #4: keep #37 empty unless explicitly requested,
+WEAPONS on #1, infrequent actions on #2, MENUS on #3, and an optional useful
+combat/overflow layer on #4. Keep TOOLS on #36. This finger-specific rule wins
+over the general row order. It replaces the earlier little-finger layer default
+without deleting historical alternatives or migrating unrelated games.
+
+When a momentary layer is held, other buttons of its holding finger are
+unavailable and may remain empty. Do not count them as missing action capacity.
+Evaluate genuinely available empty BASIC positions through the
+[quality review method](GAME-CONTROL-QUALITY-METHOD.md), including the effect of
+moving an existing action to make room for a layer.
+
 Physical button IDs, physical row numbers, emitted letters/numbers and action-access priorities are different records. A number painted on a button is not its priority score. A weapon-slot number is not a verified weapon name.
 
 For the reported COMBAT R2 layout, physical rows count upward from the bottom; the user's preferred reach order is **2, 4, 3, 5, 1**. The accepted selection bank places **1–3 in physical row 4, 4–6 in row 3, and 7–9 in row 5**, increasing left to right on the ring, middle and index fingers. Alphabet traversal and protected movement/layer positions have their own documented order. Reconcile the actual enrolled baseline before adopting these rules elsewhere.

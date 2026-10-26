@@ -1,0 +1,35 @@
+{
+  "kind": "game_controls_quality_review",
+  "schema_version": 1,
+  "status": "empty_standalone_review_example",
+  "data_only": true,
+  "importable_into_application_or_mapper": false,
+  "file_content_grants_authorization": false,
+  "pins": {
+    "map_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "keymap_revision": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "source_revisions": [],
+    "workbook_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+  },
+  "method": {
+    "selected": null,
+    "reason": "Select device_adaptation or game_binding_adaptation for the reconciled real plan"
+  },
+  "ergonomic_policy": {
+    "revision": "azeron-little-finger-20261026-r1"
+  },
+  "requirements": [],
+  "button_decisions": [],
+  "primary_routes": {},
+  "combination_reviews": [],
+  "notes": [
+    "This is a standalone source-audit review record, not a game_controls_workbook, native profile, game-binding file or Overlay import.",
+    "Call audit(workbook, document, review_record=record) through the source API after replacing all pins with current fingerprints.",
+    "Map, native-contract, source revisions and workbook fingerprint must all match. Historical evidence does not establish fresh physical acceptance.",
+    "The record is independently bounded to 1 MiB. Keeping review decisions outside a large workbook does not change its contents or importer.",
+    "Each button decision uses a current layer/context/button route_id, disposition, reason and evidence locators. Held-finger exclusions and hidden #19/#24 still receive decisions.",
+    "An eligible accessible unused position also needs comparison: action_ids, result retain_empty or new_shortcut_candidate, reason and evidence. Merely calling it spare does not close its review.",
+    "Each requirement records id, origin, expectation, status, acceptance, evidence_status and evidence. Deferred or unverified work remains open.",
+    "The audit never imports physical PASS or authorizes Save, Apply or Publish. This empty example intentionally reports missing pins, selection and decisions."
+  ]
+}

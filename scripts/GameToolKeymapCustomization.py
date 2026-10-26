@@ -92,8 +92,12 @@ def issues(document, mapping):
         for other in cell.get("organization", {}).get("together", []):
             if finger == buttons[other]["finger"]:
                 result[bid].append(f"May conflict with #{other}: same assigned finger")
-        if cell.get("organization", {}).get("frequency") == "Frequent" and buttons[bid].get("ergonomics", {}).get("comfort", 5) <= 2:
-            result[bid].append("Frequent action on a low-comfort position")
+        if cell.get("organization", {}).get("frequency") == "Frequent":
+            comfort = buttons[bid].get("ergonomics", {}).get("comfort")
+            if comfort is None:
+                result[bid].append("Frequent action; position comfort is unknown")
+            elif comfort <= 2:
+                result[bid].append("Frequent action on a low-comfort position")
     return result
 
 

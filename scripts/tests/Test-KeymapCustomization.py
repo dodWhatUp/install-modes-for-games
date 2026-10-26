@@ -26,6 +26,15 @@ def customized():
 
 
 class Contracts(unittest.TestCase):
+    def test_frequent_action_unknown_comfort_is_not_treated_as_easiest(self):
+        doc=customized();button=doc['buttons'][0];bid=button['id']
+        del button['ergonomics']
+        self.assertIn('Frequent action; position comfort is unknown',custom.issues(doc,doc['maps'][0])[bid])
+        button['ergonomics']={'comfort':2}
+        self.assertIn('Frequent action on a low-comfort position',custom.issues(doc,doc['maps'][0])[bid])
+        button['ergonomics']={'comfort':5}
+        self.assertFalse(any('comfort' in warning for warning in custom.issues(doc,doc['maps'][0])[bid]))
+
     def test_roundtrip_export_templates_and_native_output_preservation(self):
         doc=customized();self.assertEqual(maps.validate(overlay.decode(maps.encoded(doc))),doc)
         with tempfile.TemporaryDirectory() as root:

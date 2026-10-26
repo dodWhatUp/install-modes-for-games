@@ -8,7 +8,7 @@
   "baseline": {
     "map_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
     "keymap_revision": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-    "rules_revision": "combat-r2-readonly-1"
+    "rules_revision": "azeron-little-finger-20261026-r1"
   },
   "sources": [],
   "actions": [
@@ -36,6 +36,23 @@
   "pending_shared_changes": [],
   "change_log": [],
   "extensions": {
+    "mapping_quality_review": {
+      "schema_version": 1,
+      "pins": {
+        "map_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "keymap_revision": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_revisions": []
+      },
+      "method": {
+        "selected": null,
+        "reason": "Select device_adaptation or game_binding_adaptation for the real plan"
+      },
+      "ergonomic_policy": {"revision": "azeron-little-finger-20261026-r1"},
+      "requirements": [],
+      "button_decisions": [],
+      "primary_routes": {},
+      "combination_reviews": []
+    },
     "complete_accessibility_review": {
       "revision": "complete-accessibility-review-1",
       "status": "not_started",

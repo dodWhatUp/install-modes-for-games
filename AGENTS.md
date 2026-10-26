@@ -84,6 +84,19 @@ For authorized mod/menu/result tests, read `docs/AGENT-GAME-INPUT.md` and use it
 
 ## Azeron and controls defaults
 
+For every requested control-plan creation or review, follow
+`docs/GAME-CONTROL-QUALITY-METHOD.md`. Record checkable user requirements and
+their evidence; inspect every eligible unused accessible BASIC position rather
+than equating a nonempty keycode with a useful game action. Never close missing
+requirements using software-test counts or claim physical acceptance from files.
+The latest little-finger default is `azeron-little-finger-20261026-r1` in
+`templates/GAME-CONTROL-ERGONOMICS.example.json`: bottom-up IDs #37/#1/#2/#3/#4
+mean empty / WEAPONS hold / infrequent action / MENUS hold / optional extra
+combat-or-overflow layer. Keep TOOLS #36. Other buttons on a held layer's finger
+may be empty because that finger is occupied. This specific policy overrides
+the older little-finger layer positions; preserve legacy profiles and do not
+silently migrate unrelated games or apply the IDs to Vader 5 Pro.
+
 For any game-control, keypad-profile, input-mod, keybinding or control-diagram task, read `docs/AZERON-GAME-CONTROLS.md` and use `templates/GAME-KEYBINDS.example.json`. Apply these defaults to every game: one shared layered base setup, archived old game profiles, verified sources and effective game/mod bindings, offline configuration edits where supported, and separate keys/actions/combined diagrams. Preserve recovery exports in Drive and sanitized instructions/history in the canonical GitHub repository. Distinguish configuration verification from observed gameplay prompts and behavior.
 
 For a reinstall or renewed keybinding setup of a previously configured game, recovering and reconciling the game's own saved bindings is a default step. Include its personal Steam Input layout when applicable; do not assume Steam Cloud backs up its keybinding files. Follow the reinstall sequence in `docs/AZERON-GAME-CONTROLS.md`.

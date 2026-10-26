@@ -769,3 +769,46 @@ select the preserved ORDERED R1 BASIC profile. Restore that paired registry
 before downgrading to a reader limited to 512 images. Actual native exports,
 portable JSON, transaction snapshots and final receipts are indexed privately.
 Other games and the paused graphics work were not migrated or resumed.
+
+### 2026-10-26 — Requirement audit and revised little-finger candidate
+
+The current dedicated family is recorded in [the later control checkpoint](CONTROLS-OVERLAY.md).
+A fresh read-only audit found all six native files hash-matched and all 870
+native-output/map cells equal. Those results establish technical pairing;
+they do not establish compliance with the user's later ergonomic correction.
+
+The latest requested bottom-up little-finger roles are #37 empty, #1 WEAPONS
+hold, #2 an infrequent action, #3 MENUS hold and #4 an optional extra combat or
+overflow layer. TOOLS remains at side #36. A new six-profile DOOM R2 candidate
+uses those roles, retains Magnify B at #2 and leaves #4 reserved. WEAPONS and
+MENUS return links move with their entry holders. Other controls on the held
+little finger are empty and marked unavailable. Clearing #37 also removes
+incidental NAV/SYMBOLS Pause aliases; Esc #20 remains in every layer.
+
+The candidate changes 18 native input objects, preserves every other input,
+all timing/profile settings, movement/#19 and effective appearance, and yields
+30 maps in four views with no reported clipping. Twenty private candidate
+checks include native-output pairing, glyph and whole-image bounds. All 60
+protected live files stayed unchanged. The first full-branch-label rendering
+clipped 14 views and is retained; the final candidate uses the existing compact
+primary labels with visible Ready/Wheel/Slam notes and retains full source text.
+The old active source already had those notes; display_action alone was not the
+whole visible label.
+
+The [new quality method](../../docs/GAME-CONTROL-QUALITY-METHOD.md) adds computed
+requirement, source-action, control-disposition, primary-route and unused-access
+checks. Independent review reproduced and corrected capitalized finger labels,
+unreachable/thumb primary routes, omitted source actions and large review export
+failures. The full 288-action workbook now exports under the existing 1 MiB
+limit through an explicit v3 compact manual-review packet when v2 is too large.
+Historical planning claims remain distinguished from the later active record.
+
+This checkpoint is source and inactive-candidate work. No native import,
+automatic association update, game-binding write or Overlay publication was
+performed. All 288 personal frequency fields remain unknown; that does not
+justify a fully optimized claim. Ready #10 + Slam #9 and Jump #14 + held Wheel
+#15 still need the deferred physical check. Next: adopt the reviewed native
+family and paired Overlay through separate existing owners when authorized,
+then test automatic selection and physical hold/release without assuming a
+file check proves comfortable play. Exact private candidates, source pins,
+receipts, preserved old family and rollback boundaries are indexed locally.

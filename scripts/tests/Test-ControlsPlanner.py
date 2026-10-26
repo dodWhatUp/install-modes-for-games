@@ -53,7 +53,7 @@ class PriorityTests(unittest.TestCase):
 
 
 class PlanningTests(unittest.TestCase):
-    def setUp(self): self.doc = document(); self.w = p.new_workbook(self.doc)
+    def setUp(self): self.doc = document(); self.w = p.new_workbook(self.doc, rules_revision=p.RULES)
     def action(self, key): return next(a for a in self.w["actions"] if a["output"] == key)
     def row(self, key): return next(r for r in p.preview(self.w, self.doc)["rows"] if r["from_key"] == key)
     def test_seed_does_not_invent_research_or_mutate(self):
@@ -65,7 +65,7 @@ class PlanningTests(unittest.TestCase):
         self.assertEqual(set(self.row("K")["aliases"]), {"BASIC/gameplay/10", "WEAPONS/gameplay/23"})
     def test_conflicting_alias_labels_are_retained_for_research(self):
         next(c for c in self.doc["maps"][1]["cells"] if c["button_id"] == 23)["action"] = "Different label"
-        self.w = p.new_workbook(self.doc)
+        self.w = p.new_workbook(self.doc, rules_revision=p.RULES)
         self.assertTrue(any("Different label" in e for e in self.action("K")["evidence"]))
         self.assertIn("Overlay labels disagree across exact input aliases", self.row("K")["warnings"])
     def test_thumb_movement_route_blocked(self):
@@ -120,7 +120,7 @@ class PlanningTests(unittest.TestCase):
         self.assertEqual(p.import_review(self.w, incoming, self.doc), incoming)
     def test_candidate_keeps_native_keys_comments_styles_all_views(self):
         self.doc["maps"][0]["cells"][0]["comment"] = {"text": "Keep", "color": "#FF0000"}
-        self.w = p.new_workbook(self.doc)
+        self.w = p.new_workbook(self.doc, rules_revision=p.RULES)
         candidate = p.overlay_candidate(self.w, self.doc)
         self.assertEqual(maps.output_matrix(candidate), maps.output_matrix(self.doc))
         self.assertEqual(candidate["maps"][0]["cells"][0]["comment"], self.doc["maps"][0]["cells"][0]["comment"])
@@ -141,7 +141,7 @@ class PlanningTests(unittest.TestCase):
                 if layer=='BASIC':
                     for bid,target in zip((2,1,36,28,30),layers[1:]):next(c for c in mapping['cells'] if c['button_id']==bid)['output']='LAYER:'+target
                 doc['maps'].append(mapping)
-        value=p.new_workbook(doc);packet=p.export_packet(value,doc)
+        value=p.new_workbook(doc, rules_revision=p.RULES);packet=p.export_packet(value,doc)
         self.assertEqual(len(packet['route_catalog']),348)
         self.assertLess(len(maps.encoded(packet)),f.overlay.MAX_JSON)
         self.assertTrue(all(len(row['candidates'])<=8 for row in packet['preview']['rows']))
@@ -158,7 +158,7 @@ class StorageTests(unittest.TestCase):
             doc = document(); keymap = manifest["keymaps"][0]; keymap["revision"] = doc["keymap_revision"]
             keymap["layers"][1]["id"] = "WEAPONS"
             keymap["blank_masks"]["WEAPONS"] = keymap["blank_masks"].pop("MENUS")
-            w = p.new_workbook(doc); destination = root / "candidate"
+            w = p.new_workbook(doc, rules_revision=p.RULES); destination = root / "candidate"
             receipt = p.export_candidate(w, doc, keymap, destination)
             self.assertEqual(len(receipt["images"]), len(doc["maps"]) * 4)
             self.assertFalse(receipt["published"])
@@ -182,7 +182,7 @@ class StorageTests(unittest.TestCase):
     def test_save_history_stale_and_source_library_isolation(self):
         with tempfile.TemporaryDirectory() as tmp:
             lib = builder.SourceLibrary(Path(tmp)); library = p.WorkbookLibrary(lib)
-            doc = document(); w = p.new_workbook(doc)
+            doc = document(); w = p.new_workbook(doc, rules_revision=p.RULES)
             revision = library.save(w); changed = copy.deepcopy(w); changed["extensions"] = {"future_note": "kept"}
             library.save(changed, revision)
             self.assertEqual(library.load(w["game_id"]), changed)
@@ -206,7 +206,7 @@ class SourceTests(unittest.TestCase):
             self.assertEqual(config.read_bytes(), fixture.RAW)
             config.write_bytes(fixture.RAW + b"// later user edit\r\n")
             doc = document(); doc["game_id"] = "synthetic-doom"
-            w = p.attach_source(p.new_workbook(doc), source)
+            w = p.attach_source(p.new_workbook(doc, rules_revision=p.RULES), source)
             with self.assertRaisesRegex(ValueError, "changed"): p.check_sources(w, service)
 
     def service(self):
@@ -218,13 +218,13 @@ class SourceTests(unittest.TestCase):
         return service
     def test_registered_target_read_only_context_not_guessed(self):
         service = self.service(); source = p.source_snapshot(service, "target", "target", "game")
-        w = p.attach_source(p.new_workbook(document()), source)
+        w = p.attach_source(p.new_workbook(document(), rules_revision=p.RULES), source)
         self.assertEqual(w["actions"][0]["label"], "_use"); self.assertIsNone(w["actions"][0]["overlay_context"])
         self.assertEqual(w["actions"][0]["bundle_id"], "native-bundle")
         self.assertEqual(set(call[0] for call in service.mock_calls), {"inspect_target", "target"})
     def test_file_drift_and_wrong_game_rejected(self):
         service = self.service(); source = p.source_snapshot(service, "target", "target", "game")
-        w = p.attach_source(p.new_workbook(document()), source)
+        w = p.attach_source(p.new_workbook(document(), rules_revision=p.RULES), source)
         p.check_sources(w, service)
         service.inspect_target.return_value["current_sha256"] = "b"*64
         with self.assertRaisesRegex(ValueError, "changed"): p.check_sources(w, service)

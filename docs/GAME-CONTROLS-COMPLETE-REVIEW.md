@@ -5,6 +5,14 @@ every action and physical control. A working setup can still leave useful
 first-layer access unexplored. Conversely, an empty button is not necessarily a
 missing assignment. Record the reason for each decision.
 
+Use the [requirement and evidence review method](GAME-CONTROL-QUALITY-METHOD.md)
+to distinguish recorded instructions from verified completion. The later
+[`azeron-little-finger-20261026-r1` default](../templates/GAME-CONTROL-ERGONOMICS.example.json)
+supersedes the older little-finger MENU/WEAPONS positions. Its deliberately empty
+bottom button and buttons unavailable while their finger holds a layer are
+valid empty states. A keycode without a game action remains unused in that
+context and still needs an opportunity review if the position is eligible.
+
 This extends the existing [controls workflow](GAME-CONTROLS-WORKFLOW.md),
 [workbook template](../templates/GAME-CONTROLS-WORKBOOK.example.json) and
 [per-game binding record](../templates/GAME-KEYBINDS.example.json). It introduces
@@ -87,6 +95,10 @@ Validate workbook/package compatibility, unchanged native output matrices, all
 affected alias labels, no unintended context changes, image readability and
 protected live files. Report actual counts and limitations. This checklist is
 additive template guidance; it is not newly enforced application behavior.
+The later [quality method](GAME-CONTROL-QUALITY-METHOD.md) adds a computed
+read-only source audit to review exports. It exposes missing evidence without
+changing native/game writers or certifying physical play readiness. Check the
+installed source version before expecting that report in the application.
 
 The [DOOM example](../games/doom-the-dark-ages/CONTROLS-ACCESSIBILITY-REVIEW.md)
 demonstrates a full audit with an optional broader equipment layout. It does not

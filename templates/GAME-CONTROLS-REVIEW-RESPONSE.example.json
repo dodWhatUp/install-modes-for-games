@@ -16,6 +16,11 @@
     "missing_or_unresolved": []
   },
   "recommended_option": null,
+  "ergonomic_policy_revision": "azeron-little-finger-20261026-r1",
+  "requirement_reviews": [],
+  "unused_eligible_button_opportunity_reviews": [],
+  "held_finger_exclusions": [],
+  "displaced_action_reviews": [],
   "button_decisions": [],
   "action_annotations": [],
   "existing_action_assignments": [],
@@ -31,6 +36,10 @@
     "Use existing stable action IDs and route IDs for existing_action_assignments.",
     "Keep new UI-only actions separate, with exact visible labels and native_command null until verified.",
     "Each button decision includes its current use, proposed use or intentional empty state, reason, alternatives, conflicts and evidence status.",
+    "Distinguish an emitted key from a verified game action. A nonempty keycode is not useful-action coverage.",
+    "Apply the latest finger-specific policy after verifying geometry. Keep the bottom little-finger #37 empty unless explicitly requested; #1 WEAPONS, #2 infrequent action, #3 MENUS, #4 optional extra layer, #36 TOOLS unchanged.",
+    "Other buttons on the held layer's finger may remain empty and do not count as missing capacity. Review eligible accessible empty controls instead.",
+    "For each consequential user requirement, give its origin, expectation, implementation status, accepted/pending review, evidence_status and relevant evidence. External review cannot establish fresh machine or physical acceptance.",
     "Each annotation separates observed facts, official mechanics, planning inference and unknown user frequency.",
     "Return this review plus a short explanation. A local agent reconciles pins and supported workbook fields before any import.",
     "Do not rewrite pinned sources, native outputs or installed files. This data grants no Apply or Publish authority."

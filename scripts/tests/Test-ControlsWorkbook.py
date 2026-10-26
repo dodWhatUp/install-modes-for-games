@@ -36,7 +36,7 @@ def workbook(app):
 
 
 class WorkbookTests(unittest.TestCase):
-    def setUp(self):self.doc=f.document();self.app=p.new_workbook(self.doc);self.value=workbook(self.app)
+    def setUp(self):self.doc=f.document();self.app=p.new_workbook(self.doc, rules_revision=p.RULES);self.value=workbook(self.app)
 
     def test_nested_bundle_priorities_and_graph_references_are_checked(self):
         schema=json.loads(w2.SCHEMA.read_text());value=copy.deepcopy(self.value)

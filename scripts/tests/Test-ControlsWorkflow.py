@@ -42,7 +42,7 @@ class WorkflowTests(unittest.TestCase):
         for asset in manifest['assets']:asset['profile_id']=self.keymap['layers'][0]['profile_id']
         self.library=builder.SourceLibrary(self.root/'data');path=self.root/'manifest.json';path.write_bytes(overlay.encode(manifest))
         self.library.store.import_manifest(path,'absent');self.saved=self.library.save_source(self.doc,self.keymap,'absent')
-        self.w=p.attach_source(p.new_workbook(self.doc),p.source_snapshot(self.service,'target','fixture-idtech','synthetic-doom'))
+        self.w=p.attach_source(p.new_workbook(self.doc, rules_revision=p.RULES),p.source_snapshot(self.service,'target','fixture-idtech','synthetic-doom'))
         for a in self.w['actions']:
             if a['context']=='bindset:0':a['overlay_context']='gameplay'
             if a['label'] in ('_shield','_spear'):a['proposed_route']='BASIC/gameplay/7'
@@ -122,7 +122,7 @@ class WorkflowTests(unittest.TestCase):
         try:
             graph.create([('first',{'use':'E'},True,100),('second',{'reload':'F'},True,100)])
             doc=copy.deepcopy(self.doc);doc['game_id']='fictional'
-            workbook=p.attach_source(p.new_workbook(doc),p.source_snapshot(graph.s,'instance','installation','fictional'))
+            workbook=p.attach_source(p.new_workbook(doc, rules_revision=p.RULES),p.source_snapshot(graph.s,'instance','installation','fictional'))
             for action in workbook['actions']:
                 action['overlay_context']='gameplay'
                 if action['label']=='use':action['proposed_route']='BASIC/gameplay/6'

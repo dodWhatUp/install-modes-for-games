@@ -1,5 +1,11 @@
 # Game tools knowledge and recovery index
 
+- [Control-plan quality method](GAME-CONTROL-QUALITY-METHOD.md) and
+  [data-only ergonomics master](../templates/GAME-CONTROL-ERGONOMICS.example.json):
+  checkable instruction closure, eligible unused-button reviews, held-finger
+  exclusions and the 2026-10-26 little-finger default. Historical profiles remain
+  alternatives; source review, installation and physical acceptance stay distinct.
+
 - [Latest Unified Game Tools source checkpoint, 2026-10-26](UNIFIED-TOOLS-DELIVERY-2026-10-26.md): Windows dropdown and idempotent profile restoration, responsive headings, compact top area and configurable field icons. Preserves the installed 0.27.28-preview.2 line and all prior Mod Controls/interface owners; publication never restarts tools or interrupts a running game.
 - [Choice-field icons](CHOICE-FIELD-ICONS.md) and [responsive/compact UI](RESPONSIVE-UI.md): quiet presets/empty slots, Start/End placement, explicit Save/Cancel and retained View operations, with separately scoped native/guest acceptance.
 

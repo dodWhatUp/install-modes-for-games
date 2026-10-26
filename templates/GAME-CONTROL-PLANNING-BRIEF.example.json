@@ -5,6 +5,22 @@
   "data_only": true,
   "importable_into_application_or_mapper": false,
   "file_content_grants_authorization": false,
+  "quality_method_reference": "docs/GAME-CONTROL-QUALITY-METHOD.md",
+  "ergonomics_master_reference": "templates/GAME-CONTROL-ERGONOMICS.example.json",
+  "requirements": [],
+  "requirement_record_fields": [
+    "id",
+    "origin",
+    "expectation",
+    "allowed_changes",
+    "preserved_invariants",
+    "acceptance_evidence_needed",
+    "status",
+    "acceptance",
+    "evidence_status",
+    "evidence",
+    "reason"
+  ],
   "existing_contracts_retained": [
     "GAME-KEYBINDS.example.json",
     "Existing game-controls workbook and keymap document contracts"
@@ -45,6 +61,19 @@
   "shared_logical_layout": {
     "reference": null,
     "revision": null,
+    "ergonomic_policy_revision": "azeron-little-finger-20261026-r1",
+    "finger_specific_rules_override_general_order": true,
+    "little_finger_bottom_up_ids": [37, 1, 2, 3, 4],
+    "little_finger_default_roles_bottom_up": [
+      "empty_unless_explicitly_requested",
+      "momentary_WEAPONS_layer",
+      "infrequent_action",
+      "momentary_MENUS_layer",
+      "optional_combat_or_overflow_layer"
+    ],
+    "TOOLS_side_button_id": 36,
+    "other_controls_on_layer_holding_finger_may_remain_empty": true,
+    "existing_profiles_automatically_migrated": false,
     "accepted_roles_and_groups": [],
     "reserved_roles": [],
     "alphabet_order_reference": null,
@@ -225,6 +254,9 @@
     "restore_tested": false
   },
   "acceptance": {
+    "requirement_closure": "unverified",
+    "eligible_unused_button_opportunity_review": "unverified",
+    "displaced_action_review": "unverified",
     "configuration_readback": "unverified",
     "game_binding_preservation": "unverified",
     "native_output_and_layer_links": "unverified",

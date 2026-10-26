@@ -27,7 +27,10 @@ def request_packet(w, action_ids=None):
             "decision":"Clarify action meaning, access demand and simultaneous-use requirements before placement"})
     return {"kind":"controls_action_research_request","schema_version":1,"game_id":w["game_id"],
         "workbook_sha256":maps.fingerprint(w),"source_revisions":[s["revision"] for s in w["sources"]],
-        "actions":rows,"policy":p.POLICY,"constraints":{"row_order":list(p.ROW_ORDER),"protected_buttons":sorted(p.ANCHORS),
+        "actions":rows,"policy":p.POLICY,"constraints":{"row_order":list(p.ROW_ORDER),
+            "physical_rules_revision":w["baseline"]["rules_revision"],
+            "protected_buttons":sorted((p.ANCHORS - {2}) | p.protected_buttons(w)),
+            "finger_specific_rules_take_precedence":True,
             "mouse_and_stick":"preserve","native_layer_is_game_context":False},
         "reply_contract":"controls_action_research_reply v1: game_id, workbook_sha256, source_revisions, actions [{action_id, annotations, citations, uncertainty}]",
         "instructions":"Research every selected command in its exact context. Cite each nontrivial interpretation. Keep frequency unknown without user/context evidence; distinguish select from immediate activation, press/hold/toggle and bundled actions. Do not return code, native output edits or apply authority."}

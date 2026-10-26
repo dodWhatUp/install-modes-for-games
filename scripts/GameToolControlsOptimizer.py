@@ -45,7 +45,7 @@ def recommend(w, document, *, max_states=5000, seconds=1.0):
     overlay.require(len(groups)<=32,"Narrow optimization to at most 32 classified action groups")
     def quality(g,r):
         # Components are ordinal policy decisions, not measured ergonomic cost.
-        row=p.ROW_ORDER.index(r['row']) if r['row'] in p.ROW_ORDER else 5
+        row=p.route_access_rank(w,r)
         pref=sum(rules.preference(w,a,r,active_rules) for a in g['members'])
         moves=any(p.canonical_output(w,r['output'])!=p.canonical_output(w,a['output']) for a in g['members'])
         return (r['holder'] is not None,row,pref,moves,r['id'])

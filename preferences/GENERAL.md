@@ -1,5 +1,19 @@
 # General User Preferences
 
+Control-plan quality and little-finger default, clarified 2026-10-26: first
+verify the requested action layout, including usable accessible BASIC positions,
+and trace every consequential user requirement to evidence. Use
+[the quality method](../docs/GAME-CONTROL-QUALITY-METHOD.md) and
+[data-only ergonomics master](../templates/GAME-CONTROL-ERGONOMICS.example.json).
+For the enrolled Azeron Cyborg II, bottom-up little-finger positions are #37
+(leave empty unless explicitly requested), #1 (WEAPONS hold), #2 (infrequent
+action), #3 (MENUS hold), #4 (optional extra combat/overflow layer). Keep TOOLS
+on #36. Other controls on a layer-holding finger may remain empty while held.
+This finger-specific rule supersedes the older MENU/#1 and WEAPONS/#2 default;
+retain old profiles as alternatives and do not migrate other games silently.
+Do not copy Azeron IDs or geometry to Vader 5 Pro. A keycode, rendered image or
+passing test suite alone does not prove a useful action layout or comfortable play.
+
 Compact app guidance, adopted 2026-10-26: prefer a stable small header, bounded
 editable search and intent-based View / Layout / Tools groups where relevant.
 Keep explanations in their content cards, preserve explicit operation owners,

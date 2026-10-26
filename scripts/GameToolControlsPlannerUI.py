@@ -157,7 +157,7 @@ class Planner:
     def refresh(self):
         sources = self.workbook["sources"]
         text = "Map revision: " + self.workbook["baseline"]["map_sha256"] + "\nNative contract: " + self.document["keymap_revision"]
-        text += "\nRules: " + api.RULES + " · game scope; shared changes are proposals only.\n"
+        text += "\nRules: " + self.workbook["baseline"]["rules_revision"] + " · game scope; shared changes are proposals only.\n"
         snapshot=self.workbook["extensions"].get("shared_rules_snapshot")
         if snapshot:
             from GameToolControlsRules import Library

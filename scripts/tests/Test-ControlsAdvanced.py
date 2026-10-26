@@ -16,6 +16,14 @@ def rule(scope='game',field='forbidden_buttons',value=None):
 
 
 class AdvancedTests(unittest.TestCase):
+    def test_research_request_uses_selected_finger_policy_without_releasing_movement(self):
+        self.w['baseline']['rules_revision']=p.LITTLE_FINGER_RULES
+        constraints=research.request_packet(self.w)['constraints']
+        self.assertEqual(constraints['physical_rules_revision'],p.LITTLE_FINGER_RULES)
+        self.assertNotIn(2,constraints['protected_buttons'])
+        self.assertTrue({3,4,5,9,14,19,24,37}<=set(constraints['protected_buttons']))
+        self.assertTrue(constraints['finger_specific_rules_take_precedence'])
+
     def setUp(self):f.WorkflowTests.setUp(self)
     def test_scoped_rules_are_not_silently_global_or_active_while_proposed(self):
         r=rule();self.w['extensions']['rules']=[r]
@@ -26,7 +34,7 @@ class AdvancedTests(unittest.TestCase):
     def test_shared_rules_have_revision_history_review_and_no_auto_adoption(self):
         books=p.WorkbookLibrary(self.library);books.save(self.w)
         other_doc=copy.deepcopy(self.doc);other_doc['game_id']='another-game';other_doc['id']='another-map'
-        other=p.new_workbook(other_doc);books.save(other)
+        other=p.new_workbook(other_doc, rules_revision=p.RULES);books.save(other)
         lib=rules.Library(self.library);old=lib.read()
         with self.assertRaises(ValueError):lib.save([rule('global')],old['sha256'],authorize=lambda _:False)
         new=lib.save([rule('global')],old['sha256'],authorize=lambda _:True)

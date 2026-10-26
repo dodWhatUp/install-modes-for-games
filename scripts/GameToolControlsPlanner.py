@@ -14,14 +14,40 @@ import GameToolKeymapDocument as maps
 import GameToolKeymapBuilder as builder
 from game_keybind_ops.deps import strict_json
 
-VERSION = "0.2.0"
+VERSION = "0.2.1"
 POLICY = "A20-UF-1"
 RULES = "combat-r2-readonly-1"
+LITTLE_FINGER_RULES = "azeron-little-finger-20261026-r1"
 ROWS = {bid: row for row, ids in ((5, (4, 8, 12, 17)), (4, (3, 7, 11, 16)),
         (3, (2, 6, 10, 15)), (2, (1, 5, 9, 14)), (1, (37, 38, 13, 18))) for bid in ids}
 ROW_ORDER = (2, 4, 3, 5, 1)
 ANCHORS = {5, 9, 14, 24, 19, 2}
 ACTIVATIONS = ("unknown", "press", "hold", "toggle", "repeat", "release", "select", "activate")
+
+
+def protected_buttons(w, route=None):
+    """Versioned planning reservations; movement outputs remain separate anchors.
+
+    The new little-finger #3/#4 layer roles and #37 blank cannot be consumed by
+    action optimization merely because the old native map still emits a key.
+    A #37 exception is a recorded, scoped user proposal, never Apply authority.
+    """
+    if w["baseline"]["rules_revision"] != LITTLE_FINGER_RULES: return {19, 24, 2}
+    reserved = {19, 24, 3, 4, 37}
+    if route is not None and route.get("button") == 37:
+        review = w["extensions"].get("mapping_quality_review", {})
+        decisions = review.get("button_decisions", []) if isinstance(review, dict) else []
+        if isinstance(decisions, list) and any(isinstance(row, dict) and row.get("route_id") == route["id"] and
+                row.get("user_requested") is True and isinstance(row.get("origin"), str) and row["origin"].strip() for row in decisions):
+            reserved.remove(37)
+    return reserved
+
+
+def route_access_rank(w, route):
+    """Ordinal preference only; little-finger roles supersede generic row order."""
+    if w["baseline"]["rules_revision"] == LITTLE_FINGER_RULES and str(route.get("finger", "")).casefold() == "little":
+        return {1: 0, 3: 1, 2: 3, 4: 4, 37: 5}.get(route["button"], 5)
+    return ROW_ORDER.index(route["row"]) if route.get("row") in ROW_ORDER else 5
 
 
 def bounded_data(value, depth=0, count=None):
@@ -80,7 +106,7 @@ def _action(identity, label, context, output, **extra):
             "override_reason": "", "proposed_route": None, **extra}
 
 
-def new_workbook(document):
+def new_workbook(document, *, rules_revision=LITTLE_FINGER_RULES):
     maps.validate(document); builder.map_outputs(document)
     actions = []
     seen = {}
@@ -100,7 +126,7 @@ def new_workbook(document):
     return validate({"kind": "game_controls_workbook", "schema_version": 1, "game_id": document["game_id"],
         "id": builder.stable("controls-", document["game_id"]), "revision": 1, "policy": POLICY,
         "baseline": {"map_sha256": maps.fingerprint(document), "keymap_revision": document["keymap_revision"],
-                     "rules_revision": RULES}, "sources": [], "actions": actions,
+                     "rules_revision": rules_revision}, "sources": [], "actions": actions,
         "exclusive_contexts": [], "pending_shared_changes": [], "change_log": [], "extensions": {}})
 
 
@@ -113,7 +139,7 @@ def validate(w):
     overlay.require(type(w["revision"]) is int and w["revision"] >= 1, "Invalid workbook revision")
     overlay.fields(w["baseline"], "map_sha256 keymap_revision rules_revision")
     for key in ("map_sha256", "keymap_revision"): overlay.digest(w["baseline"][key])
-    overlay.require(w["baseline"]["rules_revision"] == RULES, "Unknown required physical rules revision")
+    overlay.require(w["baseline"]["rules_revision"] in {RULES, LITTLE_FINGER_RULES}, "Unknown required physical rules revision")
     overlay.require(type(w["sources"]) is list and len(w["sources"]) <= 16, "At most 16 binding sources")
     for s in w["sources"]:
         overlay.fields(s, "kind id revision snapshot")
@@ -172,9 +198,10 @@ def routes(document):
     return out
 
 
-def route_review(action, route, equivalent=lambda a, b: a == b):
+def route_review(action, route, equivalent=lambda a, b: a == b, *, protected_buttons=None):
     blocked, warnings = [], []
-    if route["output"] == "UNASSIGNED" or route["output"].startswith("LAYER:") or route["button"] in {19, 24, 2}:
+    protected_buttons = {19, 24, 2} if protected_buttons is None else protected_buttons
+    if route["output"] == "UNASSIGNED" or route["output"].startswith("LAYER:") or route["button"] in protected_buttons:
         blocked.append("Protected input or layer selector")
     if equivalent(route["output"], "F24"): blocked.append("Dedicated overlay output")
     if route["button"] in {5, 9, 14} and not equivalent(route["output"], action["output"]):
@@ -193,6 +220,10 @@ def route_review(action, route, equivalent=lambda a, b: a == b):
 def requirements_review(w, action, route, rules=None):
     requirements = w["extensions"].get("requirements_by_action", {}).get(action["id"], {})
     blocked = []
+    if w["baseline"]["rules_revision"] == LITTLE_FINGER_RULES and route["button"] == 2 and any(f >= 3 for f in action["frequency"]):
+        blocked.append("Little-finger #2 is reserved for an infrequent action")
+    if w["baseline"]["rules_revision"] == LITTLE_FINGER_RULES and route["button"] == 2 and any(u >= 4 for u in action["urgency"]):
+        blocked.append("Little-finger #2 is reserved for a non-urgent action")
     if requirements.get("direct_access") is True and route["holder"] is not None: blocked.append("Action requires direct access")
     from GameToolControlsRules import route_constraints
     blocked.extend(route_constraints(w, action, route, rules))
@@ -221,19 +252,19 @@ def preview(w, document):
         current = [r for r in all_routes if r["context"] == a["overlay_context"] and equivalent(r["output"], a["output"])]
         choices = []
         for r in all_routes:
-            review = route_review(a, r, equivalent); review["blocked"].extend(requirements_review(w, a, r, rule_set))
+            review = route_review(a, r, equivalent, protected_buttons=protected_buttons(w, r)); review["blocked"].extend(requirements_review(w, a, r, rule_set))
             if a["id"] in locked and not equivalent(a["output"], r["output"]): review["blocked"].append("Native binding field is locked")
             if a["output"] in {"MouseLeft", "MouseRight", "MouseMiddle", "WheelUp", "WheelDown", "WheelLeft", "WheelRight"} and not equivalent(a["output"], r["output"]): review["blocked"].append("Preserve existing mouse binding")
             if not review["blocked"]: choices.append({**r, "warnings": review["warnings"]})
         # No uncalibrated comfort arithmetic. Keep accepted routes first and
         # rank alternatives qualitatively; this is not an optimizing solver.
         choices.sort(key=lambda r: (not equivalent(r["output"], a["output"]), r["holder"] is not None,
-                     ROW_ORDER.index(r["row"]) if r["row"] in ROW_ORDER else 5, r["id"]))
+                     route_access_rank(w, r), r["id"]))
         chosen = indexed.get(a["proposed_route"])
         blocked = []; warnings = []
         if a["proposed_route"]:
             overlay.require(chosen is not None, "Proposed route no longer exists")
-            check = route_review(a, chosen, equivalent); blocked.extend(check["blocked"]); warnings.extend(check["warnings"])
+            check = route_review(a, chosen, equivalent, protected_buttons=protected_buttons(w, chosen)); blocked.extend(check["blocked"]); warnings.extend(check["warnings"])
             blocked.extend(requirements_review(w, a, chosen, rule_set))
             if a["id"] in locked and not equivalent(a["output"], chosen["output"]): blocked.append("Native binding field is locked")
             if a["output"] in {"MouseLeft", "MouseRight", "MouseMiddle", "WheelUp", "WheelDown", "WheelLeft", "WheelRight"} and not equivalent(a["output"], chosen["output"]): blocked.append("Preserve existing mouse binding")
@@ -413,14 +444,40 @@ class WorkbookLibrary:
 
 def export_packet(w, document):
     report = preview(w, document)
+    from GameToolControlsQuality import audit, compact
+    quality = compact(audit(w, document, report))
     # Share each physical route once. Repeating its geometry/constraints in
     # every action made real multi-layer games exceed the existing JSON bound.
     for row in report["rows"]:
         row["candidate_total"] = len(row["candidates"])
         row["candidates"] = [r["id"] for r in row["candidates"][:8]]
     packet = {"kind": "game_controls_review_packet", "schema_version": 2, "workbook": copy.deepcopy(w),
-            "route_catalog": routes(document), "preview": report,
+            "route_catalog": routes(document), "preview": report, "quality_audit": quality,
             "instructions": "Data only. Candidate IDs reference route_catalog; eight ranked examples per action, with total count. Return a game_controls_workbook v1 with unchanged baseline and source pins. Do not apply or publish. Preserve bundles, unknowns and fixed native outputs."}
+    if len(maps.encoded(packet)) > overlay.MAX_JSON:
+        # Larger real workbooks retain every action/source row. Only repeated
+        # derived diagnostics/route geometry change representation; the v1
+        # workbook and its importer remain identical. v3 is explicit, not a
+        # silently truncated v2 packet or an increased input budget.
+        catalog = packet["route_catalog"]
+        messages = sorted({text for row in report["rows"] for key in ("blocked", "warnings") for text in row[key]})
+        codes = {text: "m"+str(index+1) for index, text in enumerate(messages)}
+        entries = {}
+        for route in catalog:
+            entries.setdefault(route["layer"], {"holder": route["holder"], "holder_finger": route["holder_finger"], "entry_known": route["entry_known"]})
+        packet = {"kind": "game_controls_review_packet", "schema_version": 3, "workbook": copy.deepcopy(w),
+            "route_catalog_encoding": "route_id_to_output", "route_catalog": {r["id"]: r["output"] for r in catalog},
+            "physical_controls": [{"button": b["id"], "finger": b["finger"], "row": ROWS.get(b["id"]),
+                **{key: b[key] for key in ("x", "y", "width", "height")}} for b in document["buttons"]],
+            "hidden_protected_controls": [{"button": 19, "role": "Overlay hold"}, {"button": 24, "role": "Movement stick"}],
+            "layer_entries": entries,
+            "preview": {"kind": report["kind"], "plan_sha256": report["plan_sha256"], "game_id": report["game_id"], "read_only": True,
+                "row_fields": ["action_id", "changed", "blocked_codes", "warning_codes", "candidate_total", "candidate_ids"],
+                "rows": [[row["id"], row["changed"], [codes[x] for x in row["blocked"]], [codes[x] for x in row["warnings"]],
+                          row["candidate_total"], row["candidates"][:2]] for row in report["rows"]],
+                "message_catalog": {code: text for text, code in codes.items()}},
+            "quality_audit": quality,
+            "instructions": "Data only. v3 retains the entire game_controls_workbook v1, including every action and source pin. route_catalog maps layer/context/button IDs to outputs; physical_controls supplies each button's finger, row and geometry; layer_entries supplies holders. preview.row_fields names each compact row's columns. Resolve blocked/warning codes through preview.message_catalog. Candidate IDs give at most two examples, with the full candidate_total. Current routes follow matching workbook output/context and route_catalog; proposed routes remain in each workbook action. Return only the supported v1 workbook with unchanged baseline/source pins. No Apply or Publish authority."}
     overlay.require(len(maps.encoded(packet)) <= overlay.MAX_JSON, "Review packet exceeds 1 MiB; export the focused research request or a smaller reviewed scope")
     return packet
 
@@ -434,7 +491,7 @@ def overlay_candidate(w, document):
     overlay.require(not any(r["blocked"] for r in report["rows"]), "Resolve blocked routes before preparing overlay candidates")
     result = copy.deepcopy(document)
     by_id = {a["id"]: a for a in w["actions"]}
-    original_labels = {a["id"]: a["label"] for a in new_workbook(document)["actions"]} if not w["sources"] else {}
+    original_labels = {a["id"]: a["label"] for a in new_workbook(document, rules_revision=w["baseline"]["rules_revision"])["actions"]} if not w["sources"] else {}
     labels = {}; old_keys = set()
     for r in report["rows"]:
         a = by_id[r["id"]]

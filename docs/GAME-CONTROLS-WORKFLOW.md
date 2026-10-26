@@ -195,3 +195,32 @@ Source rollback returns to 0ed2d29 for the initial read-only stage. Live user da
 is independent of release folders. A later app update commits its immutable
 pointer last and preserves the previous version. The source checkpoint is not
 full native/game recovery or an executed installation.
+
+## Later source stage — computed quality review, 2026-10-26
+
+The [quality method](GAME-CONTROL-QUALITY-METHOD.md) adds a read-only source audit
+for instruction/evidence closure, all-control decisions, eligible unused-button
+opportunities, primary routes, source-action coverage and held-finger conflicts.
+It honors the new versioned little-finger policy without silently migrating
+historical workbooks. Software checks and recorded claims never import physical
+PASS or make the report certify play readiness. This source-stage note does not
+establish installed availability, native profile application or publication.
+
+Keep all existing workbook and packet input bounds at **1 MiB**. Review records
+may stay in the optional workbook extension, or be supplied to the source audit
+as an independently bounded [standalone record](../templates/GAME-CONTROL-QUALITY-REVIEW.example.json)
+that pins the current map, native contract, source revisions and workbook hash.
+This keeps a large workbook unchanged while recording each control decision.
+The full derived audit is separately bounded to **8 MiB**; compact packet
+findings retain totals and sample IDs rather than pretending the samples are
+the complete inventory.
+
+Small review exports retain the **v2** packet representation. When that complete
+packet exceeds 1 MiB, an explicit **v3 manual-review packet** retains every
+action and source pin in the embedded supported v1 workbook while deduplicating
+route geometry and diagnostic text. Its named columns, code catalog, candidate
+examples and total counts are explained by the packet and quality method. V3
+remains within 1 MiB or fails with a focused-export instruction. No actions are
+silently removed. V2/v3 packets are review formats, not app importers; return the
+supported v1 workbook for existing reviewed intake. The standalone audit record
+also grants no Save, Apply, native import or Publish operation.
