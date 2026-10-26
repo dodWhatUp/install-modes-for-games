@@ -1,0 +1,242 @@
+{
+  "kind": "game_control_planning_brief",
+  "schema_version": 1,
+  "status": "empty_planning_example",
+  "data_only": true,
+  "importable_into_application_or_mapper": false,
+  "file_content_grants_authorization": false,
+  "existing_contracts_retained": [
+    "GAME-KEYBINDS.example.json",
+    "Existing game-controls workbook and keymap document contracts"
+  ],
+  "scope": {
+    "game_id": null,
+    "game_name": null,
+    "edition": null,
+    "build": null,
+    "input_mode": null,
+    "selected_contexts": [],
+    "requested_changes": [],
+    "other_games_changed": false,
+    "shared_default_change_requested": false
+  },
+  "method_selection": {
+    "prepare_both_alternatives": false,
+    "primary_method": null,
+    "allowed_methods": [
+      "device_adaptation",
+      "game_binding_adaptation"
+    ],
+    "selection_reason": null,
+    "selection_scope": "this_game_only",
+    "device_adaptation": {
+      "goal": "Send current effective game inputs from the reviewed logical action positions",
+      "native_or_mapper_profile_reference": null,
+      "game_bindings_change_required": null,
+      "unsupported_actions_or_outputs": []
+    },
+    "game_binding_adaptation": {
+      "goal": "Retain the accepted device letter/number outputs and adapt game bindings",
+      "fixed_native_baseline_reference": null,
+      "game_writer_or_manual_boundary": null,
+      "unsupported_actions_or_fields": []
+    }
+  },
+  "shared_logical_layout": {
+    "reference": null,
+    "revision": null,
+    "accepted_roles_and_groups": [],
+    "reserved_roles": [],
+    "alphabet_order_reference": null,
+    "physical_rows_numbered_from_bottom": true,
+    "reported_row_preference_easiest_first": [
+      2,
+      4,
+      3,
+      5,
+      1
+    ],
+    "reported_selection_bank": [
+      {
+        "physical_row": 4,
+        "role_order": [
+          1,
+          2,
+          3
+        ],
+        "fingers": [
+          "ring",
+          "middle",
+          "index"
+        ]
+      },
+      {
+        "physical_row": 3,
+        "role_order": [
+          4,
+          5,
+          6
+        ],
+        "fingers": [
+          "ring",
+          "middle",
+          "index"
+        ]
+      },
+      {
+        "physical_row": 5,
+        "role_order": [
+          7,
+          8,
+          9
+        ],
+        "fingers": [
+          "ring",
+          "middle",
+          "index"
+        ]
+      }
+    ],
+    "reported_baseline_status": "Reconcile against current accepted device records before use",
+    "protected_controls": [],
+    "game_specific_exceptions": [],
+    "pending_shared_changes": [],
+    "reported_device_family": "Azeron Cyborg II",
+    "applies_to_other_devices_without_verification": false
+  },
+  "device": {
+    "alias": null,
+    "model": null,
+    "geometry_reference": null,
+    "geometry_revision": null,
+    "current_output_inventory_reference": null,
+    "mapper_owner": null,
+    "mapper_version": null,
+    "native_profile_family_reference": null,
+    "input_chain_reference": null,
+    "recognition_and_currentness": "unverified",
+    "separate_device_adaptation_required": true
+  },
+  "sources": {
+    "current_effective_bindings_reference": null,
+    "factory_defaults_assumed": false,
+    "effective_precedence_verified": false,
+    "inventory": [],
+    "evidence": [],
+    "unresolved_sources": []
+  },
+  "action_plan": {
+    "id": null,
+    "revision": null,
+    "priority_policy": "A20-UF-1",
+    "priority_formula": "P = 4 * (U - 1) + F",
+    "priority_highest": 20,
+    "frequency_unknown_not_zero": true,
+    "physical_comfort_is_separate_from_action_priority": true,
+    "required_action_fields": [
+      "stable_id",
+      "actual_meaning",
+      "native_command_if_verified",
+      "context",
+      "press_hold_release_or_toggle",
+      "urgency_candidates",
+      "frequency_candidates",
+      "priority_candidates_or_unknown",
+      "evidence_by_field",
+      "bundle_membership",
+      "sequences",
+      "simultaneous_inputs",
+      "movement_and_aim_needs",
+      "proposed_physical_route",
+      "layer_holder_occupancy",
+      "input_aliases",
+      "current_vs_proposed",
+      "rationale",
+      "alternatives",
+      "limitations"
+    ],
+    "actions": [],
+    "bundles": [],
+    "combinations": [],
+    "button_dispositions": [],
+    "unresolved_decision_changing_questions": [],
+    "physical_comfort_status": "not_tested"
+  },
+  "overlay": {
+    "source_document_reference": null,
+    "source_revision": null,
+    "generation_reference": null,
+    "selected_method_pin": null,
+    "game_binding_pin": null,
+    "native_or_mapper_family_pin": null,
+    "logical_layout_pin": null,
+    "action_plan_pin": null,
+    "required_views": [
+      "Keys",
+      "Actions",
+      "Combined",
+      "ActionFirst"
+    ],
+    "basic_gameplay_priority": true,
+    "game_layer_context_labels_required": true,
+    "full_action_text_retained": true,
+    "semantic_icons_with_text": true,
+    "unknown_action_icon_policy": "Neutral marker and explicit uncertainty; no invented action or weapon art",
+    "display_abbreviations": [],
+    "tap_hold_notes": [],
+    "effective_appearance_reference": null,
+    "appearance_changes_requested": false,
+    "glyph_coverage_and_bounds": "unverified",
+    "all_views_rendered": false,
+    "clipped_views": null
+  },
+  "automatic_selection": {
+    "native_association_reference": null,
+    "game_executable_names": [],
+    "tag_or_profile_label": null,
+    "startup_monitor_setting": "unknown",
+    "shared_or_desktop_fallback_reference": null,
+    "overlay_association_reference": null,
+    "game_context_provider": "unknown",
+    "native_configuration_readback": "unverified",
+    "foreground_activation_observed": "unverified",
+    "fallback_return_observed": "unverified"
+  },
+  "scoped_effects": {
+    "native_profile_deltas": [],
+    "game_binding_deltas": [],
+    "overlay_content_deltas": [],
+    "automatic_selection_deltas": [],
+    "unrelated_settings_preserved": "unverified",
+    "game_binding_bytes_before_after_equal": null
+  },
+  "operation_boundaries": {
+    "save_draft": "separate_reviewed_owner",
+    "apply_native_profile": "separate_reviewed_owner",
+    "apply_game_bindings": "separate_reviewed_owner",
+    "publish_overlay": "separate_reviewed_owner",
+    "apply_all_authorized_by_this_file": false
+  },
+  "recovery": {
+    "current_state_backup_reference": null,
+    "known_good_backup_reference": null,
+    "later_user_changes_reconciled": false,
+    "restore_scope": null,
+    "restore_tested": false
+  },
+  "acceptance": {
+    "configuration_readback": "unverified",
+    "game_binding_preservation": "unverified",
+    "native_output_and_layer_links": "unverified",
+    "overlay_identity_pairing": "unverified",
+    "foreground_native_activation": "unverified",
+    "foreground_overlay_route": "unverified",
+    "momentary_layer_and_overlay_release": "unverified",
+    "physical_combination_comfort": "unverified",
+    "gameplay_actions": "unverified",
+    "visible_prompts": "unverified",
+    "startup_after_sign_in": "unverified",
+    "remaining_specific_checks": []
+  },
+  "change_log": []
+}

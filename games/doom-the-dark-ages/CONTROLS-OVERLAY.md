@@ -1,5 +1,17 @@
 # DOOM campaign and Revelations action maps
 
+## Dedicated DOOM R1 family — configuration readback, 2026-10-26
+
+The user selected a dedicated native Azeron family that uses DOOM's current bindings, keeping the R1 action positions. Those game bindings already match the reviewed R1 keys, so the dedicated-family stage makes no additional in-game binding or emitted-key change. Six tagged DOOM profiles are added alongside the shared family; they do not overwrite it.
+
+After normal native import and restart, configuration readback confirmed the game tag, `DOOMTheDarkAges.exe` association, saved focus rule, startup profile monitor and shared fallback. Live foreground activation, release-return behavior and physical gameplay are separate acceptance items. Game Tools remains 0.27.34-preview.1.
+
+The matching icon Overlay is published: 30 maps/four views, 120 images and 273 active action/layer icons, with zero reported clipping. The output matrix, geometry, full action text and appearance preferences are retained. The DOOM executable association, new native identity and existing Game Tools runtime profile are paired and configuration-verified. Native foreground switching and physical acceptance remain pending; earlier R1 input acceptance is historical.
+
+The two implementation methods are described in [mapping strategies](../../docs/GAME-CONTROL-MAPPING-STRATEGIES.md). This DOOM-only choice does not change other games' selected methods. Physical Ready+Slam and Jump+held Wheel acceptance remains pending; vehicle/menu contexts remain manually selected.
+
+Keep Azeron Software and Game Tools running for automatic selection. Azeron sign-in auto-start remains disabled, as preserved from the current settings. Windows restart acceptance is not claimed.
+
 ## Current active Rebuild R1 — 2026-10-26
 
 This section supersedes the historical readiness and key tables below.

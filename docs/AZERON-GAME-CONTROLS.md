@@ -1,5 +1,7 @@
 # Game controls — Azeron, reWASD and other keypads
 
+See [two implementation methods and explicit pairing](GAME-CONTROL-MAPPING-STRATEGIES.md) when choosing a dedicated per-game device profile versus game rebinding for fixed device outputs. Both use the same action-placement plan; the selected method stays scoped to the requested game. This extends the workflow without replacing the retained shared logical layout or older alternatives.
+
 User instructions confirmed 2026-09-15. Apply this workflow to every game when controls, keypad profiles, related mods, or keybinding diagrams are in scope.
 
 Scope extended by the user on 2026-09-15: every step also applies when using **reWASD**, with Azeron or another keyboard/keypad. Preserve the same logical layout and physical action positions where the device supports them. Follow [device identification and physical mapping](INPUT-DEVICE-REGISTRY.md) at the start of requested control work. A similar shape does not establish identical button numbers, outputs or capabilities. The existing filename is retained for older links.

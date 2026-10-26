@@ -1,5 +1,23 @@
 # DOOM: The Dark Ages — Experiment History
 
+## 2026-10-26 — Dedicated DOOM native profile family and parallel file-format research
+
+The user selected the device-adaptation method for DOOM: reuse the uploaded R1 action-placement review, keep the game's current effective bindings, create a dedicated tagged Azeron family and pair its Overlay and game association. This is a DOOM-only adoption, not a replacement of the shared cross-game baseline or a global default for other games.
+
+The current DOOM bindings already match R1's selected positions, so no additional emitted-key changes are needed for this family. The six dedicated DOOM R1 profiles were added while the native owner was normally closed, alongside all 22 byte-preserved earlier profiles. A supported native settings import added the tag and automatic association; the app then restarted. After restarting Azeron Software, native configuration readback confirmed the DOOM tag, `DOOMTheDarkAges.exe` association, focus rule, enabled startup profile monitor and the previously selected shared family as fallback. Those saved settings are configuration evidence; fresh foreground activation and physical acceptance remain separate checks.
+
+The existing Game Tools installation remains 0.27.34-preview.1. This dedicated-profile stage makes no in-game binding change and does not restore factory defaults; the previously applied R1 game bindings remain its starting point. BASIC action placement, the numeric selection grid, movement anchors, momentary layers and #19 Hold Overlay are inherited from that reviewed plan. The clone needs its own paired Overlay native identity rather than silently reusing the shared family's identity.
+
+The dedicated Overlay is published: 30 maps in four views, 120 images, zero reported text/glyph clipping and 273 active action/layer icons. Full action strings, output matrices and appearance preferences are retained. Compact labels carry explicit bundle notes. The existing DOOM executable association and new native contract were migrated in the same validated registry import; the existing runtime profile is now DOOM — Dedicated R1 and passes its source/native/appearance checks. Other associations/contracts/profile records and all 906 prior PNG files remain byte-preserved. Eleven scope/failure tests and six fresh-event fixtures for the actual tagged native family passed. Live foreground and physical checks remain pending. Unknown slots 7/8 retain neutral markers. This source/render evidence is not a claim that the new native family or its Overlay has passed a physical play test.
+
+The parallel offline game-file investigation passed 28 tests and rewrapped eight binary captures byte for byte. Scoped edits remain in memory only: native acceptance of edited binding values and the internal checksum behavior remain unvalidated, and no binary game writer was installed. A successful unchanged round trip does not establish that an edited profile will be accepted by the game. Whole-profile replacement also requires review of unrelated settings, current bytes, build/account compatibility and launcher/cloud writers.
+
+Next acceptance: observe actual DOOM foreground activation and shared fallback return, then obtain the user's physical #19/#2 and combat-combination check. Ready #10 with Slam #9 and Jump #14 with held Wheel #15 remain the main same-finger questions. Vehicle/menu context selection remains manual unless a verified provider is added. Seven current keyboard/mouse action descriptions were reconciled with the current R1 keys; their older descriptions remain archived as historical evidence. No unrelated game or Vader/reWASD configuration is changed by this stage.
+
+The importer could be opened through Windows Computer Use, but its native file picker did not reliably accept tool-driven field updates. The user selected the prepared archive. A fresh post-restart native UI showed the dedicated BASIC profile and DOOM tag; a hash-stable saved-state readback verified the exact automatic link, monitor and fallback. The zero-length held LevelDB coordination lock was omitted from that read-only disk copy; all application data/manifest/log bytes were pinned before and after, and no live database engine or direct database write was used.
+
+Automatic selection requires Azeron Software and Game Tools running. Azeron Windows sign-in auto-start was preserved as disabled; reboot/startup acceptance is not claimed. The source/render changes do not install a new application release.
+
 ## 2026-10-26 — Clean Rebuild R1 applied and native restart verified
 
 The user explicitly requested completing activation and entering DOOM. The
