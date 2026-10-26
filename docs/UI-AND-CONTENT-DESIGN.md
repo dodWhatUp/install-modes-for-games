@@ -2,6 +2,45 @@
 
 User preference confirmed 2026-10-11. Use this as a preferred foundation when creating or improving software interfaces, learning materials, presentations and explanation files whose internal structure should make understanding easier. Combine it with the existing product design system, accessibility guidance and format-specific instructions. Apply it to the requested work; a preference update does not migrate existing applications or native profiles.
 
+## Compact application lessons — adopted 2026-10-26
+
+The user preferred the compact Game Tools header and asked to reuse its ideas
+in UI Preview and maintained standalone controllers. Treat this as a preferred
+pattern for the user's future scoped app work, not proof of universal usability.
+The [previous complete guidance](design-history/UI-AND-CONTENT-DESIGN-2026-10-25.md)
+remains an archived alternative; its principles below are retained.
+
+- Group by human intent. **View** answers “what is visible?”, **Layout** answers
+  “how is it arranged or styled?”, and **Tools** answers “where can I go or what
+  supporting tool can I open?”. Reuse existing variables and callbacks. A small
+  app may need fewer groups; do not invent empty menus for visual uniformity.
+- Budget pinned space. Keep global navigation and a short page name stable.
+  Put route-specific explanations, scope text and optional guidance inside the
+  relevant scrollable content card. A longer title or opened help must not
+  crowd the working area out of a small window.
+- Bound editable choice/search fields to a useful readable width. Extra screen
+  width does not require one field to consume the whole row. Preserve full
+  labels in choices or adjacent detail, the caret, open-list filtering, keyboard
+  navigation, cancellation, stable IDs and explicit commitment. Ordinary text,
+  paths, numbers and fixed choices retain controls appropriate to their purpose.
+  The tested 28-character request is an example, not a universal size rule.
+- Keep frequent navigation easy to reach and consequential actions clear.
+  Put occasional helpers behind concise menus or named disclosures. Save,
+  Apply, Install/Update and Publish retain their reviewed owners; opening or
+  hiding UI must never perform those actions.
+- Adapt by removing duplicate shortcuts before compressing useful content.
+  At narrow widths, a sidebar shortcut can move into View while search and
+  menu labels remain usable. Test long names, larger text, focus and the actual
+  minimum window size; avoid tiny type or controls clipped beyond the window.
+- Preserve reversibility. Keep an **Original toolbar** or equivalent existing
+  layout where practical, save UI choices separately, and retain the prior
+  source/guidance with date and hash. Switching presentation must preserve
+  drafts, selections, native profiles and operational settings.
+- Check behavior and appearance separately. Test menu open/cancel, visibility
+  versus enablement, layout round trips, editable search and delayed controls.
+  Record source/guest/native/human acceptance distinctly. A preferred design
+  and passing fixtures do not establish gameplay or device acceptance.
+
 ## Shared foundation
 
 Keep the common task and main explanation visible. Put optional controls, examples and technical depth behind clearly named disclosure controls. Reduce scattered fields, duplicate panels and wasted space while preserving readable labels, useful choices and enough context to understand them. Compactness means fewer unnecessary decisions and less navigation, not tiny text or hidden essential information.

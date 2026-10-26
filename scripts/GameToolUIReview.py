@@ -23,8 +23,8 @@ class ReviewApp(ttk.Frame):
         self.palette,self.font=theme(root,self.dark.get(),int(self.zoom.get()),scoped=embedded);super().__init__(host or root,style='Review.TFrame',padding=12);self.pack(fill='both',expand=True)
         if not embedded:
             root.title('Game Tools UI Preview '+VERSION+' — parallel review');w,h,mw,mh=window_bounds(root.winfo_screenwidth(),root.winfo_screenheight());root.geometry(f'{w}x{h}');root.minsize(mw,mh)
-        top=ttk.Frame(self,style='Review.TFrame');top.pack(fill='x');ttk.Label(top,text='Unified Game Tools' if embedded else 'Game Tools · UI Preview',style='Review.Title.TLabel').pack(side='left')
-        ttk.Label(top,text='  New interface' if embedded else '  '+VERSION+'  |  separate review version',style='Review.TLabel').pack(side='left')
+        top=ttk.Frame(self,style='Review.TFrame');top.pack(fill='x');title_label=ttk.Label(top,text='Unified Game Tools' if embedded else 'Game Tools · UI Preview',style='Review.Title.TLabel');title_label.pack(side='left')
+        version_label=ttk.Label(top,text='  New interface' if embedded else '  '+VERSION+'  |  separate review version',style='Review.TLabel');version_label.pack(side='left')
         self.dark_button=ttk.Checkbutton(top,text='Dark',variable=self.dark,command=self.restyle);self.dark_button.pack(side='right')
         z=ttk.Combobox(top,textvariable=self.zoom,values=['90','100','125','150'],width=5,state='readonly');z.pack(side='right',padx=8);z.bind('<<ComboboxSelected>>',lambda _:self.restyle());self.zoom_box=z
         context=ttk.Frame(self,style='Review.TFrame');context.pack(fill='x',pady=10);context.columnconfigure(1,weight=1);context.columnconfigure(3,weight=1)
@@ -40,6 +40,23 @@ class ReviewApp(ttk.Frame):
         self.scroll.canvas.bind('<Configure>',self.canvas_layout)
         header=ttk.Frame(self.body,style='Review.TFrame');header.pack(fill='x',pady=(0,8));self.title=tk.StringVar(root);ttk.Label(header,textvariable=self.title,style='Review.Title.TLabel').pack(side='left')
         self.visibility=Visibility(header,self.hide_section);self.visibility.pack(side='right')
+        self.chrome=None
+        if not embedded:
+            from GameToolAppMenus import AppMenus
+            tools=tk.Menu(root,tearoff=False)
+            tools.add_command(label='Find settings & functions…',command=self.open_finder,accelerator='Ctrl+F')
+            tools.add_command(label='Refresh files',command=self.refresh,accelerator='Ctrl+R')
+            tools.add_command(label='Show APP LAUNCHER',command=lambda:self.safe(lambda:self.open_path(Path(__file__).resolve().parents[2])))
+            self.chrome=AppMenus(top,root=root,preference=model.root/('chrome-'+model.view_path.name),title=title_label,
+                                 original_controls=(version_label,self.dark_button,z,self.pin,self.visibility),tools_menu=tools,status=self.status.set)
+            self.chrome.visibility('Show sidebar',(self.nav,),'sidebar')
+            self.chrome.view.add_cascade(label='Sections',menu=self.visibility.menu)
+            self.chrome.checkbutton('Always on top',self.pin.value,self.pin.apply)
+            self.chrome.layout.add_separator()
+            self.chrome.layout.add_checkbutton(label='Dark theme',variable=self.dark,command=self.restyle)
+            zoom_menu=tk.Menu(self.chrome.layout,tearoff=False)
+            for zoom in ('90','100','125','150'):zoom_menu.add_radiobutton(label=zoom+'%',variable=self.zoom,value=zoom,command=self.restyle)
+            self.chrome.layout.add_cascade(label='Text size',menu=zoom_menu)
         jumps=FlowToolbar(self.body);jumps.pack(fill='x',pady=(0,8))
         jumps.add('Refresh files',self.refresh);jumps.add('Locations',lambda:self.jump_section('locations'));jumps.add('Export / program',lambda:self.jump_section('handoff'))
         self.content=ttk.Frame(self.body,style='Review.TFrame');self.content.pack(fill='both',expand=True)
@@ -83,6 +100,9 @@ class ReviewApp(ttk.Frame):
             ident=item['resource_id'];self.resource_pane.selector.select(ident);self.select_resource(ident);widget=self.resource_pane.selector
         elif item.get('action_id'):
             key=item['action_id'];widget={'pin':self.pin,'find':self.find_button,'dark':self.dark_button,'zoom':self.zoom_box,'show-hide':self.visibility,'game':self.game,'installation':self.installation}.get(key) or self.action_widgets.get(key)
+            if self.chrome and not self.chrome.original.get():
+                if key in {'pin','show-hide'}:widget=self.chrome.buttons['View']
+                elif key in {'dark','zoom'}:widget=self.chrome.buttons['Layout']
         self.root.update_idletasks()
         if widget and widget.winfo_exists():
             self.root.lift();widget.focus_set();top=widget.winfo_rooty()-self.body.winfo_rooty()
@@ -330,6 +350,7 @@ class ReviewApp(ttk.Frame):
         for win in self.floating:
             if win.winfo_exists():win.destroy()
         self.scroll.close()
+        if self.chrome:self.chrome.close()
         if self.embedded:self.destroy()
         else:self.root.destroy()
         return True

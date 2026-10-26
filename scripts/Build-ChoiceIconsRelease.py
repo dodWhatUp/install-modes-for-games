@@ -1,8 +1,8 @@
 """Compose a scoped icon presentation update over the verified current owner."""
 import argparse,copy,importlib.util,json,subprocess,sys,zipfile
 from pathlib import Path
-OWNED=['scripts/GameToolChoiceIcons.py','scripts/GameToolEditableLists.py','scripts/Game-Tool-Hub.py',
-       'scripts/tests/Test-ChoiceIcons.py','scripts/Build-ChoiceIconsRelease.py','docs/CHOICE-FIELD-ICONS.md']
+OWNED=['scripts/GameToolChoiceIcons.py','scripts/GameToolEditableLists.py','scripts/Game-Tool-Hub.py','scripts/GameToolCompactHeader.py',
+       'scripts/tests/Test-ChoiceIcons.py','scripts/tests/Test-GameToolModernUI.py','scripts/Build-ChoiceIconsRelease.py','docs/CHOICE-FIELD-ICONS.md']
 def build(base,source,output):
     spec=importlib.util.spec_from_file_location('_icons_incumbent',base/'scripts/GameToolUnified.py')
     api=importlib.util.module_from_spec(spec);sys.modules[spec.name]=api;spec.loader.exec_module(api)
@@ -11,7 +11,7 @@ def build(base,source,output):
     if subprocess.check_output(['git','status','--porcelain','--',*OWNED],cwd=source,text=True).strip():raise ValueError('Commit the scoped icon source first.')
     for name in OWNED:payloads[api.member_name(name)]=(source/name).read_bytes()
     manifest=copy.deepcopy(before['manifest'])
-    manifest['component_versions'].update(tool_hub='0.27.28-preview.2',editable_lists='0.1.3',choice_icons='0.1.1')
+    manifest['component_versions'].update(tool_hub='0.27.29-preview.1',editable_lists='0.1.3',choice_icons='0.2.0',compact_header='0.1.1')
     manifest['component_update']={'component':'choice_icons','source_commit':commit,
       'base_manifest_sha256':api.digest((base/'MANIFEST.json').read_bytes()),
       'incumbent_sources_preserved_except':OWNED,'game_state_included':False}

@@ -12,7 +12,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import font as tkfont
 
-VERSION = "0.4.1"
+VERSION = "0.4.3"
 SIDEBAR_DEFAULT = 256
 SIDEBAR_MIN = 150
 SIDEBAR_MAX = 520
@@ -41,7 +41,7 @@ def _record(identifier, title, domain, route, summary, scope, keywords=""):
 
 
 DEFAULT_FEATURES = (
-    _record('page.profiles', 'Game profiles · activate & startup', DOMAINS[1], 'profiles',
+    _record('page.profiles', 'Game profiles', DOMAINS[1], 'profiles',
             'Save the published setup for each game, activate or stop its Overlay and choose automatic startup.',
             'Runtime selection only · game/native changes retain separate reviewed owners', 'game profile auto startup activate deactivate overlay azeron'),
     _record("page.comparison", "Saved-result comparison", DOMAINS[0], "comparison",
@@ -221,17 +221,23 @@ class Workspace:
         self.navigation_button.grid(row=0, column=2, sticky="e", padx=(9, 0))
         menu_button = ttk.Menubutton(toolbar, text="View ▾")
         menu_button.grid(row=0, column=3, sticky="e", padx=(9, 0))
+        self.toolbar_actions = [self.navigation_button, menu_button]
         view_menu = tk.Menu(menu_button, tearoff=False)
+        self.browse_menu = tk.Menu(self.root, tearoff=False)
         for view in VIEWS:
-            view_menu.add_radiobutton(label=view, variable=self.view, value=view, command=self._view_changed)
+            self.browse_menu.add_radiobutton(label=view, variable=self.view, value=view, command=self._view_changed)
+        view_menu.add_checkbutton(label="Show sidebar", variable=self.show_navigation, command=self._navigation_changed)
+        view_menu.add_checkbutton(label="Show tabs", variable=self.show_tabs, command=self._tab_visibility)
+        view_menu.add_checkbutton(label="Show page details", variable=self.show_details, command=self._visibility_changed)
         view_menu.add_separator()
-        view_menu.add_checkbutton(label="Show navigation", variable=self.show_navigation, command=self._navigation_changed)
-        view_menu.add_checkbutton(label="Show original tab bar", variable=self.show_tabs, command=self._tab_visibility)
-        view_menu.add_checkbutton(label="Show route details", variable=self.show_details, command=self._visibility_changed)
-        view_menu.add_separator()
-        view_menu.add_command(label="Narrow sidebar", command=lambda: self.set_sidebar_width(170))
-        view_menu.add_command(label="Reset sidebar width", command=lambda: self.set_sidebar_width(SIDEBAR_DEFAULT))
+        self.sidebar_menu = tk.Menu(view_menu, tearoff=False)
+        self.sidebar_menu.add_command(label="Narrow", command=lambda: self.set_sidebar_width(170))
+        self.sidebar_menu.add_command(label="Default width", command=lambda: self.set_sidebar_width(SIDEBAR_DEFAULT))
+        view_menu.add_cascade(label="Sidebar width", menu=self.sidebar_menu)
         view_menu.add_command(label="Reset view", command=self.reset_view)
+        # Standalone Workspace consumers keep access; the compact host moves
+        # this same menu into Tools without cloning its variables or callbacks.
+        view_menu.add_cascade(label='Browse by', menu=self.browse_menu)
         menu_button.configure(menu=view_menu)
         self.view_menu = view_menu
 
@@ -508,6 +514,11 @@ class Workspace:
         self.active_label.set(record["domain"] + " / " + record["title"])
         self.scope_label.set(record["scope"])
         self.description.set(record["summary"])
+        # This page owns its explanation inside its scrollable content card.
+        # Keep route metadata for search/details without growing pinned chrome.
+        self.scope_widget.pack_forget()
+        if record['route'] != 'profiles':
+            self.scope_widget.pack(anchor='w', pady=(3, 0))
         if self.modern is not None:
             self.modern.show_page(record)
 
@@ -644,6 +655,12 @@ class Workspace:
             self._tip = None
         self._tip_row = None
 
+    def add_toolbar_action(self, button):
+        """Add a presentation menu without replacing the search control."""
+        button.grid(row=int(self.navigation_button.grid_info().get('row', 0)),
+                    column=2+len(self.toolbar_actions), sticky='e', padx=(6, 0))
+        self.toolbar_actions.append(button)
+
     def _resize(self, event):
         if event.widget is self.frame:
             self._available_width = event.width
@@ -652,10 +669,17 @@ class Workspace:
             self.scope_widget.configure(wraplength=wrap)
             # Put the label above the editable search field at narrow widths.
             narrow = event.width < 880
-            self.search_label.grid_configure(row=0, column=0, columnspan=4 if narrow else 1)
-            self.selector.grid_configure(row=1 if narrow else 0, column=0 if narrow else 1, columnspan=2 if narrow else 1)
-            self.navigation_button.grid_configure(row=1 if narrow else 0)
-            self.view_menu.master.grid_configure(row=1 if narrow else 0)
+            self.search_label.grid_configure(row=0, column=0, columnspan=2+len(self.toolbar_actions) if narrow else 1)
+            self.selector.grid_configure(row=1 if narrow else 0, column=0 if narrow else 1,
+                                         columnspan=2 if narrow else 1, sticky='ew' if narrow else 'w')
+            for button in self.toolbar_actions:
+                button.grid_configure(row=1 if narrow else 0)
+            # On a small window the View menu still owns the sidebar toggle.
+            # Reclaim its duplicate shortcut's width for useful search text.
+            if narrow and len(self.toolbar_actions)>2:
+                self.navigation_button.grid_remove()
+            else:
+                self.navigation_button.grid()
             self.toolbar.columnconfigure(0, weight=int(narrow))
             self.toolbar.columnconfigure(1, weight=int(not narrow))
             self._visibility_changed()

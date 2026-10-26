@@ -53,6 +53,20 @@ class GUI(unittest.TestCase):
         if os.environ.get('PROFILES_SCREENSHOT'):
             import subprocess
             subprocess.run(['import','-window',str(self.root_ui.winfo_id()),os.environ['PROFILES_SCREENSHOT']],check=True)
+
+    def test_explanation_is_inside_scrollable_card_without_profile_changes(self):
+        before=self.service.load()[1]
+        self.root_ui.geometry('720x620');self.root_ui.tk.call('tk','scaling',1.8);self.root_ui.update()
+        self.assertIs(self.panel.content_header.master,self.panel.scroll.body)
+        self.assertIs(self.panel.intro.master,self.panel.content_header)
+        self.assertIn('automatic startup',self.panel.intro.cget('text'))
+        self.assertIn('separate reviewed controls',self.panel.scope_notice.cget('text'))
+        self.assertLessEqual(int(self.panel.heading.cget('wraplength')),self.panel.scroll.body.winfo_width()-24)
+        self.panel.scroll.canvas.yview_moveto(1);self.root_ui.update()
+        self.assertLess(self.panel.content_header.winfo_rooty(),self.panel.scroll.canvas.winfo_rooty())
+        self.assertEqual(self.service.load()[1],before)
+        self.engine.start.assert_not_called()
+        self.overlay.tick.assert_not_called()
     def controller(self):
         import GameToolRewasd as native
         root=self.root/'native';config=root/'GENERAL/Controller/Config 1.rewasd';config.parent.mkdir(parents=True)

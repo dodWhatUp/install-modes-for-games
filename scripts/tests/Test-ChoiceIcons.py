@@ -115,5 +115,36 @@ class ChoiceIcons(unittest.TestCase):
         self.assertIn('favorite',decorator.button.cget('text'))
         fixed.set('Off');self.root.update()
         self.assertIn('no icon',decorator.button.cget('text'))
+    def test_visibility_hides_icons_and_space_without_removing_custom_choices(self):
+        style=ttk.Style(self.root);style.configure('Visibility.TCombobox',padding=(5,3,5,3))
+        self.field.configure(style='Visibility.TCombobox');self.icon.queue();self.root.update()
+        self.choose('Favorite','End');before=self.field.get(),self.field.selected_id,self.field.cget('values')
+        saved=dict(self.manager.store.value['icons'])
+        self.manager.show_icons.set(False);self.manager.save_visibility();self.root.update()
+        self.assertFalse(self.icon.button.winfo_ismapped())
+        self.assertEqual(icons.padding_pixels(self.field,style.lookup(self.icon.style_name,'padding')),
+                         icons.padding_pixels(self.field,style.lookup(self.icon.base,'padding')))
+        self.assertEqual(self.manager.store.value['icons'],saved)
+        self.assertFalse(icons.IconStore(self.path).value['show_icons'])
+        self.manager.show_icons.set(True);self.manager.save_visibility();self.root.update()
+        self.assertTrue(self.icon.button.winfo_ismapped());self.assertIn('favorite',self.icon.button.cget('text'))
+        self.assertEqual((self.field.get(),self.field.selected_id,self.field.cget('values')),before)
+        self.assertEqual(self.selected,[]);self.assertEqual(self.added,[])
+    def test_hidden_visibility_survives_restart_without_writing_on_startup(self):
+        self.manager.show_icons.set(False);self.manager.save_visibility();before=self.path.read_bytes()
+        other=tk.Tk();other.game_tools_icon_path=self.path;other.game_tools_icon_namespace='fixture'
+        try:
+            field=Selector(other,[('one','Same')]);field.pack();field.select('one');other.update()
+            self.assertFalse(other.game_tools_choice_icons.show_icons.get())
+            self.assertFalse(field.game_tools_choice_icon.button.winfo_ismapped())
+            self.assertEqual(self.path.read_bytes(),before)
+        finally:other.destroy()
+    def test_hidden_icon_editor_remains_available_and_new_fields_stay_hidden(self):
+        self.manager.show_icons.set(False);self.manager.save_visibility();self.root.update()
+        self.icon.pick();self.root.update();self.assertTrue(self.manager.picker.winfo_ismapped())
+        self.button('Cancel').invoke();self.root.update()
+        field=Selector(self.root,[('new','New')]);field.pack();self.root.update()
+        self.assertFalse(field.game_tools_choice_icon.button.winfo_ismapped())
+        self.assertFalse(self.manager.show_icons.get());self.assertEqual(self.selected,[])
 
 if __name__=='__main__':unittest.main(verbosity=2)

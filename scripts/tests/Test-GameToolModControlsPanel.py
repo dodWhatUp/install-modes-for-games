@@ -10,12 +10,18 @@ class Tests(unittest.TestCase):
     def setUp(self):
         self.fixture=fixture.Tests();self.fixture.setUp();self.root=tk.Tk();self.root.geometry('1000x740')
         self.root.report_callback_exception=lambda typ,value,trace:(_ for _ in ()).throw(value)
-        self.panel=ModControlsPanel(self.root,self.fixture.data,service=self.fixture.controls,initial_game='fixture-one');self.panel.pack(fill='both',expand=True);self.root.update()
+        self.panel=ModControlsPanel(self.root,self.fixture.data,service=self.fixture.controls,initial_game='fixture-one',standalone=True);self.panel.pack(fill='both',expand=True);self.root.update()
     def tearDown(self):
         self.panel.close();self.root.destroy();self.fixture.tearDown()
     def test_applied_state_is_visible_and_preview_does_not_write(self):
         self.assertEqual(self.panel.current,'fixture-one');self.assertEqual(self.panel.variables['amount'].get(),'2.0')
         self.panel.variables['amount'].set('4.5');self.panel.preview();self.assertIn('4.5',self.panel.preview_text.get('1.0','end'));self.assertEqual(self.fixture.path('fixture-one').read_bytes(),self.fixture.initial['fixture-one'])
+    def test_toolbar_roundtrip_keeps_the_draft_and_does_not_apply(self):
+        self.panel.variables['amount'].set('4.25');current=self.panel.current
+        self.panel.chrome.layout.invoke(1);self.root.update();self.assertTrue(self.panel.chrome.original.get())
+        self.panel.chrome.layout.invoke(0);self.root.update();self.assertFalse(self.panel.chrome.original.get())
+        self.assertEqual(self.panel.current,current);self.assertEqual(self.panel.desired()['amount'],4.25)
+        self.assertEqual(self.fixture.path('fixture-one').read_bytes(),self.fixture.initial['fixture-one'])
     def test_floating_editor_shares_draft_and_survives_narrow_layout(self):
         self.panel.float_settings();self.root.update();self.assertEqual(len(self.panel.floating),1)
         self.panel.variables['enabled'].set(False);self.root.geometry('640x430');self.root.update()

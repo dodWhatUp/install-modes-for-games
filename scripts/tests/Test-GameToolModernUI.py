@@ -97,6 +97,48 @@ class ModernUI(unittest.TestCase):
         self.assertLess(self.w.content.winfo_rooty()-self.root.winfo_rooty(), 150)
         self.assertEqual(self.operations, [])
 
+    def test_profiles_explanation_never_expands_pinned_header(self):
+        self.root.deiconify()
+        self.w.route('page.profiles')
+        self.w.show_details.set(False);self.w._visibility_changed();self.root.update()
+        height=self.w.breadcrumb.winfo_height()
+        self.w.show_details.set(True);self.w._visibility_changed();self.root.update()
+        self.assertEqual(self.w.breadcrumb.winfo_height(),height)
+        self.assertEqual(self.m.page_title.cget('text'),'Game profiles')
+        self.assertFalse(self.w.scope_widget.winfo_ismapped())
+        self.assertFalse(self.m.detail.winfo_ismapped())
+        self.assertFalse(self.m.detail_button.winfo_ismapped())
+        self.assertTrue(self.w.show_details.get())
+        self.assertEqual(self.operations,[])
+
+    def test_profiles_short_heading_stays_on_one_row_at_narrow_scaled_widths(self):
+        self.w.route('page.profiles');self.root.deiconify()
+        for scaling in (1.0,1.8):
+            self.root.tk.call('tk','scaling',scaling)
+            for width in (720,1000,1300):
+                self.root.geometry(f'{width}x700');self.root.update()
+                self.assertEqual(int(self.m.page_title.grid_info()['row']),0)
+                self.assertLess(self.w.breadcrumb.winfo_height(),75)
+                self.assertTrue(self.w.selector.winfo_ismapped())
+                self.assertEqual(self.operations,[])
+
+    def test_profiles_header_switch_preserves_other_page_details_and_modes(self):
+        for mode in ('Modern','Classic','Professional','Compact','Modern'):
+            self.a.change(mode,persist=False)
+            # Each layout retains its own existing saved detail preference.
+            self.w.show_details.set(True);self.w._visibility_changed()
+            self.w.route('page.profiles');self.root.update()
+            self.assertFalse(self.w.scope_widget.winfo_ismapped())
+            self.w.route('page.comparison');self.root.update()
+            self.assertTrue(self.w.show_details.get())
+            self.assertEqual(self.w.scope_label.get(),self.w.registry.get('page.comparison')['scope'])
+            self.assertEqual(self.entry.get(),'unsaved fixture')
+        self.root.deiconify();self.root.update()
+        self.assertTrue(self.w.scope_widget.winfo_ismapped())
+        self.assertTrue(self.m.detail.winfo_ismapped())
+        self.assertTrue(self.m.detail_button.winfo_ismapped())
+        self.assertEqual(self.operations,[])
+
     def test_expanded_controls_are_reachable_without_changing_edits_or_settings(self):
         self.root.deiconify()
         self.w.route('page.comparison')
@@ -112,13 +154,30 @@ class ModernUI(unittest.TestCase):
         self.assertEqual(self.path.read_bytes() if self.path.exists() else None, before)
         self.assertEqual(self.operations, [])
 
+    def test_new_interface_keeps_global_view_menu_with_expanded_controls(self):
+        compact=self.a.compact_header;original=compact.interface;bar=ttk.Frame(self.root)
+        try:
+            compact.interface=SimpleNamespace(mode='New',bar=bar)
+            compact.expanded.set(True);compact.refresh();self.root.deiconify();self.root.update()
+            self.assertTrue(compact.new_bar.winfo_ismapped())
+            self.assertTrue(compact.new_menu_button.winfo_ismapped())
+            self.assertTrue(compact.new_layout_button.winfo_ismapped())
+            self.assertTrue(compact.new_tools_button.winfo_ismapped())
+            self.assertEqual(self.operations,[])
+        finally:
+            compact.interface=original;bar.destroy()
+
     def test_compact_menu_keeps_layout_and_identification_owners(self):
         compact = self.a.compact_header
         labels = [self.w.view_menu.entrycget(i, 'label') for i in range(self.w.view_menu.index('end')+1)
                   if self.w.view_menu.type(i) != 'separator']
-        self.assertIn('Layout', labels)
-        self.assertIn('Identify UI', labels)
+        self.assertNotIn('Layout', labels)
+        self.assertNotIn('Identify UI', labels)
+        self.assertEqual(len(labels),7)
+        self.assertEqual([compact.tools_menu.entrycget(i,'label') for i in range(compact.tools_menu.index('end')+1)
+                          if compact.tools_menu.type(i)!='separator'],['Browse by','Identify UI'])
         self.assertIn('Show expanded app controls', labels)
+        self.assertIn('Show field icons', labels)
         target = next(i for i in range(compact.layout_menu.index('end')+1)
                       if compact.layout_menu.entrycget(i, 'label') == 'Compact')
         self.w.route('page.comparison')
@@ -127,6 +186,50 @@ class ModernUI(unittest.TestCase):
         self.assertEqual(self.w.current_route, 'comparison')
         self.assertEqual(self.entry.get(), 'unsaved fixture')
         self.assertEqual(self.operations, [])
+
+    def test_three_header_menus_open_without_changing_work_or_preferences(self):
+        compact=self.a.compact_header
+        self.root.deiconify();self.w.route('page.comparison');self.root.update()
+        before=self.path.read_bytes() if self.path.exists() else None
+        view=self.w.export_view();selection=self.tabs.select()
+        for menu in (compact.menu,compact.layout_menu,compact.tools_menu):
+            menu.post(20,20);self.root.update();self.assertTrue(menu.winfo_ismapped())
+            menu.unpost();self.root.update()
+        self.assertEqual(self.w.export_view(),view)
+        self.assertEqual(self.tabs.select(),selection)
+        self.assertEqual(self.entry.get(),'unsaved fixture')
+        self.assertEqual(self.path.read_bytes() if self.path.exists() else None,before)
+        self.assertEqual(self.operations,[])
+
+    def test_shorter_search_and_all_three_menus_fit_resized_header(self):
+        compact=self.a.compact_header
+        self.root.deiconify();self.w.route('page.comparison');self.root.update()
+        search=self.w.selector;self.w.query.set('report');search.icursor(2)
+        for width in (1360,1000,720,620):
+            self.root.geometry(f'{width}x740');self.root.update()
+            self.assertIs(self.w.selector,search)
+            self.assertEqual(int(search.cget('width')),28)
+            self.assertEqual(search.index('insert'),2)
+            self.assertEqual(self.w.query.get(),'report')
+            for button in (self.w.view_menu.master,compact.layout_button,compact.tools_button):
+                self.assertTrue(button.winfo_ismapped())
+                self.assertLessEqual(button.winfo_x()+button.winfo_width(),self.w.toolbar.winfo_width())
+            if width==1360:self.assertLess(search.winfo_width(),width*.45)
+            if width<880:
+                self.assertFalse(self.w.navigation_button.winfo_ismapped())
+                self.assertGreater(search.winfo_width(),150)
+        self.assertEqual(self.w.current_route,'comparison')
+        self.assertEqual(self.operations,[])
+
+    def test_browse_menu_keeps_existing_navigation_owner_and_draft(self):
+        self.w.route('page.comparison');self.root.update()
+        target=next(i for i in range(self.w.browse_menu.index('end')+1)
+                    if self.w.browse_menu.entrycget(i,'label')=='Goals')
+        self.w.browse_menu.invoke(target);self.root.update()
+        self.assertEqual(self.w.view.get(),'Goals')
+        self.assertEqual(self.w.current_route,'comparison')
+        self.assertEqual(self.entry.get(),'unsaved fixture')
+        self.assertEqual(self.operations,[])
 
     def test_categories_are_view_only_and_all_features_remain_reachable(self):
         before = self.tabs.select()

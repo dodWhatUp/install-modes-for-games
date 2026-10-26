@@ -4,7 +4,7 @@ from __future__ import annotations
 import tkinter as tk
 from tkinter import ttk
 
-VERSION = '0.1.0'
+VERSION = '0.2.0'
 
 
 class CompactHeader:
@@ -17,21 +17,37 @@ class CompactHeader:
         self._interface_trace = None
         self.expanded = tk.BooleanVar(root, False)
         self.menu = workspace.view_menu
-        self.menu.add_separator()
-        self.menu.add_checkbutton(label='Show expanded app controls', variable=self.expanded,
+        for index in range(self.menu.index('end'),-1,-1):
+            if self.menu.type(index)=='cascade' and str(self.menu.entrycget(index,'menu'))==str(workspace.browse_menu):
+                self.menu.delete(index)
+        self.menu.insert_checkbutton(3,label='Show expanded app controls', variable=self.expanded,
                                   command=self.refresh)
-        self.layout_menu = tk.Menu(self.menu, tearoff=False)
+        from GameToolChoiceIcons import install as choice_icons
+        self.icon_manager=choice_icons(root)
+        self.menu.insert_checkbutton(3,label='Show field icons',variable=self.icon_manager.show_icons,
+                                  command=self.icon_manager.save_visibility)
+        self.layout_menu = tk.Menu(root, tearoff=False)
         for mode in appearance.selector.cget('values'):
             self.layout_menu.add_radiobutton(label=mode, variable=appearance.mode, value=mode,
                                              command=lambda m=mode: appearance.change(m))
-        self.menu.add_cascade(label='Layout', menu=self.layout_menu)
-        self.menu.add_cascade(label='Identify UI', menu=appearance.marker_menu)
+        self.tools_menu = tk.Menu(root, tearoff=False)
+        self.tools_menu.add_cascade(label='Browse by', menu=workspace.browse_menu)
+        self.tools_menu.add_separator()
+        self.tools_menu.add_cascade(label='Identify UI', menu=appearance.marker_menu)
+        self.layout_button=ttk.Menubutton(workspace.toolbar,text='Layout \u25be',menu=self.layout_menu)
+        self.tools_button=ttk.Menubutton(workspace.toolbar,text='Tools \u25be',menu=self.tools_menu)
+        workspace.add_toolbar_action(self.layout_button)
+        workspace.add_toolbar_action(self.tools_button)
         # The New interface hides the original workspace. Keep the same View
         # menu reachable there without duplicating any editor or operation.
         self.new_bar = ttk.Frame(root, padding=(8, 2))
         ttk.Label(self.new_bar, text='Interface: New').pack(side='left')
         self.new_menu_button = ttk.Menubutton(self.new_bar, text='View \u25be', menu=self.menu)
-        self.new_menu_button.pack(side='right')
+        self.new_menu_button.pack(side='left',padx=(16,0))
+        self.new_layout_button=ttk.Menubutton(self.new_bar,text='Layout \u25be',menu=self.layout_menu)
+        self.new_layout_button.pack(side='left',padx=(6,0))
+        self.new_tools_button=ttk.Menubutton(self.new_bar,text='Tools \u25be',menu=self.tools_menu)
+        self.new_tools_button.pack(side='left',padx=(6,0))
         self._mode_trace = appearance.mode.trace_add('write', self._queue)
         self.refresh()
         self._connect_interface()
@@ -60,9 +76,10 @@ class CompactHeader:
         for mode in views.selector.cget('values'):
             self.interface_menu.add_radiobutton(label=mode, variable=views.selected, value=mode,
                                                 command=lambda m=mode: views.show(m))
-        self.menu.add_cascade(label='Interface', menu=self.interface_menu)
-        self.menu.add_cascade(label='All tools', menu=views.menu)
-        self.menu.add_command(label='Show APP LAUNCHER', command=views.show_launcher)
+        self.layout_menu.add_separator()
+        self.layout_menu.add_cascade(label='Interface', menu=self.interface_menu)
+        self.tools_menu.insert_cascade(1,label='Open tool', menu=views.menu)
+        self.tools_menu.insert_command(2,label='Show APP LAUNCHER', command=views.show_launcher)
         self._interface_trace = views.selected.trace_add('write', self._queue)
         self.refresh()
 
@@ -85,7 +102,7 @@ class CompactHeader:
             if views:
                 packed = self.root.pack_slaves()
                 views.bar.pack(side='top', fill='x', **({'before': packed[0]} if packed else {}))
-        elif new:
+        if new:
             packed = self.root.pack_slaves()
             self.new_bar.pack(side='top', fill='x', **({'before': packed[0]} if packed else {}))
         style = ttk.Style(self.root)
@@ -94,10 +111,11 @@ class CompactHeader:
         style.configure('Header.TCombobox', padding=(4, 2), font=('Segoe UI', 10))
         self.w.toolbar.configure(padding=(8, 3))
         self.w.search_label.configure(text='Find  \u00b7  Ctrl+K')
-        self.w.selector.configure(style='Header.TCombobox')
+        self.w.selector.configure(style='Header.TCombobox',width=28)
         self.w.navigation_button.configure(style='Header.TButton')
         self.w.view_menu.master.configure(style='Header.TMenubutton')
-        self.new_menu_button.configure(style='Header.TMenubutton')
+        for button in (self.new_menu_button,self.new_layout_button,self.new_tools_button,self.layout_button,self.tools_button):
+            button.configure(style='Header.TMenubutton')
         self.w.breadcrumb.configure(padding=(10, 4))
         modern = self.w.modern
         if modern and modern.active:
@@ -118,4 +136,9 @@ class CompactHeader:
         self.a.mode.trace_remove('write', self._mode_trace)
         if self.interface and self._interface_trace:
             self.interface.selected.trace_remove('write', self._interface_trace)
+        for button in (self.layout_button,self.tools_button):
+            if button in self.w.toolbar_actions:self.w.toolbar_actions.remove(button)
+            button.destroy()
+        self.layout_menu.destroy()
+        self.tools_menu.destroy()
         self.new_bar.destroy()

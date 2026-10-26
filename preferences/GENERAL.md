@@ -1,5 +1,13 @@
 # General User Preferences
 
+Compact app guidance, adopted 2026-10-26: prefer a stable small header, bounded
+editable search and intent-based View / Layout / Tools groups where relevant.
+Keep explanations in their content cards, preserve explicit operation owners,
+and offer the previous toolbar/layout where practical. Retain prior guidance
+and source as dated alternatives rather than deleting them. Apply during
+requested work on maintained apps, not as a bulk migration of unrelated apps.
+See [design lessons and the preserved prior reference](../docs/UI-AND-CONTENT-DESIGN.md#compact-application-lessons--adopted-2026-10-26).
+
 Choice-field presentation, requested 2026-10-26: use subtle relevant icons in
 editable search/choice fields, separate from text and stable IDs. Provide an
 explicit icon picker with Automatic/presets/No icon, Start/End placement and

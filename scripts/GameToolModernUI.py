@@ -10,7 +10,7 @@ from tkinter import ttk, font as tkfont
 from GameToolCompactUI import ScrollableFrame, FlowToolbar
 from GameToolWorkspace import DOMAINS
 
-VERSION = "0.1.3"
+VERSION = "0.1.4"
 COLORS = dict(background="#f3f5f8", surface="#ffffff", ink="#18283b",
               muted="#526477", line="#dce3eb", accent="#076b68",
               rail="#172b40", rail_text="#edf3f9", rail_muted="#bed0e2",
@@ -224,7 +224,8 @@ class ModernSurface:
         self.w.sidebar.configure(style="TFrame")
         self.top.pack_forget()
         self.detail.pack_forget()
-        self.w.active_widget.pack(before=self.w.scope_widget, anchor="w")
+        self.w.scope_widget.pack_forget()
+        self.w.active_widget.pack(anchor="w")
         self.w.scope_widget.configure(style="TLabel")
         self.w.search_label.configure(text="Find a goal or feature")
         self.w.view_menu.master.configure(width=self._menu_width)
@@ -284,7 +285,10 @@ class ModernSurface:
         self.dashboard.pack_forget()
         self.w.notebook.pack(fill="both", expand=True)
         self.page_title.configure(text=record["title"])
-        self.detail_button.grid()
+        if record['route'] == 'profiles':
+            self.detail_button.grid_remove()
+        else:
+            self.detail_button.grid()
         self.details_changed()
         self._queue_heading()
         self._highlight(record["domain"])
@@ -376,7 +380,7 @@ class ModernSurface:
         if not self.active:
             return
         self.w.details_box.grid_remove()
-        visible = self.w.show_details.get() and not self.home_visible
+        visible = self.w.show_details.get() and not self.home_visible and self.w.current_route != 'profiles'
         if visible:
             self.detail.pack(fill="x", pady=(8, 0))
         else:
@@ -394,7 +398,9 @@ class ModernSurface:
         width=self.top.winfo_width()
         if width<=1:
             width=max(240,self.w._available_width-36)
-        buttons=self.back.winfo_reqwidth()+self.detail_button.winfo_reqwidth()+26
+        buttons=self.back.winfo_reqwidth()+14
+        if self.detail_button.winfo_manager():
+            buttons+=self.detail_button.winfo_reqwidth()+12
         narrow=width-buttons<max(240,self.reflow_font.measure('Game profiles and controls'))
         info=self.page_title.grid_info()
         row=1 if narrow else 0;column=0 if narrow else 1;span=3 if narrow else 1

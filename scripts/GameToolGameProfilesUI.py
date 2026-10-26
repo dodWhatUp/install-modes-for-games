@@ -7,7 +7,7 @@ from tkinter import ttk, simpledialog, messagebox
 import GameToolGameProfiles as api
 from GameToolCompactUI import Selector, FlowToolbar, ScrollableFrame, TableLayout
 
-VERSION = "0.2.0"
+VERSION = "0.2.1"
 
 class ProfilesPanel:
     def __init__(self,parent,directory,unified,overlays,status=None,autostart=True):
@@ -19,9 +19,16 @@ class ProfilesPanel:
         self.scroll=ScrollableFrame(parent,min_width=0);self.scroll.pack(fill='both',expand=True);body=self.scroll.body
         self.summary=tk.StringVar(value='Choose a game and save its working setup.')
         self.restore=tk.BooleanVar();self.automatic=tk.BooleanVar();self.windows=tk.BooleanVar()
-        ttk.Label(body,text='Game profiles',font=('Segoe UI',18,'bold')).pack(anchor='w')
-        self.intro=ttk.Label(body,text='Save a working setup once. Activate it here, or restore it automatically when Game Tools opens.',wraplength=750)
-        self.intro.pack(anchor='w',pady=(4,12))
+        self.content_header=ttk.Frame(body,padding=12,borderwidth=1,relief='solid')
+        self.content_header.pack(fill='x',pady=(0,12))
+        self.heading=ttk.Label(self.content_header,text='Game profiles · activation & startup',font=('Segoe UI',18,'bold'),wraplength=750)
+        self.heading.pack(anchor='w',fill='x')
+        self.intro=ttk.Label(self.content_header,text='Save the published setup for each game, activate or stop its Overlay and choose automatic startup.',wraplength=750)
+        self.intro.pack(anchor='w',fill='x',pady=(4,6))
+        self.scope_notice=ttk.Label(self.content_header,text='Runtime selection only. Apply game bindings and native profiles through their separate reviewed controls.',wraplength=750)
+        self.scope_notice.pack(anchor='w',fill='x')
+        for label in (self.heading,self.intro,self.scope_notice):
+            label.game_tools_wrap_managed=True
         form=ttk.Frame(body);form.pack(fill='x');form.columnconfigure(1,weight=1)
         ttk.Label(form,text='Game').grid(row=0,column=0,sticky='w',padx=(0,10),pady=4)
         self.game=Selector(form,on_select=lambda _:self.refresh_profiles(),on_add=self.add_game);self.game.grid(row=0,column=1,sticky='ew',pady=4)
@@ -56,7 +63,8 @@ class ProfilesPanel:
         tools.add('Show APP LAUNCHER',self.show_launcher)
         tools.add('Show profile details',self.details)
         tools.add('reWASD controls…',self.native_controls)
-        body.bind('<Configure>',lambda e:[w.configure(wraplength=max(240,e.width-20))for w in (self.intro,self.notice)])
+        self.notice.game_tools_wrap_managed=True
+        body.bind('<Configure>',lambda e:[w.configure(wraplength=max(180,e.width-48))for w in (self.heading,self.intro,self.scope_notice,self.notice)],add='+')
         self.refresh()
         self.timer=parent.after(500,self.tick)
         self.restore_timer=parent.after(350,self.restore_profile)if autostart else None

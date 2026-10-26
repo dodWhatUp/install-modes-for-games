@@ -37,7 +37,7 @@ class ControlRequests(AutomationPanel):
         if path:self.safe(lambda:json_new(Path(path),self.controls.inspect(self.instance)))
 
 class ModControlsPanel(ttk.Frame):
-    def __init__(self,parent,data_dir,status=None,service=None,initial_game=None):
+    def __init__(self,parent,data_dir,status=None,service=None,initial_game=None,standalone=False):
         super().__init__(parent,padding=10)
         self.controls=service or ModControls(data_dir);self.shared_status=status
         self.state=tk.StringVar(self,value='Select a game and installation. Opening this page does not apply settings.')
@@ -52,8 +52,8 @@ class ModControlsPanel(ttk.Frame):
             if initial_game is None:initial_game=view.get('game_id')
         self.game_rows=self.controls.games()['games'];self.game_labels={r['name']+' ['+r['game_id']+']':r for r in self.game_rows}
         header=ttk.Frame(self);header.pack(fill='x')
-        ttk.Label(header,text='Mod Controls',font=('Segoe UI',16,'bold')).pack(side='left')
-        ttk.Label(header,text='  '+VERSION).pack(side='left')
+        title_label=ttk.Label(header,text='Mod Controls',font=('Segoe UI',16,'bold'));title_label.pack(side='left')
+        version_label=ttk.Label(header,text='  '+VERSION);version_label.pack(side='left')
         choose=ttk.Frame(self);choose.pack(fill='x',pady=8);choose.columnconfigure(1,weight=1)
         ttk.Label(choose,text='Game').grid(row=0,column=0,sticky='w',padx=(0,8))
         self.game_box=ttk.Combobox(choose,textvariable=self.game,values=list(self.game_labels));self.game_box.grid(row=0,column=1,sticky='ew')
@@ -89,6 +89,18 @@ class ModControlsPanel(ttk.Frame):
         self.inspect_text=tk.Text(self.inspector,wrap='none');self.inspect_text.pack(fill='both',expand=True)
         sb=ttk.Scrollbar(self.inspector,orient='vertical',command=self.inspect_text.yview);sb.pack(side='right',fill='y');self.inspect_text.configure(yscrollcommand=sb.set)
         self.bind('<Destroy>',self._destroy,add='+')
+        self.chrome=None
+        if standalone:
+            from GameToolAppMenus import AppMenus
+            tools_menu=tk.Menu(self.root,tearoff=False)
+            for label,action in [('Find game & controls…',self.find_locations),('Refresh applied state',self.refresh),('Show APP LAUNCHER',self.find_launcher)]:
+                tools_menu.add_command(label=label,command=lambda a=action:self.safe(a))
+            page_menu=tk.Menu(tools_menu,tearoff=False)
+            for tab in self.pages.tabs():page_menu.add_command(label=self.pages.tab(tab,'text'),command=lambda t=tab:self.pages.select(t))
+            tools_menu.add_cascade(label='Open page',menu=page_menu)
+            self.chrome=AppMenus(header,root=self.root,preference=self.controls.root/'ui-chrome.json',title=title_label,
+                                 original_controls=(version_label,),tools_menu=tools_menu,status=self.set_state)
+            self.chrome.visibility('Show setup shortcuts',(tools,),'setup-shortcuts')
         if self.game_rows:
             chosen=next((label for label,row in self.game_labels.items() if row['game_id']==initial_game),next(iter(self.game_labels)))
             self.game.set(chosen);self.choose_game()
@@ -384,6 +396,7 @@ class ModControlsPanel(ttk.Frame):
     def close(self):
         if self.closed:return
         self._stash();self.closed=True
+        if self.chrome:self.chrome.close()
         for chooser in self.location_choosers:chooser.close()
         for v in self.workbenches:
             if not v.closed:v.close()
@@ -399,7 +412,7 @@ def main(argv=None):
     p=argparse.ArgumentParser();p.add_argument('--data-dir',type=Path,required=True);p.add_argument('--game-id');p.add_argument('--discover',action='store_true');a=p.parse_args(argv)
     root=tk.Tk();root.title('Game Mod Controls '+VERSION)
     w,h,mw,mh=window_bounds(root.winfo_screenwidth(),root.winfo_screenheight());root.geometry(f'{w}x{h}');root.minsize(mw,mh)
-    panel=ModControlsPanel(root,a.data_dir,initial_game=a.game_id);panel.pack(fill='both',expand=True)
+    panel=ModControlsPanel(root,a.data_dir,initial_game=a.game_id,standalone=True);panel.pack(fill='both',expand=True)
     if a.discover:root.after(100,lambda:panel.safe(panel.find_locations))
     def close():
         if panel.can_close():panel.close();root.destroy()

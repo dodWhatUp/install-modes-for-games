@@ -1,5 +1,12 @@
 # Choice-field icons
 
+Use **View > Show field icons** to show or hide all field decorations. This UI
+choice is saved across restarts and shared by Existing/New views and layouts.
+Hiding also removes the empty placeholder and reserved icon space. It retains
+all custom icon choices, field values and selections. Alt+I can still open the
+icon editor while decorations are hidden. Existing preferences without this
+option keep icons visible until the user changes it.
+
 Choice/search fields have a small neutral icon inside the field, separate from
 their text and IDs. Click the icon, or focus the field and press Alt+I, to open
 the picker. Choose a preset, Automatic or No icon, choose Start or End, then

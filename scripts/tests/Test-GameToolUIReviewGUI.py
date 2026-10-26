@@ -26,6 +26,12 @@ class Tests(unittest.TestCase):
         self.root.update();self.assertEqual(finder.jobs,0);self.assertEqual(self.errors,[])
     def test_initial_selection_loads_real_typed_fields_without_writes(self):
         self.assertEqual(self.app.instance,'fixture-one');self.assertEqual(self.app.values()['amount'],2.0);self.assertEqual(self.f.f.path('fixture-one').read_bytes(),self.f.f.initial['fixture-one'])
+    def test_original_toolbar_roundtrip_retains_unsaved_settings(self):
+        self.app.variables['amount'].set('5.25');game=self.app.game_id
+        self.app.chrome.layout.invoke(1);self.root.update();self.assertTrue(self.app.dark_button.winfo_ismapped())
+        self.app.chrome.layout.invoke(0);self.root.update();self.assertFalse(self.app.dark_button.winfo_ismapped())
+        self.assertEqual(self.app.game_id,game);self.assertEqual(self.app.values()['amount'],5.25)
+        self.assertEqual(self.f.f.path('fixture-one').read_bytes(),self.f.f.initial['fixture-one'])
     def test_hiding_settings_preserves_enabled_state_and_can_restore(self):
         self.app.variables['enabled'].set(False);key=next(k for k in self.app.sections if k.startswith('settings-'));self.app.hide_section(key,True);self.root.update();self.assertFalse(self.app.sections[key][0].winfo_ismapped());self.assertFalse(self.app.values()['enabled']);self.app.visibility.restore();self.root.update();self.assertTrue(self.app.sections[key][0].winfo_ismapped());self.assertFalse(self.app.values()['enabled'])
     def test_refresh_and_page_switch_keep_draft(self):

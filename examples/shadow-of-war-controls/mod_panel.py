@@ -57,9 +57,9 @@ class Panel(ttk.Frame):
 
     def build(self):
         head=ttk.Frame(self);head.pack(fill='x')
-        ttk.Label(head,text='Shadow of War',style='Title.TLabel').pack(side='left')
+        title_label=ttk.Label(head,text='Shadow of War',style='Title.TLabel');title_label.pack(side='left')
         self.files_menu=ttk.Menubutton(head,text='Files & tools ▾');self.files_menu.pack(side='right')
-        ttk.Button(head,text='Mods & folders...',command=lambda:self.mod_tools.show()).pack(side='right',padx=7)
+        folders_button=ttk.Button(head,text='Mods & folders...',command=lambda:self.mod_tools.show());folders_button.pack(side='right',padx=7)
         menu=tk.Menu(self.files_menu,tearoff=False);self.files_menu['menu']=menu
         for label,action in [('Show APP LAUNCHER',lambda:self.open_path(Path(__file__).resolve().parent)),
              ('Find / repair settings location...',self.setup_settings),
@@ -138,6 +138,18 @@ class Panel(ttk.Frame):
         self.dirty=tk.StringVar(value='')
         ttk.Label(self.bottom,textvariable=self.dirty,style='Muted.TLabel').pack(anchor='w',pady=(7,0))
         self.toggle_view(save=False)
+        try:from GameToolAppMenus import AppMenus
+        except ModuleNotFoundError as error:
+            if error.name!='GameToolAppMenus':raise
+            sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'scripts'))
+            from GameToolAppMenus import AppMenus
+        compact_tools=tk.Menu(self.root,tearoff=False)
+        compact_tools.add_command(label='Mods & folders…',command=lambda:self.mod_tools.show())
+        compact_tools.add_cascade(label='Locations & help',menu=menu)
+        self.chrome=AppMenus(head,root=self.root,preference=self.service.base/'ui-chrome.json',title=title_label,
+                             original_controls=(self.files_menu,folders_button),tools_menu=compact_tools,status=self.notice.set)
+        self.chrome.checkbutton('Show experimental controls',self.advanced,self.toggle_view)
+        self.chrome.checkbutton('Show precise settings',self.precise,self.toggle_view)
 
     def check(self,parent,key,text):
         cb=ttk.Checkbutton(parent,text=text,variable=self.vars[key],command=lambda:self.dependency(key));self.widgets[key]=cb;return cb

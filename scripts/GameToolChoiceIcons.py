@@ -5,7 +5,7 @@ from pathlib import Path
 import tkinter as tk
 from tkinter import ttk, font, messagebox
 
-VERSION = '0.1.1'
+VERSION = '0.2.0'
 ICONS = ('none', 'search', 'game', 'profile', 'keyboard', 'folder', 'layers', 'image', 'tools', 'star', 'shield')
 LABELS = dict(none='No icon', search='Search', game='Game', profile='Profile', keyboard='Device',
               folder='Folder', layers='Layers', image='Image', tools='Settings', star='Favorite', shield='Safety')
@@ -36,6 +36,8 @@ class IconStore:
                 if (not isinstance(value, dict) or value.get('schema_version') != 1
                     or not isinstance(value.get('icons'), dict) or len(value['icons']) > 1500):
                     raise ValueError('Unsupported icon preferences; original retained.')
+                if 'show_icons' in value and type(value['show_icons']) is not bool:
+                    raise ValueError('Invalid icon visibility preference; original retained.')
                 for key, row in value['icons'].items():
                     if (len(key) != 64 or any(c not in '0123456789abcdef' for c in key)
                         or not isinstance(row, dict) or row.get('icon') not in (*ICONS,'auto')
@@ -53,6 +55,16 @@ class IconStore:
         if icon == 'auto' and position == 'start': value['icons'].pop(key, None)
         else: value['icons'][key] = dict(value['icons'].get(key,{}),icon=icon,position=position)
         if len(value['icons']) > 1500: raise ValueError('Icon preference limit reached.')
+        self._write(value)
+
+    def save_visibility(self, visible):
+        if type(visible) is not bool: raise ValueError('Choose Show or Hide field icons.')
+        self._write(dict(self.value,show_icons=visible))
+
+    def _write(self, value):
+        if self.error: raise ValueError(self.error)
+        current = self.path.read_bytes() if self.path.exists() else None
+        if current != self.raw: raise ValueError('Icon preferences changed elsewhere. Reopen the settings; original retained.')
         raw = (json.dumps(value, indent=2)+'\n').encode('utf-8')
         if len(raw) > 262144: raise ValueError('Icon preferences exceed their size limit.')
         self.path.parent.mkdir(parents=True, exist_ok=True)
@@ -185,7 +197,9 @@ class FieldIcon:
             if getattr(self,'_padding_signature',None) != signature:
                 self._padding_signature = signature
                 style.configure(self.style_name,padding=values)
-        if w.winfo_width()<100:
+        if not self.manager.show_icons.get() or w.winfo_width()<100:
+            self.hide_tip()
+            if w.winfo_viewable() and str(w.tk.call('focus'))==str(self.button):w.focus_set()
             self.button.place_forget();apply_padding(padding);return
         key,label,_ = self.context(); row = self.manager.store.value['icons'].get(key,{})
         name = row.get('icon','auto');name = automatic(label)if name=='auto'else name
@@ -240,7 +254,19 @@ class IconManager:
         self.namespace=getattr(root,'game_tools_icon_namespace',hashlib.sha256(str(Path(sys.argv[0]).resolve()).encode()).hexdigest()[:16])
         default=Path(os.environ.get('LOCALAPPDATA',str(Path.home()/'.config')))/'GameTools'/'choice-icons.json'
         self.store=IconStore(getattr(root,'game_tools_icon_path',default))
+        self.show_icons=tk.BooleanVar(root,value=self.store.value.get('show_icons',True))
+        self.show_icons.trace_add('write',self.visibility_changed)
         root.bind_class('TCombobox','<Map>',self.mapped,add='+');self.scan(root)
+    def visibility_changed(self,*_):
+        for field in list(self.fields.values()):field.queue()
+    def save_visibility(self):
+        wanted=self.show_icons.get()
+        try:
+            self.store.reload();self.store.save_visibility(wanted)
+        except (ValueError,OSError)as error:
+            messagebox.showwarning('Field icon display',
+                'Changed for this session only. Existing preferences were retained.\n'+str(error),parent=self.root)
+        self.visibility_changed()
     def glyph(self,name,size,color):
         key=name,size,color
         if key not in self.images:self.images[key]=drawing(self.root,name,size,color)
@@ -287,7 +313,8 @@ class IconManager:
         ttk.Button(actions,text='Cancel',command=close).pack(side='left',padx=5)
         ttk.Button(actions,text='Save icon',command=save).pack(side='left')
         win.bind('<Escape>',lambda _:close());win.protocol('WM_DELETE_WINDOW',close)
-        win.update_idletasks();x=field.button.winfo_rootx();y=field.button.winfo_rooty()+field.button.winfo_height()+4
+        anchor=field.button if field.button.winfo_viewable()else field.widget
+        win.update_idletasks();x=anchor.winfo_rootx();y=anchor.winfo_rooty()+anchor.winfo_height()+4
         x=max(0,min(x,win.winfo_screenwidth()-win.winfo_reqwidth()-10));y=max(0,min(y,win.winfo_screenheight()-win.winfo_reqheight()-20))
         win.geometry(f'+{x}+{y}');win.lift()
 

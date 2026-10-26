@@ -52,7 +52,7 @@ class Panel(ttk.Frame):
         style.configure('Inline.TButton', font=('Segoe UI', 9), padding=(3, 0))
         header = ttk.Frame(self)
         header.pack(fill='x')
-        ttk.Label(header, text='No Rest for the Wicked', style='Title.TLabel').pack(side='left')
+        title_label=ttk.Label(header, text='No Rest for the Wicked', style='Title.TLabel');title_label.pack(side='left')
         tools = ttk.Menubutton(header, text='Files & tools \u25be')
         tools.pack(side='right')
         menu = tk.Menu(tools, tearoff=False)
@@ -104,13 +104,22 @@ class Panel(ttk.Frame):
             button = ttk.Button(row, text=name, command=action)
             button.pack(side='left', padx=(0, 7))
             self.buttons.append(button)
-        ttk.Label(self, text='GitHub / Nexus: source pages. Preview: description and images. Options: mod settings.\nGrey source buttons have no verified page. Floating windows open beside the mouse.',
-            wraplength=800).pack(anchor='w', pady=(4, 6))
+        usage=ttk.Label(self, text='GitHub / Nexus: source pages. Preview: description and images. Options: mod settings.\nGrey source buttons have no verified page. Floating windows open beside the mouse.',wraplength=800)
+        usage.pack(anchor='w', pady=(4, 6))
         ttk.Label(self, text='Apply after saving and exiting the game. Settings and saves stay in place.\nTurning a mod off does not undo items, inventory capacity or other changes already saved by that mod.',
             wraplength=800, foreground='#6b4d20').pack(anchor='w', pady=(10, 0))
         root.bind('<F5>', lambda event: self.refresh())
         root.protocol('WM_DELETE_WINDOW', self.close)
         self.closed = False
+        try:from GameToolAppMenus import AppMenus
+        except ModuleNotFoundError as error:
+            if error.name!='GameToolAppMenus':raise
+            sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'scripts'))
+            from GameToolAppMenus import AppMenus
+        self.chrome=AppMenus(header,root=root,preference=service.workspace/'ui-chrome.json',title=title_label,
+                             original_controls=(tools,),tools_menu=menu,status=self.status.set)
+        self.chrome.visibility('Show usage tips',(usage,),'usage-tips')
+        self.chrome.visibility('Show source links',(w for row in self.row_actions.values() for key,w in row.items() if key in ('github','nexus')),'source-links')
         self.job = root.after(100, self.drain)
         self.refresh()
 
