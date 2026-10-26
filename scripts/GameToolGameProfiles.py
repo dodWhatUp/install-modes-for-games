@@ -9,7 +9,7 @@ from pathlib import Path
 import time, uuid
 import GameToolOverlay as overlay
 
-VERSION = "0.2.1"
+VERSION = "0.2.2"
 LAUNCHER = 'Unified Game Tools APP LAUNCHER.cmd'
 
 def fingerprint(value): return overlay.sha(overlay.encode(value))
@@ -228,15 +228,19 @@ class Profiles:
         value,revision=self.store.load();value['preferences'].update(enabled=False,display=False)
         self.store.write(value,revision);v['active_profile_id']=None;v['options']['enabled']=False
         return self.save(v,expected)
-    def match(self,exe):
+    def identify_game(self,exe):
         import ntpath
         value,_=self.store.load();idx=overlay.validate_store(value)
         # Reuse exact foreground matching/ambiguity rules, without native data.
         shadow=copy.deepcopy(value);shadow['preferences']['enabled']=True
         chosen=overlay.choose(shadow,{'exe':exe,'at':time.monotonic(),'own':False})
         if chosen.get('selection_scope')!='association':return None
+        return chosen.get('game_id')
+    def match(self,exe):
+        game=self.identify_game(exe)
+        if game is None:return None
         v,_=self.load()
-        return next((p for p in v['profiles']if p['automatic']and p['game_id']==chosen.get('game_id')),None)
+        return next((p for p in v['profiles']if p['automatic']and p['game_id']==game),None)
 
 def launcher_bytes(install):
     import GameToolUnified as unified

@@ -256,3 +256,9 @@ second hold remains Key first. Shared keys are the other-application fallback.
 The user accepted BASIC/WEAPONS return and #19 release; DOOM gameplay behavior
 and comfort still need their own check. See the latest [history](HISTORY.md)
 for preservation, capacity-repair evidence and paired rollback boundaries.
+
+## Controller drafts and binary inspection development ? 2026-10-26
+
+The existing application can now prepare separate Vader/reWASD review drafts over current saved native mappings. The DOOM draft reuses 129 saved controller-action records from the existing research workbook; automatic annotation is limited to exact named D-pad correspondence. JOY-number-to-Xbox-button correspondence, default pass-through, physical rear-button positions and live native Shift tracking remain unverified. These drafts do not replace the published Azeron maps or apply native/game changes.
+
+The read-only binary inspector authenticates an explicitly selected Steam profile snapshot, extracts saved input rows, compares binding matrices and exports JSON/CSV evidence. The copied final snapshot has 287 binding rows. A separate private lossless serializer is experimental: the unknown header word/checksum remains unvalidated, so binary replacement and whole-profile switching are refused. The deferred DOOM physical/automatic-selection test is unchanged. See [controller drafts](../../docs/CONTROLLER-KEYMAP-DRAFTS.md) and [binary inspection](../../docs/DOOM-BINARY-BINDING-INSPECTION.md).

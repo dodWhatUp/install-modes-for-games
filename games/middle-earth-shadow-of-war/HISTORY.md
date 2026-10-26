@@ -176,3 +176,7 @@ Luma's current upstream wiki lists Shadow of War as work in progress and DLSS-on
 Next boundary: the user launches normally from Steam and checks Borderless/HDR, the two menus, a moving scene and clean exit. A separate authorized runtime task can investigate failures. The preserved old library candidate, unrelated toolkit source changes and other game installations remain untouched.
 
 Sources reviewed 2026-10-24: [loader](https://github.com/ReaperAnon/Middle-Earth-Mod-Loader), [loader release](https://github.com/ReaperAnon/Middle-Earth-Mod-Loader/releases/tag/loaderfix), [gameplay collection](https://github.com/ReaperAnon/Shadow-Of-War-Mods), [RenoDX author page](https://www.nexusmods.com/middleearthshadowofwar/mods/130), [RenoDX maintained list](https://github.com/clshortfuse/renodx/wiki/Mods), [RHI](https://github.com/RankFTW/RHI), [Luma](https://github.com/Filoppi/Luma-Framework/wiki).
+
+## 2026-10-26 ? Per-game Steam route retained as controller evidence
+
+The user reported working controller input after enabling Steam Input only for this game, with reWASD remapping still on. The intended route is physical Vader ? existing reWASD virtual Xbox ? Steam Input ? game. No Xbox One alternative clone was created or applied. Treat this as user-reported route acceptance, not complete button/layer testing or proof of a universal XInput slot-order cause. The Controllers development stage reuses this case as regression evidence and changes no live native, Steam or game settings. Private machine receipts retain the exact tested config and observations.

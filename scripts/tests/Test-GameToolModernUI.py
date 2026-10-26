@@ -29,7 +29,9 @@ class DesignContract(unittest.TestCase):
     def test_unique_task_domains(self):
         self.assertEqual(len(modern_api.CATEGORIES), 4)
         self.assertIn("Modern", appearance_api.MODES)
-        self.assertEqual(len(workspace_api.DEFAULT_FEATURES), 13)
+        self.assertEqual(len(workspace_api.DEFAULT_FEATURES), 14)
+        self.assertEqual(sum(x["route"] == "controllers" for x in workspace_api.DEFAULT_FEATURES), 1)
+        self.assertEqual(workspace_api.DEFAULT_FEATURES[0]["route"], "profiles")
         self.assertEqual(len(workspace_api.DEFAULT_GOALS), 8)
 
 
@@ -270,7 +272,7 @@ class ModernUI(unittest.TestCase):
             self.assertEqual(self.tabs.select(), before)
             self.assertEqual(self.operations, [])
             self.assertEqual(self.m.domain, i)
-        self.assertEqual(count, 13)
+        self.assertEqual(count, 14)
 
     def test_task_opens_existing_page_without_operation(self):
         children = self.pages["comparison"].winfo_children()

@@ -7,7 +7,7 @@ from tkinter import ttk, simpledialog, messagebox
 import GameToolGameProfiles as api
 from GameToolCompactUI import Selector, FlowToolbar, ScrollableFrame, TableLayout
 
-VERSION = "0.2.1"
+VERSION = "0.2.2"
 
 class ProfilesPanel:
     def __init__(self,parent,directory,unified,overlays,status=None,autostart=True):
@@ -269,6 +269,15 @@ class ProfilesPanel:
             from GameToolRewasd import open_native
             open_native()
         except Exception as error:self.report(error)
+    def open_native_profile(self,identity):
+        """Navigate to the existing reviewed owner; selecting applies nothing."""
+        value,_=self.service.load()
+        p=next((x for x in value['profiles']if x['id']==identity and x.get('provider')=='rewasd'),None)
+        api.overlay.require(p is not None,'Saved reWASD setup is missing; refresh the controller preference')
+        self.refresh()
+        self.game.select(p['game_id']);self.refresh_profiles()
+        self.profile.select(p['id']);self.refresh_status()
+        self.native_controls()
     def native_controls(self):
         try:
             p,_,_=self.selected();api.overlay.require(p.get('provider')=='rewasd','Choose a saved reWASD setup first')

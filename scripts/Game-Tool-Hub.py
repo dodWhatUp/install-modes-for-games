@@ -19,7 +19,7 @@ import time
 import uuid
 from datetime import datetime, timezone
 
-VERSION = "0.27.34-preview.1"
+VERSION = "0.27.35-preview.1"
 HEADER = struct.Struct("<5Ii2I")
 ENTRY_MIN = 1324
 MAX_MAP = 16 * 1024 * 1024
@@ -478,7 +478,7 @@ Sessions uses Ctrl+8. Explicitly create a new offline journal, record checkpoint
 
 def load_catalog_module(name):
     # Authored exact sibling modules only; JSON records can never select code.
-    if name not in {"GameToolGameProfilesUI", "GameToolFocusUI", "GameToolModIntegration", "GameToolAppearance", "GameToolWorkspace", "GameToolUserData", "GameToolUserDataPanel", "GameToolUnified", "GameToolUnifiedPanel", "GameToolCatalogBridge", "GameToolCatalogPanel", "GameToolComparison", "GameToolComparisonPanel", "GameToolReportImport", "GameToolJournal", "GameToolCoordinator", "GameToolSessionPanel", "GameToolCrashEvidence", "GameToolEvidencePanel", "GameToolWorkflow", "GameToolWorkflowPanel", "GameToolReadiness", "GameToolReadinessPanel", "GameToolOverlay", "GameToolCompactUI", "GameToolOverlayPanel"}:
+    if name not in {"GameToolControllerRoutingUI", "GameToolGameProfilesUI", "GameToolFocusUI", "GameToolModIntegration", "GameToolAppearance", "GameToolWorkspace", "GameToolUserData", "GameToolUserDataPanel", "GameToolUnified", "GameToolUnifiedPanel", "GameToolCatalogBridge", "GameToolCatalogPanel", "GameToolComparison", "GameToolComparisonPanel", "GameToolReportImport", "GameToolJournal", "GameToolCoordinator", "GameToolSessionPanel", "GameToolCrashEvidence", "GameToolEvidencePanel", "GameToolWorkflow", "GameToolWorkflowPanel", "GameToolReadiness", "GameToolReadinessPanel", "GameToolOverlay", "GameToolCompactUI", "GameToolOverlayPanel"}:
         raise ValueError("Unsupported optional authored module")
     path = Path(__file__).resolve().with_name(name + ".py")
     before = path.stat()
@@ -643,6 +643,8 @@ def gui(data_dir, draft=None, catalog_path=None, overlay_page=False, unified_ins
     data_tab = None
     profiles_panel = None
     profiles_tab = None
+    controllers_panel = None
+    controllers_tab = None
     if unified_install is not None:
         try:
             unified_panel = load_catalog_module("GameToolUnifiedPanel").UnifiedPanel(
@@ -666,6 +668,17 @@ def gui(data_dir, draft=None, catalog_path=None, overlay_page=False, unified_ins
                 tabs.select(profiles_tab)
             except Exception as error:
                 ttk.Label(profiles_tab,text='Game profiles need attention: '+str(error),wraplength=700).pack(anchor='w')
+            controllers_tab = ttk.Frame(tabs,padding=12)
+            tabs.add(controllers_tab,text='Controllers')
+            try:
+                controllers_panel=load_catalog_module('GameToolControllerRoutingUI').ControllersPanel(
+                    controllers_tab,data_dir,status,
+                    profiles=profiles_panel.service if profiles_panel is not None else None,
+                    open_native=profiles_panel.open_native_profile if profiles_panel is not None else None,
+                    foreground=overlay_panel.foreground,
+                    game_lookup=profiles_panel.service.identify_game if profiles_panel is not None else None)
+            except Exception as error:
+                ttk.Label(controllers_tab,text='Controller tools need attention: '+str(error),wraplength=700).pack(anchor='w')
     if workspace is not None:
         routes = dict(zip(("tools","sensors","rtss","reports","guide"), original_tabs))
         routes.update(catalog=catalog_tab,comparison=comparison_tab,sessions=session_tab,overlays=overlay_tab)
@@ -674,6 +687,7 @@ def gui(data_dir, draft=None, catalog_path=None, overlay_page=False, unified_ins
             routes.update(studio=unified_panel.studio_tab,updates=unified_panel.update_tab)
         if data_tab is not None: routes["data"] = data_tab
         if profiles_tab is not None: routes['profiles'] = profiles_tab
+        if controllers_tab is not None: routes['controllers'] = controllers_tab
         workspace.attach(tabs,routes)
     state = {}
     if mod_integration is not None: mod_integration.automation.tool_snapshot = lambda: state
@@ -1041,6 +1055,7 @@ def gui(data_dir, draft=None, catalog_path=None, overlay_page=False, unified_ins
             if overlay_panel is not None:
                 overlay_panel.close()
             if profiles_panel is not None: profiles_panel.close()
+            if controllers_panel is not None: controllers_panel.close()
             if session_panel is not None:
                 session_panel.close()
         finally:

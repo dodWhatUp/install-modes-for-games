@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Controller game keymap draft v1",
+  "type": "object",
+  "required": ["kind", "schema_version", "id", "revision", "game_id", "title", "source", "device", "layers", "contexts", "bindings", "presentation", "effect_state"],
+  "properties": {
+    "kind": {"const": "controller_game_keymap_draft"},
+    "schema_version": {"const": 1},
+    "id": {"type": "string", "pattern": "^controller-map-[a-f0-9]{20}$"},
+    "revision": {"type": "integer", "minimum": 1},
+    "game_id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "maxLength": 240},
+    "source": {"type": "object", "required": ["provider", "config_reference", "sha256", "explicit_mappings_only"], "properties": {
+      "provider": {"const": "rewasd"}, "config_reference": {"type": "string"},
+      "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "explicit_mappings_only": {"const": true}}},
+    "device": {"type": "object", "required": ["alias", "geometry_status", "physical_acceptance"], "properties": {
+      "geometry_status": {"const": "unverified_schematic"}, "physical_acceptance": {"const": false}}},
+    "layers": {"type": "array", "minItems": 1, "maxItems": 17},
+    "contexts": {"type": "array", "minItems": 1, "maxItems": 16, "uniqueItems": true, "items": {"type": "string"}},
+    "bindings": {"type": "array", "maxItems": 512, "items": {"type": "object", "required": ["id", "native_index", "layer", "controls", "activation", "outputs", "annotations", "native_mapping"]}},
+    "presentation": {"type": "object", "required": ["show_icons"], "properties": {"show_icons": {"type": "boolean"}}},
+    "effect_state": {"const": {"native": "unchanged", "game": "unchanged", "overlay": "not_published"}}
+  }
+}

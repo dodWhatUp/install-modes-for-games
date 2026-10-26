@@ -1,0 +1,29 @@
+{
+  "kind": "controller_geometry_draft",
+  "schema_version": 1,
+  "device_alias": "flydigi-vader-5-pro",
+  "registered_device_enrollment": false,
+  "geometry_revision": "neutral-controller-schematic-1",
+  "status": "unverified_schematic",
+  "front": {
+    "shape": "neutral_standard_controller",
+    "labels": ["LS", "RS", "D-pad", "A", "B", "X", "Y"],
+    "native_input_correspondence_verified": false,
+    "implicit_passthrough_outputs_verified": false
+  },
+  "rear": {
+    "source": "Saved reWASD Flydigi control descriptions; not a physical position test",
+    "controls": [
+      {"label": "M4", "native_button_id": 29, "x": null, "y": null},
+      {"label": "M3", "native_button_id": 30, "x": null, "y": null},
+      {"label": "M2", "native_button_id": 31, "x": null, "y": null},
+      {"label": "M1", "native_button_id": 32, "x": null, "y": null}
+    ],
+    "physical_positions_verified": false
+  },
+  "limitations": [
+    "Do not substitute Azeron button numbers or geometry.",
+    "Profile descriptions do not certify physical press/release, Shift access, rear placement or analog behavior.",
+    "The diagram is a review reference; live layer tracking and Overlay publication are unavailable in this draft workflow."
+  ]
+}

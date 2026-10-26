@@ -690,3 +690,7 @@ the 528-image registry; the [bounded capacity repair](OVERLAY-GROUPS.md#retained
 passed 43 installed core checks and 144 synthetic routes. Exact packages,
 native revisions, acceptance, recovery and portable exports are indexed by the
 machine-local binding. No game launch/input, graphics operation or upload.
+
+## Controller tools and saved-binding inspection ? 2026-10-26
+
+Within GT-048?053/058, the existing application now has a source-level Controllers workspace: [route preferences](CONTROLLER-ROUTING.md), [read-only inventory and held-input identification](CONTROLLER-INVENTORY.md), [controller game keymap drafts](CONTROLLER-KEYMAP-DRAFTS.md) and [DOOM saved-binding inspection](DOOM-BINARY-BINDING-INSPECTION.md). Saved preferences, observed endpoints, user-reported game acceptance and actual native routing remain distinct. Safe device-disable/forced priority, full Vader physical geometry, native Shift telemetry and a game-ready DOOM binary writer remain unavailable. Source/guest checks do not establish installation or physical-game acceptance.
