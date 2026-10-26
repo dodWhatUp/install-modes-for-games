@@ -1,0 +1,874 @@
+{
+  "schema_version": 1,
+  "game": "DOOM: The Dark Ages + Revelations",
+  "build": "25755602",
+  "date": "2026-10-26",
+  "order_basis": "Native Inputs UI, read top to bottom in all six tabs",
+  "verification": "All ten changed actions read back in the native UI after normal exit and relaunch; gameplay not exercised.",
+  "menus": [
+    {
+      "name": "Slayer",
+      "rows": [
+        {
+          "order": 1,
+          "section": "Movement",
+          "action": "Move Forward",
+          "keys": [
+            "W"
+          ]
+        },
+        {
+          "order": 2,
+          "section": "Movement",
+          "action": "Move Backwards",
+          "keys": [
+            "S"
+          ]
+        },
+        {
+          "order": 3,
+          "section": "Movement",
+          "action": "Move Left",
+          "keys": [
+            "A"
+          ]
+        },
+        {
+          "order": 4,
+          "section": "Movement",
+          "action": "Move Right",
+          "keys": [
+            "D"
+          ]
+        },
+        {
+          "order": 5,
+          "section": "Movement",
+          "action": "Jump",
+          "keys": [
+            "Space"
+          ]
+        },
+        {
+          "order": 6,
+          "section": "Movement",
+          "action": "Sprint",
+          "keys": [
+            "Shift"
+          ]
+        },
+        {
+          "order": 7,
+          "section": "Combat",
+          "action": "Shoot Gun",
+          "keys": [
+            "Mouse1"
+          ]
+        },
+        {
+          "order": 8,
+          "section": "Combat",
+          "action": "Shield Block",
+          "keys": [
+            "Mouse2"
+          ]
+        },
+        {
+          "order": 9,
+          "section": "Combat",
+          "action": "Shield Throw",
+          "keys": [
+            "K",
+            "Mouse3"
+          ],
+          "before": "G",
+          "changed": true,
+          "restart_verified": true
+        },
+        {
+          "order": 10,
+          "section": "Combat",
+          "action": "Melee Weapon",
+          "keys": [
+            "I",
+            "Mouse4"
+          ]
+        },
+        {
+          "order": 11,
+          "section": "Combat",
+          "action": "Switch Class Weapon",
+          "keys": [
+            "H"
+          ]
+        },
+        {
+          "order": 12,
+          "section": "Combat",
+          "action": "Weapon Quick Switch",
+          "keys": [
+            "L"
+          ],
+          "before": "B",
+          "changed": true,
+          "restart_verified": true
+        },
+        {
+          "order": 13,
+          "section": "Combat",
+          "action": "Next Weapon",
+          "keys": [
+            "WheelUp"
+          ]
+        },
+        {
+          "order": 14,
+          "section": "Combat",
+          "action": "Previous Weapon",
+          "keys": [
+            "WheelDown"
+          ]
+        },
+        {
+          "order": 15,
+          "section": "Combat",
+          "action": "Next Melee Weapon",
+          "keys": [
+            "F"
+          ],
+          "before": "Unbound",
+          "changed": true,
+          "restart_verified": true
+        },
+        {
+          "order": 16,
+          "section": "Combat",
+          "action": "Previous Melee Weapon",
+          "keys": [
+            "P"
+          ],
+          "before": "Unbound",
+          "changed": true,
+          "restart_verified": true
+        },
+        {
+          "order": 17,
+          "section": "Combat",
+          "action": "Next Shield Rune",
+          "keys": [
+            "E"
+          ],
+          "before": "Unbound",
+          "changed": true,
+          "restart_verified": true
+        },
+        {
+          "order": 18,
+          "section": "Combat",
+          "action": "Previous Shield Rune",
+          "keys": [
+            "O"
+          ],
+          "before": "Unbound",
+          "changed": true,
+          "restart_verified": true
+        },
+        {
+          "order": 19,
+          "section": "Chain Spear",
+          "action": "Slash",
+          "keys": [
+            "Mouse2"
+          ]
+        },
+        {
+          "order": 20,
+          "section": "Chain Spear",
+          "action": "Meat Hook / Spear Ready",
+          "keys": [
+            "K",
+            "Mouse3"
+          ],
+          "before": "G",
+          "changed": true,
+          "restart_verified": true
+        },
+        {
+          "order": 21,
+          "section": "Chain Spear",
+          "action": "Stab",
+          "keys": [
+            "J",
+            "Mouse5"
+          ]
+        },
+        {
+          "order": 22,
+          "section": "Chain Spear",
+          "action": "Slam",
+          "keys": [
+            "Shift"
+          ]
+        },
+        {
+          "order": 23,
+          "section": "Chain Spear",
+          "action": "Dash",
+          "keys": [
+            "Ctrl"
+          ]
+        },
+        {
+          "order": 24,
+          "section": "Weapons",
+          "action": "Shotgun",
+          "keys": [
+            "1"
+          ]
+        },
+        {
+          "order": 25,
+          "section": "Weapons",
+          "action": "Rail Spike",
+          "keys": [
+            "2"
+          ]
+        },
+        {
+          "order": 26,
+          "section": "Weapons",
+          "action": "Plasma Rifle",
+          "keys": [
+            "3"
+          ]
+        },
+        {
+          "order": 27,
+          "section": "Weapons",
+          "action": "Skullcrusher",
+          "keys": [
+            "4"
+          ]
+        },
+        {
+          "order": 28,
+          "section": "Weapons",
+          "action": "Reaver",
+          "keys": [
+            "5"
+          ]
+        },
+        {
+          "order": 29,
+          "section": "Weapons",
+          "action": "Launcher",
+          "keys": [
+            "6"
+          ]
+        },
+        {
+          "order": 30,
+          "section": "Weapons",
+          "action": "BFC (Ballistic Force Crossbow)",
+          "keys": [
+            "9"
+          ]
+        },
+        {
+          "order": 31,
+          "section": "Misc",
+          "action": "Use",
+          "keys": [
+            "J",
+            "Mouse5"
+          ]
+        },
+        {
+          "order": 32,
+          "section": "Misc",
+          "action": "Dossier",
+          "keys": [
+            "R"
+          ]
+        },
+        {
+          "order": 33,
+          "section": "Misc",
+          "action": "Objective Ping",
+          "keys": [
+            "C"
+          ],
+          "before": "M",
+          "changed": true,
+          "restart_verified": true
+        },
+        {
+          "order": 34,
+          "section": "Misc",
+          "action": "Magnify",
+          "keys": [
+            "B"
+          ],
+          "before": "F",
+          "changed": true,
+          "restart_verified": true
+        },
+        {
+          "order": 35,
+          "section": "Misc",
+          "action": "Switch Off-hand Weapon",
+          "keys": [
+            "G"
+          ],
+          "before": "C",
+          "changed": true,
+          "restart_verified": true
+        },
+        {
+          "order": 36,
+          "section": "Misc",
+          "action": "Next Melee Weapon",
+          "keys": [
+            "F"
+          ],
+          "before": "Unbound",
+          "changed": true,
+          "restart_verified": true
+        },
+        {
+          "order": 37,
+          "section": "Misc",
+          "action": "Next Shield Rune",
+          "keys": [
+            "E"
+          ],
+          "before": "Unbound",
+          "changed": true,
+          "restart_verified": true
+        }
+      ]
+    },
+    {
+      "name": "Atlan",
+      "rows": [
+        {
+          "order": 1,
+          "section": "Movement",
+          "action": "Move Forward",
+          "keys": [
+            "W"
+          ]
+        },
+        {
+          "order": 2,
+          "section": "Movement",
+          "action": "Move Backwards",
+          "keys": [
+            "S"
+          ]
+        },
+        {
+          "order": 3,
+          "section": "Movement",
+          "action": "Move Left",
+          "keys": [
+            "A"
+          ]
+        },
+        {
+          "order": 4,
+          "section": "Movement",
+          "action": "Move Right",
+          "keys": [
+            "D"
+          ]
+        },
+        {
+          "order": 5,
+          "section": "Movement",
+          "action": "Dash",
+          "keys": [
+            "Space"
+          ]
+        },
+        {
+          "order": 6,
+          "section": "Movement",
+          "action": "Sprint",
+          "keys": [
+            "Shift"
+          ]
+        },
+        {
+          "order": 7,
+          "section": "Combat",
+          "action": "Combo Punch",
+          "keys": [
+            "Mouse1"
+          ]
+        },
+        {
+          "order": 8,
+          "section": "Combat",
+          "action": "Finisher",
+          "keys": [
+            "Mouse2"
+          ]
+        },
+        {
+          "order": 9,
+          "section": "Misc",
+          "action": "Use",
+          "keys": [
+            "G"
+          ]
+        },
+        {
+          "order": 10,
+          "section": "Misc",
+          "action": "Dossier",
+          "keys": [
+            "Tab"
+          ]
+        },
+        {
+          "order": 11,
+          "section": "Misc",
+          "action": "Objective Ping",
+          "keys": [
+            "H"
+          ]
+        },
+        {
+          "order": 12,
+          "section": "Misc",
+          "action": "Magnify",
+          "keys": [
+            "B"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dragon",
+      "rows": [
+        {
+          "order": 1,
+          "section": "Movement",
+          "action": "Move Forward",
+          "keys": [
+            "W"
+          ]
+        },
+        {
+          "order": 2,
+          "section": "Movement",
+          "action": "Move Backwards",
+          "keys": [
+            "S"
+          ]
+        },
+        {
+          "order": 3,
+          "section": "Movement",
+          "action": "Move Left",
+          "keys": [
+            "A"
+          ]
+        },
+        {
+          "order": 4,
+          "section": "Movement",
+          "action": "Move Right",
+          "keys": [
+            "D"
+          ]
+        },
+        {
+          "order": 5,
+          "section": "Movement",
+          "action": "Ascend",
+          "keys": [
+            "E"
+          ]
+        },
+        {
+          "order": 6,
+          "section": "Movement",
+          "action": "Descend",
+          "keys": [
+            "Q"
+          ]
+        },
+        {
+          "order": 7,
+          "section": "Movement",
+          "action": "Dodge",
+          "keys": [
+            "Space"
+          ]
+        },
+        {
+          "order": 8,
+          "section": "Movement",
+          "action": "Jet Boost",
+          "keys": [
+            "Shift"
+          ]
+        },
+        {
+          "order": 9,
+          "section": "Movement",
+          "action": "Use",
+          "keys": [
+            "Ctrl"
+          ]
+        },
+        {
+          "order": 10,
+          "section": "Combat",
+          "action": "Autocannon",
+          "keys": [
+            "Mouse1"
+          ]
+        },
+        {
+          "order": 11,
+          "section": "Combat",
+          "action": "Assault Mode",
+          "keys": [
+            "Mouse2"
+          ]
+        },
+        {
+          "order": 12,
+          "section": "Misc",
+          "action": "Dossier",
+          "keys": [
+            "Tab"
+          ]
+        },
+        {
+          "order": 13,
+          "section": "Misc",
+          "action": "Objective Ping",
+          "keys": [
+            "H"
+          ]
+        },
+        {
+          "order": 14,
+          "section": "Misc",
+          "action": "Magnify",
+          "keys": [
+            "B"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Turret",
+      "rows": [
+        {
+          "order": 1,
+          "section": "Combat",
+          "action": "Primary Fire",
+          "keys": [
+            "Mouse1"
+          ]
+        },
+        {
+          "order": 2,
+          "section": "Combat",
+          "action": "Secondary Fire",
+          "keys": [
+            "Mouse2"
+          ]
+        },
+        {
+          "order": 3,
+          "section": "Misc",
+          "action": "Dossier",
+          "keys": [
+            "Tab"
+          ]
+        },
+        {
+          "order": 4,
+          "section": "Misc",
+          "action": "Objective Ping",
+          "keys": [
+            "H"
+          ]
+        },
+        {
+          "order": 5,
+          "section": "Misc",
+          "action": "Magnify",
+          "keys": [
+            "B"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Menu",
+      "rows": [
+        {
+          "order": 1,
+          "section": "UI Navigation",
+          "action": "Up",
+          "keys": [
+            "W",
+            "Up"
+          ]
+        },
+        {
+          "order": 2,
+          "section": "UI Navigation",
+          "action": "Down",
+          "keys": [
+            "S",
+            "Down"
+          ]
+        },
+        {
+          "order": 3,
+          "section": "UI Navigation",
+          "action": "Left",
+          "keys": [
+            "A",
+            "Left"
+          ]
+        },
+        {
+          "order": 4,
+          "section": "UI Navigation",
+          "action": "Right",
+          "keys": [
+            "D",
+            "Right"
+          ]
+        },
+        {
+          "order": 5,
+          "section": "UI Navigation",
+          "action": "Previous Tab",
+          "keys": [
+            "Q"
+          ]
+        },
+        {
+          "order": 6,
+          "section": "UI Navigation",
+          "action": "Next Tab",
+          "keys": [
+            "E"
+          ]
+        },
+        {
+          "order": 7,
+          "section": "UI Navigation",
+          "action": "Previous Page",
+          "keys": [
+            "Z"
+          ]
+        },
+        {
+          "order": 8,
+          "section": "UI Navigation",
+          "action": "Next Page",
+          "keys": [
+            "C"
+          ]
+        },
+        {
+          "order": 9,
+          "section": "UI Navigation",
+          "action": "Scroll Up",
+          "keys": [
+            "WheelUp"
+          ]
+        },
+        {
+          "order": 10,
+          "section": "UI Navigation",
+          "action": "Scroll Down",
+          "keys": [
+            "WheelDown"
+          ]
+        },
+        {
+          "order": 11,
+          "section": "UI Interaction",
+          "action": "Special Action 1",
+          "keys": [
+            "F",
+            "Mouse3"
+          ]
+        },
+        {
+          "order": 12,
+          "section": "UI Interaction",
+          "action": "Special Action 2",
+          "keys": [
+            "R"
+          ]
+        },
+        {
+          "order": 13,
+          "section": "UI Interaction",
+          "action": "Special Action 3",
+          "keys": [
+            "V"
+          ]
+        },
+        {
+          "order": 14,
+          "section": "UI Interaction",
+          "action": "Special Action 4",
+          "keys": [
+            "X"
+          ]
+        },
+        {
+          "order": 15,
+          "section": "UI Interaction",
+          "action": "Magnify",
+          "keys": [
+            "B"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "AutoMap",
+      "rows": [
+        {
+          "order": 1,
+          "section": "Movement",
+          "action": "Pan Up",
+          "keys": [
+            "W"
+          ]
+        },
+        {
+          "order": 2,
+          "section": "Movement",
+          "action": "Pan Down",
+          "keys": [
+            "S"
+          ]
+        },
+        {
+          "order": 3,
+          "section": "Movement",
+          "action": "Pan Left",
+          "keys": [
+            "A"
+          ]
+        },
+        {
+          "order": 4,
+          "section": "Movement",
+          "action": "Pan Right",
+          "keys": [
+            "D"
+          ]
+        },
+        {
+          "order": 5,
+          "section": "Movement",
+          "action": "Rotate Up",
+          "keys": [
+            "Up"
+          ]
+        },
+        {
+          "order": 6,
+          "section": "Movement",
+          "action": "Rotate Down",
+          "keys": [
+            "Down"
+          ]
+        },
+        {
+          "order": 7,
+          "section": "Movement",
+          "action": "Rotate Left",
+          "keys": [
+            "Left"
+          ]
+        },
+        {
+          "order": 8,
+          "section": "Movement",
+          "action": "Rotate Right",
+          "keys": [
+            "Right"
+          ]
+        },
+        {
+          "order": 9,
+          "section": "Movement",
+          "action": "Zoom Out",
+          "keys": [
+            "WheelDown"
+          ]
+        },
+        {
+          "order": 10,
+          "section": "Movement",
+          "action": "Zoom In",
+          "keys": [
+            "WheelUp"
+          ]
+        },
+        {
+          "order": 11,
+          "section": "Movement",
+          "action": "Recenter",
+          "keys": [
+            "X"
+          ]
+        },
+        {
+          "order": 12,
+          "section": "Movement",
+          "action": "Pan Mode",
+          "keys": [
+            "Mouse1"
+          ]
+        },
+        {
+          "order": 13,
+          "section": "Movement",
+          "action": "Rotate Mode",
+          "keys": [
+            "Mouse2"
+          ]
+        }
+      ]
+    }
+  ],
+  "styles": {
+    "Auto-Sprint": "Off",
+    "Keyboard Slam Input Style": "Single Input",
+    "Keyboard Stab Input Style": "Single Input",
+    "Controller Slam Input Style": "Combo Input",
+    "Controller Stab Input Style": "Combo Input",
+    "Meat Hook Orbit Input Style": "Press and Hold",
+    "Spear Ready Input Style": "Press and Hold",
+    "Weapon Wheel Open Delay": "180 ms",
+    "Dragon Lock-on Input Style": "Press and Hold",
+    "Shield Block Input Style": "Press and Hold",
+    "UI Action Input Style": "Press and Hold"
+  },
+  "notes": [
+    "Slayer repeats Next Melee Weapon and Next Shield Rune in Misc; the duplicate rows share the same binding.",
+    "The native Weapons menu shows 1\u20136 and 9. Existing Azeron 7/8 outputs are retained, but have no separate row here.",
+    "Menu confirmation/back and Pause are fixed controls outside the editable rows: Space/Enter confirm; Esc back/pause; Tab also backs out according to CFG.",
+    "Other input tabs retain their existing effective bindings. In these tabs Dossier is Tab and Objective Ping is H.",
+    "Four selectors are stored in the opaque native game profile and are absent from the text CFG; do not invent CFG commands for them."
+  ]
+}

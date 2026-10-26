@@ -1,5 +1,37 @@
 # DOOM campaign and Revelations action maps
 
+## Current active Rebuild R1 — 2026-10-26
+
+This section supersedes the historical readiness and key tables below.
+All ten changed actions were saved in DOOM and read back after normal exit
+and relaunch on build 25755602. The matching thirty maps / 120 images are
+published, and the saved DOOM runtime profile points to that source.
+
+| Action in the Slayer menu | Key | BASIC position |
+|---|---|---|
+| Shield Throw; Meat Hook / Spear Ready | K, with Mouse3 retained | #10 |
+| Weapon Quick Switch / held Wheel | L | #15 |
+| Switch Off-hand Weapon | G | #7 |
+| Objective Ping | C | #8 |
+| Magnify | B | #4 |
+| Next / Previous Melee Weapon | F / P | #17 / #18 |
+| Next / Previous Shield Rune | E / O | #12 / #13 |
+
+Use/Stab J #6, Melee/Glory I #16, Class Weapon H #11, Dossier R #22,
+Ctrl #5, Shift #9, Space #14, #19 Hold, #2 WEAPONS hold and the movement
+stick retain their owners. The numeric grid and all mouse alternatives remain.
+See the [full menu-order HTML guide](DOOM-BINDING-GUIDE.html) for all 96 rows,
+press/hold settings and the current maps. The four melee/rune selectors are
+native-UI profile settings; the text CFG alone does not contain them.
+
+The existing Actions view, appearance and activation settings are preserved.
+Actual play and physical simultaneous comfort remain unverified. Contexts
+`menus`, `automap`, `dragon` and `atlan` are manually selected in Game Tools;
+native layer following does not infer the game's current mode. Turret bindings
+are documented in the guide, with no separate Turret map context added.
+The [activation history](HISTORY.md#2026-10-26--clean-rebuild-r1-applied-and-native-restart-verified)
+records the file/UI boundary, checks and paired recovery requirements.
+
 ## Read-only input audit and readiness — 2026-10-25
 
 The [revision-3 history](HISTORY.md#2026-10-25--input-source-audit-revision-3-and-play-readiness-options)

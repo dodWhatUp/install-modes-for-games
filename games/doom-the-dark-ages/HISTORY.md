@@ -1,5 +1,69 @@
 # DOOM: The Dark Ages — Experiment History
 
+## 2026-10-26 — Clean Rebuild R1 applied and native restart verified
+
+The user explicitly requested completing activation and entering DOOM. The
+current installed Toolkit 0.27.34-preview.1 and six COMBAT R2 native profiles
+were retained. The planning ZIP supplied requirements, not replacement source.
+Fresh snapshots precede the game transaction, native-menu edits and Overlay
+publication. The existing guarded binding service applied seven exact Slayer
+CFG rows: Throw/Ready G → K, Quick/Wheel B → L, Off-hand C → G, Magnify F → B
+and Objective Ping M → C. Mouse and controller alternatives were preserved.
+
+The native Inputs UI still showed old keys after the CFG transaction. The
+authorized menu edits were therefore also saved through DOOM itself. Four
+previously unbound selectors were added there: Next/Previous Melee F/P and
+Next/Previous Shield Rune E/O. They are present in this installed build
+25755602, but absent from the registered text-CFG inventory. No guessed native
+command or opaque-profile writer was added. A normal game exit and relaunch
+confirmed all ten changed actions, including retained mouse alternatives.
+The duplicate Next Melee/Next Rune rows in Misc update together with Combat.
+
+A temporary guarded one-shot helper initially captured Caps Lock instead of K.
+The fresh pre-edit opaque-profile backup removed that transient test entry
+before the clean menu sequence. Disabling AutoHotkey's Caps Lock handling in
+the temporary host allowed normal lowercase key outputs through the unchanged
+focus/release/cooldown module. Unsupported key tokens were refused and the
+guard was not broadened. The helper was closed normally after verification.
+
+Thirty maps / 120 images were published through the existing reviewed workflow.
+All 870 native routes, geometry, momentary links, #19/F24 and appearance/view
+preferences are preserved. Current menu readback also corrects stale Menu,
+AutoMap, Atlan and Dragon display labels; old J/Dossier and G/H menu labels
+must not be reused as effective bindings. The DOOM saved runtime profile was
+refreshed to the published source and passed its native/source/appearance
+checks; its automatic options and the separate reWASD setup remain unchanged.
+The existing native service reports its F24 trigger and route loaded without
+an error. This is runtime readiness, not a fresh physical-button acceptance.
+
+The [standalone HTML guide](DOOM-BINDING-GUIDE.html) lists all 96 observed
+keyboard/mouse binding rows in the exact order of all six Inputs tabs. It
+includes actual keys, mouse alternatives, Azeron routes, changed/retained
+status, preserved press styles and the matching BASIC/WEAPONS map images.
+The [menu data](BINDING-MENU-R1.json) and generic
+[guide generator](../../scripts/Build-DoomBindingGuide.py) keep it reproducible.
+Seven isolated Chromium checks passed: ordered coverage, live search,
+changed-only filtering, print reveal/restore, desktop, narrow and larger-text
+layout. No page errors or page-width overflow were detected. All 120 final
+map renders decode with no reported label clipping; BASIC Combined and
+WEAPONS ActionFirst were visually inspected. Earlier failed renders remain
+private and were not published.
+
+DOOM is left at its main menu. No save was loaded and no combat was played.
+Ready #10 with Slam #9, and Jump #14 with held Wheel #15, retain same-finger
+comfort questions; Mouse3 Ready and numeric WEAPONS selection are alternatives.
+Native layer following is automatic; menu/vehicle context selection remains
+manual, and no separate Turret Overlay context was added. Slots 7/8 remain
+native outputs with CFG commands but no named row in the observed Weapons menu.
+
+Rollback must preserve later changes, close DOOM/Steam normally, and review
+the paired original CFG plus both opaque game-profile files and the prior
+DOOM document/assets/registry/profile metadata. CFG-only rollback cannot undo
+the four UI-only selectors. Content-addressed private before/after snapshots
+and exact byte hashes are retained. No native Azeron/reWASD profile, unrelated
+game, installed app, graphics setting, benchmark or paused experiment was
+changed by this activation.
+
 ## 2026-10-25 — Full accessibility review and external-review preparation
 
 After the user identified unused accessible BASIC buttons, a complete review
