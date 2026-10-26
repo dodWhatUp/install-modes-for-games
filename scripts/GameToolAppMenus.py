@@ -5,7 +5,7 @@ from pathlib import Path
 import tkinter as tk
 from tkinter import ttk
 
-VERSION='0.1.0'
+VERSION='0.2.0'
 
 def geometry(widget):
     manager=widget.winfo_manager()
@@ -53,6 +53,8 @@ class AppMenus:
         for label,menu in [('View',self.view),('Layout',self.layout),('Tools',self.tools)]:
             button=ttk.Menubutton(self.frame,text=label+' \u25be',menu=menu,style='AppChrome.TMenubutton')
             button.pack(side='left',padx=(4,0));self.buttons[label]=button
+        from GameToolWindowsApp import add_window_controls
+        self.window_controls=add_window_controls(self.frame,root,self.tools)
         self.layout.add_radiobutton(label='Compact toolbar',variable=self.original,value=False,command=self.changed)
         self.layout.add_radiobutton(label='Original toolbar',variable=self.original,value=True,command=self.changed)
         self.bindings=[(event,root.bind(event,callback,add='+')) for event,callback in
@@ -115,6 +117,10 @@ class AppMenus:
     def fit(self):
         self.job=None
         if self.closed:return
+        if self.root.winfo_width()<950:
+            self.window_controls.pack_forget()
+        elif not self.window_controls.winfo_manager():
+            self.window_controls.pack(side='right',padx=(4,0))
         stack=[self.root]
         while stack:
             widget=stack.pop();stack.extend(widget.winfo_children())

@@ -410,12 +410,17 @@ class ModControlsPanel(ttk.Frame):
 def main(argv=None):
     import argparse
     p=argparse.ArgumentParser();p.add_argument('--data-dir',type=Path,required=True);p.add_argument('--game-id');p.add_argument('--discover',action='store_true');a=p.parse_args(argv)
-    root=tk.Tk();root.title('Game Mod Controls '+VERSION)
+    from GameToolWindowsApp import Session
+    session=Session('mod-controls',a.data_dir)
+    if not session.primary:return 0
+    root=tk.Tk();session.attach(root);root.title('Game Mod Controls '+VERSION)
     w,h,mw,mh=window_bounds(root.winfo_screenwidth(),root.winfo_screenheight());root.geometry(f'{w}x{h}');root.minsize(mw,mh)
     panel=ModControlsPanel(root,a.data_dir,initial_game=a.game_id,standalone=True);panel.pack(fill='both',expand=True)
     if a.discover:root.after(100,lambda:panel.safe(panel.find_locations))
     def close():
         if panel.can_close():panel.close();root.destroy()
-    root.protocol('WM_DELETE_WINDOW',close);root.mainloop();return 0
+    root.protocol('WM_DELETE_WINDOW',close)
+    try:root.mainloop();return 0
+    finally:session.close()
 
 if __name__=='__main__':raise SystemExit(main())

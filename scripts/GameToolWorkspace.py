@@ -12,7 +12,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import font as tkfont
 
-VERSION = "0.4.3"
+VERSION = "0.4.4"
 SIDEBAR_DEFAULT = 256
 SIDEBAR_MIN = 150
 SIDEBAR_MAX = 520
@@ -674,6 +674,7 @@ class Workspace:
                                          columnspan=2 if narrow else 1, sticky='ew' if narrow else 'w')
             for button in self.toolbar_actions:
                 button.grid_configure(row=1 if narrow else 0)
+                if event.width<getattr(button,'game_tools_optional_width',0):button.grid_remove()
             # On a small window the View menu still owns the sidebar toggle.
             # Reclaim its duplicate shortcut's width for useful search text.
             if narrow and len(self.toolbar_actions)>2:

@@ -4,7 +4,7 @@ from __future__ import annotations
 import tkinter as tk
 from tkinter import ttk
 
-VERSION = '0.2.0'
+VERSION = '0.3.0'
 
 
 class CompactHeader:
@@ -48,6 +48,11 @@ class CompactHeader:
         self.new_layout_button.pack(side='left',padx=(6,0))
         self.new_tools_button=ttk.Menubutton(self.new_bar,text='Tools \u25be',menu=self.tools_menu)
         self.new_tools_button.pack(side='left',padx=(6,0))
+        from GameToolWindowsApp import add_window_controls
+        self.window_controls=add_window_controls(workspace.toolbar,root,self.tools_menu,pack=False)
+        self.window_controls.game_tools_optional_width=950
+        workspace.add_toolbar_action(self.window_controls)
+        self.new_window_controls=add_window_controls(self.new_bar,root,tk.Menu(root,tearoff=False))
         self._mode_trace = appearance.mode.trace_add('write', self._queue)
         self.refresh()
         self._connect_interface()
@@ -136,7 +141,7 @@ class CompactHeader:
         self.a.mode.trace_remove('write', self._mode_trace)
         if self.interface and self._interface_trace:
             self.interface.selected.trace_remove('write', self._interface_trace)
-        for button in (self.layout_button,self.tools_button):
+        for button in (self.layout_button,self.tools_button,self.window_controls):
             if button in self.w.toolbar_actions:self.w.toolbar_actions.remove(button)
             button.destroy()
         self.layout_menu.destroy()

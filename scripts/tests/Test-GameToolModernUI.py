@@ -175,7 +175,7 @@ class ModernUI(unittest.TestCase):
         self.assertNotIn('Identify UI', labels)
         self.assertEqual(len(labels),7)
         self.assertEqual([compact.tools_menu.entrycget(i,'label') for i in range(compact.tools_menu.index('end')+1)
-                          if compact.tools_menu.type(i)!='separator'],['Browse by','Identify UI'])
+                          if compact.tools_menu.type(i)!='separator'],['Browse by','Identify UI','Hide window · reopen from taskbar','Close application'])
         self.assertIn('Show expanded app controls', labels)
         self.assertIn('Show field icons', labels)
         target = next(i for i in range(compact.layout_menu.index('end')+1)
@@ -218,6 +218,7 @@ class ModernUI(unittest.TestCase):
             if width<880:
                 self.assertFalse(self.w.navigation_button.winfo_ismapped())
                 self.assertGreater(search.winfo_width(),150)
+            self.assertEqual(bool(compact.window_controls.winfo_ismapped()),width>=950)
         self.assertEqual(self.w.current_route,'comparison')
         self.assertEqual(self.operations,[])
 

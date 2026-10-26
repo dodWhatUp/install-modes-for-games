@@ -45,6 +45,12 @@ def main():
             raise ValueError("Installed updater changed; inspect the recovery copy")
         api = type(sys)("unified_bootstrap")
         exec(compile(raw, str(module), "exec"), api.__dict__)
+        # Verify the selected source before requesting only its existing window.
+        # A running Studio keeps its source lease; restore does not acquire it.
+        api.verify_current(root,state)
+        sys.path.insert(0,str(module.parent))
+        from GameToolWindowsApp import request_existing
+        if request_existing('unified',root):return
         subprocess.Popen(api.launch_command(root), cwd=str(root))
     except Exception as e:
         ui = tk.Tk(); ui.withdraw()

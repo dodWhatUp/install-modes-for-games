@@ -316,7 +316,15 @@ class Panel(ttk.Frame):
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--workspace',type=Path,default=Path(__file__).parent)
     parser.add_argument('--demo',action='store_true');args=parser.parse_args()
+    try:from GameToolWindowsApp import Session
+    except ModuleNotFoundError as error:
+        if error.name!='GameToolWindowsApp':raise
+        sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'scripts'))
+        from GameToolWindowsApp import Session
+    session=Session('shadow',args.workspace)
+    if not session.primary:return 0
     root=tk.Tk()
+    session.attach(root)
     try:
         service=startup_service(root,args.workspace,DemoService if args.demo else ControlService)
         if service is None:root.destroy();return 0

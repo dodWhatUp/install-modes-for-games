@@ -247,7 +247,15 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--workspace', required=True)
     args = parser.parse_args()
+    try:from GameToolWindowsApp import Session
+    except ModuleNotFoundError as error:
+        if error.name!='GameToolWindowsApp':raise
+        sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'scripts'))
+        from GameToolWindowsApp import Session
+    session=Session('wicked',args.workspace)
+    if not session.primary:sys.exit(0)
     root = tk.Tk()
+    session.attach(root)
     try:
         Panel(root, Switcher(args.workspace))
         root.mainloop()

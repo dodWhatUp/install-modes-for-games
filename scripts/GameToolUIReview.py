@@ -357,7 +357,12 @@ class ReviewApp(ttk.Frame):
 
 def main(argv=None):
     parser=argparse.ArgumentParser();parser.add_argument('--config',type=Path,required=True);parser.add_argument('--page',choices=PAGES);a=parser.parse_args(argv)
+    from GameToolWindowsApp import Session
+    session=Session('preview-mods'if a.page=='mods'else'preview-files',a.config)
+    if not session.primary:return 0
     value=json.loads(a.config.read_text(encoding='utf-8'));view_name='view-'+a.page+'.json' if a.page in {'mods','files'} else 'view.json';model=ReviewModel(value['source_data'],value['review_data'],value.get('install_root'),view_name=view_name)
-    root=tk.Tk();ReviewApp(root,model,a.page);root.mainloop();return 0
+    root=tk.Tk();session.attach(root)
+    try:ReviewApp(root,model,a.page);root.mainloop();return 0
+    finally:session.close()
 
 if __name__=='__main__':raise SystemExit(main())

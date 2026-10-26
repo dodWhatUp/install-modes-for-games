@@ -19,7 +19,7 @@ import time
 import uuid
 from datetime import datetime, timezone
 
-VERSION = "0.27.32-preview.1"
+VERSION = "0.27.33-preview.2"
 HEADER = struct.Struct("<5Ii2I")
 ENTRY_MIN = 1324
 MAX_MAP = 16 * 1024 * 1024
@@ -513,6 +513,9 @@ def journal_summary(result):
 def gui(data_dir, draft=None, catalog_path=None, overlay_page=False, unified_install=None, interface_preview=None):
     import tkinter as tk
     from tkinter import ttk, filedialog, messagebox
+    from GameToolWindowsApp import Session
+    app_session=Session('unified',unified_install or data_dir)
+    if not app_session.primary:return
     data_dir.mkdir(parents=True, exist_ok=True)
     registry = data_dir / "tools.json"
     tools = load_tools(registry)
@@ -524,21 +527,9 @@ def gui(data_dir, draft=None, catalog_path=None, overlay_page=False, unified_ins
         dpi_api.SetProcessDpiAwarenessContext.argtypes = [ctypes.c_void_p]
         dpi_api.SetProcessDpiAwarenessContext(ctypes.c_void_p(-2))
     root = tk.Tk()
+    app_session.attach(root)
     root.game_tools_icon_path = data_dir / 'ui-choice-icons.json'
     root.game_tools_icon_namespace = 'unified-game-tools'
-    instance_handle = None
-    if unified_install is not None:
-        kernel = ctypes.WinDLL("kernel32", use_last_error=True)
-        kernel.CreateMutexW.argtypes = [ctypes.c_void_p, ctypes.c_bool, ctypes.c_wchar_p]
-        kernel.CreateMutexW.restype = ctypes.c_void_p
-        kernel.CloseHandle.argtypes = [ctypes.c_void_p]
-        token = hashlib.sha256(str(unified_install.resolve()).lower().encode()).hexdigest()
-        instance_handle = kernel.CreateMutexW(None, False, "Local\\GameToolsUnified-" + token)
-        if not instance_handle or ctypes.get_last_error() == 183:
-            messagebox.showinfo("Unified Game Tools", "This unified installation is already open. Use its existing window.", parent=root)
-            if instance_handle: kernel.CloseHandle(instance_handle)
-            root.destroy()
-            return
     root.title(f'{"Unified Game Tools" if unified_install else "Game Tool Hub"} {VERSION} — Learning mode')
     if interface_preview in ("Focus", "Original"):
         root.title(f"Game Tools — {interface_preview} UI preview · {VERSION}")
@@ -1118,8 +1109,7 @@ def gui(data_dir, draft=None, catalog_path=None, overlay_page=False, unified_ins
     try:
         root.mainloop()
     finally:
-        if instance_handle:
-            kernel.CloseHandle(instance_handle)
+        app_session.close()
 
 
 def main(argv=None):
