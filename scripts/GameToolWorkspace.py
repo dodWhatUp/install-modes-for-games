@@ -12,7 +12,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import font as tkfont
 
-VERSION = "0.4.4"
+VERSION = "0.4.5"
 SIDEBAR_DEFAULT = 256
 SIDEBAR_MIN = 150
 SIDEBAR_MAX = 520
@@ -717,8 +717,7 @@ class Workspace:
         self.breadcrumb.configure(padding=(10, 6) if mode == "Professional" else (6, 3))
         if mode == "Modern":
             self.modern.activate()
-            if self.modern.home_visible:
-                self.breadcrumb.grid_remove()
+            self.modern.sync_page_header()
         self._visibility_changed()
 
     def close(self):

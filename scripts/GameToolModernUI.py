@@ -10,7 +10,7 @@ from tkinter import ttk, font as tkfont
 from GameToolCompactUI import ScrollableFrame, FlowToolbar
 from GameToolWorkspace import DOMAINS
 
-VERSION = "0.1.4"
+VERSION = "0.1.5"
 COLORS = dict(background="#f3f5f8", surface="#ffffff", ink="#18283b",
               muted="#526477", line="#dce3eb", accent="#076b68",
               rail="#172b40", rail_text="#edf3f9", rail_muted="#bed0e2",
@@ -281,7 +281,7 @@ class ModernSurface:
         if not self.active:
             return
         self.home_visible = False
-        self.w.breadcrumb.grid()
+        self.sync_page_header()
         self.dashboard.pack_forget()
         self.w.notebook.pack(fill="both", expand=True)
         self.page_title.configure(text=record["title"])
@@ -292,6 +292,14 @@ class ModernSurface:
         self.details_changed()
         self._queue_heading()
         self._highlight(record["domain"])
+
+    def sync_page_header(self):
+        # Profiles already owns a heading and help in its scrolling content.
+        # Keep the sidebar aligned with dashboard sections; Home remains in it.
+        if self.home_visible or self.w.current_route=='profiles':
+            self.w.breadcrumb.grid_remove()
+        else:
+            self.w.breadcrumb.grid()
 
     def _highlight(self, domain=None):
         profile_page=not self.home_visible and self.w.notebook.select()==str(self.w.route_tabs.get('profiles',''))
@@ -379,6 +387,7 @@ class ModernSurface:
     def details_changed(self):
         if not self.active:
             return
+        self.sync_page_header()
         self.w.details_box.grid_remove()
         visible = self.w.show_details.get() and not self.home_visible and self.w.current_route != 'profiles'
         if visible:

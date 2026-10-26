@@ -44,6 +44,7 @@ class ModernUI(unittest.TestCase):
     def setUp(self):
         self.private = tempfile.TemporaryDirectory()
         self.root = tk.Tk(); self.root.withdraw()
+        self.original_scaling = self.root.tk.call('tk', 'scaling')
         self.root.geometry("1360x880")
         self.root.report_callback_exception = lambda *args: self.fail(str(args))
         self.status = tk.StringVar(self.root, "Stopped")
@@ -78,6 +79,7 @@ class ModernUI(unittest.TestCase):
     def tearDown(self):
         self.a.preview_only = True
         self.a.close(); self.w.close()
+        self.root.tk.call('tk', 'scaling', self.original_scaling)
         self.root.update_idletasks(); self.root.destroy()
         self.private.cleanup()
 
@@ -104,6 +106,7 @@ class ModernUI(unittest.TestCase):
         height=self.w.breadcrumb.winfo_height()
         self.w.show_details.set(True);self.w._visibility_changed();self.root.update()
         self.assertEqual(self.w.breadcrumb.winfo_height(),height)
+        self.assertFalse(self.w.breadcrumb.winfo_ismapped())
         self.assertEqual(self.m.page_title.cget('text'),'Game profiles')
         self.assertFalse(self.w.scope_widget.winfo_ismapped())
         self.assertFalse(self.m.detail.winfo_ismapped())
@@ -119,8 +122,34 @@ class ModernUI(unittest.TestCase):
                 self.root.geometry(f'{width}x700');self.root.update()
                 self.assertEqual(int(self.m.page_title.grid_info()['row']),0)
                 self.assertLess(self.w.breadcrumb.winfo_height(),75)
+                self.assertFalse(self.w.breadcrumb.winfo_ismapped())
                 self.assertTrue(self.w.selector.winfo_ismapped())
                 self.assertEqual(self.operations,[])
+
+    def test_profiles_sidebar_starts_at_the_same_height_as_dashboard_sections(self):
+        self.root.deiconify();self.w.show_navigation.set(True);self.w._navigation_forced=True
+        self.m.show_home();self.w._visibility_changed();self.root.update()
+        draft=self.entry.get();details=self.w.show_details.get()
+        for width in (720,1000,1360):
+            self.root.geometry(f'{width}x740');self.m.show_home();self.root.update()
+            top=self.w.sidebar.winfo_rooty()
+            self.w.route('page.profiles');self.root.update()
+            self.assertEqual(self.w.sidebar.winfo_rooty(),top)
+            self.assertFalse(self.w.breadcrumb.winfo_ismapped())
+            self.assertTrue(self.m.home_button.winfo_ismapped())
+            self.assertEqual(self.entry.get(),draft);self.assertEqual(self.operations,[])
+        self.assertEqual(self.w.show_details.get(),details)
+
+    def test_reapplying_modern_and_detail_visibility_keeps_profile_top_row_hidden(self):
+        self.root.deiconify();self.w.route('page.profiles');self.root.update()
+        for detail in (True,False,True):
+            self.w.show_details.set(detail);self.w._visibility_changed()
+            self.w.set_presentation('Modern');self.root.update()
+            self.assertFalse(self.w.breadcrumb.winfo_ismapped())
+        self.w.route('page.comparison');self.root.update()
+        self.assertTrue(self.w.breadcrumb.winfo_ismapped());self.assertTrue(self.m.back.winfo_ismapped())
+        self.assertTrue(self.w.show_details.get());self.assertEqual(self.entry.get(),'unsaved fixture')
+        self.assertEqual(self.operations,[])
 
     def test_profiles_header_switch_preserves_other_page_details_and_modes(self):
         for mode in ('Modern','Classic','Professional','Compact','Modern'):

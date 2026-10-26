@@ -1,5 +1,16 @@
 # Game profiles content header
 
+## Modern layout follow-up — 0.27.34-preview.1
+
+The Modern Game profiles page also hides the remaining duplicate pinned
+“Home / Game profiles” row. Its own heading and help stay in the scrolling
+content card, and Home stays accessible in the sidebar. The sidebar and content
+now begin at the same height as the dashboard sections. Reapplying Modern or
+toggling details does not bring the duplicate row back. Other workspace headers,
+layouts, saved detail choices, profile selections and operation owners remain.
+
+## Previous change retained — 0.27.30-preview.1
+
 Unified Game Tools 0.27.30-preview.1 keeps the pinned Game profiles header to
 the short page name and existing navigation. Activation/startup explanations
 and the runtime-only scope note are in the profile page's scrollable content

@@ -19,7 +19,7 @@ import time
 import uuid
 from datetime import datetime, timezone
 
-VERSION = "0.27.33-preview.2"
+VERSION = "0.27.34-preview.1"
 HEADER = struct.Struct("<5Ii2I")
 ENTRY_MIN = 1324
 MAX_MAP = 16 * 1024 * 1024
