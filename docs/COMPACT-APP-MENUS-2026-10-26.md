@@ -10,7 +10,8 @@ Editable choice fields use a bounded, useful width in the compact layout.
 Clicking the field still opens choices while retaining the caret; typing,
 filtering, keyboard navigation and cancellation remain available. Fixed choices
 and ordinary text fields retain their purpose. Long labels remain in the choices.
-Floating editors inherit the same field treatment when they open.
+Floating editors inherit the same field treatment when they open. The Wicked
+controller also wraps its status, help and operation note to the available width.
 
 Choose **Layout → Original toolbar** to recover the previous header and field
 geometry. Choose **Compact toolbar** to return. The new layout choices use a
@@ -26,11 +27,12 @@ that three menus or one field width suits every interface.
 
 Isolated Linux Tk fixtures passed eight shared menu tests, eighteen UI Preview
 GUI cases (split into bounded batches), ten shared Mod Controls tests, sixteen
-Shadow controller acceptance checks and five Wicked inline GUI tests. Four
+Shadow controller acceptance checks and seven Wicked inline GUI tests. Four
 applications also passed menu/original-toolbar roundtrips and screenshots at
-large and smaller requested window sizes. One Wicked baseline row-comparison
-test was skipped because its historical comparison source was not in that test
-fixture. These fixture results do not establish Windows native or gameplay
+large and smaller requested window sizes. The Wicked baseline comparison source
+was subsequently supplied as a selected historical authored file: row heights
+matched at two window sizes and three text scales; all seven cases passed.
+These fixture results do not establish Windows native or gameplay
 acceptance. Keep machine-specific installation and native readback receipts
 private. No fixture test requires a live game, native input profile or published
 Overlay.

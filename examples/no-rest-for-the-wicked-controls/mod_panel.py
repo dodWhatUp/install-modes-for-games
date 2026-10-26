@@ -68,7 +68,8 @@ class Panel(ttk.Frame):
         ]:
             menu.add_command(label=name, command=lambda fn=action: self.safe(fn))
         self.status = tk.StringVar(value='Reading installed files...')
-        ttk.Label(self, textvariable=self.status, wraplength=800).pack(anchor='w', pady=(8, 10))
+        status_label=ttk.Label(self, textvariable=self.status, wraplength=800)
+        status_label.pack(anchor='w', pady=(8, 10))
         box = ttk.LabelFrame(self, text='Managed gameplay mods', padding=12)
         self.mod_rows = box
         box.pack(fill='x')
@@ -106,8 +107,15 @@ class Panel(ttk.Frame):
             self.buttons.append(button)
         usage=ttk.Label(self, text='GitHub / Nexus: source pages. Preview: description and images. Options: mod settings.\nGrey source buttons have no verified page. Floating windows open beside the mouse.',wraplength=800)
         usage.pack(anchor='w', pady=(4, 6))
-        ttk.Label(self, text='Apply after saving and exiting the game. Settings and saves stay in place.\nTurning a mod off does not undo items, inventory capacity or other changes already saved by that mod.',
-            wraplength=800, foreground='#6b4d20').pack(anchor='w', pady=(10, 0))
+        self.operation_note=ttk.Label(self, text='Apply after saving and exiting the game. Settings and saves stay in place.\nTurning a mod off does not undo items, inventory capacity or other changes already saved by that mod.',
+            wraplength=800, foreground='#6b4d20')
+        self.operation_note.pack(anchor='w', pady=(10, 0))
+        self._text_width=None
+        def wrap_text(event):
+            if event.widget is not self or event.width==self._text_width:return
+            self._text_width=event.width
+            for label in (status_label,usage,self.operation_note):label.configure(wraplength=max(240,event.width))
+        self.bind('<Configure>',wrap_text,add='+')
         root.bind('<F5>', lambda event: self.refresh())
         root.protocol('WM_DELETE_WINDOW', self.close)
         self.closed = False

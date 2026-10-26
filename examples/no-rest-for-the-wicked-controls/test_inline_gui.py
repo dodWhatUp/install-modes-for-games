@@ -92,6 +92,13 @@ class InlineGUI(unittest.TestCase):
                                  dialog.window.winfo_rooty() + dialog.window.winfo_height())
             panel.close()
 
+    def test_operation_note_wraps_inside_small_window(self):
+        self.root.geometry('720x490')
+        self.root.update()
+        note=self.panel.operation_note
+        self.assertLessEqual(note.winfo_x()+note.winfo_width(),self.panel.winfo_width())
+        self.assertLessEqual(note.winfo_rooty()+note.winfo_height(),self.root.winfo_rooty()+self.root.winfo_height())
+
     def test_original_row_height_and_fit_at_multiple_scales_and_sizes(self):
         import tkinter as tk
         from tkinter import ttk
